@@ -1,0 +1,50 @@
+/* Radio customizado — o DS-MS não tem componente de radio (só checkbox).
+   Mesma técnica do .ds-checkbox: input nativo escondido + span de controle
+   estilizado via :checked. Ver design-system-ms/src/components/checkbox/. */
+
+.ds-radio {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--ds-spacing-8, 8px);
+    cursor: pointer;
+    padding: 4px 0;
+}
+
+.ds-radio__input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    pointer-events: none;
+}
+
+.ds-radio__control {
+    flex: 0 0 auto;
+    width: 20px;
+    height: 20px;
+    border-radius: 999px;
+    border: 1px solid var(--ds-color-neutral-400, #a8a8a8);
+    background: var(--ds-color-background, #ffffff);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ds-radio__input:checked + .ds-radio__control {
+    border-color: var(--ds-color-primary-600);
+    box-shadow: inset 0 0 0 4px var(--ds-color-primary-600);
+}
+
+.ds-radio__input:focus-visible + .ds-radio__control {
+    outline: 3px solid var(--ds-color-yellow-600);
+    outline-offset: 2px;
+}
+
+.ds-radio__input:disabled + .ds-radio__control {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.ds-radio__label {
+    font-family: var(--ds-font-family-body);
+    font-size: var(--ds-body-md-font-size);
+    color: var(--ds-color-text-primary);
+}

@@ -1,0 +1,91 @@
+.ds-field {
+    width: 100%;
+    font-family: var(--ds-font-family-body);
+}
+
+.ds-field__label {
+    display: inline-block;
+    margin-bottom: 8px;
+
+    color: var(--ds-color-neutral-900, #1d1d1b);
+
+    font-size: var(--ds-body-sm-font-size);
+    line-height: var(--ds-body-sm-line-height);
+    font-weight: var(--ds-font-weight-semibold);
+}
+
+.ds-field__required {
+    color: var(--ds-color-red-600, #da1e28);
+}
+
+.ds-input {
+    width: 100%;
+    min-height: 48px;
+
+    padding: 12px 16px;
+
+    border: 1px solid var(--ds-color-neutral-300, #d1d1d1);
+    border-radius: var(--ds-radius-sm, 8px);
+
+    background: var(--ds-color-white, #ffffff);
+    color: var(--ds-color-neutral-900, #1d1d1b);
+
+    font-family: var(--ds-font-family-body);
+    font-size: var(--ds-body-md-font-size);
+    line-height: var(--ds-body-md-line-height);
+
+    outline: none;
+}
+
+.ds-input::placeholder {
+    color: var(--ds-color-neutral-500, #777777);
+}
+
+.ds-input:hover {
+    border-color: var(--ds-color-neutral-500, #777777);
+}
+
+.ds-input:focus {
+    border-color: var(--ds-color-primary-600, #004f9f);
+    box-shadow: 0 0 0 2px rgba(0, 79, 159, 0.16);
+}
+
+.ds-field__help {
+    margin: 8px 0 0;
+
+    color: var(--ds-color-neutral-600, #6f6f6f);
+
+    font-size: var(--ds-body-sm-font-size);
+    line-height: var(--ds-body-sm-line-height);
+}
+
+.ds-field__error {
+    margin: 8px 0 0;
+
+    color: var(--ds-color-red-600, #da1e28);
+
+    font-size: var(--ds-body-sm-font-size);
+    line-height: var(--ds-body-sm-line-height);
+    font-weight: var(--ds-font-weight-semibold);
+}
+
+.ds-field.is-error .ds-input,
+.ds-input[aria-invalid="true"] {
+    border-color: var(--ds-color-red-600, #da1e28);
+}
+
+.ds-field.is-error .ds-input:focus,
+.ds-input[aria-invalid="true"]:focus {
+    box-shadow: 0 0 0 2px rgba(218, 30, 40, 0.16);
+}
+
+.ds-input:disabled {
+    cursor: not-allowed;
+    border-color: var(--ds-color-neutral-200, #e5e5e5);
+    background: var(--ds-color-neutral-100, #f5f5f5);
+    color: var(--ds-color-neutral-500, #777777);
+}
+
+.ds-input[readonly] {
+    background: var(--ds-color-neutral-50, #fafafa);
+}

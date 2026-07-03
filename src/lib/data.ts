@@ -59,3 +59,8 @@ export function getMatomoPaginas(): Pagina[] {
 export function getMatomoVisitasDiarias(): VisitaDiaria[] {
   return readDataset<VisitaDiaria[]>("matomo", "v1", "visitas-diarias") ?? [];
 }
+
+export type TermoBusca = { termo: string; buscas: number };
+export function getMatomoBusca(): TermoBusca[] {
+  return readDataset<TermoBusca[]>("matomo", "v1", "busca") ?? [];
+}

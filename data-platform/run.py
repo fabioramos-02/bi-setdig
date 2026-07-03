@@ -58,15 +58,24 @@ def run_matomo_perfil() -> None:
     publish("matomo", "horarios", horarios)
     print(f"[matomo] horarios -> {len(horarios)} pontos")
 
-    paginas = t_matomo.top_pages(matomo.get_page_urls(period, date, limit=500), n=20)
+    page_urls_raw = matomo.get_page_urls(period, date, limit=-1)
+
+    paginas = t_matomo.top_pages(page_urls_raw, n=20)
     validate_rows(paginas, required=["url", "visitas"], non_negative=["visitas"])
     publish("matomo", "paginas-mais-acessadas", paginas)
     print(f"[matomo] paginas -> {len(paginas)} paginas")
 
-    diarias = t_matomo.visits_daily(matomo.get_visits_summary_daily(days=90))
+    diarias = t_matomo.visits_daily(matomo.get_visits_summary_daily(days=370))
     validate_rows(diarias, required=["data", "visitas"], non_negative=["visitas", "visitantesUnicos"])
     publish("matomo", "visitas-diarias", diarias)
     print(f"[matomo] visitas-diarias -> {len(diarias)} dias")
+
+    busca_nativa = t_matomo.search_keywords(matomo.get_site_search_keywords(period, date, limit=50))
+    busca_urls = t_matomo.search_from_urls(page_urls_raw)
+    busca = t_matomo.merge_search(busca_nativa, busca_urls, n=20)
+    validate_rows(busca, required=["termo", "buscas"], non_negative=["buscas"])
+    publish("matomo", "busca", busca)
+    print(f"[matomo] busca -> {len(busca)} termos ({len(busca_nativa)} nativos + {len(busca_urls)} de URL)")
 
 
 def run_ga4() -> None:

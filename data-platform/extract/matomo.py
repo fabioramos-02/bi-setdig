@@ -61,4 +61,11 @@ def get_device_type(period: str, date: str, site_id: str | None = None) -> list:
 
 
 def get_page_urls(period: str, date: str, site_id: str | None = None, limit: int = 500) -> list:
-    return _call("Actions.getPageUrls", period, date, {"filter_limit": limit}, site_id)
+    """flat=1 devolve a URL completa em cada linha, sem hierarquia de pastas
+    (sem isso o Matomo só retorna label/nb_visits por nó, sem o campo 'url' —
+    mesmo padrão de matomo/api/matomo_client.py::get_page_urls_trend)."""
+    return _call("Actions.getPageUrls", period, date, {"filter_limit": limit, "flat": 1, "expanded": 0}, site_id)
+
+
+def get_site_search_keywords(period: str, date: str, site_id: str | None = None, limit: int = 50) -> list:
+    return _call("Actions.getSiteSearchKeywords", period, date, {"filter_limit": limit}, site_id)

@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "../styles/ds-sis/styles/main.css";
 @import "../styles/ds-sis/styles/fonts.css";
+@import "../styles/ds-sis/styles/button.css";
+@import "../styles/ds-sis/styles/input.css";
+@import "../styles/ds-sis/styles/card.css";
+@import "../styles/ds-sis/styles/radio.css";
 
 /* Dark mode — o DS-MS ainda não publica tokens de tema escuro (ver ADR-006 e
    ADR-004 no repo do DS). Override local dos tokens semânticos, derivado dos
@@ -17,6 +21,16 @@
   --ds-color-border: #3d3d3d;
 
   --ds-color-primary-600: #4f9ddb;
+}
+
+/* .ds-input/.ds-select do DS fixam fundo branco (--ds-color-white) — correto
+   no tema claro, mas vira caixa branca sobre fundo escuro no dark. Override
+   pontual, não mexe no CSS vendorizado (ADR-006: cópia fiel da fonte). */
+[data-theme="dark"] .ds-input,
+[data-theme="dark"] .ds-select {
+  background: var(--ds-color-background-muted);
+  color: var(--ds-color-text-primary);
+  border-color: var(--ds-color-border);
 }
 
 @theme inline {
@@ -54,5 +68,12 @@ body {
 
   a[href]::after {
     content: none;
+  }
+
+  /* Tabs.tsx: painéis inativos ficam com [hidden] pra não montar/desmontar
+     no React, mas o PDF (window.print()) tem que sair com TODAS as abas —
+     senão só a visível na tela vira PDF, quebrando o export completo. */
+  [role="tabpanel"][hidden] {
+    display: block !important;
   }
 }

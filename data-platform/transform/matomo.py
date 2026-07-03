@@ -3,6 +3,7 @@ simplificado (sem pandas: só o necessário pra virar JSON de dataset)."""
 from __future__ import annotations
 
 import re
+from urllib.parse import unquote
 
 
 def top_n_with_others(rows: list[dict], label_field: str, n: int) -> list[dict]:
@@ -40,20 +41,56 @@ def visit_time(rows: list) -> list[dict]:
 
 
 def top_pages(rows: list, n: int = 20) -> list[dict]:
-    flat = []
-
-    def walk(nodes, prefix=""):
-        for node in nodes or []:
-            label = node.get("label", "")
-            url = node.get("url") or (prefix + "/" + label if prefix else label)
-            if "subtable" in node:
-                walk(node["subtable"], url)
-            else:
-                flat.append({"url": url, "visitas": node.get("nb_visits", 0)})
-
-    walk(rows)
+    """rows já vem flat=1 (get_page_urls) — 1 linha por URL, sem hierarquia."""
+    flat = [{"url": r.get("url", r.get("label", "")), "visitas": r.get("nb_visits", 0)} for r in (rows or [])]
     flat.sort(key=lambda r: -r["visitas"])
     return flat[:n]
+
+
+def search_keywords(rows: list) -> list[dict]:
+    """Termos de busca interna (SiteSearch nativo) — filtra ruído de URL
+    vazando como termo (mesma regra de
+    utils/data_processor.py::process_search_keywords)."""
+    out = []
+    for r in rows or []:
+        termo = (r.get("label") or "").strip()
+        if not termo or termo.startswith("/"):
+            continue
+        out.append({"termo": termo, "buscas": r.get("nb_visits", 0)})
+    out.sort(key=lambda r: -r["buscas"])
+    return out[:20]
+
+
+_Q_RE = re.compile(r"[?/]q=([^&/]+)")
+
+
+def search_from_urls(page_urls_raw: list) -> list[dict]:
+    """Extrai termos de busca de URLs .../buscar/?q=* ou ?q=* (mesma regra de
+    utils/data_processor.py::extract_search_from_page_urls) — complementa o
+    SiteSearch nativo, que pode não estar habilitado no site. rows já vem
+    flat=1, 1 URL completa por linha."""
+    somas: dict[str, int] = {}
+    for row in page_urls_raw or []:
+        url = row.get("url", "")
+        m = _Q_RE.search(url)
+        if not m:
+            continue
+        termo = unquote(m.group(1)).strip().lower()
+        if termo:
+            somas[termo] = somas.get(termo, 0) + row.get("nb_visits", 0)
+    out = [{"termo": t, "buscas": v} for t, v in somas.items()]
+    out.sort(key=lambda r: -r["buscas"])
+    return out
+
+
+def merge_search(nativo: list[dict], de_urls: list[dict], n: int = 20) -> list[dict]:
+    """Combina SiteSearch nativo + termos extraídos de URL, somando por termo."""
+    somas: dict[str, int] = {}
+    for r in [*nativo, *de_urls]:
+        somas[r["termo"]] = somas.get(r["termo"], 0) + r["buscas"]
+    out = [{"termo": t, "buscas": v} for t, v in somas.items()]
+    out.sort(key=lambda r: -r["buscas"])
+    return out[:n]
 
 
 def visits_daily(raw: dict) -> list[dict]:
