@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ThemeToggle } from "@/components/ds/ThemeToggle";
 
 const DOMINIOS = [
@@ -26,19 +27,19 @@ export default function Home() {
         </p>
         <nav className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {DOMINIOS.map((d) => (
-            <a
+            <Link
               key={d.rota}
               href={d.rota}
               style={{
                 border: "1px solid var(--ds-color-border)",
                 borderRadius: "var(--ds-radius-md)",
-                padding: "var(--ds-spacing-lg, 20px)",
+                padding: "var(--ds-spacing-20)",
                 color: "var(--ds-color-text-primary)",
               }}
               className="hover:shadow-md transition-shadow"
             >
               {d.nome}
-            </a>
+            </Link>
           ))}
         </nav>
       </main>
