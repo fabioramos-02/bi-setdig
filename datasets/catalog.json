@@ -1,0 +1,24 @@
+[
+  {
+    "dataset": "visitas-resumo",
+    "source": "matomo",
+    "owner": "SETDIG",
+    "updatedAt": "2026-07-03T16:48:18.680744+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/matomo-visitas-resumo.schema.json",
+    "rows": 1,
+    "bytes": 112
+  },
+  {
+    "dataset": "visao-geral",
+    "source": "ga4",
+    "owner": "SETDIG",
+    "updatedAt": "2026-07-03T16:48:20.881352+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/ga4-visao-geral.schema.json",
+    "rows": 4,
+    "bytes": 460
+  }
+]

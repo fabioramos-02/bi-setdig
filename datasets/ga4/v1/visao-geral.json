@@ -1,0 +1,26 @@
+[
+  {
+    "newVsReturning": "returning",
+    "activeUsers": 35334,
+    "sessions": 104696,
+    "screenPageViews": 232869
+  },
+  {
+    "newVsReturning": "new",
+    "activeUsers": 8173,
+    "sessions": 7997,
+    "screenPageViews": 20500
+  },
+  {
+    "newVsReturning": "",
+    "activeUsers": 0,
+    "sessions": 276,
+    "screenPageViews": 22
+  },
+  {
+    "newVsReturning": "(not set)",
+    "activeUsers": 0,
+    "sessions": 22508,
+    "screenPageViews": 388
+  }
+]

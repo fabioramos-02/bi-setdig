@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "matomo/visitas-resumo",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["date", "visitas"],
+    "properties": {
+      "date": { "type": "string" },
+      "visitas": { "type": "integer", "minimum": 0 },
+      "visitantesUnicos": { "type": "integer", "minimum": 0 },
+      "acoes": { "type": "integer", "minimum": 0 }
+    }
+  }
+}
