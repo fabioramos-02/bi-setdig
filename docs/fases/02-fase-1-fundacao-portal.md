@@ -1,6 +1,6 @@
 # Fase 1 — Fundação do portal
 
-**Status: 🟡 bootstrap + rotas dos 5 domínios feitos, componentes de dashboard/chart pendentes**
+**Status: 🟡 bootstrap + rotas dos 5 domínios feitos; 2 rotas já mostram dado real (ver Fase 2); resto dos componentes de dashboard/chart pendente**
 
 > ⚠️ **`refatoracao-bi` é pasta sincronizada entre duas máquinas** (mesmo
 > `.git`, remote `github.com/fabioramos-02/bi-setdig`, provavelmente via
