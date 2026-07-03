@@ -1,0 +1,107 @@
+:root {
+    /*
+    |--------------------------------------------------------------------------
+    | Font Families
+    |--------------------------------------------------------------------------
+    */
+
+    --ds-font-family-heading: "Avenir Next LT Pro", Arial, sans-serif;
+    --ds-font-family-body: "Open Sans", Arial, sans-serif;
+    --ds-font-family-default: "Open Sans", Arial, sans-serif;
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Font Sizes
+    |--------------------------------------------------------------------------
+    */
+
+    --ds-font-size-xsm: 12px;
+    --ds-font-size-sm: 14px;
+    --ds-font-size-md: 16px;
+    --ds-font-size-lg: 18px;
+    --ds-font-size-20: 20px;
+    --ds-font-size-24: 24px;
+    --ds-font-size-32: 32px;
+    --ds-font-size-40: 40px;
+    --ds-font-size-56: 56px;
+
+    /*
+    |--------------------------------------------------------------------------
+    | Font Weights
+    |--------------------------------------------------------------------------
+    */
+
+    --ds-font-weight-regular: 400;
+    --ds-font-weight-medium: 500;
+    --ds-font-weight-demi: 600;
+    --ds-font-weight-semibold: 600;
+    --ds-font-weight-bold: 700;
+
+    /*
+    |--------------------------------------------------------------------------
+    | Line Heights
+    |--------------------------------------------------------------------------
+    */
+
+    --ds-line-height-16: 16px;
+    --ds-line-height-18: 18px;
+    --ds-line-height-20: 20px;
+    --ds-line-height-24: 24px;
+    --ds-line-height-28: 28px;
+    --ds-line-height-32: 32px;
+    --ds-line-height-40: 40px;
+    --ds-line-height-48: 48px;
+    --ds-line-height-64: 64px;
+
+    /*
+    |--------------------------------------------------------------------------
+    | Text Styles
+    |--------------------------------------------------------------------------
+    */
+
+    --ds-display-font-size: var(--ds-font-size-56);
+    --ds-display-line-height: var(--ds-line-height-64);
+    --ds-display-font-weight: var(--ds-font-weight-bold);
+
+    --ds-heading-1-font-size: var(--ds-font-size-40);
+    --ds-heading-1-line-height: var(--ds-line-height-48);
+    --ds-heading-1-font-weight: var(--ds-font-weight-demi);
+
+    --ds-heading-2-font-size: var(--ds-font-size-32);
+    --ds-heading-2-line-height: var(--ds-line-height-40);
+    --ds-heading-2-font-weight: var(--ds-font-weight-demi);
+
+    --ds-heading-3-font-size: var(--ds-font-size-24);
+    --ds-heading-3-line-height: var(--ds-line-height-32);
+    --ds-heading-3-font-weight: var(--ds-font-weight-demi);
+
+    --ds-heading-4-font-size: var(--ds-font-size-20);
+    --ds-heading-4-line-height: var(--ds-line-height-28);
+    --ds-heading-4-font-weight: var(--ds-font-weight-demi);
+
+    --ds-heading-5-font-size: var(--ds-font-size-md);
+    --ds-heading-5-line-height: var(--ds-line-height-24);
+    --ds-heading-5-font-weight: var(--ds-font-weight-demi);
+
+    --ds-body-lg-font-size: var(--ds-font-size-20);
+    --ds-body-lg-line-height: var(--ds-line-height-28);
+    --ds-body-lg-font-weight: var(--ds-font-weight-regular);
+
+    --ds-body-md-font-size: var(--ds-font-size-md);
+    --ds-body-md-line-height: var(--ds-line-height-24);
+    --ds-body-md-font-weight: var(--ds-font-weight-regular);
+
+    --ds-body-sm-font-size: var(--ds-font-size-sm);
+    --ds-body-sm-line-height: var(--ds-line-height-20);
+    --ds-body-sm-font-weight: var(--ds-font-weight-regular);
+
+    --ds-label-md-font-size: var(--ds-font-size-md);
+    --ds-label-md-line-height: var(--ds-line-height-24);
+    --ds-label-md-font-weight: var(--ds-font-weight-bold);
+
+    --ds-subheading-sm-font-size: var(--ds-font-size-sm);
+    --ds-subheading-sm-line-height: var(--ds-line-height-20);
+    --ds-subheading-sm-font-weight: var(--ds-font-weight-semibold);
+}

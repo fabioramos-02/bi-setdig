@@ -1,0 +1,85 @@
+@import "./variables.css";
+@import "./typography.css";
+@import "./spacing.css";
+@import "./radius.css";
+@import "./shadows.css";
+@import "./grid.css";
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+    font-family: var(--ds-font-family-body);
+    font-size: var(--ds-body-md-font-size);
+    font-weight: var(--ds-body-md-font-weight);
+    line-height: var(--ds-body-md-line-height);
+    color: var(--ds-color-text-primary);
+    background-color: var(--ds-color-background);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    font-family: var(--ds-font-family-heading);
+    color: var(--ds-color-text-primary);
+}
+
+h1 {
+    font-size: var(--ds-heading-1-font-size);
+    font-weight: var(--ds-heading-1-font-weight);
+    line-height: var(--ds-heading-1-line-height);
+}
+
+h2 {
+    font-size: var(--ds-heading-2-font-size);
+    font-weight: var(--ds-heading-2-font-weight);
+    line-height: var(--ds-heading-2-line-height);
+}
+
+h3 {
+    font-size: var(--ds-heading-3-font-size);
+    font-weight: var(--ds-heading-3-font-weight);
+    line-height: var(--ds-heading-3-line-height);
+}
+
+h4 {
+    font-size: var(--ds-heading-4-font-size);
+    font-weight: var(--ds-heading-4-font-weight);
+    line-height: var(--ds-heading-4-line-height);
+}
+
+h5 {
+    font-size: var(--ds-heading-5-font-size);
+    font-weight: var(--ds-heading-5-font-weight);
+    line-height: var(--ds-heading-5-line-height);
+}
+
+p {
+    margin-top: 0;
+    font-size: var(--ds-body-md-font-size);
+    line-height: var(--ds-body-md-line-height);
+}
+
+a {
+    color: var(--ds-color-primary-600);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+img,
+svg {
+    max-width: 100%;
+    height: auto;
+}

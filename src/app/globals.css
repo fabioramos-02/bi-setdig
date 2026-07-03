@@ -1,26 +1,34 @@
 @import "tailwindcss";
+@import "../styles/ds-sis/styles/main.css";
+@import "../styles/ds-sis/styles/fonts.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Dark mode — o DS-MS ainda não publica tokens de tema escuro (ver ADR-006 e
+   ADR-004 no repo do DS). Override local dos tokens semânticos, derivado dos
+   neutros DS; substituir por tokens oficiais quando existirem upstream. */
+[data-theme="dark"] {
+  --ds-color-text-primary: #f4f4f4;
+  --ds-color-text-secondary: #d5d5d5;
+  --ds-color-text-muted: #a8a8a6;
+  --ds-color-text-inverse: #1d1d1b;
+
+  --ds-color-background: #1b1b1b;
+  --ds-color-background-muted: #262626;
+
+  --ds-color-border: #3d3d3d;
+
+  --ds-color-primary-600: #4f9ddb;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-background: var(--ds-color-background);
+  --color-foreground: var(--ds-color-text-primary);
+  --color-primary: var(--ds-color-primary-600);
+  --color-border: var(--ds-color-border);
+  --font-sans: var(--ds-font-family-body);
+  --font-heading: var(--ds-font-family-heading);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--ds-color-background);
+  color: var(--ds-color-text-primary);
 }

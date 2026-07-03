@@ -1,0 +1,18 @@
+:root {
+    /*
+    |--------------------------------------------------------------------------
+    | Border Radius
+    |--------------------------------------------------------------------------
+    */
+
+    --ds-radius-none: 0;
+    --ds-radius-2xsm: 1px;
+    --ds-radius-1xsm: 2px;
+    --ds-radius-xsm: 4px;
+    --ds-radius-sm: 8px;
+    --ds-radius-md: 12px;
+    --ds-radius-lg: 16px;
+    --ds-radius-xlg: 20px;
+    --ds-radius-big: 32px;
+    --ds-radius-huge: 9999px;
+}

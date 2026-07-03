@@ -1,0 +1,34 @@
+:root {
+    /*
+    |--------------------------------------------------------------------------
+    | Spacing
+    |--------------------------------------------------------------------------
+    */
+
+    --ds-spacing-0: 0;
+    --ds-spacing-2: 2px;
+    --ds-spacing-4: 4px;
+    --ds-spacing-8: 8px;
+    --ds-spacing-12: 12px;
+    --ds-spacing-16: 16px;
+    --ds-spacing-20: 20px;
+    --ds-spacing-24: 24px;
+    --ds-spacing-32: 32px;
+    --ds-spacing-40: 40px;
+    --ds-spacing-48: 48px;
+    --ds-spacing-56: 56px;
+    --ds-spacing-72: 72px;
+    --ds-spacing-112: 112px;
+
+    /*
+    |--------------------------------------------------------------------------
+    | Semantic Spacing
+    |--------------------------------------------------------------------------
+    */
+
+    --ds-gap-2xsm: var(--ds-spacing-4);
+    --ds-gap-sm: var(--ds-spacing-16);
+    --ds-gap-xmd: var(--ds-spacing-24);
+
+    --ds-padding-md: var(--ds-spacing-16);
+}

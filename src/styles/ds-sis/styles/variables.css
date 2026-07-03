@@ -1,0 +1,96 @@
+:root {
+    /*
+    |--------------------------------------------------------------------------
+    | Colors - Brand
+    |--------------------------------------------------------------------------
+    */
+
+    --ds-color-brand-skyline: #004f9f;
+    --ds-color-brand-golden: #ffd500;
+
+    /*
+    |--------------------------------------------------------------------------
+    | Colors - Primary
+    |--------------------------------------------------------------------------
+    */
+
+    --ds-color-primary-600: #004f9f;
+    --ds-color-primary-1000: #001020;
+
+    /*
+    |--------------------------------------------------------------------------
+    | Colors - Secondary
+    |--------------------------------------------------------------------------
+    */
+
+    --ds-color-secondary-600: #007f31;
+
+    /*
+    |--------------------------------------------------------------------------
+    | Colors - Tertiary
+    |--------------------------------------------------------------------------
+    */
+
+    --ds-color-tertiary-600: #ffd500;
+
+    /*
+    |--------------------------------------------------------------------------
+    | Colors - Complementary
+    |--------------------------------------------------------------------------
+    */
+
+    --ds-color-green-600: #28a44c;
+    --ds-color-blue-600: #0d99f7;
+    --ds-color-red-600: #da1e28;
+    --ds-color-yellow-600: #f9bb00;
+    --ds-color-orange-600: #ff832b;
+    --ds-color-purple-600: #7c3ed0;
+
+    /*
+    |--------------------------------------------------------------------------
+    | Colors - Neutral
+    |--------------------------------------------------------------------------
+    */
+
+    --ds-color-neutral-0: #ffffff;
+    --ds-color-neutral-100: #f9f9f9;
+    --ds-color-neutral-200: #d5d5d5;
+    --ds-color-neutral-500: #8e8e8d;
+    --ds-color-neutral-800: #565654;
+    --ds-color-neutral-900: #30302e;
+    --ds-color-neutral-1000: #1d1d1b;
+
+    /*
+    |--------------------------------------------------------------------------
+    | Colors - Alpha
+    |--------------------------------------------------------------------------
+    */
+
+    --ds-color-alpha-dark-4: rgba(10, 9, 9, 0.04);
+    --ds-color-alpha-dark-8: rgba(10, 9, 9, 0.08);
+    --ds-color-alpha-light-50: rgba(255, 255, 255, 0.5);
+
+    /*
+    |--------------------------------------------------------------------------
+    | Colors - Semantic
+    |--------------------------------------------------------------------------
+    */
+
+    --ds-color-white: var(--ds-color-neutral-0);
+    --ds-color-black: var(--ds-color-neutral-1000);
+
+    --ds-color-text-primary: var(--ds-color-neutral-1000);
+    --ds-color-text-secondary: var(--ds-color-neutral-800);
+    --ds-color-text-muted: var(--ds-color-neutral-500);
+    --ds-color-text-inverse: var(--ds-color-white);
+
+    --ds-color-background: var(--ds-color-white);
+    --ds-color-background-muted: var(--ds-color-neutral-100);
+
+    --ds-color-border: var(--ds-color-neutral-200);
+
+    --ds-color-success: var(--ds-color-green-600);
+    --ds-color-info: var(--ds-color-blue-600);
+    --ds-color-danger: var(--ds-color-red-600);
+    --ds-color-warning: var(--ds-color-yellow-600);
+}
