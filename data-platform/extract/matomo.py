@@ -17,17 +17,48 @@ MATOMO_SITE_ID = os.getenv("MATOMO_SITE_ID", "")
 MATOMO_TOKEN = os.getenv("MATOMO_TOKEN", "")
 
 
-def get_visits_summary(period: str, date: str, site_id: str | None = None) -> dict:
+def _call(method: str, period: str, date: str, extra: dict | None = None, site_id: str | None = None, timeout: int = 30):
     params = {
         "module": "API",
-        "method": "VisitsSummary.get",
+        "method": method,
         "idSite": site_id or MATOMO_SITE_ID,
         "period": period,
         "date": date,
         "format": "JSON",
         "token_auth": MATOMO_TOKEN,
     }
+    if extra:
+        params.update(extra)
     url = f"{MATOMO_URL}index.php?{urllib.parse.urlencode(params)}"
-    response = requests.get(url, timeout=30)
+    response = requests.get(url, timeout=timeout)
     response.raise_for_status()
     return response.json()
+
+
+def get_visits_summary(period: str, date: str, site_id: str | None = None) -> dict:
+    return _call("VisitsSummary.get", period, date, site_id=site_id)
+
+
+def get_visits_summary_daily(days: int = 90, site_id: str | None = None) -> dict:
+    """Série diária — base pro filtro de período client-side no portal."""
+    return _call("VisitsSummary.get", "day", f"last{days}", site_id=site_id)
+
+
+def get_city(period: str, date: str, site_id: str | None = None, limit: int = 100) -> list:
+    return _call("UserCountry.getCity", period, date, {"filter_limit": limit}, site_id)
+
+
+def get_visit_time(period: str, date: str, site_id: str | None = None) -> list:
+    return _call("VisitTime.getVisitInformationPerServerTime", period, date, site_id=site_id)
+
+
+def get_browsers(period: str, date: str, site_id: str | None = None, limit: int = 20) -> list:
+    return _call("DevicesDetection.getBrowsers", period, date, {"filter_limit": limit}, site_id)
+
+
+def get_device_type(period: str, date: str, site_id: str | None = None) -> list:
+    return _call("DevicesDetection.getType", period, date, site_id=site_id)
+
+
+def get_page_urls(period: str, date: str, site_id: str | None = None, limit: int = 500) -> list:
+    return _call("Actions.getPageUrls", period, date, {"filter_limit": limit}, site_id)

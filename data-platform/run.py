@@ -16,6 +16,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from extract import ga4, matomo
 from publish.writer import publish
+from transform import matomo as t_matomo
 from validate.rules import validate_rows
 
 
@@ -32,6 +33,40 @@ def run_matomo() -> None:
     validate_rows(rows, required=["date", "visitas"], non_negative=["visitas", "visitantesUnicos", "acoes"])
     out = publish("matomo", "visitas-resumo", rows)
     print(f"[matomo] ok -> {out} ({rows})")
+
+
+def run_matomo_perfil() -> None:
+    period, date = "month", "today"
+
+    cidades = t_matomo.cities_ms(matomo.get_city(period, date, limit=200))
+    validate_rows(cidades, required=["cidade", "visitas"], non_negative=["visitas"])
+    publish("matomo", "geografia", cidades)
+    print(f"[matomo] geografia -> {len(cidades)} cidades MS")
+
+    navegadores = t_matomo.top_n_with_others(matomo.get_browsers(period, date), "navegador", 4)
+    validate_rows(navegadores, required=["navegador", "visitas"], non_negative=["visitas"])
+    publish("matomo", "navegadores", navegadores)
+    print(f"[matomo] navegadores -> {navegadores}")
+
+    dispositivos = t_matomo.top_n_with_others(matomo.get_device_type(period, date), "dispositivo", 2)
+    validate_rows(dispositivos, required=["dispositivo", "visitas"], non_negative=["visitas"])
+    publish("matomo", "dispositivos", dispositivos)
+    print(f"[matomo] dispositivos -> {dispositivos}")
+
+    horarios = t_matomo.visit_time(matomo.get_visit_time(period, date))
+    validate_rows(horarios, required=["hora", "visitas"], non_negative=["visitas"])
+    publish("matomo", "horarios", horarios)
+    print(f"[matomo] horarios -> {len(horarios)} pontos")
+
+    paginas = t_matomo.top_pages(matomo.get_page_urls(period, date, limit=500), n=20)
+    validate_rows(paginas, required=["url", "visitas"], non_negative=["visitas"])
+    publish("matomo", "paginas-mais-acessadas", paginas)
+    print(f"[matomo] paginas -> {len(paginas)} paginas")
+
+    diarias = t_matomo.visits_daily(matomo.get_visits_summary_daily(days=90))
+    validate_rows(diarias, required=["data", "visitas"], non_negative=["visitas", "visitantesUnicos"])
+    publish("matomo", "visitas-diarias", diarias)
+    print(f"[matomo] visitas-diarias -> {len(diarias)} dias")
 
 
 def run_ga4() -> None:
@@ -52,7 +87,12 @@ def run_cartas() -> None:
 
 
 if __name__ == "__main__":
-    for nome, fn in [("matomo", run_matomo), ("ga4", run_ga4), ("cartas", run_cartas)]:
+    for nome, fn in [
+        ("matomo", run_matomo),
+        ("matomo_perfil", run_matomo_perfil),
+        ("ga4", run_ga4),
+        ("cartas", run_cartas),
+    ]:
         try:
             fn()
         except Exception as exc:  # noqa: BLE001 — fonte indisponível não derruba as outras

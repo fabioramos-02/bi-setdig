@@ -1,21 +1,21 @@
 [
   {
     "newVsReturning": "returning",
-    "activeUsers": 35334,
-    "sessions": 104696,
-    "screenPageViews": 232869
+    "activeUsers": 35373,
+    "sessions": 104869,
+    "screenPageViews": 233240
   },
   {
     "newVsReturning": "new",
-    "activeUsers": 8173,
-    "sessions": 7997,
-    "screenPageViews": 20500
+    "activeUsers": 8179,
+    "sessions": 8002,
+    "screenPageViews": 20513
   },
   {
     "newVsReturning": "",
     "activeUsers": 0,
-    "sessions": 276,
-    "screenPageViews": 22
+    "sessions": 319,
+    "screenPageViews": 26
   },
   {
     "newVsReturning": "(not set)",

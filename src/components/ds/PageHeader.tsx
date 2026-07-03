@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { ThemeToggle } from "@/components/ds/ThemeToggle";
+import { ExportPdfButton } from "@/components/dashboard/ExportPdfButton";
 
-export function PageHeader({ title }: { title: string }) {
+export function PageHeader({ title, exportable = false }: { title: string; exportable?: boolean }) {
   return (
     <header
       style={{ background: "var(--ds-color-primary-600)" }}
@@ -12,7 +13,7 @@ export function PageHeader({ title }: { title: string }) {
           href="/"
           aria-label="Voltar para o portal"
           style={{ color: "var(--ds-color-text-inverse)" }}
-          className="text-sm hover:underline"
+          className="text-sm hover:underline print:hidden"
         >
           ← Portal
         </Link>
@@ -20,7 +21,12 @@ export function PageHeader({ title }: { title: string }) {
           {title}
         </h1>
       </div>
-      <ThemeToggle />
+      <div className="flex items-center gap-4">
+        {exportable && <ExportPdfButton />}
+        <div className="print:hidden">
+          <ThemeToggle />
+        </div>
+      </div>
     </header>
   );
 }

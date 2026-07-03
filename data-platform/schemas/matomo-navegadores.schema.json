@@ -1,0 +1,10 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "matomo/navegadores",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["navegador", "visitas"],
+    "properties": { "navegador": { "type": "string" }, "visitas": { "type": "integer", "minimum": 0 } }
+  }
+}

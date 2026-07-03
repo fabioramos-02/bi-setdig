@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "matomo/visitas-diarias",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["data", "visitas"],
+    "properties": {
+      "data": { "type": "string", "format": "date" },
+      "visitas": { "type": "integer", "minimum": 0 },
+      "visitantesUnicos": { "type": "integer", "minimum": 0 }
+    }
+  }
+}
