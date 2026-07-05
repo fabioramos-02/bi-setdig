@@ -11,6 +11,7 @@ import { FilterBar } from "@/components/dashboard/FilterBar";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { Tabs, type TabItem } from "@/components/dashboard/Tabs";
 import { PerfilCidadaoTab } from "./PerfilCidadaoTab";
+import { WordCloud } from "@/components/charts/WordCloud";
 import { aplicarFiltroPeriodo, type PeriodoState } from "@/lib/period-filter";
 import { calcularInsightBusca, calcularInsightVisitas, calcularInsightNavegador } from "@/lib/insights";
 import type {
@@ -96,6 +97,7 @@ export function PortalMsClient({
                 />
               </div>
             )}
+            <WordCloud termos={busca} />
             <table className="w-full text-sm">
               <thead>
                 <tr className="text-left" style={{ color: "var(--ds-color-text-secondary)" }}>
