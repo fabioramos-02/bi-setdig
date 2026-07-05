@@ -1,8 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
 import type { Metadata } from "next";
-import { PageHeader } from "@/components/ds/PageHeader";
+import { ContentTopBar } from "@/components/ds/ContentTopBar";
 import { EmptyCard } from "@/components/ds/EmptyCard";
+import { ExportPdfButton } from "@/components/dashboard/ExportPdfButton";
 import { MetricCard } from "@/components/dashboard/MetricCard";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { ExportCsvButton } from "@/components/dashboard/ExportCsvButton";
@@ -56,7 +57,7 @@ export default function AnalyticsPortalMsPage() {
   if (!resumo) {
     return (
       <div className="flex flex-col flex-1">
-        <PageHeader title="Analytics — Portal MS" />
+        <ContentTopBar title="Analytics — Portal MS" />
         <main className="flex-1 p-6">
           <EmptyCard message="Nenhuma fonte de dados conectada ainda." />
         </main>
@@ -201,7 +202,9 @@ export default function AnalyticsPortalMsPage() {
 
   return (
     <div className="flex flex-col flex-1">
-      <PageHeader title="Analytics — Portal MS" exportable />
+      <ContentTopBar title="Analytics — Portal MS">
+        <ExportPdfButton />
+      </ContentTopBar>
       <main className="flex-1 p-4 sm:p-6">
         <DashboardSection title="Visão geral (mês atual)">
           <div className="grid gap-4 grid-cols-1 sm:grid-cols-3">

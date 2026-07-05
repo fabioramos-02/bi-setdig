@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PageHeader } from "@/components/ds/PageHeader";
+import { ContentTopBar } from "@/components/ds/ContentTopBar";
 import { EmptyCard } from "@/components/ds/EmptyCard";
 
 export const metadata: Metadata = {
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function GovernancaPage() {
   return (
     <div className="flex flex-col flex-1">
-      <PageHeader title="Governança" />
+      <ContentTopBar title="Governança" />
       <main className="flex-1 p-6">
         <EmptyCard message="Nenhuma fonte de dados conectada ainda." />
       </main>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PageHeader } from "@/components/ds/PageHeader";
+import { ContentTopBar } from "@/components/ds/ContentTopBar";
 import { EmptyCard } from "@/components/ds/EmptyCard";
 import { MetricCard } from "@/components/dashboard/MetricCard";
 import { getGa4VisaoGeral } from "@/lib/data";
@@ -16,7 +16,7 @@ export default function AnalyticsMsDigitalPage() {
 
   return (
     <div className="flex flex-col flex-1">
-      <PageHeader title="Analytics — MS Digital" />
+      <ContentTopBar title="Analytics — MS Digital" />
       <main className="flex-1 p-6">
         {rows.length > 0 ? (
           <div className="grid gap-4 sm:grid-cols-3">

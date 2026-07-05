@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ThemeToggle } from "@/components/ds/ThemeToggle";
+import { ContentTopBar } from "@/components/ds/ContentTopBar";
 
 const DOMINIOS = [
   { nome: "Analytics — Portal MS", rota: "/analytics/portal-ms" },
@@ -12,15 +12,7 @@ const DOMINIOS = [
 export default function Home() {
   return (
     <div className="flex flex-col flex-1">
-      <header
-        style={{ background: "var(--ds-color-primary-600)" }}
-        className="flex items-center justify-between px-6 py-4"
-      >
-        <h1 style={{ color: "var(--ds-color-text-inverse)" }} className="text-lg font-semibold">
-          Plataforma de Analytics — SETDIG
-        </h1>
-        <ThemeToggle />
-      </header>
+      <ContentTopBar title="Plataforma de Analytics — SETDIG" />
       <main className="flex-1 p-6">
         <p style={{ color: "var(--ds-color-text-secondary)" }} className="mb-6">
           Governo de Mato Grosso do Sul — domínios em migração (ver docs/architecture).
