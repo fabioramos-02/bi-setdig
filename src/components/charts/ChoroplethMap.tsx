@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useTheme } from "next-themes";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import { scaleLog } from "d3-scale";
 import { normalizarNomeCidade } from "@/lib/normalizar-cidade";
 import { resolveCssVar } from "@/lib/resolve-css-var";
+import { useMounted } from "@/lib/use-mounted";
 import { ChartTooltip } from "@/components/dashboard/ChartTooltip";
 import { MapLegend } from "@/components/charts/MapLegend";
 import type { Cidade } from "@/lib/data";
@@ -27,20 +28,24 @@ type Hover = { x: number; y: number; nome: string; visitas: number };
  * (não o `<title>` nativo do SVG, que não estiliza).
  */
 export function ChoroplethMap({ cidades }: { cidades: Cidade[] }) {
-  const { resolvedTheme } = useTheme();
+  // `resolvedTheme` só é lido pra forçar recálculo quando o tema muda —
+  // resolveCssVar é barato, recomputar a cada render evita setState-em-effect
+  // (react-hooks/set-state-in-effect) sem precisar de estado extra.
+  useTheme();
+  const mounted = useMounted();
   const [hover, setHover] = useState<Hover | null>(null);
-  const [cores, setCores] = useState(CORES_INICIAIS);
 
   // d3 não interpola "var(--ds-*)" direto (produz token inválido nos valores
-  // intermediários) — resolve pro hex real, reagindo à troca de tema.
-  useEffect(() => {
-    setCores({
-      corMin: resolveCssVar("--ds-color-neutral-100"),
-      corMax: resolveCssVar("--ds-color-primary-600"),
-      corVazio: resolveCssVar("--ds-color-background-muted"),
-      corBorda: resolveCssVar("--ds-color-border"),
-    });
-  }, [resolvedTheme]);
+  // intermediários) — resolve pro hex real. Antes do mount usa o fallback
+  // claro (mesmo valor em servidor/cliente, evita mismatch de hidratação).
+  const cores = mounted
+    ? {
+        corMin: resolveCssVar("--ds-color-neutral-100"),
+        corMax: resolveCssVar("--ds-color-primary-600"),
+        corVazio: resolveCssVar("--ds-color-background-muted"),
+        corBorda: resolveCssVar("--ds-color-border"),
+      }
+    : CORES_INICIAIS;
 
   const porNome = new Map(cidades.map((c) => [normalizarNomeCidade(c.cidade), c.visitas]));
   const max = Math.max(1, ...cidades.map((c) => c.visitas));

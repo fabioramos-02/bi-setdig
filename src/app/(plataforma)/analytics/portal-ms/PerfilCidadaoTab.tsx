@@ -3,6 +3,7 @@ import { LineChart } from "@/components/charts/LineChart";
 import { BarChart } from "@/components/charts/BarChart";
 import { ChoroplethMap } from "@/components/charts/ChoroplethMap";
 import { BrowserBarChart } from "@/components/charts/BrowserBarChart";
+import { DeviceBarChart } from "@/components/charts/DeviceBarChart";
 import type { InsightNavegador } from "@/lib/insights";
 import type { PontoAgregado } from "@/lib/period-filter";
 import type { Cidade, Navegador, Dispositivo, Horario } from "@/lib/data";
@@ -78,7 +79,7 @@ export function PerfilCidadaoTab({
           <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold mb-2">
             Dispositivos
           </h3>
-          <BarChart data={dispositivosAtual} xKey="dispositivo" yKey="visitas" height={220} />
+          <DeviceBarChart dados={dispositivosAtual} />
         </div>
         <div>
           <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold mb-2">
