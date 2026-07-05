@@ -1,35 +1,35 @@
 [
   {
     "termo": "ipva",
-    "buscas": 127
+    "buscas": 169
   },
   {
     "termo": "inscrição estadual",
-    "buscas": 95
-  },
-  {
-    "termo": "substituição tributária",
-    "buscas": 79
+    "buscas": 115
   },
   {
     "termo": "procon",
-    "buscas": 76
+    "buscas": 99
+  },
+  {
+    "termo": "substituição tributária",
+    "buscas": 96
   },
   {
     "termo": "itcd",
-    "buscas": 32
+    "buscas": 35
   },
   {
     "termo": "cidadão",
-    "buscas": 20
-  },
-  {
-    "termo": "servidor",
-    "buscas": 20
+    "buscas": 29
   },
   {
     "termo": "autoparcelamento",
-    "buscas": 19
+    "buscas": 22
+  },
+  {
+    "termo": "servidor",
+    "buscas": 22
   },
   {
     "termo": "empresa",
@@ -37,10 +37,22 @@
   },
   {
     "termo": "licenciamento",
-    "buscas": 9
+    "buscas": 12
   },
   {
     "termo": "efd",
+    "buscas": 6
+  },
+  {
+    "termo": "defesa civil",
+    "buscas": 5
+  },
+  {
+    "termo": "mulher",
+    "buscas": 5
+  },
+  {
+    "termo": "rg",
     "buscas": 5
   },
   {
@@ -48,19 +60,15 @@
     "buscas": 4
   },
   {
-    "termo": "defesa civil",
-    "buscas": 4
-  },
-  {
-    "termo": "mulher",
-    "buscas": 4
-  },
-  {
     "termo": "nota fiscal",
+    "buscas": 4
+  },
+  {
+    "termo": "cnh",
     "buscas": 3
   },
   {
-    "termo": "rg",
+    "termo": "primeira cnh",
     "buscas": 3
   },
   {
@@ -69,14 +77,6 @@
   },
   {
     "termo": "certidão de nascimento",
-    "buscas": 2
-  },
-  {
-    "termo": "documento",
-    "buscas": 2
-  },
-  {
-    "termo": "histórico escolar",
     "buscas": 2
   }
 ]

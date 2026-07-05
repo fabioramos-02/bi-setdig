@@ -41,17 +41,24 @@ export type Horario = { hora: string; visitas: number };
 export type Pagina = { url: string; visitas: number };
 export type VisitaDiaria = { data: string; visitas: number; visitantesUnicos: number };
 
-export function getMatomoGeografia(): Cidade[] {
-  return readDataset<Cidade[]>("matomo", "v1", "geografia") ?? [];
+/** Ver ADR-007 — breakdowns só reagem aos 4 períodos fixos do radio, não a
+ * qualquer intervalo arbitrário (custo de API por período seria proibitivo). */
+export type PeriodoFixo = "dia" | "semana" | "mes" | "ano";
+export type BreakdownPorPeriodo<T> = Record<PeriodoFixo, T[]>;
+
+const BREAKDOWN_VAZIO: BreakdownPorPeriodo<never> = { dia: [], semana: [], mes: [], ano: [] };
+
+export function getMatomoGeografia(): BreakdownPorPeriodo<Cidade> {
+  return readDataset<BreakdownPorPeriodo<Cidade>>("matomo", "v1", "geografia") ?? BREAKDOWN_VAZIO;
 }
-export function getMatomoNavegadores(): Navegador[] {
-  return readDataset<Navegador[]>("matomo", "v1", "navegadores") ?? [];
+export function getMatomoNavegadores(): BreakdownPorPeriodo<Navegador> {
+  return readDataset<BreakdownPorPeriodo<Navegador>>("matomo", "v1", "navegadores") ?? BREAKDOWN_VAZIO;
 }
-export function getMatomoDispositivos(): Dispositivo[] {
-  return readDataset<Dispositivo[]>("matomo", "v1", "dispositivos") ?? [];
+export function getMatomoDispositivos(): BreakdownPorPeriodo<Dispositivo> {
+  return readDataset<BreakdownPorPeriodo<Dispositivo>>("matomo", "v1", "dispositivos") ?? BREAKDOWN_VAZIO;
 }
-export function getMatomoHorarios(): Horario[] {
-  return readDataset<Horario[]>("matomo", "v1", "horarios") ?? [];
+export function getMatomoHorarios(): BreakdownPorPeriodo<Horario> {
+  return readDataset<BreakdownPorPeriodo<Horario>>("matomo", "v1", "horarios") ?? BREAKDOWN_VAZIO;
 }
 export function getMatomoPaginas(): Pagina[] {
   return readDataset<Pagina[]>("matomo", "v1", "paginas-mais-acessadas") ?? [];

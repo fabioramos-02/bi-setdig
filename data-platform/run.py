@@ -17,7 +17,17 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from extract import ga4, matomo
 from publish.writer import publish
 from transform import matomo as t_matomo
-from validate.rules import validate_rows
+from validate.rules import validate_period_breakdown, validate_rows
+
+# Períodos fixos que o PeriodRadioGroup do portal oferece (ver ADR-007) —
+# breakdowns (navegadores/dispositivos/horários/geografia) são extraídos só
+# pra esses 4, não pra qualquer intervalo arbitrário (custo de API proibitivo).
+PERIODOS_FIXOS = {
+    "dia": ("day", "today"),
+    "semana": ("week", "today"),
+    "mes": ("month", "today"),
+    "ano": ("year", "today"),
+}
 
 
 def run_matomo() -> None:
@@ -36,27 +46,30 @@ def run_matomo() -> None:
 
 
 def run_matomo_perfil() -> None:
-    period, date = "month", "today"
+    period, date = "month", "today"  # usado só por páginas/busca (snapshot único)
 
-    cidades = t_matomo.cities_ms(matomo.get_city(period, date, limit=200))
-    validate_rows(cidades, required=["cidade", "visitas"], non_negative=["visitas"])
-    publish("matomo", "geografia", cidades)
-    print(f"[matomo] geografia -> {len(cidades)} cidades MS")
+    navegadores, dispositivos, horarios, cidades = {}, {}, {}, {}
+    for chave, (p, d) in PERIODOS_FIXOS.items():
+        navegadores[chave] = t_matomo.top_n_with_others(matomo.get_browsers(p, d), "navegador", 4)
+        dispositivos[chave] = t_matomo.top_n_with_others(matomo.get_device_type(p, d), "dispositivo", 2)
+        horarios[chave] = t_matomo.visit_time(matomo.get_visit_time(p, d))
+        cidades[chave] = t_matomo.cities_ms(matomo.get_city(p, d, limit=200))
 
-    navegadores = t_matomo.top_n_with_others(matomo.get_browsers(period, date), "navegador", 4)
-    validate_rows(navegadores, required=["navegador", "visitas"], non_negative=["visitas"])
+    validate_period_breakdown(navegadores, ["navegador", "visitas"], ["visitas"])
     publish("matomo", "navegadores", navegadores)
-    print(f"[matomo] navegadores -> {navegadores}")
+    print(f"[matomo] navegadores -> {[(k, len(v)) for k, v in navegadores.items()]}")
 
-    dispositivos = t_matomo.top_n_with_others(matomo.get_device_type(period, date), "dispositivo", 2)
-    validate_rows(dispositivos, required=["dispositivo", "visitas"], non_negative=["visitas"])
+    validate_period_breakdown(dispositivos, ["dispositivo", "visitas"], ["visitas"])
     publish("matomo", "dispositivos", dispositivos)
-    print(f"[matomo] dispositivos -> {dispositivos}")
+    print(f"[matomo] dispositivos -> {[(k, len(v)) for k, v in dispositivos.items()]}")
 
-    horarios = t_matomo.visit_time(matomo.get_visit_time(period, date))
-    validate_rows(horarios, required=["hora", "visitas"], non_negative=["visitas"])
+    validate_period_breakdown(horarios, ["hora", "visitas"], ["visitas"])
     publish("matomo", "horarios", horarios)
-    print(f"[matomo] horarios -> {len(horarios)} pontos")
+    print(f"[matomo] horarios -> {[(k, len(v)) for k, v in horarios.items()]}")
+
+    validate_period_breakdown(cidades, ["cidade", "visitas"], ["visitas"])
+    publish("matomo", "geografia", cidades)
+    print(f"[matomo] geografia -> {[(k, len(v)) for k, v in cidades.items()]}")
 
     page_urls_raw = matomo.get_page_urls(period, date, limit=-1)
 

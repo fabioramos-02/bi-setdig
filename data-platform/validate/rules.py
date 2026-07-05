@@ -28,3 +28,13 @@ def validate_rows(rows: list[dict], required: list[str], non_negative: list[str]
     for row in rows:
         require_fields(row, required)
         require_non_negative(row, non_negative)
+
+
+def validate_period_breakdown(data: dict[str, list[dict]], required: list[str], non_negative: list[str]) -> None:
+    """Dataset com 1 chave por período fixo (dia/semana/mes/ano) — ver
+    docs/architecture/ADR-007-breakdown-por-periodo.md."""
+    for periodo, rows in data.items():
+        try:
+            validate_rows(rows, required, non_negative)
+        except ValidationError as exc:
+            raise ValidationError(f"período {periodo!r}: {exc}") from exc

@@ -29,11 +29,15 @@ def _save_catalog(entries: list[dict]) -> None:
 def publish(
     source: str,
     dataset: str,
-    rows: list[dict],
+    rows: list[dict] | dict[str, list[dict]],
     version: str = "v1",
     frequency: str = "daily",
     owner: str = "SETDIG",
 ) -> Path:
+    """`rows` aceita lista simples ou dict com 1 chave por período fixo
+    (dia/semana/mes/ano) — ver ADR-007. Contagem de linhas no catálogo soma
+    as 4 chaves nesse segundo caso."""
+    n_rows = sum(len(v) for v in rows.values()) if isinstance(rows, dict) else len(rows)
     now = datetime.now(timezone.utc).isoformat()
 
     out_dir = DATASETS_DIR / source / version
@@ -61,7 +65,7 @@ def publish(
             "frequency": frequency,
             "version": version,
             "schema": f"data-platform/schemas/{source}-{dataset}.schema.json",
-            "rows": len(rows),
+            "rows": n_rows,
             "bytes": size,
         }
     )

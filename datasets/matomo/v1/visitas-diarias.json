@@ -1,15 +1,5 @@
 [
   {
-    "data": "2025-06-29",
-    "visitas": 9011,
-    "visitantesUnicos": 8538
-  },
-  {
-    "data": "2025-06-30",
-    "visitas": 31014,
-    "visitantesUnicos": 23472
-  },
-  {
     "data": "2025-07-01",
     "visitas": 26152,
     "visitantesUnicos": 19253
@@ -1846,7 +1836,17 @@
   },
   {
     "data": "2026-07-03",
-    "visitas": 7079,
-    "visitantesUnicos": 6435
+    "visitas": 12274,
+    "visitantesUnicos": 10889
+  },
+  {
+    "data": "2026-07-04",
+    "visitas": 4270,
+    "visitantesUnicos": 4014
+  },
+  {
+    "data": "2026-07-05",
+    "visitas": 1423,
+    "visitantesUnicos": 1348
   }
 ]
