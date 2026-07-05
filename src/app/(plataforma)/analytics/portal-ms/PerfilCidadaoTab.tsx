@@ -2,6 +2,7 @@ import { ExportCsvButton } from "@/components/dashboard/ExportCsvButton";
 import { LineChart } from "@/components/charts/LineChart";
 import { BarChart } from "@/components/charts/BarChart";
 import { ChoroplethMap } from "@/components/charts/ChoroplethMap";
+import { BrowserBarChart } from "@/components/charts/BrowserBarChart";
 import type { InsightNavegador } from "@/lib/insights";
 import type { PontoAgregado } from "@/lib/period-filter";
 import type { Cidade, Navegador, Dispositivo, Horario } from "@/lib/data";
@@ -71,7 +72,7 @@ export function PerfilCidadaoTab({
               {insightNavegador.navegador} é o navegador de {insightNavegador.participacaoPct.toFixed(0)}% dos acessos.
             </p>
           )}
-          <BarChart data={navegadoresAtual} xKey="navegador" yKey="visitas" height={220} />
+          <BrowserBarChart dados={navegadoresAtual} />
         </div>
         <div>
           <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold mb-2">
