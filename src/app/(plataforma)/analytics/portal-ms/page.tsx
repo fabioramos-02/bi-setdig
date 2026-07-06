@@ -6,7 +6,6 @@ import { EmptyCard } from "@/components/ds/EmptyCard";
 import { normalizarNomeCidade } from "@/lib/normalizar-cidade";
 import { PortalMsClient } from "./PortalMsClient";
 import {
-  getMatomoVisitasResumo,
   getMatomoVisitasDiarias,
   getMatomoGeografia,
   getMatomoNavegadores,

@@ -14,7 +14,6 @@ import { aplicarFiltroPeriodo, resumoDoPeriodo } from "@/lib/period-filter";
 import { usePeriodo } from "@/lib/periodo-context";
 import { calcularInsightBusca, calcularInsightVisitas, calcularInsightNavegador } from "@/lib/insights";
 import type {
-  VisitasResumo,
   VisitaDiaria,
   BreakdownPorPeriodo,
   PeriodoFixo,

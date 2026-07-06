@@ -5,7 +5,7 @@ import { getMatomoVisitasDiarias } from "@/lib/data";
 export default function PlataformaLayout({ children }: { children: React.ReactNode }) {
   // min/max da série diária alimentam o filtro de período que vive na Sidebar
   // (compartilhado com o conteúdo via PeriodoProvider). Leitura build-time
-  // (SSG), barata — só as bordas da série de 370 dias.
+  // (SSG), barata — só as bordas da série (desde 01/01/2024).
   const diarias = getMatomoVisitasDiarias();
   const min = diarias[0]?.data ?? "";
   const max = diarias[diarias.length - 1]?.data ?? "";

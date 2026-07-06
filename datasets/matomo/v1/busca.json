@@ -1,19 +1,19 @@
 [
   {
     "termo": "ipva",
-    "buscas": 175
+    "buscas": 180
   },
   {
     "termo": "inscrição estadual",
-    "buscas": 118
+    "buscas": 124
   },
   {
     "termo": "procon",
-    "buscas": 100
+    "buscas": 101
   },
   {
     "termo": "substituição tributária",
-    "buscas": 96
+    "buscas": 97
   },
   {
     "termo": "itcd",
@@ -21,7 +21,7 @@
   },
   {
     "termo": "cidadão",
-    "buscas": 29
+    "buscas": 31
   },
   {
     "termo": "autoparcelamento",
@@ -37,7 +37,7 @@
   },
   {
     "termo": "licenciamento",
-    "buscas": 13
+    "buscas": 14
   },
   {
     "termo": "efd",
@@ -76,7 +76,7 @@
     "buscas": 3
   },
   {
-    "termo": "certidão de nascimento",
-    "buscas": 2
+    "termo": "programa de nota fiscal",
+    "buscas": 3
   }
 ]

@@ -78,7 +78,9 @@ def run_matomo_perfil() -> None:
     publish("matomo", "paginas-mais-acessadas", paginas)
     print(f"[matomo] paginas -> {len(paginas)} paginas")
 
-    diarias = t_matomo.visits_daily(matomo.get_visits_summary_daily(days=370))
+    # 920 dias cobre desde 01/01/2024 até hoje — usuário precisa comparar
+    # "Ano" com o ano anterior completo, 370 dias só ia até jul/2025.
+    diarias = t_matomo.visits_daily(matomo.get_visits_summary_daily(days=920))
     validate_rows(diarias, required=["data", "visitas"], non_negative=["visitas", "visitantesUnicos", "acoes"])
     publish("matomo", "visitas-diarias", diarias)
     print(f"[matomo] visitas-diarias -> {len(diarias)} dias")

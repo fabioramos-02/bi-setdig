@@ -2,9 +2,9 @@
 
 ## Contexto
 O filtro de período do portal (`PeriodRadioGroup`) tem 5 opções: Dia, Semana,
-Mês, Ano, Intervalo de datas. A série de visitas (`visitas-diarias.json`, 370
-dias) já é agregável client-side pra qualquer uma delas, sem nova chamada ao
-Matomo. Mas os breakdowns por categoria — navegadores, dispositivos, horários,
+Mês, Ano, Intervalo de datas. A série de visitas (`visitas-diarias.json`, desde
+01/01/2024) já é agregável client-side pra qualquer uma delas, sem nova
+chamada ao Matomo. Mas os breakdowns por categoria — navegadores, dispositivos, horários,
 geografia — não têm série temporal: cada API do Matomo devolve só o breakdown
 do período consultado, não uma série. Tornar esses breakdowns reativos a
 qualquer período arbitrário exigiria 1 chamada por breakdown por período (ex.
