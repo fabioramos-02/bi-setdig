@@ -8,7 +8,8 @@
     "properties": {
       "data": { "type": "string", "format": "date" },
       "visitas": { "type": "integer", "minimum": 0 },
-      "visitantesUnicos": { "type": "integer", "minimum": 0 }
+      "visitantesUnicos": { "type": "integer", "minimum": 0 },
+      "acoes": { "type": "integer", "minimum": 0 }
     }
   }
 }

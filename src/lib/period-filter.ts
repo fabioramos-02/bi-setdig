@@ -15,7 +15,7 @@ export type PeriodoState = {
   fim?: string; // só "intervalo"
 };
 
-export type PontoAgregado = { rotulo: string; visitas: number; visitantesUnicos: number };
+export type PontoAgregado = { rotulo: string; visitas: number; visitantesUnicos: number; acoes: number };
 
 const DIAS_JANELA_DIA = 30;
 
@@ -27,7 +27,7 @@ export function aplicarFiltroPeriodo(dados: VisitaDiaria[], estado: PeriodoState
     const fim = estado.fim ?? dados[dados.length - 1].data;
     return dados
       .filter((d) => d.data >= inicio && d.data <= fim)
-      .map((d) => ({ rotulo: d.data, visitas: d.visitas, visitantesUnicos: d.visitantesUnicos }));
+      .map((d) => ({ rotulo: d.data, visitas: d.visitas, visitantesUnicos: d.visitantesUnicos, acoes: d.acoes }));
   }
 
   const ateRef = dados.filter((d) => d.data <= estado.dataRef);
@@ -36,7 +36,7 @@ export function aplicarFiltroPeriodo(dados: VisitaDiaria[], estado: PeriodoState
   if (estado.tipo === "dia") {
     return base
       .slice(-DIAS_JANELA_DIA)
-      .map((d) => ({ rotulo: d.data, visitas: d.visitas, visitantesUnicos: d.visitantesUnicos }));
+      .map((d) => ({ rotulo: d.data, visitas: d.visitas, visitantesUnicos: d.visitantesUnicos, acoes: d.acoes }));
   }
 
   const granularidade = estado.tipo === "semana" ? "semana" : estado.tipo === "mes" ? "mes" : "ano";
@@ -48,12 +48,47 @@ function agregarPor(dados: VisitaDiaria[], granularidade: "semana" | "mes" | "an
   for (const d of dados) {
     const chave =
       granularidade === "mes" ? d.data.slice(0, 7) : granularidade === "ano" ? d.data.slice(0, 4) : chaveSemanaISO(d.data);
-    const atual = grupos.get(chave) ?? { rotulo: chave, visitas: 0, visitantesUnicos: 0 };
+    const atual = grupos.get(chave) ?? { rotulo: chave, visitas: 0, visitantesUnicos: 0, acoes: 0 };
     atual.visitas += d.visitas;
     atual.visitantesUnicos += d.visitantesUnicos;
+    atual.acoes += d.acoes;
     grupos.set(chave, atual);
   }
   return [...grupos.values()].sort((a, b) => a.rotulo.localeCompare(b.rotulo));
+}
+
+export type ResumoPeriodo = { visitas: number; visitantesUnicos: number; acoes: number };
+
+/** Diárias do "bucket" que contém a data de referência (ou o intervalo, se
+ * for o caso) — usado pra somar os KPIs de topo conforme o período. */
+function diariasDoBucket(dados: VisitaDiaria[], estado: PeriodoState): VisitaDiaria[] {
+  if (dados.length === 0) return [];
+  if (estado.tipo === "intervalo") {
+    const inicio = estado.inicio ?? dados[0].data;
+    const fim = estado.fim ?? dados[dados.length - 1].data;
+    return dados.filter((d) => d.data >= inicio && d.data <= fim);
+  }
+  const ref = estado.dataRef;
+  if (estado.tipo === "dia") return dados.filter((d) => d.data === ref);
+  if (estado.tipo === "mes") return dados.filter((d) => d.data.slice(0, 7) === ref.slice(0, 7));
+  if (estado.tipo === "ano") return dados.filter((d) => d.data.slice(0, 4) === ref.slice(0, 4));
+  const chaveRef = chaveSemanaISO(ref);
+  return dados.filter((d) => chaveSemanaISO(d.data) === chaveRef);
+}
+
+/** Totais (visitas/únicos/ações) do período selecionado — reage ao filtro.
+ * Únicos são somados por dia: em períodos de vários dias é uma APROXIMAÇÃO
+ * (quem visita em N dias conta N vezes) — mesma limitação do app antigo,
+ * inevitável sem re-consultar o Matomo por período (ADR-001). */
+export function resumoDoPeriodo(dados: VisitaDiaria[], estado: PeriodoState): ResumoPeriodo {
+  return diariasDoBucket(dados, estado).reduce(
+    (acc, d) => ({
+      visitas: acc.visitas + d.visitas,
+      visitantesUnicos: acc.visitantesUnicos + d.visitantesUnicos,
+      acoes: acc.acoes + d.acoes,
+    }),
+    { visitas: 0, visitantesUnicos: 0, acoes: 0 },
+  );
 }
 
 /** Semana ISO 8601 — desloca a data pra quinta-feira da mesma semana (o ano

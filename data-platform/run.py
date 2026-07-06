@@ -79,7 +79,7 @@ def run_matomo_perfil() -> None:
     print(f"[matomo] paginas -> {len(paginas)} paginas")
 
     diarias = t_matomo.visits_daily(matomo.get_visits_summary_daily(days=370))
-    validate_rows(diarias, required=["data", "visitas"], non_negative=["visitas", "visitantesUnicos"])
+    validate_rows(diarias, required=["data", "visitas"], non_negative=["visitas", "visitantesUnicos", "acoes"])
     publish("matomo", "visitas-diarias", diarias)
     print(f"[matomo] visitas-diarias -> {len(diarias)} dias")
 

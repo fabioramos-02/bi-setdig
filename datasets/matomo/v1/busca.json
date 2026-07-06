@@ -1,15 +1,15 @@
 [
   {
     "termo": "ipva",
-    "buscas": 169
+    "buscas": 175
   },
   {
     "termo": "inscrição estadual",
-    "buscas": 115
+    "buscas": 118
   },
   {
     "termo": "procon",
-    "buscas": 99
+    "buscas": 100
   },
   {
     "termo": "substituição tributária",
@@ -37,7 +37,7 @@
   },
   {
     "termo": "licenciamento",
-    "buscas": 12
+    "buscas": 13
   },
   {
     "termo": "efd",
@@ -52,6 +52,10 @@
     "buscas": 5
   },
   {
+    "termo": "nota fiscal",
+    "buscas": 5
+  },
+  {
     "termo": "rg",
     "buscas": 5
   },
@@ -60,8 +64,8 @@
     "buscas": 4
   },
   {
-    "termo": "nota fiscal",
-    "buscas": 4
+    "termo": "1069446",
+    "buscas": 3
   },
   {
     "termo": "cnh",
@@ -70,10 +74,6 @@
   {
     "termo": "primeira cnh",
     "buscas": 3
-  },
-  {
-    "termo": "1069446",
-    "buscas": 2
   },
   {
     "termo": "certidão de nascimento",

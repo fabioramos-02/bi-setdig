@@ -32,7 +32,6 @@ function calcularMatchRateMapa(cidadesMes: { cidade: string; visitas: number }[]
 }
 
 export default function AnalyticsPortalMsPage() {
-  const resumo = getMatomoVisitasResumo()?.[0];
   const diarias = getMatomoVisitasDiarias();
   const cidades = getMatomoGeografia();
   const navegadores = getMatomoNavegadores();
@@ -41,7 +40,7 @@ export default function AnalyticsPortalMsPage() {
   const paginas = getMatomoPaginas();
   const busca = getMatomoBusca();
 
-  if (!resumo) {
+  if (diarias.length === 0) {
     return (
       <div className="flex flex-col flex-1">
         <ContentTopBar title="Analytics — Portal MS" />
@@ -60,7 +59,6 @@ export default function AnalyticsPortalMsPage() {
 
   return (
     <PortalMsClient
-      resumo={resumo}
       diarias={diarias}
       navegadores={navegadores}
       dispositivos={dispositivos}

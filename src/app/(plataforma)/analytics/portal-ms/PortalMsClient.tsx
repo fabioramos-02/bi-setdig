@@ -10,7 +10,7 @@ import { StoryCard } from "@/components/dashboard/StoryCard";
 import { Tabs, type TabItem } from "@/components/dashboard/Tabs";
 import { PerfilCidadaoTab } from "./PerfilCidadaoTab";
 import { WordCloud } from "@/components/charts/WordCloud";
-import { aplicarFiltroPeriodo } from "@/lib/period-filter";
+import { aplicarFiltroPeriodo, resumoDoPeriodo } from "@/lib/period-filter";
 import { usePeriodo } from "@/lib/periodo-context";
 import { calcularInsightBusca, calcularInsightVisitas, calcularInsightNavegador } from "@/lib/insights";
 import type {
@@ -27,7 +27,6 @@ import type {
 } from "@/lib/data";
 
 export function PortalMsClient({
-  resumo,
   diarias,
   navegadores,
   dispositivos,
@@ -37,7 +36,6 @@ export function PortalMsClient({
   busca,
   matchRate,
 }: {
-  resumo: VisitasResumo;
   diarias: VisitaDiaria[];
   navegadores: BreakdownPorPeriodo<Navegador>;
   dispositivos: BreakdownPorPeriodo<Dispositivo>;
@@ -59,6 +57,9 @@ export function PortalMsClient({
   const cidadesAtual = cidades[periodoAtual];
 
   const tendencia = useMemo(() => aplicarFiltroPeriodo(diarias, estado), [diarias, estado]);
+  const kpis = useMemo(() => resumoDoPeriodo(diarias, estado), [diarias, estado]);
+  const rotuloPeriodo =
+    { dia: "no dia", semana: "na semana", mes: "no mês", ano: "no ano", intervalo: "no intervalo" }[estado.tipo];
   const insightBusca = calcularInsightBusca(busca);
   const insightVisitas = calcularInsightVisitas(diarias);
   const insightNavegador = calcularInsightNavegador(navegadoresAtual);
@@ -70,10 +71,16 @@ export function PortalMsClient({
       content: (
         <div>
           <div className="grid gap-4 grid-cols-1 sm:grid-cols-3">
-            <MetricCard label="Visitas (mês)" value={resumo.visitas} />
-            <MetricCard label="Visitantes únicos" value={resumo.visitantesUnicos} />
-            <MetricCard label="Ações" value={resumo.acoes} />
+            <MetricCard label={`Visitas ${rotuloPeriodo}`} value={kpis.visitas} />
+            <MetricCard label={`Visitantes únicos ${rotuloPeriodo}`} value={kpis.visitantesUnicos} />
+            <MetricCard label={`Ações ${rotuloPeriodo}`} value={kpis.acoes} />
           </div>
+          {estado.tipo !== "dia" && (
+            <p style={{ color: "var(--ds-color-text-muted)" }} className="text-xs mt-2">
+              Visitantes únicos somados por dia — em períodos de vários dias é uma aproximação (quem visita em mais de um
+              dia conta mais de uma vez).
+            </p>
+          )}
           {insightVisitas.variacaoPct !== null && (
             <div className="mt-4">
               <StoryCard

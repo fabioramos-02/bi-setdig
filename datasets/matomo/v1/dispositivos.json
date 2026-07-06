@@ -2,57 +2,57 @@
   "dia": [
     {
       "dispositivo": "Smartphone",
-      "visitas": 917
+      "visitas": 1668
     },
     {
       "dispositivo": "Desktop",
-      "visitas": 430
+      "visitas": 949
     },
     {
       "dispositivo": "Outros",
-      "visitas": 76
+      "visitas": 150
     }
   ],
   "semana": [
     {
       "dispositivo": "Desktop",
-      "visitas": 40195
+      "visitas": 40714
     },
     {
       "dispositivo": "Smartphone",
-      "visitas": 31804
+      "visitas": 32555
     },
     {
       "dispositivo": "Outros",
-      "visitas": 2928
+      "visitas": 3002
     }
   ],
   "mes": [
     {
       "dispositivo": "Desktop",
-      "visitas": 24703
+      "visitas": 25222
     },
     {
       "dispositivo": "Smartphone",
-      "visitas": 21761
+      "visitas": 22512
     },
     {
       "dispositivo": "Outros",
-      "visitas": 1976
+      "visitas": 2050
     }
   ],
   "ano": [
     {
       "dispositivo": "Desktop",
-      "visitas": 1619203
+      "visitas": 1619722
     },
     {
       "dispositivo": "Smartphone",
-      "visitas": 958246
+      "visitas": 958997
     },
     {
       "dispositivo": "Outros",
-      "visitas": 94003
+      "visitas": 94077
     }
   ]
 }

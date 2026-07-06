@@ -104,6 +104,7 @@ def visits_daily(raw: dict) -> list[dict]:
                 "data": date,
                 "visitas": values.get("nb_visits", 0),
                 "visitantesUnicos": values.get("nb_uniq_visitors", 0),
+                "acoes": values.get("nb_actions", 0),
             }
         )
     rows.sort(key=lambda r: r["data"])

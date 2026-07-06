@@ -39,7 +39,7 @@ export type Navegador = { navegador: string; visitas: number };
 export type Dispositivo = { dispositivo: string; visitas: number };
 export type Horario = { hora: string; visitas: number };
 export type Pagina = { url: string; visitas: number };
-export type VisitaDiaria = { data: string; visitas: number; visitantesUnicos: number };
+export type VisitaDiaria = { data: string; visitas: number; visitantesUnicos: number; acoes: number };
 
 /** Ver ADR-007 — breakdowns só reagem aos 4 períodos fixos do radio, não a
  * qualquer intervalo arbitrário (custo de API por período seria proibitivo). */
