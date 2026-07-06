@@ -97,5 +97,16 @@
     "schema": "data-platform/schemas/ga4-visao-geral.schema.json",
     "rows": 4,
     "bytes": 459
+  },
+  {
+    "dataset": "perfil-filtro",
+    "source": "matomo",
+    "owner": "SETDIG",
+    "updatedAt": "2026-07-06T20:36:00.776305+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/matomo-perfil-filtro.schema.json",
+    "rows": 16,
+    "bytes": 43005
   }
 ]

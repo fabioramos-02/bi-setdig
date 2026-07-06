@@ -71,3 +71,56 @@ export type TermoBusca = { termo: string; buscas: number };
 export function getMatomoBusca(): TermoBusca[] {
   return readDataset<TermoBusca[]>("matomo", "v1", "busca") ?? [];
 }
+
+// --- Governança: adoção do filtro de Perfil (estudo portado do bench-carta) ---
+export type PerfilResumo = {
+  homeVisitors: number;
+  atribuiveis: number;
+  proxyRatePct: number;
+  usoRealPct: number;
+  umACada: number;
+  limiarPct: number;
+};
+export type PerfilDistribuicao = { perfil: string; perfilLabel: string; visitas: number; participacaoPct: number };
+export type PerfilServico = {
+  servico: string;
+  perfil: string;
+  perfilLabel: string;
+  path: string;
+  visitas: number;
+  exclusivo: boolean;
+};
+export type PerfilServicoCard = {
+  servico: string;
+  categoria: string;
+  categoriaSlug: string;
+  path: string;
+  visitas: number;
+  exclusivo: boolean;
+};
+export type PerfilFiltroPeriodo = {
+  resumo: PerfilResumo;
+  distribuicao: PerfilDistribuicao[];
+  topServicos: PerfilServico[];
+  servicosPorPerfil: Record<string, PerfilServicoCard[]>;
+};
+
+const RESUMO_VAZIO: PerfilResumo = {
+  homeVisitors: 0,
+  atribuiveis: 0,
+  proxyRatePct: 0,
+  usoRealPct: 0,
+  umACada: 0,
+  limiarPct: 0,
+};
+const PERIODO_PERFIL_VAZIO: PerfilFiltroPeriodo = { resumo: RESUMO_VAZIO, distribuicao: [], topServicos: [] };
+const PERFIL_VAZIO: Record<PeriodoFixo, PerfilFiltroPeriodo> = {
+  dia: PERIODO_PERFIL_VAZIO,
+  semana: PERIODO_PERFIL_VAZIO,
+  mes: PERIODO_PERFIL_VAZIO,
+  ano: PERIODO_PERFIL_VAZIO,
+};
+
+export function getMatomoPerfilFiltro(): Record<PeriodoFixo, PerfilFiltroPeriodo> {
+  return readDataset<Record<PeriodoFixo, PerfilFiltroPeriodo>>("matomo", "v1", "perfil-filtro") ?? PERFIL_VAZIO;
+}
