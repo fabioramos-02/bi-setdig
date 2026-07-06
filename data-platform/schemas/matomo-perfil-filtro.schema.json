@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "matomo/perfil-filtro",
+  "description": "Adoção do filtro de Perfil do Portal Único. 1 chave por período fixo (dia/semana/mes/ano) — ver ADR-007. Cada período: resumo (KPIs), distribuição por perfil e top serviços.",
+  "type": "object",
+  "required": ["dia", "semana", "mes", "ano"],
+  "properties": {
+    "dia": { "$ref": "#/definitions/periodo" },
+    "semana": { "$ref": "#/definitions/periodo" },
+    "mes": { "$ref": "#/definitions/periodo" },
+    "ano": { "$ref": "#/definitions/periodo" }
+  },
+  "definitions": {
+    "periodo": {
+      "type": "object",
+      "required": ["resumo", "distribuicao", "topServicos", "servicosPorPerfil"],
+      "properties": {
+        "resumo": {
+          "type": "object",
+          "required": ["homeVisitors", "atribuiveis", "proxyRatePct", "usoRealPct", "umACada", "limiarPct"],
+          "properties": {
+            "homeVisitors": { "type": "integer", "minimum": 0 },
+            "atribuiveis": { "type": "integer", "minimum": 0 },
+            "proxyRatePct": { "type": "number", "minimum": 0 },
+            "usoRealPct": { "type": "number", "minimum": 0 },
+            "umACada": { "type": "integer", "minimum": 0 },
+            "limiarPct": { "type": "number", "minimum": 0 }
+          }
+        },
+        "distribuicao": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["perfil", "perfilLabel", "visitas", "participacaoPct"],
+            "properties": {
+              "perfil": { "type": "string" },
+              "perfilLabel": { "type": "string" },
+              "visitas": { "type": "integer", "minimum": 0 },
+              "participacaoPct": { "type": "number", "minimum": 0 }
+            }
+          }
+        },
+        "topServicos": {
+          "type": "array",
+          "maxItems": 10,
+          "items": {
+            "type": "object",
+            "required": ["servico", "perfil", "perfilLabel", "path", "visitas", "exclusivo"],
+            "properties": {
+              "servico": { "type": "string" },
+              "perfil": { "type": "string" },
+              "perfilLabel": { "type": "string" },
+              "path": { "type": "string" },
+              "visitas": { "type": "integer", "minimum": 0 },
+              "exclusivo": { "type": "boolean" }
+            }
+          }
+        },
+        "servicosPorPerfil": {
+          "type": "object",
+          "description": "Todos os serviços em destaque por perfil, na ordem do portal. Alimenta o grid de cards.",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["servico", "categoria", "categoriaSlug", "path", "visitas", "exclusivo"],
+              "properties": {
+                "servico": { "type": "string" },
+                "categoria": { "type": "string" },
+                "categoriaSlug": { "type": "string" },
+                "path": { "type": "string" },
+                "visitas": { "type": "integer", "minimum": 0 },
+                "exclusivo": { "type": "boolean" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

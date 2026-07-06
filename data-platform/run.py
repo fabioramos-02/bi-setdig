@@ -93,6 +93,25 @@ def run_matomo_perfil() -> None:
     print(f"[matomo] busca -> {len(busca)} termos ({len(busca_nativa)} nativos + {len(busca_urls)} de URL)")
 
 
+def run_matomo_perfil_filtro() -> None:
+    """Adoção do filtro de Perfil do Portal Único (estudo portado do bench-carta).
+
+    1 snapshot getPageUrls por período fixo (ADR-007) — leve mesmo em period=year.
+    O cálculo (catálogo de serviços, atribuíveis, taxa corrigida) vive em
+    transform/perfil.py; aqui só orquestra extract -> transform -> validate -> publish.
+    """
+    from transform import perfil as t_perfil
+
+    saida = {}
+    for chave, (p, d) in PERIODOS_FIXOS.items():
+        raw = matomo.get_page_urls(p, d, limit=-1)
+        saida[chave] = t_perfil.build_periodo(raw)
+
+    t_perfil.validar(saida)
+    publish("matomo", "perfil-filtro", saida)
+    print(f"[matomo] perfil-filtro -> {[(k, saida[k]['resumo']['usoRealPct']) for k in saida]}")
+
+
 def run_ga4() -> None:
     rows = ga4.get_overview(start_date="30daysAgo", end_date="today")
     validate_rows(rows, required=["newVsReturning", "activeUsers"], non_negative=["activeUsers", "sessions", "screenPageViews"])
@@ -141,6 +160,7 @@ if __name__ == "__main__":
     for nome, fn in [
         ("matomo", run_matomo),
         ("matomo_perfil", run_matomo_perfil),
+        ("matomo_perfil_filtro", run_matomo_perfil_filtro),
         ("ga4", run_ga4),
         ("ga4_perfil", run_ga4_perfil),
         ("cartas", run_cartas),

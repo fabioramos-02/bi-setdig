@@ -10,7 +10,7 @@ import { Tabs, type TabItem } from "@/components/dashboard/Tabs";
 import { PerfilCidadaoTab } from "./PerfilCidadaoTab";
 import { VisaoGeralTab } from "./VisaoGeralTab";
 import { WordCloud } from "@/components/charts/WordCloud";
-import { aplicarFiltroPeriodo, resumoDoPeriodo } from "@/lib/period-filter";
+import { aplicarFiltroPeriodo, chavePeriodoFixo, resumoDoPeriodo } from "@/lib/period-filter";
 import { usePeriodo } from "@/lib/periodo-context";
 import {
   calcularInsightBusca,
@@ -57,7 +57,7 @@ export function PortalMsClient({
   const [abaAtiva, setAbaAtiva] = useState("visao-geral");
 
   // "Intervalo" não tem breakdown próprio (ver ADR-007) — cai no snapshot "mês".
-  const periodoAtual: PeriodoFixo = estado.tipo === "intervalo" ? "mes" : estado.tipo;
+  const periodoAtual: PeriodoFixo = chavePeriodoFixo(estado);
   const navegadoresAtual = navegadores[periodoAtual];
   const dispositivosAtual = dispositivos[periodoAtual];
   const horariosAtual = horarios[periodoAtual];

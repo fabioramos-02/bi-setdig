@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { aplicarFiltroPeriodo, resumoDoPeriodo, type PeriodoState } from "./period-filter.ts";
+import { aplicarFiltroPeriodo, resumoDoPeriodo, type PeriodoState } from "./period-filter";
 import type { VisitaDiaria } from "./data.ts";
 
 const dados: VisitaDiaria[] = [

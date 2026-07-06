@@ -1,0 +1,1170 @@
+{
+  "dia": {
+    "resumo": {
+      "homeVisitors": 2374,
+      "atribuiveis": 338,
+      "proxyRatePct": 14.2376,
+      "usoRealPct": 0.2136,
+      "umACada": 468,
+      "limiarPct": 2.0
+    },
+    "distribuicao": [
+      {
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "visitas": 335,
+        "participacaoPct": 99.1124
+      },
+      {
+        "perfil": "SERVIDOR_PUBLICO",
+        "perfilLabel": "Servidor Público",
+        "visitas": 3,
+        "participacaoPct": 0.8876
+      }
+    ],
+    "topServicos": [
+      {
+        "servico": "Delegacia Virtual (DEVIR)",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/seguranca/delegacia-virtual-devir105",
+        "visitas": 217,
+        "exclusivo": true
+      },
+      {
+        "servico": "Termo de Verificação Fiscal (TVF)/Apreensão (TA)",
+        "perfil": "EMPRESA",
+        "perfilLabel": "Empresa",
+        "path": "/financas-e-impostos/termo-de-verificacao-fiscal-tvf-ou-termo-de-apreensao-ta-baixa-ou-alteracao99",
+        "visitas": 73,
+        "exclusivo": false
+      },
+      {
+        "servico": "Emissão da CNH",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/transito-e-transportes/emissao-da-carteira-nacional-de-habilitacao174",
+        "visitas": 61,
+        "exclusivo": true
+      },
+      {
+        "servico": "Certidão tributária estadual",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
+        "visitas": 43,
+        "exclusivo": false
+      },
+      {
+        "servico": "Inclusão no Programa Mais Social",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/assistencia-social/solicitacao-de-inclusao-no-programa-mais-social118",
+        "visitas": 43,
+        "exclusivo": true
+      },
+      {
+        "servico": "Emitir CRLV-e (licenciamento digital)",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
+        "visitas": 19,
+        "exclusivo": false
+      },
+      {
+        "servico": "Boletim on-line de acidente sem vítimas",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170",
+        "visitas": 14,
+        "exclusivo": true
+      },
+      {
+        "servico": "2ª via de conta de água/esgoto",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/empresa-industria-e-comercio/solicitar-emissao-de-2a-via-de-conta-de-agua-e-esgoto113",
+        "visitas": 2,
+        "exclusivo": false
+      },
+      {
+        "servico": "Primeiro acesso aos canais institucionais",
+        "perfil": "SERVIDOR_PUBLICO",
+        "perfilLabel": "Servidor Público",
+        "path": "/ciencia-e-tecnologia/solicitar-primeiro-acesso-aos-canais-institucionais-oficiais9",
+        "visitas": 2,
+        "exclusivo": true
+      },
+      {
+        "servico": "Consultar Fila ambulatorial",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/saude-e-cuidado/consultar-fila-ambulatorial118",
+        "visitas": 1,
+        "exclusivo": false
+      }
+    ],
+    "servicosPorPerfil": {
+      "CIDADAO": [
+        {
+          "servico": "Certidão tributária estadual",
+          "categoria": "Finanças e Impostos",
+          "categoriaSlug": "financas-e-impostos",
+          "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
+          "visitas": 43,
+          "exclusivo": false
+        },
+        {
+          "servico": "Consultar Fila ambulatorial",
+          "categoria": "Saúde e Cuidado",
+          "categoriaSlug": "saude-e-cuidado",
+          "path": "/saude-e-cuidado/consultar-fila-ambulatorial118",
+          "visitas": 1,
+          "exclusivo": false
+        },
+        {
+          "servico": "Emitir CRLV-e (licenciamento digital)",
+          "categoria": "Trânsito e Transportes",
+          "categoriaSlug": "transito-e-transportes",
+          "path": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
+          "visitas": 19,
+          "exclusivo": false
+        },
+        {
+          "servico": "Emissão da CNH",
+          "categoria": "Trânsito e Transportes",
+          "categoriaSlug": "transito-e-transportes",
+          "path": "/transito-e-transportes/emissao-da-carteira-nacional-de-habilitacao174",
+          "visitas": 61,
+          "exclusivo": true
+        },
+        {
+          "servico": "Boletim on-line de acidente sem vítimas",
+          "categoria": "Segurança",
+          "categoriaSlug": "seguranca",
+          "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170",
+          "visitas": 14,
+          "exclusivo": true
+        },
+        {
+          "servico": "Delegacia Virtual (DEVIR)",
+          "categoria": "Segurança",
+          "categoriaSlug": "seguranca",
+          "path": "/seguranca/delegacia-virtual-devir105",
+          "visitas": 217,
+          "exclusivo": true
+        },
+        {
+          "servico": "2ª via de conta de água/esgoto",
+          "categoria": "Empresa, Indústria e Comércio",
+          "categoriaSlug": "empresa-industria-e-comercio",
+          "path": "/empresa-industria-e-comercio/solicitar-emissao-de-2a-via-de-conta-de-agua-e-esgoto113",
+          "visitas": 2,
+          "exclusivo": false
+        },
+        {
+          "servico": "Inclusão no Programa Mais Social",
+          "categoria": "Assistência Social",
+          "categoriaSlug": "assistencia-social",
+          "path": "/assistencia-social/solicitacao-de-inclusao-no-programa-mais-social118",
+          "visitas": 43,
+          "exclusivo": true
+        }
+      ],
+      "SERVIDOR_PUBLICO": [
+        {
+          "servico": "Conceder acesso ao Matomo",
+          "categoria": "Ciência e Tecnologia",
+          "categoriaSlug": "ciencia-e-tecnologia",
+          "path": "/ciencia-e-tecnologia/conceder-acesso-ao-matomo70",
+          "visitas": 0,
+          "exclusivo": true
+        },
+        {
+          "servico": "Consultar Fila ambulatorial",
+          "categoria": "Saúde e Cuidado",
+          "categoriaSlug": "saude-e-cuidado",
+          "path": "/saude-e-cuidado/consultar-fila-ambulatorial118",
+          "visitas": 1,
+          "exclusivo": false
+        },
+        {
+          "servico": "Solicitar acesso ao Grafana",
+          "categoria": "Ciência e Tecnologia",
+          "categoriaSlug": "ciencia-e-tecnologia",
+          "path": "/ciencia-e-tecnologia/solicitar-acesso-ao-grafana21",
+          "visitas": 0,
+          "exclusivo": true
+        },
+        {
+          "servico": "Primeiro acesso aos canais institucionais",
+          "categoria": "Ciência e Tecnologia",
+          "categoriaSlug": "ciencia-e-tecnologia",
+          "path": "/ciencia-e-tecnologia/solicitar-primeiro-acesso-aos-canais-institucionais-oficiais9",
+          "visitas": 2,
+          "exclusivo": true
+        },
+        {
+          "servico": "Aumento de quota de e-mail oficial",
+          "categoria": "Ciência e Tecnologia",
+          "categoriaSlug": "ciencia-e-tecnologia",
+          "path": "/ciencia-e-tecnologia/solicitar-aumento-de-quota-de-e-mail-oficial87",
+          "visitas": 0,
+          "exclusivo": true
+        },
+        {
+          "servico": "Liberação/bloqueio de acesso à internet",
+          "categoria": "Ciência e Tecnologia",
+          "categoriaSlug": "ciencia-e-tecnologia",
+          "path": "/ciencia-e-tecnologia/solicitar-liberacao-ou-bloqueio-de-acesso-a-conteudo-da-internet93",
+          "visitas": 1,
+          "exclusivo": true
+        },
+        {
+          "servico": "Acesso aos sistemas institucionais SETDIG",
+          "categoria": "Ciência e Tecnologia",
+          "categoriaSlug": "ciencia-e-tecnologia",
+          "path": "/ciencia-e-tecnologia/solicitar-acesso-aos-sistemas-institucionais-mantidos-pela-setdig91",
+          "visitas": 0,
+          "exclusivo": true
+        },
+        {
+          "servico": "Treinamento do WordPress",
+          "categoria": "Ciência e Tecnologia",
+          "categoriaSlug": "ciencia-e-tecnologia",
+          "path": "/ciencia-e-tecnologia/solicitar-treinamento-do-wordpress70",
+          "visitas": 0,
+          "exclusivo": true
+        }
+      ],
+      "EMPRESA": [
+        {
+          "servico": "Certidão tributária estadual",
+          "categoria": "Finanças e Impostos",
+          "categoriaSlug": "financas-e-impostos",
+          "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
+          "visitas": 43,
+          "exclusivo": false
+        },
+        {
+          "servico": "Emitir CRLV-e (licenciamento digital)",
+          "categoria": "Trânsito e Transportes",
+          "categoriaSlug": "transito-e-transportes",
+          "path": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
+          "visitas": 19,
+          "exclusivo": false
+        },
+        {
+          "servico": "2ª via de conta de água/esgoto",
+          "categoria": "Empresa, Indústria e Comércio",
+          "categoriaSlug": "empresa-industria-e-comercio",
+          "path": "/empresa-industria-e-comercio/solicitar-emissao-de-2a-via-de-conta-de-agua-e-esgoto113",
+          "visitas": 2,
+          "exclusivo": false
+        },
+        {
+          "servico": "Termo de Verificação Fiscal (TVF)/Apreensão (TA)",
+          "categoria": "Finanças e Impostos",
+          "categoriaSlug": "financas-e-impostos",
+          "path": "/financas-e-impostos/termo-de-verificacao-fiscal-tvf-ou-termo-de-apreensao-ta-baixa-ou-alteracao99",
+          "visitas": 73,
+          "exclusivo": false
+        }
+      ],
+      "GESTAO_PUBLICA": [
+        {
+          "servico": "Certidão tributária estadual",
+          "categoria": "Finanças e Impostos",
+          "categoriaSlug": "financas-e-impostos",
+          "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
+          "visitas": 43,
+          "exclusivo": false
+        },
+        {
+          "servico": "Termo de Verificação Fiscal (TVF)/Apreensão (TA)",
+          "categoria": "Finanças e Impostos",
+          "categoriaSlug": "financas-e-impostos",
+          "path": "/financas-e-impostos/termo-de-verificacao-fiscal-tvf-ou-termo-de-apreensao-ta-baixa-ou-alteracao99",
+          "visitas": 73,
+          "exclusivo": false
+        }
+      ]
+    }
+  },
+  "semana": {
+    "resumo": {
+      "homeVisitors": 2374,
+      "atribuiveis": 338,
+      "proxyRatePct": 14.2376,
+      "usoRealPct": 0.2136,
+      "umACada": 468,
+      "limiarPct": 2.0
+    },
+    "distribuicao": [
+      {
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "visitas": 335,
+        "participacaoPct": 99.1124
+      },
+      {
+        "perfil": "SERVIDOR_PUBLICO",
+        "perfilLabel": "Servidor Público",
+        "visitas": 3,
+        "participacaoPct": 0.8876
+      }
+    ],
+    "topServicos": [
+      {
+        "servico": "Delegacia Virtual (DEVIR)",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/seguranca/delegacia-virtual-devir105",
+        "visitas": 217,
+        "exclusivo": true
+      },
+      {
+        "servico": "Termo de Verificação Fiscal (TVF)/Apreensão (TA)",
+        "perfil": "EMPRESA",
+        "perfilLabel": "Empresa",
+        "path": "/financas-e-impostos/termo-de-verificacao-fiscal-tvf-ou-termo-de-apreensao-ta-baixa-ou-alteracao99",
+        "visitas": 73,
+        "exclusivo": false
+      },
+      {
+        "servico": "Emissão da CNH",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/transito-e-transportes/emissao-da-carteira-nacional-de-habilitacao174",
+        "visitas": 61,
+        "exclusivo": true
+      },
+      {
+        "servico": "Certidão tributária estadual",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
+        "visitas": 43,
+        "exclusivo": false
+      },
+      {
+        "servico": "Inclusão no Programa Mais Social",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/assistencia-social/solicitacao-de-inclusao-no-programa-mais-social118",
+        "visitas": 43,
+        "exclusivo": true
+      },
+      {
+        "servico": "Emitir CRLV-e (licenciamento digital)",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
+        "visitas": 19,
+        "exclusivo": false
+      },
+      {
+        "servico": "Boletim on-line de acidente sem vítimas",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170",
+        "visitas": 14,
+        "exclusivo": true
+      },
+      {
+        "servico": "2ª via de conta de água/esgoto",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/empresa-industria-e-comercio/solicitar-emissao-de-2a-via-de-conta-de-agua-e-esgoto113",
+        "visitas": 2,
+        "exclusivo": false
+      },
+      {
+        "servico": "Primeiro acesso aos canais institucionais",
+        "perfil": "SERVIDOR_PUBLICO",
+        "perfilLabel": "Servidor Público",
+        "path": "/ciencia-e-tecnologia/solicitar-primeiro-acesso-aos-canais-institucionais-oficiais9",
+        "visitas": 2,
+        "exclusivo": true
+      },
+      {
+        "servico": "Consultar Fila ambulatorial",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/saude-e-cuidado/consultar-fila-ambulatorial118",
+        "visitas": 1,
+        "exclusivo": false
+      }
+    ],
+    "servicosPorPerfil": {
+      "CIDADAO": [
+        {
+          "servico": "Certidão tributária estadual",
+          "categoria": "Finanças e Impostos",
+          "categoriaSlug": "financas-e-impostos",
+          "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
+          "visitas": 43,
+          "exclusivo": false
+        },
+        {
+          "servico": "Consultar Fila ambulatorial",
+          "categoria": "Saúde e Cuidado",
+          "categoriaSlug": "saude-e-cuidado",
+          "path": "/saude-e-cuidado/consultar-fila-ambulatorial118",
+          "visitas": 1,
+          "exclusivo": false
+        },
+        {
+          "servico": "Emitir CRLV-e (licenciamento digital)",
+          "categoria": "Trânsito e Transportes",
+          "categoriaSlug": "transito-e-transportes",
+          "path": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
+          "visitas": 19,
+          "exclusivo": false
+        },
+        {
+          "servico": "Emissão da CNH",
+          "categoria": "Trânsito e Transportes",
+          "categoriaSlug": "transito-e-transportes",
+          "path": "/transito-e-transportes/emissao-da-carteira-nacional-de-habilitacao174",
+          "visitas": 61,
+          "exclusivo": true
+        },
+        {
+          "servico": "Boletim on-line de acidente sem vítimas",
+          "categoria": "Segurança",
+          "categoriaSlug": "seguranca",
+          "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170",
+          "visitas": 14,
+          "exclusivo": true
+        },
+        {
+          "servico": "Delegacia Virtual (DEVIR)",
+          "categoria": "Segurança",
+          "categoriaSlug": "seguranca",
+          "path": "/seguranca/delegacia-virtual-devir105",
+          "visitas": 217,
+          "exclusivo": true
+        },
+        {
+          "servico": "2ª via de conta de água/esgoto",
+          "categoria": "Empresa, Indústria e Comércio",
+          "categoriaSlug": "empresa-industria-e-comercio",
+          "path": "/empresa-industria-e-comercio/solicitar-emissao-de-2a-via-de-conta-de-agua-e-esgoto113",
+          "visitas": 2,
+          "exclusivo": false
+        },
+        {
+          "servico": "Inclusão no Programa Mais Social",
+          "categoria": "Assistência Social",
+          "categoriaSlug": "assistencia-social",
+          "path": "/assistencia-social/solicitacao-de-inclusao-no-programa-mais-social118",
+          "visitas": 43,
+          "exclusivo": true
+        }
+      ],
+      "SERVIDOR_PUBLICO": [
+        {
+          "servico": "Conceder acesso ao Matomo",
+          "categoria": "Ciência e Tecnologia",
+          "categoriaSlug": "ciencia-e-tecnologia",
+          "path": "/ciencia-e-tecnologia/conceder-acesso-ao-matomo70",
+          "visitas": 0,
+          "exclusivo": true
+        },
+        {
+          "servico": "Consultar Fila ambulatorial",
+          "categoria": "Saúde e Cuidado",
+          "categoriaSlug": "saude-e-cuidado",
+          "path": "/saude-e-cuidado/consultar-fila-ambulatorial118",
+          "visitas": 1,
+          "exclusivo": false
+        },
+        {
+          "servico": "Solicitar acesso ao Grafana",
+          "categoria": "Ciência e Tecnologia",
+          "categoriaSlug": "ciencia-e-tecnologia",
+          "path": "/ciencia-e-tecnologia/solicitar-acesso-ao-grafana21",
+          "visitas": 0,
+          "exclusivo": true
+        },
+        {
+          "servico": "Primeiro acesso aos canais institucionais",
+          "categoria": "Ciência e Tecnologia",
+          "categoriaSlug": "ciencia-e-tecnologia",
+          "path": "/ciencia-e-tecnologia/solicitar-primeiro-acesso-aos-canais-institucionais-oficiais9",
+          "visitas": 2,
+          "exclusivo": true
+        },
+        {
+          "servico": "Aumento de quota de e-mail oficial",
+          "categoria": "Ciência e Tecnologia",
+          "categoriaSlug": "ciencia-e-tecnologia",
+          "path": "/ciencia-e-tecnologia/solicitar-aumento-de-quota-de-e-mail-oficial87",
+          "visitas": 0,
+          "exclusivo": true
+        },
+        {
+          "servico": "Liberação/bloqueio de acesso à internet",
+          "categoria": "Ciência e Tecnologia",
+          "categoriaSlug": "ciencia-e-tecnologia",
+          "path": "/ciencia-e-tecnologia/solicitar-liberacao-ou-bloqueio-de-acesso-a-conteudo-da-internet93",
+          "visitas": 1,
+          "exclusivo": true
+        },
+        {
+          "servico": "Acesso aos sistemas institucionais SETDIG",
+          "categoria": "Ciência e Tecnologia",
+          "categoriaSlug": "ciencia-e-tecnologia",
+          "path": "/ciencia-e-tecnologia/solicitar-acesso-aos-sistemas-institucionais-mantidos-pela-setdig91",
+          "visitas": 0,
+          "exclusivo": true
+        },
+        {
+          "servico": "Treinamento do WordPress",
+          "categoria": "Ciência e Tecnologia",
+          "categoriaSlug": "ciencia-e-tecnologia",
+          "path": "/ciencia-e-tecnologia/solicitar-treinamento-do-wordpress70",
+          "visitas": 0,
+          "exclusivo": true
+        }
+      ],
+      "EMPRESA": [
+        {
+          "servico": "Certidão tributária estadual",
+          "categoria": "Finanças e Impostos",
+          "categoriaSlug": "financas-e-impostos",
+          "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
+          "visitas": 43,
+          "exclusivo": false
+        },
+        {
+          "servico": "Emitir CRLV-e (licenciamento digital)",
+          "categoria": "Trânsito e Transportes",
+          "categoriaSlug": "transito-e-transportes",
+          "path": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
+          "visitas": 19,
+          "exclusivo": false
+        },
+        {
+          "servico": "2ª via de conta de água/esgoto",
+          "categoria": "Empresa, Indústria e Comércio",
+          "categoriaSlug": "empresa-industria-e-comercio",
+          "path": "/empresa-industria-e-comercio/solicitar-emissao-de-2a-via-de-conta-de-agua-e-esgoto113",
+          "visitas": 2,
+          "exclusivo": false
+        },
+        {
+          "servico": "Termo de Verificação Fiscal (TVF)/Apreensão (TA)",
+          "categoria": "Finanças e Impostos",
+          "categoriaSlug": "financas-e-impostos",
+          "path": "/financas-e-impostos/termo-de-verificacao-fiscal-tvf-ou-termo-de-apreensao-ta-baixa-ou-alteracao99",
+          "visitas": 73,
+          "exclusivo": false
+        }
+      ],
+      "GESTAO_PUBLICA": [
+        {
+          "servico": "Certidão tributária estadual",
+          "categoria": "Finanças e Impostos",
+          "categoriaSlug": "financas-e-impostos",
+          "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
+          "visitas": 43,
+          "exclusivo": false
+        },
+        {
+          "servico": "Termo de Verificação Fiscal (TVF)/Apreensão (TA)",
+          "categoria": "Finanças e Impostos",
+          "categoriaSlug": "financas-e-impostos",
+          "path": "/financas-e-impostos/termo-de-verificacao-fiscal-tvf-ou-termo-de-apreensao-ta-baixa-ou-alteracao99",
+          "visitas": 73,
+          "exclusivo": false
+        }
+      ]
+    }
+  },
+  "mes": {
+    "resumo": {
+      "homeVisitors": 12147,
+      "atribuiveis": 2128,
+      "proxyRatePct": 17.5187,
+      "usoRealPct": 0.2628,
+      "umACada": 381,
+      "limiarPct": 2.0
+    },
+    "distribuicao": [
+      {
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "visitas": 2114,
+        "participacaoPct": 99.3421
+      },
+      {
+        "perfil": "SERVIDOR_PUBLICO",
+        "perfilLabel": "Servidor Público",
+        "visitas": 14,
+        "participacaoPct": 0.6579
+      }
+    ],
+    "topServicos": [
+      {
+        "servico": "Delegacia Virtual (DEVIR)",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/seguranca/delegacia-virtual-devir105",
+        "visitas": 1308,
+        "exclusivo": true
+      },
+      {
+        "servico": "Emissão da CNH",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/transito-e-transportes/emissao-da-carteira-nacional-de-habilitacao174",
+        "visitas": 447,
+        "exclusivo": true
+      },
+      {
+        "servico": "Termo de Verificação Fiscal (TVF)/Apreensão (TA)",
+        "perfil": "EMPRESA",
+        "perfilLabel": "Empresa",
+        "path": "/financas-e-impostos/termo-de-verificacao-fiscal-tvf-ou-termo-de-apreensao-ta-baixa-ou-alteracao99",
+        "visitas": 344,
+        "exclusivo": false
+      },
+      {
+        "servico": "Inclusão no Programa Mais Social",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/assistencia-social/solicitacao-de-inclusao-no-programa-mais-social118",
+        "visitas": 281,
+        "exclusivo": true
+      },
+      {
+        "servico": "Certidão tributária estadual",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
+        "visitas": 220,
+        "exclusivo": false
+      },
+      {
+        "servico": "Emitir CRLV-e (licenciamento digital)",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
+        "visitas": 190,
+        "exclusivo": false
+      },
+      {
+        "servico": "Boletim on-line de acidente sem vítimas",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170",
+        "visitas": 78,
+        "exclusivo": true
+      },
+      {
+        "servico": "Consultar Fila ambulatorial",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/saude-e-cuidado/consultar-fila-ambulatorial118",
+        "visitas": 9,
+        "exclusivo": false
+      },
+      {
+        "servico": "Liberação/bloqueio de acesso à internet",
+        "perfil": "SERVIDOR_PUBLICO",
+        "perfilLabel": "Servidor Público",
+        "path": "/ciencia-e-tecnologia/solicitar-liberacao-ou-bloqueio-de-acesso-a-conteudo-da-internet93",
+        "visitas": 7,
+        "exclusivo": true
+      },
+      {
+        "servico": "2ª via de conta de água/esgoto",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/empresa-industria-e-comercio/solicitar-emissao-de-2a-via-de-conta-de-agua-e-esgoto113",
+        "visitas": 6,
+        "exclusivo": false
+      }
+    ],
+    "servicosPorPerfil": {
+      "CIDADAO": [
+        {
+          "servico": "Certidão tributária estadual",
+          "categoria": "Finanças e Impostos",
+          "categoriaSlug": "financas-e-impostos",
+          "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
+          "visitas": 220,
+          "exclusivo": false
+        },
+        {
+          "servico": "Consultar Fila ambulatorial",
+          "categoria": "Saúde e Cuidado",
+          "categoriaSlug": "saude-e-cuidado",
+          "path": "/saude-e-cuidado/consultar-fila-ambulatorial118",
+          "visitas": 9,
+          "exclusivo": false
+        },
+        {
+          "servico": "Emitir CRLV-e (licenciamento digital)",
+          "categoria": "Trânsito e Transportes",
+          "categoriaSlug": "transito-e-transportes",
+          "path": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
+          "visitas": 190,
+          "exclusivo": false
+        },
+        {
+          "servico": "Emissão da CNH",
+          "categoria": "Trânsito e Transportes",
+          "categoriaSlug": "transito-e-transportes",
+          "path": "/transito-e-transportes/emissao-da-carteira-nacional-de-habilitacao174",
+          "visitas": 447,
+          "exclusivo": true
+        },
+        {
+          "servico": "Boletim on-line de acidente sem vítimas",
+          "categoria": "Segurança",
+          "categoriaSlug": "seguranca",
+          "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170",
+          "visitas": 78,
+          "exclusivo": true
+        },
+        {
+          "servico": "Delegacia Virtual (DEVIR)",
+          "categoria": "Segurança",
+          "categoriaSlug": "seguranca",
+          "path": "/seguranca/delegacia-virtual-devir105",
+          "visitas": 1308,
+          "exclusivo": true
+        },
+        {
+          "servico": "2ª via de conta de água/esgoto",
+          "categoria": "Empresa, Indústria e Comércio",
+          "categoriaSlug": "empresa-industria-e-comercio",
+          "path": "/empresa-industria-e-comercio/solicitar-emissao-de-2a-via-de-conta-de-agua-e-esgoto113",
+          "visitas": 6,
+          "exclusivo": false
+        },
+        {
+          "servico": "Inclusão no Programa Mais Social",
+          "categoria": "Assistência Social",
+          "categoriaSlug": "assistencia-social",
+          "path": "/assistencia-social/solicitacao-de-inclusao-no-programa-mais-social118",
+          "visitas": 281,
+          "exclusivo": true
+        }
+      ],
+      "SERVIDOR_PUBLICO": [
+        {
+          "servico": "Conceder acesso ao Matomo",
+          "categoria": "Ciência e Tecnologia",
+          "categoriaSlug": "ciencia-e-tecnologia",
+          "path": "/ciencia-e-tecnologia/conceder-acesso-ao-matomo70",
+          "visitas": 0,
+          "exclusivo": true
+        },
+        {
+          "servico": "Consultar Fila ambulatorial",
+          "categoria": "Saúde e Cuidado",
+          "categoriaSlug": "saude-e-cuidado",
+          "path": "/saude-e-cuidado/consultar-fila-ambulatorial118",
+          "visitas": 9,
+          "exclusivo": false
+        },
+        {
+          "servico": "Solicitar acesso ao Grafana",
+          "categoria": "Ciência e Tecnologia",
+          "categoriaSlug": "ciencia-e-tecnologia",
+          "path": "/ciencia-e-tecnologia/solicitar-acesso-ao-grafana21",
+          "visitas": 1,
+          "exclusivo": true
+        },
+        {
+          "servico": "Primeiro acesso aos canais institucionais",
+          "categoria": "Ciência e Tecnologia",
+          "categoriaSlug": "ciencia-e-tecnologia",
+          "path": "/ciencia-e-tecnologia/solicitar-primeiro-acesso-aos-canais-institucionais-oficiais9",
+          "visitas": 6,
+          "exclusivo": true
+        },
+        {
+          "servico": "Aumento de quota de e-mail oficial",
+          "categoria": "Ciência e Tecnologia",
+          "categoriaSlug": "ciencia-e-tecnologia",
+          "path": "/ciencia-e-tecnologia/solicitar-aumento-de-quota-de-e-mail-oficial87",
+          "visitas": 0,
+          "exclusivo": true
+        },
+        {
+          "servico": "Liberação/bloqueio de acesso à internet",
+          "categoria": "Ciência e Tecnologia",
+          "categoriaSlug": "ciencia-e-tecnologia",
+          "path": "/ciencia-e-tecnologia/solicitar-liberacao-ou-bloqueio-de-acesso-a-conteudo-da-internet93",
+          "visitas": 7,
+          "exclusivo": true
+        },
+        {
+          "servico": "Acesso aos sistemas institucionais SETDIG",
+          "categoria": "Ciência e Tecnologia",
+          "categoriaSlug": "ciencia-e-tecnologia",
+          "path": "/ciencia-e-tecnologia/solicitar-acesso-aos-sistemas-institucionais-mantidos-pela-setdig91",
+          "visitas": 0,
+          "exclusivo": true
+        },
+        {
+          "servico": "Treinamento do WordPress",
+          "categoria": "Ciência e Tecnologia",
+          "categoriaSlug": "ciencia-e-tecnologia",
+          "path": "/ciencia-e-tecnologia/solicitar-treinamento-do-wordpress70",
+          "visitas": 0,
+          "exclusivo": true
+        }
+      ],
+      "EMPRESA": [
+        {
+          "servico": "Certidão tributária estadual",
+          "categoria": "Finanças e Impostos",
+          "categoriaSlug": "financas-e-impostos",
+          "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
+          "visitas": 220,
+          "exclusivo": false
+        },
+        {
+          "servico": "Emitir CRLV-e (licenciamento digital)",
+          "categoria": "Trânsito e Transportes",
+          "categoriaSlug": "transito-e-transportes",
+          "path": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
+          "visitas": 190,
+          "exclusivo": false
+        },
+        {
+          "servico": "2ª via de conta de água/esgoto",
+          "categoria": "Empresa, Indústria e Comércio",
+          "categoriaSlug": "empresa-industria-e-comercio",
+          "path": "/empresa-industria-e-comercio/solicitar-emissao-de-2a-via-de-conta-de-agua-e-esgoto113",
+          "visitas": 6,
+          "exclusivo": false
+        },
+        {
+          "servico": "Termo de Verificação Fiscal (TVF)/Apreensão (TA)",
+          "categoria": "Finanças e Impostos",
+          "categoriaSlug": "financas-e-impostos",
+          "path": "/financas-e-impostos/termo-de-verificacao-fiscal-tvf-ou-termo-de-apreensao-ta-baixa-ou-alteracao99",
+          "visitas": 344,
+          "exclusivo": false
+        }
+      ],
+      "GESTAO_PUBLICA": [
+        {
+          "servico": "Certidão tributária estadual",
+          "categoria": "Finanças e Impostos",
+          "categoriaSlug": "financas-e-impostos",
+          "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
+          "visitas": 220,
+          "exclusivo": false
+        },
+        {
+          "servico": "Termo de Verificação Fiscal (TVF)/Apreensão (TA)",
+          "categoria": "Finanças e Impostos",
+          "categoriaSlug": "financas-e-impostos",
+          "path": "/financas-e-impostos/termo-de-verificacao-fiscal-tvf-ou-termo-de-apreensao-ta-baixa-ou-alteracao99",
+          "visitas": 344,
+          "exclusivo": false
+        }
+      ]
+    }
+  },
+  "ano": {
+    "resumo": {
+      "homeVisitors": 915088,
+      "atribuiveis": 60209,
+      "proxyRatePct": 6.5796,
+      "usoRealPct": 0.0987,
+      "umACada": 1013,
+      "limiarPct": 2.0
+    },
+    "distribuicao": [
+      {
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "visitas": 59883,
+        "participacaoPct": 99.4586
+      },
+      {
+        "perfil": "SERVIDOR_PUBLICO",
+        "perfilLabel": "Servidor Público",
+        "visitas": 326,
+        "participacaoPct": 0.5414
+      }
+    ],
+    "topServicos": [
+      {
+        "servico": "Emitir CRLV-e (licenciamento digital)",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
+        "visitas": 30886,
+        "exclusivo": false
+      },
+      {
+        "servico": "Emissão da CNH",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/transito-e-transportes/emissao-da-carteira-nacional-de-habilitacao174",
+        "visitas": 27424,
+        "exclusivo": true
+      },
+      {
+        "servico": "Delegacia Virtual (DEVIR)",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/seguranca/delegacia-virtual-devir105",
+        "visitas": 18577,
+        "exclusivo": true
+      },
+      {
+        "servico": "Inclusão no Programa Mais Social",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/assistencia-social/solicitacao-de-inclusao-no-programa-mais-social118",
+        "visitas": 12323,
+        "exclusivo": true
+      },
+      {
+        "servico": "Termo de Verificação Fiscal (TVF)/Apreensão (TA)",
+        "perfil": "EMPRESA",
+        "perfilLabel": "Empresa",
+        "path": "/financas-e-impostos/termo-de-verificacao-fiscal-tvf-ou-termo-de-apreensao-ta-baixa-ou-alteracao99",
+        "visitas": 11807,
+        "exclusivo": false
+      },
+      {
+        "servico": "Certidão tributária estadual",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
+        "visitas": 5180,
+        "exclusivo": false
+      },
+      {
+        "servico": "Boletim on-line de acidente sem vítimas",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170",
+        "visitas": 1559,
+        "exclusivo": true
+      },
+      {
+        "servico": "Consultar Fila ambulatorial",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/saude-e-cuidado/consultar-fila-ambulatorial118",
+        "visitas": 315,
+        "exclusivo": false
+      },
+      {
+        "servico": "2ª via de conta de água/esgoto",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/empresa-industria-e-comercio/solicitar-emissao-de-2a-via-de-conta-de-agua-e-esgoto113",
+        "visitas": 195,
+        "exclusivo": false
+      },
+      {
+        "servico": "Liberação/bloqueio de acesso à internet",
+        "perfil": "SERVIDOR_PUBLICO",
+        "perfilLabel": "Servidor Público",
+        "path": "/ciencia-e-tecnologia/solicitar-liberacao-ou-bloqueio-de-acesso-a-conteudo-da-internet93",
+        "visitas": 159,
+        "exclusivo": true
+      }
+    ],
+    "servicosPorPerfil": {
+      "CIDADAO": [
+        {
+          "servico": "Certidão tributária estadual",
+          "categoria": "Finanças e Impostos",
+          "categoriaSlug": "financas-e-impostos",
+          "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
+          "visitas": 5180,
+          "exclusivo": false
+        },
+        {
+          "servico": "Consultar Fila ambulatorial",
+          "categoria": "Saúde e Cuidado",
+          "categoriaSlug": "saude-e-cuidado",
+          "path": "/saude-e-cuidado/consultar-fila-ambulatorial118",
+          "visitas": 315,
+          "exclusivo": false
+        },
+        {
+          "servico": "Emitir CRLV-e (licenciamento digital)",
+          "categoria": "Trânsito e Transportes",
+          "categoriaSlug": "transito-e-transportes",
+          "path": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
+          "visitas": 30886,
+          "exclusivo": false
+        },
+        {
+          "servico": "Emissão da CNH",
+          "categoria": "Trânsito e Transportes",
+          "categoriaSlug": "transito-e-transportes",
+          "path": "/transito-e-transportes/emissao-da-carteira-nacional-de-habilitacao174",
+          "visitas": 27424,
+          "exclusivo": true
+        },
+        {
+          "servico": "Boletim on-line de acidente sem vítimas",
+          "categoria": "Segurança",
+          "categoriaSlug": "seguranca",
+          "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170",
+          "visitas": 1559,
+          "exclusivo": true
+        },
+        {
+          "servico": "Delegacia Virtual (DEVIR)",
+          "categoria": "Segurança",
+          "categoriaSlug": "seguranca",
+          "path": "/seguranca/delegacia-virtual-devir105",
+          "visitas": 18577,
+          "exclusivo": true
+        },
+        {
+          "servico": "2ª via de conta de água/esgoto",
+          "categoria": "Empresa, Indústria e Comércio",
+          "categoriaSlug": "empresa-industria-e-comercio",
+          "path": "/empresa-industria-e-comercio/solicitar-emissao-de-2a-via-de-conta-de-agua-e-esgoto113",
+          "visitas": 195,
+          "exclusivo": false
+        },
+        {
+          "servico": "Inclusão no Programa Mais Social",
+          "categoria": "Assistência Social",
+          "categoriaSlug": "assistencia-social",
+          "path": "/assistencia-social/solicitacao-de-inclusao-no-programa-mais-social118",
+          "visitas": 12323,
+          "exclusivo": true
+        }
+      ],
+      "SERVIDOR_PUBLICO": [
+        {
+          "servico": "Conceder acesso ao Matomo",
+          "categoria": "Ciência e Tecnologia",
+          "categoriaSlug": "ciencia-e-tecnologia",
+          "path": "/ciencia-e-tecnologia/conceder-acesso-ao-matomo70",
+          "visitas": 25,
+          "exclusivo": true
+        },
+        {
+          "servico": "Consultar Fila ambulatorial",
+          "categoria": "Saúde e Cuidado",
+          "categoriaSlug": "saude-e-cuidado",
+          "path": "/saude-e-cuidado/consultar-fila-ambulatorial118",
+          "visitas": 315,
+          "exclusivo": false
+        },
+        {
+          "servico": "Solicitar acesso ao Grafana",
+          "categoria": "Ciência e Tecnologia",
+          "categoriaSlug": "ciencia-e-tecnologia",
+          "path": "/ciencia-e-tecnologia/solicitar-acesso-ao-grafana21",
+          "visitas": 14,
+          "exclusivo": true
+        },
+        {
+          "servico": "Primeiro acesso aos canais institucionais",
+          "categoria": "Ciência e Tecnologia",
+          "categoriaSlug": "ciencia-e-tecnologia",
+          "path": "/ciencia-e-tecnologia/solicitar-primeiro-acesso-aos-canais-institucionais-oficiais9",
+          "visitas": 65,
+          "exclusivo": true
+        },
+        {
+          "servico": "Aumento de quota de e-mail oficial",
+          "categoria": "Ciência e Tecnologia",
+          "categoriaSlug": "ciencia-e-tecnologia",
+          "path": "/ciencia-e-tecnologia/solicitar-aumento-de-quota-de-e-mail-oficial87",
+          "visitas": 26,
+          "exclusivo": true
+        },
+        {
+          "servico": "Liberação/bloqueio de acesso à internet",
+          "categoria": "Ciência e Tecnologia",
+          "categoriaSlug": "ciencia-e-tecnologia",
+          "path": "/ciencia-e-tecnologia/solicitar-liberacao-ou-bloqueio-de-acesso-a-conteudo-da-internet93",
+          "visitas": 159,
+          "exclusivo": true
+        },
+        {
+          "servico": "Acesso aos sistemas institucionais SETDIG",
+          "categoria": "Ciência e Tecnologia",
+          "categoriaSlug": "ciencia-e-tecnologia",
+          "path": "/ciencia-e-tecnologia/solicitar-acesso-aos-sistemas-institucionais-mantidos-pela-setdig91",
+          "visitas": 25,
+          "exclusivo": true
+        },
+        {
+          "servico": "Treinamento do WordPress",
+          "categoria": "Ciência e Tecnologia",
+          "categoriaSlug": "ciencia-e-tecnologia",
+          "path": "/ciencia-e-tecnologia/solicitar-treinamento-do-wordpress70",
+          "visitas": 12,
+          "exclusivo": true
+        }
+      ],
+      "EMPRESA": [
+        {
+          "servico": "Certidão tributária estadual",
+          "categoria": "Finanças e Impostos",
+          "categoriaSlug": "financas-e-impostos",
+          "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
+          "visitas": 5180,
+          "exclusivo": false
+        },
+        {
+          "servico": "Emitir CRLV-e (licenciamento digital)",
+          "categoria": "Trânsito e Transportes",
+          "categoriaSlug": "transito-e-transportes",
+          "path": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
+          "visitas": 30886,
+          "exclusivo": false
+        },
+        {
+          "servico": "2ª via de conta de água/esgoto",
+          "categoria": "Empresa, Indústria e Comércio",
+          "categoriaSlug": "empresa-industria-e-comercio",
+          "path": "/empresa-industria-e-comercio/solicitar-emissao-de-2a-via-de-conta-de-agua-e-esgoto113",
+          "visitas": 195,
+          "exclusivo": false
+        },
+        {
+          "servico": "Termo de Verificação Fiscal (TVF)/Apreensão (TA)",
+          "categoria": "Finanças e Impostos",
+          "categoriaSlug": "financas-e-impostos",
+          "path": "/financas-e-impostos/termo-de-verificacao-fiscal-tvf-ou-termo-de-apreensao-ta-baixa-ou-alteracao99",
+          "visitas": 11807,
+          "exclusivo": false
+        }
+      ],
+      "GESTAO_PUBLICA": [
+        {
+          "servico": "Certidão tributária estadual",
+          "categoria": "Finanças e Impostos",
+          "categoriaSlug": "financas-e-impostos",
+          "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
+          "visitas": 5180,
+          "exclusivo": false
+        },
+        {
+          "servico": "Termo de Verificação Fiscal (TVF)/Apreensão (TA)",
+          "categoria": "Finanças e Impostos",
+          "categoriaSlug": "financas-e-impostos",
+          "path": "/financas-e-impostos/termo-de-verificacao-fiscal-tvf-ou-termo-de-apreensao-ta-baixa-ou-alteracao99",
+          "visitas": 11807,
+          "exclusivo": false
+        }
+      ]
+    }
+  }
+}

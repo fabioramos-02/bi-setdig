@@ -1,4 +1,4 @@
-import type { VisitaDiaria } from "./data";
+import type { PeriodoFixo, VisitaDiaria } from "./data";
 
 /**
  * Filtro de período client-side sobre a série diária já publicada (ADR-001 —
@@ -16,6 +16,13 @@ export type PeriodoState = {
 };
 
 export type PontoAgregado = { rotulo: string; visitas: number; visitantesUnicos: number; acoes: number };
+
+/** Qual chave de breakdown ler para o período atual. "Intervalo" não tem
+ * breakdown próprio (ADR-007) — cai no snapshot "mês". Regra única, reusada por
+ * todo domínio que lê datasets no formato BreakdownPorPeriodo. */
+export function chavePeriodoFixo(estado: PeriodoState): PeriodoFixo {
+  return estado.tipo === "intervalo" ? "mes" : estado.tipo;
+}
 
 const DIAS_JANELA_DIA = 30;
 

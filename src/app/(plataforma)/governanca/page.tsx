@@ -1,18 +1,14 @@
 import type { Metadata } from "next";
-import { ContentTopBar } from "@/components/ds/ContentTopBar";
-import { EmptyCard } from "@/components/ds/EmptyCard";
+import { GovernancaClient } from "./GovernancaClient";
+import { getMatomoPerfilFiltro } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Governança | SETDIG",
+  title: "Governança — Uso do Filtro de Perfil | SETDIG",
 };
 
 export default function GovernancaPage() {
-  return (
-    <div className="flex flex-col flex-1">
-      <ContentTopBar title="Governança" />
-      <main className="flex-1 p-6">
-        <EmptyCard message="Nenhuma fonte de dados conectada ainda." />
-      </main>
-    </div>
-  );
+  // SSG: lê o dataset publicado pelo data-platform, sem chamada a API em runtime
+  // (ADR-001). O filtro de período (sidebar) reage client-side no GovernancaClient.
+  const perfil = getMatomoPerfilFiltro();
+  return <GovernancaClient perfil={perfil} />;
 }
