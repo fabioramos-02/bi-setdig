@@ -7,8 +7,8 @@ import type { PeriodoState } from "@/lib/period-filter";
  * Réplica da UX do app.py antigo: radio de período (Dia/Semana/Mês/Ano/
  * Intervalo) + campo(s) de data condicional — 1 campo se período fixo, 2
  * ("Data Início"/"Data Fim") se "Intervalo de datas". Controlado — estado
- * vive no pai (PortalMsClient), que o compartilha com todos os gráficos
- * da aba Perfil (ver FilterBar.tsx).
+ * vive no PeriodoProvider (context), consumido por SidebarPeriodFilter e
+ * pelos gráficos do conteúdo.
  */
 export function PeriodFilter({
   estado,
@@ -18,6 +18,7 @@ export function PeriodFilter({
   onIntervaloChange,
   min,
   max,
+  vertical = false,
 }: {
   estado: PeriodoState;
   onEstadoChange: (novo: PeriodoState) => void;
@@ -26,14 +27,16 @@ export function PeriodFilter({
   onIntervaloChange: (inicio: string, fim: string) => void;
   min: string;
   max: string;
+  /** Empilhado (sidebar) em vez de em linha (barra horizontal). */
+  vertical?: boolean;
 }) {
   return (
-    <div className="flex flex-wrap items-end gap-4">
-      <PeriodRadioGroup value={estado.tipo} onChange={(tipo) => onEstadoChange({ ...estado, tipo })} />
+    <div className={vertical ? "flex flex-col gap-3" : "flex flex-wrap items-end gap-4"}>
+      <PeriodRadioGroup value={estado.tipo} onChange={(tipo) => onEstadoChange({ ...estado, tipo })} vertical={vertical} />
 
       {estado.tipo === "intervalo" ? (
         <>
-          <label className="ds-field" style={{ maxWidth: 180 }}>
+          <label className="ds-field" style={{ maxWidth: vertical ? undefined : 180 }}>
             <span className="ds-field__label">Data Início</span>
             <input
               className="ds-input"
@@ -44,7 +47,7 @@ export function PeriodFilter({
               onChange={(e) => onIntervaloChange(e.target.value, fim)}
             />
           </label>
-          <label className="ds-field" style={{ maxWidth: 180 }}>
+          <label className="ds-field" style={{ maxWidth: vertical ? undefined : 180 }}>
             <span className="ds-field__label">Data Fim</span>
             <input
               className="ds-input"

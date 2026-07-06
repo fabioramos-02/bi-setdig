@@ -13,12 +13,14 @@ const OPCOES: { valor: PeriodoTipo; rotulo: string }[] = [
 export function PeriodRadioGroup({
   value,
   onChange,
+  vertical = false,
 }: {
   value: PeriodoTipo;
   onChange: (v: PeriodoTipo) => void;
+  vertical?: boolean;
 }) {
   return (
-    <fieldset className="flex flex-wrap gap-x-5 gap-y-2 border-0 p-0 m-0">
+    <fieldset className={`${vertical ? "flex flex-col gap-y-1" : "flex flex-wrap gap-x-5 gap-y-2"} border-0 p-0 m-0`}>
       <legend className="sr-only">Período</legend>
       {OPCOES.map((o) => (
         <label key={o.valor} className="ds-radio">

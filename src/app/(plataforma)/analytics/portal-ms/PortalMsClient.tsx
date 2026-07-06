@@ -1,18 +1,17 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { EmptyCard } from "@/components/ds/EmptyCard";
 import { ContentTopBar } from "@/components/ds/ContentTopBar";
 import { ExportPdfButton } from "@/components/dashboard/ExportPdfButton";
 import { MetricCard } from "@/components/dashboard/MetricCard";
-import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { ExportCsvButton } from "@/components/dashboard/ExportCsvButton";
-import { FilterBar } from "@/components/dashboard/FilterBar";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { Tabs, type TabItem } from "@/components/dashboard/Tabs";
 import { PerfilCidadaoTab } from "./PerfilCidadaoTab";
 import { WordCloud } from "@/components/charts/WordCloud";
-import { aplicarFiltroPeriodo, type PeriodoState } from "@/lib/period-filter";
+import { aplicarFiltroPeriodo } from "@/lib/period-filter";
+import { usePeriodo } from "@/lib/periodo-context";
 import { calcularInsightBusca, calcularInsightVisitas, calcularInsightNavegador } from "@/lib/insights";
 import type {
   VisitasResumo,
@@ -48,9 +47,9 @@ export function PortalMsClient({
   busca: TermoBusca[];
   matchRate: number;
 }) {
-  const min = diarias[0]?.data ?? "";
-  const max = diarias[diarias.length - 1]?.data ?? "";
-  const [estado, setEstado] = useState<PeriodoState>({ tipo: "mes", dataRef: max });
+  // Estado do filtro vem da sidebar (PeriodoProvider) — mesmo estado, gráficos
+  // reagem sem barra de filtro dentro do conteúdo.
+  const { estado } = usePeriodo();
 
   // "Intervalo" não tem breakdown próprio (ver ADR-007) — cai no snapshot "mês".
   const periodoAtual: PeriodoFixo = estado.tipo === "intervalo" ? "mes" : estado.tipo;
@@ -66,8 +65,34 @@ export function PortalMsClient({
 
   const abas: TabItem[] = [
     {
+      id: "visao-geral",
+      label: "1. Visão Geral",
+      content: (
+        <div>
+          <div className="grid gap-4 grid-cols-1 sm:grid-cols-3">
+            <MetricCard label="Visitas (mês)" value={resumo.visitas} />
+            <MetricCard label="Visitantes únicos" value={resumo.visitantesUnicos} />
+            <MetricCard label="Ações" value={resumo.acoes} />
+          </div>
+          {insightVisitas.variacaoPct !== null && (
+            <div className="mt-4">
+              <StoryCard
+                anchor={
+                  insightVisitas.variacaoPct >= 0
+                    ? `As visitas subiram ${insightVisitas.variacaoPct.toFixed(0)}% na última semana em relação à anterior.`
+                    : `As visitas caíram ${Math.abs(insightVisitas.variacaoPct).toFixed(0)}% na última semana em relação à anterior.`
+                }
+                caption={`Média de ${Math.round(insightVisitas.mediaDiaria).toLocaleString("pt-BR")} visitas/dia nos últimos 30 dias.`}
+                comoLer="Compara a soma de visitas dos últimos 7 dias com os 7 dias anteriores — varia com dia da semana e feriados, não é um indicador isolado de qualidade do portal."
+              />
+            </div>
+          )}
+        </div>
+      ),
+    },
+    {
       id: "perfil",
-      label: "1. Perfil do Cidadão",
+      label: "2. Perfil do Cidadão",
       content: (
         <PerfilCidadaoTab
           tendencia={tendencia}
@@ -82,7 +107,7 @@ export function PortalMsClient({
     },
     {
       id: "busca",
-      label: "2. Intenção de Busca",
+      label: "3. Intenção de Busca",
       content:
         busca.length === 0 ? (
           <EmptyCard message="Sem termos de busca no período." />
@@ -121,7 +146,7 @@ export function PortalMsClient({
     },
     {
       id: "paginas",
-      label: "3. Páginas mais acessadas",
+      label: "4. Páginas mais acessadas",
       content: (
         <div className="overflow-x-auto">
           <div className="flex justify-end mb-2">
@@ -150,14 +175,14 @@ export function PortalMsClient({
     },
     {
       id: "servicos",
-      label: "4. Serviços Consumidos",
+      label: "5. Serviços Consumidos",
       disabled: true,
       disabledReason: "Depende do inventário de Cartas de Serviço (Postgres, exige VPN da SETDIG)",
       content: <EmptyCard message="Em breve — depende do inventário de Cartas de Serviço (Postgres/VPN)." />,
     },
     {
       id: "jornada",
-      label: "5. Fluxo de Navegação",
+      label: "6. Fluxo de Navegação",
       disabled: true,
       disabledReason: "Depende de transitions por URL (N+1 chamadas ao Matomo)",
       content: <EmptyCard message="Em breve — depende de transitions por URL, ainda não extraído." />,
@@ -169,29 +194,7 @@ export function PortalMsClient({
       <ContentTopBar title="Analytics — Portal MS">
         <ExportPdfButton />
       </ContentTopBar>
-      <FilterBar estado={estado} onEstadoChange={setEstado} min={min} max={max} />
       <main className="flex-1 p-4 sm:p-6">
-        <DashboardSection title="Visão geral (mês atual)">
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-3">
-            <MetricCard label="Visitas" value={resumo.visitas} />
-            <MetricCard label="Visitantes únicos" value={resumo.visitantesUnicos} />
-            <MetricCard label="Ações" value={resumo.acoes} />
-          </div>
-          {insightVisitas.variacaoPct !== null && (
-            <div className="mt-4">
-              <StoryCard
-                anchor={
-                  insightVisitas.variacaoPct >= 0
-                    ? `As visitas subiram ${insightVisitas.variacaoPct.toFixed(0)}% na última semana em relação à anterior.`
-                    : `As visitas caíram ${Math.abs(insightVisitas.variacaoPct).toFixed(0)}% na última semana em relação à anterior.`
-                }
-                caption={`Média de ${Math.round(insightVisitas.mediaDiaria).toLocaleString("pt-BR")} visitas/dia nos últimos 30 dias.`}
-                comoLer="Compara a soma de visitas dos últimos 7 dias com os 7 dias anteriores — varia com dia da semana e feriados, não é um indicador isolado de qualidade do portal."
-              />
-            </div>
-          )}
-        </DashboardSection>
-
         <Tabs items={abas} />
       </main>
     </div>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { SidebarLogo } from "@/components/ds/SidebarLogo";
 import { SidebarNavItem } from "@/components/ds/SidebarNavItem";
+import { SidebarPeriodFilter } from "@/components/dashboard/SidebarPeriodFilter";
 import { ThemeToggle } from "@/components/ds/ThemeToggle";
 
 const DOMINIOS = [
@@ -48,11 +49,14 @@ export function Sidebar() {
         }`}
       >
         <SidebarLogo />
-        <nav className="flex-1 py-4 overflow-y-auto" aria-label="Domínios">
-          {DOMINIOS.map((d) => (
-            <SidebarNavItem key={d.rota} {...d} onClick={() => setAberta(false)} />
-          ))}
-        </nav>
+        <div className="flex-1 overflow-y-auto">
+          <nav className="py-4" aria-label="Domínios">
+            {DOMINIOS.map((d) => (
+              <SidebarNavItem key={d.rota} {...d} onClick={() => setAberta(false)} />
+            ))}
+          </nav>
+          <SidebarPeriodFilter />
+        </div>
         <div style={{ borderTop: "1px solid var(--ds-color-border)" }} className="p-4 flex justify-center">
           <ThemeToggle />
         </div>
