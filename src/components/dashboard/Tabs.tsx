@@ -16,9 +16,23 @@ export type TabItem = {
  * pra `window.print()` (ExportPdfButton) exportar todas as abas no PDF, não
  * só a ativa — ver regra @media print em globals.css.
  */
-export function Tabs({ items, defaultId }: { items: TabItem[]; defaultId?: string }) {
+export function Tabs({
+  items,
+  defaultId,
+  ativa: ativaControlada,
+  onAtivaChange,
+}: {
+  items: TabItem[];
+  defaultId?: string;
+  /** Controlado (opcional) — ex. um card de "Destaques" na aba Visão Geral
+   * pulando direto pra outra aba. Sem isso, Tabs gerencia o próprio estado. */
+  ativa?: string;
+  onAtivaChange?: (id: string) => void;
+}) {
   const primeiraHabilitada = items.find((i) => !i.disabled)?.id ?? items[0]?.id;
-  const [ativa, setAtiva] = useState(defaultId ?? primeiraHabilitada);
+  const [ativaInterna, setAtivaInterna] = useState(defaultId ?? primeiraHabilitada);
+  const ativa = ativaControlada ?? ativaInterna;
+  const setAtiva = onAtivaChange ?? setAtivaInterna;
 
   const habilitadas = items.filter((i) => !i.disabled);
 

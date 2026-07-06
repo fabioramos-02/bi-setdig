@@ -1,4 +1,4 @@
-import type { TermoBusca, VisitaDiaria, Navegador } from "./data";
+import type { TermoBusca, VisitaDiaria, Navegador, Dispositivo } from "./data";
 
 /**
  * Cálculos pra storytelling (StoryCard) — réplica do padrão de
@@ -38,4 +38,13 @@ export function calcularInsightNavegador(navegadores: Navegador[]): InsightNaveg
   const total = navegadores.reduce((acc, n) => acc + n.visitas, 0);
   const top = [...navegadores].sort((a, b) => b.visitas - a.visitas)[0];
   return { navegador: top.navegador, participacaoPct: total > 0 ? (top.visitas / total) * 100 : 0 };
+}
+
+export type InsightDispositivo = { dispositivo: string; participacaoPct: number };
+
+export function calcularInsightDispositivo(dispositivos: Dispositivo[]): InsightDispositivo | null {
+  if (dispositivos.length === 0) return null;
+  const total = dispositivos.reduce((acc, d) => acc + d.visitas, 0);
+  const top = [...dispositivos].sort((a, b) => b.visitas - a.visitas)[0];
+  return { dispositivo: top.dispositivo, participacaoPct: total > 0 ? (top.visitas / total) * 100 : 0 };
 }

@@ -1,4 +1,4 @@
-export function MetricCard({ label, value }: { label: string; value: string | number }) {
+export function MetricCard({ label, value, sub }: { label: string; value: string | number; sub?: string }) {
   return (
     <div
       style={{
@@ -14,6 +14,11 @@ export function MetricCard({ label, value }: { label: string; value: string | nu
       <div style={{ color: "var(--ds-color-primary-600)" }} className="text-3xl font-semibold">
         {typeof value === "number" ? value.toLocaleString("pt-BR") : value}
       </div>
+      {sub && (
+        <div style={{ color: "var(--ds-color-text-muted)" }} className="text-xs mt-1">
+          {sub}
+        </div>
+      )}
     </div>
   );
 }

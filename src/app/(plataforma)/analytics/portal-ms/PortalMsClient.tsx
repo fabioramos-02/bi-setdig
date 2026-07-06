@@ -1,18 +1,23 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { EmptyCard } from "@/components/ds/EmptyCard";
 import { ContentTopBar } from "@/components/ds/ContentTopBar";
 import { ExportPdfButton } from "@/components/dashboard/ExportPdfButton";
-import { MetricCard } from "@/components/dashboard/MetricCard";
 import { ExportCsvButton } from "@/components/dashboard/ExportCsvButton";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { Tabs, type TabItem } from "@/components/dashboard/Tabs";
 import { PerfilCidadaoTab } from "./PerfilCidadaoTab";
+import { VisaoGeralTab } from "./VisaoGeralTab";
 import { WordCloud } from "@/components/charts/WordCloud";
 import { aplicarFiltroPeriodo, resumoDoPeriodo } from "@/lib/period-filter";
 import { usePeriodo } from "@/lib/periodo-context";
-import { calcularInsightBusca, calcularInsightVisitas, calcularInsightNavegador } from "@/lib/insights";
+import {
+  calcularInsightBusca,
+  calcularInsightVisitas,
+  calcularInsightNavegador,
+  calcularInsightDispositivo,
+} from "@/lib/insights";
 import type {
   VisitaDiaria,
   BreakdownPorPeriodo,
@@ -24,6 +29,8 @@ import type {
   Pagina,
   TermoBusca,
 } from "@/lib/data";
+
+const ROTULO_PERIODO = { dia: "no dia", semana: "na semana", mes: "no mês", ano: "no ano", intervalo: "no intervalo" };
 
 export function PortalMsClient({
   diarias,
@@ -47,6 +54,7 @@ export function PortalMsClient({
   // Estado do filtro vem da sidebar (PeriodoProvider) — mesmo estado, gráficos
   // reagem sem barra de filtro dentro do conteúdo.
   const { estado } = usePeriodo();
+  const [abaAtiva, setAbaAtiva] = useState("visao-geral");
 
   // "Intervalo" não tem breakdown próprio (ver ADR-007) — cai no snapshot "mês".
   const periodoAtual: PeriodoFixo = estado.tipo === "intervalo" ? "mes" : estado.tipo;
@@ -57,43 +65,29 @@ export function PortalMsClient({
 
   const tendencia = useMemo(() => aplicarFiltroPeriodo(diarias, estado), [diarias, estado]);
   const kpis = useMemo(() => resumoDoPeriodo(diarias, estado), [diarias, estado]);
-  const rotuloPeriodo =
-    { dia: "no dia", semana: "na semana", mes: "no mês", ano: "no ano", intervalo: "no intervalo" }[estado.tipo];
   const insightBusca = calcularInsightBusca(busca);
   const insightVisitas = calcularInsightVisitas(diarias);
   const insightNavegador = calcularInsightNavegador(navegadoresAtual);
+  const insightDispositivo = calcularInsightDispositivo(dispositivosAtual);
+  const paginaTop = paginas[0] ?? null;
 
   const abas: TabItem[] = [
     {
       id: "visao-geral",
       label: "1. Visão Geral",
       content: (
-        <div>
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-3">
-            <MetricCard label={`Visitas ${rotuloPeriodo}`} value={kpis.visitas} />
-            <MetricCard label={`Visitantes únicos ${rotuloPeriodo}`} value={kpis.visitantesUnicos} />
-            <MetricCard label={`Ações ${rotuloPeriodo}`} value={kpis.acoes} />
-          </div>
-          {estado.tipo !== "dia" && (
-            <p style={{ color: "var(--ds-color-text-muted)" }} className="text-xs mt-2">
-              Visitantes únicos somados por dia — em períodos de vários dias é uma aproximação (quem visita em mais de um
-              dia conta mais de uma vez).
-            </p>
-          )}
-          {insightVisitas.variacaoPct !== null && (
-            <div className="mt-4">
-              <StoryCard
-                anchor={
-                  insightVisitas.variacaoPct >= 0
-                    ? `As visitas subiram ${insightVisitas.variacaoPct.toFixed(0)}% na última semana em relação à anterior.`
-                    : `As visitas caíram ${Math.abs(insightVisitas.variacaoPct).toFixed(0)}% na última semana em relação à anterior.`
-                }
-                caption={`Média de ${Math.round(insightVisitas.mediaDiaria).toLocaleString("pt-BR")} visitas/dia nos últimos 30 dias.`}
-                comoLer="Compara a soma de visitas dos últimos 7 dias com os 7 dias anteriores — varia com dia da semana e feriados, não é um indicador isolado de qualidade do portal."
-              />
-            </div>
-          )}
-        </div>
+        <VisaoGeralTab
+          kpis={kpis}
+          rotuloPeriodo={ROTULO_PERIODO[estado.tipo]}
+          cidadesCount={cidadesAtual.length}
+          tendencia={tendencia}
+          insightVisitas={insightVisitas}
+          insightNavegador={insightNavegador}
+          insightDispositivo={insightDispositivo}
+          paginaTop={paginaTop}
+          insightBusca={insightBusca}
+          onIrPara={setAbaAtiva}
+        />
       ),
     },
     {
@@ -101,7 +95,6 @@ export function PortalMsClient({
       label: "2. Perfil do Cidadão",
       content: (
         <PerfilCidadaoTab
-          tendencia={tendencia}
           matchRate={matchRate}
           cidadesAtual={cidadesAtual}
           navegadoresAtual={navegadoresAtual}
@@ -201,7 +194,7 @@ export function PortalMsClient({
         <ExportPdfButton />
       </ContentTopBar>
       <main className="flex-1 p-4 sm:p-6">
-        <Tabs items={abas} />
+        <Tabs items={abas} ativa={abaAtiva} onAtivaChange={setAbaAtiva} />
       </main>
     </div>
   );

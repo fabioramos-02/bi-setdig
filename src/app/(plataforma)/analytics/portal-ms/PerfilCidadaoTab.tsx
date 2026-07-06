@@ -1,17 +1,14 @@
-import { ExportCsvButton } from "@/components/dashboard/ExportCsvButton";
-import { LineChart } from "@/components/charts/LineChart";
 import { BarChart } from "@/components/charts/BarChart";
 import { ChoroplethMap } from "@/components/charts/ChoroplethMap";
 import { BrowserBarChart } from "@/components/charts/BrowserBarChart";
 import { DeviceBarChart } from "@/components/charts/DeviceBarChart";
 import type { InsightNavegador } from "@/lib/insights";
-import type { PontoAgregado } from "@/lib/period-filter";
 import type { Cidade, Navegador, Dispositivo, Horario } from "@/lib/data";
 
 /** Conteúdo da aba "Perfil do Cidadão" — extraído de PortalMsClient pra
- * não estourar o limite de 250 linhas/arquivo (regra da esteira spec-driven). */
+ * não estourar o limite de 250 linhas/arquivo (regra da esteira spec-driven).
+ * Tendência de visitas mora na aba "Visão Geral" (VisaoGeralTab), não aqui. */
 export function PerfilCidadaoTab({
-  tendencia,
   matchRate,
   cidadesAtual,
   navegadoresAtual,
@@ -19,7 +16,6 @@ export function PerfilCidadaoTab({
   dispositivosAtual,
   horariosAtual,
 }: {
-  tendencia: PontoAgregado[];
   matchRate: number;
   cidadesAtual: Cidade[];
   navegadoresAtual: Navegador[];
@@ -29,15 +25,6 @@ export function PerfilCidadaoTab({
 }) {
   return (
     <div className="flex flex-col gap-6">
-      <div>
-        <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold mb-2">
-          Tendência de visitas
-        </h3>
-        <div className="flex justify-end mb-2">
-          <ExportCsvButton rows={tendencia} filename="visitas-por-periodo" />
-        </div>
-        <LineChart data={tendencia} xKey="rotulo" yKey="visitas" />
-      </div>
       <div className="grid gap-6 grid-cols-1 lg:grid-cols-2">
         <div>
           <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold mb-2">
