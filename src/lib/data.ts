@@ -34,6 +34,24 @@ export function getGa4VisaoGeral(): GA4Overview[] | null {
   return readDataset<GA4Overview[]>("ga4", "v1", "visao-geral");
 }
 
+export type Plataforma = { operatingSystem: string; activeUsers: number };
+export type Servico = { servico: string; acessos: number };
+export type EventoFunil = { evento: string; usuarios: number };
+export type HorarioGa4 = { hora: string; sessoes: number };
+
+export function getGa4Plataforma(): Plataforma[] {
+  return readDataset<Plataforma[]>("ga4", "v1", "plataforma") ?? [];
+}
+export function getGa4Servicos(): Servico[] {
+  return readDataset<Servico[]>("ga4", "v1", "servicos") ?? [];
+}
+export function getGa4Funil(): EventoFunil[] {
+  return readDataset<EventoFunil[]>("ga4", "v1", "funil") ?? [];
+}
+export function getGa4Horarios(): HorarioGa4[] {
+  return readDataset<HorarioGa4[]>("ga4", "v1", "horarios") ?? [];
+}
+
 export type Cidade = { cidade: string; visitas: number };
 export type Navegador = { navegador: string; visitas: number };
 export type Dispositivo = { dispositivo: string; visitas: number };

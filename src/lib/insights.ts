@@ -1,4 +1,4 @@
-import type { TermoBusca, Navegador, Dispositivo } from "./data";
+import type { TermoBusca, Navegador, Dispositivo, Plataforma, Servico, EventoFunil } from "./data";
 import type { PeriodoTipo, PontoAgregado } from "./period-filter";
 
 /**
@@ -63,4 +63,71 @@ export function calcularInsightDispositivo(dispositivos: Dispositivo[]): Insight
   const total = dispositivos.reduce((acc, d) => acc + d.visitas, 0);
   const top = [...dispositivos].sort((a, b) => b.visitas - a.visitas)[0];
   return { dispositivo: top.dispositivo, participacaoPct: total > 0 ? (top.visitas / total) * 100 : 0 };
+}
+
+export type InsightPlataforma = { operatingSystem: string; participacaoPct: number };
+
+export function calcularInsightPlataforma(plataformas: Plataforma[]): InsightPlataforma | null {
+  if (plataformas.length === 0) return null;
+  const total = plataformas.reduce((acc, p) => acc + p.activeUsers, 0);
+  const top = [...plataformas].sort((a, b) => b.activeUsers - a.activeUsers)[0];
+  return { operatingSystem: top.operatingSystem, participacaoPct: total > 0 ? (top.activeUsers / total) * 100 : 0 };
+}
+
+export type InsightServico = { servico: string; participacaoPct: number };
+
+export function calcularInsightServico(servicos: Servico[]): InsightServico | null {
+  if (servicos.length === 0) return null;
+  const total = servicos.reduce((acc, s) => acc + s.acessos, 0);
+  const top = [...servicos].sort((a, b) => b.acessos - a.acessos)[0];
+  return { servico: top.servico, participacaoPct: total > 0 ? (top.acessos / total) * 100 : 0 };
+}
+
+/** Rótulo de estágio pro funil de aquisição -> ativação -> navegação ->
+ * retenção — porta de _EVENTOS_SISTEMA em views/ms_digital/tab4_jornada.py. */
+const ROTULO_ESTAGIO: Record<string, string> = {
+  first_open: "Aquisição (Downloads)",
+  session_start: "Ativação (Sessão)",
+  screen_view: "Navegação (Telas)",
+  user_engagement: "Retenção (Engajamento)",
+};
+
+export function rotuloEstagioFunil(evento: string): string {
+  return ROTULO_ESTAGIO[evento] ?? evento;
+}
+
+/** Interpretação fixa por transição — porta do bloco "Interpretando o
+ * número" em views/ms_digital/tab4_jornada.py (o legado escolhia o texto
+ * via if/elif na maior queda; aqui é a mesma escolha, só que como mapa). */
+const INTERPRETACAO_QUEDA: Record<string, string> = {
+  "first_open->session_start": "Baixam o app mas não chegam a abrir/logar de fato.",
+  "session_start->screen_view": "Abrem o app mas não encontram o que precisam, ou acham a interface confusa.",
+  "screen_view->user_engagement": "Usam o app pontualmente mas não criam hábito de retorno.",
+};
+
+export type InsightFunil = {
+  estagioAtual: string;
+  estagioProximo: string;
+  quedaPct: number;
+  usuariosPerdidos: number;
+  interpretacao: string;
+};
+
+/** Acha a maior queda entre estágios consecutivos do funil — peça central
+ * do storytelling do domínio (identifica onde o cidadão abandona o app). */
+export function calcularInsightFunil(funil: EventoFunil[]): InsightFunil | null {
+  if (funil.length < 2) return null;
+  const quedas = funil.slice(0, -1).map((estagio, i) => {
+    const proximo = funil[i + 1];
+    const quedaPct = estagio.usuarios > 0 ? ((estagio.usuarios - proximo.usuarios) / estagio.usuarios) * 100 : 0;
+    return {
+      estagioAtual: estagio.evento,
+      estagioProximo: proximo.evento,
+      quedaPct,
+      usuariosPerdidos: estagio.usuarios - proximo.usuarios,
+    };
+  });
+  const maior = quedas.reduce((a, b) => (b.quedaPct > a.quedaPct ? b : a));
+  const chave = `${maior.estagioAtual}->${maior.estagioProximo}`;
+  return { ...maior, interpretacao: INTERPRETACAO_QUEDA[chave] ?? "Ponto de atenção — investigar contexto específico dessa transição." };
 }

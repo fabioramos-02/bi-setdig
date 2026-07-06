@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ga4/funil",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["evento", "usuarios"],
+    "properties": {
+      "evento": { "type": "string", "enum": ["first_open", "session_start", "screen_view", "user_engagement"] },
+      "usuarios": { "type": "integer", "minimum": 0 }
+    }
+  }
+}

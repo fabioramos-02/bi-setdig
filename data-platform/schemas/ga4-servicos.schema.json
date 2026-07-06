@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ga4/servicos",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["servico", "acessos"],
+    "properties": {
+      "servico": { "type": "string" },
+      "acessos": { "type": "integer", "minimum": 0 }
+    }
+  }
+}

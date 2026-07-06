@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ga4/plataforma",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["operatingSystem", "activeUsers"],
+    "properties": {
+      "operatingSystem": { "type": "string" },
+      "activeUsers": { "type": "integer", "minimum": 0 }
+    }
+  }
+}

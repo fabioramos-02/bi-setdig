@@ -100,6 +100,33 @@ def run_ga4() -> None:
     print(f"[ga4] ok -> {out} ({len(rows)} linhas)")
 
 
+def run_ga4_perfil() -> None:
+    # ponytail: snapshot fixo 30 dias, sem breakdown por período (dia/semana/
+    # mes/ano) como o Matomo tem (ADR-007) — 4x o custo de API pra um domínio
+    # que no dashboard legado também não tinha filtro dinâmico de período.
+    start, end = "30daysAgo", "today"
+
+    plataforma = ga4.get_platform(start, end)
+    validate_rows(plataforma, required=["operatingSystem", "activeUsers"], non_negative=["activeUsers"])
+    publish("ga4", "plataforma", plataforma)
+    print(f"[ga4] plataforma -> {len(plataforma)} linhas")
+
+    servicos = ga4.get_services(start, end)
+    validate_rows(servicos, required=["servico", "acessos"], non_negative=["acessos"])
+    publish("ga4", "servicos", servicos)
+    print(f"[ga4] servicos -> {len(servicos)} linhas")
+
+    funil = ga4.get_funnel(start, end)
+    validate_rows(funil, required=["evento", "usuarios"], non_negative=["usuarios"])
+    publish("ga4", "funil", funil)
+    print(f"[ga4] funil -> {len(funil)} linhas")
+
+    horarios = ga4.get_visit_time(start, end)
+    validate_rows(horarios, required=["hora", "sessoes"], non_negative=["sessoes"])
+    publish("ga4", "horarios", horarios)
+    print(f"[ga4] horarios -> {len(horarios)} linhas")
+
+
 def run_cartas() -> None:
     from extract import cartas
 
@@ -115,6 +142,7 @@ if __name__ == "__main__":
         ("matomo", run_matomo),
         ("matomo_perfil", run_matomo_perfil),
         ("ga4", run_ga4),
+        ("ga4_perfil", run_ga4_perfil),
         ("cartas", run_cartas),
     ]:
         try:

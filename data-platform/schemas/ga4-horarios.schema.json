@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ga4/horarios",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["hora", "sessoes"],
+    "properties": {
+      "hora": { "type": "string" },
+      "sessoes": { "type": "integer", "minimum": 0 }
+    }
+  }
+}
