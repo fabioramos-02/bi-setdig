@@ -1,4 +1,5 @@
-import type { TermoBusca, VisitaDiaria, Navegador, Dispositivo } from "./data";
+import type { TermoBusca, Navegador, Dispositivo } from "./data";
+import type { PeriodoTipo, PontoAgregado } from "./period-filter";
 
 /**
  * Cálculos pra storytelling (StoryCard) — réplica do padrão de
@@ -14,21 +15,36 @@ export function calcularInsightBusca(termos: TermoBusca[]): InsightBusca | null 
   return { termo: top.termo, buscas: top.buscas, participacaoPct: total > 0 ? (top.buscas / total) * 100 : 0 };
 }
 
-export type InsightVisitas = { mediaDiaria: number; ultimoDia: number; variacaoPct: number | null };
+/** Rótulos em português pro período atual/anterior, conforme o tipo de
+ * filtro selecionado — usados na frase do StoryCard. */
+const ROTULOS: Record<Exclude<PeriodoTipo, "intervalo">, { rotuloAtual: string; rotuloAnterior: string }> = {
+  dia: { rotuloAtual: "Hoje", rotuloAnterior: "ontem" },
+  semana: { rotuloAtual: "Esta semana", rotuloAnterior: "a semana passada" },
+  mes: { rotuloAtual: "Este mês", rotuloAnterior: "o mês passado" },
+  ano: { rotuloAtual: "Este ano", rotuloAnterior: "o ano passado" },
+};
 
-export function calcularInsightVisitas(diarias: VisitaDiaria[]): InsightVisitas {
-  const ultimos30 = diarias.slice(-30);
-  const mediaDiaria = ultimos30.length > 0 ? ultimos30.reduce((acc, d) => acc + d.visitas, 0) / ultimos30.length : 0;
-  const ultimoDia = diarias.at(-1)?.visitas ?? 0;
+export type InsightVisitas = {
+  variacaoPct: number | null;
+  visitasAtual: number;
+  visitasAnterior: number;
+  rotuloAtual: string;
+  rotuloAnterior: string;
+};
 
-  let variacaoPct: number | null = null;
-  if (diarias.length >= 14) {
-    const semanaAtual = diarias.slice(-7).reduce((acc, d) => acc + d.visitas, 0);
-    const semanaAnterior = diarias.slice(-14, -7).reduce((acc, d) => acc + d.visitas, 0);
-    variacaoPct = semanaAnterior > 0 ? ((semanaAtual - semanaAnterior) / semanaAnterior) * 100 : null;
-  }
-
-  return { mediaDiaria, ultimoDia, variacaoPct };
+/**
+ * Compara o último ponto da série já agregada (`tendencia`, ver
+ * period-filter.ts) com o ponto anterior — reage ao período escolhido no
+ * filtro (dia vs ontem, mês vs mês passado, ano vs ano passado). Sem
+ * comparação em "Intervalo de datas": não há um "período anterior" óbvio
+ * pra um range arbitrário escolhido à mão.
+ */
+export function calcularInsightVisitas(tendencia: PontoAgregado[], tipo: PeriodoTipo): InsightVisitas | null {
+  if (tipo === "intervalo" || tendencia.length < 2) return null;
+  const atual = tendencia[tendencia.length - 1].visitas;
+  const anterior = tendencia[tendencia.length - 2].visitas;
+  const variacaoPct = anterior > 0 ? ((atual - anterior) / anterior) * 100 : null;
+  return { variacaoPct, visitasAtual: atual, visitasAnterior: anterior, ...ROTULOS[tipo] };
 }
 
 export type InsightNavegador = { navegador: string; participacaoPct: number };

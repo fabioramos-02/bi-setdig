@@ -26,7 +26,7 @@ export function VisaoGeralTab({
   rotuloPeriodo: string;
   cidadesCount: number;
   tendencia: PontoAgregado[];
-  insightVisitas: InsightVisitas;
+  insightVisitas: InsightVisitas | null;
   insightNavegador: InsightNavegador | null;
   insightDispositivo: InsightDispositivo | null;
   paginaTop: Pagina | null;
@@ -42,15 +42,13 @@ export function VisaoGeralTab({
         <MetricCard label="Cidades com acesso (MS)" value={cidadesCount} sub="de 78 municípios" />
       </div>
 
-      {insightVisitas.variacaoPct !== null && (
+      {insightVisitas && insightVisitas.variacaoPct !== null && (
         <StoryCard
-          anchor={
-            insightVisitas.variacaoPct >= 0
-              ? `As visitas subiram ${insightVisitas.variacaoPct.toFixed(0)}% na última semana em relação à anterior.`
-              : `As visitas caíram ${Math.abs(insightVisitas.variacaoPct).toFixed(0)}% na última semana em relação à anterior.`
-          }
-          caption={`Média de ${Math.round(insightVisitas.mediaDiaria).toLocaleString("pt-BR")} visitas/dia nos últimos 30 dias.`}
-          comoLer="Compara a soma de visitas dos últimos 7 dias com os 7 dias anteriores — varia com dia da semana e feriados, não é um indicador isolado de qualidade do portal."
+          anchor={`${insightVisitas.rotuloAtual} teve ${Math.abs(insightVisitas.variacaoPct).toFixed(0)}% ${
+            insightVisitas.variacaoPct >= 0 ? "a mais" : "a menos"
+          } de visitas do que ${insightVisitas.rotuloAnterior}.`}
+          caption={`${insightVisitas.visitasAtual.toLocaleString("pt-BR")} visitas agora, contra ${insightVisitas.visitasAnterior.toLocaleString("pt-BR")} antes.`}
+          comoLer="Comparamos com o período anterior de mesmo tamanho. Feriados e fins de semana podem mudar esse número — sozinho, ele não diz se o portal está indo bem ou mal."
         />
       )}
 

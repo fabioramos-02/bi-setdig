@@ -66,7 +66,7 @@ export function PortalMsClient({
   const tendencia = useMemo(() => aplicarFiltroPeriodo(diarias, estado), [diarias, estado]);
   const kpis = useMemo(() => resumoDoPeriodo(diarias, estado), [diarias, estado]);
   const insightBusca = calcularInsightBusca(busca);
-  const insightVisitas = calcularInsightVisitas(diarias);
+  const insightVisitas = calcularInsightVisitas(tendencia, estado.tipo);
   const insightNavegador = calcularInsightNavegador(navegadoresAtual);
   const insightDispositivo = calcularInsightDispositivo(dispositivosAtual);
   const paginaTop = paginas[0] ?? null;
