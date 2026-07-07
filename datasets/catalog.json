@@ -88,61 +88,6 @@
     "bytes": 1046
   },
   {
-    "dataset": "visao-geral",
-    "source": "ga4",
-    "owner": "SETDIG",
-    "updatedAt": "2026-07-07T00:42:37.743957+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/ga4-visao-geral.schema.json",
-    "rows": 4,
-    "bytes": 460
-  },
-  {
-    "dataset": "plataforma",
-    "source": "ga4",
-    "owner": "SETDIG",
-    "updatedAt": "2026-07-07T00:42:38.986815+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/ga4-plataforma.schema.json",
-    "rows": 2,
-    "bytes": 134
-  },
-  {
-    "dataset": "servicos",
-    "source": "ga4",
-    "owner": "SETDIG",
-    "updatedAt": "2026-07-07T00:42:40.700480+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/ga4-servicos.schema.json",
-    "rows": 15,
-    "bytes": 996
-  },
-  {
-    "dataset": "funil",
-    "source": "ga4",
-    "owner": "SETDIG",
-    "updatedAt": "2026-07-07T00:42:42.304248+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/ga4-funil.schema.json",
-    "rows": 4,
-    "bytes": 246
-  },
-  {
-    "dataset": "horarios",
-    "source": "ga4",
-    "owner": "SETDIG",
-    "updatedAt": "2026-07-07T00:42:44.155156+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/ga4-horarios.schema.json",
-    "rows": 24,
-    "bytes": 1118
-  },
-  {
     "dataset": "inventario-count",
     "source": "cartas",
     "owner": "SETDIG",
@@ -163,5 +108,60 @@
     "schema": "data-platform/schemas/matomo-perfil-filtro.schema.json",
     "rows": 16,
     "bytes": 44640
+  },
+  {
+    "dataset": "visao-geral",
+    "source": "ga4",
+    "owner": "SETDIG",
+    "updatedAt": "2026-07-07T02:02:47.070974+00:00",
+    "frequency": "daily",
+    "version": "v2",
+    "schema": "data-platform/schemas/ga4-visao-geral.schema.json",
+    "rows": 16,
+    "bytes": 2089
+  },
+  {
+    "dataset": "plataforma",
+    "source": "ga4",
+    "owner": "SETDIG",
+    "updatedAt": "2026-07-07T02:02:47.108627+00:00",
+    "frequency": "daily",
+    "version": "v2",
+    "schema": "data-platform/schemas/ga4-plataforma.schema.json",
+    "rows": 8,
+    "bytes": 657
+  },
+  {
+    "dataset": "servicos",
+    "source": "ga4",
+    "owner": "SETDIG",
+    "updatedAt": "2026-07-07T02:02:47.144664+00:00",
+    "frequency": "daily",
+    "version": "v2",
+    "schema": "data-platform/schemas/ga4-servicos.schema.json",
+    "rows": 60,
+    "bytes": 4521
+  },
+  {
+    "dataset": "funil",
+    "source": "ga4",
+    "owner": "SETDIG",
+    "updatedAt": "2026-07-07T02:02:47.166325+00:00",
+    "frequency": "daily",
+    "version": "v2",
+    "schema": "data-platform/schemas/ga4-funil.schema.json",
+    "rows": 16,
+    "bytes": 1169
+  },
+  {
+    "dataset": "horarios",
+    "source": "ga4",
+    "owner": "SETDIG",
+    "updatedAt": "2026-07-07T02:02:47.187436+00:00",
+    "frequency": "daily",
+    "version": "v2",
+    "schema": "data-platform/schemas/ga4-horarios.schema.json",
+    "rows": 96,
+    "bytes": 5297
   }
 ]

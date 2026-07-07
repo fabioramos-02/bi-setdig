@@ -1,0 +1,106 @@
+{
+  "dia": [
+    {
+      "newVsReturning": "returning",
+      "activeUsers": 34510,
+      "sessions": 100895,
+      "screenPageViews": 222993
+    },
+    {
+      "newVsReturning": "new",
+      "activeUsers": 7510,
+      "sessions": 7324,
+      "screenPageViews": 17568
+    },
+    {
+      "newVsReturning": "",
+      "activeUsers": 0,
+      "sessions": 733,
+      "screenPageViews": 60
+    },
+    {
+      "newVsReturning": "(not set)",
+      "activeUsers": 0,
+      "sessions": 22666,
+      "screenPageViews": 377
+    }
+  ],
+  "semana": [
+    {
+      "newVsReturning": "returning",
+      "activeUsers": 34510,
+      "sessions": 100895,
+      "screenPageViews": 222993
+    },
+    {
+      "newVsReturning": "new",
+      "activeUsers": 7510,
+      "sessions": 7324,
+      "screenPageViews": 17568
+    },
+    {
+      "newVsReturning": "",
+      "activeUsers": 0,
+      "sessions": 733,
+      "screenPageViews": 60
+    },
+    {
+      "newVsReturning": "(not set)",
+      "activeUsers": 0,
+      "sessions": 22666,
+      "screenPageViews": 377
+    }
+  ],
+  "mes": [
+    {
+      "newVsReturning": "returning",
+      "activeUsers": 34510,
+      "sessions": 100895,
+      "screenPageViews": 222993
+    },
+    {
+      "newVsReturning": "new",
+      "activeUsers": 7510,
+      "sessions": 7324,
+      "screenPageViews": 17568
+    },
+    {
+      "newVsReturning": "",
+      "activeUsers": 0,
+      "sessions": 733,
+      "screenPageViews": 60
+    },
+    {
+      "newVsReturning": "(not set)",
+      "activeUsers": 0,
+      "sessions": 22666,
+      "screenPageViews": 377
+    }
+  ],
+  "ano": [
+    {
+      "newVsReturning": "returning",
+      "activeUsers": 34510,
+      "sessions": 100895,
+      "screenPageViews": 222993
+    },
+    {
+      "newVsReturning": "new",
+      "activeUsers": 7510,
+      "sessions": 7324,
+      "screenPageViews": 17568
+    },
+    {
+      "newVsReturning": "",
+      "activeUsers": 0,
+      "sessions": 733,
+      "screenPageViews": 60
+    },
+    {
+      "newVsReturning": "(not set)",
+      "activeUsers": 0,
+      "sessions": 22666,
+      "screenPageViews": 377
+    }
+  ]
+}

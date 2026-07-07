@@ -1,0 +1,74 @@
+{
+  "dia": [
+    {
+      "evento": "first_open",
+      "usuarios": 7603
+    },
+    {
+      "evento": "session_start",
+      "usuarios": 44561
+    },
+    {
+      "evento": "screen_view",
+      "usuarios": 27695
+    },
+    {
+      "evento": "user_engagement",
+      "usuarios": 38481
+    }
+  ],
+  "semana": [
+    {
+      "evento": "first_open",
+      "usuarios": 7603
+    },
+    {
+      "evento": "session_start",
+      "usuarios": 44561
+    },
+    {
+      "evento": "screen_view",
+      "usuarios": 27695
+    },
+    {
+      "evento": "user_engagement",
+      "usuarios": 38481
+    }
+  ],
+  "mes": [
+    {
+      "evento": "first_open",
+      "usuarios": 7603
+    },
+    {
+      "evento": "session_start",
+      "usuarios": 44561
+    },
+    {
+      "evento": "screen_view",
+      "usuarios": 27695
+    },
+    {
+      "evento": "user_engagement",
+      "usuarios": 38481
+    }
+  ],
+  "ano": [
+    {
+      "evento": "first_open",
+      "usuarios": 7603
+    },
+    {
+      "evento": "session_start",
+      "usuarios": 44561
+    },
+    {
+      "evento": "screen_view",
+      "usuarios": 27695
+    },
+    {
+      "evento": "user_engagement",
+      "usuarios": 38481
+    }
+  ]
+}

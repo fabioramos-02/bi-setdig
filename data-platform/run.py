@@ -29,6 +29,16 @@ PERIODOS_FIXOS = {
     "ano": ("year", "today"),
 }
 
+# GA4 não tem period=week/month nativo — usa faixas relativas (Data API). Mapeia
+# os 4 períodos fixos do portal (ADR-007) pra janelas equivalentes, pra o filtro
+# funcionar em /analytics/ms-digital igual ao Portal MS.
+GA4_PERIODOS = {
+    "dia": ("today", "today"),
+    "semana": ("7daysAgo", "today"),
+    "mes": ("30daysAgo", "today"),
+    "ano": ("365daysAgo", "today"),
+}
+
 
 def run_matomo() -> None:
     raw = matomo.get_visits_summary(period="month", date="today")
@@ -113,37 +123,41 @@ def run_matomo_perfil_filtro() -> None:
 
 
 def run_ga4() -> None:
-    rows = ga4.get_overview(start_date="30daysAgo", end_date="today")
-    validate_rows(rows, required=["newVsReturning", "activeUsers"], non_negative=["activeUsers", "sessions", "screenPageViews"])
-    out = publish("ga4", "visao-geral", rows)
-    print(f"[ga4] ok -> {out} ({len(rows)} linhas)")
+    # visao-geral vira breakdown por período (v2) — o filtro do MS Digital
+    # precisa recortar os KPIs por dia/semana/mes/ano (ADR-007).
+    visao = {}
+    for chave, (start, end) in GA4_PERIODOS.items():
+        visao[chave] = ga4.get_overview(start_date=start, end_date=end)
+    validate_period_breakdown(visao, ["newVsReturning", "activeUsers"], ["activeUsers", "sessions", "screenPageViews"])
+    out = publish("ga4", "visao-geral", visao, version="v2")
+    print(f"[ga4] visao-geral -> {out} ({[(k, len(v)) for k, v in visao.items()]})")
 
 
 def run_ga4_perfil() -> None:
-    # ponytail: snapshot fixo 30 dias, sem breakdown por período (dia/semana/
-    # mes/ano) como o Matomo tem (ADR-007) — 4x o custo de API pra um domínio
-    # que no dashboard legado também não tinha filtro dinâmico de período.
-    start, end = "30daysAgo", "today"
+    # Breakdown por período fixo (v2), espelhando run_matomo_perfil — 4x o custo
+    # de API, agora justificado: o filtro de período vale pra todas as abas.
+    plataforma, servicos, funil, horarios = {}, {}, {}, {}
+    for chave, (start, end) in GA4_PERIODOS.items():
+        plataforma[chave] = ga4.get_platform(start, end)
+        servicos[chave] = ga4.get_services(start, end)
+        funil[chave] = ga4.get_funnel(start, end)
+        horarios[chave] = ga4.get_visit_time(start, end)
 
-    plataforma = ga4.get_platform(start, end)
-    validate_rows(plataforma, required=["operatingSystem", "activeUsers"], non_negative=["activeUsers"])
-    publish("ga4", "plataforma", plataforma)
-    print(f"[ga4] plataforma -> {len(plataforma)} linhas")
+    validate_period_breakdown(plataforma, ["operatingSystem", "activeUsers"], ["activeUsers"])
+    publish("ga4", "plataforma", plataforma, version="v2")
+    print(f"[ga4] plataforma -> {[(k, len(v)) for k, v in plataforma.items()]}")
 
-    servicos = ga4.get_services(start, end)
-    validate_rows(servicos, required=["servico", "acessos"], non_negative=["acessos"])
-    publish("ga4", "servicos", servicos)
-    print(f"[ga4] servicos -> {len(servicos)} linhas")
+    validate_period_breakdown(servicos, ["servico", "acessos"], ["acessos"])
+    publish("ga4", "servicos", servicos, version="v2")
+    print(f"[ga4] servicos -> {[(k, len(v)) for k, v in servicos.items()]}")
 
-    funil = ga4.get_funnel(start, end)
-    validate_rows(funil, required=["evento", "usuarios"], non_negative=["usuarios"])
-    publish("ga4", "funil", funil)
-    print(f"[ga4] funil -> {len(funil)} linhas")
+    validate_period_breakdown(funil, ["evento", "usuarios"], ["usuarios"])
+    publish("ga4", "funil", funil, version="v2")
+    print(f"[ga4] funil -> {[(k, len(v)) for k, v in funil.items()]}")
 
-    horarios = ga4.get_visit_time(start, end)
-    validate_rows(horarios, required=["hora", "sessoes"], non_negative=["sessoes"])
-    publish("ga4", "horarios", horarios)
-    print(f"[ga4] horarios -> {len(horarios)} linhas")
+    validate_period_breakdown(horarios, ["hora", "sessoes"], ["sessoes"])
+    publish("ga4", "horarios", horarios, version="v2")
+    print(f"[ga4] horarios -> {[(k, len(v)) for k, v in horarios.items()]}")
 
 
 def run_cartas() -> None:

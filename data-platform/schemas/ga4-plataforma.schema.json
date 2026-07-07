@@ -1,13 +1,26 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "ga4/plataforma",
-  "type": "array",
-  "items": {
-    "type": "object",
-    "required": ["operatingSystem", "activeUsers"],
-    "properties": {
-      "operatingSystem": { "type": "string" },
-      "activeUsers": { "type": "integer", "minimum": 0 }
+  "description": "1 chave por período fixo (dia/semana/mes/ano) — ver ADR-007 (v2)",
+  "type": "object",
+  "required": ["dia", "semana", "mes", "ano"],
+  "properties": {
+    "dia": { "$ref": "#/definitions/linhas" },
+    "semana": { "$ref": "#/definitions/linhas" },
+    "mes": { "$ref": "#/definitions/linhas" },
+    "ano": { "$ref": "#/definitions/linhas" }
+  },
+  "definitions": {
+    "linhas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["operatingSystem", "activeUsers"],
+        "properties": {
+          "operatingSystem": { "type": "string" },
+          "activeUsers": { "type": "integer", "minimum": 0 }
+        }
+      }
     }
   }
 }
