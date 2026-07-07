@@ -2,9 +2,9 @@
   "dia": [
     {
       "newVsReturning": "returning",
-      "activeUsers": 657,
-      "sessions": 719,
-      "screenPageViews": 1439
+      "activeUsers": 662,
+      "sessions": 725,
+      "screenPageViews": 1452
     },
     {
       "newVsReturning": "new",
@@ -22,9 +22,9 @@
   "semana": [
     {
       "newVsReturning": "returning",
-      "activeUsers": 15776,
+      "activeUsers": 15782,
       "sessions": 31264,
-      "screenPageViews": 76604
+      "screenPageViews": 76617
     },
     {
       "newVsReturning": "new",
@@ -50,7 +50,7 @@
       "newVsReturning": "returning",
       "activeUsers": 34285,
       "sessions": 99390,
-      "screenPageViews": 222521
+      "screenPageViews": 222534
     },
     {
       "newVsReturning": "new",
@@ -76,7 +76,7 @@
       "newVsReturning": "returning",
       "activeUsers": 132593,
       "sessions": 1182655,
-      "screenPageViews": 2592349
+      "screenPageViews": 2592362
     },
     {
       "newVsReturning": "new",
