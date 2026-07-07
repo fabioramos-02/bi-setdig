@@ -13,6 +13,7 @@ import {
   getMatomoHorarios,
   getMatomoPaginas,
   getMatomoBusca,
+  getMatomoPerfilFiltro,
 } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -38,6 +39,7 @@ export default function AnalyticsPortalMsPage() {
   const horarios = getMatomoHorarios();
   const paginas = getMatomoPaginas();
   const busca = getMatomoBusca();
+  const perfil = getMatomoPerfilFiltro();
 
   if (diarias.length === 0) {
     return (
@@ -66,6 +68,7 @@ export default function AnalyticsPortalMsPage() {
       paginas={paginas}
       busca={busca}
       matchRate={matchRate}
+      perfil={perfil}
     />
   );
 }

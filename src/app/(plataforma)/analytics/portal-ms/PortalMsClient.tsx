@@ -8,6 +8,7 @@ import { ExportCsvButton } from "@/components/dashboard/ExportCsvButton";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { Tabs, type TabItem } from "@/components/dashboard/Tabs";
 import { PerfilCidadaoTab } from "./PerfilCidadaoTab";
+import { ServicosPorPerfilTab } from "./ServicosPorPerfilTab";
 import { VisaoGeralTab } from "./VisaoGeralTab";
 import { WordCloud } from "@/components/charts/WordCloud";
 import { aplicarFiltroPeriodo, chavePeriodoFixo, resumoDoPeriodo } from "@/lib/period-filter";
@@ -28,6 +29,7 @@ import type {
   Horario,
   Pagina,
   TermoBusca,
+  PerfilFiltroPeriodo,
 } from "@/lib/data";
 
 const ROTULO_PERIODO = { dia: "no dia", semana: "na semana", mes: "no mês", ano: "no ano", intervalo: "no intervalo" };
@@ -41,6 +43,7 @@ export function PortalMsClient({
   paginas,
   busca,
   matchRate,
+  perfil,
 }: {
   diarias: VisitaDiaria[];
   navegadores: BreakdownPorPeriodo<Navegador>;
@@ -50,6 +53,7 @@ export function PortalMsClient({
   paginas: Pagina[];
   busca: TermoBusca[];
   matchRate: number;
+  perfil: Record<PeriodoFixo, PerfilFiltroPeriodo>;
 }) {
   // Estado do filtro vem da sidebar (PeriodoProvider) — mesmo estado, gráficos
   // reagem sem barra de filtro dentro do conteúdo.
@@ -62,6 +66,7 @@ export function PortalMsClient({
   const dispositivosAtual = dispositivos[periodoAtual];
   const horariosAtual = horarios[periodoAtual];
   const cidadesAtual = cidades[periodoAtual];
+  const perfilAtual = perfil[periodoAtual];
 
   const tendencia = useMemo(() => aplicarFiltroPeriodo(diarias, estado), [diarias, estado]);
   const kpis = useMemo(() => resumoDoPeriodo(diarias, estado), [diarias, estado]);
@@ -174,10 +179,8 @@ export function PortalMsClient({
     },
     {
       id: "servicos",
-      label: "5. Serviços Consumidos",
-      disabled: true,
-      disabledReason: "Depende do inventário de Cartas de Serviço (Postgres, exige VPN da SETDIG)",
-      content: <EmptyCard message="Em breve — depende do inventário de Cartas de Serviço (Postgres/VPN)." />,
+      label: "5. Serviços por Perfil",
+      content: <ServicosPorPerfilTab dados={perfilAtual} tipoIntervalo={estado.tipo === "intervalo"} />,
     },
     {
       id: "jornada",

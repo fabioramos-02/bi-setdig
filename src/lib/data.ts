@@ -131,7 +131,12 @@ const RESUMO_VAZIO: PerfilResumo = {
   umACada: 0,
   limiarPct: 0,
 };
-const PERIODO_PERFIL_VAZIO: PerfilFiltroPeriodo = { resumo: RESUMO_VAZIO, distribuicao: [], topServicos: [] };
+const PERIODO_PERFIL_VAZIO: PerfilFiltroPeriodo = {
+  resumo: RESUMO_VAZIO,
+  distribuicao: [],
+  topServicos: [],
+  servicosPorPerfil: {},
+};
 const PERFIL_VAZIO: Record<PeriodoFixo, PerfilFiltroPeriodo> = {
   dia: PERIODO_PERFIL_VAZIO,
   semana: PERIODO_PERFIL_VAZIO,
