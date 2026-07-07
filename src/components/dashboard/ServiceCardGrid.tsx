@@ -20,7 +20,7 @@ import type { PerfilServicoCard } from "@/lib/data";
  * + cards em 2 colunas; ordem preservada (a do portal), sem reordenar por visita.
  */
 
-const PORTAL_BASE_URL = "https://www.ms.gov.br";
+export const PORTAL_BASE_URL = "https://www.ms.gov.br";
 
 // Ordem e rótulos do portal.
 const PERFIS: { code: string; label: string }[] = [

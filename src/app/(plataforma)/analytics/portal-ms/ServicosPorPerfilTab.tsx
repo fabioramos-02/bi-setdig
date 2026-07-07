@@ -5,6 +5,7 @@ import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { ServiceCardGrid } from "@/components/dashboard/ServiceCardGrid";
 import { BarChart } from "@/components/charts/BarChart";
 import { FunnelChart } from "@/components/charts/FunnelChart";
+import { ServiceRankingChart } from "@/components/charts/ServiceRankingChart";
 import type { PerfilFiltroPeriodo } from "@/lib/data";
 
 /**
@@ -29,6 +30,7 @@ export function ServicosPorPerfilTab({
   const fracaoHome = resumo.proxyRatePct > 0 ? resumo.usoRealPct / resumo.proxyRatePct : 0;
   const acessosReais = Math.round(resumo.atribuiveis * fracaoHome);
   const perfilTop = distribuicao[0] ?? null;
+  const servicoTop = topServicos[0] ?? null;
 
   return (
     <div>
@@ -114,47 +116,15 @@ export function ServicosPorPerfilTab({
       </DashboardSection>
 
       {/* 5. Top serviços (ranking cruzado) */}
-      <DashboardSection title="Serviços mais acessados (ranking geral)">
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="text-left" style={{ color: "var(--ds-color-text-secondary)" }}>
-                <th className="pb-2">Serviço</th>
-                <th className="pb-2">Perfil</th>
-                <th className="pb-2">Tipo</th>
-                <th className="pb-2 text-right">Visitas</th>
-              </tr>
-            </thead>
-            <tbody>
-              {topServicos.map((s) => (
-                <tr key={s.path} className="border-t" style={{ borderColor: "var(--ds-color-border)" }}>
-                  <td className="py-1.5 pr-3">{s.servico}</td>
-                  <td className="py-1.5 pr-3" style={{ color: "var(--ds-color-text-secondary)" }}>
-                    {s.perfilLabel}
-                  </td>
-                  <td className="py-1.5 pr-3">
-                    <span
-                      className="text-xs px-2 py-0.5 rounded"
-                      style={{
-                        background: "var(--ds-color-background-muted)",
-                        color: s.exclusivo ? "var(--ds-color-success)" : "var(--ds-color-text-muted)",
-                      }}
-                    >
-                      {s.exclusivo ? "exclusivo" : "compartilhado"}
-                    </span>
-                  </td>
-                  <td className="py-1.5 text-right font-semibold" style={{ color: "var(--ds-color-primary-600)" }}>
-                    {s.visitas.toLocaleString("pt-BR")}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <p className="mt-3 text-xs" style={{ color: "var(--ds-color-text-muted)" }}>
-          Ranking por visitas somando todos os perfis (distinto do grid acima, que é por perfil).{" "}
-          <strong>Exclusivo</strong>: serviço de um único perfil. <strong>Compartilhado</strong>: em 2+ perfis.
-        </p>
+      <DashboardSection title="Serviços mais acessados">
+        {servicoTop && (
+          <p className="mb-4 text-sm" style={{ color: "var(--ds-color-text-secondary)" }}>
+            <strong>{servicoTop.servico}</strong> lidera com {servicoTop.visitas.toLocaleString("pt-BR")} visitas —{" "}
+            {(servicoTop.visitas / (topServicos[1]?.visitas || 1)).toFixed(1)}x o segundo colocado. Clique num serviço
+            para abrir no portal.
+          </p>
+        )}
+        <ServiceRankingChart servicos={topServicos} />
       </DashboardSection>
     </div>
   );
