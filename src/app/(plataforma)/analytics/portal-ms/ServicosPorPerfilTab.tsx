@@ -5,8 +5,9 @@ import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { ServiceCardGrid } from "@/components/dashboard/ServiceCardGrid";
 import { BarChart } from "@/components/charts/BarChart";
 import { FunnelChart } from "@/components/charts/FunnelChart";
-import { ServiceRankingChart } from "@/components/charts/ServiceRankingChart";
-import type { PerfilFiltroPeriodo } from "@/lib/data";
+import { RankingBarChart } from "@/components/charts/RankingBarChart";
+import { PORTAL_BASE_URL } from "@/components/dashboard/ServiceCardGrid";
+import type { PerfilFiltroPeriodo, ServicoAcessado } from "@/lib/data";
 
 /**
  * Adoção do filtro de Perfil do Portal Único (estudo portado do bench-carta).
@@ -15,19 +16,21 @@ import type { PerfilFiltroPeriodo } from "@/lib/data";
  */
 export function ServicosPorPerfilTab({
   dados,
+  servicosMaisAcessados,
   tipoIntervalo,
 }: {
   dados: PerfilFiltroPeriodo;
+  servicosMaisAcessados: ServicoAcessado[];
   tipoIntervalo: boolean;
 }) {
-  const { resumo, distribuicao, topServicos, servicosPorPerfil } = dados;
+  const { resumo, distribuicao, servicosPorPerfil } = dados;
 
   if (resumo.homeVisitors === 0) {
     return <EmptyCard message="Sem dados de adoção do filtro de Perfil no período." />;
   }
 
   const perfilTop = distribuicao[0] ?? null;
-  const servicoTop = topServicos[0] ?? null;
+  const servicoTop = servicosMaisAcessados[0] ?? null;
   // fração de correção (~1,5%, amostra pequena de 2025 — ver transform/perfil.py)
   // derivada de volta dos percentuais já calculados, sem repetir a constante aqui.
   const fracaoEstimativa = resumo.proxyRatePct > 0 ? resumo.usoRealPct / resumo.proxyRatePct : 0;
@@ -115,16 +118,28 @@ export function ServicosPorPerfilTab({
         </p>
       </DashboardSection>
 
-      {/* 5. Top serviços (ranking cruzado) */}
+      {/* 5. Serviços mais acessados (reais do portal, não só os do filtro de Perfil) */}
       <DashboardSection title="Serviços mais acessados">
-        {servicoTop && (
-          <p className="mb-4 text-sm" style={{ color: "var(--ds-color-text-secondary)" }}>
-            <strong>{servicoTop.servico}</strong> lidera com {servicoTop.visitas.toLocaleString("pt-BR")} visitas —{" "}
-            {(servicoTop.visitas / (topServicos[1]?.visitas || 1)).toFixed(1)}x o segundo colocado. Clique num serviço
-            para abrir no portal.
+        {servicoTop ? (
+          <>
+            <p className="mb-4 text-sm" style={{ color: "var(--ds-color-text-secondary)" }}>
+              <strong>{servicoTop.servico}</strong> lidera com {servicoTop.visitas.toLocaleString("pt-BR")} visitas —{" "}
+              {(servicoTop.visitas / (servicosMaisAcessados[1]?.visitas || 1)).toFixed(1)}x o segundo colocado. Barra
+              mais longa e mais escura = mais visitas. Clique num serviço para abrir no portal.
+            </p>
+            <RankingBarChart
+              itens={servicosMaisAcessados.map((s) => ({
+                label: s.servico,
+                valor: s.visitas,
+                href: `${PORTAL_BASE_URL}${s.path}`,
+              }))}
+            />
+          </>
+        ) : (
+          <p className="text-sm" style={{ color: "var(--ds-color-text-muted)" }}>
+            Sem serviços acessados no período.
           </p>
         )}
-        <ServiceRankingChart servicos={topServicos} />
       </DashboardSection>
     </div>
   );

@@ -30,6 +30,7 @@ import type {
   Pagina,
   TermoBusca,
   PerfilFiltroPeriodo,
+  ServicoAcessado,
 } from "@/lib/data";
 
 const ROTULO_PERIODO = { dia: "no dia", semana: "na semana", mes: "no mês", ano: "no ano", intervalo: "no intervalo" };
@@ -44,6 +45,7 @@ export function PortalMsClient({
   busca,
   matchRate,
   perfil,
+  servicosMaisAcessados,
 }: {
   diarias: VisitaDiaria[];
   navegadores: BreakdownPorPeriodo<Navegador>;
@@ -54,6 +56,7 @@ export function PortalMsClient({
   busca: TermoBusca[];
   matchRate: number;
   perfil: Record<PeriodoFixo, PerfilFiltroPeriodo>;
+  servicosMaisAcessados: BreakdownPorPeriodo<ServicoAcessado>;
 }) {
   // Estado do filtro vem da sidebar (PeriodoProvider) — mesmo estado, gráficos
   // reagem sem barra de filtro dentro do conteúdo.
@@ -67,6 +70,7 @@ export function PortalMsClient({
   const horariosAtual = horarios[periodoAtual];
   const cidadesAtual = cidades[periodoAtual];
   const perfilAtual = perfil[periodoAtual];
+  const servicosAcessadosAtual = servicosMaisAcessados[periodoAtual];
 
   const tendencia = useMemo(() => aplicarFiltroPeriodo(diarias, estado), [diarias, estado]);
   const kpis = useMemo(() => resumoDoPeriodo(diarias, estado), [diarias, estado]);
@@ -180,7 +184,13 @@ export function PortalMsClient({
     {
       id: "servicos",
       label: "5. Serviços por Perfil",
-      content: <ServicosPorPerfilTab dados={perfilAtual} tipoIntervalo={estado.tipo === "intervalo"} />,
+      content: (
+        <ServicosPorPerfilTab
+          dados={perfilAtual}
+          servicosMaisAcessados={servicosAcessadosAtual}
+          tipoIntervalo={estado.tipo === "intervalo"}
+        />
+      ),
     },
     {
       id: "jornada",

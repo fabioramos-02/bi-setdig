@@ -1,0 +1,728 @@
+[
+  {
+    "categoria": "Coronavírus",
+    "servico": "Alerta Coronavírus",
+    "tipo": "web",
+    "ativo": false
+  },
+  {
+    "categoria": "Coronavírus",
+    "servico": "Exames",
+    "tipo": "web",
+    "ativo": false
+  },
+  {
+    "categoria": "Agronegócio",
+    "servico": "Agrotóxico",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Agronegócio",
+    "servico": "Animal Identificado",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Agronegócio",
+    "servico": "Cadastro de Plantio",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Agronegócio",
+    "servico": "Cadastro de Produtor",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Agronegócio",
+    "servico": "Documento de Trânsito",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Agronegócio",
+    "servico": "e-CIS-E",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Agronegócio",
+    "servico": "Estabelecimentos",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Agronegócio",
+    "servico": "Eventos",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Agronegócio",
+    "servico": "Ferrugem da Soja",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Agronegócio",
+    "servico": "Ficha Sanitária",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Agronegócio",
+    "servico": "Laboratório",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Agronegócio",
+    "servico": "Laudo Exame",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Agronegócio",
+    "servico": "MANUCÃ",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Agronegócio",
+    "servico": "Mapa das Notificações de Ferrugem",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Agronegócio",
+    "servico": "Núcleo",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Agronegócio",
+    "servico": "Produto",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Agronegócio",
+    "servico": "Profissional",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Agronegócio",
+    "servico": "PTV",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Trânsito",
+    "servico": "Pontuação CNH",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Trânsito",
+    "servico": "Multas",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Trânsito",
+    "servico": "Débito de Veículos",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Trânsito",
+    "servico": "Baixar CRLV",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Trânsito",
+    "servico": "Exames",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Trânsito",
+    "servico": "IPVA",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Trânsito",
+    "servico": "Licenciamento e Multas",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Trânsito",
+    "servico": "B.O. sem Vítimas",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Trânsito",
+    "servico": "Agendamento",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Trânsito",
+    "servico": "Credenciamento",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Trânsito",
+    "servico": "Educação",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Trânsito",
+    "servico": "Outros",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Procon-MS",
+    "servico": "Reclamação On-line",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Procon-MS",
+    "servico": "Denúncia",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Procon-MS",
+    "servico": "Consulta de Processos",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Procon-MS",
+    "servico": "Boletins",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Procon-MS",
+    "servico": "Fale Conosco",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Procon-MS",
+    "servico": "Procons Municipais",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Transparência",
+    "servico": "Pessoal > Servidores",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Transparência",
+    "servico": "Pessoal > Diárias",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Transparência",
+    "servico": "Pessoal > Passagens",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Transparência",
+    "servico": "Receitas > Simplificada",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Transparência",
+    "servico": "Receitas > Consolidada",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Transparência",
+    "servico": "Receitas > Pesquisa de Receita",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Transparência",
+    "servico": "Despesas > Despesa",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Transparência",
+    "servico": "Despesas > Detran - Destinação de Multas",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Transparência",
+    "servico": "Carta de Serviço",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Transparência",
+    "servico": "LGPD",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Segurança",
+    "servico": "Delegacias e Endereços",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Segurança",
+    "servico": "Antecedentes Criminais",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Segurança",
+    "servico": "Agendamento de RG",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Segurança",
+    "servico": "B.O. Online",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Segurança",
+    "servico": "Corpo de Bombeiros Militar > Sistema Prevenir",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Segurança",
+    "servico": "Corpo de Bombeiros Militar > Legislações de Prevenção",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Segurança",
+    "servico": "Corpo de Bombeiros Militar > Regularização",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Segurança",
+    "servico": "Corpo de Bombeiros Militar > Profissionais e Empresas",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Segurança",
+    "servico": "Corpo de Bombeiros Militar > PSCIP",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Segurança",
+    "servico": "Corpo de Bombeiros Militar > Certidão de Ocorrência",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Segurança",
+    "servico": "Corpo de Bombeiros Militar > Outros Assuntos",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Segurança",
+    "servico": "Delegacia Virtual",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Segurança",
+    "servico": "Certificado de Vistoria",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Servidor Público",
+    "servico": "Portal do Servidor > Contracheque",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Servidor Público",
+    "servico": "Portal do Servidor > Informe de Rendimentos",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Servidor Público",
+    "servico": "Portal do Servidor > Carteira Funcional",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Servidor Público",
+    "servico": "Portal do Servidor > BIM",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Servidor Público",
+    "servico": "Clube de Benefícios",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Servidor Público",
+    "servico": "Lista de Eventos",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Servidor Público",
+    "servico": "Pesquisa Décimo Terceiro",
+    "tipo": "web",
+    "ativo": false
+  },
+  {
+    "categoria": "Servidor Público",
+    "servico": "Reltório de Diárias > Documentos Assinados",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Servidor Público",
+    "servico": "Reltório de Diárias > Documentos Pendentes",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Meio Ambiente",
+    "servico": "Estrada Viva > Registrar Notificação",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Meio Ambiente",
+    "servico": "Estrada Viva > Notificações Pendentes",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Meio Ambiente",
+    "servico": "Licenciamento Ambiental",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Meio Ambiente",
+    "servico": "Previsão Semanal",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Meio Ambiente",
+    "servico": "Autorização de Pesca Digital (Carteira)",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Meio Ambiente",
+    "servico": "Autorização de Pesca Digital (Solicitação)",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Mulher MS",
+    "servico": "PEÇA SOCORRO",
+    "tipo": "nativo",
+    "ativo": false
+  },
+  {
+    "categoria": "Mulher MS",
+    "servico": "Delegacias da Mulher",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Mulher MS",
+    "servico": "Combate à Violência",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Mulher MS",
+    "servico": "Sobre seus Direitos",
+    "tipo": "nativo",
+    "ativo": false
+  },
+  {
+    "categoria": "Mulher MS",
+    "servico": "Não se Cale",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Mulher MS",
+    "servico": "Teste Peça Socorro",
+    "tipo": "nativo",
+    "ativo": false
+  },
+  {
+    "categoria": "Mulher MS",
+    "servico": "Denúncias Online",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Mulher MS",
+    "servico": "Protetivas Online",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Saúde",
+    "servico": "Cartão de Vacinação",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Saúde",
+    "servico": "Cartão do SUS Online",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Saúde",
+    "servico": "Cartão do Doador de Sangue",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Saúde",
+    "servico": "Resultado de Exames Hemosul",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Saúde",
+    "servico": "Estabelecimentos de Saúde",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Saúde",
+    "servico": "Medicamentos",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Saúde",
+    "servico": "Exames LACEN",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Saúde",
+    "servico": "Painel de Brucelose de MS",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Saúde",
+    "servico": "Estoque de Sangue - Hemosul",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Saúde",
+    "servico": "Estoque de Medicamento Especializado",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Saúde",
+    "servico": "Emissão de Certificado de Eventos da SES",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "AGEMS",
+    "servico": "WhatsApp",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "AGEMS",
+    "servico": "e-Ouvidoria Agepan",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "AGEMS",
+    "servico": "Horários e Tarifas",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Diário Oficial",
+    "servico": "Diário Oficial",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Turismo",
+    "servico": "VisitMS",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Turismo",
+    "servico": "Observatório de Turismo",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Turismo",
+    "servico": "Turismo",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Entretenimento",
+    "servico": "TV Educativa MS - Canal 4.1",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Entretenimento",
+    "servico": "Rádio Educativa MS - FM 104.7",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Educação",
+    "servico": "Aulas na TV Aberta - Ao vivo",
+    "tipo": "nativo",
+    "ativo": false
+  },
+  {
+    "categoria": "Educação",
+    "servico": "Aulas na TV Aberta - Reprise",
+    "tipo": "nativo",
+    "ativo": false
+  },
+  {
+    "categoria": "Educação",
+    "servico": "Painel do Aluno",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Educação",
+    "servico": "Carteira do Estudante - CDIEMS > Consultar CDIEMS",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Educação",
+    "servico": "Carteira do Estudante - CDIEMS > Solicitar CDIEMS",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Educação",
+    "servico": "Caminho Certo",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Nota Premiada",
+    "servico": "Nota Premiada",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Cultura e Esporte",
+    "servico": "CID - Carteira de Identificação Desportiva",
+    "tipo": "nativo",
+    "ativo": false
+  },
+  {
+    "categoria": "Cultura e Esporte",
+    "servico": "Leia MS",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Habitação",
+    "servico": "Boleto Habitacional",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Trabalho e Qualificação",
+    "servico": "MS Qualifica",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Assistência Social",
+    "servico": "Passe Livre Intermunicipal",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Assistência Social",
+    "servico": "Endereços dos CRAS",
+    "tipo": "nativo",
+    "ativo": true
+  },
+  {
+    "categoria": "Assistência Social",
+    "servico": "MS Supera",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Assistência Social",
+    "servico": "CIPTEA",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "MS.gov",
+    "servico": "Portal Único",
+    "tipo": "web",
+    "ativo": true
+  },
+  {
+    "categoria": "Notícias",
+    "servico": "Portal de notícias",
+    "tipo": "web",
+    "ativo": true
+  }
+]

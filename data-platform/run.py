@@ -111,15 +111,24 @@ def run_matomo_perfil_filtro() -> None:
     transform/perfil.py; aqui só orquestra extract -> transform -> validate -> publish.
     """
     from transform import perfil as t_perfil
+    from transform import servicos as t_servicos
 
     saida = {}
+    mais_acessados = {}
     for chave, (p, d) in PERIODOS_FIXOS.items():
         raw = matomo.get_page_urls(p, d, limit=-1)
         saida[chave] = t_perfil.build_periodo(raw)
+        # Reusa o mesmo snapshot pra ranquear os serviços REAIS mais acessados
+        # do portal (não só os do filtro de Perfil).
+        mais_acessados[chave] = t_servicos.top_servicos_acessados(raw, n=15)
 
     t_perfil.validar(saida)
     publish("matomo", "perfil-filtro", saida)
     print(f"[matomo] perfil-filtro -> {[(k, saida[k]['resumo']['usoRealPct']) for k in saida]}")
+
+    validate_period_breakdown(mais_acessados, ["servico", "path", "visitas"], ["visitas"])
+    publish("matomo", "servicos-mais-acessados", mais_acessados)
+    print(f"[matomo] servicos-mais-acessados -> {[(k, len(v)) for k, v in mais_acessados.items()]}")
 
 
 def run_ga4() -> None:

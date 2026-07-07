@@ -30,26 +30,29 @@ export function getMatomoVisitasResumo(): VisitasResumo[] | null {
   return readDataset<VisitasResumo[]>("matomo", "v1", "visitas-resumo");
 }
 
-export function getGa4VisaoGeral(): GA4Overview[] | null {
-  return readDataset<GA4Overview[]>("ga4", "v1", "visao-geral");
-}
-
 export type Plataforma = { operatingSystem: string; activeUsers: number };
 export type Servico = { servico: string; acessos: number };
 export type EventoFunil = { evento: string; usuarios: number };
 export type HorarioGa4 = { hora: string; sessoes: number };
 
-export function getGa4Plataforma(): Plataforma[] {
-  return readDataset<Plataforma[]>("ga4", "v1", "plataforma") ?? [];
+// GA4 v2: breakdown por período fixo (dia/semana/mes/ano), igual ao Matomo —
+// o filtro do MS Digital agora recorta os KPIs por período (ver run.py::GA4_PERIODOS
+// e ADR-007). BreakdownPorPeriodo/BREAKDOWN_VAZIO definidos abaixo (usados no corpo
+// da função, avaliados só na chamada — sem TDZ).
+export function getGa4VisaoGeral(): BreakdownPorPeriodo<GA4Overview> {
+  return readDataset<BreakdownPorPeriodo<GA4Overview>>("ga4", "v2", "visao-geral") ?? BREAKDOWN_VAZIO;
 }
-export function getGa4Servicos(): Servico[] {
-  return readDataset<Servico[]>("ga4", "v1", "servicos") ?? [];
+export function getGa4Plataforma(): BreakdownPorPeriodo<Plataforma> {
+  return readDataset<BreakdownPorPeriodo<Plataforma>>("ga4", "v2", "plataforma") ?? BREAKDOWN_VAZIO;
 }
-export function getGa4Funil(): EventoFunil[] {
-  return readDataset<EventoFunil[]>("ga4", "v1", "funil") ?? [];
+export function getGa4Servicos(): BreakdownPorPeriodo<Servico> {
+  return readDataset<BreakdownPorPeriodo<Servico>>("ga4", "v2", "servicos") ?? BREAKDOWN_VAZIO;
 }
-export function getGa4Horarios(): HorarioGa4[] {
-  return readDataset<HorarioGa4[]>("ga4", "v1", "horarios") ?? [];
+export function getGa4Funil(): BreakdownPorPeriodo<EventoFunil> {
+  return readDataset<BreakdownPorPeriodo<EventoFunil>>("ga4", "v2", "funil") ?? BREAKDOWN_VAZIO;
+}
+export function getGa4Horarios(): BreakdownPorPeriodo<HorarioGa4> {
+  return readDataset<BreakdownPorPeriodo<HorarioGa4>>("ga4", "v2", "horarios") ?? BREAKDOWN_VAZIO;
 }
 
 export type Cidade = { cidade: string; visitas: number };
@@ -146,4 +149,21 @@ const PERFIL_VAZIO: Record<PeriodoFixo, PerfilFiltroPeriodo> = {
 
 export function getMatomoPerfilFiltro(): Record<PeriodoFixo, PerfilFiltroPeriodo> {
   return readDataset<Record<PeriodoFixo, PerfilFiltroPeriodo>>("matomo", "v1", "perfil-filtro") ?? PERFIL_VAZIO;
+}
+
+// Serviços REAIS mais acessados do portal (todas as páginas de serviço, não só as
+// do filtro de Perfil) — ranqueado por visitas, por período (ADR-007).
+export type ServicoAcessado = { servico: string; path: string; visitas: number };
+
+export function getMatomoServicosMaisAcessados(): BreakdownPorPeriodo<ServicoAcessado> {
+  return readDataset<BreakdownPorPeriodo<ServicoAcessado>>("matomo", "v1", "servicos-mais-acessados") ?? BREAKDOWN_VAZIO;
+}
+
+// --- Catálogo de serviços do app MS Digital (nativo × web) ---
+// Fonte: planilha manual, gerada por data-platform/build_catalogo.py. Estático
+// (não varia por período) — é a relação de serviços, não métrica de uso.
+export type ServicoCatalogo = { categoria: string; servico: string; tipo: "nativo" | "web"; ativo: boolean };
+
+export function getAppCatalogoServicos(): ServicoCatalogo[] {
+  return readDataset<ServicoCatalogo[]>("app", "v1", "catalogo-servicos") ?? [];
 }

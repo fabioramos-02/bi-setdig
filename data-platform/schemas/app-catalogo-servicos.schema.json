@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "app/catalogo-servicos",
+  "description": "Catálogo de serviços do app MS Digital (nativo × web), da planilha manual",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["categoria", "servico", "tipo", "ativo"],
+    "properties": {
+      "categoria": { "type": "string" },
+      "servico": { "type": "string" },
+      "tipo": { "type": "string", "enum": ["nativo", "web"] },
+      "ativo": { "type": "boolean" }
+    }
+  }
+}

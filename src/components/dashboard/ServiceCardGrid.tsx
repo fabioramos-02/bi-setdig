@@ -108,6 +108,15 @@ function ServiceCard({ card }: { card: PerfilServicoCard }) {
           {card.servico}
         </h3>
       </div>
+      {/* Visitas do período no canto — reage ao filtro (dado vem do slice por período). */}
+      <div className="shrink-0 text-right pl-3">
+        <div
+          style={{ color: "var(--ds-color-primary-600)", fontFamily: "var(--ds-font-family-body)", fontSize: "1.125rem", fontWeight: 700, lineHeight: 1 }}
+        >
+          {card.visitas.toLocaleString("pt-BR")}
+        </div>
+        <div style={{ color: "var(--ds-color-text-muted)", fontSize: "0.625rem", marginTop: 2 }}>visitas</div>
+      </div>
     </a>
   );
 }

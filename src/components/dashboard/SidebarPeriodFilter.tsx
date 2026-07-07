@@ -4,12 +4,20 @@ import { usePathname } from "next/navigation";
 import { PeriodFilter } from "@/components/dashboard/PeriodFilter";
 import { usePeriodo } from "@/lib/periodo-context";
 
-const ROTAS_COM_FILTRO = ["/analytics/portal-ms"];
+const ROTAS_COM_FILTRO = ["/analytics/portal-ms", "/analytics/ms-digital"];
+
+// Aviso do modo "intervalo" muda por rota: o Portal MS tem mapa/breakdowns que
+// caem no mês; o MS Digital cai no snapshot do mês inteiro. As demais (vazias)
+// não mostram o filtro.
+const AVISO_INTERVALO: Record<string, string> = {
+  "/analytics/portal-ms": "Mapa, navegadores, dispositivos e horários mostram o mês atual — só a tendência reflete o intervalo.",
+  "/analytics/ms-digital": "Os painéis do app mostram o snapshot do mês quando há um intervalo selecionado.",
+};
 
 /**
- * Filtro de período dentro da sidebar — só aparece nas rotas que têm gráficos
- * reativos a período (hoje, portal-ms). Layout vertical (empilhado), diferente
- * da barra horizontal de antes. Estado vem do PeriodoProvider (context).
+ * Filtro de período dentro da sidebar — aparece nas rotas com dados reativos a
+ * período (portal-ms e ms-digital). Layout vertical (empilhado). Estado vem do
+ * PeriodoProvider (context), compartilhado com o conteúdo.
  */
 export function SidebarPeriodFilter() {
   const pathname = usePathname();
@@ -34,7 +42,7 @@ export function SidebarPeriodFilter() {
       />
       {estado.tipo === "intervalo" && (
         <p style={{ color: "var(--ds-color-text-muted)" }} className="text-xs mt-2">
-          Mapa, navegadores, dispositivos e horários mostram o mês atual — só a tendência reflete o intervalo.
+          {AVISO_INTERVALO[pathname]}
         </p>
       )}
     </div>

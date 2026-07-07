@@ -1,4 +1,4 @@
-import type { TermoBusca, Navegador, Dispositivo, Plataforma, Servico, EventoFunil } from "./data";
+import type { TermoBusca, Navegador, Dispositivo, Plataforma, Servico, EventoFunil, HorarioGa4 } from "./data";
 import type { PeriodoTipo, PontoAgregado } from "./period-filter";
 
 /**
@@ -81,6 +81,17 @@ export function calcularInsightServico(servicos: Servico[]): InsightServico | nu
   const total = servicos.reduce((acc, s) => acc + s.acessos, 0);
   const top = [...servicos].sort((a, b) => b.acessos - a.acessos)[0];
   return { servico: top.servico, participacaoPct: total > 0 ? (top.acessos / total) * 100 : 0 };
+}
+
+export type InsightHorario = { horaPico: string; sessoesPico: number; participacaoPct: number };
+
+/** Hora de pico de uso do app — molde de calcularInsightServico (acha o topo,
+ * calcula % do total). Alimenta o StoryCard de horário na PerfilTab. */
+export function calcularInsightHorario(horarios: HorarioGa4[]): InsightHorario | null {
+  if (horarios.length === 0) return null;
+  const total = horarios.reduce((acc, h) => acc + h.sessoes, 0);
+  const top = [...horarios].sort((a, b) => b.sessoes - a.sessoes)[0];
+  return { horaPico: top.hora, sessoesPico: top.sessoes, participacaoPct: total > 0 ? (top.sessoes / total) * 100 : 0 };
 }
 
 /** Rótulo de estágio pro funil de aquisição -> ativação -> navegação ->

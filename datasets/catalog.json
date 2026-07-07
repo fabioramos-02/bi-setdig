@@ -163,5 +163,27 @@
     "schema": "data-platform/schemas/ga4-horarios.schema.json",
     "rows": 96,
     "bytes": 5297
+  },
+  {
+    "dataset": "catalogo-servicos",
+    "source": "app",
+    "owner": "SETDIG",
+    "updatedAt": "2026-07-07T12:16:20.245753+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/app-catalogo-servicos.schema.json",
+    "rows": 121,
+    "bytes": 14488
+  },
+  {
+    "dataset": "servicos-mais-acessados",
+    "source": "matomo",
+    "owner": "SETDIG",
+    "updatedAt": "2026-07-07T12:39:51.403457+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/matomo-servicos-mais-acessados.schema.json",
+    "rows": 32,
+    "bytes": 4809
   }
 ]

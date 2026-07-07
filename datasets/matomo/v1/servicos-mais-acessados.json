@@ -1,0 +1,170 @@
+{
+  "dia": [
+    {
+      "servico": "Emitir guia de licenciamento anual",
+      "path": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100",
+      "visitas": 3939
+    },
+    {
+      "servico": "Expedicao de carteira de identidade",
+      "path": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
+      "visitas": 2326
+    },
+    {
+      "servico": "Inscricaocadastro",
+      "path": "/habitacao/inscricaocadastro67",
+      "visitas": 1452
+    },
+    {
+      "servico": "Ipva consulta de debito",
+      "path": "/financas-e-impostos/ipva-consulta-de-debito54",
+      "visitas": 1402
+    },
+    {
+      "servico": "Portal e fazenda cadastro",
+      "path": "/financas-e-impostos/portal-e-fazenda-cadastro135",
+      "visitas": 1391
+    },
+    {
+      "servico": "Delegacia Virtual (DEVIR)",
+      "path": "/seguranca/delegacia-virtual-devir105",
+      "visitas": 1214
+    },
+    {
+      "servico": "Credito rural",
+      "path": "/agropecuaria-e-vida-rural/credito-rural132",
+      "visitas": 1104
+    },
+    {
+      "servico": "Certidao tributaria estadual emissao",
+      "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao152",
+      "visitas": 1072
+    }
+  ],
+  "semana": [
+    {
+      "servico": "Emitir guia de licenciamento anual",
+      "path": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100",
+      "visitas": 3939
+    },
+    {
+      "servico": "Expedicao de carteira de identidade",
+      "path": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
+      "visitas": 2326
+    },
+    {
+      "servico": "Inscricaocadastro",
+      "path": "/habitacao/inscricaocadastro67",
+      "visitas": 1452
+    },
+    {
+      "servico": "Ipva consulta de debito",
+      "path": "/financas-e-impostos/ipva-consulta-de-debito54",
+      "visitas": 1402
+    },
+    {
+      "servico": "Portal e fazenda cadastro",
+      "path": "/financas-e-impostos/portal-e-fazenda-cadastro135",
+      "visitas": 1391
+    },
+    {
+      "servico": "Delegacia Virtual (DEVIR)",
+      "path": "/seguranca/delegacia-virtual-devir105",
+      "visitas": 1214
+    },
+    {
+      "servico": "Credito rural",
+      "path": "/agropecuaria-e-vida-rural/credito-rural132",
+      "visitas": 1104
+    },
+    {
+      "servico": "Certidao tributaria estadual emissao",
+      "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao152",
+      "visitas": 1072
+    }
+  ],
+  "mes": [
+    {
+      "servico": "Emitir guia de licenciamento anual",
+      "path": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100",
+      "visitas": 3939
+    },
+    {
+      "servico": "Expedicao de carteira de identidade",
+      "path": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
+      "visitas": 2326
+    },
+    {
+      "servico": "Inscricaocadastro",
+      "path": "/habitacao/inscricaocadastro67",
+      "visitas": 1452
+    },
+    {
+      "servico": "Ipva consulta de debito",
+      "path": "/financas-e-impostos/ipva-consulta-de-debito54",
+      "visitas": 1402
+    },
+    {
+      "servico": "Portal e fazenda cadastro",
+      "path": "/financas-e-impostos/portal-e-fazenda-cadastro135",
+      "visitas": 1391
+    },
+    {
+      "servico": "Delegacia Virtual (DEVIR)",
+      "path": "/seguranca/delegacia-virtual-devir105",
+      "visitas": 1214
+    },
+    {
+      "servico": "Credito rural",
+      "path": "/agropecuaria-e-vida-rural/credito-rural132",
+      "visitas": 1104
+    },
+    {
+      "servico": "Certidao tributaria estadual emissao",
+      "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao152",
+      "visitas": 1072
+    }
+  ],
+  "ano": [
+    {
+      "servico": "Emitir guia de licenciamento anual",
+      "path": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100",
+      "visitas": 3939
+    },
+    {
+      "servico": "Expedicao de carteira de identidade",
+      "path": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
+      "visitas": 2326
+    },
+    {
+      "servico": "Inscricaocadastro",
+      "path": "/habitacao/inscricaocadastro67",
+      "visitas": 1452
+    },
+    {
+      "servico": "Ipva consulta de debito",
+      "path": "/financas-e-impostos/ipva-consulta-de-debito54",
+      "visitas": 1402
+    },
+    {
+      "servico": "Portal e fazenda cadastro",
+      "path": "/financas-e-impostos/portal-e-fazenda-cadastro135",
+      "visitas": 1391
+    },
+    {
+      "servico": "Delegacia Virtual (DEVIR)",
+      "path": "/seguranca/delegacia-virtual-devir105",
+      "visitas": 1214
+    },
+    {
+      "servico": "Credito rural",
+      "path": "/agropecuaria-e-vida-rural/credito-rural132",
+      "visitas": 1104
+    },
+    {
+      "servico": "Certidao tributaria estadual emissao",
+      "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao152",
+      "visitas": 1072
+    }
+  ]
+}

@@ -14,6 +14,7 @@ import {
   getMatomoPaginas,
   getMatomoBusca,
   getMatomoPerfilFiltro,
+  getMatomoServicosMaisAcessados,
 } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -40,6 +41,7 @@ export default function AnalyticsPortalMsPage() {
   const paginas = getMatomoPaginas();
   const busca = getMatomoBusca();
   const perfil = getMatomoPerfilFiltro();
+  const servicosMaisAcessados = getMatomoServicosMaisAcessados();
 
   if (diarias.length === 0) {
     return (
@@ -69,6 +71,7 @@ export default function AnalyticsPortalMsPage() {
       busca={busca}
       matchRate={matchRate}
       perfil={perfil}
+      servicosMaisAcessados={servicosMaisAcessados}
     />
   );
 }
