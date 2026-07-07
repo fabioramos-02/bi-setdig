@@ -1,18 +1,18 @@
 [
   {
     "evento": "first_open",
-    "usuarios": 7467
+    "usuarios": 7603
   },
   {
     "evento": "session_start",
-    "usuarios": 43855
+    "usuarios": 44561
   },
   {
     "evento": "screen_view",
-    "usuarios": 27224
+    "usuarios": 27695
   },
   {
     "evento": "user_engagement",
-    "usuarios": 37789
+    "usuarios": 38481
   }
 ]

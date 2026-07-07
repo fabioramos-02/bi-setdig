@@ -2,89 +2,89 @@
   "dia": [
     {
       "navegador": "Chrome",
-      "visitas": 2461
+      "visitas": 6457
     },
     {
       "navegador": "Chrome Mobile",
-      "visitas": 831
+      "visitas": 3176
     },
     {
       "navegador": "Microsoft Edge",
-      "visitas": 437
+      "visitas": 1231
     },
     {
       "navegador": "Mobile Safari",
-      "visitas": 234
+      "visitas": 1064
     },
     {
       "navegador": "Outros",
-      "visitas": 399
+      "visitas": 1364
     }
   ],
   "semana": [
     {
       "navegador": "Chrome",
-      "visitas": 2461
+      "visitas": 6457
     },
     {
       "navegador": "Chrome Mobile",
-      "visitas": 831
+      "visitas": 3176
     },
     {
       "navegador": "Microsoft Edge",
-      "visitas": 437
+      "visitas": 1231
     },
     {
       "navegador": "Mobile Safari",
-      "visitas": 234
+      "visitas": 1064
     },
     {
       "navegador": "Outros",
-      "visitas": 399
+      "visitas": 1364
     }
   ],
   "mes": [
     {
       "navegador": "Chrome",
-      "visitas": 21880
+      "visitas": 25876
     },
     {
       "navegador": "Chrome Mobile",
-      "visitas": 16676
+      "visitas": 19021
     },
     {
       "navegador": "Mobile Safari",
-      "visitas": 5115
+      "visitas": 5945
     },
     {
       "navegador": "Microsoft Edge",
-      "visitas": 4116
+      "visitas": 4910
     },
     {
       "navegador": "Outros",
-      "visitas": 6844
+      "visitas": 7810
     }
   ],
   "ano": [
     {
       "navegador": "Chrome",
-      "visitas": 1297735
+      "visitas": 1301731
     },
     {
       "navegador": "Chrome Mobile",
-      "visitas": 649764
+      "visitas": 652109
     },
     {
       "navegador": "Microsoft Edge",
-      "visitas": 225162
+      "visitas": 225956
     },
     {
       "navegador": "Mobile Safari",
-      "visitas": 214921
+      "visitas": 215751
     },
     {
       "navegador": "Outros",
-      "visitas": 287820
+      "visitas": 288785
     }
   ]
 }
