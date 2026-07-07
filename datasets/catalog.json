@@ -1,93 +1,5 @@
 [
   {
-    "dataset": "visitas-resumo",
-    "source": "matomo",
-    "owner": "SETDIG",
-    "updatedAt": "2026-07-07T00:42:25.638809+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/matomo-visitas-resumo.schema.json",
-    "rows": 1,
-    "bytes": 113
-  },
-  {
-    "dataset": "navegadores",
-    "source": "matomo",
-    "owner": "SETDIG",
-    "updatedAt": "2026-07-07T00:42:29.384120+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/matomo-navegadores.schema.json",
-    "rows": 20,
-    "bytes": 1446
-  },
-  {
-    "dataset": "dispositivos",
-    "source": "matomo",
-    "owner": "SETDIG",
-    "updatedAt": "2026-07-07T00:42:29.386154+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/matomo-dispositivos.schema.json",
-    "rows": 12,
-    "bytes": 883
-  },
-  {
-    "dataset": "horarios",
-    "source": "matomo",
-    "owner": "SETDIG",
-    "updatedAt": "2026-07-07T00:42:29.387956+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/matomo-horarios.schema.json",
-    "rows": 96,
-    "bytes": 5305
-  },
-  {
-    "dataset": "geografia",
-    "source": "matomo",
-    "owner": "SETDIG",
-    "updatedAt": "2026-07-07T00:42:29.389797+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/matomo-geografia.schema.json",
-    "rows": 188,
-    "bytes": 12348
-  },
-  {
-    "dataset": "paginas-mais-acessadas",
-    "source": "matomo",
-    "owner": "SETDIG",
-    "updatedAt": "2026-07-07T00:42:29.843482+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/matomo-paginas-mais-acessadas.schema.json",
-    "rows": 20,
-    "bytes": 2243
-  },
-  {
-    "dataset": "visitas-diarias",
-    "source": "matomo",
-    "owner": "SETDIG",
-    "updatedAt": "2026-07-07T00:42:32.951033+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/matomo-visitas-diarias.schema.json",
-    "rows": 920,
-    "bytes": 97358
-  },
-  {
-    "dataset": "busca",
-    "source": "matomo",
-    "owner": "SETDIG",
-    "updatedAt": "2026-07-07T00:42:33.155420+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/matomo-busca.schema.json",
-    "rows": 20,
-    "bytes": 1046
-  },
-  {
     "dataset": "inventario-count",
     "source": "cartas",
     "owner": "SETDIG",
@@ -97,28 +9,6 @@
     "schema": "data-platform/schemas/cartas-inventario-count.schema.json",
     "rows": 1,
     "bytes": 35
-  },
-  {
-    "dataset": "perfil-filtro",
-    "source": "matomo",
-    "owner": "SETDIG",
-    "updatedAt": "2026-07-07T01:22:43.585646+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/matomo-perfil-filtro.schema.json",
-    "rows": 16,
-    "bytes": 44640
-  },
-  {
-    "dataset": "visao-geral",
-    "source": "ga4",
-    "owner": "SETDIG",
-    "updatedAt": "2026-07-07T02:02:47.070974+00:00",
-    "frequency": "daily",
-    "version": "v2",
-    "schema": "data-platform/schemas/ga4-visao-geral.schema.json",
-    "rows": 16,
-    "bytes": 2089
   },
   {
     "dataset": "plataforma",
@@ -176,14 +66,124 @@
     "bytes": 14488
   },
   {
+    "dataset": "visitas-resumo",
+    "source": "matomo",
+    "owner": "SETDIG",
+    "updatedAt": "2026-07-07T16:44:32.054156+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/matomo-visitas-resumo.schema.json",
+    "rows": 1,
+    "bytes": 113
+  },
+  {
+    "dataset": "navegadores",
+    "source": "matomo",
+    "owner": "SETDIG",
+    "updatedAt": "2026-07-07T16:44:37.209076+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/matomo-navegadores.schema.json",
+    "rows": 20,
+    "bytes": 1443
+  },
+  {
+    "dataset": "dispositivos",
+    "source": "matomo",
+    "owner": "SETDIG",
+    "updatedAt": "2026-07-07T16:44:37.221393+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/matomo-dispositivos.schema.json",
+    "rows": 12,
+    "bytes": 884
+  },
+  {
+    "dataset": "horarios",
+    "source": "matomo",
+    "owner": "SETDIG",
+    "updatedAt": "2026-07-07T16:44:37.230567+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/matomo-horarios.schema.json",
+    "rows": 96,
+    "bytes": 5299
+  },
+  {
+    "dataset": "geografia",
+    "source": "matomo",
+    "owner": "SETDIG",
+    "updatedAt": "2026-07-07T16:44:37.242467+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/matomo-geografia.schema.json",
+    "rows": 185,
+    "bytes": 12202
+  },
+  {
+    "dataset": "paginas-mais-acessadas",
+    "source": "matomo",
+    "owner": "SETDIG",
+    "updatedAt": "2026-07-07T16:44:38.107095+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/matomo-paginas-mais-acessadas.schema.json",
+    "rows": 20,
+    "bytes": 2244
+  },
+  {
+    "dataset": "visitas-diarias",
+    "source": "matomo",
+    "owner": "SETDIG",
+    "updatedAt": "2026-07-07T16:44:40.997843+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/matomo-visitas-diarias.schema.json",
+    "rows": 920,
+    "bytes": 97362
+  },
+  {
+    "dataset": "busca",
+    "source": "matomo",
+    "owner": "SETDIG",
+    "updatedAt": "2026-07-07T16:44:41.578271+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/matomo-busca.schema.json",
+    "rows": 20,
+    "bytes": 1057
+  },
+  {
+    "dataset": "perfil-filtro",
+    "source": "matomo",
+    "owner": "SETDIG",
+    "updatedAt": "2026-07-07T16:44:46.109643+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/matomo-perfil-filtro.schema.json",
+    "rows": 16,
+    "bytes": 44720
+  },
+  {
     "dataset": "servicos-mais-acessados",
     "source": "matomo",
     "owner": "SETDIG",
-    "updatedAt": "2026-07-07T12:39:51.403457+00:00",
+    "updatedAt": "2026-07-07T16:44:46.123339+00:00",
     "frequency": "daily",
     "version": "v1",
     "schema": "data-platform/schemas/matomo-servicos-mais-acessados.schema.json",
-    "rows": 32,
-    "bytes": 4809
+    "rows": 60,
+    "bytes": 10126
+  },
+  {
+    "dataset": "visao-geral",
+    "source": "ga4",
+    "owner": "SETDIG",
+    "updatedAt": "2026-07-07T16:44:55.978750+00:00",
+    "frequency": "daily",
+    "version": "v2",
+    "schema": "data-platform/schemas/ga4-visao-geral.schema.json",
+    "rows": 15,
+    "bytes": 1951
   }
 ]

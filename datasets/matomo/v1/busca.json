@@ -1,47 +1,51 @@
 [
   {
-    "termo": "ipva",
-    "buscas": 215
+    "termo": "inscrição estadual",
+    "buscas": 253
   },
   {
-    "termo": "inscrição estadual",
-    "buscas": 202
+    "termo": "ipva",
+    "buscas": 236
   },
   {
     "termo": "procon",
-    "buscas": 133
+    "buscas": 145
   },
   {
     "termo": "substituição tributária",
-    "buscas": 117
+    "buscas": 129
   },
   {
     "termo": "itcd",
-    "buscas": 44
-  },
-  {
-    "termo": "cidadão",
-    "buscas": 36
+    "buscas": 46
   },
   {
     "termo": "autoparcelamento",
-    "buscas": 31
+    "buscas": 39
+  },
+  {
+    "termo": "cidadão",
+    "buscas": 38
   },
   {
     "termo": "servidor",
-    "buscas": 24
+    "buscas": 27
   },
   {
     "termo": "empresa",
-    "buscas": 19
+    "buscas": 20
   },
   {
     "termo": "licenciamento",
-    "buscas": 14
+    "buscas": 15
   },
   {
     "termo": "efd",
     "buscas": 8
+  },
+  {
+    "termo": "nota fiscal",
+    "buscas": 7
   },
   {
     "termo": "defesa civil",
@@ -52,7 +56,7 @@
     "buscas": 6
   },
   {
-    "termo": "nota fiscal",
+    "termo": "programa de nota fiscal",
     "buscas": 5
   },
   {
@@ -73,10 +77,6 @@
   },
   {
     "termo": "gestão pública",
-    "buscas": 3
-  },
-  {
-    "termo": "primeira cnh",
     "buscas": 3
   }
 ]
