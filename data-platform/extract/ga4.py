@@ -147,5 +147,10 @@ def get_visit_time(start_date: str, end_date: str) -> list[dict]:
         date_ranges=[DateRange(start_date=start_date, end_date=end_date)],
     )
     response = client.run_report(request)
-    rows = [{"hora": row.dimension_values[0].value, "sessoes": int(row.metric_values[0].value)} for row in response.rows]
+    # GA4 pode devolver '(other)' como bucket da dimensão hour — descarta (não é hora).
+    rows = [
+        {"hora": row.dimension_values[0].value, "sessoes": int(row.metric_values[0].value)}
+        for row in response.rows
+        if row.dimension_values[0].value.isdigit()
+    ]
     return sorted(rows, key=lambda r: int(r["hora"]))
