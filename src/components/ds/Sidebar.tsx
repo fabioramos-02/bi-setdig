@@ -24,15 +24,19 @@ export function Sidebar() {
 
   return (
     <>
-      <button
-        type="button"
-        onClick={() => setAberta(true)}
-        aria-label="Abrir menu de navegação"
-        style={{ background: "var(--ds-color-primary-600)", color: "var(--ds-color-text-inverse)" }}
-        className="md:hidden fixed top-3 left-3 z-50 w-11 h-11 rounded-md flex items-center justify-center print:hidden"
-      >
-        ☰
-      </button>
+      {/* Só quando fechado — quando aberto, o drawer cobre a área; renderizar
+          o botão por cima (z alto) faria o ☰ flutuar sobre o logo. */}
+      {!aberta && (
+        <button
+          type="button"
+          onClick={() => setAberta(true)}
+          aria-label="Abrir menu de navegação"
+          style={{ background: "var(--ds-color-primary-600)", color: "var(--ds-color-text-inverse)" }}
+          className="md:hidden fixed top-3 left-3 z-40 w-11 h-11 rounded-md flex items-center justify-center print:hidden"
+        >
+          ☰
+        </button>
+      )}
 
       {aberta && (
         <div

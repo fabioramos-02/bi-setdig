@@ -14,7 +14,9 @@ export default function PlataformaLayout({ children }: { children: React.ReactNo
     <PeriodoProvider min={min} max={max}>
       <div className="flex min-h-screen">
         <Sidebar />
-        <div className="flex-1 flex flex-col md:pl-64">{children}</div>
+        {/* min-w-0: sem isto, gráficos de largura fixa (mapa/Recharts) impedem o
+            flex de encolher e estouram o viewport no mobile ("não enquadrado"). */}
+        <div className="flex-1 flex flex-col md:pl-64 min-w-0">{children}</div>
       </div>
     </PeriodoProvider>
   );
