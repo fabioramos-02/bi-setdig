@@ -88,17 +88,6 @@
     "bytes": 1046
   },
   {
-    "dataset": "perfil-filtro",
-    "source": "matomo",
-    "owner": "SETDIG",
-    "updatedAt": "2026-07-07T00:42:35.358521+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/matomo-perfil-filtro.schema.json",
-    "rows": 16,
-    "bytes": 43008
-  },
-  {
     "dataset": "visao-geral",
     "source": "ga4",
     "owner": "SETDIG",
@@ -163,5 +152,16 @@
     "schema": "data-platform/schemas/cartas-inventario-count.schema.json",
     "rows": 1,
     "bytes": 35
+  },
+  {
+    "dataset": "perfil-filtro",
+    "source": "matomo",
+    "owner": "SETDIG",
+    "updatedAt": "2026-07-07T01:22:43.585646+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/matomo-perfil-filtro.schema.json",
+    "rows": 16,
+    "bytes": 44640
   }
 ]

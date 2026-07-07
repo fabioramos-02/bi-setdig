@@ -5,6 +5,10 @@
 @import "../styles/ds-sis/styles/input.css";
 @import "../styles/ds-sis/styles/card.css";
 @import "../styles/ds-sis/styles/radio.css";
+/* Material Icons (font clássica, auto-hospedada via pacote npm) — mesmo ícone
+   ligature usado pelo cards de "Serviços em destaque" do www.ms.gov.br
+   (confirmado via inspeção DOM: <span class="material-icons">nome_icone</span>). */
+@import "material-icons/iconfont/material-icons.css";
 
 /* Dark mode — o DS-MS ainda não publica tokens de tema escuro (ver ADR-006 e
    ADR-004 no repo do DS). Override local dos tokens semânticos, derivado dos

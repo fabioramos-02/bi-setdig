@@ -1,23 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Building2,
-  Car,
-  Coins,
-  FileText,
-  FlaskConical,
-  HeartPulse,
-  ShieldCheck,
-  Users,
-  type LucideIcon,
-} from "lucide-react";
 import type { PerfilServicoCard } from "@/lib/data";
 
 /**
- * Grid "Serviços em destaque" — réplica do card do portal www.ms.gov.br
- * (bench-carta/src/ui/{cards,theme}.py), temada por var(--ds-*). Abas por perfil
- * + cards em 2 colunas; ordem preservada (a do portal), sem reordenar por visita.
+ * Grid "Serviços em destaque" — réplica fiel do card do portal www.ms.gov.br.
+ * Estrutura e estilos (ícone Material Icons 38px azul, órgão em caixa alta
+ * 10px, título 16px bold cinza, sombra suave sem borda) confirmados via
+ * inspeção DOM ao vivo do portal, temados por var(--ds-*). Abas por perfil +
+ * cards em 2 colunas; ordem preservada (a do portal), sem reordenar por visita.
  */
 
 export const PORTAL_BASE_URL = "https://www.ms.gov.br";
@@ -29,17 +20,6 @@ const PERFIS: { code: string; label: string }[] = [
   { code: "EMPRESA", label: "Empresa" },
   { code: "GESTAO_PUBLICA", label: "Gestão Pública" },
 ];
-
-// categoriaSlug -> ícone lucide (equivalente aos Material Icons do portal).
-const ICONE_CATEGORIA: Record<string, LucideIcon> = {
-  "financas-e-impostos": Coins,
-  "saude-e-cuidado": HeartPulse,
-  "transito-e-transportes": Car,
-  seguranca: ShieldCheck,
-  "empresa-industria-e-comercio": Building2,
-  "assistencia-social": Users,
-  "ciencia-e-tecnologia": FlaskConical,
-};
 
 export function ServiceCardGrid({ servicosPorPerfil }: { servicosPorPerfil: Record<string, PerfilServicoCard[]> }) {
   const [perfilAtivo, setPerfilAtivo] = useState("CIDADAO");
@@ -86,45 +66,37 @@ export function ServiceCardGrid({ servicosPorPerfil }: { servicosPorPerfil: Reco
 }
 
 function ServiceCard({ card }: { card: PerfilServicoCard }) {
-  const Icone = ICONE_CATEGORIA[card.categoriaSlug] ?? FileText;
-  const corTipo = card.exclusivo ? "var(--ds-color-success)" : "var(--ds-color-primary-600)";
   return (
-    <div
-      className="flex gap-4 items-start rounded p-5 transition-shadow hover:shadow-md break-inside-avoid"
-      style={{ border: "1px solid var(--ds-color-border)", background: "var(--ds-color-background)" }}
+    <a
+      href={`${PORTAL_BASE_URL}${card.path}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-start rounded p-4 transition-shadow hover:shadow-md break-inside-avoid"
+      style={{ background: "var(--ds-color-background)", boxShadow: "0 0 3px rgba(0,0,0,0.16)" }}
     >
-      <Icone size={34} strokeWidth={1.75} style={{ color: "var(--ds-color-primary-600)", flex: "0 0 auto" }} aria-hidden />
+      <span
+        className="material-icons shrink-0"
+        style={{ color: "var(--ds-color-primary-600)", fontSize: 38, lineHeight: 1, width: 56 }}
+        aria-hidden
+      >
+        {card.icone}
+      </span>
       <div className="flex-1 min-w-0">
-        <div
-          className="text-xs font-semibold uppercase tracking-wide"
-          style={{ color: "var(--ds-color-primary-600)" }}
-        >
-          {card.categoria}
-        </div>
-        <div className="font-bold mt-1 mb-3" style={{ color: "var(--ds-color-text-primary)" }}>
-          {card.servico}
-        </div>
-        <div className="flex items-center gap-3 flex-wrap">
-          <span
-            className="text-xs font-bold px-2.5 py-0.5 rounded-full"
-            style={{ background: "var(--ds-color-background-muted)", color: corTipo }}
-          >
-            {card.visitas.toLocaleString("pt-BR")} visitas
-          </span>
-          <span className="text-xs" style={{ color: "var(--ds-color-text-muted)" }}>
-            {card.exclusivo ? "Exclusivo do perfil" : "Compartilhado"}
-          </span>
-          <a
-            href={`${PORTAL_BASE_URL}${card.path}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs font-semibold hover:underline ml-auto"
+        {card.orgao && (
+          <p
+            className="text-[10px] font-normal uppercase tracking-wide mb-1"
             style={{ color: "var(--ds-color-primary-600)" }}
           >
-            abrir ↗
-          </a>
-        </div>
+            {card.orgao}
+          </p>
+        )}
+        <h3
+          className="font-bold text-base leading-snug"
+          style={{ color: "var(--ds-color-text-secondary)", fontFamily: "var(--ds-font-family-body)" }}
+        >
+          {card.servico}
+        </h3>
       </div>
-    </div>
+    </a>
   );
 }

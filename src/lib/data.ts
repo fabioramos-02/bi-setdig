@@ -110,8 +110,8 @@ export type PerfilServico = {
 };
 export type PerfilServicoCard = {
   servico: string;
-  categoria: string;
-  categoriaSlug: string;
+  orgao: string;
+  icone: string;
   path: string;
   visitas: number;
   exclusivo: boolean;

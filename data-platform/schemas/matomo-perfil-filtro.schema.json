@@ -63,11 +63,11 @@
             "type": "array",
             "items": {
               "type": "object",
-              "required": ["servico", "categoria", "categoriaSlug", "path", "visitas", "exclusivo"],
+              "required": ["servico", "orgao", "icone", "path", "visitas", "exclusivo"],
               "properties": {
                 "servico": { "type": "string" },
-                "categoria": { "type": "string" },
-                "categoriaSlug": { "type": "string" },
+                "orgao": { "type": "string", "description": "Órgão responsável, como exibido no card real do portal" },
+                "icone": { "type": "string", "description": "Nome da ligature Material Icons (ex: currency_exchange)" },
                 "path": { "type": "string" },
                 "visitas": { "type": "integer", "minimum": 0 },
                 "exclusivo": { "type": "boolean" }

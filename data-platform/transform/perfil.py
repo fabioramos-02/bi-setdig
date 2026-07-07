@@ -74,23 +74,66 @@ HIGHLIGHTED_SERVICES: dict[str, dict[str, str]] = {
 }
 
 
-# Prefixo do path -> categoria legível (bench-carta/src/ui/cards.py). O ícone
-# fica no portal (lucide-react), mapeado por categoriaSlug — não nos dados.
-_CATEGORIA = {
-    "financas-e-impostos": "Finanças e Impostos",
-    "saude-e-cuidado": "Saúde e Cuidado",
-    "transito-e-transportes": "Trânsito e Transportes",
-    "seguranca": "Segurança",
-    "empresa-industria-e-comercio": "Empresa, Indústria e Comércio",
-    "assistencia-social": "Assistência Social",
-    "ciencia-e-tecnologia": "Ciência e Tecnologia",
+# path -> (ícone Material Icons, órgão responsável) — capturado ao vivo em
+# www.ms.gov.br (inspeção DOM, ver ADR pendente/commit): cada card real mostra
+# <span class="material-icons">{icone}</span> + <p>{orgao}</p> acima do nome do
+# serviço. Não é categoria (bench-carta usava categoria — não bate com o
+# portal real). Ícone é o nome exato da ligature (Material Icons clássico).
+_SERVICE_META: dict[str, tuple[str, str]] = {
+    "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174": (
+        "currency_exchange", "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    ),
+    "/saude-e-cuidado/consultar-fila-ambulatorial118": (
+        "medical_services", "Secretaria de Estado de Saúde de Mato Grosso do Sul",
+    ),
+    "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13": (
+        "directions_car", "Departamento Estadual de Trânsito de Mato Grosso do Sul",
+    ),
+    "/transito-e-transportes/emissao-da-carteira-nacional-de-habilitacao174": (
+        "directions_car", "Departamento Estadual de Trânsito de Mato Grosso do Sul",
+    ),
+    "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170": (
+        "security", "Polícia Militar de Mato Grosso do Sul",
+    ),
+    "/seguranca/delegacia-virtual-devir105": (
+        "security", "Polícia Civil de Mato Grosso do Sul",
+    ),
+    "/empresa-industria-e-comercio/solicitar-emissao-de-2a-via-de-conta-de-agua-e-esgoto113": (
+        "apartment", "Empresa de Saneamento de Mato Grosso do Sul",
+    ),
+    "/assistencia-social/solicitacao-de-inclusao-no-programa-mais-social118": (
+        "diversity_3", "Secretaria de Estado de Assistência Social e Direitos Humanos",
+    ),
+    "/ciencia-e-tecnologia/conceder-acesso-ao-matomo70": (
+        "biotech", "Secretaria de Estado de Governo e Gestão Estratégica de Mato Grosso do Sul",
+    ),
+    "/ciencia-e-tecnologia/solicitar-acesso-ao-grafana21": (
+        "biotech", "Secretaria de Estado de Governo e Gestão Estratégica de Mato Grosso do Sul",
+    ),
+    "/ciencia-e-tecnologia/solicitar-primeiro-acesso-aos-canais-institucionais-oficiais9": (
+        "biotech", "Secretaria de Estado de Governo e Gestão Estratégica de Mato Grosso do Sul",
+    ),
+    "/ciencia-e-tecnologia/solicitar-aumento-de-quota-de-e-mail-oficial87": (
+        "biotech", "Secretaria de Estado de Governo e Gestão Estratégica de Mato Grosso do Sul",
+    ),
+    "/ciencia-e-tecnologia/solicitar-liberacao-ou-bloqueio-de-acesso-a-conteudo-da-internet93": (
+        "biotech", "Secretaria de Estado de Governo e Gestão Estratégica de Mato Grosso do Sul",
+    ),
+    "/ciencia-e-tecnologia/solicitar-acesso-aos-sistemas-institucionais-mantidos-pela-setdig91": (
+        "biotech", "Secretaria de Estado de Governo e Gestão Estratégica de Mato Grosso do Sul",
+    ),
+    "/ciencia-e-tecnologia/solicitar-treinamento-do-wordpress70": (
+        "biotech", "Secretaria de Estado de Governo e Gestão Estratégica de Mato Grosso do Sul",
+    ),
+    "/financas-e-impostos/termo-de-verificacao-fiscal-tvf-ou-termo-de-apreensao-ta-baixa-ou-alteracao99": (
+        "currency_exchange", "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    ),
 }
+_ICONE_PADRAO = "description"  # fallback se algum path novo ainda não foi capturado
 
 
-def _categoria(path: str) -> tuple[str, str]:
-    """(slug, rótulo legível) a partir do 1º segmento do path."""
-    slug = path.strip("/").split("/", 1)[0]
-    return slug, _CATEGORIA.get(slug, slug.replace("-", " ").title())
+def _service_meta(path: str) -> tuple[str, str]:
+    return _SERVICE_META.get(path, (_ICONE_PADRAO, ""))
 
 
 def _path_frequency() -> Counter:
@@ -223,12 +266,12 @@ def build_periodo(page_urls_raw: list) -> dict:
     for profile, services in HIGHLIGHTED_SERVICES.items():
         cards: list[dict] = []
         for label, path in services.items():
-            slug, categoria = _categoria(path)
+            icone, orgao = _service_meta(path)
             cards.append(
                 {
                     "servico": label,
-                    "categoria": categoria,
-                    "categoriaSlug": slug,
+                    "orgao": orgao,
+                    "icone": icone,
                     "path": path,
                     "visitas": _service_visits(index, path),
                     "exclusivo": path not in shared,
@@ -255,7 +298,7 @@ def validar(saida: dict[str, dict]) -> None:
             validate_rows(bloco["distribuicao"], ["perfil", "visitas"], ["visitas"])
             validate_rows(bloco["topServicos"], ["servico", "visitas"], ["visitas"])
             for perfil, cards in bloco["servicosPorPerfil"].items():
-                validate_rows(cards, ["servico", "categoria", "visitas"], ["visitas"])
+                validate_rows(cards, ["servico", "orgao", "icone", "visitas"], ["visitas"])
             resumo = bloco["resumo"]
             faltando = [k for k, v in resumo.items() if v is None]
             if faltando:
