@@ -71,11 +71,11 @@ function ServiceCard({ card }: { card: PerfilServicoCard }) {
       href={`${PORTAL_BASE_URL}${card.path}`}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-start rounded p-4 transition-shadow hover:shadow-md break-inside-avoid"
+      className="flex items-center rounded p-4 transition-shadow hover:shadow-md break-inside-avoid"
       style={{ background: "var(--ds-color-background)", boxShadow: "0 0 3px rgba(0,0,0,0.16)" }}
     >
       <span
-        className="material-icons shrink-0"
+        className="material-icons shrink-0 flex items-center justify-center"
         style={{ color: "var(--ds-color-primary-600)", fontSize: 38, lineHeight: 1, width: 56 }}
         aria-hidden
       >
@@ -84,15 +84,26 @@ function ServiceCard({ card }: { card: PerfilServicoCard }) {
       <div className="flex-1 min-w-0">
         {card.orgao && (
           <p
-            className="text-[10px] font-normal uppercase tracking-wide mb-1"
-            style={{ color: "var(--ds-color-primary-600)" }}
+            className="uppercase tracking-wide"
+            style={{
+              color: "var(--ds-color-primary-600)",
+              fontFamily: "var(--ds-font-family-body)",
+              fontSize: "0.625rem",
+              fontWeight: 400,
+              marginBottom: 5,
+            }}
           >
             {card.orgao}
           </p>
         )}
         <h3
-          className="font-bold text-base leading-snug"
-          style={{ color: "var(--ds-color-text-secondary)", fontFamily: "var(--ds-font-family-body)" }}
+          className="leading-snug"
+          style={{
+            color: "var(--ds-color-text-secondary)",
+            fontFamily: "var(--ds-font-family-body)",
+            fontSize: "1rem",
+            fontWeight: 700,
+          }}
         >
           {card.servico}
         </h3>
