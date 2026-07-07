@@ -14,9 +14,21 @@ from validate.rules import ValidationError, validate_rows
 
 # --- Regra de decisão (bench-carta/src/config.py:68,74) -----------------------
 ADOPTION_THRESHOLD = 0.02  # 2% dos visitantes da home
-# Fração média das visitas a serviços que de fato vêm da home (amostra Transitions
-# 2025: DEVIR 2,47% / CNH 1,53% / CRLV 0,95%). Corrige o proxy ingênuo. Ainda é
-# limite superior — a home inclui menu e busca, não só o card de Perfil.
+# Fração estimada das visitas a serviços que de fato vêm da home (não medida aqui —
+# ver ressalva abaixo). Corrige o proxy ingênuo. Ainda é limite superior — a home
+# inclui menu e busca, não só o card de Perfil.
+#
+# Origem: amostra de Transitions.getTransitionsForPageUrl em só 3 serviços (DEVIR
+# 2,47% / CNH 1,53% / CRLV 0,95%), por 4 dias de 2025 (bench-carta, nunca
+# revalidada). Amostra pequena por design: Transitions em period=month/year
+# retorna 504 Gateway Timeout no servidor Matomo (documentado no bench-carta),
+# então só period=day é viável — mesmo assim, extrair pra TODOS os ~14 serviços
+# exclusivos custaria 14 chamadas extras por execução do pipeline. Não vale o
+# custo: o uso estimado (~0,1%) já fica muito abaixo do ADOPTION_THRESHOLD (2%)
+# mesmo se a fração real fosse o dobro ou metade de 1,5% — não muda a conclusão
+# qualitativa. Se algum dia precisar de precisão (não só ordem de grandeza),
+# portar transitions_from_home de bench-carta/src/matomo/queries.py, restrito a
+# period=day, e rodar pra todos os serviços exclusivos.
 HOME_REFERRAL_FRACTION = 0.015
 
 PROFILE_LABEL = {

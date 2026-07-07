@@ -26,11 +26,12 @@ export function ServicosPorPerfilTab({
     return <EmptyCard message="Sem dados de adoção do filtro de Perfil no período." />;
   }
 
-  const porMil = resumo.usoRealPct * 10;
-  const fracaoHome = resumo.proxyRatePct > 0 ? resumo.usoRealPct / resumo.proxyRatePct : 0;
-  const acessosReais = Math.round(resumo.atribuiveis * fracaoHome);
   const perfilTop = distribuicao[0] ?? null;
   const servicoTop = topServicos[0] ?? null;
+  // fração de correção (~1,5%, amostra pequena de 2025 — ver transform/perfil.py)
+  // derivada de volta dos percentuais já calculados, sem repetir a constante aqui.
+  const fracaoEstimativa = resumo.proxyRatePct > 0 ? resumo.usoRealPct / resumo.proxyRatePct : 0;
+  const estimativaUsoFiltro = Math.round(resumo.atribuiveis * fracaoEstimativa);
 
   return (
     <div>
@@ -53,21 +54,20 @@ export function ServicosPorPerfilTab({
           <StoryCard
             anchor={
               <>
-                De cada <strong>1.000</strong> visitantes do portal, cerca de{" "}
-                <strong>{porMil < 10 ? porMil.toFixed(1) : porMil.toFixed(0)}</strong> usam o filtro de Perfil para chegar
-                a um serviço.
+                Cerca de 1 em cada <strong>{resumo.umACada.toLocaleString("pt-BR")}</strong> visitantes do portal chega a
+                um serviço pelo filtro de Perfil.
               </>
             }
-            caption={`~1 a cada ${resumo.umACada.toLocaleString("pt-BR")} pessoas. Estimativa corrigida de ${acessosReais.toLocaleString("pt-BR")} acessos via filtro no período.`}
-            comoLer="O 'acesso bruto' (proxy) é o limite superior — todas as visitas aos serviços exclusivos de cada perfil. O 'uso real' corrige esse número pela fração (~1,5%) que de fato chega pela home, onde o filtro de Perfil vive. Ainda é limite superior: a home inclui menu e busca, não só o card de Perfil."
+            caption={`No período, os serviços em destaque somaram ${resumo.atribuiveis.toLocaleString("pt-BR")} visitas — ${resumo.proxyRatePct.toFixed(2)}% dos visitantes da home. Nem tudo isso vem do filtro: menu e busca levam aos mesmos serviços.`}
+            comoLer="O clique na aba de perfil (Cidadão, Servidor Público, Empresa, Gestão Pública) não fica registrado separadamente no Matomo — só dá pra medir direto quantas visitas os serviços em destaque receberam. A estimativa de uso do filtro (1 em cada N) vem de uma amostra pequena de 2025 e é um teto: o uso real tende a ser ainda menor."
           />
         </div>
         <div className="grid grid-cols-1 gap-4">
           <MetricCard label="Visitantes da home" value={resumo.homeVisitors} />
           <MetricCard
-            label="Uso real do filtro"
-            value={`${resumo.usoRealPct.toFixed(3)}%`}
-            sub={`limiar de referência: ${resumo.limiarPct}%`}
+            label="Visitas aos serviços em destaque"
+            value={resumo.atribuiveis}
+            sub={`meta mínima considerada relevante: ${resumo.limiarPct}%`}
           />
         </div>
       </div>
@@ -85,13 +85,13 @@ export function ServicosPorPerfilTab({
         <FunnelChart
           steps={[
             { label: "Visitantes da home", value: resumo.homeVisitors },
-            { label: "Abriram serviços do perfil (bruto)", value: resumo.atribuiveis },
-            { label: "Vieram de fato pelo filtro (corrigido)", value: acessosReais },
+            { label: "Visitas aos serviços em destaque", value: resumo.atribuiveis },
+            { label: "Estimativa de uso do filtro", value: estimativaUsoFiltro },
           ]}
         />
         <p className="mt-4 text-xs" style={{ color: "var(--ds-color-text-muted)" }}>
-          Cada degrau é uma etapa da jornada: da home até quem realmente usou o filtro de Perfil. A queda entre o 2º e o
-          3º degrau é a correção pela fração que vem da home.
+          Cada barra é uma etapa: quem visita a home, quem chega aos serviços em destaque, e quantos desses acessos vêm
+          de fato do filtro de Perfil — a última barra é estimativa, não medida direta.
         </p>
       </DashboardSection>
 
@@ -99,8 +99,8 @@ export function ServicosPorPerfilTab({
       <DashboardSection title="Distribuição por perfil">
         {perfilTop && (
           <p className="mb-3 text-sm" style={{ color: "var(--ds-color-text-secondary)" }}>
-            <strong>{perfilTop.perfilLabel}</strong> concentra {perfilTop.participacaoPct.toFixed(1)}% dos acessos
-            atribuíveis ao filtro.
+            <strong>{perfilTop.perfilLabel}</strong> concentra {perfilTop.participacaoPct.toFixed(1)}% dos acessos aos
+            serviços em destaque.
           </p>
         )}
         <BarChart
@@ -110,8 +110,8 @@ export function ServicosPorPerfilTab({
           corPorIndice={(i) => (i === 0 ? "var(--ds-color-primary-600)" : "var(--ds-color-text-muted)")}
         />
         <p className="mt-3 text-xs" style={{ color: "var(--ds-color-text-muted)" }}>
-          Só perfis com serviço exclusivo entram aqui — Empresa e Gestão Pública compartilham todos os destaques, então o
-          acesso não é atribuível a um perfil único.
+          Só perfis com serviço exclusivo entram aqui — Empresa e Gestão Pública compartilham todos os destaques, então
+          não dá pra saber quanto do acesso é de cada um.
         </p>
       </DashboardSection>
 
