@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portal de BI — SETDIG
 
-## Getting Started
+Plataforma de analytics do Governo de Mato Grosso do Sul (Next.js + Design System MS). Reúne, em domínios de negócio, os dados de uso dos canais digitais do Estado.
 
-First, run the development server:
+## Domínios
+
+| Rota | O que mostra | Fonte |
+|------|--------------|-------|
+| `/analytics/portal-ms` | Portal web www.ms.gov.br | Matomo |
+| `/analytics/ms-digital` | App MS Digital | GA4 |
+| `/servicos`, `/qualidade`, `/governanca` | — (em construção) | — |
+
+## Rodar
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Os dashboards leem JSONs estáticos de [`datasets/`](datasets/) em build-time — **não há chamada de API em runtime** (ADR-001). Para atualizar os dados, rode o pipeline em [`data-platform/`](data-platform/).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Arquitetura
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+fontes (Matomo/GA4/Postgres)
+   └─ data-platform/   ETL: extract → transform → validate → publish
+        └─ datasets/   JSONs versionados (fonte da verdade dos dados)
+             └─ src/   Next.js: lê datasets, calcula insights em lib/, renderiza
+```
 
-## Learn More
+- **`data-platform/`** — pipeline Python. Ver [data-platform/README.md](data-platform/README.md).
+- **`datasets/`** — dados publicados + `catalog.json`. Ver [datasets/README.md](datasets/README.md).
+- **`src/lib/`** — leitura de datasets, tipos, cálculo de insights (sem cálculo em componente).
+- **`src/components/`** — DS (`ds/`), dashboard (`dashboard/`), gráficos (`charts/`).
+- **`src/styles/ds-sis/`** — Design System MS vendorizado (ADR-006).
 
-To learn more about Next.js, take a look at the following resources:
+Decisões de projeto em `docs/architecture/` (ADRs) e convenções em [AGENTS.md](AGENTS.md).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Padrões
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Sem fetch/cálculo em componente `.tsx` → mora em `src/lib/`.
+- Tipografia/cor via tokens `var(--ds-*)`.
+- Filtro de período (sidebar) nas rotas com dado; breakdowns em 4 períodos fixos (ADR-007).
