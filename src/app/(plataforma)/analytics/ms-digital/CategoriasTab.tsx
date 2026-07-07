@@ -66,7 +66,7 @@ export function CategoriasTab({
         <p className="mb-4 text-sm" style={{ color: "var(--ds-color-text-secondary)" }}>
           Número = serviços cadastrados na categoria. Clique numa categoria para ver a lista de serviços.
         </p>
-        <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+        <div className="grid gap-4 grid-cols-1 min-[420px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
           {categorias.map((c) => {
             const ativo = c.categoria === sel;
             return (

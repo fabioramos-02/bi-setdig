@@ -170,7 +170,7 @@ export function PortalMsClient({
             <tbody>
               {paginas.map((p) => (
                 <tr key={p.url} className="border-t" style={{ borderColor: "var(--ds-color-border)" }}>
-                  <td className="py-1.5 truncate max-w-[240px] sm:max-w-none">{p.url}</td>
+                  <td className="py-1.5 truncate max-w-[150px] sm:max-w-none">{p.url}</td>
                   <td className="py-1.5 text-right font-semibold" style={{ color: "var(--ds-color-primary-600)" }}>
                     {p.visitas.toLocaleString("pt-BR")}
                   </td>

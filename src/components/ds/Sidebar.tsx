@@ -29,7 +29,7 @@ export function Sidebar() {
         onClick={() => setAberta(true)}
         aria-label="Abrir menu de navegação"
         style={{ background: "var(--ds-color-primary-600)", color: "var(--ds-color-text-inverse)" }}
-        className="md:hidden fixed top-3 left-3 z-30 w-10 h-10 rounded-md flex items-center justify-center print:hidden"
+        className="md:hidden fixed top-3 left-3 z-50 w-11 h-11 rounded-md flex items-center justify-center print:hidden"
       >
         ☰
       </button>

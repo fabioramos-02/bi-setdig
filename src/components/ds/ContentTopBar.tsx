@@ -7,12 +7,12 @@ export function ContentTopBar({ title, children }: { title: string; children?: R
   return (
     <header
       style={{ background: "var(--ds-color-primary-600)" }}
-      className="flex items-center justify-between px-6 py-4"
+      className="flex items-center justify-between gap-2 py-4 px-4 md:px-6 pl-16 md:pl-6"
     >
-      <h1 style={{ color: "var(--ds-color-text-inverse)" }} className="text-lg font-semibold">
+      <h1 style={{ color: "var(--ds-color-text-inverse)" }} className="text-base sm:text-lg font-semibold truncate min-w-0">
         {title}
       </h1>
-      {children && <div className="flex items-center gap-4">{children}</div>}
+      {children && <div className="flex items-center gap-4 shrink-0">{children}</div>}
     </header>
   );
 }

@@ -44,7 +44,7 @@ export function RankingBarChart({ itens }: { itens: ItemRanking[] }) {
                 />
               </div>
               <span
-                className="shrink-0 w-16 text-right text-sm font-semibold"
+                className="shrink-0 w-14 text-right text-sm font-semibold"
                 style={{ color: "var(--ds-color-primary-600)" }}
               >
                 {it.valor.toLocaleString("pt-BR")}

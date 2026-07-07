@@ -20,7 +20,13 @@ export function BarChart({
     <ResponsiveContainer width="100%" height={height}>
       <RBarChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 8 }}>
         <CartesianGrid stroke="var(--ds-color-border)" strokeDasharray="3 3" />
-        <XAxis dataKey={xKey} tick={{ fill: "var(--ds-color-text-secondary)", fontSize: 12 }} />
+        <XAxis
+          dataKey={xKey}
+          tick={{ fill: "var(--ds-color-text-secondary)", fontSize: 12 }}
+          minTickGap={8}
+          tickMargin={6}
+          interval="preserveStartEnd"
+        />
         <YAxis tick={{ fill: "var(--ds-color-text-secondary)", fontSize: 12 }} />
         <Tooltip
           contentStyle={{

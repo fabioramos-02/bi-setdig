@@ -30,7 +30,7 @@ export function ServiceCardGrid({ servicosPorPerfil }: { servicosPorPerfil: Reco
     <div>
       {/* Barra de perfil (célula ativa preenchida, estilo portal) */}
       <div
-        className="inline-flex flex-wrap rounded overflow-hidden mb-5"
+        className="flex flex-nowrap overflow-x-auto rounded w-max max-w-full mb-5"
         style={{ border: "1px solid var(--ds-color-border)" }}
         role="tablist"
         aria-label="Filtrar serviços por perfil"
@@ -43,7 +43,7 @@ export function ServiceCardGrid({ servicosPorPerfil }: { servicosPorPerfil: Reco
               role="tab"
               aria-selected={ativo}
               onClick={() => setPerfilAtivo(p.code)}
-              className="text-sm font-bold uppercase tracking-tight px-5 py-3 transition-colors"
+              className="shrink-0 whitespace-nowrap text-sm font-bold uppercase tracking-tight px-4 py-2.5 transition-colors"
               style={{
                 background: ativo ? "var(--ds-color-primary-600)" : "var(--ds-color-background)",
                 color: ativo ? "var(--ds-color-text-inverse)" : "var(--ds-color-primary-600)",
