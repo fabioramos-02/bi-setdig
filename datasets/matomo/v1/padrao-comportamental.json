@@ -1,60 +1,147 @@
 {
   "dia": {
-    "distribuicao": [],
-    "topDestinos": []
-  },
-  "semana": {
     "distribuicao": [
       {
         "tipo": "Exploração por Categoria/Órgão",
-        "acessos": 3457,
-        "participacaoPct": 90.19
+        "acessos": 161,
+        "participacaoPct": 81.73
       },
       {
         "tipo": "Acesso Direto ao Serviço",
-        "acessos": 237,
-        "participacaoPct": 6.18
+        "acessos": 24,
+        "participacaoPct": 12.18
       },
       {
         "tipo": "Acesso a Sistemas (Login/Workspace)",
-        "acessos": 73,
-        "participacaoPct": 1.9
-      },
-      {
-        "tipo": "Notícias",
-        "acessos": 44,
-        "participacaoPct": 1.15
+        "acessos": 11,
+        "participacaoPct": 5.58
       },
       {
         "tipo": "Busca Interna no Portal",
-        "acessos": 22,
-        "participacaoPct": 0.57
+        "acessos": 1,
+        "participacaoPct": 0.51
       }
     ],
     "topDestinos": [
       {
         "pagina": "Others",
         "tipo": "Exploração por Categoria/Órgão",
-        "acessos": 3443
-      },
-      {
-        "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
-        "tipo": "Acesso Direto ao Serviço",
-        "acessos": 85
-      },
-      {
-        "pagina": "/workspace",
-        "tipo": "Acesso a Sistemas (Login/Workspace)",
-        "acessos": 59
+        "acessos": 157
       },
       {
         "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
         "tipo": "Acesso Direto ao Serviço",
-        "acessos": 48
+        "acessos": 6
+      },
+      {
+        "pagina": "/workspace",
+        "tipo": "Acesso a Sistemas (Login/Workspace)",
+        "acessos": 5
+      },
+      {
+        "pagina": "/orgaos",
+        "tipo": "Exploração por Categoria/Órgão",
+        "acessos": 4
+      },
+      {
+        "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
+        "tipo": "Acesso Direto ao Serviço",
+        "acessos": 3
+      },
+      {
+        "pagina": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
+        "tipo": "Acesso Direto ao Serviço",
+        "acessos": 3
+      },
+      {
+        "pagina": "/workspace/minha-area/meus-sistemas",
+        "tipo": "Acesso a Sistemas (Login/Workspace)",
+        "acessos": 3
+      },
+      {
+        "pagina": "/categoria/transito-e-transportes",
+        "tipo": "Acesso Direto ao Serviço",
+        "acessos": 2
+      },
+      {
+        "pagina": "/educacao-e-pesquisa/consultar-notas-e-frequencia-de-estudantes143/",
+        "tipo": "Acesso Direto ao Serviço",
+        "acessos": 2
+      },
+      {
+        "pagina": "/agropecuaria-e-vida-rural/consultar-atraves-do-e-saniagro-modulo-aim-autos-de-infracao-existentes-ao-interessado143",
+        "tipo": "Acesso Direto ao Serviço",
+        "acessos": 1
+      }
+    ]
+  },
+  "semana": {
+    "distribuicao": [
+      {
+        "tipo": "Exploração por Categoria/Órgão",
+        "acessos": 3652,
+        "participacaoPct": 89.64
+      },
+      {
+        "tipo": "Acesso Direto ao Serviço",
+        "acessos": 283,
+        "participacaoPct": 6.95
+      },
+      {
+        "tipo": "Acesso a Sistemas (Login/Workspace)",
+        "acessos": 82,
+        "participacaoPct": 2.01
+      },
+      {
+        "tipo": "Notícias",
+        "acessos": 46,
+        "participacaoPct": 1.13
+      },
+      {
+        "tipo": "Busca Interna no Portal",
+        "acessos": 11,
+        "participacaoPct": 0.27
+      }
+    ],
+    "topDestinos": [
+      {
+        "pagina": "Others",
+        "tipo": "Exploração por Categoria/Órgão",
+        "acessos": 3634
+      },
+      {
+        "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
+        "tipo": "Acesso Direto ao Serviço",
+        "acessos": 91
+      },
+      {
+        "pagina": "/workspace",
+        "tipo": "Acesso a Sistemas (Login/Workspace)",
+        "acessos": 64
+      },
+      {
+        "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
+        "tipo": "Acesso Direto ao Serviço",
+        "acessos": 56
       },
       {
         "pagina": "/seguranca/expedicao-de-certidao-de-antecedentes-criminais35/",
         "tipo": "Acesso Direto ao Serviço",
+        "acessos": 21
+      },
+      {
+        "pagina": "/noticias/licenciamento-2026-comeca-com-nova-opcao-de-parcelamento-digital-no-portal-meu-detran",
+        "tipo": "Notícias",
+        "acessos": 18
+      },
+      {
+        "pagina": "/orgaos",
+        "tipo": "Exploração por Categoria/Órgão",
+        "acessos": 18
+      },
+      {
+        "pagina": "/workspace/minha-area/meus-sistemas",
+        "tipo": "Acesso a Sistemas (Login/Workspace)",
         "acessos": 18
       },
       {
@@ -63,24 +150,9 @@
         "acessos": 16
       },
       {
-        "pagina": "/noticias",
-        "tipo": "Notícias",
+        "pagina": "/categoria/transito-e-transportes",
+        "tipo": "Acesso Direto ao Serviço",
         "acessos": 16
-      },
-      {
-        "pagina": "/noticias/licenciamento-2026-comeca-com-nova-opcao-de-parcelamento-digital-no-portal-meu-detran",
-        "tipo": "Notícias",
-        "acessos": 16
-      },
-      {
-        "pagina": "/orgaos",
-        "tipo": "Exploração por Categoria/Órgão",
-        "acessos": 14
-      },
-      {
-        "pagina": "/workspace/minha-area/meus-sistemas",
-        "tipo": "Acesso a Sistemas (Login/Workspace)",
-        "acessos": 14
       }
     ]
   },
@@ -88,85 +160,162 @@
     "distribuicao": [
       {
         "tipo": "Exploração por Categoria/Órgão",
-        "acessos": 7236,
-        "participacaoPct": 90.08
+        "acessos": 7431,
+        "participacaoPct": 89.81
       },
       {
         "tipo": "Acesso Direto ao Serviço",
-        "acessos": 537,
-        "participacaoPct": 6.68
+        "acessos": 569,
+        "participacaoPct": 6.88
       },
       {
         "tipo": "Acesso a Sistemas (Login/Workspace)",
-        "acessos": 162,
-        "participacaoPct": 2.02
+        "acessos": 171,
+        "participacaoPct": 2.07
       },
       {
         "tipo": "Busca Interna no Portal",
-        "acessos": 52,
-        "participacaoPct": 0.65
+        "acessos": 55,
+        "participacaoPct": 0.66
       },
       {
         "tipo": "Notícias",
-        "acessos": 46,
-        "participacaoPct": 0.57
+        "acessos": 48,
+        "participacaoPct": 0.58
       }
     ],
     "topDestinos": [
       {
         "pagina": "Others",
         "tipo": "Exploração por Categoria/Órgão",
-        "acessos": 7200
+        "acessos": 7391
       },
       {
         "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
         "tipo": "Acesso Direto ao Serviço",
-        "acessos": 175
+        "acessos": 181
       },
       {
         "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
         "tipo": "Acesso Direto ao Serviço",
-        "acessos": 120
+        "acessos": 128
       },
       {
         "pagina": "/workspace",
         "tipo": "Acesso a Sistemas (Login/Workspace)",
-        "acessos": 116
+        "acessos": 121
       },
       {
         "pagina": "/orgaos",
         "tipo": "Exploração por Categoria/Órgão",
-        "acessos": 36
+        "acessos": 40
       },
       {
         "pagina": "/seguranca/expedicao-de-certidao-de-antecedentes-criminais35/",
         "tipo": "Acesso Direto ao Serviço",
-        "acessos": 34
+        "acessos": 37
       },
       {
         "pagina": "/financas-e-impostos/ipva-consulta-de-debito54/",
         "tipo": "Acesso Direto ao Serviço",
-        "acessos": 30
+        "acessos": 31
+      },
+      {
+        "pagina": "/workspace/minha-area/meus-sistemas",
+        "tipo": "Acesso a Sistemas (Login/Workspace)",
+        "acessos": 31
+      },
+      {
+        "pagina": "/buscar/q=Cidadão",
+        "tipo": "Busca Interna no Portal",
+        "acessos": 29
       },
       {
         "pagina": "/assistencia-social/solicitacao-de-inclusao-no-programa-mais-social118",
         "tipo": "Acesso Direto ao Serviço",
         "acessos": 28
-      },
-      {
-        "pagina": "/workspace/minha-area/meus-sistemas",
-        "tipo": "Acesso a Sistemas (Login/Workspace)",
-        "acessos": 27
-      },
-      {
-        "pagina": "/buscar/q=Cidadão",
-        "tipo": "Busca Interna no Portal",
-        "acessos": 26
       }
     ]
   },
   "ano": {
-    "distribuicao": [],
-    "topDestinos": []
+    "distribuicao": [
+      {
+        "tipo": "Exploração por Categoria/Órgão",
+        "acessos": 455471,
+        "participacaoPct": 92.69
+      },
+      {
+        "tipo": "Acesso a Sistemas (Login/Workspace)",
+        "acessos": 18158,
+        "participacaoPct": 3.7
+      },
+      {
+        "tipo": "Acesso Direto ao Serviço",
+        "acessos": 15541,
+        "participacaoPct": 3.16
+      },
+      {
+        "tipo": "Busca Interna no Portal",
+        "acessos": 2011,
+        "participacaoPct": 0.41
+      },
+      {
+        "tipo": "Notícias",
+        "acessos": 214,
+        "participacaoPct": 0.04
+      }
+    ],
+    "topDestinos": [
+      {
+        "pagina": "Others",
+        "tipo": "Exploração por Categoria/Órgão",
+        "acessos": 454096
+      },
+      {
+        "pagina": "/workspace/minha-area/meus-sistemas",
+        "tipo": "Acesso a Sistemas (Login/Workspace)",
+        "acessos": 13391
+      },
+      {
+        "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
+        "tipo": "Acesso Direto ao Serviço",
+        "acessos": 4947
+      },
+      {
+        "pagina": "/workspace",
+        "tipo": "Acesso a Sistemas (Login/Workspace)",
+        "acessos": 4151
+      },
+      {
+        "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
+        "tipo": "Acesso Direto ao Serviço",
+        "acessos": 1988
+      },
+      {
+        "pagina": "/orgaos",
+        "tipo": "Exploração por Categoria/Órgão",
+        "acessos": 1375
+      },
+      {
+        "pagina": "/orgao/sed-mssecretaria-de-estado-de-educacao-de-mato-grosso-do-sul83/servicos",
+        "tipo": "Acesso Direto ao Serviço",
+        "acessos": 1078
+      },
+      {
+        "pagina": "/buscar/q=Servidor",
+        "tipo": "Busca Interna no Portal",
+        "acessos": 957
+      },
+      {
+        "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
+        "tipo": "Acesso Direto ao Serviço",
+        "acessos": 936
+      },
+      {
+        "pagina": "/seguranca/expedicao-de-certidao-de-antecedentes-criminais35/",
+        "tipo": "Acesso Direto ao Serviço",
+        "acessos": 863
+      }
+    ]
   }
 }

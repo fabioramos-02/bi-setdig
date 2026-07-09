@@ -40,6 +40,9 @@ export function SidebarPeriodFilter() {
         max={max}
         vertical
       />
+      <p style={{ color: "var(--ds-color-text-muted)" }} className="text-xs mt-2">
+        A data de referência ajusta a tendência e os KPIs. Os demais gráficos mostram sempre o período mais recente.
+      </p>
       {estado.tipo === "intervalo" && (
         <p style={{ color: "var(--ds-color-text-muted)" }} className="text-xs mt-2">
           {AVISO_INTERVALO[pathname]}

@@ -1,170 +1,170 @@
 {
   "dia": [
     {
-      "pagina": "/login/callback/ - Others",
-      "entradas": 2664
-    },
-    {
       "pagina": "Home (Index)",
-      "entradas": 2546
-    },
-    {
-      "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
-      "entradas": 890
+      "entradas": 213
     },
     {
       "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
-      "entradas": 697
+      "entradas": 58
     },
     {
-      "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
-      "entradas": 432
-    },
-    {
-      "pagina": "/noticias/ - Others",
-      "entradas": 370
+      "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
+      "entradas": 52
     },
     {
       "pagina": "/financas-e-impostos/ipva-consulta-de-debito54/",
-      "entradas": 367
+      "entradas": 27
+    },
+    {
+      "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
+      "entradas": 25
     },
     {
       "pagina": "/noticias/licenciamento-2026-comeca-com-nova-opcao-de-parcelamento-digital-no-portal-meu-detran",
-      "entradas": 362
+      "entradas": 18
     },
     {
-      "pagina": "/financas-e-impostos/portal-e-fazenda-cadastro135/",
-      "entradas": 360
+      "pagina": "/habitacao/inscricaocadastro67/",
+      "entradas": 14
     },
     {
-      "pagina": "/workspace",
-      "entradas": 304
+      "pagina": "/noticias/",
+      "entradas": 14
+    },
+    {
+      "pagina": "/orgao/sejuspsecretaria-de-estado-de-justica-e-seguranca-publica-de-mato-grosso-do-sul70/servicos",
+      "entradas": 14
+    },
+    {
+      "pagina": "/seguranca/delegacia-virtual-devir105/",
+      "entradas": 14
     }
   ],
   "semana": [
     {
-      "pagina": "/login/callback/ - Others",
-      "entradas": 9034
-    },
-    {
       "pagina": "Home (Index)",
-      "entradas": 8115
+      "entradas": 8526
     },
     {
       "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
-      "entradas": 2664
+      "entradas": 2786
     },
     {
       "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
-      "entradas": 2169
+      "entradas": 2289
     },
     {
       "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
-      "entradas": 1565
+      "entradas": 1615
     },
     {
       "pagina": "/noticias/licenciamento-2026-comeca-com-nova-opcao-de-parcelamento-digital-no-portal-meu-detran",
-      "entradas": 1478
+      "entradas": 1522
     },
     {
       "pagina": "/noticias/ - Others",
-      "entradas": 1351
+      "entradas": 1429
     },
     {
       "pagina": "/financas-e-impostos/portal-e-fazenda-cadastro135/",
-      "entradas": 1208
+      "entradas": 1223
     },
     {
       "pagina": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
-      "entradas": 1082
+      "entradas": 1113
     },
     {
       "pagina": "/workspace",
-      "entradas": 1032
+      "entradas": 1049
+    },
+    {
+      "pagina": "/financas-e-impostos/ipva-consulta-de-debito54/",
+      "entradas": 1003
     }
   ],
   "mes": [
     {
-      "pagina": "/login/callback/ - Others",
-      "entradas": 19493
-    },
-    {
       "pagina": "Home (Index)",
-      "entradas": 17888
+      "entradas": 18299
     },
     {
       "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
-      "entradas": 6347
+      "entradas": 6469
     },
     {
       "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
-      "entradas": 5422
+      "entradas": 5542
     },
     {
       "pagina": "/noticias/ - Others",
-      "entradas": 3221
+      "entradas": 3295
     },
     {
       "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
-      "entradas": 3004
+      "entradas": 3054
     },
     {
       "pagina": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
-      "entradas": 2975
+      "entradas": 3006
     },
     {
       "pagina": "/noticias/licenciamento-2026-comeca-com-nova-opcao-de-parcelamento-digital-no-portal-meu-detran",
-      "entradas": 2334
+      "entradas": 2378
     },
     {
       "pagina": "/workspace",
-      "entradas": 2241
+      "entradas": 2258
     },
     {
       "pagina": "/financas-e-impostos/portal-e-fazenda-cadastro135/",
-      "entradas": 2176
+      "entradas": 2191
+    },
+    {
+      "pagina": "/financas-e-impostos/ipva-consulta-de-debito54/",
+      "entradas": 2133
     }
   ],
   "ano": [
     {
       "pagina": "Home (Index)",
-      "entradas": 920829
-    },
-    {
-      "pagina": "/login/callback/ - Others",
-      "entradas": 844370
+      "entradas": 921240
     },
     {
       "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
-      "entradas": 202392
+      "entradas": 202514
     },
     {
       "pagina": "/workspace/minha-area/meus-sistemas",
-      "entradas": 124235
+      "entradas": 124245
     },
     {
       "pagina": "/noticias/ - Others",
-      "entradas": 101054
+      "entradas": 101167
     },
     {
       "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
-      "entradas": 96486
+      "entradas": 96606
     },
     {
       "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
-      "entradas": 77116
+      "entradas": 77166
     },
     {
       "pagina": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
-      "entradas": 66384
+      "entradas": 66415
     },
     {
       "pagina": "/financas-e-impostos/portal-e-fazenda-cadastro135/",
-      "entradas": 52843
+      "entradas": 52858
     },
     {
       "pagina": "/workspace",
-      "entradas": 50512
+      "entradas": 50529
+    },
+    {
+      "pagina": "/orgao/sed-mssecretaria-de-estado-de-educacao-de-mato-grosso-do-sul83/servicos",
+      "entradas": 48430
     }
   ]
 }

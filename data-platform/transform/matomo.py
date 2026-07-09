@@ -95,10 +95,15 @@ def merge_search(nativo: list[dict], de_urls: list[dict], n: int = 20) -> list[d
 
 def entry_pages(rows: list, n: int = 10) -> list[dict]:
     """Porta de matomo-analytics-dashboard/views/portal/tab4_jornada.py:90-104 —
-    Actions.getEntryPageUrls já devolve label/nb_visits prontos, sem processamento."""
+    Actions.getEntryPageUrls já devolve label/nb_visits prontos, sem processamento.
+    Filtra /login/callback — validado contra o portal real (ms.gov.br): é o
+    retorno técnico do SSO (OAuth), soma de milhares de callbacks com querystring
+    distinta (sufixo "- Others" do Matomo), não Home nem página real acessada
+    pelo cidadão. Mesma classe de ruído que outlinks() já filtra do lado saída."""
     out = [
         {"pagina": "Home (Index)" if r.get("label") == "/" else r.get("label", ""), "entradas": r.get("nb_visits", 0)}
         for r in (rows or [])
+        if "/login/callback" not in r.get("label", "")
     ]
     out.sort(key=lambda r: -r["entradas"])
     return out[:n]
@@ -147,8 +152,8 @@ def merge_following_pages(respostas: list[dict]) -> list[dict]:
     for raw in respostas or []:
         for item in (raw or {}).get("followingPages") or []:
             label = item.get("label", "")
-            somas[label] = somas.get(label, 0) + item.get("hits", item.get("referrals", 0))
-    return [{"label": label, "hits": hits} for label, hits in sorted(somas.items(), key=lambda kv: -kv[1])]
+            somas[label] = somas.get(label, 0) + item.get("referrals", 0)
+    return [{"label": label, "referrals": referrals} for label, referrals in sorted(somas.items(), key=lambda kv: -kv[1])]
 
 
 def padrao_comportamental(following_pages: list[dict]) -> dict:
@@ -159,7 +164,7 @@ def padrao_comportamental(following_pages: list[dict]) -> dict:
     linhas = []
     for item in following_pages or []:
         pagina = (item.get("label") or "").replace("ms.gov.br", "") or "/"
-        acessos = item.get("hits", item.get("referrals", 0))
+        acessos = item.get("referrals", 0)
         linhas.append({"pagina": pagina, "tipo": classificar_jornada(pagina), "acessos": acessos})
 
     total = sum(l["acessos"] for l in linhas) or 1

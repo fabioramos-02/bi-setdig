@@ -8,7 +8,7 @@ export type FatiaCategoria = { categoria: string; valor: number; participacaoPct
 export function CategoryDonut({ dados }: { dados: FatiaCategoria[] }) {
   return (
     <div className="flex flex-col sm:flex-row items-center gap-4">
-      <div className="w-full sm:flex-1" style={{ height: 260 }}>
+      <div className="w-full min-w-0 sm:flex-1" style={{ height: 260 }}>
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie data={dados} dataKey="valor" nameKey="categoria" innerRadius="55%" outerRadius="80%" paddingAngle={2}>

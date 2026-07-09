@@ -5,6 +5,7 @@ Sem acoplamento a Streamlit. Lê credenciais do .env na raiz do repo.
 from __future__ import annotations
 
 import os
+import time
 import urllib.parse
 
 import requests
@@ -18,6 +19,9 @@ MATOMO_TOKEN = os.getenv("MATOMO_TOKEN", "")
 
 
 def _call(method: str, period: str, date: str, extra: dict | None = None, site_id: str | None = None, timeout: int = 30):
+    """2 tentativas em 5xx/timeout (servidor Matomo é instável em relatórios
+    pesados tipo Transitions — ver transform/perfil.py:20-31). Sem lib nova,
+    só um retry simples: 4xx (token/param errado) não adianta repetir."""
     params = {
         "module": "API",
         "method": method,
@@ -30,9 +34,21 @@ def _call(method: str, period: str, date: str, extra: dict | None = None, site_i
     if extra:
         params.update(extra)
     url = f"{MATOMO_URL}index.php?{urllib.parse.urlencode(params)}"
-    response = requests.get(url, timeout=timeout)
-    response.raise_for_status()
-    return response.json()
+
+    for tentativa in (1, 2):
+        try:
+            response = requests.get(url, timeout=timeout)
+            response.raise_for_status()
+            return response.json()
+        except requests.exceptions.Timeout:
+            if tentativa == 2:
+                raise
+            time.sleep(5)
+        except requests.exceptions.HTTPError as exc:
+            is_4xx = exc.response is not None and exc.response.status_code < 500
+            if tentativa == 2 or is_4xx:
+                raise
+            time.sleep(5)
 
 
 def get_visits_summary(period: str, date: str, site_id: str | None = None) -> dict:

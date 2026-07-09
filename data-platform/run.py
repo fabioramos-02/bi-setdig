@@ -140,14 +140,20 @@ HOME_URL = "https://www.ms.gov.br/"
 def _transitions_home_ano(home_url: str) -> list[dict]:
     """period=year estoura 504 no servidor Matomo mesmo com 1 URL fixa (Home)
     — contorna com 12 chamadas period=month, agregadas em memória (porta de
-    tab4_jornada.py::_load_transitions_annual, sem a progress bar do Streamlit)."""
+    tab4_jornada.py::_load_transitions_annual, sem a progress bar do Streamlit).
+
+    Cada mês tem seu próprio try/except: 1 mês instável não pode descartar os
+    outros 11 (antes, exceção em qualquer mês esvaziava o ano inteiro)."""
     hoje = dt_date.today()
     respostas = []
     for mes in range(1, 13):
         primeiro_dia = dt_date(hoje.year, mes, 1)
         if primeiro_dia > hoje:
             break
-        respostas.append(matomo.get_transitions_for_page_url("month", primeiro_dia.isoformat(), home_url))
+        try:
+            respostas.append(matomo.get_transitions_for_page_url("month", primeiro_dia.isoformat(), home_url))
+        except Exception as exc:  # noqa: BLE001 — mesma instabilidade documentada em run_matomo_jornada
+            print(f"[matomo] padrao-comportamental ano, mês {mes:02d} FALHOU (pulado): {exc}")
     return respostas
 
 
