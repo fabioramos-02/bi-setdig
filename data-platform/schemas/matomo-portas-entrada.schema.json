@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "matomo/portas-entrada",
+  "description": "Top-10 páginas de entrada (landing pages) via Actions.getEntryPageUrls. 1 chave por período fixo (dia/semana/mes/ano) — ver ADR-007.",
+  "type": "object",
+  "required": ["dia", "semana", "mes", "ano"],
+  "properties": {
+    "dia": { "$ref": "#/definitions/lista" },
+    "semana": { "$ref": "#/definitions/lista" },
+    "mes": { "$ref": "#/definitions/lista" },
+    "ano": { "$ref": "#/definitions/lista" }
+  },
+  "definitions": {
+    "lista": {
+      "type": "array",
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "required": ["pagina", "entradas"],
+        "properties": {
+          "pagina": { "type": "string" },
+          "entradas": { "type": "integer", "minimum": 0 }
+        }
+      }
+    }
+  }
+}

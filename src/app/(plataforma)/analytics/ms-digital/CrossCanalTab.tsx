@@ -1,4 +1,6 @@
 import { BarChart } from "@/components/charts/BarChart";
+import { PlatformBarChart } from "@/components/charts/PlatformBarChart";
+import { DeviceBarChart } from "@/components/charts/DeviceBarChart";
 import { MetricCard } from "@/components/dashboard/MetricCard";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
@@ -63,13 +65,13 @@ export function CrossCanalTab({ comparacao }: { comparacao: ComparacaoCanais }) 
             <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold mb-2">
               App — por aparelho
             </h3>
-            <BarChart data={appPlataforma} xKey="operatingSystem" yKey="activeUsers" height={240} />
+            <PlatformBarChart dados={appPlataforma} />
           </div>
           <div>
             <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold mb-2">
               Portal — por tipo de dispositivo
             </h3>
-            <BarChart data={portalDispositivos} xKey="dispositivo" yKey="visitas" height={240} />
+            <DeviceBarChart dados={portalDispositivos} />
           </div>
         </div>
         <p className="mt-4 text-xs" style={{ color: "var(--ds-color-text-muted)" }}>

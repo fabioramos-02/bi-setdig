@@ -1,0 +1,172 @@
+{
+  "dia": {
+    "distribuicao": [],
+    "topDestinos": []
+  },
+  "semana": {
+    "distribuicao": [
+      {
+        "tipo": "Exploração por Categoria/Órgão",
+        "acessos": 3457,
+        "participacaoPct": 90.19
+      },
+      {
+        "tipo": "Acesso Direto ao Serviço",
+        "acessos": 237,
+        "participacaoPct": 6.18
+      },
+      {
+        "tipo": "Acesso a Sistemas (Login/Workspace)",
+        "acessos": 73,
+        "participacaoPct": 1.9
+      },
+      {
+        "tipo": "Notícias",
+        "acessos": 44,
+        "participacaoPct": 1.15
+      },
+      {
+        "tipo": "Busca Interna no Portal",
+        "acessos": 22,
+        "participacaoPct": 0.57
+      }
+    ],
+    "topDestinos": [
+      {
+        "pagina": "Others",
+        "tipo": "Exploração por Categoria/Órgão",
+        "acessos": 3443
+      },
+      {
+        "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
+        "tipo": "Acesso Direto ao Serviço",
+        "acessos": 85
+      },
+      {
+        "pagina": "/workspace",
+        "tipo": "Acesso a Sistemas (Login/Workspace)",
+        "acessos": 59
+      },
+      {
+        "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
+        "tipo": "Acesso Direto ao Serviço",
+        "acessos": 48
+      },
+      {
+        "pagina": "/seguranca/expedicao-de-certidao-de-antecedentes-criminais35/",
+        "tipo": "Acesso Direto ao Serviço",
+        "acessos": 18
+      },
+      {
+        "pagina": "/assistencia-social/solicitacao-de-inclusao-no-programa-mais-social118",
+        "tipo": "Acesso Direto ao Serviço",
+        "acessos": 16
+      },
+      {
+        "pagina": "/noticias",
+        "tipo": "Notícias",
+        "acessos": 16
+      },
+      {
+        "pagina": "/noticias/licenciamento-2026-comeca-com-nova-opcao-de-parcelamento-digital-no-portal-meu-detran",
+        "tipo": "Notícias",
+        "acessos": 16
+      },
+      {
+        "pagina": "/orgaos",
+        "tipo": "Exploração por Categoria/Órgão",
+        "acessos": 14
+      },
+      {
+        "pagina": "/workspace/minha-area/meus-sistemas",
+        "tipo": "Acesso a Sistemas (Login/Workspace)",
+        "acessos": 14
+      }
+    ]
+  },
+  "mes": {
+    "distribuicao": [
+      {
+        "tipo": "Exploração por Categoria/Órgão",
+        "acessos": 7236,
+        "participacaoPct": 90.08
+      },
+      {
+        "tipo": "Acesso Direto ao Serviço",
+        "acessos": 537,
+        "participacaoPct": 6.68
+      },
+      {
+        "tipo": "Acesso a Sistemas (Login/Workspace)",
+        "acessos": 162,
+        "participacaoPct": 2.02
+      },
+      {
+        "tipo": "Busca Interna no Portal",
+        "acessos": 52,
+        "participacaoPct": 0.65
+      },
+      {
+        "tipo": "Notícias",
+        "acessos": 46,
+        "participacaoPct": 0.57
+      }
+    ],
+    "topDestinos": [
+      {
+        "pagina": "Others",
+        "tipo": "Exploração por Categoria/Órgão",
+        "acessos": 7200
+      },
+      {
+        "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
+        "tipo": "Acesso Direto ao Serviço",
+        "acessos": 175
+      },
+      {
+        "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
+        "tipo": "Acesso Direto ao Serviço",
+        "acessos": 120
+      },
+      {
+        "pagina": "/workspace",
+        "tipo": "Acesso a Sistemas (Login/Workspace)",
+        "acessos": 116
+      },
+      {
+        "pagina": "/orgaos",
+        "tipo": "Exploração por Categoria/Órgão",
+        "acessos": 36
+      },
+      {
+        "pagina": "/seguranca/expedicao-de-certidao-de-antecedentes-criminais35/",
+        "tipo": "Acesso Direto ao Serviço",
+        "acessos": 34
+      },
+      {
+        "pagina": "/financas-e-impostos/ipva-consulta-de-debito54/",
+        "tipo": "Acesso Direto ao Serviço",
+        "acessos": 30
+      },
+      {
+        "pagina": "/assistencia-social/solicitacao-de-inclusao-no-programa-mais-social118",
+        "tipo": "Acesso Direto ao Serviço",
+        "acessos": 28
+      },
+      {
+        "pagina": "/workspace/minha-area/meus-sistemas",
+        "tipo": "Acesso a Sistemas (Login/Workspace)",
+        "acessos": 27
+      },
+      {
+        "pagina": "/buscar/q=Cidadão",
+        "tipo": "Busca Interna no Portal",
+        "acessos": 26
+      }
+    ]
+  },
+  "ano": {
+    "distribuicao": [],
+    "topDestinos": []
+  }
+}

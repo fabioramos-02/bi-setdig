@@ -93,6 +93,91 @@ def merge_search(nativo: list[dict], de_urls: list[dict], n: int = 20) -> list[d
     return out[:n]
 
 
+def entry_pages(rows: list, n: int = 10) -> list[dict]:
+    """Porta de matomo-analytics-dashboard/views/portal/tab4_jornada.py:90-104 —
+    Actions.getEntryPageUrls já devolve label/nb_visits prontos, sem processamento."""
+    out = [
+        {"pagina": "Home (Index)" if r.get("label") == "/" else r.get("label", ""), "entradas": r.get("nb_visits", 0)}
+        for r in (rows or [])
+    ]
+    out.sort(key=lambda r: -r["entradas"])
+    return out[:n]
+
+
+def outlinks(rows: list, n: int = 10) -> list[dict]:
+    """Porta de tab4_jornada.py:106-121 — Actions.getOutlinks SEM flat=1 já
+    agrupa por domínio no primeiro nível do relatório hierárquico do Matomo
+    (não reimplementar parse de domínio via regex/urlparse). Filtra outlink
+    espúrio pro próprio SSO (ms.gov.br/login)."""
+    out = [
+        {"dominio": r.get("label", ""), "saidas": r.get("nb_visits", 0)}
+        for r in (rows or [])
+        if "ms.gov.br/login" not in r.get("label", "")
+    ]
+    out.sort(key=lambda r: -r["saidas"])
+    return out[:n]
+
+
+def classificar_jornada(url: str) -> str:
+    """Porta 1:1 de tab4_jornada.py:157-169 — profundidade de path + lista fixa
+    de prefixos, nessa ordem de prioridade. Não é regex nem categoria curada."""
+    if not url or url == "/":
+        return "Recargas/Outros"
+    partes = [p for p in url.split("/") if p]
+    if not partes:
+        return "Recargas/Outros"
+    primeiro = partes[0].lower()
+    if primeiro == "buscar" or "q=" in url:
+        return "Busca Interna no Portal"
+    if primeiro in ("workspace", "login"):
+        return "Acesso a Sistemas (Login/Workspace)"
+    if primeiro == "noticias":
+        return "Notícias"
+    if len(partes) == 1:
+        return "Exploração por Categoria/Órgão"
+    return "Acesso Direto ao Serviço"
+
+
+def merge_following_pages(respostas: list[dict]) -> list[dict]:
+    """Soma followingPages de várias respostas Transitions por label — usado só
+    pra period=ano, que estoura no servidor Matomo mesmo com 1 URL fixa (Home);
+    o pipeline chama a API mês a mês (12x) e agrega aqui em memória (porta de
+    tab4_jornada.py::_load_transitions_annual, sem o progress bar do Streamlit)."""
+    somas: dict[str, int] = {}
+    for raw in respostas or []:
+        for item in (raw or {}).get("followingPages") or []:
+            label = item.get("label", "")
+            somas[label] = somas.get(label, 0) + item.get("hits", item.get("referrals", 0))
+    return [{"label": label, "hits": hits} for label, hits in sorted(somas.items(), key=lambda kv: -kv[1])]
+
+
+def padrao_comportamental(following_pages: list[dict]) -> dict:
+    """Porta de tab4_jornada.py:155-185 — followingPages de
+    Transitions.getTransitionsForPageUrl (Home fixa) categorizado por
+    classificar_jornada. Retorna distribuição (pro donut) + top-10 (pra
+    tabela, exclui 'Recargas/Outros' como o legado faz)."""
+    linhas = []
+    for item in following_pages or []:
+        pagina = (item.get("label") or "").replace("ms.gov.br", "") or "/"
+        acessos = item.get("hits", item.get("referrals", 0))
+        linhas.append({"pagina": pagina, "tipo": classificar_jornada(pagina), "acessos": acessos})
+
+    total = sum(l["acessos"] for l in linhas) or 1
+    por_tipo: dict[str, int] = {}
+    for l in linhas:
+        por_tipo[l["tipo"]] = por_tipo.get(l["tipo"], 0) + l["acessos"]
+
+    distribuicao = sorted(
+        [{"tipo": t, "acessos": v, "participacaoPct": round(v / total * 100, 2)} for t, v in por_tipo.items()],
+        key=lambda r: -r["acessos"],
+    )
+    top_destinos = sorted(
+        [l for l in linhas if l["tipo"] != "Recargas/Outros"],
+        key=lambda r: -r["acessos"],
+    )[:10]
+    return {"distribuicao": distribuicao, "topDestinos": top_destinos}
+
+
 def visits_daily(raw: dict) -> list[dict]:
     """VisitsSummary.get com period=day&date=lastN retorna {data: {...}} por dia."""
     rows = []

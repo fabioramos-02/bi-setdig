@@ -15,6 +15,9 @@ import {
   getMatomoBusca,
   getMatomoPerfilFiltro,
   getMatomoServicosMaisAcessados,
+  getMatomoPortasEntrada,
+  getMatomoFugaHub,
+  getMatomoPadraoComportamental,
 } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -42,6 +45,9 @@ export default function AnalyticsPortalMsPage() {
   const busca = getMatomoBusca();
   const perfil = getMatomoPerfilFiltro();
   const servicosMaisAcessados = getMatomoServicosMaisAcessados();
+  const portasEntrada = getMatomoPortasEntrada();
+  const fugaHub = getMatomoFugaHub();
+  const padraoComportamental = getMatomoPadraoComportamental();
 
   if (diarias.length === 0) {
     return (
@@ -72,6 +78,9 @@ export default function AnalyticsPortalMsPage() {
       matchRate={matchRate}
       perfil={perfil}
       servicosMaisAcessados={servicosMaisAcessados}
+      portasEntrada={portasEntrada}
+      fugaHub={fugaHub}
+      padraoComportamental={padraoComportamental}
     />
   );
 }

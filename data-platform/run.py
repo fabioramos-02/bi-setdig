@@ -10,6 +10,7 @@ Cartas (Postgres) exige VPN da SETDIG — se falhar, o script registra e segue
 from __future__ import annotations
 
 import sys
+from datetime import date as dt_date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -131,6 +132,70 @@ def run_matomo_perfil_filtro() -> None:
     print(f"[matomo] servicos-mais-acessados -> {[(k, len(v)) for k, v in mais_acessados.items()]}")
 
 
+# URL da Home do portal rastreado no Matomo (idSite=MATOMO_SITE_ID) — porta de
+# matomo-analytics-dashboard/views/portal/tab4_jornada.py:126.
+HOME_URL = "https://www.ms.gov.br/"
+
+
+def _transitions_home_ano(home_url: str) -> list[dict]:
+    """period=year estoura 504 no servidor Matomo mesmo com 1 URL fixa (Home)
+    — contorna com 12 chamadas period=month, agregadas em memória (porta de
+    tab4_jornada.py::_load_transitions_annual, sem a progress bar do Streamlit)."""
+    hoje = dt_date.today()
+    respostas = []
+    for mes in range(1, 13):
+        primeiro_dia = dt_date(hoje.year, mes, 1)
+        if primeiro_dia > hoje:
+            break
+        respostas.append(matomo.get_transitions_for_page_url("month", primeiro_dia.isoformat(), home_url))
+    return respostas
+
+
+def run_matomo_jornada() -> None:
+    """Fluxo de navegação — 3 relatórios leves (não N+1), porta de
+    matomo-analytics-dashboard/views/portal/tab4_jornada.py:
+    - Portas de Entrada: Actions.getEntryPageUrls, 1 chamada por período.
+    - Fuga do Hub: Actions.getOutlinks, 1 chamada por período.
+    - Padrão Comportamental: Transitions.getTransitionsForPageUrl fixo na Home,
+      1 chamada por período (exceto period=ano, que precisa do chunking mensal
+      acima — o timeout é do período, não de N páginas)."""
+    entradas, saidas = {}, {}
+    for chave, (p, d) in PERIODOS_FIXOS.items():
+        entradas[chave] = t_matomo.entry_pages(matomo.get_entry_pages(p, d, limit=20))
+        saidas[chave] = t_matomo.outlinks(matomo.get_outlinks(p, d, limit=50))
+
+    validate_period_breakdown(entradas, ["pagina", "entradas"], ["entradas"])
+    publish("matomo", "portas-entrada", entradas)
+    print(f"[matomo] portas-entrada -> {[(k, len(v)) for k, v in entradas.items()]}")
+
+    validate_period_breakdown(saidas, ["dominio", "saidas"], ["saidas"])
+    publish("matomo", "fuga-hub", saidas)
+    print(f"[matomo] fuga-hub -> {[(k, len(v)) for k, v in saidas.items()]}")
+
+    padrao: dict[str, dict] = {}
+    for chave, (p, d) in PERIODOS_FIXOS.items():
+        try:
+            if chave == "ano":
+                following = t_matomo.merge_following_pages(_transitions_home_ano(HOME_URL))
+            else:
+                raw = matomo.get_transitions_for_page_url(p, d, HOME_URL)
+                following = raw.get("followingPages") or []
+            padrao[chave] = t_matomo.padrao_comportamental(following)
+        except Exception as exc:  # noqa: BLE001 — Transitions é instável (504 documentado em
+            # transform/perfil.py:20-31, confirmado ao vivo até em period=month); 1 período
+            # falho não pode derrubar portas-entrada/fuga-hub (já publicados acima) nem os
+            # outros períodos que deram certo — front já trata lista vazia (EmptyCard).
+            print(f"[matomo] padrao-comportamental período {chave!r} FALHOU (Transitions instável): {exc}")
+            padrao[chave] = {"distribuicao": [], "topDestinos": []}
+
+    validate_period_breakdown(
+        {k: v["distribuicao"] for k, v in padrao.items()}, ["tipo", "acessos", "participacaoPct"], ["acessos", "participacaoPct"]
+    )
+    validate_period_breakdown({k: v["topDestinos"] for k, v in padrao.items()}, ["pagina", "tipo", "acessos"], ["acessos"])
+    publish("matomo", "padrao-comportamental", padrao)
+    print(f"[matomo] padrao-comportamental -> {[(k, len(padrao[k]['topDestinos'])) for k in padrao]}")
+
+
 def run_ga4() -> None:
     # visao-geral vira breakdown por período (v2) — o filtro do MS Digital
     # precisa recortar os KPIs por dia/semana/mes/ano (ADR-007).
@@ -184,6 +249,7 @@ if __name__ == "__main__":
         ("matomo", run_matomo),
         ("matomo_perfil", run_matomo_perfil),
         ("matomo_perfil_filtro", run_matomo_perfil_filtro),
+        ("matomo_jornada", run_matomo_jornada),
         ("ga4", run_ga4),
         ("ga4_perfil", run_ga4_perfil),
         ("cartas", run_cartas),

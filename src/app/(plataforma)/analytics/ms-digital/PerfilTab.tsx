@@ -1,4 +1,5 @@
 import { BarChart } from "@/components/charts/BarChart";
+import { PlatformBarChart } from "@/components/charts/PlatformBarChart";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import type { InsightPlataforma, InsightHorario } from "@/lib/insights";
 import type { Plataforma, HorarioGa4 } from "@/lib/data";
@@ -26,7 +27,7 @@ export function PerfilTab({
           <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold mb-2">
             Aparelho
           </h3>
-          <BarChart data={plataforma} xKey="operatingSystem" yKey="activeUsers" height={260} />
+          <PlatformBarChart dados={plataforma} />
         </div>
         <div>
           <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold mb-2">

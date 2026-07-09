@@ -9,6 +9,7 @@ import { StoryCard } from "@/components/dashboard/StoryCard";
 import { Tabs, type TabItem } from "@/components/dashboard/Tabs";
 import { PerfilCidadaoTab } from "./PerfilCidadaoTab";
 import { ServicosPorPerfilTab } from "./ServicosPorPerfilTab";
+import { FluxoNavegacaoTab } from "./FluxoNavegacaoTab";
 import { VisaoGeralTab } from "./VisaoGeralTab";
 import { WordCloud } from "@/components/charts/WordCloud";
 import { aplicarFiltroPeriodo, chavePeriodoFixo, resumoDoPeriodo } from "@/lib/period-filter";
@@ -31,6 +32,9 @@ import type {
   TermoBusca,
   PerfilFiltroPeriodo,
   ServicoAcessado,
+  PaginaEntrada,
+  DominioSaida,
+  PadraoComportamental,
 } from "@/lib/data";
 
 const ROTULO_PERIODO = { dia: "no dia", semana: "na semana", mes: "no mês", ano: "no ano", intervalo: "no intervalo" };
@@ -46,6 +50,9 @@ export function PortalMsClient({
   matchRate,
   perfil,
   servicosMaisAcessados,
+  portasEntrada,
+  fugaHub,
+  padraoComportamental,
 }: {
   diarias: VisitaDiaria[];
   navegadores: BreakdownPorPeriodo<Navegador>;
@@ -57,6 +64,9 @@ export function PortalMsClient({
   matchRate: number;
   perfil: Record<PeriodoFixo, PerfilFiltroPeriodo>;
   servicosMaisAcessados: BreakdownPorPeriodo<ServicoAcessado>;
+  portasEntrada: BreakdownPorPeriodo<PaginaEntrada>;
+  fugaHub: BreakdownPorPeriodo<DominioSaida>;
+  padraoComportamental: Record<PeriodoFixo, PadraoComportamental>;
 }) {
   // Estado do filtro vem da sidebar (PeriodoProvider) — mesmo estado, gráficos
   // reagem sem barra de filtro dentro do conteúdo.
@@ -71,6 +81,9 @@ export function PortalMsClient({
   const cidadesAtual = cidades[periodoAtual];
   const perfilAtual = perfil[periodoAtual];
   const servicosAcessadosAtual = servicosMaisAcessados[periodoAtual];
+  const portasEntradaAtual = portasEntrada[periodoAtual];
+  const fugaHubAtual = fugaHub[periodoAtual];
+  const padraoComportamentalAtual = padraoComportamental[periodoAtual];
 
   const tendencia = useMemo(() => aplicarFiltroPeriodo(diarias, estado), [diarias, estado]);
   const kpis = useMemo(() => resumoDoPeriodo(diarias, estado), [diarias, estado]);
@@ -195,9 +208,13 @@ export function PortalMsClient({
     {
       id: "jornada",
       label: "6. Fluxo de Navegação",
-      disabled: true,
-      disabledReason: "Depende de transitions por URL (N+1 chamadas ao Matomo)",
-      content: <EmptyCard message="Em breve — depende de transitions por URL, ainda não extraído." />,
+      content: (
+        <FluxoNavegacaoTab
+          portasEntrada={portasEntradaAtual}
+          fugaHub={fugaHubAtual}
+          padraoComportamental={padraoComportamentalAtual}
+        />
+      ),
     },
   ];
 

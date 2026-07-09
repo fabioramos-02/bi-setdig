@@ -31,14 +31,4 @@ export function chaveDoNavegador(nomeMatomo: string): ChaveIconeNavegador | null
   return NOME_PARA_CHAVE[nomeMatomo] ?? null;
 }
 
-const CORES = [
-  "--ds-color-primary-600",
-  "--ds-color-secondary-600",
-  "--ds-color-blue-600",
-  "--ds-color-orange-600",
-  "--ds-color-neutral-500",
-];
-
-export function corPorIndice(index: number): string {
-  return `var(${CORES[index % CORES.length]})`;
-}
+export { corCategorica as corPorIndice } from "./categorical-palette";

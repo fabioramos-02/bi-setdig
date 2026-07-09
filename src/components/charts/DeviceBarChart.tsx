@@ -1,4 +1,5 @@
 import { BarChart } from "@/components/charts/BarChart";
+import { CategoryLegend } from "@/components/ds/CategoryLegend";
 import { iconeDoDispositivo, corDoDispositivo } from "@/lib/device-icon-map";
 import type { Dispositivo } from "@/lib/data";
 
@@ -6,17 +7,12 @@ import type { Dispositivo } from "@/lib/data";
 export function DeviceBarChart({ dados }: { dados: Dispositivo[] }) {
   return (
     <div>
-      <div className="flex flex-wrap gap-3 mb-2">
-        {dados.map((d) => {
+      <CategoryLegend
+        items={dados.map((d) => {
           const Icone = iconeDoDispositivo(d.dispositivo);
-          return (
-            <span key={d.dispositivo} className="flex items-center gap-1.5 text-xs" style={{ color: corDoDispositivo(d.dispositivo) }}>
-              <Icone size={16} />
-              {d.dispositivo}
-            </span>
-          );
+          return { label: d.dispositivo, color: corDoDispositivo(d.dispositivo), icon: <Icone size={16} /> };
         })}
-      </div>
+      />
       <BarChart
         data={dados}
         xKey="dispositivo"

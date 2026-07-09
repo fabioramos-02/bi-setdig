@@ -159,6 +159,39 @@ export function getMatomoServicosMaisAcessados(): BreakdownPorPeriodo<ServicoAce
   return readDataset<BreakdownPorPeriodo<ServicoAcessado>>("matomo", "v1", "servicos-mais-acessados") ?? BREAKDOWN_VAZIO;
 }
 
+// --- Fluxo de navegação — 3 relatórios leves (não N+1), porta de
+// matomo-analytics-dashboard/views/portal/tab4_jornada.py. Breakdown real por
+// período (ADR-007), não amostra replicada — Entry Pages/Outlinks são 1
+// chamada cada, Transitions na Home também (exceto ano, chunked no pipeline). ---
+export type PaginaEntrada = { pagina: string; entradas: number };
+export function getMatomoPortasEntrada(): BreakdownPorPeriodo<PaginaEntrada> {
+  return readDataset<BreakdownPorPeriodo<PaginaEntrada>>("matomo", "v1", "portas-entrada") ?? BREAKDOWN_VAZIO;
+}
+
+export type DominioSaida = { dominio: string; saidas: number };
+export function getMatomoFugaHub(): BreakdownPorPeriodo<DominioSaida> {
+  return readDataset<BreakdownPorPeriodo<DominioSaida>>("matomo", "v1", "fuga-hub") ?? BREAKDOWN_VAZIO;
+}
+
+export type TipoJornada = { tipo: string; acessos: number; participacaoPct: number };
+export type DestinoJornada = { pagina: string; tipo: string; acessos: number };
+export type PadraoComportamental = { distribuicao: TipoJornada[]; topDestinos: DestinoJornada[] };
+
+const PADRAO_COMPORTAMENTAL_VAZIO: PadraoComportamental = { distribuicao: [], topDestinos: [] };
+const PADRAO_COMPORTAMENTAL_POR_PERIODO_VAZIO: Record<PeriodoFixo, PadraoComportamental> = {
+  dia: PADRAO_COMPORTAMENTAL_VAZIO,
+  semana: PADRAO_COMPORTAMENTAL_VAZIO,
+  mes: PADRAO_COMPORTAMENTAL_VAZIO,
+  ano: PADRAO_COMPORTAMENTAL_VAZIO,
+};
+
+export function getMatomoPadraoComportamental(): Record<PeriodoFixo, PadraoComportamental> {
+  return (
+    readDataset<Record<PeriodoFixo, PadraoComportamental>>("matomo", "v1", "padrao-comportamental") ??
+    PADRAO_COMPORTAMENTAL_POR_PERIODO_VAZIO
+  );
+}
+
 // --- Catálogo de serviços do app MS Digital (nativo × web) ---
 // Fonte: planilha manual, gerada por data-platform/build_catalogo.py. Estático
 // (não varia por período) — é a relação de serviços, não métrica de uso.

@@ -7,7 +7,7 @@
  */
 export type ItemRanking = { label: string; valor: number; sublabel?: string; href?: string };
 
-export function RankingBarChart({ itens }: { itens: ItemRanking[] }) {
+export function RankingBarChart({ itens, cor = "var(--ds-color-primary-600)" }: { itens: ItemRanking[]; cor?: string }) {
   const max = itens.reduce((m, x) => Math.max(m, x.valor), 0);
 
   return (
@@ -40,12 +40,12 @@ export function RankingBarChart({ itens }: { itens: ItemRanking[] }) {
               <div className="flex-1 h-2.5 rounded" style={{ background: "var(--ds-color-background-muted)" }}>
                 <div
                   className="h-2.5 rounded"
-                  style={{ width: `${largura}%`, background: "var(--ds-color-primary-600)", opacity: opacidade }}
+                  style={{ width: `${largura}%`, background: cor, opacity: opacidade }}
                 />
               </div>
               <span
                 className="shrink-0 w-14 text-right text-sm font-semibold"
-                style={{ color: "var(--ds-color-primary-600)" }}
+                style={{ color: cor }}
               >
                 {it.valor.toLocaleString("pt-BR")}
               </span>

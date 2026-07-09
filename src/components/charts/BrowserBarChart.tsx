@@ -1,5 +1,6 @@
 import { getBrowserIcon } from "react-browser-icons";
 import { BarChart } from "@/components/charts/BarChart";
+import { CategoryLegend } from "@/components/ds/CategoryLegend";
 import { chaveDoNavegador, corPorIndice } from "@/lib/browser-icon-map";
 import type { Navegador } from "@/lib/data";
 
@@ -10,17 +11,16 @@ import type { Navegador } from "@/lib/data";
 export function BrowserBarChart({ dados }: { dados: Navegador[] }) {
   return (
     <div>
-      <div className="flex flex-wrap gap-3 mb-2">
-        {dados.map((d, i) => {
+      <CategoryLegend
+        items={dados.map((d, i) => {
           const chave = chaveDoNavegador(d.navegador);
-          return (
-            <span key={d.navegador} className="flex items-center gap-1.5 text-xs" style={{ color: corPorIndice(i) }}>
-              {chave && getBrowserIcon({ browser: chave, size: 16 })}
-              {d.navegador}
-            </span>
-          );
+          return {
+            label: d.navegador,
+            color: corPorIndice(i),
+            icon: chave ? getBrowserIcon({ browser: chave, size: 16 }) : undefined,
+          };
         })}
-      </div>
+      />
       <BarChart data={dados} xKey="navegador" yKey="visitas" height={220} corPorIndice={corPorIndice} />
     </div>
   );

@@ -1,0 +1,170 @@
+{
+  "dia": [
+    {
+      "pagina": "/login/callback/ - Others",
+      "entradas": 2664
+    },
+    {
+      "pagina": "Home (Index)",
+      "entradas": 2546
+    },
+    {
+      "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
+      "entradas": 890
+    },
+    {
+      "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
+      "entradas": 697
+    },
+    {
+      "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
+      "entradas": 432
+    },
+    {
+      "pagina": "/noticias/ - Others",
+      "entradas": 370
+    },
+    {
+      "pagina": "/financas-e-impostos/ipva-consulta-de-debito54/",
+      "entradas": 367
+    },
+    {
+      "pagina": "/noticias/licenciamento-2026-comeca-com-nova-opcao-de-parcelamento-digital-no-portal-meu-detran",
+      "entradas": 362
+    },
+    {
+      "pagina": "/financas-e-impostos/portal-e-fazenda-cadastro135/",
+      "entradas": 360
+    },
+    {
+      "pagina": "/workspace",
+      "entradas": 304
+    }
+  ],
+  "semana": [
+    {
+      "pagina": "/login/callback/ - Others",
+      "entradas": 9034
+    },
+    {
+      "pagina": "Home (Index)",
+      "entradas": 8115
+    },
+    {
+      "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
+      "entradas": 2664
+    },
+    {
+      "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
+      "entradas": 2169
+    },
+    {
+      "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
+      "entradas": 1565
+    },
+    {
+      "pagina": "/noticias/licenciamento-2026-comeca-com-nova-opcao-de-parcelamento-digital-no-portal-meu-detran",
+      "entradas": 1478
+    },
+    {
+      "pagina": "/noticias/ - Others",
+      "entradas": 1351
+    },
+    {
+      "pagina": "/financas-e-impostos/portal-e-fazenda-cadastro135/",
+      "entradas": 1208
+    },
+    {
+      "pagina": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
+      "entradas": 1082
+    },
+    {
+      "pagina": "/workspace",
+      "entradas": 1032
+    }
+  ],
+  "mes": [
+    {
+      "pagina": "/login/callback/ - Others",
+      "entradas": 19493
+    },
+    {
+      "pagina": "Home (Index)",
+      "entradas": 17888
+    },
+    {
+      "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
+      "entradas": 6347
+    },
+    {
+      "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
+      "entradas": 5422
+    },
+    {
+      "pagina": "/noticias/ - Others",
+      "entradas": 3221
+    },
+    {
+      "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
+      "entradas": 3004
+    },
+    {
+      "pagina": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
+      "entradas": 2975
+    },
+    {
+      "pagina": "/noticias/licenciamento-2026-comeca-com-nova-opcao-de-parcelamento-digital-no-portal-meu-detran",
+      "entradas": 2334
+    },
+    {
+      "pagina": "/workspace",
+      "entradas": 2241
+    },
+    {
+      "pagina": "/financas-e-impostos/portal-e-fazenda-cadastro135/",
+      "entradas": 2176
+    }
+  ],
+  "ano": [
+    {
+      "pagina": "Home (Index)",
+      "entradas": 920829
+    },
+    {
+      "pagina": "/login/callback/ - Others",
+      "entradas": 844370
+    },
+    {
+      "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
+      "entradas": 202392
+    },
+    {
+      "pagina": "/workspace/minha-area/meus-sistemas",
+      "entradas": 124235
+    },
+    {
+      "pagina": "/noticias/ - Others",
+      "entradas": 101054
+    },
+    {
+      "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
+      "entradas": 96486
+    },
+    {
+      "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
+      "entradas": 77116
+    },
+    {
+      "pagina": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
+      "entradas": 66384
+    },
+    {
+      "pagina": "/financas-e-impostos/portal-e-fazenda-cadastro135/",
+      "entradas": 52843
+    },
+    {
+      "pagina": "/workspace",
+      "entradas": 50512
+    }
+  ]
+}

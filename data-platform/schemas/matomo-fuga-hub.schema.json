@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "matomo/fuga-hub",
+  "description": "Top-10 domínios de destino de links externos (outlinks) via Actions.getOutlinks (sem flat, domínio já agregado pelo Matomo). 1 chave por período fixo — ver ADR-007.",
+  "type": "object",
+  "required": ["dia", "semana", "mes", "ano"],
+  "properties": {
+    "dia": { "$ref": "#/definitions/lista" },
+    "semana": { "$ref": "#/definitions/lista" },
+    "mes": { "$ref": "#/definitions/lista" },
+    "ano": { "$ref": "#/definitions/lista" }
+  },
+  "definitions": {
+    "lista": {
+      "type": "array",
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "required": ["dominio", "saidas"],
+        "properties": {
+          "dominio": { "type": "string" },
+          "saidas": { "type": "integer", "minimum": 0 }
+        }
+      }
+    }
+  }
+}

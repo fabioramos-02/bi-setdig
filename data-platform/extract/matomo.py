@@ -69,3 +69,28 @@ def get_page_urls(period: str, date: str, site_id: str | None = None, limit: int
 
 def get_site_search_keywords(period: str, date: str, site_id: str | None = None, limit: int = 50) -> list:
     return _call("Actions.getSiteSearchKeywords", period, date, {"filter_limit": limit}, site_id)
+
+
+def get_entry_pages(period: str, date: str, site_id: str | None = None, limit: int = 20) -> list:
+    """Porta de matomo-analytics-dashboard/api/matomo_client.py::get_entry_pages
+    — flat=1 pra ranking de URL absoluta (não hierarquia de pastas)."""
+    return _call("Actions.getEntryPageUrls", period, date, {"filter_limit": limit, "flat": 1}, site_id)
+
+
+def get_outlinks(period: str, date: str, site_id: str | None = None, limit: int = 50) -> list:
+    """Porta de matomo_client.py::get_outlinks — SEM flat=1 de propósito: o
+    relatório hierárquico nativo do Matomo já agrupa outlinks por domínio no
+    primeiro nível (ver transform/matomo.py::outlinks)."""
+    return _call("Actions.getOutlinks", period, date, {"filter_limit": limit}, site_id)
+
+
+def get_transitions_for_page_url(period: str, date: str, page_url: str, site_id: str | None = None) -> dict:
+    """Porta de matomo_client.py::get_transitions — 1 chamada fixa pra uma URL
+    (a Home), não N+1 por página. timeout=180: mesmo período curto pode ser
+    lento no servidor Matomo pra esse endpoint (precedente: matomo_client.py)."""
+    return _call(
+        "Transitions.getTransitionsForPageUrl", period, date,
+        {"pageUrl": page_url, "limitBeforeGrouping": 20}, site_id, timeout=180,
+    )
+
+
