@@ -1,10 +1,30 @@
-/** "Intervalo de datas" não tem recorte próprio pra breakdowns de categoria
- * (ADR-007 — Matomo/GA4 não têm série temporal nesses relatórios). Toda tab
- * que indexa um `BreakdownPorPeriodo<T>` por `periodoAtual` cai no snapshot
- * do mês quando o usuário escolhe intervalo — esse aviso torna isso visível,
- * em vez de deixar o número parecer atualizado quando não está. */
-export function AvisoSnapshotAproximado({ tipoIntervalo }: { tipoIntervalo: boolean }) {
-  if (!tipoIntervalo) return null;
+/** "Intervalo de datas" agora busca dado ao vivo (Matomo period=range / GA4
+ * range nativo — ADR-010) pra parte dos painéis. Enquanto isso não estiver
+ * plugado num painel específico (ou como fallback se o fetch falhar), ele
+ * cai no snapshot do mês (ADR-007) — este componente cobre os 3 estados
+ * possíveis nessa janela de tempo. `tipoIntervalo` (legado) continua
+ * aceito pra painéis que ainda não têm busca ao vivo. */
+export type StatusIntervalo = "ok" | "carregando" | "fallback";
+
+export function AvisoSnapshotAproximado({
+  tipoIntervalo,
+  status,
+}: {
+  tipoIntervalo?: boolean;
+  status?: StatusIntervalo;
+}) {
+  const efetivo: StatusIntervalo = status ?? (tipoIntervalo ? "fallback" : "ok");
+  if (efetivo === "ok") return null;
+
+  const texto =
+    efetivo === "carregando"
+      ? "Buscando o dado exato do intervalo…"
+      : (
+          <>
+            Este painel não tem recorte por intervalo arbitrário nesta versão (ADR-007/ADR-010) — exibindo o snapshot do{" "}
+            <strong>mês</strong>.
+          </>
+        );
 
   return (
     <p
@@ -15,7 +35,7 @@ export function AvisoSnapshotAproximado({ tipoIntervalo }: { tipoIntervalo: bool
         padding: "var(--ds-spacing-12)",
       }}
     >
-      Este painel não tem recorte por intervalo arbitrário (ADR-007) — exibindo o snapshot do <strong>mês</strong>.
+      {texto}
     </p>
   );
 }

@@ -3,7 +3,7 @@ import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { ExportCsvButton } from "@/components/dashboard/ExportCsvButton";
 import { RankingBarChart } from "@/components/charts/RankingBarChart";
-import { AvisoSnapshotAproximado } from "@/components/dashboard/AvisoSnapshotAproximado";
+import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
 import { labelPagina } from "@/lib/pagina-label";
 import type { InsightPagina } from "@/lib/insights";
 import type { Pagina } from "@/lib/data";
@@ -11,19 +11,19 @@ import type { Pagina } from "@/lib/data";
 /** Conteúdo da aba "4. Páginas mais acessadas" — ranking com barra de
  * intensidade (mesmo padrão de Portas de Entrada/Saídas em
  * FluxoNavegacaoTab.tsx) em vez da tabela crua de URL anterior. Extraído de
- * PortalMsClient pra não estourar 250 linhas/arquivo. `rotuloPeriodo` aqui é
- * o período que o dado REALMENTE é (periodoAtual), não o que o usuário
- * selecionou — em "Intervalo" divergem (ADR-007). */
+ * PortalMsClient pra não estourar 250 linhas/arquivo. `rotuloPeriodo` reflete
+ * o período que o dado REALMENTE é — intervalo real quando `status` é "ok"
+ * (busca ao vivo, ADR-010), snapshot do mês em "fallback". */
 export function PaginasTab({
   paginas,
   rotuloPeriodo,
   insightPagina,
-  tipoIntervalo,
+  status,
 }: {
   paginas: Pagina[];
   rotuloPeriodo: string;
   insightPagina: InsightPagina | null;
-  tipoIntervalo: boolean;
+  status: StatusIntervalo;
 }) {
   if (paginas.length === 0) {
     return <EmptyCard message="Sem páginas acessadas no período." />;
@@ -36,7 +36,7 @@ export function PaginasTab({
 
   return (
     <div className="flex flex-col gap-6">
-      <AvisoSnapshotAproximado tipoIntervalo={tipoIntervalo} />
+      <AvisoSnapshotAproximado status={status} />
       {insightPagina && (
         <StoryCard
           anchor={`"${labelPagina(insightPagina.url).label}" é a página mais acessada: ${insightPagina.participacaoPct.toFixed(0)}% das visitas ${rotuloPeriodo} passam por ela.`}

@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import type { StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
 import { ContentTopBar } from "@/components/ds/ContentTopBar";
 import { ExportPdfButton } from "@/components/dashboard/ExportPdfButton";
 import { Tabs, type TabItem } from "@/components/dashboard/Tabs";
@@ -37,6 +38,19 @@ import type {
 
 const ROTULO_PERIODO = { dia: "no dia", semana: "na semana", mes: "no mês", ano: "no ano", intervalo: "no intervalo" };
 
+// Shape devolvido por /api/analytics/portal-ms (ADR-010) — mesmos tipos do
+// dataset estático, só que calculado ao vivo pro intervalo exato escolhido.
+type LiveIntervalo = {
+  navegadores: Navegador[];
+  dispositivos: Dispositivo[];
+  horarios: Horario[];
+  geografia: Cidade[];
+  paginas: Pagina[];
+  busca: TermoBusca[];
+  portasEntrada: PaginaEntrada[];
+  fugaHub: DominioSaida[];
+};
+
 export function PortalMsClient({
   diarias,
   navegadores,
@@ -69,18 +83,57 @@ export function PortalMsClient({
   const { estado } = usePeriodo();
   const [abaAtiva, setAbaAtiva] = useState("visao-geral");
 
-  // "Intervalo" não tem breakdown próprio (ver ADR-007) — cai no snapshot "mês".
+  // "Intervalo": tenta buscar ao vivo (ADR-010, Matomo period=range); enquanto
+  // carrega ou se falhar, cai no snapshot "mês" (ADR-007) — chavePeriodoFixo.
   const periodoAtual: PeriodoFixo = chavePeriodoFixo(estado);
-  const navegadoresAtual = navegadores[periodoAtual];
-  const dispositivosAtual = dispositivos[periodoAtual];
-  const horariosAtual = horarios[periodoAtual];
-  const cidadesAtual = cidades[periodoAtual];
+  const tipoIntervalo = estado.tipo === "intervalo";
+
+  const [liveData, setLiveData] = useState<LiveIntervalo | null>(null);
+  const [liveStatus, setLiveStatus] = useState<"idle" | "carregando" | "erro">("idle");
+
+  useEffect(() => {
+    if (!tipoIntervalo || !estado.inicio || !estado.fim) {
+      setLiveData(null);
+      setLiveStatus("idle");
+      return;
+    }
+    let cancelado = false;
+    setLiveStatus("carregando");
+    fetch(`/api/analytics/portal-ms?inicio=${estado.inicio}&fim=${estado.fim}`)
+      .then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json() as Promise<LiveIntervalo>;
+      })
+      .then((data) => {
+        if (cancelado) return;
+        setLiveData(data);
+        setLiveStatus("idle");
+      })
+      .catch(() => {
+        if (cancelado) return;
+        setLiveData(null);
+        setLiveStatus("erro");
+      });
+    return () => {
+      cancelado = true;
+    };
+  }, [tipoIntervalo, estado.inicio, estado.fim]);
+
+  // status pros painéis com busca ao vivo — "ok" quando o dado real chegou.
+  const statusBreakdown: StatusIntervalo = !tipoIntervalo ? "ok" : liveData ? "ok" : liveStatus === "carregando" ? "carregando" : "fallback";
+
+  const navegadoresAtual = tipoIntervalo && liveData ? liveData.navegadores : navegadores[periodoAtual];
+  const dispositivosAtual = tipoIntervalo && liveData ? liveData.dispositivos : dispositivos[periodoAtual];
+  const horariosAtual = tipoIntervalo && liveData ? liveData.horarios : horarios[periodoAtual];
+  const cidadesAtual = tipoIntervalo && liveData ? liveData.geografia : cidades[periodoAtual];
+  const paginasAtual = tipoIntervalo && liveData ? liveData.paginas : paginas[periodoAtual];
+  const buscaAtual = tipoIntervalo && liveData ? liveData.busca : busca[periodoAtual];
+  const portasEntradaAtual = tipoIntervalo && liveData ? liveData.portasEntrada : portasEntrada[periodoAtual];
+  const fugaHubAtual = tipoIntervalo && liveData ? liveData.fugaHub : fugaHub[periodoAtual];
+  // Sem busca ao vivo ainda pra este estudo (transform/perfil.py é mais
+  // complexo) — continua no snapshot + aviso legado (tipoIntervalo boolean).
   const perfilAtual = perfil[periodoAtual];
   const servicosAcessadosAtual = servicosMaisAcessados[periodoAtual];
-  const portasEntradaAtual = portasEntrada[periodoAtual];
-  const fugaHubAtual = fugaHub[periodoAtual];
-  const paginasAtual = paginas[periodoAtual];
-  const buscaAtual = busca[periodoAtual];
 
   const tendencia = useMemo(() => aplicarFiltroPeriodo(diarias, estado), [diarias, estado]);
   const kpis = useMemo(() => resumoDoPeriodo(diarias, estado), [diarias, estado]);
@@ -91,12 +144,11 @@ export function PortalMsClient({
   const insightDispositivo = calcularInsightDispositivo(dispositivosAtual);
   const paginaTop = paginasAtual[0] ?? null;
   const rotuloPeriodo = ROTULO_PERIODO[estado.tipo];
-  // Breakdowns de categoria (busca/páginas/navegadores/...) não têm recorte
-  // próprio de intervalo (ADR-007) — o texto deles tem que dizer o período
-  // que o dado REALMENTE é (periodoAtual), nunca o que o usuário escolheu.
-  // Só KPIs/tendência (via série diária) usam rotuloPeriodo com segurança.
-  const rotuloSnapshot = ROTULO_PERIODO[periodoAtual];
-  const tipoIntervalo = estado.tipo === "intervalo";
+  // Breakdowns de categoria só podem usar o rótulo que o usuário escolheu
+  // ("no intervalo") quando o dado é mesmo ao vivo pro intervalo (liveData) —
+  // caso contrário é snapshot e o texto tem que dizer o período REAL
+  // (periodoAtual), nunca o que foi selecionado (ver AGENTS.md/ADR-007).
+  const rotuloSnapshot = tipoIntervalo && liveData ? rotuloPeriodo : ROTULO_PERIODO[periodoAtual];
 
   const abas: TabItem[] = [
     {
@@ -128,7 +180,7 @@ export function PortalMsClient({
           insightNavegador={insightNavegador}
           dispositivosAtual={dispositivosAtual}
           horariosAtual={horariosAtual}
-          tipoIntervalo={tipoIntervalo}
+          status={statusBreakdown}
         />
       ),
     },
@@ -136,7 +188,7 @@ export function PortalMsClient({
       id: "busca",
       label: "3. Intenção de Busca",
       content: (
-        <BuscaTab busca={buscaAtual} rotuloPeriodo={rotuloSnapshot} insightBusca={insightBusca} tipoIntervalo={tipoIntervalo} />
+        <BuscaTab busca={buscaAtual} rotuloPeriodo={rotuloSnapshot} insightBusca={insightBusca} status={statusBreakdown} />
       ),
     },
     {
@@ -147,7 +199,7 @@ export function PortalMsClient({
           paginas={paginasAtual}
           rotuloPeriodo={rotuloSnapshot}
           insightPagina={insightPagina}
-          tipoIntervalo={tipoIntervalo}
+          status={statusBreakdown}
         />
       ),
     },
@@ -166,7 +218,7 @@ export function PortalMsClient({
       id: "jornada",
       label: "6. Fluxo de Navegação",
       content: (
-        <FluxoNavegacaoTab portasEntrada={portasEntradaAtual} fugaHub={fugaHubAtual} tipoIntervalo={tipoIntervalo} />
+        <FluxoNavegacaoTab portasEntrada={portasEntradaAtual} fugaHub={fugaHubAtual} status={statusBreakdown} />
       ),
     },
   ];

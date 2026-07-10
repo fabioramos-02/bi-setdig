@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import type { StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
 import { ContentTopBar } from "@/components/ds/ContentTopBar";
 import { ExportPdfButton } from "@/components/dashboard/ExportPdfButton";
 import { Tabs, type TabItem } from "@/components/dashboard/Tabs";
@@ -34,9 +35,20 @@ import type {
 } from "@/lib/data";
 import type { ResumoCatalogo, CategoriaResumo } from "@/lib/catalogo-app";
 
+// Shape devolvido por /api/analytics/ms-digital (ADR-010).
+type LiveIntervalo = {
+  visaoGeral: GA4Overview[];
+  plataforma: Plataforma[];
+  servicos: Servico[];
+  funil: EventoFunil[];
+  horarios: HorarioGa4[];
+};
+
 /** MS Digital agora reage ao filtro de período (GA4 v2 = breakdown por período,
  * ver run.py::GA4_PERIODOS). O PeriodoProvider já envolve o layout; aqui só
- * consumimos usePeriodo() e lemos a chave certa de cada breakdown. */
+ * consumimos usePeriodo() e lemos a chave certa de cada breakdown. Em
+ * "Intervalo", tenta buscar ao vivo (ADR-010); CrossCanalTab/Perfil continuam
+ * no fallback (dependem do estudo Matomo de perfil, não portado ainda). */
 export function MsDigitalClient({
   visaoGeral,
   plataforma,
@@ -67,12 +79,45 @@ export function MsDigitalClient({
   const periodo = chavePeriodoFixo(estado);
   const tipoIntervalo = estado.tipo === "intervalo";
 
-  // Fatia de cada breakdown no período selecionado.
-  const vg = visaoGeral[periodo];
-  const plat = plataforma[periodo];
-  const serv = servicos[periodo];
-  const fun = funil[periodo];
-  const hor = horarios[periodo];
+  const [liveData, setLiveData] = useState<LiveIntervalo | null>(null);
+  const [liveStatus, setLiveStatus] = useState<"idle" | "carregando" | "erro">("idle");
+
+  useEffect(() => {
+    if (!tipoIntervalo || !estado.inicio || !estado.fim) {
+      setLiveData(null);
+      setLiveStatus("idle");
+      return;
+    }
+    let cancelado = false;
+    setLiveStatus("carregando");
+    fetch(`/api/analytics/ms-digital?inicio=${estado.inicio}&fim=${estado.fim}`)
+      .then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json() as Promise<LiveIntervalo>;
+      })
+      .then((data) => {
+        if (cancelado) return;
+        setLiveData(data);
+        setLiveStatus("idle");
+      })
+      .catch(() => {
+        if (cancelado) return;
+        setLiveData(null);
+        setLiveStatus("erro");
+      });
+    return () => {
+      cancelado = true;
+    };
+  }, [tipoIntervalo, estado.inicio, estado.fim]);
+
+  const statusGa4: StatusIntervalo = !tipoIntervalo ? "ok" : liveData ? "ok" : liveStatus === "carregando" ? "carregando" : "fallback";
+
+  // Fatia de cada breakdown no período selecionado (ou dado ao vivo, se disponível).
+  const vg = tipoIntervalo && liveData ? liveData.visaoGeral : visaoGeral[periodo];
+  const plat = tipoIntervalo && liveData ? liveData.plataforma : plataforma[periodo];
+  const serv = tipoIntervalo && liveData ? liveData.servicos : servicos[periodo];
+  const fun = tipoIntervalo && liveData ? liveData.funil : funil[periodo];
+  const hor = tipoIntervalo && liveData ? liveData.horarios : horarios[periodo];
 
   const totalUsers = vg.reduce((acc, r) => acc + r.activeUsers, 0);
   const totalSessions = vg.reduce((acc, r) => acc + r.sessions, 0);
@@ -110,14 +155,14 @@ export function MsDigitalClient({
           insightPlataforma={insightPlataforma}
           insightServico={insightServico}
           onIrPara={setAbaAtiva}
-          tipoIntervalo={tipoIntervalo}
+          status={statusGa4}
         />
       ),
     },
     {
       id: "funcionalidades",
       label: "2. Funcionalidades",
-      content: <FuncionalidadesTab servicos={serv} insightServico={insightServico} tipoIntervalo={tipoIntervalo} />,
+      content: <FuncionalidadesTab servicos={serv} insightServico={insightServico} status={statusGa4} />,
     },
     {
       id: "perfil",
@@ -128,14 +173,14 @@ export function MsDigitalClient({
           horarios={hor}
           insightPlataforma={insightPlataforma}
           insightHorario={insightHorario}
-          tipoIntervalo={tipoIntervalo}
+          status={statusGa4}
         />
       ),
     },
     {
       id: "jornada",
       label: "4. Jornada do Usuário",
-      content: <JornadaTab funil={fun} insightFunil={insightFunil} tipoIntervalo={tipoIntervalo} />,
+      content: <JornadaTab funil={fun} insightFunil={insightFunil} status={statusGa4} />,
     },
     {
       id: "app-portal",

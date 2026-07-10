@@ -1,6 +1,6 @@
 import { BarChart } from "@/components/charts/BarChart";
 import { StoryCard } from "@/components/dashboard/StoryCard";
-import { AvisoSnapshotAproximado } from "@/components/dashboard/AvisoSnapshotAproximado";
+import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
 import { rotuloEstagioFunil } from "@/lib/insights";
 import type { InsightFunil } from "@/lib/insights";
 import type { EventoFunil } from "@/lib/data";
@@ -11,17 +11,17 @@ import type { EventoFunil } from "@/lib/data";
 export function JornadaTab({
   funil,
   insightFunil,
-  tipoIntervalo,
+  status,
 }: {
   funil: EventoFunil[];
   insightFunil: InsightFunil | null;
-  tipoIntervalo: boolean;
+  status: StatusIntervalo;
 }) {
   const dadosFunil = funil.map((f) => ({ estagio: rotuloEstagioFunil(f.evento), usuarios: f.usuarios }));
 
   return (
     <div className="flex flex-col gap-6">
-      <AvisoSnapshotAproximado tipoIntervalo={tipoIntervalo} />
+      <AvisoSnapshotAproximado status={status} />
       <div>
         <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold mb-2">
           Funil de engajamento: aquisição → ativação → navegação → retenção

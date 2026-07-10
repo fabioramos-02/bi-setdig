@@ -2,7 +2,7 @@ import { BarChart } from "@/components/charts/BarChart";
 import { ChoroplethMap } from "@/components/charts/ChoroplethMap";
 import { BrowserBarChart } from "@/components/charts/BrowserBarChart";
 import { DeviceBarChart } from "@/components/charts/DeviceBarChart";
-import { AvisoSnapshotAproximado } from "@/components/dashboard/AvisoSnapshotAproximado";
+import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
 import type { InsightNavegador } from "@/lib/insights";
 import type { Cidade, Navegador, Dispositivo, Horario } from "@/lib/data";
 
@@ -19,7 +19,7 @@ export function PerfilCidadaoTab({
   insightNavegador,
   dispositivosAtual,
   horariosAtual,
-  tipoIntervalo,
+  status,
 }: {
   matchRate: number;
   cidadesAtual: Cidade[];
@@ -27,11 +27,11 @@ export function PerfilCidadaoTab({
   insightNavegador: InsightNavegador | null;
   dispositivosAtual: Dispositivo[];
   horariosAtual: Horario[];
-  tipoIntervalo: boolean;
+  status: StatusIntervalo;
 }) {
   return (
     <div className="flex flex-col gap-6">
-      <AvisoSnapshotAproximado tipoIntervalo={tipoIntervalo} />
+      <AvisoSnapshotAproximado status={status} />
       <div className="grid gap-6 grid-cols-1 lg:grid-cols-2">
         <div>
           <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold mb-2">

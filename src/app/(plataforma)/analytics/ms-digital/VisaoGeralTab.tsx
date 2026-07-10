@@ -1,6 +1,6 @@
 import { MetricCard } from "@/components/dashboard/MetricCard";
 import { StoryCard } from "@/components/dashboard/StoryCard";
-import { AvisoSnapshotAproximado } from "@/components/dashboard/AvisoSnapshotAproximado";
+import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
 import type { InsightPlataforma, InsightServico } from "@/lib/insights";
 
 /** Conteúdo da aba "Visão Geral" — resumo executivo: KPIs do snapshot de 30
@@ -15,7 +15,7 @@ export function VisaoGeralTab({
   insightPlataforma,
   insightServico,
   onIrPara,
-  tipoIntervalo,
+  status,
 }: {
   totalUsers: number;
   totalSessions: number;
@@ -25,7 +25,7 @@ export function VisaoGeralTab({
   insightPlataforma: InsightPlataforma | null;
   insightServico: InsightServico | null;
   onIrPara: (id: string) => void;
-  tipoIntervalo: boolean;
+  status: StatusIntervalo;
 }) {
   const totalNovosRecorrentes = novos + recorrentes;
   const recorrentesPct = totalNovosRecorrentes > 0 ? (recorrentes / totalNovosRecorrentes) * 100 : null;
@@ -33,7 +33,7 @@ export function VisaoGeralTab({
 
   return (
     <div className="flex flex-col gap-6">
-      <AvisoSnapshotAproximado tipoIntervalo={tipoIntervalo} />
+      <AvisoSnapshotAproximado status={status} />
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         <MetricCard label="Usuários ativos (30 dias)" value={totalUsers} />
         <MetricCard label="Sessões" value={totalSessions} />

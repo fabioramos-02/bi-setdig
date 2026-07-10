@@ -1,24 +1,24 @@
 import { EmptyCard } from "@/components/ds/EmptyCard";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { WordCloud } from "@/components/charts/WordCloud";
-import { AvisoSnapshotAproximado } from "@/components/dashboard/AvisoSnapshotAproximado";
+import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
 import type { InsightBusca } from "@/lib/insights";
 import type { TermoBusca } from "@/lib/data";
 
 /** Conteúdo da aba "3. Intenção de Busca". Extraído de PortalMsClient pra
- * não estourar 250 linhas/arquivo. `rotuloPeriodo` aqui é o período que o
- * dado REALMENTE é (periodoAtual do Client), não o que o usuário selecionou
- * — em "Intervalo" os dois divergem (ADR-007), ver AvisoSnapshotAproximado. */
+ * não estourar 250 linhas/arquivo. `rotuloPeriodo` reflete o período que o
+ * dado REALMENTE é — em "Intervalo", isso é o intervalo real quando `status`
+ * é "ok" (busca ao vivo, ADR-010) ou o snapshot do mês em "fallback". */
 export function BuscaTab({
   busca,
   rotuloPeriodo,
   insightBusca,
-  tipoIntervalo,
+  status,
 }: {
   busca: TermoBusca[];
   rotuloPeriodo: string;
   insightBusca: InsightBusca | null;
-  tipoIntervalo: boolean;
+  status: StatusIntervalo;
 }) {
   if (busca.length === 0) {
     return <EmptyCard message="Sem termos de busca no período." />;
@@ -26,7 +26,7 @@ export function BuscaTab({
 
   return (
     <div className="overflow-x-auto">
-      <AvisoSnapshotAproximado tipoIntervalo={tipoIntervalo} />
+      <AvisoSnapshotAproximado status={status} />
       {insightBusca && (
         <div className="mb-4">
           <StoryCard
