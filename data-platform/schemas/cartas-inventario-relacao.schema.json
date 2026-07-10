@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "cartas/inventario-relacao",
+  "description": "Relação completa de cartas de serviço, 1 linha por carta (sem descrição/requisitos — texto longo, estouraria o limite de 2MB).",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["titulo", "slug", "orgao", "orgaoSigla", "ativo", "digital", "online", "nivelMaturidade", "maturidadeOrigem"],
+    "properties": {
+      "titulo": { "type": "string" },
+      "nomePopular": { "type": ["string", "null"] },
+      "slug": { "type": "string" },
+      "orgao": { "type": "string" },
+      "orgaoSigla": { "type": "string" },
+      "categoria": { "type": ["string", "null"] },
+      "publico": { "type": ["string", "null"] },
+      "publicoEspecifico": { "type": "array", "items": { "type": "string" } },
+      "ativo": { "type": "boolean" },
+      "digital": { "type": "boolean" },
+      "online": { "type": "boolean" },
+      "destaque": { "type": "boolean" },
+      "custo": { "type": ["string", "null"] },
+      "tempoTotal": { "type": ["integer", "null"] },
+      "tipoTempo": { "type": ["string", "null"] },
+      "nivelMaturidade": { "type": "integer", "minimum": 0, "maximum": 4 },
+      "maturidadeOrigem": { "type": "string", "enum": ["classificada", "heuristica"] },
+      "updatedAt": { "type": ["string", "null"] }
+    }
+  }
+}

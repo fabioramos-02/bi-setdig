@@ -34,7 +34,6 @@ import type {
   ServicoAcessado,
   PaginaEntrada,
   DominioSaida,
-  PadraoComportamental,
 } from "@/lib/data";
 
 const ROTULO_PERIODO = { dia: "no dia", semana: "na semana", mes: "no mês", ano: "no ano", intervalo: "no intervalo" };
@@ -52,7 +51,6 @@ export function PortalMsClient({
   servicosMaisAcessados,
   portasEntrada,
   fugaHub,
-  padraoComportamental,
 }: {
   diarias: VisitaDiaria[];
   navegadores: BreakdownPorPeriodo<Navegador>;
@@ -66,7 +64,6 @@ export function PortalMsClient({
   servicosMaisAcessados: BreakdownPorPeriodo<ServicoAcessado>;
   portasEntrada: BreakdownPorPeriodo<PaginaEntrada>;
   fugaHub: BreakdownPorPeriodo<DominioSaida>;
-  padraoComportamental: Record<PeriodoFixo, PadraoComportamental>;
 }) {
   // Estado do filtro vem da sidebar (PeriodoProvider) — mesmo estado, gráficos
   // reagem sem barra de filtro dentro do conteúdo.
@@ -83,7 +80,6 @@ export function PortalMsClient({
   const servicosAcessadosAtual = servicosMaisAcessados[periodoAtual];
   const portasEntradaAtual = portasEntrada[periodoAtual];
   const fugaHubAtual = fugaHub[periodoAtual];
-  const padraoComportamentalAtual = padraoComportamental[periodoAtual];
 
   const tendencia = useMemo(() => aplicarFiltroPeriodo(diarias, estado), [diarias, estado]);
   const kpis = useMemo(() => resumoDoPeriodo(diarias, estado), [diarias, estado]);
@@ -209,11 +205,7 @@ export function PortalMsClient({
       id: "jornada",
       label: "6. Fluxo de Navegação",
       content: (
-        <FluxoNavegacaoTab
-          portasEntrada={portasEntradaAtual}
-          fugaHub={fugaHubAtual}
-          padraoComportamental={padraoComportamentalAtual}
-        />
+        <FluxoNavegacaoTab portasEntrada={portasEntradaAtual} fugaHub={fugaHubAtual} />
       ),
     },
   ];

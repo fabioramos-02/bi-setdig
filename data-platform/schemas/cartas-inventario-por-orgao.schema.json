@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "cartas/inventario-por-orgao",
+  "description": "Inventário de cartas de serviço agregado por órgão (domínio Serviços, ADR-005), ordenado desc por total.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["orgao", "orgaoSigla", "total", "ativos", "digitais", "percentDigital", "maturidadeMedia", "classificadas"],
+    "properties": {
+      "orgao": { "type": "string" },
+      "orgaoSigla": { "type": "string" },
+      "total": { "type": "integer", "minimum": 0 },
+      "ativos": { "type": "integer", "minimum": 0 },
+      "digitais": { "type": "integer", "minimum": 0 },
+      "percentDigital": { "type": "number", "minimum": 0, "maximum": 100 },
+      "maturidadeMedia": { "type": "number", "minimum": 0, "maximum": 4 },
+      "classificadas": { "type": "integer", "minimum": 0, "description": "Cartas ativas deste órgão com nível de maturidade real (rubrica)" }
+    }
+  }
+}

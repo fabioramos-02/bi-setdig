@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "cartas/inventario-por-categoria",
+  "description": "Inventário de cartas de serviço agregado por categoria (tema), ordenado desc por total.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["categoria", "total", "ativos", "digitais", "percentDigital"],
+    "properties": {
+      "categoria": { "type": "string" },
+      "total": { "type": "integer", "minimum": 0 },
+      "ativos": { "type": "integer", "minimum": 0 },
+      "digitais": { "type": "integer", "minimum": 0 },
+      "percentDigital": { "type": "number", "minimum": 0, "maximum": 100 }
+    }
+  }
+}

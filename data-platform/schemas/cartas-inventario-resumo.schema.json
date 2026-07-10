@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "cartas/inventario-resumo",
+  "description": "KPIs de inventário de cartas de serviço (domínio Serviços, ADR-005). Maturidade é heurística sobre booleanos de cadastro, não classificação por rubrica.",
+  "type": "array",
+  "minItems": 1,
+  "maxItems": 1,
+  "items": {
+    "type": "object",
+    "required": ["total", "ativos", "inativos", "digitais", "presenciais", "hibridos", "percentDigital", "maturidade", "classificadas"],
+    "properties": {
+      "total": { "type": "integer", "minimum": 0 },
+      "ativos": { "type": "integer", "minimum": 0 },
+      "inativos": { "type": "integer", "minimum": 0 },
+      "digitais": { "type": "integer", "minimum": 0 },
+      "presenciais": { "type": "integer", "minimum": 0 },
+      "hibridos": { "type": "integer", "minimum": 0 },
+      "percentDigital": { "type": "number", "minimum": 0, "maximum": 100 },
+      "classificadas": { "type": "integer", "minimum": 0, "description": "Cartas ativas com nível de maturidade real (rubrica), não heurística" },
+      "maturidade": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["nivel", "total"],
+          "properties": {
+            "nivel": { "type": "integer", "minimum": 0, "maximum": 4 },
+            "total": { "type": "integer", "minimum": 0 }
+          }
+        }
+      }
+    }
+  }
+}

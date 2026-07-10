@@ -1,0 +1,156 @@
+[
+  {
+    "categoria": "educacao-e-pesquisa",
+    "total": 244,
+    "ativos": 166,
+    "digitais": 55,
+    "percentDigital": 33.1
+  },
+  {
+    "categoria": "financas-e-impostos",
+    "total": 243,
+    "ativos": 227,
+    "digitais": 9,
+    "percentDigital": 4.0
+  },
+  {
+    "categoria": "agropecuaria-e-vida-rural",
+    "total": 175,
+    "ativos": 157,
+    "digitais": 8,
+    "percentDigital": 5.1
+  },
+  {
+    "categoria": "comunicacao-e-transparencia",
+    "total": 142,
+    "ativos": 134,
+    "digitais": 123,
+    "percentDigital": 91.8
+  },
+  {
+    "categoria": "administracao-publica",
+    "total": 132,
+    "ativos": 96,
+    "digitais": 68,
+    "percentDigital": 70.8
+  },
+  {
+    "categoria": "empresa-industria-e-comercio",
+    "total": 122,
+    "ativos": 110,
+    "digitais": 12,
+    "percentDigital": 10.9
+  },
+  {
+    "categoria": "transito-e-transportes",
+    "total": 98,
+    "ativos": 71,
+    "digitais": 33,
+    "percentDigital": 46.5
+  },
+  {
+    "categoria": "seguranca",
+    "total": 67,
+    "ativos": 36,
+    "digitais": 6,
+    "percentDigital": 16.7
+  },
+  {
+    "categoria": "direitos-e-cidadania",
+    "total": 61,
+    "ativos": 37,
+    "digitais": 10,
+    "percentDigital": 27.0
+  },
+  {
+    "categoria": "trabalho-emprego-e-previdencia",
+    "total": 52,
+    "ativos": 44,
+    "digitais": 8,
+    "percentDigital": 18.2
+  },
+  {
+    "categoria": "saude-e-cuidado",
+    "total": 41,
+    "ativos": 39,
+    "digitais": 9,
+    "percentDigital": 23.1
+  },
+  {
+    "categoria": "meio-ambiente",
+    "total": 40,
+    "ativos": 32,
+    "digitais": 5,
+    "percentDigital": 15.6
+  },
+  {
+    "categoria": "ciencia-e-tecnologia",
+    "total": 25,
+    "ativos": 22,
+    "digitais": 15,
+    "percentDigital": 68.2
+  },
+  {
+    "categoria": "esporte-e-lazer",
+    "total": 19,
+    "ativos": 8,
+    "digitais": 0,
+    "percentDigital": 0.0
+  },
+  {
+    "categoria": "energia",
+    "total": 15,
+    "ativos": 14,
+    "digitais": 3,
+    "percentDigital": 21.4
+  },
+  {
+    "categoria": "assistencia-social",
+    "total": 13,
+    "ativos": 10,
+    "digitais": 3,
+    "percentDigital": 30.0
+  },
+  {
+    "categoria": "turismo",
+    "total": 9,
+    "ativos": 7,
+    "digitais": 3,
+    "percentDigital": 42.9
+  },
+  {
+    "categoria": "infraestrutura",
+    "total": 7,
+    "ativos": 4,
+    "digitais": 2,
+    "percentDigital": 50.0
+  },
+  {
+    "categoria": "arte-e-cultura",
+    "total": 7,
+    "ativos": 5,
+    "digitais": 2,
+    "percentDigital": 40.0
+  },
+  {
+    "categoria": "habitacao",
+    "total": 5,
+    "ativos": 5,
+    "digitais": 1,
+    "percentDigital": 20.0
+  },
+  {
+    "categoria": "justica",
+    "total": 2,
+    "ativos": 0,
+    "digitais": 0,
+    "percentDigital": 0
+  },
+  {
+    "categoria": "forcas-armadas-e-defesa-civil",
+    "total": 1,
+    "ativos": 1,
+    "digitais": 0,
+    "percentDigital": 0.0
+  }
+]

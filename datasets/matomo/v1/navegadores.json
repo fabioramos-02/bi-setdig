@@ -1,90 +1,90 @@
 {
   "dia": [
     {
-      "navegador": "Chrome Mobile",
-      "visitas": 283
+      "navegador": "Chrome",
+      "visitas": 1660
     },
     {
-      "navegador": "Chrome",
-      "visitas": 240
+      "navegador": "Chrome Mobile",
+      "visitas": 711
+    },
+    {
+      "navegador": "Microsoft Edge",
+      "visitas": 309
     },
     {
       "navegador": "Mobile Safari",
-      "visitas": 63
-    },
-    {
-      "navegador": "Chrome Mobile iOS",
-      "visitas": 39
+      "visitas": 260
     },
     {
       "navegador": "Outros",
-      "visitas": 93
+      "visitas": 339
     }
   ],
   "semana": [
     {
       "navegador": "Chrome",
-      "visitas": 18843
+      "visitas": 26910
     },
     {
       "navegador": "Chrome Mobile",
-      "visitas": 10401
+      "visitas": 14240
     },
     {
       "navegador": "Microsoft Edge",
-      "visitas": 3744
+      "visitas": 5273
     },
     {
       "navegador": "Mobile Safari",
-      "visitas": 3203
+      "visitas": 4448
     },
     {
       "navegador": "Outros",
-      "visitas": 4205
+      "visitas": 6091
     }
   ],
   "mes": [
     {
       "navegador": "Chrome",
-      "visitas": 38262
+      "visitas": 46329
     },
     {
       "navegador": "Chrome Mobile",
-      "visitas": 26246
+      "visitas": 30085
     },
     {
       "navegador": "Mobile Safari",
-      "visitas": 8084
+      "visitas": 9329
     },
     {
       "navegador": "Microsoft Edge",
-      "visitas": 7423
+      "visitas": 8952
     },
     {
       "navegador": "Outros",
-      "visitas": 10651
+      "visitas": 12521
     }
   ],
   "ano": [
     {
       "navegador": "Chrome",
-      "visitas": 1314117
+      "visitas": 1322184
     },
     {
       "navegador": "Chrome Mobile",
-      "visitas": 659334
+      "visitas": 663173
     },
     {
       "navegador": "Microsoft Edge",
-      "visitas": 228469
+      "visitas": 229998
     },
     {
       "navegador": "Mobile Safari",
-      "visitas": 217890
+      "visitas": 219135
     },
     {
       "navegador": "Outros",
-      "visitas": 291619
+      "visitas": 293488
     }
   ]
 }

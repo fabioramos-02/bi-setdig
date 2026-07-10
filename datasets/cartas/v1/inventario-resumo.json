@@ -1,0 +1,34 @@
+[
+  {
+    "total": 1520,
+    "ativos": 1225,
+    "inativos": 295,
+    "digitais": 375,
+    "presenciais": 850,
+    "hibridos": 273,
+    "percentDigital": 30.6,
+    "maturidade": [
+      {
+        "nivel": 0,
+        "total": 246
+      },
+      {
+        "nivel": 1,
+        "total": 453
+      },
+      {
+        "nivel": 2,
+        "total": 145
+      },
+      {
+        "nivel": 3,
+        "total": 75
+      },
+      {
+        "nivel": 4,
+        "total": 306
+      }
+    ],
+    "classificadas": 210
+  }
+]

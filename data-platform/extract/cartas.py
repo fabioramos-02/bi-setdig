@@ -23,12 +23,42 @@ def _connection_url() -> str:
     return f"postgresql://{user}:{password}@{host}:{port}/{database}"
 
 
-def get_inventory_count() -> int:
-    """Consulta mínima de conectividade — conta linhas de gerenciamento_servicos."""
+_INVENTARIO_SQL = """
+    SELECT s.id, s.titulo, s.slug, s.nome_popular, s.ativo, s.digital, s.online,
+           s.agendavel, s.acesso_externo, s.url_externo, s.publico,
+           s.publico_especifico, s.custo, s.tempo_total, s.tipo_tempo,
+           s.destaque, s.updated_at,
+           o.nome AS orgao, o.sigla AS orgao_sigla,
+           t.slug AS categoria_slug
+    FROM gerenciamento_servicos s
+    JOIN gerenciamento_setor st ON s.setor_id = st.id
+    JOIN gerenciamento_orgaos o ON st.orgao_id = o.id
+    LEFT JOIN gerenciamento_temas t ON s.tema_id = t.id
+"""
+
+_JORNADA_SQL = """
+    SELECT servico_id, canal_prestacao::text AS canal_prestacao
+    FROM gerenciamento_jornada
+"""
+
+
+def _query(sql: str) -> list[dict]:
     conn = psycopg2.connect(_connection_url(), connect_timeout=10)
     try:
         with conn.cursor() as cur:
-            cur.execute("SELECT count(*) FROM gerenciamento_servicos")
-            return cur.fetchone()[0]
+            cur.execute(sql)
+            colunas = [d[0] for d in cur.description]
+            return [dict(zip(colunas, row)) for row in cur.fetchall()]
     finally:
         conn.close()
+
+
+def get_inventario() -> list[dict]:
+    """Cartas de serviço + órgão + categoria — base do domínio Serviços (ADR-005)."""
+    return _query(_INVENTARIO_SQL)
+
+
+def get_jornada() -> list[dict]:
+    """Etapas da jornada do cidadão por carta — canal_prestacao é enum no banco,
+    valores não hardcoded aqui (ver transform/servicos_cartas.py::jornada_resumo)."""
+    return _query(_JORNADA_SQL)

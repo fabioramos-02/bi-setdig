@@ -10,7 +10,6 @@ Cartas (Postgres) exige VPN da SETDIG — se falhar, o script registra e segue
 from __future__ import annotations
 
 import sys
-from datetime import date as dt_date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -132,39 +131,15 @@ def run_matomo_perfil_filtro() -> None:
     print(f"[matomo] servicos-mais-acessados -> {[(k, len(v)) for k, v in mais_acessados.items()]}")
 
 
-# URL da Home do portal rastreado no Matomo (idSite=MATOMO_SITE_ID) — porta de
-# matomo-analytics-dashboard/views/portal/tab4_jornada.py:126.
-HOME_URL = "https://www.ms.gov.br/"
-
-
-def _transitions_home_ano(home_url: str) -> list[dict]:
-    """period=year estoura 504 no servidor Matomo mesmo com 1 URL fixa (Home)
-    — contorna com 12 chamadas period=month, agregadas em memória (porta de
-    tab4_jornada.py::_load_transitions_annual, sem a progress bar do Streamlit).
-
-    Cada mês tem seu próprio try/except: 1 mês instável não pode descartar os
-    outros 11 (antes, exceção em qualquer mês esvaziava o ano inteiro)."""
-    hoje = dt_date.today()
-    respostas = []
-    for mes in range(1, 13):
-        primeiro_dia = dt_date(hoje.year, mes, 1)
-        if primeiro_dia > hoje:
-            break
-        try:
-            respostas.append(matomo.get_transitions_for_page_url("month", primeiro_dia.isoformat(), home_url))
-        except Exception as exc:  # noqa: BLE001 — mesma instabilidade documentada em run_matomo_jornada
-            print(f"[matomo] padrao-comportamental ano, mês {mes:02d} FALHOU (pulado): {exc}")
-    return respostas
-
-
 def run_matomo_jornada() -> None:
-    """Fluxo de navegação — 3 relatórios leves (não N+1), porta de
+    """Fluxo de navegação — 2 relatórios leves (não N+1), porta de
     matomo-analytics-dashboard/views/portal/tab4_jornada.py:
     - Portas de Entrada: Actions.getEntryPageUrls, 1 chamada por período.
     - Fuga do Hub: Actions.getOutlinks, 1 chamada por período.
-    - Padrão Comportamental: Transitions.getTransitionsForPageUrl fixo na Home,
-      1 chamada por período (exceto period=ano, que precisa do chunking mensal
-      acima — o timeout é do período, não de N páginas)."""
+    ("Padrão Comportamental" via Transitions.getTransitionsForPageUrl foi
+    removido — endpoint instável no Matomo e period=ano exigia 12 chamadas
+    mensais sequenciais, dominando o tempo do run inteiro. Portas de Entrada
+    já cobre a mesma pergunta central — por onde o cidadão começa a navegar.)"""
     entradas, saidas = {}, {}
     for chave, (p, d) in PERIODOS_FIXOS.items():
         entradas[chave] = t_matomo.entry_pages(matomo.get_entry_pages(p, d, limit=20))
@@ -177,29 +152,6 @@ def run_matomo_jornada() -> None:
     validate_period_breakdown(saidas, ["dominio", "saidas"], ["saidas"])
     publish("matomo", "fuga-hub", saidas)
     print(f"[matomo] fuga-hub -> {[(k, len(v)) for k, v in saidas.items()]}")
-
-    padrao: dict[str, dict] = {}
-    for chave, (p, d) in PERIODOS_FIXOS.items():
-        try:
-            if chave == "ano":
-                following = t_matomo.merge_following_pages(_transitions_home_ano(HOME_URL))
-            else:
-                raw = matomo.get_transitions_for_page_url(p, d, HOME_URL)
-                following = raw.get("followingPages") or []
-            padrao[chave] = t_matomo.padrao_comportamental(following)
-        except Exception as exc:  # noqa: BLE001 — Transitions é instável (504 documentado em
-            # transform/perfil.py:20-31, confirmado ao vivo até em period=month); 1 período
-            # falho não pode derrubar portas-entrada/fuga-hub (já publicados acima) nem os
-            # outros períodos que deram certo — front já trata lista vazia (EmptyCard).
-            print(f"[matomo] padrao-comportamental período {chave!r} FALHOU (Transitions instável): {exc}")
-            padrao[chave] = {"distribuicao": [], "topDestinos": []}
-
-    validate_period_breakdown(
-        {k: v["distribuicao"] for k, v in padrao.items()}, ["tipo", "acessos", "participacaoPct"], ["acessos", "participacaoPct"]
-    )
-    validate_period_breakdown({k: v["topDestinos"] for k, v in padrao.items()}, ["pagina", "tipo", "acessos"], ["acessos"])
-    publish("matomo", "padrao-comportamental", padrao)
-    print(f"[matomo] padrao-comportamental -> {[(k, len(padrao[k]['topDestinos'])) for k in padrao]}")
 
 
 def run_ga4() -> None:
@@ -242,12 +194,36 @@ def run_ga4_perfil() -> None:
 
 def run_cartas() -> None:
     from extract import cartas
+    from transform import servicos_cartas as t_servicos
 
-    count = cartas.get_inventory_count()
-    rows = [{"totalCartas": count}]
-    validate_rows(rows, required=["totalCartas"], non_negative=["totalCartas"])
-    out = publish("cartas", "inventario-count", rows)
-    print(f"[cartas] ok -> {out} ({rows})")
+    raw = cartas.get_inventario()
+    classificados = t_servicos.carregar_classificados()
+
+    resumo = t_servicos.resumo_geral(raw, classificados)
+    validate_rows([resumo], required=["total", "ativos"], non_negative=["total", "ativos", "inativos", "digitais", "classificadas"])
+    out = publish("cartas", "inventario-resumo", [resumo])
+    print(f"[cartas] resumo -> {out} ({resumo})")
+
+    orgaos = t_servicos.por_orgao(raw, classificados)
+    validate_rows(orgaos, required=["orgao", "total"], non_negative=["total", "ativos", "digitais", "percentDigital", "classificadas"])
+    out2 = publish("cartas", "inventario-por-orgao", orgaos)
+    print(f"[cartas] por-orgao -> {out2} ({len(orgaos)} órgãos)")
+
+    categorias = t_servicos.por_categoria(raw)
+    validate_rows(categorias, required=["categoria", "total"], non_negative=["total", "ativos", "digitais", "percentDigital"])
+    out3 = publish("cartas", "inventario-por-categoria", categorias)
+    print(f"[cartas] por-categoria -> {out3} ({len(categorias)} categorias)")
+
+    relacao = t_servicos.relacao(raw, classificados)
+    validate_rows(relacao, required=["titulo", "orgao"], non_negative=["nivelMaturidade"])
+    out4 = publish("cartas", "inventario-relacao", relacao)
+    print(f"[cartas] relacao -> {out4} ({len(relacao)} cartas)")
+
+    etapas = cartas.get_jornada()
+    jornada = t_servicos.jornada_resumo(etapas)
+    validate_rows([jornada], required=["totalEtapas", "servicosComJornada"], non_negative=["totalEtapas", "servicosComJornada", "mediaEtapasPorServico"])
+    out5 = publish("cartas", "jornada-resumo", [jornada])
+    print(f"[cartas] jornada -> {out5} ({jornada})")
 
 
 if __name__ == "__main__":

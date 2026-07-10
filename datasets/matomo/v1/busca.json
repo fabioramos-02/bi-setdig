@@ -1,35 +1,35 @@
 [
   {
     "termo": "inscrição estadual",
-    "buscas": 394
+    "buscas": 476
   },
   {
     "termo": "ipva",
-    "buscas": 321
+    "buscas": 397
   },
   {
     "termo": "procon",
-    "buscas": 194
+    "buscas": 219
   },
   {
     "termo": "substituição tributária",
-    "buscas": 186
+    "buscas": 209
   },
   {
     "termo": "autoparcelamento",
-    "buscas": 59
+    "buscas": 76
   },
   {
     "termo": "itcd",
-    "buscas": 58
+    "buscas": 73
   },
   {
     "termo": "cidadão",
-    "buscas": 49
+    "buscas": 55
   },
   {
     "termo": "servidor",
-    "buscas": 29
+    "buscas": 30
   },
   {
     "termo": "empresa",
@@ -37,18 +37,30 @@
   },
   {
     "termo": "licenciamento",
-    "buscas": 19
+    "buscas": 24
   },
   {
     "termo": "nota fiscal",
-    "buscas": 10
+    "buscas": 13
   },
   {
     "termo": "efd",
+    "buscas": 10
+  },
+  {
+    "termo": "cnh",
     "buscas": 9
   },
   {
     "termo": "defesa civil",
+    "buscas": 8
+  },
+  {
+    "termo": "mulher",
+    "buscas": 7
+  },
+  {
+    "termo": "rg",
     "buscas": 7
   },
   {
@@ -56,11 +68,7 @@
     "buscas": 6
   },
   {
-    "termo": "mulher",
-    "buscas": 5
-  },
-  {
-    "termo": "rg",
+    "termo": "fundação estadual jornalista luiz chagas de rádio e televisão",
     "buscas": 5
   },
   {
@@ -68,15 +76,7 @@
     "buscas": 4
   },
   {
-    "termo": "cnh",
-    "buscas": 4
-  },
-  {
-    "termo": "fundação estadual jornalista luiz chagas de rádio e televisão",
-    "buscas": 4
-  },
-  {
-    "termo": "motorista",
+    "termo": "gestão pública",
     "buscas": 4
   }
 ]

@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "cartas/jornada-resumo",
+  "description": "Resumo das etapas de jornada do cidadão (gerenciamento_jornada) — canais não hardcoded, vêm do próprio dado.",
+  "type": "array",
+  "minItems": 1,
+  "maxItems": 1,
+  "items": {
+    "type": "object",
+    "required": ["totalEtapas", "servicosComJornada", "mediaEtapasPorServico", "porCanal"],
+    "properties": {
+      "totalEtapas": { "type": "integer", "minimum": 0 },
+      "servicosComJornada": { "type": "integer", "minimum": 0 },
+      "mediaEtapasPorServico": { "type": "number", "minimum": 0 },
+      "porCanal": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["canal", "total"],
+          "properties": {
+            "canal": { "type": "string" },
+            "total": { "type": "integer", "minimum": 0 }
+          }
+        }
+      }
+    }
+  }
+}

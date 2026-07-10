@@ -1,0 +1,402 @@
+[
+  {
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "total": 303,
+    "ativos": 276,
+    "digitais": 3,
+    "percentDigital": 1.1,
+    "maturidadeMedia": 1.02,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Universidade Estadual de Mato Grosso do Sul",
+    "orgaoSigla": "UEMS",
+    "total": 192,
+    "ativos": 125,
+    "digitais": 62,
+    "percentDigital": 49.6,
+    "maturidadeMedia": 2.14,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Agência Estadual de Defesa Sanitária Animal Vegetal  Mato Grosso do Sul",
+    "orgaoSigla": "IAGRO",
+    "total": 133,
+    "ativos": 119,
+    "digitais": 10,
+    "percentDigital": 8.4,
+    "maturidadeMedia": 3.55,
+    "classificadas": 119
+  },
+  {
+    "orgao": "Departamento Estadual de Trânsito de Mato Grosso do Sul",
+    "orgaoSigla": "DETRAN",
+    "total": 93,
+    "ativos": 65,
+    "digitais": 32,
+    "percentDigital": 49.2,
+    "maturidadeMedia": 2.71,
+    "classificadas": 65
+  },
+  {
+    "orgao": "Empresa de Saneamento de Mato Grosso do Sul",
+    "orgaoSigla": "SANESUL",
+    "total": 49,
+    "ativos": 48,
+    "digitais": 6,
+    "percentDigital": 12.5,
+    "maturidadeMedia": 0.6,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Secretaria de Estado de Educação de Mato Grosso do Sul",
+    "orgaoSigla": "SED MS",
+    "total": 49,
+    "ativos": 47,
+    "digitais": 6,
+    "percentDigital": 12.8,
+    "maturidadeMedia": 0.57,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Agência de Previdência Social de Mato Grosso do Sul",
+    "orgaoSigla": "AGEPREV",
+    "total": 46,
+    "ativos": 40,
+    "digitais": 9,
+    "percentDigital": 22.5,
+    "maturidadeMedia": 0.72,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Secretaria de Estado de Assistência Social e Direitos Humanos",
+    "orgaoSigla": "SEAD",
+    "total": 42,
+    "ativos": 27,
+    "digitais": 11,
+    "percentDigital": 40.7,
+    "maturidadeMedia": 2.44,
+    "classificadas": 26
+  },
+  {
+    "orgao": "Secretaria de Estado de Saúde de Mato Grosso do Sul",
+    "orgaoSigla": "SES",
+    "total": 39,
+    "ativos": 37,
+    "digitais": 14,
+    "percentDigital": 37.8,
+    "maturidadeMedia": 1.89,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Polícia Militar de Mato Grosso do Sul",
+    "orgaoSigla": "PMMS",
+    "total": 38,
+    "ativos": 19,
+    "digitais": 6,
+    "percentDigital": 31.6,
+    "maturidadeMedia": 1.21,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Instituto de Meio Ambiente de Mato Grosso do Sul",
+    "orgaoSigla": "IMASUL",
+    "total": 38,
+    "ativos": 34,
+    "digitais": 8,
+    "percentDigital": 23.5,
+    "maturidadeMedia": 1.09,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Secretaria de Estado de Governo e Gestão Estratégica de Mato Grosso do Sul",
+    "orgaoSigla": "SEGOV MS",
+    "total": 36,
+    "ativos": 29,
+    "digitais": 22,
+    "percentDigital": 75.9,
+    "maturidadeMedia": 2.86,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Secretaria de Estado de Meio Ambiente, Desenvolvimento, Ciência, Tecnologia e Inovação de Mato Grosso do Sul",
+    "orgaoSigla": "SEMADESC",
+    "total": 35,
+    "ativos": 16,
+    "digitais": 8,
+    "percentDigital": 50.0,
+    "maturidadeMedia": 2.38,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Agência de Desenvolvimento Agrário e Extensão Rural de Mato Grosso do Sul",
+    "orgaoSigla": "AGRAER",
+    "total": 31,
+    "ativos": 27,
+    "digitais": 6,
+    "percentDigital": 22.2,
+    "maturidadeMedia": 0.81,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Procuradoria Geral do Estado de Mato Grosso do Sul",
+    "orgaoSigla": "PGE MS",
+    "total": 28,
+    "ativos": 23,
+    "digitais": 20,
+    "percentDigital": 87.0,
+    "maturidadeMedia": 2.26,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Agência Estadual de Regulação de Serviços Públicos de Mato Grosso do Sul",
+    "orgaoSigla": "AGEMS",
+    "total": 26,
+    "ativos": 24,
+    "digitais": 13,
+    "percentDigital": 54.2,
+    "maturidadeMedia": 1.83,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Fundação de Desporto e Lazer de Mato Grosso do Sul",
+    "orgaoSigla": "FUNDESPORTE",
+    "total": 25,
+    "ativos": 12,
+    "digitais": 4,
+    "percentDigital": 33.3,
+    "maturidadeMedia": 1.08,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Junta Comercial do Estado de Mato Grosso do Sul",
+    "orgaoSigla": "JUCEMS",
+    "total": 22,
+    "ativos": 19,
+    "digitais": 12,
+    "percentDigital": 63.2,
+    "maturidadeMedia": 2.53,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Fundação Escola de Governo",
+    "orgaoSigla": "ESCOLAGOV",
+    "total": 22,
+    "ativos": 12,
+    "digitais": 3,
+    "percentDigital": 25.0,
+    "maturidadeMedia": 1.58,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Polícia Civil de Mato Grosso do Sul",
+    "orgaoSigla": "PCMS",
+    "total": 20,
+    "ativos": 8,
+    "digitais": 4,
+    "percentDigital": 50.0,
+    "maturidadeMedia": 2.0,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Agência Estadual de Metrologia de Mato Grosso do Sul",
+    "orgaoSigla": "AEM",
+    "total": 19,
+    "ativos": 17,
+    "digitais": 5,
+    "percentDigital": 29.4,
+    "maturidadeMedia": 1.06,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Agência Estadual de Administração do Sistema Penitenciário",
+    "orgaoSigla": "AGEPEN",
+    "total": 18,
+    "ativos": 15,
+    "digitais": 9,
+    "percentDigital": 60.0,
+    "maturidadeMedia": 1.87,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Fundação de Trabalho de Mato Grosso do Sul",
+    "orgaoSigla": "FUNTRAB",
+    "total": 17,
+    "ativos": 13,
+    "digitais": 8,
+    "percentDigital": 61.5,
+    "maturidadeMedia": 2.15,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Companhia de Gás do Estado de Mato Grosso do Sul",
+    "orgaoSigla": "MSGÁS",
+    "total": 17,
+    "ativos": 16,
+    "digitais": 5,
+    "percentDigital": 31.2,
+    "maturidadeMedia": 1.5,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Secretaria de Estado de Turismo, Esporte e Cultura",
+    "orgaoSigla": "SETESC",
+    "total": 17,
+    "ativos": 11,
+    "digitais": 8,
+    "percentDigital": 72.7,
+    "maturidadeMedia": 2.36,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Secretaria de Estado da Cidadania",
+    "orgaoSigla": "SEC",
+    "total": 16,
+    "ativos": 12,
+    "digitais": 3,
+    "percentDigital": 25.0,
+    "maturidadeMedia": 1.25,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Corpo de Bombeiros Militar",
+    "orgaoSigla": "CBMMS",
+    "total": 14,
+    "ativos": 14,
+    "digitais": 5,
+    "percentDigital": 35.7,
+    "maturidadeMedia": 1.5,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Secretaria de Estado de Justiça e Segurança Pública de Mato Grosso do Sul",
+    "orgaoSigla": "SEJUSP",
+    "total": 13,
+    "ativos": 11,
+    "digitais": 8,
+    "percentDigital": 72.7,
+    "maturidadeMedia": 2.64,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Fundação de Turismo de Mato Grosso do Sul",
+    "orgaoSigla": "FUNDTUR",
+    "total": 13,
+    "ativos": 11,
+    "digitais": 7,
+    "percentDigital": 63.6,
+    "maturidadeMedia": 2.55,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Agência Estadual de Gestão de Empreendimentos de Mato Grosso do Sul",
+    "orgaoSigla": "AGESUL",
+    "total": 13,
+    "ativos": 10,
+    "digitais": 7,
+    "percentDigital": 70.0,
+    "maturidadeMedia": 2.3,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Fundação de Cultura de Mato Grosso do Sul",
+    "orgaoSigla": "FCMS",
+    "total": 12,
+    "ativos": 12,
+    "digitais": 5,
+    "percentDigital": 41.7,
+    "maturidadeMedia": 1.75,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Secretaria de Estado de Administração de Mato Grosso do Sul",
+    "orgaoSigla": "SAD",
+    "total": 12,
+    "ativos": 10,
+    "digitais": 7,
+    "percentDigital": 70.0,
+    "maturidadeMedia": 2.7,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Fundação Serviços de Saúde de MS",
+    "orgaoSigla": "FUNSAU",
+    "total": 12,
+    "ativos": 12,
+    "digitais": 3,
+    "percentDigital": 25.0,
+    "maturidadeMedia": 1.0,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Fundação de Apoio ao Desenvolvimento do Ensino, Ciência e Tecnologia de Mato Grosso do Sul",
+    "orgaoSigla": "FUNDECT",
+    "total": 11,
+    "ativos": 11,
+    "digitais": 7,
+    "percentDigital": 63.6,
+    "maturidadeMedia": 2.64,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Controladoria Geral do Estado de Mato Grosso do Sul",
+    "orgaoSigla": "CGE MS",
+    "total": 11,
+    "ativos": 7,
+    "digitais": 6,
+    "percentDigital": 85.7,
+    "maturidadeMedia": 3.0,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Agência de Habitação Popular de Mato Grosso do Sul",
+    "orgaoSigla": "AGEHAB",
+    "total": 10,
+    "ativos": 10,
+    "digitais": 6,
+    "percentDigital": 60.0,
+    "maturidadeMedia": 2.3,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Coordenadoria Geral de Perícias de Mato Grosso do Sul",
+    "orgaoSigla": "CGP",
+    "total": 9,
+    "ativos": 8,
+    "digitais": 5,
+    "percentDigital": 62.5,
+    "maturidadeMedia": 2.38,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Fundação Estadual Jornalista Luiz Chagas de Rádio e Televisão",
+    "orgaoSigla": "FERTEL - Educativa MS",
+    "total": 8,
+    "ativos": 8,
+    "digitais": 4,
+    "percentDigital": 50.0,
+    "maturidadeMedia": 1.5,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Fundação da Apoio e Desenvolvimento à Educação Básica",
+    "orgaoSigla": "FADEB",
+    "total": 8,
+    "ativos": 7,
+    "digitais": 5,
+    "percentDigital": 71.4,
+    "maturidadeMedia": 2.29,
+    "classificadas": 0
+  },
+  {
+    "orgao": "Secretaria de Estado de Infraestrutura e Logística de Mato Grosso do Sul",
+    "orgaoSigla": "SEILOG",
+    "total": 3,
+    "ativos": 3,
+    "digitais": 3,
+    "percentDigital": 100.0,
+    "maturidadeMedia": 2.67,
+    "classificadas": 0
+  }
+]

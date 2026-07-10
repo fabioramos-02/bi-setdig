@@ -159,10 +159,10 @@ export function getMatomoServicosMaisAcessados(): BreakdownPorPeriodo<ServicoAce
   return readDataset<BreakdownPorPeriodo<ServicoAcessado>>("matomo", "v1", "servicos-mais-acessados") ?? BREAKDOWN_VAZIO;
 }
 
-// --- Fluxo de navegação — 3 relatórios leves (não N+1), porta de
+// --- Fluxo de navegação — 2 relatórios leves (não N+1), porta de
 // matomo-analytics-dashboard/views/portal/tab4_jornada.py. Breakdown real por
-// período (ADR-007), não amostra replicada — Entry Pages/Outlinks são 1
-// chamada cada, Transitions na Home também (exceto ano, chunked no pipeline). ---
+// período (ADR-007). ("Padrão Comportamental" via Transitions foi removido do
+// pipeline — endpoint instável, period=ano custava 12 chamadas sequenciais.) ---
 export type PaginaEntrada = { pagina: string; entradas: number };
 export function getMatomoPortasEntrada(): BreakdownPorPeriodo<PaginaEntrada> {
   return readDataset<BreakdownPorPeriodo<PaginaEntrada>>("matomo", "v1", "portas-entrada") ?? BREAKDOWN_VAZIO;
@@ -173,25 +173,6 @@ export function getMatomoFugaHub(): BreakdownPorPeriodo<DominioSaida> {
   return readDataset<BreakdownPorPeriodo<DominioSaida>>("matomo", "v1", "fuga-hub") ?? BREAKDOWN_VAZIO;
 }
 
-export type TipoJornada = { tipo: string; acessos: number; participacaoPct: number };
-export type DestinoJornada = { pagina: string; tipo: string; acessos: number };
-export type PadraoComportamental = { distribuicao: TipoJornada[]; topDestinos: DestinoJornada[] };
-
-const PADRAO_COMPORTAMENTAL_VAZIO: PadraoComportamental = { distribuicao: [], topDestinos: [] };
-const PADRAO_COMPORTAMENTAL_POR_PERIODO_VAZIO: Record<PeriodoFixo, PadraoComportamental> = {
-  dia: PADRAO_COMPORTAMENTAL_VAZIO,
-  semana: PADRAO_COMPORTAMENTAL_VAZIO,
-  mes: PADRAO_COMPORTAMENTAL_VAZIO,
-  ano: PADRAO_COMPORTAMENTAL_VAZIO,
-};
-
-export function getMatomoPadraoComportamental(): Record<PeriodoFixo, PadraoComportamental> {
-  return (
-    readDataset<Record<PeriodoFixo, PadraoComportamental>>("matomo", "v1", "padrao-comportamental") ??
-    PADRAO_COMPORTAMENTAL_POR_PERIODO_VAZIO
-  );
-}
-
 // --- Catálogo de serviços do app MS Digital (nativo × web) ---
 // Fonte: planilha manual, gerada por data-platform/build_catalogo.py. Estático
 // (não varia por período) — é a relação de serviços, não métrica de uso.
@@ -199,4 +180,83 @@ export type ServicoCatalogo = { categoria: string; servico: string; tipo: "nativ
 
 export function getAppCatalogoServicos(): ServicoCatalogo[] {
   return readDataset<ServicoCatalogo[]>("app", "v1", "catalogo-servicos") ?? [];
+}
+
+// --- Serviços: inventário de cartas + maturidade digital (ADR-005) ---
+// Estático (snapshot de cadastro, não métrica de uso) — sem breakdown de período.
+export type MaturidadeBucket = { nivel: 0 | 1 | 2 | 3 | 4; total: number };
+export type InventarioResumo = {
+  total: number;
+  ativos: number;
+  inativos: number;
+  digitais: number;
+  presenciais: number;
+  hibridos: number;
+  percentDigital: number;
+  maturidade: MaturidadeBucket[];
+  /** Cartas ativas com nível de maturidade real (rubrica humana/LLM), não heurística. */
+  classificadas: number;
+};
+export type InventarioOrgao = {
+  orgao: string;
+  orgaoSigla: string;
+  total: number;
+  ativos: number;
+  digitais: number;
+  percentDigital: number;
+  maturidadeMedia: number;
+  classificadas: number;
+};
+export type InventarioCategoria = {
+  categoria: string;
+  total: number;
+  ativos: number;
+  digitais: number;
+  percentDigital: number;
+};
+export type MaturidadeOrigem = "classificada" | "heuristica";
+export type CartaRelacao = {
+  titulo: string;
+  nomePopular: string | null;
+  slug: string;
+  orgao: string;
+  orgaoSigla: string;
+  categoria: string | null;
+  publico: string | null;
+  publicoEspecifico: string[];
+  ativo: boolean;
+  digital: boolean;
+  online: boolean;
+  destaque: boolean;
+  custo: string | null;
+  tempoTotal: number | null;
+  tipoTempo: string | null;
+  nivelMaturidade: 0 | 1 | 2 | 3 | 4;
+  maturidadeOrigem: MaturidadeOrigem;
+  updatedAt: string | null;
+};
+export type JornadaCanal = { canal: string; total: number };
+export type JornadaResumo = {
+  totalEtapas: number;
+  servicosComJornada: number;
+  mediaEtapasPorServico: number;
+  porCanal: JornadaCanal[];
+};
+
+export function getCartasInventarioResumo(): InventarioResumo | null {
+  const rows = readDataset<InventarioResumo[]>("cartas", "v1", "inventario-resumo");
+  return rows?.[0] ?? null;
+}
+export function getCartasInventarioPorOrgao(): InventarioOrgao[] {
+  return readDataset<InventarioOrgao[]>("cartas", "v1", "inventario-por-orgao") ?? [];
+}
+export function getCartasInventarioPorCategoria(): InventarioCategoria[] {
+  return readDataset<InventarioCategoria[]>("cartas", "v1", "inventario-por-categoria") ?? [];
+}
+export function getCartasInventarioRelacao(): CartaRelacao[] {
+  return readDataset<CartaRelacao[]>("cartas", "v1", "inventario-relacao") ?? [];
+}
+export function getCartasJornadaResumo(): JornadaResumo | null {
+  const rows = readDataset<JornadaResumo[]>("cartas", "v1", "jornada-resumo");
+  return rows?.[0] ?? null;
 }

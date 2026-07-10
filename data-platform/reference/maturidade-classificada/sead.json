@@ -1,0 +1,236 @@
+{
+  "300": {
+    "nivel": 2,
+    "rotulo": "Início digital, conclusão presencial",
+    "eh_digital": "Híbrido",
+    "etapa_bloqueio": "Etapas marcadas como presencial no sistema, embora o conteúdo descreva inscrição via portal e certificado emitido no próprio sistema.",
+    "fala_sistema": true,
+    "sistema_citado": "Portal de Cursos da Escola do SUAS/MS",
+    "justificativa": "Inscrição e emissão de certificado ocorrem no Portal de Cursos, mas as três etapas estão tagueadas como presencial no CMS; mantido nível conservador."
+  },
+  "203": {
+    "nivel": 3,
+    "rotulo": "Quase digital",
+    "eh_digital": "Híbrido avançado",
+    "etapa_bloqueio": "Denúncia inicial registrada como presencial no sistema, mas pode ser feita por telefone, WhatsApp, site ou app.",
+    "fala_sistema": true,
+    "sistema_citado": "App Direitos Humanos Brasil / site gov.br/mdh",
+    "justificativa": "Encaminhamento e acompanhamento são online; a denúncia inicial tem canais remotos (telefone/WhatsApp/app) apesar de tagueada presencial."
+  },
+  "1457": {
+    "nivel": 4,
+    "rotulo": "100% digital end-to-end",
+    "eh_digital": "Sim",
+    "etapa_bloqueio": "",
+    "fala_sistema": true,
+    "sistema_citado": "MS Digital / CIPTEA",
+    "justificativa": "Todas as 6 etapas são online: solicitação, upload de documentos, análise e entrega da carteira digital pelo app MS Digital ou site."
+  },
+  "1169": {
+    "nivel": 4,
+    "rotulo": "100% digital end-to-end",
+    "eh_digital": "Sim",
+    "etapa_bloqueio": "",
+    "fala_sistema": true,
+    "sistema_citado": "Plataforma Fala.BR",
+    "justificativa": "Todas as 7 etapas (login Gov.BR, pedido, acompanhamento, recurso) são online na Plataforma Fala.BR."
+  },
+  "1168": {
+    "nivel": 4,
+    "rotulo": "100% digital end-to-end",
+    "eh_digital": "Sim",
+    "etapa_bloqueio": "",
+    "fala_sistema": true,
+    "sistema_citado": "Plataforma Fala.BR",
+    "justificativa": "Todas as 7 etapas da denúncia (anônima ou identificada) são online via Fala.BR."
+  },
+  "1113": {
+    "nivel": 4,
+    "rotulo": "100% digital end-to-end",
+    "eh_digital": "Sim",
+    "etapa_bloqueio": "",
+    "fala_sistema": true,
+    "sistema_citado": "Plataforma Fala.BR",
+    "justificativa": "Todas as 6 etapas de registro e acompanhamento de manifestação são online via Fala.BR."
+  },
+  "210": {
+    "nivel": 1,
+    "rotulo": "Informação online",
+    "eh_digital": "Não",
+    "etapa_bloqueio": "Encaminhamento, avaliação de risco, acolhimento e acompanhamento são presenciais.",
+    "fala_sistema": false,
+    "sistema_citado": "",
+    "justificativa": "Carta publicada online com requisitos e fluxo completo, mas o processo de acolhimento institucional é integralmente presencial — sem etapa de solicitação digital."
+  },
+  "248": {
+    "nivel": 2,
+    "rotulo": "Início digital, conclusão presencial",
+    "eh_digital": "Híbrido",
+    "etapa_bloqueio": "Apoio e orientação contínuos (etapa 4) marcado como presencial.",
+    "fala_sistema": false,
+    "sistema_citado": "",
+    "justificativa": "Contato inicial e envio de documentos podem ser online, mas o apoio formal às OSCs é tratado como presencial."
+  },
+  "259": {
+    "nivel": 2,
+    "rotulo": "Início digital, conclusão presencial",
+    "eh_digital": "Híbrido",
+    "etapa_bloqueio": "Acolhimento, entrega de documentos e audiência de renegociação exigem comparecimento ao NUPACES/PROCON.",
+    "fala_sistema": false,
+    "sistema_citado": "",
+    "justificativa": "As 2 etapas são híbridas (Online,Presencial), mas a entrega de documentação e a audiência de renegociação descrevem comparecimento físico."
+  },
+  "272": {
+    "nivel": 2,
+    "rotulo": "Início digital, conclusão presencial",
+    "eh_digital": "Híbrido",
+    "etapa_bloqueio": "Atendimento final é presencial, após agendamento online.",
+    "fala_sistema": false,
+    "sistema_citado": "",
+    "justificativa": "Agendamento por telefone/e-mail é online; o atendimento em si exige comparecimento ao Centro de Direitos Humanos."
+  },
+  "212": {
+    "nivel": 1,
+    "rotulo": "Informação online",
+    "eh_digital": "Não",
+    "etapa_bloqueio": "Acolhimento institucional integralmente presencial; etapas digitais são apenas de apoio interno (análise de documentação).",
+    "fala_sistema": false,
+    "sistema_citado": "",
+    "justificativa": "Carta publicada online com requisitos e critérios de elegibilidade, mas encaminhamento, admissão e acompanhamento do residente exigem presença física — serviço de acolhimento institucional."
+  },
+  "1153": {
+    "nivel": 2,
+    "rotulo": "Início digital, conclusão presencial",
+    "eh_digital": "Híbrido",
+    "etapa_bloqueio": "Atendimento pode ser presencial ou online, sem garantia de fluxo 100% digital conforme a modalidade.",
+    "fala_sistema": true,
+    "sistema_citado": "Portal de Serviços Procon-MS",
+    "justificativa": "Única etapa descrita é híbrida (Online,Presencial); o atendimento preliminar é presencial e por telefone."
+  },
+  "382": {
+    "nivel": 1,
+    "rotulo": "Informação online",
+    "eh_digital": "Não",
+    "etapa_bloqueio": "Execução da ação (palestras, oficinas) é presencial.",
+    "fala_sistema": false,
+    "sistema_citado": "",
+    "justificativa": "Carta publicada online com requisitos de solicitação, mas cronograma, planejamento e execução das ações educativas são presenciais."
+  },
+  "1152": {
+    "nivel": 3,
+    "rotulo": "Quase digital",
+    "eh_digital": "Híbrido avançado",
+    "etapa_bloqueio": "Tags indicam opção híbrida, mas o fluxo descrito é majoritariamente pelo site Bloqtel.",
+    "fala_sistema": true,
+    "sistema_citado": "Bloqtel MS",
+    "justificativa": "Cadastro, bloqueio e denúncia são feitos pelo formulário eletrônico em bloqtel.ms.gov.br; opção presencial não é descrita como obrigatória."
+  },
+  "249": {
+    "nivel": 4,
+    "rotulo": "100% digital end-to-end",
+    "eh_digital": "Sim",
+    "etapa_bloqueio": "",
+    "fala_sistema": true,
+    "sistema_citado": "SIPIA / GSI Rede SUAS",
+    "justificativa": "As 3 etapas (contato, cadastro no SIPIA, acesso ao módulo CMDCA) são online via e-mail/WhatsApp e sistemas oficiais."
+  },
+  "379": {
+    "nivel": 2,
+    "rotulo": "Início digital, conclusão presencial",
+    "eh_digital": "Híbrido",
+    "etapa_bloqueio": "Solicitação inicial exige comparecimento ao CRAS com documentação física.",
+    "fala_sistema": true,
+    "sistema_citado": "SGPLI / Passe Livre Digital",
+    "justificativa": "A emissão da carteira pode ser digital (passelivredigital.ms.gov.br), mas a solicitação inicial é presencial no CRAS."
+  },
+  "1458": {
+    "nivel": 1,
+    "rotulo": "Informação online",
+    "eh_digital": "Não",
+    "etapa_bloqueio": "Execução do mutirão de emissão de documentos é presencial.",
+    "fala_sistema": false,
+    "sistema_citado": "",
+    "justificativa": "Carta publicada online; encaminhamento da demanda pode ser por e-mail, mas planejamento e execução da ação são presenciais."
+  },
+  "1150": {
+    "nivel": 2,
+    "rotulo": "Início digital, conclusão presencial",
+    "eh_digital": "Híbrido",
+    "etapa_bloqueio": "Canais incluem opção presencial (sede Procon-MS) sem fluxo digital obrigatório.",
+    "fala_sistema": true,
+    "sistema_citado": "Portal de Serviços Procon-MS",
+    "justificativa": "Denúncia pode ser feita online ou presencialmente; as 2 etapas descritas são híbridas (Online,Presencial)."
+  },
+  "1218": {
+    "nivel": 3,
+    "rotulo": "Quase digital",
+    "eh_digital": "Híbrido avançado",
+    "etapa_bloqueio": "Visita técnica presencial obrigatória para complementação cadastral.",
+    "fala_sistema": true,
+    "sistema_citado": "cdqcuida.sead.ms.gov.br",
+    "justificativa": "Pré-cadastro, validação e pagamento (PIX) são online; única etapa física é a visita técnica domiciliar."
+  },
+  "302": {
+    "nivel": 1,
+    "rotulo": "Informação online",
+    "eh_digital": "Não",
+    "etapa_bloqueio": "Solicitação inicial e manutenção do benefício exigem comparecimento (CRAS, reuniões, frequência escolar).",
+    "fala_sistema": false,
+    "sistema_citado": "",
+    "justificativa": "Carta publicada online com critérios de elegibilidade; solicitação e manutenção das condicionalidades do Programa Mais Social são presenciais."
+  },
+  "1217": {
+    "nivel": 3,
+    "rotulo": "Quase digital",
+    "eh_digital": "Híbrido avançado",
+    "etapa_bloqueio": "Cruzamento mensal de dados com a Concessionária e o CadÚnico pode envolver verificação adicional.",
+    "fala_sistema": true,
+    "sistema_citado": "energiasocial.ms.gov.br",
+    "justificativa": "Cadastro, análise e aprovação são online; etapa de cruzamento de dados é interna e automática, mantendo nível conservador em 3."
+  },
+  "1219": {
+    "nivel": 3,
+    "rotulo": "Quase digital",
+    "eh_digital": "Híbrido avançado",
+    "etapa_bloqueio": "Monitoramento periódico pode exigir envio presencial de documentação.",
+    "fala_sistema": true,
+    "sistema_citado": "mssupera.ms.gov.br",
+    "justificativa": "Inscrição, seleção, assinatura do termo e pagamento são online; única etapa híbrida é o monitoramento contínuo."
+  },
+  "1127": {
+    "nivel": 2,
+    "rotulo": "Início digital, conclusão presencial",
+    "eh_digital": "Híbrido",
+    "etapa_bloqueio": "Canal de atendimento pode ser presencial, sem fluxo digital garantido.",
+    "fala_sistema": true,
+    "sistema_citado": "Portal de Serviços Procon-MS (Fale Conosco)",
+    "justificativa": "Única etapa é híbrida (Online,Presencial); orientação pode ocorrer nos dois canais."
+  },
+  "991": {
+    "nivel": 3,
+    "rotulo": "Quase digital",
+    "eh_digital": "Híbrido avançado",
+    "etapa_bloqueio": "Requerimento físico ainda é aceito no protocolo presencial como alternativa.",
+    "fala_sistema": true,
+    "sistema_citado": "e-MS (Sistema Eletrônico de Processos)",
+    "justificativa": "Via digital (e-mail + acompanhamento em e-ms.ms.gov.br) cobre toda a jornada; a opção presencial é alternativa, não obrigatória."
+  },
+  "990": {
+    "nivel": 3,
+    "rotulo": "Quase digital",
+    "eh_digital": "Híbrido avançado",
+    "etapa_bloqueio": "Requerimento físico ainda é aceito no protocolo presencial como alternativa.",
+    "fala_sistema": true,
+    "sistema_citado": "e-MS (Sistema Eletrônico de Processos)",
+    "justificativa": "Via digital (e-mail + acompanhamento em e-ms.ms.gov.br) cobre toda a jornada; a opção presencial é alternativa, não obrigatória."
+  },
+  "1490": {
+    "nivel": 4,
+    "rotulo": "100% digital end-to-end",
+    "eh_digital": "Sim",
+    "etapa_bloqueio": "",
+    "fala_sistema": true,
+    "sistema_citado": "Site SEAD — Programa Mãe Trabalhadora",
+    "justificativa": "Pré-cadastro, triagem, conferência, definição de modalidade, análise técnica e monitoramento são todos online."
+  }
+}

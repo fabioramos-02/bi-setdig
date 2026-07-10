@@ -100,13 +100,3 @@ def get_outlinks(period: str, date: str, site_id: str | None = None, limit: int 
     return _call("Actions.getOutlinks", period, date, {"filter_limit": limit}, site_id)
 
 
-def get_transitions_for_page_url(period: str, date: str, page_url: str, site_id: str | None = None) -> dict:
-    """Porta de matomo_client.py::get_transitions — 1 chamada fixa pra uma URL
-    (a Home), não N+1 por página. timeout=180: mesmo período curto pode ser
-    lento no servidor Matomo pra esse endpoint (precedente: matomo_client.py)."""
-    return _call(
-        "Transitions.getTransitionsForPageUrl", period, date,
-        {"pageUrl": page_url, "limitBeforeGrouping": 20}, site_id, timeout=180,
-    )
-
-
