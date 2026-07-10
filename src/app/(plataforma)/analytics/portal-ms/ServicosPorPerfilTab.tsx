@@ -2,6 +2,7 @@ import { EmptyCard } from "@/components/ds/EmptyCard";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { MetricCard } from "@/components/dashboard/MetricCard";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
+import { AvisoSnapshotAproximado } from "@/components/dashboard/AvisoSnapshotAproximado";
 import { ServiceCardGrid } from "@/components/dashboard/ServiceCardGrid";
 import { BarChart } from "@/components/charts/BarChart";
 import { FunnelChart } from "@/components/charts/FunnelChart";
@@ -38,18 +39,7 @@ export function ServicosPorPerfilTab({
 
   return (
     <div>
-      {tipoIntervalo && (
-        <p
-          className="mb-4 text-sm rounded"
-          style={{
-            background: "var(--ds-color-background-muted)",
-            color: "var(--ds-color-text-secondary)",
-            padding: "var(--ds-spacing-12)",
-          }}
-        >
-          O estudo não tem recorte por intervalo arbitrário (ADR-007) — exibindo o snapshot do <strong>mês</strong>.
-        </p>
-      )}
+      <AvisoSnapshotAproximado tipoIntervalo={tipoIntervalo} />
 
       {/* 1. Narrativa + KPIs */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-8">

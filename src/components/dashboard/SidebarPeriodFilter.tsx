@@ -6,13 +6,12 @@ import { usePeriodo } from "@/lib/periodo-context";
 
 const ROTAS_COM_FILTRO = ["/analytics/portal-ms", "/analytics/ms-digital"];
 
-// Aviso do modo "intervalo" muda por rota: o Portal MS tem mapa/breakdowns que
-// caem no mês; o MS Digital cai no snapshot do mês inteiro. As demais (vazias)
-// não mostram o filtro.
-const AVISO_INTERVALO: Record<string, string> = {
-  "/analytics/portal-ms": "Mapa, navegadores, dispositivos e horários mostram o mês atual — só a tendência reflete o intervalo.",
-  "/analytics/ms-digital": "Os painéis do app mostram o snapshot do mês quando há um intervalo selecionado.",
-};
+// Texto curto e genérico de propósito: o detalhe de QUAIS painéis caem no
+// snapshot do mês fica no aviso de cada aba (AvisoSnapshotAproximado) — uma
+// lista aqui desatualiza toda vez que um dataset novo vira breakdown por
+// período (já aconteceu: esta lista chegou a ficar incompleta e um par de
+// abas chegou a rotular o dado errado como "do intervalo").
+const AVISO_INTERVALO = "Alguns painéis mostram o snapshot mais recente do mês nesse modo — veja o aviso na aba específica.";
 
 /**
  * Filtro de período dentro da sidebar — aparece nas rotas com dados reativos a
@@ -45,7 +44,7 @@ export function SidebarPeriodFilter() {
       </p>
       {estado.tipo === "intervalo" && (
         <p style={{ color: "var(--ds-color-text-muted)" }} className="text-xs mt-2">
-          {AVISO_INTERVALO[pathname]}
+          {AVISO_INTERVALO}
         </p>
       )}
     </div>

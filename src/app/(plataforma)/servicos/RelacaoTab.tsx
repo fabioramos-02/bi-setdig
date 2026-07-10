@@ -40,7 +40,31 @@ export function RelacaoTab({ cartas }: { cartas: CartaRelacao[] }) {
   return (
     <DashboardSection
       title="Relação completa de cartas"
-      action={<ExportCsvButton rows={cartas} filename="relacao-de-cartas" />}
+      action={
+        <ExportCsvButton
+          rows={cartas.map((c) => ({
+            titulo: c.titulo,
+            nomePopular: c.nomePopular ?? "",
+            slug: c.slug,
+            orgao: c.orgao,
+            orgaoSigla: c.orgaoSigla,
+            categoria: c.categoria ?? "",
+            publico: c.publico ?? "",
+            publicoEspecifico: c.publicoEspecifico.join("; "),
+            ativo: c.ativo ? "sim" : "não",
+            digital: c.digital ? "sim" : "não",
+            online: c.online ? "sim" : "não",
+            destaque: c.destaque ? "sim" : "não",
+            custo: c.custo ?? "",
+            tempoTotal: c.tempoTotal ?? "",
+            tipoTempo: c.tipoTempo ?? "",
+            nivelMaturidade: c.nivelMaturidade,
+            maturidadeOrigem: c.maturidadeOrigem,
+            updatedAt: c.updatedAt ?? "",
+          }))}
+          filename="relacao-de-cartas"
+        />
+      }
     >
       <div className="flex flex-col gap-4">
         <div className="relative">

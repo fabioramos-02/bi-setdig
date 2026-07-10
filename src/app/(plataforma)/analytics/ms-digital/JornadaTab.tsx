@@ -1,5 +1,6 @@
 import { BarChart } from "@/components/charts/BarChart";
 import { StoryCard } from "@/components/dashboard/StoryCard";
+import { AvisoSnapshotAproximado } from "@/components/dashboard/AvisoSnapshotAproximado";
 import { rotuloEstagioFunil } from "@/lib/insights";
 import type { InsightFunil } from "@/lib/insights";
 import type { EventoFunil } from "@/lib/data";
@@ -7,11 +8,20 @@ import type { EventoFunil } from "@/lib/data";
 /** Peça central de storytelling do domínio — funil de aquisição -> ativação
  * -> navegação -> retenção, com a maior queda entre estágios explicada (ver
  * calcularInsightFunil em lib/insights.ts, porta de tab4_jornada.py). */
-export function JornadaTab({ funil, insightFunil }: { funil: EventoFunil[]; insightFunil: InsightFunil | null }) {
+export function JornadaTab({
+  funil,
+  insightFunil,
+  tipoIntervalo,
+}: {
+  funil: EventoFunil[];
+  insightFunil: InsightFunil | null;
+  tipoIntervalo: boolean;
+}) {
   const dadosFunil = funil.map((f) => ({ estagio: rotuloEstagioFunil(f.evento), usuarios: f.usuarios }));
 
   return (
     <div className="flex flex-col gap-6">
+      <AvisoSnapshotAproximado tipoIntervalo={tipoIntervalo} />
       <div>
         <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold mb-2">
           Funil de engajamento: aquisição → ativação → navegação → retenção

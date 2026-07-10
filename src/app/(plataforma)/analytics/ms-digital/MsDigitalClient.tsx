@@ -65,6 +65,7 @@ export function MsDigitalClient({
   const [abaAtiva, setAbaAtiva] = useState("visao-geral");
   const { estado } = usePeriodo();
   const periodo = chavePeriodoFixo(estado);
+  const tipoIntervalo = estado.tipo === "intervalo";
 
   // Fatia de cada breakdown no período selecionado.
   const vg = visaoGeral[periodo];
@@ -109,13 +110,14 @@ export function MsDigitalClient({
           insightPlataforma={insightPlataforma}
           insightServico={insightServico}
           onIrPara={setAbaAtiva}
+          tipoIntervalo={tipoIntervalo}
         />
       ),
     },
     {
       id: "funcionalidades",
       label: "2. Funcionalidades",
-      content: <FuncionalidadesTab servicos={serv} insightServico={insightServico} />,
+      content: <FuncionalidadesTab servicos={serv} insightServico={insightServico} tipoIntervalo={tipoIntervalo} />,
     },
     {
       id: "perfil",
@@ -126,18 +128,19 @@ export function MsDigitalClient({
           horarios={hor}
           insightPlataforma={insightPlataforma}
           insightHorario={insightHorario}
+          tipoIntervalo={tipoIntervalo}
         />
       ),
     },
     {
       id: "jornada",
       label: "4. Jornada do Usuário",
-      content: <JornadaTab funil={fun} insightFunil={insightFunil} />,
+      content: <JornadaTab funil={fun} insightFunil={insightFunil} tipoIntervalo={tipoIntervalo} />,
     },
     {
       id: "app-portal",
       label: "5. App × Portal",
-      content: <CrossCanalTab comparacao={comparacao} />,
+      content: <CrossCanalTab comparacao={comparacao} tipoIntervalo={tipoIntervalo} />,
     },
     {
       id: "categorias",

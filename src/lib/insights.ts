@@ -1,4 +1,4 @@
-import type { TermoBusca, Navegador, Dispositivo, Plataforma, Servico, EventoFunil, HorarioGa4, PaginaEntrada } from "./data";
+import type { TermoBusca, Navegador, Dispositivo, Plataforma, Servico, EventoFunil, HorarioGa4, PaginaEntrada, Pagina } from "./data";
 import type { PeriodoTipo, PontoAgregado } from "./period-filter";
 
 /**
@@ -63,6 +63,15 @@ export function calcularInsightEntrada(paginas: PaginaEntrada[]): InsightEntrada
   const total = paginas.reduce((acc, p) => acc + p.entradas, 0);
   const top = [...paginas].sort((a, b) => b.entradas - a.entradas)[0];
   return { pagina: top.pagina, entradas: top.entradas, participacaoPct: total > 0 ? (top.entradas / total) * 100 : 0 };
+}
+
+export type InsightPagina = { url: string; visitas: number; participacaoPct: number };
+
+export function calcularInsightPagina(paginas: Pagina[]): InsightPagina | null {
+  if (paginas.length === 0) return null;
+  const total = paginas.reduce((acc, p) => acc + p.visitas, 0);
+  const top = [...paginas].sort((a, b) => b.visitas - a.visitas)[0];
+  return { url: top.url, visitas: top.visitas, participacaoPct: total > 0 ? (top.visitas / total) * 100 : 0 };
 }
 
 export type InsightDispositivo = { dispositivo: string; participacaoPct: number };

@@ -56,14 +56,22 @@ def run_matomo() -> None:
 
 
 def run_matomo_perfil() -> None:
-    period, date = "month", "today"  # usado só por páginas/busca (snapshot único)
-
     navegadores, dispositivos, horarios, cidades = {}, {}, {}, {}
+    paginas, buscas = {}, {}
     for chave, (p, d) in PERIODOS_FIXOS.items():
         navegadores[chave] = t_matomo.top_n_with_others(matomo.get_browsers(p, d), "navegador", 4)
         dispositivos[chave] = t_matomo.top_n_with_others(matomo.get_device_type(p, d), "dispositivo", 2)
         horarios[chave] = t_matomo.visit_time(matomo.get_visit_time(p, d))
         cidades[chave] = t_matomo.cities_ms(matomo.get_city(p, d, limit=200))
+
+        # Páginas/busca precisam reagir ao filtro de período igual aos acima —
+        # antes ficavam fixas em period="month" (bug: aba não mudava com o
+        # radio da sidebar). page_urls_raw é reusado por ambas, 1 chamada.
+        page_urls_raw = matomo.get_page_urls(p, d, limit=-1)
+        paginas[chave] = t_matomo.top_pages(page_urls_raw, n=20)
+        busca_nativa = t_matomo.search_keywords(matomo.get_site_search_keywords(p, d, limit=50))
+        busca_urls = t_matomo.search_from_urls(page_urls_raw)
+        buscas[chave] = t_matomo.merge_search(busca_nativa, busca_urls, n=20)
 
     validate_period_breakdown(navegadores, ["navegador", "visitas"], ["visitas"])
     publish("matomo", "navegadores", navegadores)
@@ -81,12 +89,13 @@ def run_matomo_perfil() -> None:
     publish("matomo", "geografia", cidades)
     print(f"[matomo] geografia -> {[(k, len(v)) for k, v in cidades.items()]}")
 
-    page_urls_raw = matomo.get_page_urls(period, date, limit=-1)
-
-    paginas = t_matomo.top_pages(page_urls_raw, n=20)
-    validate_rows(paginas, required=["url", "visitas"], non_negative=["visitas"])
+    validate_period_breakdown(paginas, ["url", "visitas"], ["visitas"])
     publish("matomo", "paginas-mais-acessadas", paginas)
-    print(f"[matomo] paginas -> {len(paginas)} paginas")
+    print(f"[matomo] paginas -> {[(k, len(v)) for k, v in paginas.items()]}")
+
+    validate_period_breakdown(buscas, ["termo", "buscas"], ["buscas"])
+    publish("matomo", "busca", buscas)
+    print(f"[matomo] busca -> {[(k, len(v)) for k, v in buscas.items()]}")
 
     # 920 dias cobre desde 01/01/2024 até hoje — usuário precisa comparar
     # "Ano" com o ano anterior completo, 370 dias só ia até jul/2025.
@@ -94,13 +103,6 @@ def run_matomo_perfil() -> None:
     validate_rows(diarias, required=["data", "visitas"], non_negative=["visitas", "visitantesUnicos", "acoes"])
     publish("matomo", "visitas-diarias", diarias)
     print(f"[matomo] visitas-diarias -> {len(diarias)} dias")
-
-    busca_nativa = t_matomo.search_keywords(matomo.get_site_search_keywords(period, date, limit=50))
-    busca_urls = t_matomo.search_from_urls(page_urls_raw)
-    busca = t_matomo.merge_search(busca_nativa, busca_urls, n=20)
-    validate_rows(busca, required=["termo", "buscas"], non_negative=["buscas"])
-    publish("matomo", "busca", busca)
-    print(f"[matomo] busca -> {len(busca)} termos ({len(busca_nativa)} nativos + {len(busca_urls)} de URL)")
 
 
 def run_matomo_perfil_filtro() -> None:

@@ -38,3 +38,24 @@ sempre em `lib/`, nunca no `.tsx` (convencoes.md). Cor/tipografia só via `var(-
 - **DS-SIS unlayered vence Tailwind:** regra de tag do DS (ex. `h3`) sobrescreve
   utilities; cravar tipografia com `style` inline quando precisar.
 - **Versão de dataset (ADR-004):** mudança de shape que quebra → nova pasta `vN`.
+- **Nunca deixar gráfico/dado mockado ou estático num domínio com filtro de
+  período.** Já aconteceu: `paginas-mais-acessadas` e `busca` ficaram presas
+  num snapshot fixo (`period="month"` hardcoded no pipeline) enquanto o resto
+  da aba reagia ao filtro — silencioso, só o usuário percebeu no uso real.
+  Antes de dar por pronto um dataset/aba novo em domínio com `PeriodoProvider`,
+  confirmar as 4 camadas batem: (1) `run.py` itera `PERIODOS_FIXOS`/`GA4_PERIODOS`,
+  não período fixo isolado; (2) JSON publicado tem as 4 chaves
+  `dia/semana/mes/ano`, não lista/objeto único; (3) tipo em `lib/data.ts` é
+  `BreakdownPorPeriodo<T>`, não `T[]` solto; (4) o Client indexa
+  `dataset[periodoAtual]` antes de repassar à Tab — nunca repassa o breakdown
+  inteiro nem o array cru. Exceção só quando o dado é catálogo/estático por
+  natureza (ex. `catalogo-servicos`, inventário de cartas) — aí documentar o
+  porquê no comentário do getter, igual já feito nesses dois casos.
+- **Quando a aproximação é inevitável (ADR-007: "intervalo" cai em "mes" pra
+  todo `BreakdownPorPeriodo<T>`), 2 obrigações, não 1:** (a) o texto/label
+  tem que usar o período que o dado *realmente é* (`periodoAtual`), nunca o
+  que o usuário selecionou (`estado.tipo`) — já aconteceu de `BuscaTab`/
+  `PaginasTab` dizerem "no intervalo" pra um número que era do mês, o que
+  pareceu um bug de dado quando era só rótulo errado; (b) todo consumidor
+  do breakdown precisa do aviso visível (`AvisoSnapshotAproximado`), não só
+  a nota genérica da Sidebar — ela não cobre o dataset específico.

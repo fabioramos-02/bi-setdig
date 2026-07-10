@@ -1,21 +1,20 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { EmptyCard } from "@/components/ds/EmptyCard";
 import { ContentTopBar } from "@/components/ds/ContentTopBar";
 import { ExportPdfButton } from "@/components/dashboard/ExportPdfButton";
-import { ExportCsvButton } from "@/components/dashboard/ExportCsvButton";
-import { StoryCard } from "@/components/dashboard/StoryCard";
 import { Tabs, type TabItem } from "@/components/dashboard/Tabs";
 import { PerfilCidadaoTab } from "./PerfilCidadaoTab";
 import { ServicosPorPerfilTab } from "./ServicosPorPerfilTab";
 import { FluxoNavegacaoTab } from "./FluxoNavegacaoTab";
 import { VisaoGeralTab } from "./VisaoGeralTab";
-import { WordCloud } from "@/components/charts/WordCloud";
+import { BuscaTab } from "./BuscaTab";
+import { PaginasTab } from "./PaginasTab";
 import { aplicarFiltroPeriodo, chavePeriodoFixo, resumoDoPeriodo } from "@/lib/period-filter";
 import { usePeriodo } from "@/lib/periodo-context";
 import {
   calcularInsightBusca,
+  calcularInsightPagina,
   calcularInsightVisitas,
   calcularInsightNavegador,
   calcularInsightDispositivo,
@@ -57,8 +56,8 @@ export function PortalMsClient({
   dispositivos: BreakdownPorPeriodo<Dispositivo>;
   horarios: BreakdownPorPeriodo<Horario>;
   cidades: BreakdownPorPeriodo<Cidade>;
-  paginas: Pagina[];
-  busca: TermoBusca[];
+  paginas: BreakdownPorPeriodo<Pagina>;
+  busca: BreakdownPorPeriodo<TermoBusca>;
   matchRate: number;
   perfil: Record<PeriodoFixo, PerfilFiltroPeriodo>;
   servicosMaisAcessados: BreakdownPorPeriodo<ServicoAcessado>;
@@ -80,14 +79,24 @@ export function PortalMsClient({
   const servicosAcessadosAtual = servicosMaisAcessados[periodoAtual];
   const portasEntradaAtual = portasEntrada[periodoAtual];
   const fugaHubAtual = fugaHub[periodoAtual];
+  const paginasAtual = paginas[periodoAtual];
+  const buscaAtual = busca[periodoAtual];
 
   const tendencia = useMemo(() => aplicarFiltroPeriodo(diarias, estado), [diarias, estado]);
   const kpis = useMemo(() => resumoDoPeriodo(diarias, estado), [diarias, estado]);
-  const insightBusca = calcularInsightBusca(busca);
+  const insightBusca = calcularInsightBusca(buscaAtual);
+  const insightPagina = calcularInsightPagina(paginasAtual);
   const insightVisitas = calcularInsightVisitas(tendencia, estado.tipo);
   const insightNavegador = calcularInsightNavegador(navegadoresAtual);
   const insightDispositivo = calcularInsightDispositivo(dispositivosAtual);
-  const paginaTop = paginas[0] ?? null;
+  const paginaTop = paginasAtual[0] ?? null;
+  const rotuloPeriodo = ROTULO_PERIODO[estado.tipo];
+  // Breakdowns de categoria (busca/páginas/navegadores/...) não têm recorte
+  // próprio de intervalo (ADR-007) — o texto deles tem que dizer o período
+  // que o dado REALMENTE é (periodoAtual), nunca o que o usuário escolheu.
+  // Só KPIs/tendência (via série diária) usam rotuloPeriodo com segurança.
+  const rotuloSnapshot = ROTULO_PERIODO[periodoAtual];
+  const tipoIntervalo = estado.tipo === "intervalo";
 
   const abas: TabItem[] = [
     {
@@ -96,7 +105,7 @@ export function PortalMsClient({
       content: (
         <VisaoGeralTab
           kpis={kpis}
-          rotuloPeriodo={ROTULO_PERIODO[estado.tipo]}
+          rotuloPeriodo={rotuloPeriodo}
           cidadesCount={cidadesAtual.length}
           tendencia={tendencia}
           insightVisitas={insightVisitas}
@@ -119,75 +128,27 @@ export function PortalMsClient({
           insightNavegador={insightNavegador}
           dispositivosAtual={dispositivosAtual}
           horariosAtual={horariosAtual}
+          tipoIntervalo={tipoIntervalo}
         />
       ),
     },
     {
       id: "busca",
       label: "3. Intenção de Busca",
-      content:
-        busca.length === 0 ? (
-          <EmptyCard message="Sem termos de busca no período." />
-        ) : (
-          <div className="overflow-x-auto">
-            {insightBusca && (
-              <div className="mb-4">
-                <StoryCard
-                  anchor={`O termo mais buscado foi "${insightBusca.termo}", com ${insightBusca.participacaoPct.toFixed(0)}% das buscas do mês.`}
-                  caption={`${insightBusca.buscas.toLocaleString("pt-BR")} buscas registradas por esse termo.`}
-                  comoLer="Combina buscas feitas na caixa de pesquisa interna do portal com termos extraídos de URLs com parâmetro de busca (?q=) — não inclui quem chegou via Google ou outro buscador externo."
-                />
-              </div>
-            )}
-            <WordCloud termos={busca} />
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="text-left" style={{ color: "var(--ds-color-text-secondary)" }}>
-                  <th className="pb-2">Termo</th>
-                  <th className="pb-2 text-right">Buscas</th>
-                </tr>
-              </thead>
-              <tbody>
-                {busca.map((b) => (
-                  <tr key={b.termo} className="border-t" style={{ borderColor: "var(--ds-color-border)" }}>
-                    <td className="py-1.5">{b.termo}</td>
-                    <td className="py-1.5 text-right font-semibold" style={{ color: "var(--ds-color-primary-600)" }}>
-                      {b.buscas.toLocaleString("pt-BR")}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        ),
+      content: (
+        <BuscaTab busca={buscaAtual} rotuloPeriodo={rotuloSnapshot} insightBusca={insightBusca} tipoIntervalo={tipoIntervalo} />
+      ),
     },
     {
       id: "paginas",
       label: "4. Páginas mais acessadas",
       content: (
-        <div className="overflow-x-auto">
-          <div className="flex justify-end mb-2">
-            <ExportCsvButton rows={paginas} filename="paginas-mais-acessadas" />
-          </div>
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="text-left" style={{ color: "var(--ds-color-text-secondary)" }}>
-                <th className="pb-2">Página</th>
-                <th className="pb-2 text-right">Visitas</th>
-              </tr>
-            </thead>
-            <tbody>
-              {paginas.map((p) => (
-                <tr key={p.url} className="border-t" style={{ borderColor: "var(--ds-color-border)" }}>
-                  <td className="py-1.5 truncate max-w-[150px] sm:max-w-none">{p.url}</td>
-                  <td className="py-1.5 text-right font-semibold" style={{ color: "var(--ds-color-primary-600)" }}>
-                    {p.visitas.toLocaleString("pt-BR")}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <PaginasTab
+          paginas={paginasAtual}
+          rotuloPeriodo={rotuloSnapshot}
+          insightPagina={insightPagina}
+          tipoIntervalo={tipoIntervalo}
+        />
       ),
     },
     {
@@ -197,7 +158,7 @@ export function PortalMsClient({
         <ServicosPorPerfilTab
           dados={perfilAtual}
           servicosMaisAcessados={servicosAcessadosAtual}
-          tipoIntervalo={estado.tipo === "intervalo"}
+          tipoIntervalo={tipoIntervalo}
         />
       ),
     },
@@ -205,7 +166,7 @@ export function PortalMsClient({
       id: "jornada",
       label: "6. Fluxo de Navegação",
       content: (
-        <FluxoNavegacaoTab portasEntrada={portasEntradaAtual} fugaHub={fugaHubAtual} />
+        <FluxoNavegacaoTab portasEntrada={portasEntradaAtual} fugaHub={fugaHubAtual} tipoIntervalo={tipoIntervalo} />
       ),
     },
   ];

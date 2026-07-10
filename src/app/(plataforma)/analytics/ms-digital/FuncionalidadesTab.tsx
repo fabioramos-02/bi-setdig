@@ -1,13 +1,23 @@
 import { RankingBarChart } from "@/components/charts/RankingBarChart";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { ExportCsvButton } from "@/components/dashboard/ExportCsvButton";
+import { AvisoSnapshotAproximado } from "@/components/dashboard/AvisoSnapshotAproximado";
 import type { InsightServico } from "@/lib/insights";
 import type { Servico } from "@/lib/data";
 
-export function FuncionalidadesTab({ servicos, insightServico }: { servicos: Servico[]; insightServico: InsightServico | null }) {
+export function FuncionalidadesTab({
+  servicos,
+  insightServico,
+  tipoIntervalo,
+}: {
+  servicos: Servico[];
+  insightServico: InsightServico | null;
+  tipoIntervalo: boolean;
+}) {
   const itens = servicos.map((s) => ({ label: s.servico, valor: s.acessos }));
   return (
     <div className="flex flex-col gap-6">
+      <AvisoSnapshotAproximado tipoIntervalo={tipoIntervalo} />
       {insightServico && (
         <StoryCard
           anchor={`"${insightServico.servico}" é a funcionalidade mais usada, com ${insightServico.participacaoPct.toFixed(0)}% dos acessos a serviços no período.`}

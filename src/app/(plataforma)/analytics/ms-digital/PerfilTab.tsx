@@ -1,6 +1,7 @@
 import { BarChart } from "@/components/charts/BarChart";
 import { PlatformBarChart } from "@/components/charts/PlatformBarChart";
 import { StoryCard } from "@/components/dashboard/StoryCard";
+import { AvisoSnapshotAproximado } from "@/components/dashboard/AvisoSnapshotAproximado";
 import type { InsightPlataforma, InsightHorario } from "@/lib/insights";
 import type { Plataforma, HorarioGa4 } from "@/lib/data";
 
@@ -12,16 +13,19 @@ export function PerfilTab({
   horarios,
   insightPlataforma,
   insightHorario,
+  tipoIntervalo,
 }: {
   plataforma: Plataforma[];
   horarios: HorarioGa4[];
   insightPlataforma: InsightPlataforma | null;
   insightHorario: InsightHorario | null;
+  tipoIntervalo: boolean;
 }) {
   const horariosRotulados = horarios.map((h) => ({ ...h, hora: `${h.hora}h` }));
 
   return (
     <div className="flex flex-col gap-6">
+      <AvisoSnapshotAproximado tipoIntervalo={tipoIntervalo} />
       <div className="grid gap-6 grid-cols-1 lg:grid-cols-2">
         <div>
           <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold mb-2">

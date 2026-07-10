@@ -3,6 +3,7 @@ import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { PORTAL_BASE_URL } from "@/components/dashboard/ServiceCardGrid";
 import { RankingBarChart } from "@/components/charts/RankingBarChart";
+import { AvisoSnapshotAproximado } from "@/components/dashboard/AvisoSnapshotAproximado";
 import { calcularInsightEntrada } from "@/lib/insights";
 import type { PaginaEntrada, DominioSaida } from "@/lib/data";
 
@@ -23,9 +24,11 @@ function linkDoPortal(pagina: string): string | undefined {
 export function FluxoNavegacaoTab({
   portasEntrada,
   fugaHub,
+  tipoIntervalo,
 }: {
   portasEntrada: PaginaEntrada[];
   fugaHub: DominioSaida[];
+  tipoIntervalo: boolean;
 }) {
   if (portasEntrada.length === 0 && fugaHub.length === 0) {
     return <EmptyCard message="Sem dado de fluxo de navegação ainda — pipeline não extraiu essa amostra." />;
@@ -35,6 +38,7 @@ export function FluxoNavegacaoTab({
 
   return (
     <div className="flex flex-col gap-6">
+      <AvisoSnapshotAproximado tipoIntervalo={tipoIntervalo} />
       {insightEntrada && (
         <StoryCard
           anchor={`"${insightEntrada.pagina}" é a porta de entrada mais usada: ${insightEntrada.participacaoPct.toFixed(0)}% de quem chega direto ao portal cai nela.`}

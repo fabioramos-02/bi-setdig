@@ -81,16 +81,16 @@ export function getMatomoDispositivos(): BreakdownPorPeriodo<Dispositivo> {
 export function getMatomoHorarios(): BreakdownPorPeriodo<Horario> {
   return readDataset<BreakdownPorPeriodo<Horario>>("matomo", "v1", "horarios") ?? BREAKDOWN_VAZIO;
 }
-export function getMatomoPaginas(): Pagina[] {
-  return readDataset<Pagina[]>("matomo", "v1", "paginas-mais-acessadas") ?? [];
+export function getMatomoPaginas(): BreakdownPorPeriodo<Pagina> {
+  return readDataset<BreakdownPorPeriodo<Pagina>>("matomo", "v1", "paginas-mais-acessadas") ?? BREAKDOWN_VAZIO;
 }
 export function getMatomoVisitasDiarias(): VisitaDiaria[] {
   return readDataset<VisitaDiaria[]>("matomo", "v1", "visitas-diarias") ?? [];
 }
 
 export type TermoBusca = { termo: string; buscas: number };
-export function getMatomoBusca(): TermoBusca[] {
-  return readDataset<TermoBusca[]>("matomo", "v1", "busca") ?? [];
+export function getMatomoBusca(): BreakdownPorPeriodo<TermoBusca> {
+  return readDataset<BreakdownPorPeriodo<TermoBusca>>("matomo", "v1", "busca") ?? BREAKDOWN_VAZIO;
 }
 
 // --- Governança: adoção do filtro de Perfil (estudo portado do bench-carta) ---

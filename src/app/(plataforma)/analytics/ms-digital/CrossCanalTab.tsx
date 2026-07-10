@@ -4,17 +4,25 @@ import { DeviceBarChart } from "@/components/charts/DeviceBarChart";
 import { MetricCard } from "@/components/dashboard/MetricCard";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
+import { AvisoSnapshotAproximado } from "@/components/dashboard/AvisoSnapshotAproximado";
 import type { ComparacaoCanais } from "@/lib/cross-canal";
 
 /** Contexto cross-BI: o mesmo cidadão em dois canais — app (MS Digital / GA4) e
  * portal web (www.ms.gov.br / Matomo). Não é soma: a mesma pessoa pode usar os
  * dois, e as janelas de cada fonte não batem exatamente (ver comoLer). */
-export function CrossCanalTab({ comparacao }: { comparacao: ComparacaoCanais }) {
+export function CrossCanalTab({
+  comparacao,
+  tipoIntervalo,
+}: {
+  comparacao: ComparacaoCanais;
+  tipoIntervalo: boolean;
+}) {
   const { alcanceApp, alcancePortal, appServicos, portalServicos, appPlataforma, portalDispositivos } = comparacao;
   const maior = alcanceApp >= alcancePortal ? "app" : "portal";
 
   return (
     <div className="flex flex-col gap-6">
+      <AvisoSnapshotAproximado tipoIntervalo={tipoIntervalo} />
       <StoryCard
         anchor={`No período, ${maior === "app" ? "o app" : "o portal na internet"} foi o canal que mais gente usou para chegar aos serviços do Estado.`}
         caption={`App: ${alcanceApp.toLocaleString("pt-BR")} pessoas. Portal na internet: ${alcancePortal.toLocaleString("pt-BR")} pessoas.`}

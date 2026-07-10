@@ -1,25 +1,25 @@
 {
   "dia": {
     "resumo": {
-      "homeVisitors": 1296,
-      "atribuiveis": 77,
-      "proxyRatePct": 5.9414,
-      "usoRealPct": 0.0891,
-      "umACada": 1122,
+      "homeVisitors": 1767,
+      "atribuiveis": 114,
+      "proxyRatePct": 6.4516,
+      "usoRealPct": 0.0968,
+      "umACada": 1033,
       "limiarPct": 2.0
     },
     "distribuicao": [
       {
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
-        "visitas": 77,
-        "participacaoPct": 100.0
+        "visitas": 113,
+        "participacaoPct": 99.1228
       },
       {
         "perfil": "SERVIDOR_PUBLICO",
         "perfilLabel": "Servidor Público",
-        "visitas": 0,
-        "participacaoPct": 0.0
+        "visitas": 1,
+        "participacaoPct": 0.8772
       }
     ],
     "topServicos": [
@@ -28,7 +28,7 @@
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
         "path": "/seguranca/delegacia-virtual-devir105",
-        "visitas": 58,
+        "visitas": 80,
         "exclusivo": true
       },
       {
@@ -36,7 +36,7 @@
         "perfil": "EMPRESA",
         "perfilLabel": "Empresa",
         "path": "/financas-e-impostos/termo-de-verificacao-fiscal-tvf-ou-termo-de-apreensao-ta-baixa-ou-alteracao99",
-        "visitas": 16,
+        "visitas": 28,
         "exclusivo": false
       },
       {
@@ -44,23 +44,23 @@
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
         "path": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
-        "visitas": 13,
+        "visitas": 19,
         "exclusivo": false
-      },
-      {
-        "servico": "Boletim on-line de acidente sem vítimas",
-        "perfil": "CIDADAO",
-        "perfilLabel": "Cidadão",
-        "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170",
-        "visitas": 9,
-        "exclusivo": true
       },
       {
         "servico": "Emissão da CNH",
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
         "path": "/transito-e-transportes/emissao-da-carteira-nacional-de-habilitacao174",
-        "visitas": 6,
+        "visitas": 14,
+        "exclusivo": true
+      },
+      {
+        "servico": "Boletim on-line de acidente sem vítimas",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170",
+        "visitas": 12,
         "exclusivo": true
       },
       {
@@ -68,7 +68,7 @@
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
         "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
-        "visitas": 5,
+        "visitas": 11,
         "exclusivo": false
       },
       {
@@ -76,7 +76,15 @@
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
         "path": "/assistencia-social/solicitacao-de-inclusao-no-programa-mais-social118",
-        "visitas": 4,
+        "visitas": 7,
+        "exclusivo": true
+      },
+      {
+        "servico": "Primeiro acesso aos canais institucionais",
+        "perfil": "SERVIDOR_PUBLICO",
+        "perfilLabel": "Servidor Público",
+        "path": "/ciencia-e-tecnologia/solicitar-primeiro-acesso-aos-canais-institucionais-oficiais9",
+        "visitas": 1,
         "exclusivo": true
       },
       {
@@ -94,14 +102,6 @@
         "path": "/empresa-industria-e-comercio/solicitar-emissao-de-2a-via-de-conta-de-agua-e-esgoto113",
         "visitas": 0,
         "exclusivo": false
-      },
-      {
-        "servico": "Conceder acesso ao Matomo",
-        "perfil": "SERVIDOR_PUBLICO",
-        "perfilLabel": "Servidor Público",
-        "path": "/ciencia-e-tecnologia/conceder-acesso-ao-matomo70",
-        "visitas": 0,
-        "exclusivo": true
       }
     ],
     "servicosPorPerfil": {
@@ -111,7 +111,7 @@
           "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
           "icone": "currency_exchange",
           "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
-          "visitas": 5,
+          "visitas": 11,
           "exclusivo": false
         },
         {
@@ -127,7 +127,7 @@
           "orgao": "Departamento Estadual de Trânsito de Mato Grosso do Sul",
           "icone": "directions_car",
           "path": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
-          "visitas": 13,
+          "visitas": 19,
           "exclusivo": false
         },
         {
@@ -135,7 +135,7 @@
           "orgao": "Departamento Estadual de Trânsito de Mato Grosso do Sul",
           "icone": "directions_car",
           "path": "/transito-e-transportes/emissao-da-carteira-nacional-de-habilitacao174",
-          "visitas": 6,
+          "visitas": 14,
           "exclusivo": true
         },
         {
@@ -143,7 +143,7 @@
           "orgao": "Polícia Militar de Mato Grosso do Sul",
           "icone": "security",
           "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170",
-          "visitas": 9,
+          "visitas": 12,
           "exclusivo": true
         },
         {
@@ -151,7 +151,7 @@
           "orgao": "Polícia Civil de Mato Grosso do Sul",
           "icone": "security",
           "path": "/seguranca/delegacia-virtual-devir105",
-          "visitas": 58,
+          "visitas": 80,
           "exclusivo": true
         },
         {
@@ -167,7 +167,7 @@
           "orgao": "Secretaria de Estado de Assistência Social e Direitos Humanos",
           "icone": "diversity_3",
           "path": "/assistencia-social/solicitacao-de-inclusao-no-programa-mais-social118",
-          "visitas": 4,
+          "visitas": 7,
           "exclusivo": true
         }
       ],
@@ -201,7 +201,7 @@
           "orgao": "Secretaria de Estado de Governo e Gestão Estratégica de Mato Grosso do Sul",
           "icone": "biotech",
           "path": "/ciencia-e-tecnologia/solicitar-primeiro-acesso-aos-canais-institucionais-oficiais9",
-          "visitas": 0,
+          "visitas": 1,
           "exclusivo": true
         },
         {
@@ -243,7 +243,7 @@
           "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
           "icone": "currency_exchange",
           "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
-          "visitas": 5,
+          "visitas": 11,
           "exclusivo": false
         },
         {
@@ -251,7 +251,7 @@
           "orgao": "Departamento Estadual de Trânsito de Mato Grosso do Sul",
           "icone": "directions_car",
           "path": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
-          "visitas": 13,
+          "visitas": 19,
           "exclusivo": false
         },
         {
@@ -267,7 +267,7 @@
           "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
           "icone": "currency_exchange",
           "path": "/financas-e-impostos/termo-de-verificacao-fiscal-tvf-ou-termo-de-apreensao-ta-baixa-ou-alteracao99",
-          "visitas": 16,
+          "visitas": 28,
           "exclusivo": false
         }
       ],
@@ -277,7 +277,7 @@
           "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
           "icone": "currency_exchange",
           "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
-          "visitas": 5,
+          "visitas": 11,
           "exclusivo": false
         },
         {
@@ -285,7 +285,7 @@
           "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
           "icone": "currency_exchange",
           "path": "/financas-e-impostos/termo-de-verificacao-fiscal-tvf-ou-termo-de-apreensao-ta-baixa-ou-alteracao99",
-          "visitas": 16,
+          "visitas": 28,
           "exclusivo": false
         }
       ]
@@ -293,25 +293,25 @@
   },
   "semana": {
     "resumo": {
-      "homeVisitors": 14280,
-      "atribuiveis": 2077,
-      "proxyRatePct": 14.5448,
-      "usoRealPct": 0.2182,
-      "umACada": 458,
+      "homeVisitors": 14751,
+      "atribuiveis": 2114,
+      "proxyRatePct": 14.3312,
+      "usoRealPct": 0.215,
+      "umACada": 465,
       "limiarPct": 2.0
     },
     "distribuicao": [
       {
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
-        "visitas": 2067,
-        "participacaoPct": 99.5185
+        "visitas": 2103,
+        "participacaoPct": 99.4797
       },
       {
         "perfil": "SERVIDOR_PUBLICO",
         "perfilLabel": "Servidor Público",
-        "visitas": 10,
-        "participacaoPct": 0.4815
+        "visitas": 11,
+        "participacaoPct": 0.5203
       }
     ],
     "topServicos": [
@@ -320,7 +320,7 @@
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
         "path": "/seguranca/delegacia-virtual-devir105",
-        "visitas": 1235,
+        "visitas": 1257,
         "exclusivo": true
       },
       {
@@ -328,7 +328,7 @@
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
         "path": "/transito-e-transportes/emissao-da-carteira-nacional-de-habilitacao174",
-        "visitas": 402,
+        "visitas": 410,
         "exclusivo": true
       },
       {
@@ -336,7 +336,7 @@
         "perfil": "EMPRESA",
         "perfilLabel": "Empresa",
         "path": "/financas-e-impostos/termo-de-verificacao-fiscal-tvf-ou-termo-de-apreensao-ta-baixa-ou-alteracao99",
-        "visitas": 380,
+        "visitas": 392,
         "exclusivo": false
       },
       {
@@ -344,7 +344,7 @@
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
         "path": "/assistencia-social/solicitacao-de-inclusao-no-programa-mais-social118",
-        "visitas": 313,
+        "visitas": 316,
         "exclusivo": true
       },
       {
@@ -352,7 +352,7 @@
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
         "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
-        "visitas": 205,
+        "visitas": 211,
         "exclusivo": false
       },
       {
@@ -360,7 +360,7 @@
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
         "path": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
-        "visitas": 171,
+        "visitas": 177,
         "exclusivo": false
       },
       {
@@ -368,7 +368,7 @@
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
         "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170",
-        "visitas": 117,
+        "visitas": 120,
         "exclusivo": true
       },
       {
@@ -380,20 +380,20 @@
         "exclusivo": false
       },
       {
+        "servico": "Primeiro acesso aos canais institucionais",
+        "perfil": "SERVIDOR_PUBLICO",
+        "perfilLabel": "Servidor Público",
+        "path": "/ciencia-e-tecnologia/solicitar-primeiro-acesso-aos-canais-institucionais-oficiais9",
+        "visitas": 7,
+        "exclusivo": true
+      },
+      {
         "servico": "Consultar Fila ambulatorial",
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
         "path": "/saude-e-cuidado/consultar-fila-ambulatorial118",
         "visitas": 6,
         "exclusivo": false
-      },
-      {
-        "servico": "Primeiro acesso aos canais institucionais",
-        "perfil": "SERVIDOR_PUBLICO",
-        "perfilLabel": "Servidor Público",
-        "path": "/ciencia-e-tecnologia/solicitar-primeiro-acesso-aos-canais-institucionais-oficiais9",
-        "visitas": 6,
-        "exclusivo": true
       }
     ],
     "servicosPorPerfil": {
@@ -403,7 +403,7 @@
           "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
           "icone": "currency_exchange",
           "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
-          "visitas": 205,
+          "visitas": 211,
           "exclusivo": false
         },
         {
@@ -419,7 +419,7 @@
           "orgao": "Departamento Estadual de Trânsito de Mato Grosso do Sul",
           "icone": "directions_car",
           "path": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
-          "visitas": 171,
+          "visitas": 177,
           "exclusivo": false
         },
         {
@@ -427,7 +427,7 @@
           "orgao": "Departamento Estadual de Trânsito de Mato Grosso do Sul",
           "icone": "directions_car",
           "path": "/transito-e-transportes/emissao-da-carteira-nacional-de-habilitacao174",
-          "visitas": 402,
+          "visitas": 410,
           "exclusivo": true
         },
         {
@@ -435,7 +435,7 @@
           "orgao": "Polícia Militar de Mato Grosso do Sul",
           "icone": "security",
           "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170",
-          "visitas": 117,
+          "visitas": 120,
           "exclusivo": true
         },
         {
@@ -443,7 +443,7 @@
           "orgao": "Polícia Civil de Mato Grosso do Sul",
           "icone": "security",
           "path": "/seguranca/delegacia-virtual-devir105",
-          "visitas": 1235,
+          "visitas": 1257,
           "exclusivo": true
         },
         {
@@ -459,7 +459,7 @@
           "orgao": "Secretaria de Estado de Assistência Social e Direitos Humanos",
           "icone": "diversity_3",
           "path": "/assistencia-social/solicitacao-de-inclusao-no-programa-mais-social118",
-          "visitas": 313,
+          "visitas": 316,
           "exclusivo": true
         }
       ],
@@ -493,7 +493,7 @@
           "orgao": "Secretaria de Estado de Governo e Gestão Estratégica de Mato Grosso do Sul",
           "icone": "biotech",
           "path": "/ciencia-e-tecnologia/solicitar-primeiro-acesso-aos-canais-institucionais-oficiais9",
-          "visitas": 6,
+          "visitas": 7,
           "exclusivo": true
         },
         {
@@ -535,7 +535,7 @@
           "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
           "icone": "currency_exchange",
           "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
-          "visitas": 205,
+          "visitas": 211,
           "exclusivo": false
         },
         {
@@ -543,7 +543,7 @@
           "orgao": "Departamento Estadual de Trânsito de Mato Grosso do Sul",
           "icone": "directions_car",
           "path": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
-          "visitas": 171,
+          "visitas": 177,
           "exclusivo": false
         },
         {
@@ -559,7 +559,7 @@
           "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
           "icone": "currency_exchange",
           "path": "/financas-e-impostos/termo-de-verificacao-fiscal-tvf-ou-termo-de-apreensao-ta-baixa-ou-alteracao99",
-          "visitas": 380,
+          "visitas": 392,
           "exclusivo": false
         }
       ],
@@ -569,7 +569,7 @@
           "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
           "icone": "currency_exchange",
           "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
-          "visitas": 205,
+          "visitas": 211,
           "exclusivo": false
         },
         {
@@ -577,7 +577,7 @@
           "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
           "icone": "currency_exchange",
           "path": "/financas-e-impostos/termo-de-verificacao-fiscal-tvf-ou-termo-de-apreensao-ta-baixa-ou-alteracao99",
-          "visitas": 380,
+          "visitas": 392,
           "exclusivo": false
         }
       ]
@@ -585,25 +585,25 @@
   },
   "mes": {
     "resumo": {
-      "homeVisitors": 24053,
-      "atribuiveis": 3867,
-      "proxyRatePct": 16.077,
-      "usoRealPct": 0.2412,
-      "umACada": 415,
+      "homeVisitors": 24524,
+      "atribuiveis": 3904,
+      "proxyRatePct": 15.9191,
+      "usoRealPct": 0.2388,
+      "umACada": 419,
       "limiarPct": 2.0
     },
     "distribuicao": [
       {
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
-        "visitas": 3846,
-        "participacaoPct": 99.4569
+        "visitas": 3882,
+        "participacaoPct": 99.4365
       },
       {
         "perfil": "SERVIDOR_PUBLICO",
         "perfilLabel": "Servidor Público",
-        "visitas": 21,
-        "participacaoPct": 0.5431
+        "visitas": 22,
+        "participacaoPct": 0.5635
       }
     ],
     "topServicos": [
@@ -612,7 +612,7 @@
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
         "path": "/seguranca/delegacia-virtual-devir105",
-        "visitas": 2326,
+        "visitas": 2348,
         "exclusivo": true
       },
       {
@@ -620,7 +620,7 @@
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
         "path": "/transito-e-transportes/emissao-da-carteira-nacional-de-habilitacao174",
-        "visitas": 788,
+        "visitas": 796,
         "exclusivo": true
       },
       {
@@ -628,7 +628,7 @@
         "perfil": "EMPRESA",
         "perfilLabel": "Empresa",
         "path": "/financas-e-impostos/termo-de-verificacao-fiscal-tvf-ou-termo-de-apreensao-ta-baixa-ou-alteracao99",
-        "visitas": 651,
+        "visitas": 663,
         "exclusivo": false
       },
       {
@@ -636,7 +636,7 @@
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
         "path": "/assistencia-social/solicitacao-de-inclusao-no-programa-mais-social118",
-        "visitas": 551,
+        "visitas": 554,
         "exclusivo": true
       },
       {
@@ -644,7 +644,7 @@
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
         "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
-        "visitas": 382,
+        "visitas": 388,
         "exclusivo": false
       },
       {
@@ -652,7 +652,7 @@
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
         "path": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
-        "visitas": 342,
+        "visitas": 348,
         "exclusivo": false
       },
       {
@@ -660,7 +660,7 @@
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
         "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170",
-        "visitas": 181,
+        "visitas": 184,
         "exclusivo": true
       },
       {
@@ -684,7 +684,7 @@
         "perfil": "SERVIDOR_PUBLICO",
         "perfilLabel": "Servidor Público",
         "path": "/ciencia-e-tecnologia/solicitar-primeiro-acesso-aos-canais-institucionais-oficiais9",
-        "visitas": 10,
+        "visitas": 11,
         "exclusivo": true
       }
     ],
@@ -695,7 +695,7 @@
           "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
           "icone": "currency_exchange",
           "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
-          "visitas": 382,
+          "visitas": 388,
           "exclusivo": false
         },
         {
@@ -711,7 +711,7 @@
           "orgao": "Departamento Estadual de Trânsito de Mato Grosso do Sul",
           "icone": "directions_car",
           "path": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
-          "visitas": 342,
+          "visitas": 348,
           "exclusivo": false
         },
         {
@@ -719,7 +719,7 @@
           "orgao": "Departamento Estadual de Trânsito de Mato Grosso do Sul",
           "icone": "directions_car",
           "path": "/transito-e-transportes/emissao-da-carteira-nacional-de-habilitacao174",
-          "visitas": 788,
+          "visitas": 796,
           "exclusivo": true
         },
         {
@@ -727,7 +727,7 @@
           "orgao": "Polícia Militar de Mato Grosso do Sul",
           "icone": "security",
           "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170",
-          "visitas": 181,
+          "visitas": 184,
           "exclusivo": true
         },
         {
@@ -735,7 +735,7 @@
           "orgao": "Polícia Civil de Mato Grosso do Sul",
           "icone": "security",
           "path": "/seguranca/delegacia-virtual-devir105",
-          "visitas": 2326,
+          "visitas": 2348,
           "exclusivo": true
         },
         {
@@ -751,7 +751,7 @@
           "orgao": "Secretaria de Estado de Assistência Social e Direitos Humanos",
           "icone": "diversity_3",
           "path": "/assistencia-social/solicitacao-de-inclusao-no-programa-mais-social118",
-          "visitas": 551,
+          "visitas": 554,
           "exclusivo": true
         }
       ],
@@ -785,7 +785,7 @@
           "orgao": "Secretaria de Estado de Governo e Gestão Estratégica de Mato Grosso do Sul",
           "icone": "biotech",
           "path": "/ciencia-e-tecnologia/solicitar-primeiro-acesso-aos-canais-institucionais-oficiais9",
-          "visitas": 10,
+          "visitas": 11,
           "exclusivo": true
         },
         {
@@ -827,7 +827,7 @@
           "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
           "icone": "currency_exchange",
           "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
-          "visitas": 382,
+          "visitas": 388,
           "exclusivo": false
         },
         {
@@ -835,7 +835,7 @@
           "orgao": "Departamento Estadual de Trânsito de Mato Grosso do Sul",
           "icone": "directions_car",
           "path": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
-          "visitas": 342,
+          "visitas": 348,
           "exclusivo": false
         },
         {
@@ -851,7 +851,7 @@
           "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
           "icone": "currency_exchange",
           "path": "/financas-e-impostos/termo-de-verificacao-fiscal-tvf-ou-termo-de-apreensao-ta-baixa-ou-alteracao99",
-          "visitas": 651,
+          "visitas": 663,
           "exclusivo": false
         }
       ],
@@ -861,7 +861,7 @@
           "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
           "icone": "currency_exchange",
           "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
-          "visitas": 382,
+          "visitas": 388,
           "exclusivo": false
         },
         {
@@ -869,7 +869,7 @@
           "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
           "icone": "currency_exchange",
           "path": "/financas-e-impostos/termo-de-verificacao-fiscal-tvf-ou-termo-de-apreensao-ta-baixa-ou-alteracao99",
-          "visitas": 651,
+          "visitas": 663,
           "exclusivo": false
         }
       ]
@@ -877,9 +877,9 @@
   },
   "ano": {
     "resumo": {
-      "homeVisitors": 926994,
-      "atribuiveis": 61948,
-      "proxyRatePct": 6.6827,
+      "homeVisitors": 927465,
+      "atribuiveis": 61985,
+      "proxyRatePct": 6.6833,
       "usoRealPct": 0.1002,
       "umACada": 998,
       "limiarPct": 2.0
@@ -888,14 +888,14 @@
       {
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
-        "visitas": 61615,
-        "participacaoPct": 99.4625
+        "visitas": 61651,
+        "participacaoPct": 99.4612
       },
       {
         "perfil": "SERVIDOR_PUBLICO",
         "perfilLabel": "Servidor Público",
-        "visitas": 333,
-        "participacaoPct": 0.5375
+        "visitas": 334,
+        "participacaoPct": 0.5388
       }
     ],
     "topServicos": [
@@ -904,7 +904,7 @@
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
         "path": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
-        "visitas": 31038,
+        "visitas": 31044,
         "exclusivo": false
       },
       {
@@ -912,7 +912,7 @@
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
         "path": "/transito-e-transportes/emissao-da-carteira-nacional-de-habilitacao174",
-        "visitas": 27765,
+        "visitas": 27773,
         "exclusivo": true
       },
       {
@@ -920,7 +920,7 @@
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
         "path": "/seguranca/delegacia-virtual-devir105",
-        "visitas": 19595,
+        "visitas": 19617,
         "exclusivo": true
       },
       {
@@ -928,7 +928,7 @@
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
         "path": "/assistencia-social/solicitacao-de-inclusao-no-programa-mais-social118",
-        "visitas": 12593,
+        "visitas": 12596,
         "exclusivo": true
       },
       {
@@ -936,7 +936,7 @@
         "perfil": "EMPRESA",
         "perfilLabel": "Empresa",
         "path": "/financas-e-impostos/termo-de-verificacao-fiscal-tvf-ou-termo-de-apreensao-ta-baixa-ou-alteracao99",
-        "visitas": 12114,
+        "visitas": 12126,
         "exclusivo": false
       },
       {
@@ -944,7 +944,7 @@
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
         "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
-        "visitas": 5342,
+        "visitas": 5348,
         "exclusivo": false
       },
       {
@@ -952,7 +952,7 @@
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
         "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170",
-        "visitas": 1662,
+        "visitas": 1665,
         "exclusivo": true
       },
       {
@@ -987,7 +987,7 @@
           "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
           "icone": "currency_exchange",
           "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
-          "visitas": 5342,
+          "visitas": 5348,
           "exclusivo": false
         },
         {
@@ -1003,7 +1003,7 @@
           "orgao": "Departamento Estadual de Trânsito de Mato Grosso do Sul",
           "icone": "directions_car",
           "path": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
-          "visitas": 31038,
+          "visitas": 31044,
           "exclusivo": false
         },
         {
@@ -1011,7 +1011,7 @@
           "orgao": "Departamento Estadual de Trânsito de Mato Grosso do Sul",
           "icone": "directions_car",
           "path": "/transito-e-transportes/emissao-da-carteira-nacional-de-habilitacao174",
-          "visitas": 27765,
+          "visitas": 27773,
           "exclusivo": true
         },
         {
@@ -1019,7 +1019,7 @@
           "orgao": "Polícia Militar de Mato Grosso do Sul",
           "icone": "security",
           "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170",
-          "visitas": 1662,
+          "visitas": 1665,
           "exclusivo": true
         },
         {
@@ -1027,7 +1027,7 @@
           "orgao": "Polícia Civil de Mato Grosso do Sul",
           "icone": "security",
           "path": "/seguranca/delegacia-virtual-devir105",
-          "visitas": 19595,
+          "visitas": 19617,
           "exclusivo": true
         },
         {
@@ -1043,7 +1043,7 @@
           "orgao": "Secretaria de Estado de Assistência Social e Direitos Humanos",
           "icone": "diversity_3",
           "path": "/assistencia-social/solicitacao-de-inclusao-no-programa-mais-social118",
-          "visitas": 12593,
+          "visitas": 12596,
           "exclusivo": true
         }
       ],
@@ -1077,7 +1077,7 @@
           "orgao": "Secretaria de Estado de Governo e Gestão Estratégica de Mato Grosso do Sul",
           "icone": "biotech",
           "path": "/ciencia-e-tecnologia/solicitar-primeiro-acesso-aos-canais-institucionais-oficiais9",
-          "visitas": 69,
+          "visitas": 70,
           "exclusivo": true
         },
         {
@@ -1119,7 +1119,7 @@
           "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
           "icone": "currency_exchange",
           "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
-          "visitas": 5342,
+          "visitas": 5348,
           "exclusivo": false
         },
         {
@@ -1127,7 +1127,7 @@
           "orgao": "Departamento Estadual de Trânsito de Mato Grosso do Sul",
           "icone": "directions_car",
           "path": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
-          "visitas": 31038,
+          "visitas": 31044,
           "exclusivo": false
         },
         {
@@ -1143,7 +1143,7 @@
           "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
           "icone": "currency_exchange",
           "path": "/financas-e-impostos/termo-de-verificacao-fiscal-tvf-ou-termo-de-apreensao-ta-baixa-ou-alteracao99",
-          "visitas": 12114,
+          "visitas": 12126,
           "exclusivo": false
         }
       ],
@@ -1153,7 +1153,7 @@
           "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
           "icone": "currency_exchange",
           "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
-          "visitas": 5342,
+          "visitas": 5348,
           "exclusivo": false
         },
         {
@@ -1161,7 +1161,7 @@
           "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
           "icone": "currency_exchange",
           "path": "/financas-e-impostos/termo-de-verificacao-fiscal-tvf-ou-termo-de-apreensao-ta-baixa-ou-alteracao99",
-          "visitas": 12114,
+          "visitas": 12126,
           "exclusivo": false
         }
       ]
