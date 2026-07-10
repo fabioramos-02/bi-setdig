@@ -32,7 +32,21 @@ export function PeriodFilter({
 }) {
   return (
     <div className={vertical ? "flex flex-col gap-3" : "flex flex-wrap items-end gap-4"}>
-      <PeriodRadioGroup value={estado.tipo} onChange={(tipo) => onEstadoChange({ ...estado, tipo })} vertical={vertical} />
+      <PeriodRadioGroup
+        value={estado.tipo}
+        onChange={(tipo) =>
+          onEstadoChange({
+            ...estado,
+            tipo,
+            // Selecionar "Intervalo" já grava inicio/fim reais no estado (não só
+            // o valor visual do input) — senão o filtro parece preenchido mas
+            // `estado.inicio`/`estado.fim` ficam undefined até o usuário mexer
+            // manualmente numa data, e a busca ao vivo (ADR-010) nunca dispara.
+            ...(tipo === "intervalo" ? { inicio: estado.inicio ?? min, fim: estado.fim ?? max } : {}),
+          })
+        }
+        vertical={vertical}
+      />
 
       {estado.tipo === "intervalo" ? (
         <>
