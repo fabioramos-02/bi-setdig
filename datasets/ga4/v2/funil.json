@@ -2,7 +2,7 @@
   "dia": [
     {
       "evento": "session_start",
-      "usuarios": 10
+      "usuarios": 11
     },
     {
       "evento": "screen_view",
@@ -10,7 +10,7 @@
     },
     {
       "evento": "user_engagement",
-      "usuarios": 8
+      "usuarios": 9
     }
   ],
   "semana": [
@@ -20,15 +20,15 @@
     },
     {
       "evento": "session_start",
-      "usuarios": 17137
+      "usuarios": 17152
     },
     {
       "evento": "screen_view",
-      "usuarios": 10556
+      "usuarios": 10574
     },
     {
       "evento": "user_engagement",
-      "usuarios": 14142
+      "usuarios": 14168
     }
   ],
   "mes": [
@@ -46,7 +46,7 @@
     },
     {
       "evento": "user_engagement",
-      "usuarios": 37729
+      "usuarios": 37736
     }
   ],
   "ano": [

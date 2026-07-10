@@ -2,8 +2,8 @@
   "dia": [
     {
       "newVsReturning": "returning",
-      "activeUsers": 9,
-      "sessions": 9,
+      "activeUsers": 10,
+      "sessions": 10,
       "screenPageViews": 11
     },
     {
@@ -16,20 +16,20 @@
   "semana": [
     {
       "newVsReturning": "returning",
-      "activeUsers": 13415,
-      "sessions": 22677,
-      "screenPageViews": 49215
+      "activeUsers": 13429,
+      "sessions": 22715,
+      "screenPageViews": 49267
     },
     {
       "newVsReturning": "new",
-      "activeUsers": 1657,
-      "sessions": 1605,
-      "screenPageViews": 3524
+      "activeUsers": 1660,
+      "sessions": 1608,
+      "screenPageViews": 3537
     },
     {
       "newVsReturning": "",
       "activeUsers": 0,
-      "sessions": 500,
+      "sessions": 509,
       "screenPageViews": 22
     },
     {
@@ -42,20 +42,20 @@
   "mes": [
     {
       "newVsReturning": "returning",
-      "activeUsers": 34096,
-      "sessions": 99647,
-      "screenPageViews": 221480
+      "activeUsers": 34099,
+      "sessions": 99775,
+      "screenPageViews": 221532
     },
     {
       "newVsReturning": "new",
-      "activeUsers": 7280,
-      "sessions": 7161,
-      "screenPageViews": 17136
+      "activeUsers": 7282,
+      "sessions": 7165,
+      "screenPageViews": 17149
     },
     {
       "newVsReturning": "",
       "activeUsers": 0,
-      "sessions": 500,
+      "sessions": 509,
       "screenPageViews": 22
     },
     {
@@ -70,18 +70,18 @@
       "newVsReturning": "returning",
       "activeUsers": 132688,
       "sessions": 1185318,
-      "screenPageViews": 2589492
+      "screenPageViews": 2589544
     },
     {
       "newVsReturning": "new",
       "activeUsers": 106620,
       "sessions": 106028,
-      "screenPageViews": 274921
+      "screenPageViews": 274934
     },
     {
       "newVsReturning": "",
       "activeUsers": 0,
-      "sessions": 500,
+      "sessions": 509,
       "screenPageViews": 22
     },
     {

@@ -2,7 +2,7 @@
   "dia": [
     {
       "hora": "0",
-      "sessoes": 10
+      "sessoes": 11
     },
     {
       "hora": "1",
@@ -12,7 +12,7 @@
   "semana": [
     {
       "hora": "0",
-      "sessoes": 349
+      "sessoes": 350
     },
     {
       "hora": "1",
@@ -72,39 +72,39 @@
     },
     {
       "hora": "15",
-      "sessoes": 2030
+      "sessoes": 2034
     },
     {
       "hora": "16",
-      "sessoes": 1734
+      "sessoes": 1735
     },
     {
       "hora": "17",
-      "sessoes": 1489
+      "sessoes": 1494
     },
     {
       "hora": "18",
-      "sessoes": 1466
+      "sessoes": 1470
     },
     {
       "hora": "19",
-      "sessoes": 1369
+      "sessoes": 1378
     },
     {
       "hora": "20",
-      "sessoes": 1183
+      "sessoes": 1190
     },
     {
       "hora": "21",
-      "sessoes": 1109
+      "sessoes": 1115
     },
     {
       "hora": "22",
-      "sessoes": 748
+      "sessoes": 751
     },
     {
       "hora": "23",
-      "sessoes": 437
+      "sessoes": 439
     }
   ],
   "mes": [
@@ -186,7 +186,7 @@
     },
     {
       "hora": "19",
-      "sessoes": 6752
+      "sessoes": 6753
     },
     {
       "hora": "20",
@@ -202,7 +202,7 @@
     },
     {
       "hora": "23",
-      "sessoes": 2239
+      "sessoes": 2240
     }
   ],
   "ano": [
