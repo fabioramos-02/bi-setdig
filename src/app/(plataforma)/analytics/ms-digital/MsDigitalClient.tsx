@@ -35,6 +35,8 @@ import type {
 } from "@/lib/data";
 import type { ResumoCatalogo, CategoriaResumo } from "@/lib/catalogo-app";
 
+const ROTULO_PERIODO = { dia: "no dia", semana: "na semana", mes: "no mês", ano: "no ano", intervalo: "no intervalo" };
+
 // Shape devolvido por /api/analytics/ms-digital (ADR-010).
 type LiveIntervalo = {
   visaoGeral: GA4Overview[];
@@ -112,6 +114,11 @@ export function MsDigitalClient({
 
   const statusGa4: StatusIntervalo = !tipoIntervalo ? "ok" : liveData ? "ok" : liveStatus === "carregando" ? "carregando" : "fallback";
 
+  // KPIs da VG são snapshot por granularidade (ou live no intervalo) — o rótulo
+  // tem que dizer o período REAL do dado: "no intervalo" só quando o live chegou,
+  // senão o período fixo corrente (mesma regra do rotuloSnapshot do portal-ms).
+  const rotuloPeriodo = tipoIntervalo && liveData ? ROTULO_PERIODO.intervalo : ROTULO_PERIODO[periodo];
+
   // Fatia de cada breakdown no período selecionado (ou dado ao vivo, se disponível).
   const vg = tipoIntervalo && liveData ? liveData.visaoGeral : visaoGeral[periodo];
   const plat = tipoIntervalo && liveData ? liveData.plataforma : plataforma[periodo];
@@ -152,6 +159,7 @@ export function MsDigitalClient({
           totalViews={totalViews}
           novos={novos}
           recorrentes={recorrentes}
+          rotuloPeriodo={rotuloPeriodo}
           insightPlataforma={insightPlataforma}
           insightServico={insightServico}
           onIrPara={setAbaAtiva}

@@ -13,6 +13,7 @@ import type { Pagina } from "@/lib/data";
 export function VisaoGeralTab({
   kpis,
   rotuloPeriodo,
+  rotuloSnapshot,
   cidadesCount,
   tendencia,
   insightVisitas,
@@ -24,6 +25,7 @@ export function VisaoGeralTab({
 }: {
   kpis: ResumoPeriodo;
   rotuloPeriodo: string;
+  rotuloSnapshot: string;
   cidadesCount: number;
   tendencia: PontoAgregado[];
   insightVisitas: InsightVisitas | null;
@@ -83,14 +85,14 @@ export function VisaoGeralTab({
           </button>
           <button type="button" onClick={() => onIrPara("paginas")} className="text-left">
             <MetricCard
-              label="Página mais acessada (mês)"
+              label={`Página mais acessada ${rotuloSnapshot}`}
               value={paginaTop ? paginaTop.visitas : "—"}
               sub={paginaTop?.url}
             />
           </button>
           <button type="button" onClick={() => onIrPara("busca")} className="text-left">
             <MetricCard
-              label="Termo mais buscado (mês)"
+              label={`Termo mais buscado ${rotuloSnapshot}`}
               value={insightBusca?.termo ?? "—"}
               sub={insightBusca ? `${insightBusca.buscas.toLocaleString("pt-BR")} buscas` : undefined}
             />

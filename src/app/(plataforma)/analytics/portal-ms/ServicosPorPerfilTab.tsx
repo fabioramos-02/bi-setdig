@@ -2,7 +2,7 @@ import { EmptyCard } from "@/components/ds/EmptyCard";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { MetricCard } from "@/components/dashboard/MetricCard";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
-import { AvisoSnapshotAproximado } from "@/components/dashboard/AvisoSnapshotAproximado";
+import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
 import { ServiceCardGrid } from "@/components/dashboard/ServiceCardGrid";
 import { BarChart } from "@/components/charts/BarChart";
 import { FunnelChart } from "@/components/charts/FunnelChart";
@@ -18,11 +18,11 @@ import type { PerfilFiltroPeriodo, ServicoAcessado } from "@/lib/data";
 export function ServicosPorPerfilTab({
   dados,
   servicosMaisAcessados,
-  tipoIntervalo,
+  status,
 }: {
   dados: PerfilFiltroPeriodo;
   servicosMaisAcessados: ServicoAcessado[];
-  tipoIntervalo: boolean;
+  status: StatusIntervalo;
 }) {
   const { resumo, distribuicao, servicosPorPerfil } = dados;
 
@@ -39,7 +39,7 @@ export function ServicosPorPerfilTab({
 
   return (
     <div>
-      <AvisoSnapshotAproximado tipoIntervalo={tipoIntervalo} />
+      <AvisoSnapshotAproximado status={status} />
 
       {/* 1. Narrativa + KPIs */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-8">

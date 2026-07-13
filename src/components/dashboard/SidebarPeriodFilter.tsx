@@ -40,7 +40,9 @@ export function SidebarPeriodFilter() {
         vertical
       />
       <p style={{ color: "var(--ds-color-text-muted)" }} className="text-xs mt-2">
-        A data de referência ajusta a tendência e os KPIs. Os demais gráficos mostram sempre o período mais recente.
+        A granularidade (Dia/Semana/Mês/Ano) troca o recorte de todos os gráficos.
+        A data de referência move só a tendência e os KPIs do topo — os gráficos de
+        categoria mostram sempre o dia/semana/mês/ano mais recente.
       </p>
       {estado.tipo === "intervalo" && (
         <p style={{ color: "var(--ds-color-text-muted)" }} className="text-xs mt-2">

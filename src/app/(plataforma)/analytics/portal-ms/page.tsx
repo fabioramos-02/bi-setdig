@@ -58,10 +58,13 @@ export default function AnalyticsPortalMsPage() {
     );
   }
 
-  // Taxa de match cidade x geojson calculada sobre o snapshot "mês" (o mesmo
-  // usado como fallback pro "Intervalo de datas") — se ficar baixa, o
-  // ChoroplethMap cai pra BarChart independente de qual período o usuário
-  // escolher (ver PortalMsClient).
+  // Taxa de match cidade x geojson — decide se o mapa vira ChoroplethMap ou cai
+  // pra BarChart. Calculada uma vez sobre o snapshot "mês" e NÃO reindexada por
+  // período: os rótulos de cidade do Matomo têm formato estável (o conjunto de
+  // municípios que casa com o geojson não muda entre dia/semana/mês/ano), então
+  // o matchRate é praticamente constante — não vale plumbar o geojson pro client
+  // só pra recalcular o mesmo ~valor. ponytail: se algum dia um período trouxer
+  // rótulos de cidade em formato diferente, passar o set do geojson ao client.
   const matchRate = calcularMatchRateMapa(cidades.mes);
 
   return (

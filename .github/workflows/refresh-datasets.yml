@@ -1,0 +1,58 @@
+name: Refresh datasets
+
+# Roda o pipeline Python (data-platform/) e commita os datasets atualizados,
+# resolvendo o dado stale em produção (A3 da investigação): sem isso, os
+# snapshots dia/semana/mês/ano ficam congelados na última execução manual.
+# O deploy da Vercel dispara sozinho no push do commit.
+#
+# PRÉ-REQUISITO (fazer uma vez, no GitHub → Settings → Secrets and variables →
+# Actions): cadastrar MATOMO_TOKEN, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET,
+# GOOGLE_REFRESH_TOKEN, GOOGLE_PROPERTY_ID. Sem eles o job roda mas as fontes
+# ficam indisponíveis e nada é publicado. Postgres/Cartas NÃO entra aqui
+# (exige VPN da SETDIG) — run.py isola a falha por fonte, então cartas só
+# imprime FALHOU e as demais publicam normalmente.
+
+on:
+  schedule:
+    - cron: "0 6 * * *" # 06:00 UTC = 03:00 em MS (UTC-4), fora de pico
+  workflow_dispatch: {} # permite rodar sob demanda pela aba Actions
+
+concurrency:
+  group: refresh-datasets
+  cancel-in-progress: false
+
+permissions:
+  contents: write # precisa pushar o commit dos datasets de volta
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r data-platform/requirements.txt
+      - name: Run pipeline
+        working-directory: data-platform
+        env:
+          MATOMO_URL: ${{ secrets.MATOMO_URL || 'https://webanalytics.ms.gov.br/' }}
+          MATOMO_SITE_ID: ${{ secrets.MATOMO_SITE_ID || '298' }}
+          MATOMO_TOKEN: ${{ secrets.MATOMO_TOKEN }}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+          GOOGLE_PROPERTY_ID: ${{ secrets.GOOGLE_PROPERTY_ID }}
+        run: python run.py
+      - name: Commit datasets se mudaram
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Commita dados + catálogo, mas não os logs (1 arquivo por run = ruído).
+          git add datasets ':!datasets/logs'
+          if git diff --cached --quiet; then
+            echo "Nenhuma mudança nos datasets — nada a commitar."
+          else
+            git commit -m "chore(data): refresh automático dos datasets"
+            git push
+          fi

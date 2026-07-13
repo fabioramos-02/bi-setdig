@@ -49,6 +49,8 @@ type LiveIntervalo = {
   busca: TermoBusca[];
   portasEntrada: PaginaEntrada[];
   fugaHub: DominioSaida[];
+  perfil: PerfilFiltroPeriodo;
+  servicosMaisAcessados: ServicoAcessado[];
 };
 
 export function PortalMsClient({
@@ -130,10 +132,10 @@ export function PortalMsClient({
   const buscaAtual = tipoIntervalo && liveData ? liveData.busca : busca[periodoAtual];
   const portasEntradaAtual = tipoIntervalo && liveData ? liveData.portasEntrada : portasEntrada[periodoAtual];
   const fugaHubAtual = tipoIntervalo && liveData ? liveData.fugaHub : fugaHub[periodoAtual];
-  // Sem busca ao vivo ainda pra este estudo (transform/perfil.py é mais
-  // complexo) — continua no snapshot + aviso legado (tipoIntervalo boolean).
-  const perfilAtual = perfil[periodoAtual];
-  const servicosAcessadosAtual = servicosMaisAcessados[periodoAtual];
+  // Perfil/serviços agora também buscam ao vivo no intervalo (ADR-010): o
+  // catálogo estável vem do snapshot mês, só as visitas são recalculadas na rota.
+  const perfilAtual = tipoIntervalo && liveData ? liveData.perfil : perfil[periodoAtual];
+  const servicosAcessadosAtual = tipoIntervalo && liveData ? liveData.servicosMaisAcessados : servicosMaisAcessados[periodoAtual];
 
   const tendencia = useMemo(() => aplicarFiltroPeriodo(diarias, estado), [diarias, estado]);
   const kpis = useMemo(() => resumoDoPeriodo(diarias, estado), [diarias, estado]);
@@ -158,6 +160,7 @@ export function PortalMsClient({
         <VisaoGeralTab
           kpis={kpis}
           rotuloPeriodo={rotuloPeriodo}
+          rotuloSnapshot={rotuloSnapshot}
           cidadesCount={cidadesAtual.length}
           tendencia={tendencia}
           insightVisitas={insightVisitas}
@@ -210,7 +213,7 @@ export function PortalMsClient({
         <ServicosPorPerfilTab
           dados={perfilAtual}
           servicosMaisAcessados={servicosAcessadosAtual}
-          tipoIntervalo={tipoIntervalo}
+          status={statusBreakdown}
         />
       ),
     },
