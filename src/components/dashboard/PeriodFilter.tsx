@@ -1,14 +1,23 @@
 "use client";
 
 import { PeriodRadioGroup } from "@/components/dashboard/PeriodRadioGroup";
-import type { PeriodoState } from "@/lib/period-filter";
+import { clampData, rotuloPeriodoResolvido, type PeriodoState } from "@/lib/period-filter";
+
+const LABEL_REF: Record<Exclude<PeriodoState["tipo"], "intervalo">, string> = {
+  dia: "Dia de referência",
+  semana: "Semana (data de referência)",
+  mes: "Mês de referência",
+  ano: "Ano de referência",
+};
 
 /**
  * Réplica da UX do app.py antigo: radio de período (Dia/Semana/Mês/Ano/
- * Intervalo) + campo(s) de data condicional — 1 campo se período fixo, 2
- * ("Data Início"/"Data Fim") se "Intervalo de datas". Controlado — estado
- * vive no PeriodoProvider (context), consumido por SidebarPeriodFilter e
- * pelos gráficos do conteúdo.
+ * Intervalo) + campo(s) de data condicional. O controle de data se ADAPTA à
+ * granularidade (mês → seletor de mês, ano → seletor de ano, dia/semana →
+ * data) e sempre valida/clampa no intervalo de dado disponível [min,max]. Um
+ * texto de feedback mostra o período resolvido ("Mostrando: maio de 2026").
+ * Controlado — estado vive no PeriodoProvider, consumido por
+ * SidebarPeriodFilter e pelos gráficos do conteúdo.
  */
 export function PeriodFilter({
   estado,
@@ -30,6 +39,13 @@ export function PeriodFilter({
   /** Empilhado (sidebar) em vez de em linha (barra horizontal). */
   vertical?: boolean;
 }) {
+  // Toda mudança de data passa por clampData — rejeita fora de [min,max],
+  // vazio e datas impossíveis (cai no período corrente).
+  const setDataRef = (v: string) => onEstadoChange({ ...estado, dataRef: clampData(v, min, max) });
+  const resolvido = rotuloPeriodoResolvido(estado);
+  const anos: number[] = [];
+  for (let a = +min.slice(0, 4); a <= +max.slice(0, 4); a++) anos.push(a);
+
   return (
     <div className={vertical ? "flex flex-col gap-3" : "flex flex-wrap items-end gap-4"}>
       <PeriodRadioGroup
@@ -58,7 +74,7 @@ export function PeriodFilter({
               value={inicio}
               min={min}
               max={fim}
-              onChange={(e) => onIntervaloChange(e.target.value, fim)}
+              onChange={(e) => onIntervaloChange(clampData(e.target.value, min, fim), fim)}
             />
           </label>
           <label className="ds-field" style={{ maxWidth: vertical ? undefined : 180 }}>
@@ -69,22 +85,54 @@ export function PeriodFilter({
               value={fim}
               min={inicio}
               max={max}
-              onChange={(e) => onIntervaloChange(inicio, e.target.value)}
+              onChange={(e) => onIntervaloChange(inicio, clampData(e.target.value, inicio, max))}
             />
           </label>
         </>
       ) : (
-        <label className="ds-field" style={{ maxWidth: 180 }}>
-          <span className="ds-field__label">Data de referência</span>
-          <input
-            className="ds-input"
-            type="date"
-            value={estado.dataRef}
-            min={min}
-            max={max}
-            onChange={(e) => onEstadoChange({ ...estado, dataRef: e.target.value })}
-          />
+        <label className="ds-field" style={{ maxWidth: vertical ? undefined : 180 }}>
+          <span className="ds-field__label">{LABEL_REF[estado.tipo]}</span>
+          {estado.tipo === "mes" ? (
+            <input
+              className="ds-input"
+              type="month"
+              value={estado.dataRef.slice(0, 7)}
+              min={min.slice(0, 7)}
+              max={max.slice(0, 7)}
+              aria-describedby="periodo-resolvido"
+              onChange={(e) => e.target.value && setDataRef(`${e.target.value}-01`)}
+            />
+          ) : estado.tipo === "ano" ? (
+            <select
+              className="ds-select"
+              value={estado.dataRef.slice(0, 4)}
+              aria-describedby="periodo-resolvido"
+              onChange={(e) => setDataRef(`${e.target.value}-01-01`)}
+            >
+              {anos.map((a) => (
+                <option key={a} value={a}>
+                  {a}
+                </option>
+              ))}
+            </select>
+          ) : (
+            <input
+              className="ds-input"
+              type="date"
+              value={estado.dataRef}
+              min={min}
+              max={max}
+              aria-describedby="periodo-resolvido"
+              onChange={(e) => e.target.value && setDataRef(e.target.value)}
+            />
+          )}
         </label>
+      )}
+
+      {resolvido && (
+        <p id="periodo-resolvido" className="text-xs" style={{ color: "var(--ds-color-text-muted)" }}>
+          Mostrando: <strong style={{ color: "var(--ds-color-text-secondary)" }}>{resolvido}</strong>
+        </p>
       )}
     </div>
   );

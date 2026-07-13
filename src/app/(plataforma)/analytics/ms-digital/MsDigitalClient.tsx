@@ -19,7 +19,7 @@ import {
 } from "@/lib/insights";
 import { compararCanais } from "@/lib/cross-canal";
 import { usePeriodo } from "@/lib/periodo-context";
-import { chavePeriodoFixo, resumoDoPeriodo } from "@/lib/period-filter";
+import { chavePeriodoFixo, resumoDoPeriodo, intervaloDoBucket, ehPeriodoCorrente } from "@/lib/period-filter";
 import type {
   BreakdownPorPeriodo,
   GA4Overview,
@@ -77,20 +77,26 @@ export function MsDigitalClient({
   catalogoCategorias: CategoriaResumo[];
 }) {
   const [abaAtiva, setAbaAtiva] = useState("visao-geral");
-  const { estado } = usePeriodo();
+  const { estado, min, max } = usePeriodo();
   const periodo = chavePeriodoFixo(estado);
   const tipoIntervalo = estado.tipo === "intervalo";
+
+  // Busca ao vivo sempre que o período escolhido não é o corrente (intervalo ou
+  // dia/semana/mês/ano passado apontado pela data de referência). Assim a data
+  // de referência move os gráficos GA4, não só os KPIs. (ver PortalMsClient.)
+  const precisaLive = tipoIntervalo ? Boolean(estado.inicio && estado.fim) : !ehPeriodoCorrente(estado, min, max);
+  const range = intervaloDoBucket(estado, min, max);
 
   const [liveData, setLiveData] = useState<LiveIntervalo | null>(null);
   const [liveStatus, setLiveStatus] = useState<"idle" | "carregando" | "erro">("idle");
 
   useEffect(() => {
-    // Fora do modo intervalo, liveData/liveStatus não são lidos (statusGa4 cai
-    // em "ok" e todo vg/plat/serv/... é guardado por tipoIntervalo) — não precisa
+    // No período corrente liveData/liveStatus não são lidos (statusGa4 cai em
+    // "ok" e todo vg/plat/serv/... é guardado por precisaLive) — não precisa
     // resetar estado aqui (evita setState síncrono no corpo do efeito).
-    if (!tipoIntervalo || !estado.inicio || !estado.fim) return;
+    if (!precisaLive) return;
     let cancelado = false;
-    fetch(`/api/analytics/ms-digital?inicio=${estado.inicio}&fim=${estado.fim}`)
+    fetch(`/api/analytics/ms-digital?inicio=${range.inicio}&fim=${range.fim}`)
       .then((r) => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         return r.json() as Promise<LiveIntervalo>;
@@ -108,22 +114,21 @@ export function MsDigitalClient({
     return () => {
       cancelado = true;
     };
-  }, [tipoIntervalo, estado.inicio, estado.fim]);
+  }, [precisaLive, range.inicio, range.fim]);
 
   // "carregando" é derivado (default enquanto o dado ao vivo não chegou nem falhou).
-  const statusGa4: StatusIntervalo = !tipoIntervalo ? "ok" : liveData ? "ok" : liveStatus === "erro" ? "fallback" : "carregando";
+  const statusGa4: StatusIntervalo = !precisaLive ? "ok" : liveData ? "ok" : liveStatus === "erro" ? "fallback" : "carregando";
 
-  // KPIs da VG são snapshot por granularidade (ou live no intervalo) — o rótulo
-  // tem que dizer o período REAL do dado: "no intervalo" só quando o live chegou,
-  // senão o período fixo corrente (mesma regra do rotuloSnapshot do portal-ms).
+  // Rótulo do período REAL do dado: "no intervalo" só quando é intervalo com live;
+  // senão o período fixo selecionado (mês/dia/… — inclusive passado, via live).
   const rotuloPeriodo = tipoIntervalo && liveData ? ROTULO_PERIODO.intervalo : ROTULO_PERIODO[periodo];
 
   // Fatia de cada breakdown no período selecionado (ou dado ao vivo, se disponível).
-  const vg = tipoIntervalo && liveData ? liveData.visaoGeral : visaoGeral[periodo];
-  const plat = tipoIntervalo && liveData ? liveData.plataforma : plataforma[periodo];
-  const serv = tipoIntervalo && liveData ? liveData.servicos : servicos[periodo];
-  const fun = tipoIntervalo && liveData ? liveData.funil : funil[periodo];
-  const hor = tipoIntervalo && liveData ? liveData.horarios : horarios[periodo];
+  const vg = precisaLive && liveData ? liveData.visaoGeral : visaoGeral[periodo];
+  const plat = precisaLive && liveData ? liveData.plataforma : plataforma[periodo];
+  const serv = precisaLive && liveData ? liveData.servicos : servicos[periodo];
+  const fun = precisaLive && liveData ? liveData.funil : funil[periodo];
+  const hor = precisaLive && liveData ? liveData.horarios : horarios[periodo];
 
   const totalUsers = vg.reduce((acc, r) => acc + r.activeUsers, 0);
   const totalSessions = vg.reduce((acc, r) => acc + r.sessions, 0);
@@ -192,7 +197,7 @@ export function MsDigitalClient({
     {
       id: "app-portal",
       label: "5. App × Portal",
-      content: <CrossCanalTab comparacao={comparacao} tipoIntervalo={tipoIntervalo} />,
+      content: <CrossCanalTab comparacao={comparacao} tipoIntervalo={precisaLive} />,
     },
     {
       id: "categorias",
