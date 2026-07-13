@@ -11,7 +11,7 @@ import { FluxoNavegacaoTab } from "./FluxoNavegacaoTab";
 import { VisaoGeralTab } from "./VisaoGeralTab";
 import { BuscaTab } from "./BuscaTab";
 import { PaginasTab } from "./PaginasTab";
-import { aplicarFiltroPeriodo, chavePeriodoFixo, resumoDoPeriodo } from "@/lib/period-filter";
+import { aplicarFiltroPeriodo, chavePeriodoFixo, resumoDoPeriodo, intervaloDoBucket, ehPeriodoCorrente } from "@/lib/period-filter";
 import { usePeriodo } from "@/lib/periodo-context";
 import {
   calcularInsightBusca,
@@ -82,24 +82,29 @@ export function PortalMsClient({
 }) {
   // Estado do filtro vem da sidebar (PeriodoProvider) — mesmo estado, gráficos
   // reagem sem barra de filtro dentro do conteúdo.
-  const { estado } = usePeriodo();
+  const { estado, min, max } = usePeriodo();
   const [abaAtiva, setAbaAtiva] = useState("visao-geral");
 
-  // "Intervalo": tenta buscar ao vivo (ADR-010, Matomo period=range); enquanto
-  // carrega ou se falhar, cai no snapshot "mês" (ADR-007) — chavePeriodoFixo.
   const periodoAtual: PeriodoFixo = chavePeriodoFixo(estado);
   const tipoIntervalo = estado.tipo === "intervalo";
+
+  // Busca ao vivo (ADR-010, Matomo period=range) sempre que o período escolhido
+  // NÃO é o corrente: intervalo, ou um dia/semana/mês/ano passado apontado pela
+  // data de referência. O período corrente já tem snapshot publicado (grátis).
+  // Assim a "Data de referência" move TODOS os gráficos, não só os KPIs.
+  const precisaLive = tipoIntervalo ? Boolean(estado.inicio && estado.fim) : !ehPeriodoCorrente(estado, min, max);
+  const range = intervaloDoBucket(estado, min, max);
 
   const [liveData, setLiveData] = useState<LiveIntervalo | null>(null);
   const [liveStatus, setLiveStatus] = useState<"idle" | "carregando" | "erro">("idle");
 
   useEffect(() => {
-    // Fora do modo intervalo, liveData/liveStatus não são lidos (statusBreakdown
-    // cai em "ok" e todo *Atual é guardado por tipoIntervalo) — não precisa
-    // resetar estado aqui (evita setState síncrono no corpo do efeito).
-    if (!tipoIntervalo || !estado.inicio || !estado.fim) return;
+    // No período corrente liveData/liveStatus não são lidos (statusBreakdown cai
+    // em "ok" e todo *Atual é guardado por precisaLive) — não precisa resetar
+    // estado aqui (evita setState síncrono no corpo do efeito).
+    if (!precisaLive) return;
     let cancelado = false;
-    fetch(`/api/analytics/portal-ms?inicio=${estado.inicio}&fim=${estado.fim}`)
+    fetch(`/api/analytics/portal-ms?inicio=${range.inicio}&fim=${range.fim}`)
       .then((r) => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         return r.json() as Promise<LiveIntervalo>;
@@ -117,24 +122,24 @@ export function PortalMsClient({
     return () => {
       cancelado = true;
     };
-  }, [tipoIntervalo, estado.inicio, estado.fim]);
+  }, [precisaLive, range.inicio, range.fim]);
 
-  // status pros painéis com busca ao vivo — "ok" quando o dado real chegou;
-  // "carregando" é derivado (default enquanto não chegou nem falhou).
-  const statusBreakdown: StatusIntervalo = !tipoIntervalo ? "ok" : liveData ? "ok" : liveStatus === "erro" ? "fallback" : "carregando";
+  // status pros painéis ao vivo — "ok" quando o dado real chegou (ou período
+  // corrente); "carregando" é derivado (default enquanto não chegou nem falhou).
+  const statusBreakdown: StatusIntervalo = !precisaLive ? "ok" : liveData ? "ok" : liveStatus === "erro" ? "fallback" : "carregando";
 
-  const navegadoresAtual = tipoIntervalo && liveData ? liveData.navegadores : navegadores[periodoAtual];
-  const dispositivosAtual = tipoIntervalo && liveData ? liveData.dispositivos : dispositivos[periodoAtual];
-  const horariosAtual = tipoIntervalo && liveData ? liveData.horarios : horarios[periodoAtual];
-  const cidadesAtual = tipoIntervalo && liveData ? liveData.geografia : cidades[periodoAtual];
-  const paginasAtual = tipoIntervalo && liveData ? liveData.paginas : paginas[periodoAtual];
-  const buscaAtual = tipoIntervalo && liveData ? liveData.busca : busca[periodoAtual];
-  const portasEntradaAtual = tipoIntervalo && liveData ? liveData.portasEntrada : portasEntrada[periodoAtual];
-  const fugaHubAtual = tipoIntervalo && liveData ? liveData.fugaHub : fugaHub[periodoAtual];
-  // Perfil/serviços agora também buscam ao vivo no intervalo (ADR-010): o
-  // catálogo estável vem do snapshot mês, só as visitas são recalculadas na rota.
-  const perfilAtual = tipoIntervalo && liveData ? liveData.perfil : perfil[periodoAtual];
-  const servicosAcessadosAtual = tipoIntervalo && liveData ? liveData.servicosMaisAcessados : servicosMaisAcessados[periodoAtual];
+  const navegadoresAtual = precisaLive && liveData ? liveData.navegadores : navegadores[periodoAtual];
+  const dispositivosAtual = precisaLive && liveData ? liveData.dispositivos : dispositivos[periodoAtual];
+  const horariosAtual = precisaLive && liveData ? liveData.horarios : horarios[periodoAtual];
+  const cidadesAtual = precisaLive && liveData ? liveData.geografia : cidades[periodoAtual];
+  const paginasAtual = precisaLive && liveData ? liveData.paginas : paginas[periodoAtual];
+  const buscaAtual = precisaLive && liveData ? liveData.busca : busca[periodoAtual];
+  const portasEntradaAtual = precisaLive && liveData ? liveData.portasEntrada : portasEntrada[periodoAtual];
+  const fugaHubAtual = precisaLive && liveData ? liveData.fugaHub : fugaHub[periodoAtual];
+  // Perfil/serviços também ao vivo: catálogo estável vem do snapshot mês, só as
+  // visitas são recalculadas na rota (ver lib/server/perfil-live.ts).
+  const perfilAtual = precisaLive && liveData ? liveData.perfil : perfil[periodoAtual];
+  const servicosAcessadosAtual = precisaLive && liveData ? liveData.servicosMaisAcessados : servicosMaisAcessados[periodoAtual];
 
   const tendencia = useMemo(() => aplicarFiltroPeriodo(diarias, estado), [diarias, estado]);
   const kpis = useMemo(() => resumoDoPeriodo(diarias, estado), [diarias, estado]);
