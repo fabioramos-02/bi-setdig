@@ -94,13 +94,11 @@ export function PortalMsClient({
   const [liveStatus, setLiveStatus] = useState<"idle" | "carregando" | "erro">("idle");
 
   useEffect(() => {
-    if (!tipoIntervalo || !estado.inicio || !estado.fim) {
-      setLiveData(null);
-      setLiveStatus("idle");
-      return;
-    }
+    // Fora do modo intervalo, liveData/liveStatus não são lidos (statusBreakdown
+    // cai em "ok" e todo *Atual é guardado por tipoIntervalo) — não precisa
+    // resetar estado aqui (evita setState síncrono no corpo do efeito).
+    if (!tipoIntervalo || !estado.inicio || !estado.fim) return;
     let cancelado = false;
-    setLiveStatus("carregando");
     fetch(`/api/analytics/portal-ms?inicio=${estado.inicio}&fim=${estado.fim}`)
       .then((r) => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
@@ -121,8 +119,9 @@ export function PortalMsClient({
     };
   }, [tipoIntervalo, estado.inicio, estado.fim]);
 
-  // status pros painéis com busca ao vivo — "ok" quando o dado real chegou.
-  const statusBreakdown: StatusIntervalo = !tipoIntervalo ? "ok" : liveData ? "ok" : liveStatus === "carregando" ? "carregando" : "fallback";
+  // status pros painéis com busca ao vivo — "ok" quando o dado real chegou;
+  // "carregando" é derivado (default enquanto não chegou nem falhou).
+  const statusBreakdown: StatusIntervalo = !tipoIntervalo ? "ok" : liveData ? "ok" : liveStatus === "erro" ? "fallback" : "carregando";
 
   const navegadoresAtual = tipoIntervalo && liveData ? liveData.navegadores : navegadores[periodoAtual];
   const dispositivosAtual = tipoIntervalo && liveData ? liveData.dispositivos : dispositivos[periodoAtual];

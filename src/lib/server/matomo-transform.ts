@@ -5,7 +5,7 @@
  * (Navegador, Dispositivo, Horario, Cidade, Pagina, TermoBusca, ...) — as
  * Tabs que já existem não precisam saber se o dado veio do JSON ou daqui.
  */
-import type { Cidade, Navegador, Dispositivo, Horario, Pagina, TermoBusca, PaginaEntrada, DominioSaida } from "@/lib/data";
+import type { Cidade, Horario, Pagina, TermoBusca, PaginaEntrada, DominioSaida } from "@/lib/data";
 
 type MatomoRow = { label?: string; nb_visits?: number; url?: string };
 

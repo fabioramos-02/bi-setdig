@@ -85,13 +85,11 @@ export function MsDigitalClient({
   const [liveStatus, setLiveStatus] = useState<"idle" | "carregando" | "erro">("idle");
 
   useEffect(() => {
-    if (!tipoIntervalo || !estado.inicio || !estado.fim) {
-      setLiveData(null);
-      setLiveStatus("idle");
-      return;
-    }
+    // Fora do modo intervalo, liveData/liveStatus não são lidos (statusGa4 cai
+    // em "ok" e todo vg/plat/serv/... é guardado por tipoIntervalo) — não precisa
+    // resetar estado aqui (evita setState síncrono no corpo do efeito).
+    if (!tipoIntervalo || !estado.inicio || !estado.fim) return;
     let cancelado = false;
-    setLiveStatus("carregando");
     fetch(`/api/analytics/ms-digital?inicio=${estado.inicio}&fim=${estado.fim}`)
       .then((r) => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
@@ -112,7 +110,8 @@ export function MsDigitalClient({
     };
   }, [tipoIntervalo, estado.inicio, estado.fim]);
 
-  const statusGa4: StatusIntervalo = !tipoIntervalo ? "ok" : liveData ? "ok" : liveStatus === "carregando" ? "carregando" : "fallback";
+  // "carregando" é derivado (default enquanto o dado ao vivo não chegou nem falhou).
+  const statusGa4: StatusIntervalo = !tipoIntervalo ? "ok" : liveData ? "ok" : liveStatus === "erro" ? "fallback" : "carregando";
 
   // KPIs da VG são snapshot por granularidade (ou live no intervalo) — o rótulo
   // tem que dizer o período REAL do dado: "no intervalo" só quando o live chegou,
