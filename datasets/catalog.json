@@ -256,7 +256,7 @@
     "dataset": "catalogo-servicos",
     "source": "app",
     "owner": "SETDIG",
-    "updatedAt": "2026-07-14T13:12:24.263092+00:00",
+    "updatedAt": "2026-07-14T13:22:53.176873+00:00",
     "frequency": "daily",
     "version": "v1",
     "schema": "data-platform/schemas/app-catalogo-servicos.schema.json",
