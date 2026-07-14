@@ -95,3 +95,11 @@ Todo componente novo de gráfico/métrica/insight segue isso — não é só pol
   em `servico-app-classifier.ts`, "link não cadastrado" em `CategoriasTab`),
   mostrar isso explicitamente e em linguagem simples — nunca esconder a
   lacuna nem fingir precisão que o dado não tem.
+
+## Testes
+
+Unitário: `node --test` nativo (zero dependência), arquivo `Componente.test.ts`
+colocado ao lado do arquivo testado (não usar `__tests__/`) — ver
+`lib/period-filter.test.ts`/`lib/servico-app-classifier.test.ts`. Rodar com
+`npm test`. Estratégia completa (teste de componente, E2E, meta de cobertura,
+pipeline CI) em `docs/architecture/ADR-011-estrategia-de-testes.md`.

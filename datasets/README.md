@@ -29,14 +29,14 @@ datasets/
 | matomo | perfil-filtro | por período¹ | Estudo de adoção do filtro de Perfil |
 | matomo | servicos-mais-acessados | por período¹ | Serviços reais do portal por visitas |
 | ga4 | visao-geral, plataforma, servicos, funil, horarios | por período¹ (v2) | Uso do app MS Digital |
-| app | catalogo-servicos | lista | 121 serviços do app: categoria, nativo/web, ativo |
+| app | catalogo-servicos | lista | 121 serviços do app: categoria, nativo/web, ativo, url (só web, ~83% cadastrada) |
 | cartas | inventario-count | 1 linha | Total de cartas de serviço |
 
 ¹ **por período** = objeto com 4 chaves `{ dia, semana, mes, ano }` (ADR-007). "Intervalo de datas" cai no snapshot `mes`.
 
-## Bootstrap (⚠️ pendente pipeline real)
+## Atualização
 
-`ga4/v2/*` e `matomo/servicos-mais-acessados` estão **bootstrapped** (mesmo snapshot replicado nos 4 períodos), gerados sem credenciais. Rodar o pipeline real substitui por recorte por período de verdade:
+Atualizados **automaticamente** todo dia pelo cron [`.github/workflows/refresh-datasets.yml`](../.github/workflows/refresh-datasets.yml) (roda o pipeline + commita) — antes disso os JSONs ficavam presos no último `python run.py` manual. Pra rodar sob demanda: aba Actions → "Refresh datasets" → Run workflow, ou local:
 
 ```bash
 python ../data-platform/run.py

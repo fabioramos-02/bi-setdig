@@ -17,6 +17,14 @@ extract → transform → validate → publish
 
 ## Rodar
 
+Em produção roda **automático**: [`.github/workflows/refresh-datasets.yml`](../.github/workflows/refresh-datasets.yml)
+executa o pipeline todo dia (cron 06:00 UTC) e commita os datasets atualizados
+— dispara o redeploy da Vercel. Também dá pra disparar sob demanda pela aba
+Actions (`workflow_dispatch`). Cartas/Postgres fica de fora do cron (exige VPN
+SETDIG); `run.py` isola falha por fonte, então as demais publicam mesmo assim.
+
+Manual (dev, ou quando a planilha do catálogo muda):
+
 ```bash
 pip install -r requirements.txt
 
@@ -25,9 +33,14 @@ pip install -r requirements.txt
 #   GOOGLE_REFRESH_TOKEN, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_PROPERTY_ID
 #   HOST, PORT, USER, PASSWORD, BANCO   (cartas — opcional, exige VPN SETDIG)
 
-python data-platform/run.py            # roda tudo (fonte indisponível não derruba as outras)
-python data-platform/build_catalogo.py # catálogo de serviços do app (lê o xlsx manual)
+python data-platform/run.py                       # roda tudo (fonte indisponível não derruba as outras)
+python data-platform/build_catalogo.py            # catálogo de serviços do app (lê o xlsx manual + enriquece com URL)
+python data-platform/enriquecer_catalogo_com_url.py  # só re-casa URL no catálogo já publicado (sem reler o xlsx)
 ```
+
+O catálogo do app ganha `url` por serviço via `data-platform/reference/ms_digital_catalogo_urls.py`
+(cópia curada do repo irmão bench-carta) — casa por nome-folha/rótulo GA4,
+~83% de cobertura; sem match fica `null` ("link não cadastrado" na UI).
 
 ## Convenções
 
