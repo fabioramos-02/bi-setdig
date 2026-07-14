@@ -14,9 +14,11 @@ import { CategoriasTab } from "./CategoriasTab";
 import {
   calcularInsightPlataforma,
   calcularInsightServico,
+  calcularInsightCategoria,
   calcularInsightFunil,
   calcularInsightHorario,
 } from "@/lib/insights";
+import { classificarAcessosApp } from "@/lib/servico-app-classifier";
 import { compararCanais } from "@/lib/cross-canal";
 import { usePeriodo } from "@/lib/periodo-context";
 import { chavePeriodoFixo, resumoDoPeriodo, intervaloDoBucket, ehPeriodoCorrente } from "@/lib/period-filter";
@@ -144,8 +146,14 @@ export function MsDigitalClient({
   const novos = vg.find((r) => r.newVsReturning === "new")?.activeUsers ?? 0;
   const recorrentes = vg.find((r) => r.newVsReturning === "returning")?.activeUsers ?? 0;
 
+  // GA4 registra screen_view igual pra categoria/submenu/serviço-folha — sem
+  // isso, "serviço mais usado" mostrava categoria ("Servidor Público") em vez
+  // de serviço real ("Contracheque"). Reclassifica contra o catálogo estático.
+  const classificado = classificarAcessosApp(serv, catalogo);
+
   const insightPlataforma = calcularInsightPlataforma(plat);
-  const insightServico = calcularInsightServico(serv);
+  const insightServico = calcularInsightServico(classificado.servicosFolha);
+  const insightCategoria = calcularInsightCategoria(classificado.categorias);
   const insightFunil = calcularInsightFunil(fun);
   const insightHorario = calcularInsightHorario(hor);
 
@@ -182,7 +190,16 @@ export function MsDigitalClient({
     {
       id: "funcionalidades",
       label: "2. Funcionalidades",
-      content: <FuncionalidadesTab servicos={serv} insightServico={insightServico} status={statusGa4} />,
+      content: (
+        <FuncionalidadesTab
+          servicosFolha={classificado.servicosFolha}
+          categorias={classificado.categorias}
+          naoIdentificadoPct={classificado.naoIdentificadoPct}
+          insightServico={insightServico}
+          insightCategoria={insightCategoria}
+          status={statusGa4}
+        />
+      ),
     },
     {
       id: "perfil",

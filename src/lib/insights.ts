@@ -1,4 +1,5 @@
 import type { TermoBusca, Navegador, Dispositivo, Plataforma, Servico, EventoFunil, HorarioGa4, PaginaEntrada, Pagina } from "./data";
+import type { FatiaCategoria } from "@/components/charts/CategoryDonut";
 import type { PeriodoTipo, PontoAgregado } from "./period-filter";
 
 /**
@@ -99,6 +100,17 @@ export function calcularInsightServico(servicos: Servico[]): InsightServico | nu
   const total = servicos.reduce((acc, s) => acc + s.acessos, 0);
   const top = [...servicos].sort((a, b) => b.acessos - a.acessos)[0];
   return { servico: top.servico, participacaoPct: total > 0 ? (top.acessos / total) * 100 : 0 };
+}
+
+export type InsightCategoria = { categoria: string; participacaoPct: number };
+
+/** Categoria (área do app) mais usada — molde de calcularInsightServico, mas
+ * sobre o resultado já reclassificado de classificarAcessosApp (que soma
+ * acesso direto na tela-categoria + acesso de todo serviço-folha dela). */
+export function calcularInsightCategoria(categorias: FatiaCategoria[]): InsightCategoria | null {
+  if (categorias.length === 0) return null;
+  const top = [...categorias].sort((a, b) => b.valor - a.valor)[0];
+  return { categoria: top.categoria, participacaoPct: top.participacaoPct ?? 0 };
 }
 
 export type InsightHorario = { horaPico: string; sessoesPico: number; participacaoPct: number };
