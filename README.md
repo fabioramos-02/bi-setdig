@@ -10,14 +10,21 @@ Plataforma de analytics do Governo de Mato Grosso do Sul (Next.js + Design Syste
 | `/analytics/ms-digital` | App MS Digital | GA4 |
 | `/servicos`, `/qualidade`, `/governanca` | — (em construção) | — |
 
+## Stack
+
+Next.js 16 (App Router, Turbopack) · React 19 · TypeScript · Tailwind · Recharts.
+
 ## Rodar
 
 ```bash
 npm install
 npm run dev        # http://localhost:3000
+npm run build       # build de produção
+npm run lint        # eslint
+npm test            # node --test nativo (src/**/*.test.ts)
 ```
 
-Os dashboards leem JSONs estáticos de [`datasets/`](datasets/) em build-time — **não há chamada de API em runtime** (ADR-001). Para atualizar os dados, rode o pipeline em [`data-platform/`](data-platform/).
+Os dashboards leem JSONs estáticos de [`datasets/`](datasets/) em build-time — **não há chamada de API em runtime**, salvo a exceção pontual do filtro "Intervalo de datas" e datas de referência passadas, que buscam ao vivo (ADR-001, ADR-010). Os datasets são atualizados automaticamente todo dia por [`.github/workflows/refresh-datasets.yml`](.github/workflows/refresh-datasets.yml) (cron); pra rodar manualmente, use o pipeline em [`data-platform/`](data-platform/).
 
 ## Arquitetura
 

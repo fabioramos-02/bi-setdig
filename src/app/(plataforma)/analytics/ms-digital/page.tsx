@@ -16,7 +16,7 @@ import {
 import { resumoCatalogo, porCategoria } from "@/lib/catalogo-app";
 
 export const metadata: Metadata = {
-  title: "Analytics — MS Digital | SETDIG",
+  title: "MS Digital | SETDIG",
 };
 
 export default function AnalyticsMsDigitalPage() {

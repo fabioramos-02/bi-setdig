@@ -33,8 +33,20 @@ sempre em `lib/`, nunca no `.tsx` (convencoes.md). Cor/tipografia só via `var(-
 
 - **Mobile-first (ADR-009):** estilo base = ~375px; `sm:`/`md:`/`lg:` só adicionam.
   Item flex com gráfico/tabela precisa de `min-w-0`. Checar em 375px antes de subir.
-- **Período (ADR-007):** breakdowns são `Record<"dia"|"semana"|"mes"|"ano", T[]>`;
-  "intervalo" cai em `mes`. Filtro vive na Sidebar (`usePeriodo`/`chavePeriodoFixo`).
+- **Período (ADR-007 + ADR-010):** breakdowns são `Record<"dia"|"semana"|"mes"|"ano", T[]>`
+  — só 4 chaves, sempre o período *corrente* de quando o pipeline rodou. Filtro
+  vive na Sidebar (`usePeriodo`/`chavePeriodoFixo`). Pra granularidade OU data
+  de referência que não seja a corrente ("Intervalo" ou dia/semana/mês/ano
+  passado), o Client busca ao vivo (`ehPeriodoCorrente`/`intervaloDoBucket` em
+  `lib/period-filter.ts` → `/api/analytics/*`, ADR-010) — ~1-2s, com skeleton
+  (`ChartLoading`) e aviso (`AvisoSnapshotAproximado`, `status: StatusIntervalo`)
+  enquanto carrega. Ver `lib/server/perfil-live.ts` (recalcula visitas ao vivo
+  reusando o catálogo estático do snapshot) e `lib/servico-app-classifier.ts`
+  (reclassifica screen_view do GA4 em categoria/serviço-folha contra
+  `catalogo-servicos.json`, usado em MS Digital › Funcionalidades e ›
+  Categorias do app — essa última deixou de ser 100% estática: o catálogo
+  categoria/serviço/URL continua fixo, mas os números de acesso reagem ao
+  período).
 - **DS-SIS unlayered vence Tailwind:** regra de tag do DS (ex. `h3`) sobrescreve
   utilities; cravar tipografia com `style` inline quando precisar.
 - **Versão de dataset (ADR-004):** mudança de shape que quebra → nova pasta `vN`.
@@ -51,11 +63,35 @@ sempre em `lib/`, nunca no `.tsx` (convencoes.md). Cor/tipografia só via `var(-
   inteiro nem o array cru. Exceção só quando o dado é catálogo/estático por
   natureza (ex. `catalogo-servicos`, inventário de cartas) — aí documentar o
   porquê no comentário do getter, igual já feito nesses dois casos.
-- **Quando a aproximação é inevitável (ADR-007: "intervalo" cai em "mes" pra
-  todo `BreakdownPorPeriodo<T>`), 2 obrigações, não 1:** (a) o texto/label
-  tem que usar o período que o dado *realmente é* (`periodoAtual`), nunca o
-  que o usuário selecionou (`estado.tipo`) — já aconteceu de `BuscaTab`/
+- **Quando a aproximação é inevitável (fetch ao vivo ainda carregando, ou
+  falhou e caiu no snapshot), 2 obrigações, não 1:** (a) o texto/label tem
+  que usar o período que o dado *realmente é* (`periodoAtual`), nunca o que
+  o usuário selecionou (`estado.tipo`) — já aconteceu de `BuscaTab`/
   `PaginasTab` dizerem "no intervalo" pra um número que era do mês, o que
   pareceu um bug de dado quando era só rótulo errado; (b) todo consumidor
   do breakdown precisa do aviso visível (`AvisoSnapshotAproximado`), não só
   a nota genérica da Sidebar — ela não cobre o dataset específico.
+
+## Data Storytelling & Linguagem Cidadã
+
+Todo componente novo de gráfico/métrica/insight segue isso — não é só polimento,
+é regra:
+
+- **Linguagem cidadã, não jargão de TI/governo.** Título e texto descrevem o
+  que o número significa pra quem usa o serviço, não o mecanismo técnico por
+  trás. Errado: "Distribuição temporal de requisições HTTP". Certo: "Horário
+  de pico de acessos". Errado: "screenPageViews agregado por unifiedScreenName".
+  Certo: "Serviço mais usado". Evitar sigla/termo técnico sem explicar (ex.
+  "screen_view", "breakdown", "snapshot" não vão pro texto voltado ao usuário
+  — só pra comentário de código).
+- **Frase-âncora + números, não tabela crua.** Todo `StoryCard` segue o molde
+  já usado em `lib/insights.ts`: uma frase que já entrega a conclusão ("X é o
+  Y mais usado, com Z% de..."), não só o dado solto — o gráfico ilustra a
+  frase, não substitui ela. Ver `comoLer` em cada `calcularInsight*`: sempre
+  explica em 1-2 frases simples como interpretar o número, incluindo a
+  ressalva relevante (aproximação, viés, o que NÃO está sendo medido).
+- **Honestidade sobre limitação do dado > omissão.** Quando o número é
+  aproximado, incompleto ou não pôde ser classificado (ex.: `naoIdentificadoPct`
+  em `servico-app-classifier.ts`, "link não cadastrado" em `CategoriasTab`),
+  mostrar isso explicitamente e em linguagem simples — nunca esconder a
+  lacuna nem fingir precisão que o dado não tem.

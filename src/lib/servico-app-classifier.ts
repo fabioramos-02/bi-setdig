@@ -18,14 +18,14 @@ import type { FatiaCategoria } from "@/components/charts/CategoryDonut";
  * dado real.
  */
 
-function normalizar(s: string): string {
+export function normalizar(s: string): string {
   return s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().trim();
 }
 
 /** Nome de tela do catálogo: pega o serviço-folha real. Entradas no formato
  * "Submenu > Serviço" (25 das 121 hoje) usam só o último segmento — o resto
  * (96) já é o nome direto. */
-function folhaDe(servico: string): string {
+export function folhaDe(servico: string): string {
   const partes = servico.split(">");
   return partes[partes.length - 1].trim();
 }
@@ -83,4 +83,19 @@ export function classificarAcessosApp(rows: Servico[], catalogo: ServicoCatalogo
     .sort((a, b) => b.valor - a.valor);
 
   return { servicosFolha, categorias, naoIdentificadoPct: total > 0 ? (naoIdentificado / total) * 100 : 0 };
+}
+
+/** Lookup nome-normalizado(folha)->acessos, pra CategoriasTab achar o número
+ * de um serviço do catálogo sem duplicar match: `contagem.get(normalizar(folhaDe(s.servico)))`. */
+export function contagemPorServico(servicosFolha: Servico[]): Map<string, number> {
+  const mapa = new Map<string, number>();
+  for (const s of servicosFolha) mapa.set(normalizar(s.servico), s.acessos);
+  return mapa;
+}
+
+/** Lookup categoria->acessos (chave já é o nome exato do catálogo, sem
+ * normalizar — `categorias` vem de `classificarAcessosApp`, que usa o mesmo
+ * `c.categoria` do catálogo). */
+export function contagemPorCategoria(categorias: FatiaCategoria[]): Map<string, number> {
+  return new Map(categorias.map((c) => [c.categoria, c.valor]));
 }

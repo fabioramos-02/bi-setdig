@@ -227,13 +227,22 @@ export function MsDigitalClient({
     {
       id: "categorias",
       label: "6. Categorias do app",
-      content: <CategoriasTab servicos={catalogo} resumo={catalogoResumo} categorias={catalogoCategorias} />,
+      content: (
+        <CategoriasTab
+          servicos={catalogo}
+          resumo={catalogoResumo}
+          categorias={catalogoCategorias}
+          acessosServico={classificado.servicosFolha}
+          acessosCategoria={classificado.categorias}
+          status={statusGa4}
+        />
+      ),
     },
   ];
 
   return (
     <div className="flex flex-col flex-1">
-      <ContentTopBar title="Analytics — MS Digital">
+      <ContentTopBar title="MS Digital">
         <ExportPdfButton />
       </ContentTopBar>
       <main className="flex-1 p-4 sm:p-6">

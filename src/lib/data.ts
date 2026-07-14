@@ -176,7 +176,10 @@ export function getMatomoFugaHub(): BreakdownPorPeriodo<DominioSaida> {
 // --- Catálogo de serviços do app MS Digital (nativo × web) ---
 // Fonte: planilha manual, gerada por data-platform/build_catalogo.py. Estático
 // (não varia por período) — é a relação de serviços, não métrica de uso.
-export type ServicoCatalogo = { categoria: string; servico: string; tipo: "nativo" | "web"; ativo: boolean };
+// `url`: casado contra data-platform/reference/ms_digital_catalogo_urls.py
+// (só "web" pode ter; null quando não há match — catálogo incompleto por
+// natureza, não indica erro).
+export type ServicoCatalogo = { categoria: string; servico: string; tipo: "nativo" | "web"; ativo: boolean; url: string | null };
 
 export function getAppCatalogoServicos(): ServicoCatalogo[] {
   return readDataset<ServicoCatalogo[]>("app", "v1", "catalogo-servicos") ?? [];

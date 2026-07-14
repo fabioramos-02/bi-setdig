@@ -1,12 +1,12 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { classificarAcessosApp } from "./servico-app-classifier.ts";
+import { classificarAcessosApp, contagemPorServico, contagemPorCategoria } from "./servico-app-classifier.ts";
 import type { Servico, ServicoCatalogo } from "./data.ts";
 
 const catalogo: ServicoCatalogo[] = [
-  { categoria: "Servidor Público", servico: "Portal do Servidor > Contracheque", tipo: "nativo", ativo: true },
-  { categoria: "Saúde", servico: "Cartão do SUS Online", tipo: "nativo", ativo: true },
-  { categoria: "Educação", servico: "Carteira do Estudante - CDIEMS > Consultar CDIEMS", tipo: "nativo", ativo: true },
+  { categoria: "Servidor Público", servico: "Portal do Servidor > Contracheque", tipo: "nativo", ativo: true, url: null },
+  { categoria: "Saúde", servico: "Cartão do SUS Online", tipo: "nativo", ativo: true, url: null },
+  { categoria: "Educação", servico: "Carteira do Estudante - CDIEMS > Consultar CDIEMS", tipo: "nativo", ativo: true, url: null },
 ];
 
 test("tela == categoria vira acesso de categoria, não de serviço", () => {
@@ -70,4 +70,17 @@ test("array vazio nao quebra", () => {
   assert.deepEqual(r.servicosFolha, []);
   assert.deepEqual(r.categorias, []);
   assert.equal(r.naoIdentificadoPct, 0);
+});
+
+test("contagemPorServico: lookup por nome normalizado", () => {
+  const mapa = contagemPorServico([{ servico: "Contracheque", acessos: 30 }]);
+  assert.equal(mapa.get("contracheque"), 30);
+  assert.equal(mapa.get("CONTRACHEQUE".toLowerCase()), 30);
+  assert.equal(mapa.get("inexistente"), undefined);
+});
+
+test("contagemPorCategoria: lookup por nome exato de categoria", () => {
+  const mapa = contagemPorCategoria([{ categoria: "Saúde", valor: 50, participacaoPct: 100 }]);
+  assert.equal(mapa.get("Saúde"), 50);
+  assert.equal(mapa.get("saude"), undefined); // chave é exata, não normalizada
 });

@@ -2,8 +2,8 @@ import Link from "next/link";
 import { ContentTopBar } from "@/components/ds/ContentTopBar";
 
 const DOMINIOS = [
-  { nome: "Analytics — Portal MS", rota: "/analytics/portal-ms" },
-  { nome: "Analytics — MS Digital", rota: "/analytics/ms-digital" },
+  { nome: "Portal MS", rota: "/analytics/portal-ms" },
+  { nome: "MS Digital", rota: "/analytics/ms-digital" },
   { nome: "Serviços", rota: "/servicos" },
   { nome: "Qualidade", rota: "/qualidade" },
   { nome: "Governança", rota: "/governanca" },
@@ -12,7 +12,7 @@ const DOMINIOS = [
 export default function Home() {
   return (
     <div className="flex flex-col flex-1">
-      <ContentTopBar title="Plataforma de Analytics — SETDIG" />
+      <ContentTopBar title="Dados centralizados - SETDIG" />
       <main className="flex-1 p-6">
         <p style={{ color: "var(--ds-color-text-secondary)" }} className="mb-6">
           Governo de Mato Grosso do Sul — domínios em migração (ver docs/architecture).

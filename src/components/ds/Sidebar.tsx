@@ -7,8 +7,8 @@ import { SidebarPeriodFilter } from "@/components/dashboard/SidebarPeriodFilter"
 import { ThemeToggle } from "@/components/ds/ThemeToggle";
 
 const DOMINIOS = [
-  { nome: "Analytics — Portal MS", rota: "/analytics/portal-ms" },
-  { nome: "Analytics — MS Digital", rota: "/analytics/ms-digital" },
+  { nome: "Portal MS", rota: "/analytics/portal-ms" },
+  { nome: "MS Digital", rota: "/analytics/ms-digital" },
   { nome: "Serviços", rota: "/servicos" },
   { nome: "Qualidade", rota: "/qualidade" },
   { nome: "Governança", rota: "/governanca" },
@@ -48,9 +48,8 @@ export function Sidebar() {
 
       <aside
         style={{ background: "var(--ds-color-background)", borderRight: "1px solid var(--ds-color-border)" }}
-        className={`fixed inset-y-0 left-0 w-64 z-40 flex flex-col transition-transform md:translate-x-0 print:hidden ${
-          aberta ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`fixed inset-y-0 left-0 w-64 z-40 flex flex-col transition-transform md:translate-x-0 print:hidden ${aberta ? "translate-x-0" : "-translate-x-full"
+          }`}
       >
         <SidebarLogo />
         <div className="flex-1 overflow-y-auto">

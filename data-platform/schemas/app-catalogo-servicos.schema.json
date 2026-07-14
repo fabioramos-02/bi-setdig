@@ -10,7 +10,8 @@
       "categoria": { "type": "string" },
       "servico": { "type": "string" },
       "tipo": { "type": "string", "enum": ["nativo", "web"] },
-      "ativo": { "type": "boolean" }
+      "ativo": { "type": "boolean" },
+      "url": { "type": ["string", "null"], "description": "URL real do serviço (só web) — casado contra data-platform/reference/ms_digital_catalogo_urls.py; null quando não há match (~83% de cobertura)." }
     }
   }
 }

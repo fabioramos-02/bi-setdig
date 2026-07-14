@@ -1,16 +1,5 @@
 [
   {
-    "dataset": "catalogo-servicos",
-    "source": "app",
-    "owner": "SETDIG",
-    "updatedAt": "2026-07-07T12:16:20.245753+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/app-catalogo-servicos.schema.json",
-    "rows": 121,
-    "bytes": 14488
-  },
-  {
     "dataset": "fluxo-navegacao",
     "source": "matomo",
     "owner": "SETDIG",
@@ -262,5 +251,16 @@
     "schema": "data-platform/schemas/cartas-jornada-resumo.schema.json",
     "rows": 1,
     "bytes": 404
+  },
+  {
+    "dataset": "catalogo-servicos",
+    "source": "app",
+    "owner": "SETDIG",
+    "updatedAt": "2026-07-14T13:12:24.263092+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/app-catalogo-servicos.schema.json",
+    "rows": 121,
+    "bytes": 19384
   }
 ]

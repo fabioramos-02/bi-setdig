@@ -3,726 +3,847 @@
     "categoria": "Coronavírus",
     "servico": "Alerta Coronavírus",
     "tipo": "web",
-    "ativo": false
+    "ativo": false,
+    "url": null
   },
   {
     "categoria": "Coronavírus",
     "servico": "Exames",
     "tipo": "web",
-    "ativo": false
+    "ativo": false,
+    "url": "https://www2.detran.ms.gov.br/detranet/pserv/habilitacao/consExames/index.asp"
   },
   {
     "categoria": "Agronegócio",
     "servico": "Agrotóxico",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.servicos.iagro.ms.gov.br/agrotoxico"
   },
   {
     "categoria": "Agronegócio",
     "servico": "Animal Identificado",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.servicos.iagro.ms.gov.br/animalIdentificado"
   },
   {
     "categoria": "Agronegócio",
     "servico": "Cadastro de Plantio",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.servicos.iagro.ms.gov.br/plantio"
   },
   {
     "categoria": "Agronegócio",
     "servico": "Cadastro de Produtor",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.servicos.iagro.ms.gov.br/cadastroFicha"
   },
   {
     "categoria": "Agronegócio",
     "servico": "Documento de Trânsito",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.servicos.iagro.ms.gov.br/gta"
   },
   {
     "categoria": "Agronegócio",
     "servico": "e-CIS-E",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.servicos.iagro.ms.gov.br/ecise"
   },
   {
     "categoria": "Agronegócio",
     "servico": "Estabelecimentos",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.servicos.iagro.ms.gov.br/estabelecimento"
   },
   {
     "categoria": "Agronegócio",
     "servico": "Eventos",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.servicos.iagro.ms.gov.br/eventos"
   },
   {
     "categoria": "Agronegócio",
     "servico": "Ferrugem da Soja",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.servicos.iagro.ms.gov.br/ferrugemSoja"
   },
   {
     "categoria": "Agronegócio",
     "servico": "Ficha Sanitária",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.servicos.iagro.ms.gov.br/ficha"
   },
   {
     "categoria": "Agronegócio",
     "servico": "Laboratório",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.servicos.iagro.ms.gov.br/laboratorio"
   },
   {
     "categoria": "Agronegócio",
     "servico": "Laudo Exame",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.servicos.iagro.ms.gov.br/exame"
   },
   {
     "categoria": "Agronegócio",
     "servico": "MANUCÃ",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://manuca.semagro.ms.gov.br/"
   },
   {
     "categoria": "Agronegócio",
     "servico": "Mapa das Notificações de Ferrugem",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.servicos.iagro.ms.gov.br/mapaFerrugemSoja"
   },
   {
     "categoria": "Agronegócio",
     "servico": "Núcleo",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.servicos.iagro.ms.gov.br/nucleo"
   },
   {
     "categoria": "Agronegócio",
     "servico": "Produto",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.servicos.iagro.ms.gov.br/vacinas"
   },
   {
     "categoria": "Agronegócio",
     "servico": "Profissional",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.servicos.iagro.ms.gov.br/colaboradores"
   },
   {
     "categoria": "Agronegócio",
     "servico": "PTV",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.servicos.iagro.ms.gov.br/ptv"
   },
   {
     "categoria": "Trânsito",
     "servico": "Pontuação CNH",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Trânsito",
     "servico": "Multas",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Trânsito",
     "servico": "Débito de Veículos",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Trânsito",
     "servico": "Baixar CRLV",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.meudetran.ms.gov.br/principal-portal/principal-portal.php?opcao_menu_ssn=BAIXAR_CRLV"
   },
   {
     "categoria": "Trânsito",
     "servico": "Exames",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www2.detran.ms.gov.br/detranet/pserv/habilitacao/consExames/index.asp"
   },
   {
     "categoria": "Trânsito",
     "servico": "IPVA",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.autoatendimento.ms.gov.br/suporte-tecnico-ipva/"
   },
   {
     "categoria": "Trânsito",
     "servico": "Licenciamento e Multas",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.meudetran.ms.gov.br/"
   },
   {
     "categoria": "Trânsito",
     "servico": "B.O. sem Vítimas",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://boat.sigo.ms.gov.br/#/"
   },
   {
     "categoria": "Trânsito",
     "servico": "Agendamento",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.meudetran.ms.gov.br/"
   },
   {
     "categoria": "Trânsito",
     "servico": "Credenciamento",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Trânsito",
     "servico": "Educação",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.meudetran.ms.gov.br/"
   },
   {
     "categoria": "Trânsito",
     "servico": "Outros",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.meudetran.ms.gov.br/"
   },
   {
     "categoria": "Procon-MS",
     "servico": "Reclamação On-line",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://portalservicos.procon.ms.gov.br/reclamacao"
   },
   {
     "categoria": "Procon-MS",
     "servico": "Denúncia",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://portalservicos.procon.ms.gov.br/denuncia"
   },
   {
     "categoria": "Procon-MS",
     "servico": "Consulta de Processos",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://portalservicos.procon.ms.gov.br/consulta"
   },
   {
     "categoria": "Procon-MS",
     "servico": "Boletins",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.procon.ms.gov.br/informativos/boletins/"
   },
   {
     "categoria": "Procon-MS",
     "servico": "Fale Conosco",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://portalservicos.procon.ms.gov.br/duvidas"
   },
   {
     "categoria": "Procon-MS",
     "servico": "Procons Municipais",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.procon.ms.gov.br/fale-conosco/unidades/unidades-regionais/"
   },
   {
     "categoria": "Transparência",
     "servico": "Pessoal > Servidores",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Transparência",
     "servico": "Pessoal > Diárias",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Transparência",
     "servico": "Pessoal > Passagens",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Transparência",
     "servico": "Receitas > Simplificada",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Transparência",
     "servico": "Receitas > Consolidada",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Transparência",
     "servico": "Receitas > Pesquisa de Receita",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Transparência",
     "servico": "Despesas > Despesa",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Transparência",
     "servico": "Despesas > Detran - Destinação de Multas",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Transparência",
     "servico": "Carta de Serviço",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.ms.gov.br/"
   },
   {
     "categoria": "Transparência",
     "servico": "LGPD",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.lgpd.ms.gov.br/"
   },
   {
     "categoria": "Segurança",
     "servico": "Delegacias e Endereços",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Segurança",
     "servico": "Antecedentes Criminais",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://antecedentes.sejusp.ms.gov.br/"
   },
   {
     "categoria": "Segurança",
     "servico": "Agendamento de RG",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://antecedentes.sejusp.ms.gov.br/"
   },
   {
     "categoria": "Segurança",
     "servico": "B.O. Online",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://servicos.sejusp.ms.gov.br/"
   },
   {
     "categoria": "Segurança",
     "servico": "Corpo de Bombeiros Militar > Sistema Prevenir",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://prevenir.bombeiros.ms.gov.br/welcome"
   },
   {
     "categoria": "Segurança",
     "servico": "Corpo de Bombeiros Militar > Legislações de Prevenção",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://sistemas.bombeiros.ms.gov.br/arquivos/index.xhtml"
   },
   {
     "categoria": "Segurança",
     "servico": "Corpo de Bombeiros Militar > Regularização",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://prevenir.bombeiros.ms.gov.br/"
   },
   {
     "categoria": "Segurança",
     "servico": "Corpo de Bombeiros Militar > Profissionais e Empresas",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://sistemas.bombeiros.ms.gov.br/profissionais-cadastrados.xhtml"
   },
   {
     "categoria": "Segurança",
     "servico": "Corpo de Bombeiros Militar > PSCIP",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://sistemas.bombeiros.ms.gov.br/"
   },
   {
     "categoria": "Segurança",
     "servico": "Corpo de Bombeiros Militar > Certidão de Ocorrência",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.bombeiros.ms.gov.br/certidao/"
   },
   {
     "categoria": "Segurança",
     "servico": "Corpo de Bombeiros Militar > Outros Assuntos",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.bombeiros.ms.gov.br/"
   },
   {
     "categoria": "Segurança",
     "servico": "Delegacia Virtual",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://devir.pc.ms.gov.br/#/"
   },
   {
     "categoria": "Segurança",
     "servico": "Certificado de Vistoria",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://sistemas.bombeiros.ms.gov.br/"
   },
   {
     "categoria": "Servidor Público",
     "servico": "Portal do Servidor > Contracheque",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Servidor Público",
     "servico": "Portal do Servidor > Informe de Rendimentos",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Servidor Público",
     "servico": "Portal do Servidor > Carteira Funcional",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Servidor Público",
     "servico": "Portal do Servidor > BIM",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Servidor Público",
     "servico": "Clube de Benefícios",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Servidor Público",
     "servico": "Lista de Eventos",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.ms.gov.br/"
   },
   {
     "categoria": "Servidor Público",
     "servico": "Pesquisa Décimo Terceiro",
     "tipo": "web",
-    "ativo": false
+    "ativo": false,
+    "url": null
   },
   {
     "categoria": "Servidor Público",
     "servico": "Reltório de Diárias > Documentos Assinados",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Servidor Público",
     "servico": "Reltório de Diárias > Documentos Pendentes",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Meio Ambiente",
     "servico": "Estrada Viva > Registrar Notificação",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Meio Ambiente",
     "servico": "Estrada Viva > Notificações Pendentes",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Meio Ambiente",
     "servico": "Licenciamento Ambiental",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Meio Ambiente",
     "servico": "Previsão Semanal",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Meio Ambiente",
     "servico": "Autorização de Pesca Digital (Carteira)",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Meio Ambiente",
     "servico": "Autorização de Pesca Digital (Solicitação)",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Mulher MS",
     "servico": "PEÇA SOCORRO",
     "tipo": "nativo",
-    "ativo": false
+    "ativo": false,
+    "url": null
   },
   {
     "categoria": "Mulher MS",
     "servico": "Delegacias da Mulher",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Mulher MS",
     "servico": "Combate à Violência",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Mulher MS",
     "servico": "Sobre seus Direitos",
     "tipo": "nativo",
-    "ativo": false
+    "ativo": false,
+    "url": null
   },
   {
     "categoria": "Mulher MS",
     "servico": "Não se Cale",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.naosecale.ms.gov.br/"
   },
   {
     "categoria": "Mulher MS",
     "servico": "Teste Peça Socorro",
     "tipo": "nativo",
-    "ativo": false
+    "ativo": false,
+    "url": null
   },
   {
     "categoria": "Mulher MS",
     "servico": "Denúncias Online",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://devir.pc.ms.gov.br/#/denuncia"
   },
   {
     "categoria": "Mulher MS",
     "servico": "Protetivas Online",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://sistemas.tjms.jus.br/medidaProtetiva/"
   },
   {
     "categoria": "Saúde",
     "servico": "Cartão de Vacinação",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Saúde",
     "servico": "Cartão do SUS Online",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Saúde",
     "servico": "Cartão do Doador de Sangue",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Saúde",
     "servico": "Resultado de Exames Hemosul",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Saúde",
     "servico": "Estabelecimentos de Saúde",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Saúde",
     "servico": "Medicamentos",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Saúde",
     "servico": "Exames LACEN",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://lacendigital.saude.ms.gov.br/"
   },
   {
     "categoria": "Saúde",
     "servico": "Painel de Brucelose de MS",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://paineispublicos.saude.ms.gov.br/extensions/brucelose/brucelose.html"
   },
   {
     "categoria": "Saúde",
     "servico": "Estoque de Sangue - Hemosul",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://paineispublicos.saude.ms.gov.br/extensions/EstoqueHemosul/EstoqueHemosul.html"
   },
   {
     "categoria": "Saúde",
     "servico": "Estoque de Medicamento Especializado",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://bi.saude.ms.gov.br/public/dashboard/82f5760c-6b6b-42fc-a212-1c3570ad330a"
   },
   {
     "categoria": "Saúde",
     "servico": "Emissão de Certificado de Eventos da SES",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "AGEMS",
     "servico": "WhatsApp",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.agems.ms.gov.br/"
   },
   {
     "categoria": "AGEMS",
     "servico": "e-Ouvidoria Agepan",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "AGEMS",
     "servico": "Horários e Tarifas",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.sgltar.ms.gov.br/publica/consulta/pesquisaviagens"
   },
   {
     "categoria": "Diário Oficial",
     "servico": "Diário Oficial",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.diariooficial.ms.gov.br/"
   },
   {
     "categoria": "Turismo",
     "servico": "VisitMS",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.visitms.com.br/"
   },
   {
     "categoria": "Turismo",
     "servico": "Observatório de Turismo",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.turismo.ms.gov.br/"
   },
   {
     "categoria": "Turismo",
     "servico": "Turismo",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.turismo.ms.gov.br/"
   },
   {
     "categoria": "Entretenimento",
     "servico": "TV Educativa MS - Canal 4.1",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Entretenimento",
     "servico": "Rádio Educativa MS - FM 104.7",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Educação",
     "servico": "Aulas na TV Aberta - Ao vivo",
     "tipo": "nativo",
-    "ativo": false
+    "ativo": false,
+    "url": null
   },
   {
     "categoria": "Educação",
     "servico": "Aulas na TV Aberta - Reprise",
     "tipo": "nativo",
-    "ativo": false
+    "ativo": false,
+    "url": null
   },
   {
     "categoria": "Educação",
     "servico": "Painel do Aluno",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.sed.ms.gov.br/"
   },
   {
     "categoria": "Educação",
     "servico": "Carteira do Estudante - CDIEMS > Consultar CDIEMS",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Educação",
     "servico": "Carteira do Estudante - CDIEMS > Solicitar CDIEMS",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Educação",
     "servico": "Caminho Certo",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.caminhocerto.ms.gov.br/"
   },
   {
     "categoria": "Nota Premiada",
     "servico": "Nota Premiada",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Cultura e Esporte",
     "servico": "CID - Carteira de Identificação Desportiva",
     "tipo": "nativo",
-    "ativo": false
+    "ativo": false,
+    "url": null
   },
   {
     "categoria": "Cultura e Esporte",
     "servico": "Leia MS",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Habitação",
     "servico": "Boleto Habitacional",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://habix.agehab.ms.gov.br/administracao/BoletoOnline"
   },
   {
     "categoria": "Trabalho e Qualificação",
     "servico": "MS Qualifica",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.msqualifica.ms.gov.br/"
   },
   {
     "categoria": "Assistência Social",
     "servico": "Passe Livre Intermunicipal",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Assistência Social",
     "servico": "Endereços dos CRAS",
     "tipo": "nativo",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Assistência Social",
     "servico": "MS Supera",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://www.mssupera.ms.gov.br/"
   },
   {
     "categoria": "Assistência Social",
     "servico": "CIPTEA",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": "https://ciptea.ms.gov.br/"
   },
   {
     "categoria": "MS.gov",
     "servico": "Portal Único",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": null
   },
   {
     "categoria": "Notícias",
     "servico": "Portal de notícias",
     "tipo": "web",
-    "ativo": true
+    "ativo": true,
+    "url": null
   }
 ]

@@ -242,7 +242,7 @@ export function PortalMsClient({
 
   return (
     <div className="flex flex-col flex-1">
-      <ContentTopBar title="Analytics — Portal MS">
+      <ContentTopBar title="Portal MS">
         <ExportPdfButton />
       </ContentTopBar>
       <main className="flex-1 p-4 sm:p-6">
