@@ -1,6 +1,7 @@
 import { BarChart } from "@/components/charts/BarChart";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
+import { ChartLoading } from "@/components/dashboard/ChartLoading";
 import { rotuloEstagioFunil } from "@/lib/insights";
 import type { InsightFunil } from "@/lib/insights";
 import type { EventoFunil } from "@/lib/data";
@@ -26,7 +27,9 @@ export function JornadaTab({
         <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold mb-2">
           Funil de engajamento: aquisição → ativação → navegação → retenção
         </h3>
-        <BarChart data={dadosFunil} xKey="estagio" yKey="usuarios" height={280} />
+        <ChartLoading status={status} height={280}>
+          <BarChart data={dadosFunil} xKey="estagio" yKey="usuarios" height={280} />
+        </ChartLoading>
       </div>
 
       {insightFunil && (

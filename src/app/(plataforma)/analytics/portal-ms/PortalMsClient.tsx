@@ -96,6 +96,11 @@ export function PortalMsClient({
   const range = intervaloDoBucket(estado, min, max);
 
   const [liveData, setLiveData] = useState<LiveIntervalo | null>(null);
+  // Range que gerou o liveData atual — sem isso, trocar de um período passado
+  // pra OUTRO período passado (ex. jan→fev) mantinha o liveData antigo "válido"
+  // enquanto o novo fetch carregava: nem mostrava loading, nem tava certo (ficava
+  // de fato mostrando o dado de janeiro rotulado como fevereiro por um instante).
+  const [liveRange, setLiveRange] = useState<{ inicio: string; fim: string } | null>(null);
   const [liveStatus, setLiveStatus] = useState<"idle" | "carregando" | "erro">("idle");
 
   useEffect(() => {
@@ -112,11 +117,11 @@ export function PortalMsClient({
       .then((data) => {
         if (cancelado) return;
         setLiveData(data);
+        setLiveRange({ inicio: range.inicio, fim: range.fim });
         setLiveStatus("idle");
       })
       .catch(() => {
         if (cancelado) return;
-        setLiveData(null);
         setLiveStatus("erro");
       });
     return () => {
@@ -124,22 +129,27 @@ export function PortalMsClient({
     };
   }, [precisaLive, range.inicio, range.fim]);
 
+  // Só usa liveData se ele foi buscado PRA ESTE range exato — enquanto o fetch
+  // do range novo não resolve, cai no "carregando" (nunca mostra dado de outro
+  // período rotulado como se fosse deste).
+  const liveValido = liveData !== null && liveRange?.inicio === range.inicio && liveRange?.fim === range.fim;
+
   // status pros painéis ao vivo — "ok" quando o dado real chegou (ou período
   // corrente); "carregando" é derivado (default enquanto não chegou nem falhou).
-  const statusBreakdown: StatusIntervalo = !precisaLive ? "ok" : liveData ? "ok" : liveStatus === "erro" ? "fallback" : "carregando";
+  const statusBreakdown: StatusIntervalo = !precisaLive ? "ok" : liveValido ? "ok" : liveStatus === "erro" ? "fallback" : "carregando";
 
-  const navegadoresAtual = precisaLive && liveData ? liveData.navegadores : navegadores[periodoAtual];
-  const dispositivosAtual = precisaLive && liveData ? liveData.dispositivos : dispositivos[periodoAtual];
-  const horariosAtual = precisaLive && liveData ? liveData.horarios : horarios[periodoAtual];
-  const cidadesAtual = precisaLive && liveData ? liveData.geografia : cidades[periodoAtual];
-  const paginasAtual = precisaLive && liveData ? liveData.paginas : paginas[periodoAtual];
-  const buscaAtual = precisaLive && liveData ? liveData.busca : busca[periodoAtual];
-  const portasEntradaAtual = precisaLive && liveData ? liveData.portasEntrada : portasEntrada[periodoAtual];
-  const fugaHubAtual = precisaLive && liveData ? liveData.fugaHub : fugaHub[periodoAtual];
+  const navegadoresAtual = precisaLive && liveValido ? liveData!.navegadores : navegadores[periodoAtual];
+  const dispositivosAtual = precisaLive && liveValido ? liveData!.dispositivos : dispositivos[periodoAtual];
+  const horariosAtual = precisaLive && liveValido ? liveData!.horarios : horarios[periodoAtual];
+  const cidadesAtual = precisaLive && liveValido ? liveData!.geografia : cidades[periodoAtual];
+  const paginasAtual = precisaLive && liveValido ? liveData!.paginas : paginas[periodoAtual];
+  const buscaAtual = precisaLive && liveValido ? liveData!.busca : busca[periodoAtual];
+  const portasEntradaAtual = precisaLive && liveValido ? liveData!.portasEntrada : portasEntrada[periodoAtual];
+  const fugaHubAtual = precisaLive && liveValido ? liveData!.fugaHub : fugaHub[periodoAtual];
   // Perfil/serviços também ao vivo: catálogo estável vem do snapshot mês, só as
   // visitas são recalculadas na rota (ver lib/server/perfil-live.ts).
-  const perfilAtual = precisaLive && liveData ? liveData.perfil : perfil[periodoAtual];
-  const servicosAcessadosAtual = precisaLive && liveData ? liveData.servicosMaisAcessados : servicosMaisAcessados[periodoAtual];
+  const perfilAtual = precisaLive && liveValido ? liveData!.perfil : perfil[periodoAtual];
+  const servicosAcessadosAtual = precisaLive && liveValido ? liveData!.servicosMaisAcessados : servicosMaisAcessados[periodoAtual];
 
   const tendencia = useMemo(() => aplicarFiltroPeriodo(diarias, estado), [diarias, estado]);
   const kpis = useMemo(() => resumoDoPeriodo(diarias, estado), [diarias, estado]);
@@ -154,7 +164,7 @@ export function PortalMsClient({
   // ("no intervalo") quando o dado é mesmo ao vivo pro intervalo (liveData) —
   // caso contrário é snapshot e o texto tem que dizer o período REAL
   // (periodoAtual), nunca o que foi selecionado (ver AGENTS.md/ADR-007).
-  const rotuloSnapshot = tipoIntervalo && liveData ? rotuloPeriodo : ROTULO_PERIODO[periodoAtual];
+  const rotuloSnapshot = tipoIntervalo && liveValido ? rotuloPeriodo : ROTULO_PERIODO[periodoAtual];
 
   const abas: TabItem[] = [
     {

@@ -4,6 +4,7 @@ import { StoryCard } from "@/components/dashboard/StoryCard";
 import { ExportCsvButton } from "@/components/dashboard/ExportCsvButton";
 import { RankingBarChart } from "@/components/charts/RankingBarChart";
 import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
+import { ChartLoading } from "@/components/dashboard/ChartLoading";
 import { labelPagina } from "@/lib/pagina-label";
 import type { InsightPagina } from "@/lib/insights";
 import type { Pagina } from "@/lib/data";
@@ -49,7 +50,9 @@ export function PaginasTab({
         title="Ranking de páginas"
         action={<ExportCsvButton rows={paginas} filename="paginas-mais-acessadas" />}
       >
-        <RankingBarChart itens={ranking} />
+        <ChartLoading status={status} height={260}>
+          <RankingBarChart itens={ranking} />
+        </ChartLoading>
       </DashboardSection>
     </div>
   );

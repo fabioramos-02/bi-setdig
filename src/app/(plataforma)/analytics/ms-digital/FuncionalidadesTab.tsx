@@ -2,6 +2,7 @@ import { RankingBarChart } from "@/components/charts/RankingBarChart";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { ExportCsvButton } from "@/components/dashboard/ExportCsvButton";
 import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
+import { ChartLoading } from "@/components/dashboard/ChartLoading";
 import type { InsightServico } from "@/lib/insights";
 import type { Servico } from "@/lib/data";
 
@@ -32,7 +33,9 @@ export function FuncionalidadesTab({
           </h3>
           <ExportCsvButton rows={servicos} filename="ga4-servicos" />
         </div>
-        <RankingBarChart itens={itens} />
+        <ChartLoading status={status} height={260}>
+          <RankingBarChart itens={itens} />
+        </ChartLoading>
       </div>
     </div>
   );

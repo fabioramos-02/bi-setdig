@@ -2,6 +2,7 @@ import { BarChart } from "@/components/charts/BarChart";
 import { PlatformBarChart } from "@/components/charts/PlatformBarChart";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
+import { ChartLoading } from "@/components/dashboard/ChartLoading";
 import type { InsightPlataforma, InsightHorario } from "@/lib/insights";
 import type { Plataforma, HorarioGa4 } from "@/lib/data";
 
@@ -31,13 +32,17 @@ export function PerfilTab({
           <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold mb-2">
             Aparelho
           </h3>
-          <PlatformBarChart dados={plataforma} />
+          <ChartLoading status={status} height={220}>
+            <PlatformBarChart dados={plataforma} />
+          </ChartLoading>
         </div>
         <div>
           <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold mb-2">
             Horário de uso
           </h3>
-          <BarChart data={horariosRotulados} xKey="hora" yKey="sessoes" height={260} />
+          <ChartLoading status={status} height={260}>
+            <BarChart data={horariosRotulados} xKey="hora" yKey="sessoes" height={260} />
+          </ChartLoading>
         </div>
       </div>
 

@@ -88,6 +88,11 @@ export function MsDigitalClient({
   const range = intervaloDoBucket(estado, min, max);
 
   const [liveData, setLiveData] = useState<LiveIntervalo | null>(null);
+  // Range que gerou o liveData atual — sem isso, trocar de um período passado
+  // pra OUTRO período passado (ex. jan→fev) mantinha o liveData antigo "válido"
+  // enquanto o novo fetch carregava (nunca mostrava loading, e por um instante
+  // mostrava o dado do período errado rotulado como se fosse o novo).
+  const [liveRange, setLiveRange] = useState<{ inicio: string; fim: string } | null>(null);
   const [liveStatus, setLiveStatus] = useState<"idle" | "carregando" | "erro">("idle");
 
   useEffect(() => {
@@ -104,11 +109,11 @@ export function MsDigitalClient({
       .then((data) => {
         if (cancelado) return;
         setLiveData(data);
+        setLiveRange({ inicio: range.inicio, fim: range.fim });
         setLiveStatus("idle");
       })
       .catch(() => {
         if (cancelado) return;
-        setLiveData(null);
         setLiveStatus("erro");
       });
     return () => {
@@ -116,19 +121,22 @@ export function MsDigitalClient({
     };
   }, [precisaLive, range.inicio, range.fim]);
 
+  // Só usa liveData se ele foi buscado PRA ESTE range exato.
+  const liveValido = liveData !== null && liveRange?.inicio === range.inicio && liveRange?.fim === range.fim;
+
   // "carregando" é derivado (default enquanto o dado ao vivo não chegou nem falhou).
-  const statusGa4: StatusIntervalo = !precisaLive ? "ok" : liveData ? "ok" : liveStatus === "erro" ? "fallback" : "carregando";
+  const statusGa4: StatusIntervalo = !precisaLive ? "ok" : liveValido ? "ok" : liveStatus === "erro" ? "fallback" : "carregando";
 
   // Rótulo do período REAL do dado: "no intervalo" só quando é intervalo com live;
   // senão o período fixo selecionado (mês/dia/… — inclusive passado, via live).
-  const rotuloPeriodo = tipoIntervalo && liveData ? ROTULO_PERIODO.intervalo : ROTULO_PERIODO[periodo];
+  const rotuloPeriodo = tipoIntervalo && liveValido ? ROTULO_PERIODO.intervalo : ROTULO_PERIODO[periodo];
 
   // Fatia de cada breakdown no período selecionado (ou dado ao vivo, se disponível).
-  const vg = precisaLive && liveData ? liveData.visaoGeral : visaoGeral[periodo];
-  const plat = precisaLive && liveData ? liveData.plataforma : plataforma[periodo];
-  const serv = precisaLive && liveData ? liveData.servicos : servicos[periodo];
-  const fun = precisaLive && liveData ? liveData.funil : funil[periodo];
-  const hor = precisaLive && liveData ? liveData.horarios : horarios[periodo];
+  const vg = precisaLive && liveValido ? liveData!.visaoGeral : visaoGeral[periodo];
+  const plat = precisaLive && liveValido ? liveData!.plataforma : plataforma[periodo];
+  const serv = precisaLive && liveValido ? liveData!.servicos : servicos[periodo];
+  const fun = precisaLive && liveValido ? liveData!.funil : funil[periodo];
+  const hor = precisaLive && liveValido ? liveData!.horarios : horarios[periodo];
 
   const totalUsers = vg.reduce((acc, r) => acc + r.activeUsers, 0);
   const totalSessions = vg.reduce((acc, r) => acc + r.sessions, 0);

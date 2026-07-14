@@ -3,6 +3,7 @@ import { StoryCard } from "@/components/dashboard/StoryCard";
 import { MetricCard } from "@/components/dashboard/MetricCard";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
+import { ChartLoading } from "@/components/dashboard/ChartLoading";
 import { ServiceCardGrid } from "@/components/dashboard/ServiceCardGrid";
 import { BarChart } from "@/components/charts/BarChart";
 import { FunnelChart } from "@/components/charts/FunnelChart";
@@ -75,13 +76,15 @@ export function ServicosPorPerfilTab({
 
       {/* 3. Funil */}
       <DashboardSection title="Como o visitante chega ao serviço pelo filtro">
-        <FunnelChart
-          steps={[
-            { label: "Visitantes da home", value: resumo.homeVisitors },
-            { label: "Visitas aos serviços em destaque", value: resumo.atribuiveis },
-            { label: "Estimativa de uso do filtro", value: estimativaUsoFiltro },
-          ]}
-        />
+        <ChartLoading status={status} height={120}>
+          <FunnelChart
+            steps={[
+              { label: "Visitantes da home", value: resumo.homeVisitors },
+              { label: "Visitas aos serviços em destaque", value: resumo.atribuiveis },
+              { label: "Estimativa de uso do filtro", value: estimativaUsoFiltro },
+            ]}
+          />
+        </ChartLoading>
         <p className="mt-4 text-xs" style={{ color: "var(--ds-color-text-muted)" }}>
           Cada barra é uma etapa: quem visita a home, quem chega aos serviços em destaque, e quantos desses acessos vêm
           de fato do filtro de Perfil — a última barra é estimativa, não medida direta.
@@ -96,12 +99,14 @@ export function ServicosPorPerfilTab({
             serviços em destaque.
           </p>
         )}
-        <BarChart
-          data={distribuicao.map((d) => ({ perfil: d.perfilLabel, visitas: d.visitas }))}
-          xKey="perfil"
-          yKey="visitas"
-          corPorIndice={(i) => (i === 0 ? "var(--ds-color-primary-600)" : "var(--ds-color-text-muted)")}
-        />
+        <ChartLoading status={status} height={260}>
+          <BarChart
+            data={distribuicao.map((d) => ({ perfil: d.perfilLabel, visitas: d.visitas }))}
+            xKey="perfil"
+            yKey="visitas"
+            corPorIndice={(i) => (i === 0 ? "var(--ds-color-primary-600)" : "var(--ds-color-text-muted)")}
+          />
+        </ChartLoading>
         <p className="mt-3 text-xs" style={{ color: "var(--ds-color-text-muted)" }}>
           Só perfis com serviço exclusivo entram aqui — Empresa e Gestão Pública compartilham todos os destaques, então
           não dá pra saber quanto do acesso é de cada um.
@@ -117,13 +122,15 @@ export function ServicosPorPerfilTab({
               {(servicoTop.visitas / (servicosMaisAcessados[1]?.visitas || 1)).toFixed(1)}x o segundo colocado. Barra
               mais longa e mais escura = mais visitas. Clique num serviço para abrir no portal.
             </p>
-            <RankingBarChart
-              itens={servicosMaisAcessados.map((s) => ({
-                label: s.servico,
-                valor: s.visitas,
-                href: `${PORTAL_BASE_URL}${s.path}`,
-              }))}
-            />
+            <ChartLoading status={status} height={260}>
+              <RankingBarChart
+                itens={servicosMaisAcessados.map((s) => ({
+                  label: s.servico,
+                  valor: s.visitas,
+                  href: `${PORTAL_BASE_URL}${s.path}`,
+                }))}
+              />
+            </ChartLoading>
           </>
         ) : (
           <p className="text-sm" style={{ color: "var(--ds-color-text-muted)" }}>

@@ -3,6 +3,7 @@ import { ChoroplethMap } from "@/components/charts/ChoroplethMap";
 import { BrowserBarChart } from "@/components/charts/BrowserBarChart";
 import { DeviceBarChart } from "@/components/charts/DeviceBarChart";
 import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
+import { ChartLoading } from "@/components/dashboard/ChartLoading";
 import type { InsightNavegador } from "@/lib/insights";
 import type { Cidade, Navegador, Dispositivo, Horario } from "@/lib/data";
 
@@ -37,11 +38,13 @@ export function PerfilCidadaoTab({
           <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold mb-2">
             Distribuição geográfica (MS)
           </h3>
-          {matchRate > 0.5 ? (
-            <ChoroplethMap cidades={cidadesAtual} />
-          ) : (
-            <BarChart data={cidadesAtual.slice(0, 15)} xKey="cidade" yKey="visitas" height={260} />
-          )}
+          <ChartLoading status={status} height={260}>
+            {matchRate > 0.5 ? (
+              <ChoroplethMap cidades={cidadesAtual} />
+            ) : (
+              <BarChart data={cidadesAtual.slice(0, 15)} xKey="cidade" yKey="visitas" height={260} />
+            )}
+          </ChartLoading>
         </div>
         <div>
           <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold mb-2">
@@ -60,7 +63,9 @@ export function PerfilCidadaoTab({
           <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold mb-2 mt-4">
             Horário de acesso
           </h3>
-          <BarChart data={horariosAtual} xKey="hora" yKey="visitas" height={220} />
+          <ChartLoading status={status} height={220}>
+            <BarChart data={horariosAtual} xKey="hora" yKey="visitas" height={220} />
+          </ChartLoading>
         </div>
         <div>
           <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold mb-2">
@@ -71,13 +76,17 @@ export function PerfilCidadaoTab({
               {insightNavegador.navegador} é o navegador de {insightNavegador.participacaoPct.toFixed(0)}% dos acessos.
             </p>
           )}
-          <BrowserBarChart dados={navegadoresAtual} />
+          <ChartLoading status={status} height={220}>
+            <BrowserBarChart dados={navegadoresAtual} />
+          </ChartLoading>
         </div>
         <div>
           <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold mb-2">
             Dispositivos
           </h3>
-          <DeviceBarChart dados={dispositivosAtual} />
+          <ChartLoading status={status} height={220}>
+            <DeviceBarChart dados={dispositivosAtual} />
+          </ChartLoading>
         </div>
       </div>
     </div>

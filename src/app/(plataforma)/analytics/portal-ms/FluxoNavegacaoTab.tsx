@@ -4,6 +4,7 @@ import { StoryCard } from "@/components/dashboard/StoryCard";
 import { PORTAL_BASE_URL } from "@/components/dashboard/ServiceCardGrid";
 import { RankingBarChart } from "@/components/charts/RankingBarChart";
 import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
+import { ChartLoading } from "@/components/dashboard/ChartLoading";
 import { calcularInsightEntrada } from "@/lib/insights";
 import type { PaginaEntrada, DominioSaida } from "@/lib/data";
 
@@ -43,7 +44,7 @@ export function FluxoNavegacaoTab({
         <StoryCard
           anchor={`"${insightEntrada.pagina}" é a porta de entrada mais usada: ${insightEntrada.participacaoPct.toFixed(0)}% de quem chega direto ao portal cai nela.`}
           caption={`${insightEntrada.entradas.toLocaleString("pt-BR")} entradas registradas nessa página no período.`}
-          comoLer="Entrada é a primeira página que a pessoa abre na visita. Saída é pra qual outro serviço do governo ela segue depois. Os números mostram o período atual (dia/semana/mês/ano do filtro ao lado) — não mudam com a data de referência da sidebar."
+          comoLer="Entrada é a primeira página que a pessoa abre na visita. Saída é pra qual outro serviço do governo ela segue depois. Os números refletem o dia/semana/mês/ano selecionado, incluindo a data de referência na sidebar."
         />
       )}
 
@@ -55,10 +56,12 @@ export function FluxoNavegacaoTab({
           {portasEntrada.length === 0 ? (
             <EmptyCard message="Sem entradas no período." />
           ) : (
-            <RankingBarChart
-              cor="var(--ds-color-green-600)"
-              itens={portasEntrada.map((p) => ({ label: p.pagina, valor: p.entradas, href: linkDoPortal(p.pagina) }))}
-            />
+            <ChartLoading status={status} height={260}>
+              <RankingBarChart
+                cor="var(--ds-color-green-600)"
+                itens={portasEntrada.map((p) => ({ label: p.pagina, valor: p.entradas, href: linkDoPortal(p.pagina) }))}
+              />
+            </ChartLoading>
           )}
         </DashboardSection>
 
@@ -70,10 +73,12 @@ export function FluxoNavegacaoTab({
           {fugaHub.length === 0 ? (
             <EmptyCard message="Sem saídas no período." />
           ) : (
-            <RankingBarChart
-              cor="var(--ds-color-red-600)"
-              itens={fugaHub.map((f) => ({ label: f.dominio, valor: f.saidas, href: `https://${f.dominio}` }))}
-            />
+            <ChartLoading status={status} height={260}>
+              <RankingBarChart
+                cor="var(--ds-color-red-600)"
+                itens={fugaHub.map((f) => ({ label: f.dominio, valor: f.saidas, href: `https://${f.dominio}` }))}
+              />
+            </ChartLoading>
           )}
         </DashboardSection>
       </div>
