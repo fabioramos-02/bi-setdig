@@ -10,7 +10,6 @@ import {
   getGa4Horarios,
   getMatomoVisitasDiarias,
   getMatomoDispositivos,
-  getMatomoPerfilFiltro,
   getMatomoServicosMaisAcessados,
   getAppCatalogoServicos,
 } from "@/lib/data";
@@ -29,7 +28,6 @@ export default function AnalyticsMsDigitalPage() {
   // Cross-BI: dados do portal web (Matomo) pra comparar canais na aba "App × Portal".
   const portalDiarias = getMatomoVisitasDiarias();
   const portalDispositivos = getMatomoDispositivos();
-  const portalPerfil = getMatomoPerfilFiltro();
   const portalServicosMaisAcessados = getMatomoServicosMaisAcessados();
   // Catálogo de serviços do app (nativo × web) — estático, da planilha.
   const catalogo = getAppCatalogoServicos();
@@ -54,7 +52,6 @@ export default function AnalyticsMsDigitalPage() {
       horarios={horarios}
       portalDiarias={portalDiarias}
       portalDispositivos={portalDispositivos}
-      portalPerfil={portalPerfil}
       portalServicosMaisAcessados={portalServicosMaisAcessados}
       catalogo={catalogo}
       catalogoResumo={resumoCatalogo(catalogo)}

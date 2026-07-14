@@ -31,8 +31,6 @@ import type {
   HorarioGa4,
   VisitaDiaria,
   Dispositivo,
-  PeriodoFixo,
-  PerfilFiltroPeriodo,
   ServicoAcessado,
   ServicoCatalogo,
 } from "@/lib/data";
@@ -62,7 +60,6 @@ export function MsDigitalClient({
   horarios,
   portalDiarias,
   portalDispositivos,
-  portalPerfil,
   portalServicosMaisAcessados,
   catalogo,
   catalogoResumo,
@@ -75,7 +72,6 @@ export function MsDigitalClient({
   horarios: BreakdownPorPeriodo<HorarioGa4>;
   portalDiarias: VisitaDiaria[];
   portalDispositivos: BreakdownPorPeriodo<Dispositivo>;
-  portalPerfil: Record<PeriodoFixo, PerfilFiltroPeriodo>;
   portalServicosMaisAcessados: BreakdownPorPeriodo<ServicoAcessado>;
   catalogo: ServicoCatalogo[];
   catalogoResumo: ResumoCatalogo;
@@ -160,8 +156,9 @@ export function MsDigitalClient({
   const insightFunil = calcularInsightFunil(fun);
   const insightHorario = calcularInsightHorario(hor);
 
-  // Cross-BI: mesmo período nos dois canais. Portal = únicos do bucket + serviços
-  // do estudo de Perfil (Matomo), app = GA4. Reconciliação em lib/cross-canal.
+  // Cross-BI: mesmo período nos dois canais. Portal = únicos do bucket +
+  // serviços mais acessados gerais (Matomo), app = GA4. Reconciliação em
+  // lib/cross-canal (compara listas como conjuntos, não linha a linha).
   const comparacao = compararCanais({
     appVisaoGeral: vg,
     // Serviço-folha reclassificado (não a categoria crua do GA4) — mesmo dado do
