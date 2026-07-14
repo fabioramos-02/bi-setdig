@@ -1,121 +1,89 @@
 {
   "dia": [
     {
-      "termo": "inscrição estadual",
-      "buscas": 22
-    },
-    {
       "termo": "ipva",
-      "buscas": 17
+      "buscas": 18
     },
     {
-      "termo": "autoparcelamento",
+      "termo": "inscrição estadual",
       "buscas": 10
     },
     {
-      "termo": "substituição tributária",
-      "buscas": 6
-    },
-    {
       "termo": "procon",
-      "buscas": 3
+      "buscas": 7
     },
     {
-      "termo": "gestão pública",
-      "buscas": 2
+      "termo": "substituição tributária",
+      "buscas": 5
     },
     {
       "termo": "itcd",
-      "buscas": 2
-    },
-    {
-      "termo": "cidadão",
-      "buscas": 1
-    },
-    {
-      "termo": "cin",
-      "buscas": 1
-    },
-    {
-      "termo": "consultar meu ipva pago valores",
-      "buscas": 1
-    },
-    {
-      "termo": "coordenador pedagógico",
-      "buscas": 1
+      "buscas": 3
     },
     {
       "termo": "efd",
+      "buscas": 2
+    },
+    {
+      "termo": "empresa",
+      "buscas": 2
+    },
+    {
+      "termo": "mulher",
+      "buscas": 2
+    },
+    {
+      "termo": "autoparcelamento",
       "buscas": 1
     },
     {
-      "termo": "emissão de nota fiscal",
+      "termo": "boletim",
       "buscas": 1
     },
     {
-      "termo": "fundação estadual jornalista luiz chagas de rádio e televisão",
+      "termo": "pagar ipva",
       "buscas": 1
     },
     {
-      "termo": "infração de trânsito",
+      "termo": "registra um boletim de ocorrência",
       "buscas": 1
     },
     {
-      "termo": "passaporte",
-      "buscas": 1
-    },
-    {
-      "termo": "qaq0188",
-      "buscas": 1
-    },
-    {
-      "termo": "rg",
+      "termo": "servidor",
       "buscas": 1
     }
   ],
   "semana": [
     {
-      "termo": "inscrição estadual",
-      "buscas": 363
+      "termo": "ipva",
+      "buscas": 122
     },
     {
-      "termo": "ipva",
-      "buscas": 226
+      "termo": "inscrição estadual",
+      "buscas": 84
     },
     {
       "termo": "procon",
-      "buscas": 120
+      "buscas": 31
     },
     {
       "termo": "substituição tributária",
-      "buscas": 113
-    },
-    {
-      "termo": "autoparcelamento",
-      "buscas": 56
+      "buscas": 28
     },
     {
       "termo": "itcd",
-      "buscas": 38
+      "buscas": 15
+    },
+    {
+      "termo": "autoparcelamento",
+      "buscas": 9
     },
     {
       "termo": "cidadão",
-      "buscas": 25
-    },
-    {
-      "termo": "empresa",
-      "buscas": 12
-    },
-    {
-      "termo": "licenciamento",
-      "buscas": 10
-    },
-    {
-      "termo": "nota fiscal",
       "buscas": 8
     },
     {
-      "termo": "servidor",
+      "termo": "empresa",
       "buscas": 8
     },
     {
@@ -123,156 +91,168 @@
       "buscas": 6
     },
     {
-      "termo": "efd",
+      "termo": "servidor",
       "buscas": 5
     },
     {
-      "termo": "fundação estadual jornalista luiz chagas de rádio e televisão",
+      "termo": "licenciamento",
       "buscas": 4
     },
     {
-      "termo": "programa de nota fiscal",
-      "buscas": 4
+      "termo": "assinatura digital",
+      "buscas": 3
     },
     {
       "termo": "defesa civil",
       "buscas": 3
     },
     {
-      "termo": "gestão pública",
+      "termo": "efd",
       "buscas": 3
     },
     {
-      "termo": "identidade",
+      "termo": "mulher",
       "buscas": 3
     },
     {
-      "termo": "julho das pretas",
-      "buscas": 3
+      "termo": "2 via do rg",
+      "buscas": 2
     },
     {
-      "termo": "motorista",
-      "buscas": 3
+      "termo": "fundação estadual jornalista luiz chagas de rádio e televisão",
+      "buscas": 2
+    },
+    {
+      "termo": "operador de maquinas",
+      "buscas": 2
+    },
+    {
+      "termo": "rondônia",
+      "buscas": 2
+    },
+    {
+      "termo": "cin",
+      "buscas": 2
     }
   ],
   "mes": [
     {
-      "termo": "inscrição estadual",
-      "buscas": 482
+      "termo": "ipva",
+      "buscas": 624
     },
     {
-      "termo": "ipva",
-      "buscas": 403
+      "termo": "inscrição estadual",
+      "buscas": 617
     },
     {
       "termo": "procon",
-      "buscas": 220
+      "buscas": 277
     },
     {
       "termo": "substituição tributária",
-      "buscas": 209
+      "buscas": 264
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 78
+      "buscas": 97
     },
     {
       "termo": "itcd",
-      "buscas": 73
+      "buscas": 96
     },
     {
       "termo": "cidadão",
-      "buscas": 55
+      "buscas": 65
     },
     {
       "termo": "servidor",
-      "buscas": 30
+      "buscas": 41
     },
     {
       "termo": "empresa",
-      "buscas": 27
+      "buscas": 38
     },
     {
       "termo": "licenciamento",
-      "buscas": 24
+      "buscas": 34
+    },
+    {
+      "termo": "cnh",
+      "buscas": 19
+    },
+    {
+      "termo": "efd",
+      "buscas": 16
     },
     {
       "termo": "nota fiscal",
       "buscas": 13
     },
     {
-      "termo": "efd",
-      "buscas": 11
-    },
-    {
-      "termo": "cnh",
-      "buscas": 9
+      "termo": "mulher",
+      "buscas": 12
     },
     {
       "termo": "defesa civil",
-      "buscas": 8
-    },
-    {
-      "termo": "mulher",
-      "buscas": 7
+      "buscas": 11
     },
     {
       "termo": "rg",
-      "buscas": 7
+      "buscas": 10
+    },
+    {
+      "termo": "fundação estadual jornalista luiz chagas de rádio e televisão",
+      "buscas": 9
+    },
+    {
+      "termo": "gestão pública",
+      "buscas": 8
     },
     {
       "termo": "programa de nota fiscal",
       "buscas": 6
     },
     {
-      "termo": "fundação estadual jornalista luiz chagas de rádio e televisão",
+      "termo": "pagar ipva",
       "buscas": 5
-    },
-    {
-      "termo": "gestão pública",
-      "buscas": 5
-    },
-    {
-      "termo": "agehab",
-      "buscas": 4
     }
   ],
   "ano": [
     {
       "termo": "ipva",
-      "buscas": 27114
+      "buscas": 27335
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 7587
+      "buscas": 7722
     },
     {
       "termo": "procon",
-      "buscas": 5950
+      "buscas": 6007
     },
     {
       "termo": "substituição tributária",
-      "buscas": 3888
+      "buscas": 3943
     },
     {
       "termo": "itcd",
-      "buscas": 1459
+      "buscas": 1482
     },
     {
       "termo": "cidadão",
-      "buscas": 1294
+      "buscas": 1304
     },
     {
       "termo": "servidor",
-      "buscas": 1114
+      "buscas": 1125
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 1057
+      "buscas": 1076
     },
     {
       "termo": "empresa",
-      "buscas": 592
+      "buscas": 603
     },
     {
       "termo": "nota fiscal",
@@ -280,23 +260,23 @@
     },
     {
       "termo": "licenciamento",
-      "buscas": 222
+      "buscas": 232
     },
     {
       "termo": "mulher",
-      "buscas": 206
-    },
-    {
-      "termo": "defesa civil",
-      "buscas": 190
+      "buscas": 211
     },
     {
       "termo": "cnh",
-      "buscas": 187
+      "buscas": 197
+    },
+    {
+      "termo": "defesa civil",
+      "buscas": 193
     },
     {
       "termo": "efd",
-      "buscas": 173
+      "buscas": 178
     },
     {
       "termo": "web email",
@@ -304,15 +284,15 @@
     },
     {
       "termo": "fundação estadual jornalista luiz chagas de rádio e televisão",
-      "buscas": 134
+      "buscas": 138
     },
     {
       "termo": "rg",
-      "buscas": 129
+      "buscas": 132
     },
     {
       "termo": "gestão pública",
-      "buscas": 120
+      "buscas": 123
     },
     {
       "termo": "processo seletivo",

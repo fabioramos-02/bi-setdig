@@ -185,6 +185,14 @@ export function getAppCatalogoServicos(): ServicoCatalogo[] {
   return readDataset<ServicoCatalogo[]>("app", "v1", "catalogo-servicos") ?? [];
 }
 
+// Relação de sites monitorados no Matomo (SitesManager). Estático — a lista
+// muda pouco; sem recorte por período (não é métrica). Alimenta o menu "Sites".
+export type Site = { idsite: number; nome: string; url: string };
+
+export function getMatomoSites(): Site[] {
+  return readDataset<Site[]>("matomo", "v1", "sites") ?? [];
+}
+
 // --- Serviços: inventário de cartas + maturidade digital (ADR-005) ---
 // Estático (snapshot de cadastro, não métrica de uso) — sem breakdown de período.
 export type MaturidadeBucket = { nivel: 0 | 1 | 2 | 3 | 4; total: number };

@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "matomo/sites",
+  "description": "Relação de sites monitorados no Matomo (SitesManager.getSitesWithMinimumAccess)",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["idsite", "nome", "url"],
+    "properties": {
+      "idsite": { "type": "integer" },
+      "nome": { "type": "string" },
+      "url": { "type": "string" }
+    }
+  }
+}

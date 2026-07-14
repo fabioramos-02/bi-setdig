@@ -1,0 +1,722 @@
+[
+  {
+    "idsite": 221,
+    "nome": "63 GDFAZ",
+    "url": "http://www.63gdfaz.ms.gov.br"
+  },
+  {
+    "idsite": 30,
+    "nome": "ACADEPOL",
+    "url": "http://www.acadepol.ms.gov.br"
+  },
+  {
+    "idsite": 176,
+    "nome": "ACESSO NEGADO",
+    "url": "http://www.templates.sgi.ms.gov.br/paginas-de-erro/acesso-negado.html"
+  },
+  {
+    "idsite": 60,
+    "nome": "AEM",
+    "url": "http://www.aem.ms.gov.br"
+  },
+  {
+    "idsite": 34,
+    "nome": "AGEHAB",
+    "url": "http://www.agehab.ms.gov.br"
+  },
+  {
+    "idsite": 53,
+    "nome": "AGEMS",
+    "url": "https://www.agems.ms.gov.br"
+  },
+  {
+    "idsite": 295,
+    "nome": "AGENCIA DE NOTICIAS",
+    "url": "http://agenciadenoticias.ms.gov.br"
+  },
+  {
+    "idsite": 286,
+    "nome": "AGENDA BIO PARQUE PANTANAL",
+    "url": "https://agendamento.bioparquepantanal.ms.gov.br"
+  },
+  {
+    "idsite": 122,
+    "nome": "Agepan Sistemas",
+    "url": "http://sistemas.agepan.ms.gov.br"
+  },
+  {
+    "idsite": 47,
+    "nome": "AGEPEN",
+    "url": "http://www.agepen.ms.gov.br"
+  },
+  {
+    "idsite": 29,
+    "nome": "AGEPREV",
+    "url": "http://www.ageprev.ms.gov.br"
+  },
+  {
+    "idsite": 13,
+    "nome": "AGESUL",
+    "url": "http://www.agesul.ms.gov.br"
+  },
+  {
+    "idsite": 52,
+    "nome": "AGRAER",
+    "url": "http://www.agraer.ms.gov.br"
+  },
+  {
+    "idsite": 193,
+    "nome": "API SGI",
+    "url": "http://api.ms.gov.br"
+  },
+  {
+    "idsite": 313,
+    "nome": "ARQUIVO DE NOTICIAS",
+    "url": "http://www.arquivodenoticias.ms.gov.br"
+  },
+  {
+    "idsite": 161,
+    "nome": "ASSINADOR DIGITAL",
+    "url": "http://www.assinadordigital.ms.gov.br"
+  },
+  {
+    "idsite": 157,
+    "nome": "AUTO ATENDIMENTO",
+    "url": "http://www.autoatendimento.ms.gov.br"
+  },
+  {
+    "idsite": 283,
+    "nome": "BIO PARQUE PANTANAL",
+    "url": "http://bioparquepantanal.ms.gov.br, https://bioparquepantanal.ms.gov.br"
+  },
+  {
+    "idsite": 32,
+    "nome": "BOMBEIROS",
+    "url": "http://www.bombeiros.ms.gov.br"
+  },
+  {
+    "idsite": 213,
+    "nome": "CADASTRO SED",
+    "url": "http://cadastro.sistemas.sed.ms.gov.br"
+  },
+  {
+    "idsite": 196,
+    "nome": "CadPAss",
+    "url": "https://servicos.efazenda.ms.gov.br/cadpass"
+  },
+  {
+    "idsite": 188,
+    "nome": "CalculaFrete",
+    "url": "http://servicos.efazenda.ms.gov.br/calculafrete"
+  },
+  {
+    "idsite": 306,
+    "nome": "CANAL DENUNCIA",
+    "url": "http://www.canaldedenuncia.ms.gov.br"
+  },
+  {
+    "idsite": 294,
+    "nome": "CASA CIVIL",
+    "url": "http://www.casacivil.ms.gov.br"
+  },
+  {
+    "idsite": 83,
+    "nome": "CEASA",
+    "url": "http://www.ceasa.ms.gov.br"
+  },
+  {
+    "idsite": 163,
+    "nome": "CECTE",
+    "url": "https://servicos.efazenda.ms.gov.br/cecte"
+  },
+  {
+    "idsite": 63,
+    "nome": "CEE",
+    "url": "http://www.cee.ms.gov.br"
+  },
+  {
+    "idsite": 55,
+    "nome": "CEMTEC",
+    "url": "http://www.cemtec.ms.gov.br"
+  },
+  {
+    "idsite": 290,
+    "nome": "CENSO",
+    "url": "http://www.censo.ms.gov.br, https://www.censo.ms.gov.br"
+  },
+  {
+    "idsite": 22,
+    "nome": "CENTRAL DE COMPRAS",
+    "url": "http://www.centraldecompras.ms.gov.br"
+  },
+  {
+    "idsite": 46,
+    "nome": "CENTRO DE CONVENCOES",
+    "url": "http://www.centrodeconvencoes.ms.gov.br"
+  },
+  {
+    "idsite": 202,
+    "nome": "CGE (CONTROLADORIA GERAL DO ESTADO)",
+    "url": "http://www.cge.ms.gov.br"
+  },
+  {
+    "idsite": 205,
+    "nome": "CGP SEJUSP",
+    "url": "http://www.cgp.sejusp.ms.gov.br"
+  },
+  {
+    "idsite": 58,
+    "nome": "COFIMT",
+    "url": "http://www.cofimt.ms.gov.br"
+  },
+  {
+    "idsite": 110,
+    "nome": "COGEF",
+    "url": "http://www.cogef.ms.gov.br"
+  },
+  {
+    "idsite": 261,
+    "nome": "COMPRAS",
+    "url": "http://www.compras.ms.gov.br"
+  },
+  {
+    "idsite": 257,
+    "nome": "COMPRAS CORONA VIRUS",
+    "url": "http://www.comprascoronavirus.ms.gov.br"
+  },
+  {
+    "idsite": 189,
+    "nome": "Controle de Publicação da SGI",
+    "url": "http://www.cpsgi.ms.gov.br"
+  },
+  {
+    "idsite": 194,
+    "nome": "CONV115",
+    "url": "http://servicos.efazenda.ms.gov.br/conv115"
+  },
+  {
+    "idsite": 301,
+    "nome": "CORRIDA DOS PODERES",
+    "url": "https://corridadospoderes.ms.gov.br"
+  },
+  {
+    "idsite": 288,
+    "nome": "DADOS (CKAN)",
+    "url": "http://www.dados.ms.gov.br, http://hom.dados.ms.gov.br"
+  },
+  {
+    "idsite": 59,
+    "nome": "DEFENSORIA",
+    "url": "http://www.defensoria.ms.gov.br"
+  },
+  {
+    "idsite": 184,
+    "nome": "DETRAN",
+    "url": "http://www.detran.ms.gov.br"
+  },
+  {
+    "idsite": 296,
+    "nome": "DOE VIDA - CBMMS",
+    "url": "https://doevida.bombeiros.ms.gov.br"
+  },
+  {
+    "idsite": 75,
+    "nome": "DOF",
+    "url": "http://www.dof.ms.gov.br"
+  },
+  {
+    "idsite": 293,
+    "nome": "E-Fronteiras",
+    "url": "https://servicos.efazenda.ms.gov.br/efronteiras"
+  },
+  {
+    "idsite": 190,
+    "nome": "e-Ouv Agepan",
+    "url": "http://ouvidoria.agepan.ms.gov.br"
+  },
+  {
+    "idsite": 149,
+    "nome": "E-SANIAGRO",
+    "url": "https://servicos.efazenda.ms.gov.br/e-saniagro"
+  },
+  {
+    "idsite": 307,
+    "nome": "E-SERVICOS SEFAZ",
+    "url": "http://eservicos.sefaz.ms.gov.br"
+  },
+  {
+    "idsite": 219,
+    "nome": "EDOC",
+    "url": "http://www.edoc.ms.gov.br"
+  },
+  {
+    "idsite": 70,
+    "nome": "EDUCACAO FISCAL",
+    "url": "http://www.educacaofiscal.ms.gov.br"
+  },
+  {
+    "idsite": 167,
+    "nome": "Ef_ControlarTransportadora",
+    "url": "https://efazenda.servicos.ms.gov.br/ef_controlartransportadora"
+  },
+  {
+    "idsite": 169,
+    "nome": "Ef_DecCompra",
+    "url": "https://efazenda.servicos.ms.gov.br/ef_deccompra"
+  },
+  {
+    "idsite": 247,
+    "nome": "EPE SEGOV",
+    "url": "http://www.epe.segov.ms.gov.br"
+  },
+  {
+    "idsite": 64,
+    "nome": "ESCOLAGOV",
+    "url": "http://www.escolagov.ms.gov.br"
+  },
+  {
+    "idsite": 50,
+    "nome": "ESP",
+    "url": "http://www.esp.ms.gov.br"
+  },
+  {
+    "idsite": 49,
+    "nome": "ETSUS",
+    "url": "http://www.etsus.ms.gov.br"
+  },
+  {
+    "idsite": 278,
+    "nome": "FADEB",
+    "url": "http://www.fadeb.ms.gov.br, https://www.fadeb.ms.gov.br"
+  },
+  {
+    "idsite": 223,
+    "nome": "FALE CONOSCO",
+    "url": "http://www.faleconosco.ms.gov.br"
+  },
+  {
+    "idsite": 143,
+    "nome": "FAQ AUTOATENDIMENTO",
+    "url": "http://faq.autoatendimento.ms.gov.br"
+  },
+  {
+    "idsite": 17,
+    "nome": "FUNDACAO DE CULTURA",
+    "url": "http://www.fundacaodecultura.ms.gov.br"
+  },
+  {
+    "idsite": 230,
+    "nome": "FUNDECT",
+    "url": "http://www.fundect.ms.gov.br"
+  },
+  {
+    "idsite": 27,
+    "nome": "FUNDESPORTE",
+    "url": "http://www.fundesporte.ms.gov.br"
+  },
+  {
+    "idsite": 14,
+    "nome": "FUNTRAB",
+    "url": "http://www.funtrab.ms.gov.br"
+  },
+  {
+    "idsite": 159,
+    "nome": "GDI",
+    "url": "http://www.gdi.ms.gov.br"
+  },
+  {
+    "idsite": 28,
+    "nome": "HEMOSUL",
+    "url": "http://www.hemosul.ms.gov.br"
+  },
+  {
+    "idsite": 86,
+    "nome": "HRMS (HOSPITAL REGIONAL)",
+    "url": "http://www.hrms.ms.gov.br"
+  },
+  {
+    "idsite": 44,
+    "nome": "IAGRO",
+    "url": "http://www.iagro.ms.gov.br"
+  },
+  {
+    "idsite": 79,
+    "nome": "ICMS TRANSPARENTE",
+    "url": "http://www.icmstransparente.ms.gov.br"
+  },
+  {
+    "idsite": 57,
+    "nome": "IMASUL",
+    "url": "http://www.imasul.ms.gov.br"
+  },
+  {
+    "idsite": 11,
+    "nome": "IMPRENSA OFICIAL",
+    "url": "http://www.imprensaoficial.ms.gov.br"
+  },
+  {
+    "idsite": 152,
+    "nome": "INDICADORES",
+    "url": "http://www.indicadores.ms.gov.br"
+  },
+  {
+    "idsite": 217,
+    "nome": "INFORMACOES FISCAIS",
+    "url": "https://efazenda.servicos.ms.gov.br/informacoesfiscais"
+  },
+  {
+    "idsite": 305,
+    "nome": "INVEST MS",
+    "url": "http://hom.investms.ms.gov.br"
+  },
+  {
+    "idsite": 220,
+    "nome": "IPM",
+    "url": "https://servicos.efazenda.ms.gov.br/ipm"
+  },
+  {
+    "idsite": 218,
+    "nome": "ITMM",
+    "url": "https://servicos.efazenda.ms.gov.br/itmm"
+  },
+  {
+    "idsite": 88,
+    "nome": "JUCEMS",
+    "url": "http://www.jucems.ms.gov.br"
+  },
+  {
+    "idsite": 211,
+    "nome": "juridico.agepan.ms.gov.br",
+    "url": "http://juridico.agepan.ms.gov.br"
+  },
+  {
+    "idsite": 274,
+    "nome": "LGPD",
+    "url": "http://www.lgpd.ms.gov.br"
+  },
+  {
+    "idsite": 311,
+    "nome": "LOTESUL",
+    "url": "http://www.lotesul.ms.gov.br"
+  },
+  {
+    "idsite": 263,
+    "nome": "MANUCA",
+    "url": "http://manuca.semagro.ms.gov.br"
+  },
+  {
+    "idsite": 268,
+    "nome": "MAPA CULTURAL",
+    "url": "http://www.mapacultural.ms.gov.br"
+  },
+  {
+    "idsite": 78,
+    "nome": "MATRICULA DIGITAL",
+    "url": "http://www.matriculadigital.ms.gov.br"
+  },
+  {
+    "idsite": 2,
+    "nome": "MS",
+    "url": "https://www.ms.gov.br"
+  },
+  {
+    "idsite": 310,
+    "nome": "MS ATIVO",
+    "url": "http://msativo.ms.gov.br"
+  },
+  {
+    "idsite": 308,
+    "nome": "MS ATIVO AMBIENTAIS",
+    "url": "http://www.msmineral.ms.gov.br"
+  },
+  {
+    "idsite": 309,
+    "nome": "MS CULTURAL",
+    "url": "http://mscultural.ms.gov.br"
+  },
+  {
+    "idsite": 203,
+    "nome": "MS Digital",
+    "url": "http://www.msdigital.ms.gov.br"
+  },
+  {
+    "idsite": 265,
+    "nome": "NOTA MS PREMIADA",
+    "url": "http://notamspremiada.ms.gov.br, http://www.notamspremiada.ms.gov.br"
+  },
+  {
+    "idsite": 255,
+    "nome": "NÃO SE CALE",
+    "url": "http://www.naosecale.ms.gov.br"
+  },
+  {
+    "idsite": 226,
+    "nome": "OBSERVATORIO TURISMO",
+    "url": "http://www.observatorioturismo.ms.gov.br"
+  },
+  {
+    "idsite": 177,
+    "nome": "PAGINA NAO ENCONTRADA",
+    "url": "http://www.templates.sgi.ms.gov.br/paginas-de-erro/pagina-nao-encontrada.html"
+  },
+  {
+    "idsite": 39,
+    "nome": "PGE",
+    "url": "http://www.pge.ms.gov.br"
+  },
+  {
+    "idsite": 90,
+    "nome": "POLICIA CIVIL",
+    "url": "http://www.pc.ms.gov.br"
+  },
+  {
+    "idsite": 31,
+    "nome": "POLICIA MILITAR",
+    "url": "http://www.pm.ms.gov.br"
+  },
+  {
+    "idsite": 142,
+    "nome": "PORTAL DA EDUCATIVA",
+    "url": "http://www.portaldaeducativa.ms.gov.br"
+  },
+  {
+    "idsite": 298,
+    "nome": "PORTAL DE SERVICOS MS",
+    "url": "http://ms.gov.br"
+  },
+  {
+    "idsite": 43,
+    "nome": "PROCON",
+    "url": "http://www.procon.ms.gov.br"
+  },
+  {
+    "idsite": 107,
+    "nome": "PROFESSOR",
+    "url": "http://www.professor.ms.gov.br"
+  },
+  {
+    "idsite": 199,
+    "nome": "reciboconv115",
+    "url": "http://servicos.efazenda.ms.gov.br/reciboconv115"
+  },
+  {
+    "idsite": 4,
+    "nome": "SAD",
+    "url": "http://www.sad.ms.gov.br"
+  },
+  {
+    "idsite": 93,
+    "nome": "SAUDE",
+    "url": "http://www.saude.ms.gov.br"
+  },
+  {
+    "idsite": 19,
+    "nome": "SEAD",
+    "url": "http://www.sead.ms.gov.br"
+  },
+  {
+    "idsite": 304,
+    "nome": "SEC",
+    "url": "http://www.sec.ms.gov.br"
+  },
+  {
+    "idsite": 51,
+    "nome": "SED",
+    "url": "http://www.sed.ms.gov.br"
+  },
+  {
+    "idsite": 94,
+    "nome": "SEFAZ",
+    "url": "http://www.sefaz.ms.gov.br"
+  },
+  {
+    "idsite": 3,
+    "nome": "SEGOV",
+    "url": "http://www.segov.ms.gov.br"
+  },
+  {
+    "idsite": 5,
+    "nome": "SEILOG",
+    "url": "http://www.seilog.ms.gov.br"
+  },
+  {
+    "idsite": 15,
+    "nome": "SEJUSP",
+    "url": "http://www.sejusp.ms.gov.br"
+  },
+  {
+    "idsite": 37,
+    "nome": "SEMADESC",
+    "url": "http://www.semadesc.ms.gov.br"
+  },
+  {
+    "idsite": 312,
+    "nome": "SEMINARIO INTERNACIONAL BIOCEANICA",
+    "url": "http://www.seminariointernacionalbioceanica.ms.gov.br"
+  },
+  {
+    "idsite": 120,
+    "nome": "Servicos SEJUSP",
+    "url": "http://servicos.sejusp.ms.gov.br"
+  },
+  {
+    "idsite": 215,
+    "nome": "servicos.efazenda.ms.gov.br/crd/creditotributario",
+    "url": "https://servicos.efazenda.ms.gov.br/crd/creditotributario"
+  },
+  {
+    "idsite": 101,
+    "nome": "SERVIDOR",
+    "url": "http://www.servidor.ms.gov.br"
+  },
+  {
+    "idsite": 276,
+    "nome": "SETESC",
+    "url": "http://www.setesc.ms.gov.br"
+  },
+  {
+    "idsite": 314,
+    "nome": "SEU ABRACAO AQUECE",
+    "url": "https://www.seuabracoaquece.ms.gov.br"
+  },
+  {
+    "idsite": 178,
+    "nome": "SGAIT",
+    "url": "https://servicos.efazenda.ms.gov.br/sgait"
+  },
+  {
+    "idsite": 77,
+    "nome": "SGDE",
+    "url": "http://www.sgde.ms.gov.br"
+  },
+  {
+    "idsite": 1,
+    "nome": "SGI | SETDIG",
+    "url": "http://www.sgi.ms.gov.br"
+  },
+  {
+    "idsite": 186,
+    "nome": "SICAC",
+    "url": "https://servicos.efazenda.ms.gov.br/sicac"
+  },
+  {
+    "idsite": 109,
+    "nome": "SIGO",
+    "url": "http://www.sigo.ms.gov.br"
+  },
+  {
+    "idsite": 121,
+    "nome": "SIGO Estatistica",
+    "url": "http://estatistica.sigo.ms.gov.br"
+  },
+  {
+    "idsite": 195,
+    "nome": "SIP",
+    "url": "http://www.sip.ms.gov.br"
+  },
+  {
+    "idsite": 155,
+    "nome": "SIPEM",
+    "url": "http://www.sipem.ms.gov.br"
+  },
+  {
+    "idsite": 106,
+    "nome": "SIRIEMA IMASUL",
+    "url": "http://siriema.imasul.ms.gov.br"
+  },
+  {
+    "idsite": 123,
+    "nome": "SISLA - IMASUL",
+    "url": "http://sisla.imasul.ms.gov.br"
+  },
+  {
+    "idsite": 187,
+    "nome": "SISROTAS",
+    "url": "https://servicos.efazenda.ms.gov.br/sisrotas"
+  },
+  {
+    "idsite": 183,
+    "nome": "SOLSERV",
+    "url": "http://www.solserv.ms.gov.br"
+  },
+  {
+    "idsite": 154,
+    "nome": "SPDO",
+    "url": "http://www.spdo.ms.gov.br"
+  },
+  {
+    "idsite": 112,
+    "nome": "SPF",
+    "url": "http://www.spf.ms.gov.br"
+  },
+  {
+    "idsite": 166,
+    "nome": "SPFAZ",
+    "url": "https://servicos.efazenda.ms.gov.br/spfaz"
+  },
+  {
+    "idsite": 172,
+    "nome": "SPP",
+    "url": "https://servicos.efazenda.ms.gov.br/spp"
+  },
+  {
+    "idsite": 171,
+    "nome": "TEMPDOC",
+    "url": "http://www.tempdoc.ms.gov.br"
+  },
+  {
+    "idsite": 158,
+    "nome": "TI - AGEPAN",
+    "url": "http://ti.agepan.ms.gov.br"
+  },
+  {
+    "idsite": 191,
+    "nome": "Tramitação PapelZero",
+    "url": "http://tramitacao.api.papelzero.sed.ms.gov.br"
+  },
+  {
+    "idsite": 104,
+    "nome": "TRANSPARENCIA",
+    "url": "http://www.portaldatransparencia.ms.gov.br, http://www.transparencia.ms.gov.br, https://www.portaldatransparencia.ms.gov.br, https://www.transparencia.ms.gov.br"
+  },
+  {
+    "idsite": 45,
+    "nome": "TURISMO",
+    "url": "http://www.turismo.ms.gov.br"
+  },
+  {
+    "idsite": 291,
+    "nome": "UCQI LAYOUT",
+    "url": "http://hom.ucqilayout1.ms.gov.br"
+  },
+  {
+    "idsite": 297,
+    "nome": "VOCE PARTICIPA [PPA-PLANO PLURIAL ANUAL]",
+    "url": "http://voceparticipa.ms.gov.br"
+  },
+  {
+    "idsite": 192,
+    "nome": "WEB API e-Saniagro",
+    "url": "http://servicos.efazenda.ms.gov.br/api-esaniagro"
+  },
+  {
+    "idsite": 150,
+    "nome": "WSPESQUISAPRECO",
+    "url": "http://wspesquisapreco.sed.ms.gov.br"
+  },
+  {
+    "idsite": 38,
+    "nome": "WW2 SERVIDOR",
+    "url": "http://ww2.servidor.ms.gov.br"
+  },
+  {
+    "idsite": 198,
+    "nome": "www.bloqtel.ms.gov.br",
+    "url": "http://www.bloqtel.ms.gov.br"
+  },
+  {
+    "idsite": 200,
+    "nome": "www.eveiculos.ms.gov.br",
+    "url": "http://www.eveiculos.ms.gov.br"
+  }
+]

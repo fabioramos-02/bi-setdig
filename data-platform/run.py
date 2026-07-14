@@ -194,6 +194,15 @@ def run_ga4_perfil() -> None:
     print(f"[ga4] horarios -> {[(k, len(v)) for k, v in horarios.items()]}")
 
 
+def run_sites() -> None:
+    """Relação de sites monitorados no Matomo (SitesManager) — alimenta o menu
+    "Sites". Estático (a lista muda pouco), sem recorte por período."""
+    dados = t_matomo.sites(matomo.get_sites())
+    validate_rows(dados, required=["idsite", "nome", "url"], non_negative=["idsite"])
+    out = publish("matomo", "sites", dados)
+    print(f"[matomo] sites -> {out} ({len(dados)} sites)")
+
+
 def run_cartas() -> None:
     from extract import cartas
     from transform import servicos_cartas as t_servicos
@@ -236,6 +245,7 @@ if __name__ == "__main__":
         ("matomo_jornada", run_matomo_jornada),
         ("ga4", run_ga4),
         ("ga4_perfil", run_ga4_perfil),
+        ("sites", run_sites),
         ("cartas", run_cartas),
     ]:
         try:

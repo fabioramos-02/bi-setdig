@@ -1,12 +1,12 @@
 [
   {
-    "totalEtapas": 5044,
+    "totalEtapas": 5045,
     "servicosComJornada": 1420,
     "mediaEtapasPorServico": 3.55,
     "porCanal": [
       {
         "canal": "{Online}",
-        "total": 3338
+        "total": 3339
       },
       {
         "canal": "{Online,Presencial}",

@@ -9,6 +9,7 @@ import { ThemeToggle } from "@/components/ds/ThemeToggle";
 const DOMINIOS = [
   { nome: "Portal Único", rota: "/analytics/portal-ms" },
   { nome: "MS Digital", rota: "/analytics/ms-digital" },
+  { nome: "Sites", rota: "/sites" },
   { nome: "Serviços", rota: "/servicos" },
   { nome: "Qualidade", rota: "/qualidade" },
   { nome: "Governança", rota: "/governanca" },

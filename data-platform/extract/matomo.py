@@ -100,3 +100,16 @@ def get_outlinks(period: str, date: str, site_id: str | None = None, limit: int 
     return _call("Actions.getOutlinks", period, date, {"filter_limit": limit}, site_id)
 
 
+def get_sites(limit: int = 200) -> list:
+    """Relação de sites monitorados no Matomo (SitesManager). `period`/`date`/
+    `idSite` são ignorados por este método (lista sites, não métricas de um
+    site) — passo valores dummy só porque `_call` os exige. `permission=view`
+    = sites que o token consegue ao menos visualizar."""
+    return _call(
+        "SitesManager.getSitesWithMinimumAccess",
+        "day",
+        "today",
+        {"permission": "view", "filter_limit": limit},
+    )
+
+

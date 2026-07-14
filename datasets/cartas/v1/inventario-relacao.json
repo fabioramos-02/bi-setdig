@@ -9787,6 +9787,28 @@
     "updatedAt": "2025-09-04T20:28:13.595098-04:00"
   },
   {
+    "titulo": "Cadastro do comércio, indústria e serviços (CCIS) - inscrição de contribuinte localizado em outra unidade da federação como substituto tributário do ICMS mediante Termo de Responsabilidade",
+    "nomePopular": "Solicitar inscrição estadual no CCIS de contribuinte localizado em outra UF como substituto tributário",
+    "slug": "cadastro-do-comercio-industria-e-servicos-ccis-inscricao-de-contribuinte-localizado-em-outra-unidade-da-federacao-como-substituto-tributario-do-icms-mediante-termo-de-responsabilidade77",
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "categoria": "empresa-industria-e-comercio",
+    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Contribuinte do com&eacute;rcio ou ind&uacute;stria localizado em outra Unidade da Federa&ccedil;&atilde;o, que fabrique, importe e/ou comercialize mercadorias sujeitas ao Regime de Substitui&ccedil;&atilde;o Tribut&aacute;ria.</span></p>",
+    "publicoEspecifico": [
+      "Empresa"
+    ],
+    "ativo": true,
+    "digital": false,
+    "online": false,
+    "destaque": false,
+    "custo": "Conforme tabela em \"Outras Informações\".",
+    "tempoTotal": 20,
+    "tipoTempo": "Dias corridos",
+    "nivelMaturidade": 1,
+    "maturidadeOrigem": "heuristica",
+    "updatedAt": "2026-07-10T14:26:41.684299-04:00"
+  },
+  {
     "titulo": "Solicitar liberação de assinatura de documentos eletrônicos (Sistema e-MS",
     "nomePopular": "pedir par assinar de forma digital em processos e documentos dentro da instituição",
     "slug": "solicitar-liberacao-de-assinatura-de-documentos-eletronicos-sistema-e-ms96",
@@ -10269,6 +10291,28 @@
     "nivelMaturidade": 0,
     "maturidadeOrigem": "heuristica",
     "updatedAt": "2026-07-01T17:35:29.797505-04:00"
+  },
+  {
+    "titulo": "Autorização específica - concessão e renovação - utilização de base de cálculo diferenciada mediante Termo de Acordo - Convênio ICMS 45/99",
+    "nomePopular": "Solicitar a concessão ou renovação de autorização específica para utilização de base de cálculo diferenciada mediante Termo de Acordo",
+    "slug": "autorizacao-especifica-concessao-e-renovacao-utilizacao-de-base-de-calculo-diferenciada-mediante-termo-de-acordo-convenio-icms-459957",
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "categoria": "financas-e-impostos",
+    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica que realize opera&ccedil;&otilde;es de vendas porta-a-porta (vendas diretas) a consumidores localizados neste Estado, inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os - CCIS, como substituto tribut&aacute;rio do ICMS no Estado de MS, com base no <a href=\"https://www.confaz.fazenda.gov.br/legislacao/convenios/1999/CV045_99\" style=\"color:#0563c1; text-decoration:underline\">Conv&ecirc;nio ICMS 45/99</a>.</span></p>",
+    "publicoEspecifico": [
+      "Empresa"
+    ],
+    "ativo": false,
+    "digital": false,
+    "online": false,
+    "destaque": false,
+    "custo": "Cinco Uferms.",
+    "tempoTotal": 60,
+    "tipoTempo": "Dias corridos",
+    "nivelMaturidade": 1,
+    "maturidadeOrigem": "heuristica",
+    "updatedAt": "2026-07-13T17:22:32.672307-04:00"
   },
   {
     "titulo": "Solicitar de criação (ou ampliação) de RPPN",
@@ -21496,28 +21540,6 @@
     "nivelMaturidade": 4,
     "maturidadeOrigem": "heuristica",
     "updatedAt": "2025-09-02T14:48:22.358896-04:00"
-  },
-  {
-    "titulo": "Cadastro do comércio, indústria e serviços (CCIS) - inscrição de contribuinte localizado em outra unidade da federação como substituto tributário do ICMS mediante Termo de Responsabilidade",
-    "nomePopular": null,
-    "slug": "cadastro-do-comercio-industria-e-servicos-ccis-inscricao-de-contribuinte-localizado-em-outra-unidade-da-federacao-como-substituto-tributario-do-icms-mediante-termo-de-responsabilidade77",
-    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
-    "orgaoSigla": "SEFAZ MS",
-    "categoria": "empresa-industria-e-comercio",
-    "publico": "<ul>\r\n\t<li style=\"text-align:justify\"><span style=\"font-size:16px\">Contribuinte do com&eacute;rcio ou ind&uacute;stria localizado em outra Unidade da Federa&ccedil;&atilde;o, que fabrique, importe e/ou comercialize mercadorias sujeitas ao Regime de Substitui&ccedil;&atilde;o Tribut&aacute;ria e que pretenda solicitar inscri&ccedil;&atilde;o no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os - CCIS do Estado de MS, na condi&ccedil;&atilde;o de contribuinte substituto do ICMS, mediante assinatura do Termo de Responsabilidade </span></li>\r\n\t<li style=\"text-align:justify\"><span style=\"font-size:16px\">Contribuinte do com&eacute;rcio ou ind&uacute;stria localizado em outra Unidade da Federa&ccedil;&atilde;o, que fabrique, importe e/ou comercialize mercadorias sujeitas ao Regime de Substitui&ccedil;&atilde;o Tribut&aacute;ria, inscrito no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os - CCIS do Estado de MS, na condi&ccedil;&atilde;o de contribuinte substituto do ICMS, mediante assinatura do Termo de Responsabilidade </span></li>\r\n</ul>",
-    "publicoEspecifico": [
-      "Empresa"
-    ],
-    "ativo": true,
-    "digital": false,
-    "online": false,
-    "destaque": false,
-    "custo": "Cinco ou Uma Uferms, conforme o caso",
-    "tempoTotal": 20,
-    "tipoTempo": "Dias corridos",
-    "nivelMaturidade": 1,
-    "maturidadeOrigem": "heuristica",
-    "updatedAt": "2025-11-11T10:35:15.202611-05:00"
   },
   {
     "titulo": "Registrar reclamação, solicitação, sugestão e elogio",

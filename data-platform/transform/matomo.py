@@ -123,6 +123,21 @@ def outlinks(rows: list, n: int = 10) -> list[dict]:
     return out[:n]
 
 
+def sites(raw: list) -> list[dict]:
+    """SitesManager.getSitesWithMinimumAccess -> [{idsite, nome, url}] ordenado
+    por nome. Pula site sem main_url (não dá pra linkar). `idsite` vem string
+    do Matomo — normaliza pra int."""
+    out = []
+    for s in raw or []:
+        url = (s.get("main_url") or "").strip()
+        nome = (s.get("name") or "").strip()
+        if not url or not nome:
+            continue
+        out.append({"idsite": int(s.get("idsite", 0)), "nome": nome, "url": url})
+    out.sort(key=lambda r: r["nome"].lower())
+    return out
+
+
 def visits_daily(raw: dict) -> list[dict]:
     """VisitsSummary.get com period=day&date=lastN retorna {data: {...}} por dia."""
     rows = []
