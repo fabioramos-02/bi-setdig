@@ -1,20 +1,20 @@
-# ADR-008 — Estudo do filtro de Perfil vive em Analytics · Portal MS, não em Governança
+# ADR-008 — Estudo do filtro de Perfil vive em Analytics · Portal Único, não em Governança
 
 ## Contexto
 O ADR-005 mapeou o "estudo filtro-perfil do bench-carta" para o domínio **Governança**
 ("estudos de adoção de funcionalidade"). Na implementação, o estudo (funil, KPIs de uso
 real, distribuição por perfil, top serviços) e o grid "Serviços em destaque" (cards por
-perfil, réplica do portal www.ms.gov.br) usam **a mesma fonte do Portal MS**: Matomo
+perfil, réplica do portal www.ms.gov.br) usam **a mesma fonte do Portal Único**: Matomo
 idSite=298, via `Actions.getPageUrls`. Colocá-lo em Governança separava, no menu, uma
-análise que é do mesmo portal e do mesmo dataset que as demais abas de Analytics · Portal MS.
+análise que é do mesmo portal e do mesmo dataset que as demais abas de Analytics · Portal Único.
 
 ## Decisão
 O estudo do filtro de Perfil passa a ser a aba **"Serviços por Perfil"** dentro de
-**Analytics · Portal MS** (`/analytics/portal-ms`), reaproveitando o slot antes reservado
+**Analytics · Portal Único** (`/analytics/portal-ms`), reaproveitando o slot antes reservado
 à aba desabilitada "Serviços Consumidos". Isto **supersede** o trecho do ADR-005 que
 mapeava esse estudo para Governança.
 
-- Rota/menu: sem rota nova — é aba do domínio Analytics · Portal MS.
+- Rota/menu: sem rota nova — é aba do domínio Analytics · Portal Único.
 - Dataset: `datasets/matomo/v1/perfil-filtro.json` (inclui `servicosPorPerfil` p/ o grid).
 - `/governanca` volta a placeholder, reservada a relatório CGE e outros estudos futuros.
 

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ContentTopBar } from "@/components/ds/ContentTopBar";
 
 const DOMINIOS = [
-  { nome: "Portal MS", rota: "/analytics/portal-ms" },
+  { nome: "Portal Único", rota: "/analytics/portal-ms" },
   { nome: "MS Digital", rota: "/analytics/ms-digital" },
   { nome: "Serviços", rota: "/servicos" },
   { nome: "Qualidade", rota: "/qualidade" },

@@ -4,7 +4,7 @@
 
 | Domínio | Rota | Fonte de dados | Origem histórica |
 |---|---|---|---|
-| Portal MS | `/analytics/portal-ms` | Matomo | 5 abas `matomo` + painel 1 `bench-carta` |
+| Portal Único | `/analytics/portal-ms` | Matomo | 5 abas `matomo` + painel 1 `bench-carta` |
 | MS Digital | `/analytics/ms-digital` | GA4 | 4 abas `matomo` + painel 2 `bench-carta` |
 | Serviços | `/servicos` | Postgres cartas + JSON maturidade | 6 abas cartas `matomo` + `mapeamento-inicial` |
 | Qualidade | `/qualidade` | Postgres cartas | `cruzamento-carta` |

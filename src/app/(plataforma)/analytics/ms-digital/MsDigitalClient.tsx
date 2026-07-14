@@ -33,6 +33,7 @@ import type {
   Dispositivo,
   PeriodoFixo,
   PerfilFiltroPeriodo,
+  ServicoAcessado,
   ServicoCatalogo,
 } from "@/lib/data";
 import type { ResumoCatalogo, CategoriaResumo } from "@/lib/catalogo-app";
@@ -62,6 +63,7 @@ export function MsDigitalClient({
   portalDiarias,
   portalDispositivos,
   portalPerfil,
+  portalServicosMaisAcessados,
   catalogo,
   catalogoResumo,
   catalogoCategorias,
@@ -74,6 +76,7 @@ export function MsDigitalClient({
   portalDiarias: VisitaDiaria[];
   portalDispositivos: BreakdownPorPeriodo<Dispositivo>;
   portalPerfil: Record<PeriodoFixo, PerfilFiltroPeriodo>;
+  portalServicosMaisAcessados: BreakdownPorPeriodo<ServicoAcessado>;
   catalogo: ServicoCatalogo[];
   catalogoResumo: ResumoCatalogo;
   catalogoCategorias: CategoriaResumo[];
@@ -161,10 +164,15 @@ export function MsDigitalClient({
   // do estudo de Perfil (Matomo), app = GA4. Reconciliação em lib/cross-canal.
   const comparacao = compararCanais({
     appVisaoGeral: vg,
-    appServicos: serv,
+    // Serviço-folha reclassificado (não a categoria crua do GA4) — mesmo dado do
+    // ranking em Funcionalidades, pra comparar serviço real × serviço real.
+    appServicos: classificado.servicosFolha,
     appPlataforma: plat,
     portalUniques: resumoDoPeriodo(portalDiarias, estado).visitantesUnicos,
-    portalServicos: portalPerfil[periodo].topServicos.map((s) => ({ servico: s.servico, visitas: s.visitas })),
+    // Serviços/páginas mais acessados GERAIS do portal (não o subconjunto curado
+    // do estudo de Perfil) — simétrico ao lado app. Snapshot (Matomo não vai ao
+    // vivo nesta rota — mesma limitação do PBI-7).
+    portalServicos: portalServicosMaisAcessados[periodo].map((s) => ({ servico: s.servico, visitas: s.visitas })),
     portalDispositivos: portalDispositivos[periodo],
   });
 

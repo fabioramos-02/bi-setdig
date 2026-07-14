@@ -1,7 +1,7 @@
 import type { GA4Overview, Plataforma, Servico, Dispositivo } from "./data";
 
 /**
- * Reconciliação app (GA4/MS Digital) × portal web (Matomo/Portal MS) — o mesmo
+ * Reconciliação app (GA4/MS Digital) × portal web (Matomo/Portal Único) — o mesmo
  * cidadão em dois canais. Cálculo fica aqui (convencoes.md: sem cálculo em
  * componente); o componente só apresenta. Comparação é de ALCANCE por canal,
  * não soma: a mesma pessoa pode usar os dois, e as janelas de cada fonte não

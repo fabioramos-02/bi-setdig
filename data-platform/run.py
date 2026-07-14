@@ -31,7 +31,7 @@ PERIODOS_FIXOS = {
 
 # GA4 não tem period=week/month nativo — usa faixas relativas (Data API). Mapeia
 # os 4 períodos fixos do portal (ADR-007) pra janelas equivalentes, pra o filtro
-# funcionar em /analytics/ms-digital igual ao Portal MS.
+# funcionar em /analytics/ms-digital igual ao Portal Único.
 GA4_PERIODOS = {
     "dia": ("today", "today"),
     "semana": ("7daysAgo", "today"),

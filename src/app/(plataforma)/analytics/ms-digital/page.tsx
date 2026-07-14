@@ -11,6 +11,7 @@ import {
   getMatomoVisitasDiarias,
   getMatomoDispositivos,
   getMatomoPerfilFiltro,
+  getMatomoServicosMaisAcessados,
   getAppCatalogoServicos,
 } from "@/lib/data";
 import { resumoCatalogo, porCategoria } from "@/lib/catalogo-app";
@@ -29,6 +30,7 @@ export default function AnalyticsMsDigitalPage() {
   const portalDiarias = getMatomoVisitasDiarias();
   const portalDispositivos = getMatomoDispositivos();
   const portalPerfil = getMatomoPerfilFiltro();
+  const portalServicosMaisAcessados = getMatomoServicosMaisAcessados();
   // Catálogo de serviços do app (nativo × web) — estático, da planilha.
   const catalogo = getAppCatalogoServicos();
 
@@ -53,6 +55,7 @@ export default function AnalyticsMsDigitalPage() {
       portalDiarias={portalDiarias}
       portalDispositivos={portalDispositivos}
       portalPerfil={portalPerfil}
+      portalServicosMaisAcessados={portalServicosMaisAcessados}
       catalogo={catalogo}
       catalogoResumo={resumoCatalogo(catalogo)}
       catalogoCategorias={porCategoria(catalogo)}

@@ -20,7 +20,7 @@ import {
 } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Analytics — Portal MS | SETDIG",
+  title: "Analytics — Portal Único | SETDIG",
 };
 
 function calcularMatchRateMapa(cidadesMes: { cidade: string; visitas: number }[]): number {
@@ -50,7 +50,7 @@ export default function AnalyticsPortalMsPage() {
   if (diarias.length === 0) {
     return (
       <div className="flex flex-col flex-1">
-        <ContentTopBar title="Analytics — Portal MS" />
+        <ContentTopBar title="Analytics — Portal Único" />
         <main className="flex-1 p-6">
           <EmptyCard message="Nenhuma fonte de dados conectada ainda." />
         </main>

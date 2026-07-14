@@ -10,7 +10,7 @@ Matomo/GA4.
 O portal se organiza por **domínio de negócio**, desacoplado da origem histórica:
 
 ```
-Analytics    → Portal MS (Matomo) · MS Digital (GA4)
+Analytics    → Portal Único (Matomo) · MS Digital (GA4)
 Serviços     → inventário de cartas · maturidade digital (0-4)
 Qualidade    → erros/satisfação das cartas · deduplicação/perfis
 Governança   → relatório CGE · estudos de adoção de funcionalidade

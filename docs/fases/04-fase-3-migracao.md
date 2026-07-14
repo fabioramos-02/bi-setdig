@@ -10,12 +10,12 @@ a página no portal lendo de `datasets/` (Fase 2), com os componentes da Fase 1.
 
 ## Ordem e por quê
 
-**Serviços+Qualidade (cartas) → Analytics Portal MS → Analytics MS Digital → Governança**
+**Serviços+Qualidade (cartas) → Analytics Portal Único → Analytics MS Digital → Governança**
 
 - Cartas primeiro: consolida **3 repos de uma vez** (matomo abas cartas +
   cruzamento-carta + mapeamento-inicial), dados já batem como estático/JSON —
   maior ganho, menor risco.
-- Portal MS (Matomo) em seguida: reaproveita o ETL Matomo já existente.
+- Portal Único (Matomo) em seguida: reaproveita o ETL Matomo já existente.
 - MS Digital (GA4) por último: troca de OAuth2 pra service account é o setup
   mais chato (ver Fase 2).
 
