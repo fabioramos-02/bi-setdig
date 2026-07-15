@@ -45,7 +45,7 @@ export function QualidadeClient({
     {
       id: "qualidade",
       label: "Qualidade",
-      content: <PercepcaoTab percepcao={percepcaoAtual} />,
+      content: <PercepcaoTab percepcao={percepcaoAtual} percepcaoPorOrgao={percepcaoPorOrgao} orgaoFiltro={orgaoFiltro} />,
     },
   ];
 

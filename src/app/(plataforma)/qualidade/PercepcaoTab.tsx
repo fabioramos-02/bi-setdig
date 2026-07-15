@@ -1,8 +1,8 @@
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
-import { BarChart } from "@/components/charts/BarChart";
+import { Bar, BarChart as RBarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis, Legend } from "recharts";
 import { calcularInsightPercepcao } from "@/lib/insights";
-import type { PercepcaoResumo } from "@/lib/data";
+import type { PercepcaoResumo, PercepcaoOrgao } from "@/lib/data";
 
 const FACES = [
   { nota: "1", label: "MUITO INSATISFEITO", icon: "sentiment_very_dissatisfied", color: "#ef4444" },
@@ -15,7 +15,15 @@ const FACES = [
 /** Aba "Qualidade": o cidadão entende e gosta do serviço — pergunta
  * diferente de "tem erro técnico" (essa é a aba Erros). CSAT (nota 1-5) +
  * clareza da descrição da carta. */
-export function PercepcaoTab({ percepcao }: { percepcao: PercepcaoResumo | null }) {
+export function PercepcaoTab({
+  percepcao,
+  percepcaoPorOrgao,
+  orgaoFiltro,
+}: {
+  percepcao: PercepcaoResumo | null;
+  percepcaoPorOrgao: PercepcaoOrgao[];
+  orgaoFiltro: string;
+}) {
   const insightPercepcao = calcularInsightPercepcao(percepcao);
 
   if (!percepcao || !insightPercepcao) {
@@ -27,6 +35,27 @@ export function PercepcaoTab({ percepcao }: { percepcao: PercepcaoResumo | null 
   }
 
   const csatIndex = (percepcao.csatMedia / 5) * 100;
+
+  const chartData = (orgaoFiltro && percepcaoPorOrgao.length > 0
+    ? percepcaoPorOrgao.filter(p => p.orgaoSigla === orgaoFiltro)
+    : percepcaoPorOrgao
+  ).map(p => {
+    const total = p.totalVotos || 1;
+    const n1 = p.csatDistribuicao["1"] || 0;
+    const n2 = p.csatDistribuicao["2"] || 0;
+    const n3 = p.csatDistribuicao["3"] || 0;
+    const n4 = p.csatDistribuicao["4"] || 0;
+    const n5 = p.csatDistribuicao["5"] || 0;
+    return {
+      orgao: p.orgaoSigla,
+      n1: (n1 / total) * 100,
+      n2: (n2 / total) * 100,
+      n3: (n3 / total) * 100,
+      n4: (n4 / total) * 100,
+      n5: (n5 / total) * 100,
+      insatisfacaoTotal: ((n1 + n2) / total) * 100
+    };
+  }).sort((a, b) => b.insatisfacaoTotal - a.insatisfacaoTotal);
 
   return (
     <div className="flex flex-col gap-6">
@@ -89,6 +118,32 @@ export function PercepcaoTab({ percepcao }: { percepcao: PercepcaoResumo | null 
           </div>
         </div>
       </DashboardSection>
+
+      {chartData.length > 0 && (
+        <DashboardSection title="Satisfação por Órgão">
+          <ResponsiveContainer width="100%" height={Math.max(chartData.length * 40 + 80, 200)}>
+            <RBarChart data={chartData} layout="vertical" margin={{ top: 20, right: 30, left: 40, bottom: 5 }}>
+              <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="var(--ds-color-border)" />
+              <XAxis type="number" hide />
+              <YAxis dataKey="orgao" type="category" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: "var(--ds-color-text-secondary)" }} />
+              <Tooltip
+                formatter={(value: number) => `${value.toFixed(1)}%`}
+                contentStyle={{ background: "var(--ds-color-background)", border: "1px solid var(--ds-color-border)", color: "var(--ds-color-text-primary)", fontSize: 12 }}
+              />
+              <Legend verticalAlign="top" align="right" iconType="square" wrapperStyle={{ fontSize: 12, paddingBottom: 10 }} />
+              <Bar dataKey="n5" stackId="a" fill="#16a34a" name="(5)" />
+              <Bar dataKey="n4" stackId="a" fill="#22c55e" name="(4)" />
+              <Bar dataKey="n3" stackId="a" fill="#eab308" name="(3)" />
+              <Bar dataKey="n2" stackId="a" fill="#f97316" name="(2)" />
+              <Bar dataKey="n1" stackId="a" fill="#ef4444" name="(1)" />
+            </RBarChart>
+          </ResponsiveContainer>
+          <div className="text-[11px] mt-2" style={{ color: "var(--ds-color-text-muted)" }}>
+            Ranking ordenado pela taxa de insatisfação. Os órgãos no topo concentram a maior prioridade de intervenção.
+          </div>
+        </DashboardSection>
+      )}
+
       <StoryCard
         anchor={`Nota média do cidadão pro serviço: ${insightPercepcao.csatMedia.toLocaleString("pt-BR")} de 5, em ${insightPercepcao.totalVotos.toLocaleString("pt-BR")} avaliações.`}
         caption={`Em ${insightPercepcao.clarezaPositivaPct.toFixed(0)}% das vezes, o cidadão achou a descrição do serviço clara.`}
