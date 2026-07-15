@@ -257,3 +257,54 @@ export function getCartasInventarioPorCategoria(): InventarioCategoria[] {
 export function getCartasInventarioRelacao(): CartaRelacao[] {
   return readDataset<CartaRelacao[]>("cartas", "v1", "inventario-relacao") ?? [];
 }
+
+// --- Qualidade: erros e percepção do cidadão (ADR-005) ---
+// Estado/série histórica (não analytics de acesso ao vivo) — mesma exceção de
+// "catálogo/estático por natureza" do inventário de cartas, sem PeriodoProvider.
+export type ErroResumo = {
+  total: number;
+  atendidos: number;
+  pendentes: number;
+  percentAtendido: number;
+  /** Aproximação: updated_at - created_at só nos erros já atendidos — não
+   * existe resolved_at dedicado no schema de origem. */
+  tempoMedioResolucaoDias: number;
+};
+export type ErroOrgao = {
+  orgao: string;
+  orgaoSigla: string;
+  total: number;
+  atendidos: number;
+  pendentes: number;
+  percentAtendido: number;
+  tempoMedioResolucaoDias: number;
+};
+export type ErroEvolucaoMensal = {
+  mes: string;
+  abertos: number;
+  resolvidos: number;
+};
+export type PercepcaoResumo = {
+  csatMedia: number;
+  csatDistribuicao: Record<"1" | "2" | "3" | "4" | "5", number>;
+  totalVotos: number;
+  /** % de avaliações em que a descrição da carta (não o serviço em si) foi
+   * considerada clara. */
+  clarezaPositivaPct: number;
+  totalAvaliacoesClareza: number;
+};
+
+export function getCartasErrosResumo(): ErroResumo | null {
+  const rows = readDataset<ErroResumo[]>("cartas", "v1", "erros-resumo");
+  return rows?.[0] ?? null;
+}
+export function getCartasErrosPorOrgao(): ErroOrgao[] {
+  return readDataset<ErroOrgao[]>("cartas", "v1", "erros-por-orgao") ?? [];
+}
+export function getCartasErrosEvolucaoMensal(): ErroEvolucaoMensal[] {
+  return readDataset<ErroEvolucaoMensal[]>("cartas", "v1", "erros-evolucao-mensal") ?? [];
+}
+export function getCartasPercepcaoResumo(): PercepcaoResumo | null {
+  const rows = readDataset<PercepcaoResumo[]>("cartas", "v1", "percepcao-resumo");
+  return rows?.[0] ?? null;
+}

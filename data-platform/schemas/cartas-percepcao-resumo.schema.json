@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "cartas/percepcao-resumo",
+  "description": "Percepção do cidadão sobre os serviços — satisfação (CSAT) e clareza da descrição da carta (domínio Qualidade, ADR-005), 1 linha só.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["csatMedia", "csatDistribuicao", "totalVotos", "clarezaPositivaPct", "totalAvaliacoesClareza"],
+    "properties": {
+      "csatMedia": { "type": "number", "minimum": 0, "maximum": 5 },
+      "csatDistribuicao": {
+        "type": "object",
+        "required": ["1", "2", "3", "4", "5"],
+        "properties": {
+          "1": { "type": "integer", "minimum": 0 },
+          "2": { "type": "integer", "minimum": 0 },
+          "3": { "type": "integer", "minimum": 0 },
+          "4": { "type": "integer", "minimum": 0 },
+          "5": { "type": "integer", "minimum": 0 }
+        }
+      },
+      "totalVotos": { "type": "integer", "minimum": 0 },
+      "clarezaPositivaPct": { "type": "number", "minimum": 0, "maximum": 100 },
+      "totalAvaliacoesClareza": { "type": "integer", "minimum": 0 }
+    }
+  }
+}

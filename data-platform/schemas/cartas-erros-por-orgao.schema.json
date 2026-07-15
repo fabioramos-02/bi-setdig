@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "cartas/erros-por-orgao",
+  "description": "Erros reportados nas cartas de serviço agregados por órgão (domínio Qualidade, ADR-005), ordenado desc por total.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["orgao", "orgaoSigla", "total", "atendidos", "pendentes", "percentAtendido", "tempoMedioResolucaoDias"],
+    "properties": {
+      "orgao": { "type": "string" },
+      "orgaoSigla": { "type": "string" },
+      "total": { "type": "integer", "minimum": 0 },
+      "atendidos": { "type": "integer", "minimum": 0 },
+      "pendentes": { "type": "integer", "minimum": 0 },
+      "percentAtendido": { "type": "number", "minimum": 0, "maximum": 100 },
+      "tempoMedioResolucaoDias": { "type": "number", "minimum": 0 }
+    }
+  }
+}

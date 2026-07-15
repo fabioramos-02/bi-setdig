@@ -1,0 +1,335 @@
+[
+  {
+    "orgao": "Departamento Estadual de Trânsito de Mato Grosso do Sul",
+    "orgaoSigla": "DETRAN",
+    "total": 142,
+    "atendidos": 117,
+    "pendentes": 25,
+    "percentAtendido": 82.4,
+    "tempoMedioResolucaoDias": 64.7
+  },
+  {
+    "orgao": "Polícia Civil de Mato Grosso do Sul",
+    "orgaoSigla": "PCMS",
+    "total": 97,
+    "atendidos": 65,
+    "pendentes": 32,
+    "percentAtendido": 67.0,
+    "tempoMedioResolucaoDias": 114.5
+  },
+  {
+    "orgao": "Coordenadoria Geral de Perícias de Mato Grosso do Sul",
+    "orgaoSigla": "CGP",
+    "total": 66,
+    "atendidos": 35,
+    "pendentes": 31,
+    "percentAtendido": 53.0,
+    "tempoMedioResolucaoDias": 88.5
+  },
+  {
+    "orgao": "Secretaria de Estado de Assistência Social e Direitos Humanos",
+    "orgaoSigla": "SEAD",
+    "total": 66,
+    "atendidos": 65,
+    "pendentes": 1,
+    "percentAtendido": 98.5,
+    "tempoMedioResolucaoDias": 31.6
+  },
+  {
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "total": 55,
+    "atendidos": 54,
+    "pendentes": 1,
+    "percentAtendido": 98.2,
+    "tempoMedioResolucaoDias": 36.5
+  },
+  {
+    "orgao": "Secretaria de Estado de Educação de Mato Grosso do Sul",
+    "orgaoSigla": "SED MS",
+    "total": 49,
+    "atendidos": 15,
+    "pendentes": 34,
+    "percentAtendido": 30.6,
+    "tempoMedioResolucaoDias": 71.4
+  },
+  {
+    "orgao": "Instituto de Meio Ambiente de Mato Grosso do Sul",
+    "orgaoSigla": "IMASUL",
+    "total": 23,
+    "atendidos": 22,
+    "pendentes": 1,
+    "percentAtendido": 95.7,
+    "tempoMedioResolucaoDias": 89.9
+  },
+  {
+    "orgao": "Procuradoria Geral do Estado de Mato Grosso do Sul",
+    "orgaoSigla": "PGE MS",
+    "total": 23,
+    "atendidos": 23,
+    "pendentes": 0,
+    "percentAtendido": 100.0,
+    "tempoMedioResolucaoDias": 159.7
+  },
+  {
+    "orgao": "Secretaria de Estado de Governo e Gestão Estratégica de Mato Grosso do Sul",
+    "orgaoSigla": "SEGOV MS",
+    "total": 19,
+    "atendidos": 11,
+    "pendentes": 8,
+    "percentAtendido": 57.9,
+    "tempoMedioResolucaoDias": 183.8
+  },
+  {
+    "orgao": "Agência de Previdência Social de Mato Grosso do Sul",
+    "orgaoSigla": "AGEPREV",
+    "total": 19,
+    "atendidos": 19,
+    "pendentes": 0,
+    "percentAtendido": 100.0,
+    "tempoMedioResolucaoDias": 183.1
+  },
+  {
+    "orgao": "Secretaria de Estado de Saúde de Mato Grosso do Sul",
+    "orgaoSigla": "SES",
+    "total": 17,
+    "atendidos": 4,
+    "pendentes": 13,
+    "percentAtendido": 23.5,
+    "tempoMedioResolucaoDias": 238.6
+  },
+  {
+    "orgao": "Junta Comercial do Estado de Mato Grosso do Sul",
+    "orgaoSigla": "JUCEMS",
+    "total": 13,
+    "atendidos": 13,
+    "pendentes": 0,
+    "percentAtendido": 100.0,
+    "tempoMedioResolucaoDias": 62.8
+  },
+  {
+    "orgao": "Secretaria de Estado da Cidadania",
+    "orgaoSigla": "SEC",
+    "total": 13,
+    "atendidos": 3,
+    "pendentes": 10,
+    "percentAtendido": 23.1,
+    "tempoMedioResolucaoDias": 27.9
+  },
+  {
+    "orgao": "Universidade Estadual de Mato Grosso do Sul",
+    "orgaoSigla": "UEMS",
+    "total": 13,
+    "atendidos": 13,
+    "pendentes": 0,
+    "percentAtendido": 100.0,
+    "tempoMedioResolucaoDias": 111.3
+  },
+  {
+    "orgao": "Agência Estadual de Administração do Sistema Penitenciário",
+    "orgaoSigla": "AGEPEN",
+    "total": 11,
+    "atendidos": 9,
+    "pendentes": 2,
+    "percentAtendido": 81.8,
+    "tempoMedioResolucaoDias": 121.1
+  },
+  {
+    "orgao": "Secretaria de Estado de Administração de Mato Grosso do Sul",
+    "orgaoSigla": "SAD",
+    "total": 10,
+    "atendidos": 9,
+    "pendentes": 1,
+    "percentAtendido": 90.0,
+    "tempoMedioResolucaoDias": 164.6
+  },
+  {
+    "orgao": "Agência de Habitação Popular de Mato Grosso do Sul",
+    "orgaoSigla": "AGEHAB",
+    "total": 8,
+    "atendidos": 1,
+    "pendentes": 7,
+    "percentAtendido": 12.5,
+    "tempoMedioResolucaoDias": 71.9
+  },
+  {
+    "orgao": "Empresa de Saneamento de Mato Grosso do Sul",
+    "orgaoSigla": "SANESUL",
+    "total": 7,
+    "atendidos": 6,
+    "pendentes": 1,
+    "percentAtendido": 85.7,
+    "tempoMedioResolucaoDias": 245.0
+  },
+  {
+    "orgao": "Secretaria de Estado de Turismo, Esporte e Cultura",
+    "orgaoSigla": "SETESC",
+    "total": 7,
+    "atendidos": 0,
+    "pendentes": 7,
+    "percentAtendido": 0.0,
+    "tempoMedioResolucaoDias": 0.0
+  },
+  {
+    "orgao": "Agência Estadual de Defesa Sanitária Animal Vegetal  Mato Grosso do Sul",
+    "orgaoSigla": "IAGRO",
+    "total": 7,
+    "atendidos": 7,
+    "pendentes": 0,
+    "percentAtendido": 100.0,
+    "tempoMedioResolucaoDias": 64.6
+  },
+  {
+    "orgao": "Controladoria Geral do Estado de Mato Grosso do Sul",
+    "orgaoSigla": "CGE MS",
+    "total": 5,
+    "atendidos": 4,
+    "pendentes": 1,
+    "percentAtendido": 80.0,
+    "tempoMedioResolucaoDias": 216.2
+  },
+  {
+    "orgao": "Fundação de Trabalho de Mato Grosso do Sul",
+    "orgaoSigla": "FUNTRAB",
+    "total": 5,
+    "atendidos": 5,
+    "pendentes": 0,
+    "percentAtendido": 100.0,
+    "tempoMedioResolucaoDias": 30.1
+  },
+  {
+    "orgao": "Corpo de Bombeiros Militar",
+    "orgaoSigla": "CBMMS",
+    "total": 4,
+    "atendidos": 2,
+    "pendentes": 2,
+    "percentAtendido": 50.0,
+    "tempoMedioResolucaoDias": 170.4
+  },
+  {
+    "orgao": "Agência de Desenvolvimento Agrário e Extensão Rural de Mato Grosso do Sul",
+    "orgaoSigla": "AGRAER",
+    "total": 4,
+    "atendidos": 4,
+    "pendentes": 0,
+    "percentAtendido": 100.0,
+    "tempoMedioResolucaoDias": 60.0
+  },
+  {
+    "orgao": "Fundação Serviços de Saúde de MS",
+    "orgaoSigla": "FUNSAU",
+    "total": 4,
+    "atendidos": 0,
+    "pendentes": 4,
+    "percentAtendido": 0.0,
+    "tempoMedioResolucaoDias": 0.0
+  },
+  {
+    "orgao": "Agência Estadual de Gestão de Empreendimentos de Mato Grosso do Sul",
+    "orgaoSigla": "AGESUL",
+    "total": 3,
+    "atendidos": 1,
+    "pendentes": 2,
+    "percentAtendido": 33.3,
+    "tempoMedioResolucaoDias": 375.7
+  },
+  {
+    "orgao": "Polícia Militar de Mato Grosso do Sul",
+    "orgaoSigla": "PMMS",
+    "total": 3,
+    "atendidos": 3,
+    "pendentes": 0,
+    "percentAtendido": 100.0,
+    "tempoMedioResolucaoDias": 69.8
+  },
+  {
+    "orgao": "Agência Estadual de Regulação de Serviços Públicos de Mato Grosso do Sul",
+    "orgaoSigla": "AGEMS",
+    "total": 3,
+    "atendidos": 1,
+    "pendentes": 2,
+    "percentAtendido": 33.3,
+    "tempoMedioResolucaoDias": 181.6
+  },
+  {
+    "orgao": "Agência Estadual de Metrologia de Mato Grosso do Sul",
+    "orgaoSigla": "AEM",
+    "total": 2,
+    "atendidos": 1,
+    "pendentes": 1,
+    "percentAtendido": 50.0,
+    "tempoMedioResolucaoDias": 117.7
+  },
+  {
+    "orgao": "Secretaria de Estado de Justiça e Segurança Pública de Mato Grosso do Sul",
+    "orgaoSigla": "SEJUSP",
+    "total": 2,
+    "atendidos": 2,
+    "pendentes": 0,
+    "percentAtendido": 100.0,
+    "tempoMedioResolucaoDias": 307.7
+  },
+  {
+    "orgao": "Fundação de Cultura de Mato Grosso do Sul",
+    "orgaoSigla": "FCMS",
+    "total": 2,
+    "atendidos": 0,
+    "pendentes": 2,
+    "percentAtendido": 0.0,
+    "tempoMedioResolucaoDias": 0.0
+  },
+  {
+    "orgao": "Fundação de Desporto e Lazer de Mato Grosso do Sul",
+    "orgaoSigla": "FUNDESPORTE",
+    "total": 1,
+    "atendidos": 1,
+    "pendentes": 0,
+    "percentAtendido": 100.0,
+    "tempoMedioResolucaoDias": 52.2
+  },
+  {
+    "orgao": "Companhia de Gás do Estado de Mato Grosso do Sul",
+    "orgaoSigla": "MSGÁS",
+    "total": 1,
+    "atendidos": 1,
+    "pendentes": 0,
+    "percentAtendido": 100.0,
+    "tempoMedioResolucaoDias": 206.4
+  },
+  {
+    "orgao": "Fundação Escola de Governo",
+    "orgaoSigla": "ESCOLAGOV",
+    "total": 1,
+    "atendidos": 1,
+    "pendentes": 0,
+    "percentAtendido": 100.0,
+    "tempoMedioResolucaoDias": 16.0
+  },
+  {
+    "orgao": "Secretaria de Estado de Infraestrutura e Logística de Mato Grosso do Sul",
+    "orgaoSigla": "SEILOG",
+    "total": 1,
+    "atendidos": 0,
+    "pendentes": 1,
+    "percentAtendido": 0.0,
+    "tempoMedioResolucaoDias": 0.0
+  },
+  {
+    "orgao": "Fundação Estadual Jornalista Luiz Chagas de Rádio e Televisão",
+    "orgaoSigla": "FERTEL - Educativa MS",
+    "total": 1,
+    "atendidos": 0,
+    "pendentes": 1,
+    "percentAtendido": 0.0,
+    "tempoMedioResolucaoDias": 0.0
+  },
+  {
+    "orgao": "Fundação de Turismo de Mato Grosso do Sul",
+    "orgaoSigla": "FUNDTUR",
+    "total": 1,
+    "atendidos": 1,
+    "pendentes": 0,
+    "percentAtendido": 100.0,
+    "tempoMedioResolucaoDias": 261.1
+  }
+]

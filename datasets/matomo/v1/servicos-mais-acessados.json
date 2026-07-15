@@ -3,308 +3,308 @@
     {
       "servico": "Emitir guia de licenciamento anual",
       "path": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100",
-      "visitas": 320
-    },
-    {
-      "servico": "Expedicao de carteira de identidade",
-      "path": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
-      "visitas": 165
+      "visitas": 913
     },
     {
       "servico": "Ipva consulta de debito",
       "path": "/financas-e-impostos/ipva-consulta-de-debito54",
-      "visitas": 130
+      "visitas": 509
+    },
+    {
+      "servico": "Expedicao de carteira de identidade",
+      "path": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
+      "visitas": 508
     },
     {
       "servico": "Pesquisar viabilidade",
       "path": "/empresa-industria-e-comercio/pesquisar-viabilidade198",
-      "visitas": 102
+      "visitas": 291
     },
     {
       "servico": "Portal e fazenda cadastro",
       "path": "/financas-e-impostos/portal-e-fazenda-cadastro135",
-      "visitas": 71
+      "visitas": 217
     },
     {
       "servico": "Emitir certidao simplificada digital",
       "path": "/empresa-industria-e-comercio/emitir-certidao-simplificada-digital84",
-      "visitas": 64
+      "visitas": 187
     },
     {
       "servico": "Delegacia Virtual (DEVIR)",
       "path": "/seguranca/delegacia-virtual-devir105",
-      "visitas": 54
-    },
-    {
-      "servico": "Documento de arrecadacao do estado de mato grosso do sul daems emissao",
-      "path": "/financas-e-impostos/documento-de-arrecadacao-do-estado-de-mato-grosso-do-sul-daems-emissao5",
-      "visitas": 52
-    },
-    {
-      "servico": "Certidao de inteiro teor digital",
-      "path": "/empresa-industria-e-comercio/certidao-de-inteiro-teor-digital19",
-      "visitas": 45
+      "visitas": 184
     },
     {
       "servico": "Certidao tributaria estadual emissao",
       "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao152",
-      "visitas": 35
+      "visitas": 143
+    },
+    {
+      "servico": "Certidao de inteiro teor digital",
+      "path": "/empresa-industria-e-comercio/certidao-de-inteiro-teor-digital19",
+      "visitas": 136
+    },
+    {
+      "servico": "Documento de arrecadacao do estado de mato grosso do sul daems emissao",
+      "path": "/financas-e-impostos/documento-de-arrecadacao-do-estado-de-mato-grosso-do-sul-daems-emissao5",
+      "visitas": 127
     },
     {
       "servico": "Patronato",
       "path": "/direitos-e-cidadania/patronato138",
-      "visitas": 35
-    },
-    {
-      "servico": "Expedicao de certidao de antecedentes criminais",
-      "path": "/seguranca/expedicao-de-certidao-de-antecedentes-criminais35",
-      "visitas": 34
+      "visitas": 113
     },
     {
       "servico": "Inscricaocadastro",
       "path": "/habitacao/inscricaocadastro67",
-      "visitas": 28
+      "visitas": 108
     },
     {
-      "servico": "Anunciar vagas de emprego no sine sistema nacional de emprego",
-      "path": "/trabalho-emprego-e-previdencia/anunciar-vagas-de-emprego-no-sine-sistema-nacional-de-emprego71",
-      "visitas": 26
+      "servico": "Expedicao de certidao de antecedentes criminais",
+      "path": "/seguranca/expedicao-de-certidao-de-antecedentes-criminais35",
+      "visitas": 101
     },
     {
       "servico": "Contestacao administrativa de multa autuacao e penalidades",
       "path": "/transito-e-transportes/contestacao-administrativa-de-multa-autuacao-e-penalidades159",
-      "visitas": 24
+      "visitas": 84
+    },
+    {
+      "servico": "Anunciar vagas de emprego no sine sistema nacional de emprego",
+      "path": "/trabalho-emprego-e-previdencia/anunciar-vagas-de-emprego-no-sine-sistema-nacional-de-emprego71",
+      "visitas": 83
     }
   ],
   "semana": [
     {
       "servico": "Emitir guia de licenciamento anual",
       "path": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100",
-      "visitas": 3109
+      "visitas": 3702
     },
     {
       "servico": "Expedicao de carteira de identidade",
       "path": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
-      "visitas": 1690
+      "visitas": 2033
     },
     {
       "servico": "Ipva consulta de debito",
       "path": "/financas-e-impostos/ipva-consulta-de-debito54",
-      "visitas": 1500
+      "visitas": 1879
     },
     {
       "servico": "Delegacia Virtual (DEVIR)",
       "path": "/seguranca/delegacia-virtual-devir105",
-      "visitas": 872
-    },
-    {
-      "servico": "Emitir certidao simplificada digital",
-      "path": "/empresa-industria-e-comercio/emitir-certidao-simplificada-digital84",
-      "visitas": 777
-    },
-    {
-      "servico": "Portal e fazenda cadastro",
-      "path": "/financas-e-impostos/portal-e-fazenda-cadastro135",
-      "visitas": 765
+      "visitas": 1002
     },
     {
       "servico": "Pesquisar viabilidade",
       "path": "/empresa-industria-e-comercio/pesquisar-viabilidade198",
-      "visitas": 736
+      "visitas": 925
+    },
+    {
+      "servico": "Portal e fazenda cadastro",
+      "path": "/financas-e-impostos/portal-e-fazenda-cadastro135",
+      "visitas": 911
+    },
+    {
+      "servico": "Emitir certidao simplificada digital",
+      "path": "/empresa-industria-e-comercio/emitir-certidao-simplificada-digital84",
+      "visitas": 900
     },
     {
       "servico": "Certidao tributaria estadual emissao",
       "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao152",
-      "visitas": 544
+      "visitas": 652
     },
     {
       "servico": "Certidao de inteiro teor digital",
       "path": "/empresa-industria-e-comercio/certidao-de-inteiro-teor-digital19",
-      "visitas": 509
+      "visitas": 600
     },
     {
       "servico": "Expedicao de certidao de antecedentes criminais",
       "path": "/seguranca/expedicao-de-certidao-de-antecedentes-criminais35",
-      "visitas": 487
+      "visitas": 554
     },
     {
       "servico": "Patronato",
       "path": "/direitos-e-cidadania/patronato138",
-      "visitas": 400
+      "visitas": 478
     },
     {
       "servico": "Documento de arrecadacao do estado de mato grosso do sul daems emissao",
       "path": "/financas-e-impostos/documento-de-arrecadacao-do-estado-de-mato-grosso-do-sul-daems-emissao5",
-      "visitas": 389
-    },
-    {
-      "servico": "Anunciar vagas de emprego no sine sistema nacional de emprego",
-      "path": "/trabalho-emprego-e-previdencia/anunciar-vagas-de-emprego-no-sine-sistema-nacional-de-emprego71",
-      "visitas": 388
+      "visitas": 464
     },
     {
       "servico": "Inscricaocadastro",
       "path": "/habitacao/inscricaocadastro67",
-      "visitas": 376
+      "visitas": 456
+    },
+    {
+      "servico": "Anunciar vagas de emprego no sine sistema nacional de emprego",
+      "path": "/trabalho-emprego-e-previdencia/anunciar-vagas-de-emprego-no-sine-sistema-nacional-de-emprego71",
+      "visitas": 445
     },
     {
       "servico": "Validar documentos",
       "path": "/empresa-industria-e-comercio/validar-documentos163",
-      "visitas": 340
+      "visitas": 395
     }
   ],
   "mes": [
     {
       "servico": "Emitir guia de licenciamento anual",
       "path": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100",
-      "visitas": 11520
+      "visitas": 12113
     },
     {
       "servico": "Expedicao de carteira de identidade",
       "path": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
-      "visitas": 6104
+      "visitas": 6447
     },
     {
       "servico": "Ipva consulta de debito",
       "path": "/financas-e-impostos/ipva-consulta-de-debito54",
-      "visitas": 5392
+      "visitas": 5771
     },
     {
       "servico": "Delegacia Virtual (DEVIR)",
       "path": "/seguranca/delegacia-virtual-devir105",
-      "visitas": 3762
+      "visitas": 3892
     },
     {
       "servico": "Portal e fazenda cadastro",
       "path": "/financas-e-impostos/portal-e-fazenda-cadastro135",
-      "visitas": 3572
+      "visitas": 3718
     },
     {
       "servico": "Certidao tributaria estadual emissao",
       "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao152",
-      "visitas": 2793
+      "visitas": 2901
     },
     {
       "servico": "Inscricaocadastro",
       "path": "/habitacao/inscricaocadastro67",
-      "visitas": 2661
+      "visitas": 2741
     },
     {
       "servico": "Expedicao de certidao de antecedentes criminais",
       "path": "/seguranca/expedicao-de-certidao-de-antecedentes-criminais35",
-      "visitas": 2521
+      "visitas": 2588
     },
     {
       "servico": "Emitir certidao simplificada digital",
       "path": "/empresa-industria-e-comercio/emitir-certidao-simplificada-digital84",
-      "visitas": 1954
+      "visitas": 2077
     },
     {
       "servico": "Documento de arrecadacao do estado de mato grosso do sul daems emissao",
       "path": "/financas-e-impostos/documento-de-arrecadacao-do-estado-de-mato-grosso-do-sul-daems-emissao5",
-      "visitas": 1892
+      "visitas": 1967
     },
     {
       "servico": "Anunciar vagas de emprego no sine sistema nacional de emprego",
       "path": "/trabalho-emprego-e-previdencia/anunciar-vagas-de-emprego-no-sine-sistema-nacional-de-emprego71",
-      "visitas": 1851
+      "visitas": 1908
     },
     {
       "servico": "Patronato",
       "path": "/direitos-e-cidadania/patronato138",
-      "visitas": 1828
+      "visitas": 1906
     },
     {
       "servico": "Credito rural",
       "path": "/agropecuaria-e-vida-rural/credito-rural132",
-      "visitas": 1520
+      "visitas": 1547
     },
     {
       "servico": "Contestacao administrativa de multa autuacao e penalidades",
       "path": "/transito-e-transportes/contestacao-administrativa-de-multa-autuacao-e-penalidades159",
-      "visitas": 1174
+      "visitas": 1234
     },
     {
       "servico": "Falar com a gloria",
       "path": "/comunicacao-e-transparencia/falar-com-a-gloria167",
-      "visitas": 1170
+      "visitas": 1222
     }
   ],
   "ano": [
     {
       "servico": "Emitir guia de licenciamento anual",
       "path": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100",
-      "visitas": 103528
+      "visitas": 104121
     },
     {
       "servico": "Expedicao de carteira de identidade",
       "path": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
-      "visitas": 70371
+      "visitas": 70714
     },
     {
       "servico": "Portal e fazenda cadastro",
       "path": "/financas-e-impostos/portal-e-fazenda-cadastro135",
-      "visitas": 54239
+      "visitas": 54385
     },
     {
       "servico": "Ipva consulta de debito",
       "path": "/financas-e-impostos/ipva-consulta-de-debito54",
-      "visitas": 53568
+      "visitas": 53947
     },
     {
       "servico": "Expedicao de certidao de antecedentes criminais",
       "path": "/seguranca/expedicao-de-certidao-de-antecedentes-criminais35",
-      "visitas": 49236
+      "visitas": 49303
     },
     {
       "servico": "Certidao tributaria estadual emissao",
       "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao152",
-      "visitas": 34643
+      "visitas": 34751
     },
     {
       "servico": "Emitir CRLV-e (licenciamento digital)",
       "path": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
-      "visitas": 31197
+      "visitas": 31207
     },
     {
       "servico": "Inscricaocadastro",
       "path": "/habitacao/inscricaocadastro67",
-      "visitas": 29222
+      "visitas": 29302
     },
     {
       "servico": "Emissão da CNH",
       "path": "/transito-e-transportes/emissao-da-carteira-nacional-de-habilitacao174",
-      "visitas": 28143
+      "visitas": 28183
     },
     {
       "servico": "Pagamento de ipva inscrito em divida ativa",
       "path": "/administracao-publica/pagamento-de-ipva-inscrito-em-divida-ativa134",
-      "visitas": 28116
+      "visitas": 28167
     },
     {
       "servico": "Patronato",
       "path": "/direitos-e-cidadania/patronato138",
-      "visitas": 24432
+      "visitas": 24510
     },
     {
       "servico": "Emitir certidao simplificada digital",
       "path": "/empresa-industria-e-comercio/emitir-certidao-simplificada-digital84",
-      "visitas": 21183
+      "visitas": 21306
     },
     {
       "servico": "Emitir certificado de conclusao do ensino medio",
       "path": "/educacao-e-pesquisa/emitir-certificado-de-conclusao-do-ensino-medio111",
-      "visitas": 21169
+      "visitas": 21216
     },
     {
       "servico": "Delegacia Virtual (DEVIR)",
       "path": "/seguranca/delegacia-virtual-devir105",
-      "visitas": 21031
+      "visitas": 21161
     },
     {
       "servico": "Documento de arrecadacao do estado de mato grosso do sul daems emissao",
       "path": "/financas-e-impostos/documento-de-arrecadacao-do-estado-de-mato-grosso-do-sul-daems-emissao5",
-      "visitas": 18755
+      "visitas": 18830
     }
   ]
 }

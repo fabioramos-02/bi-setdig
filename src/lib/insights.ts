@@ -2,6 +2,7 @@ import type { TermoBusca, Navegador, Dispositivo, Plataforma, Servico, EventoFun
 import type { FatiaCategoria } from "@/components/charts/CategoryDonut";
 import type { PeriodoTipo, PontoAgregado } from "./period-filter";
 import type { OrgaoGrupo } from "./servicos";
+import type { ErroResumo, PercepcaoResumo } from "./data";
 
 /**
  * Cálculos pra storytelling (StoryCard) — réplica do padrão de
@@ -197,4 +198,26 @@ export function calcularInsightConcentracaoOrgaos(grupos: OrgaoGrupo[], temSetor
     participacaoPct: totalGeral > 0 ? (top.total / totalGeral) * 100 : 0,
     totalOrgaos: grupos.length,
   };
+}
+
+export type InsightQualidade = { percentAtendido: number; tempoMedioResolucaoDias: number; pendentes: number };
+
+/** Retrato central da qualidade das cartas — quantos erros já foram
+ * corrigidos e em quanto tempo, em média. */
+export function calcularInsightQualidade(resumo: ErroResumo | null): InsightQualidade | null {
+  if (!resumo || resumo.total === 0) return null;
+  return {
+    percentAtendido: resumo.percentAtendido,
+    tempoMedioResolucaoDias: resumo.tempoMedioResolucaoDias,
+    pendentes: resumo.pendentes,
+  };
+}
+
+export type InsightPercepcao = { csatMedia: number; totalVotos: number; clarezaPositivaPct: number };
+
+/** O cidadão entende e gosta do serviço — pergunta diferente de "o serviço
+ * tem bug": mistura satisfação (nota) com clareza da descrição da carta. */
+export function calcularInsightPercepcao(resumo: PercepcaoResumo | null): InsightPercepcao | null {
+  if (!resumo || resumo.totalVotos === 0) return null;
+  return { csatMedia: resumo.csatMedia, totalVotos: resumo.totalVotos, clarezaPositivaPct: resumo.clarezaPositivaPct };
 }

@@ -230,6 +230,35 @@ def run_cartas() -> None:
     print(f"[cartas] relacao -> {out4} ({len(relacao)} cartas)")
 
 
+def run_qualidade() -> None:
+    from extract import qualidade
+    from transform import qualidade as t_qualidade
+
+    erros = qualidade.get_erros()
+
+    resumo = t_qualidade.resumo_erros(erros)
+    validate_rows([resumo], required=["total", "atendidos"], non_negative=["total", "atendidos", "pendentes", "tempoMedioResolucaoDias"])
+    out = publish("cartas", "erros-resumo", [resumo])
+    print(f"[qualidade] erros-resumo -> {out} ({resumo})")
+
+    por_orgao = t_qualidade.por_orgao(erros)
+    validate_rows(por_orgao, required=["orgao", "orgaoSigla", "total"], non_negative=["total", "atendidos", "pendentes", "tempoMedioResolucaoDias"])
+    out2 = publish("cartas", "erros-por-orgao", por_orgao)
+    print(f"[qualidade] erros-por-orgao -> {out2} ({len(por_orgao)} órgãos)")
+
+    evolucao = t_qualidade.evolucao_mensal(erros)
+    validate_rows(evolucao, required=["mes"], non_negative=["abertos", "resolvidos"])
+    out3 = publish("cartas", "erros-evolucao-mensal", evolucao)
+    print(f"[qualidade] erros-evolucao-mensal -> {out3} ({len(evolucao)} meses)")
+
+    votos = qualidade.get_votos()
+    avaliacoes_info = qualidade.get_avaliacao_informacao()
+    percepcao = t_qualidade.resumo_percepcao(votos, avaliacoes_info)
+    validate_rows([percepcao], required=["totalVotos", "totalAvaliacoesClareza"], non_negative=["csatMedia", "totalVotos", "clarezaPositivaPct", "totalAvaliacoesClareza"])
+    out4 = publish("cartas", "percepcao-resumo", [percepcao])
+    print(f"[qualidade] percepcao-resumo -> {out4} ({percepcao})")
+
+
 if __name__ == "__main__":
     for nome, fn in [
         ("matomo", run_matomo),
@@ -240,6 +269,7 @@ if __name__ == "__main__":
         ("ga4_perfil", run_ga4_perfil),
         ("sites", run_sites),
         ("cartas", run_cartas),
+        ("qualidade", run_qualidade),
     ]:
         try:
             fn()

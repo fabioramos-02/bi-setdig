@@ -2,34 +2,70 @@
   "dia": [
     {
       "termo": "ipva",
-      "buscas": 15
+      "buscas": 95
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 12
+      "buscas": 31
     },
     {
       "termo": "procon",
-      "buscas": 7
+      "buscas": 18
     },
     {
       "termo": "substituição tributária",
-      "buscas": 4
+      "buscas": 14
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 3
+      "buscas": 5
+    },
+    {
+      "termo": "itcd",
+      "buscas": 5
+    },
+    {
+      "termo": "cidadão",
+      "buscas": 4
     },
     {
       "termo": "cancelamento de comunicação de venda",
+      "buscas": 3
+    },
+    {
+      "termo": "licenciamento",
       "buscas": 2
+    },
+    {
+      "termo": "agendamento carteira identidade uai viçosa mg",
+      "buscas": 1
+    },
+    {
+      "termo": "boletim pra seguro veicular",
+      "buscas": 1
+    },
+    {
+      "termo": "cartão inter municipal",
+      "buscas": 1
     },
     {
       "termo": "certidão positiva",
       "buscas": 1
     },
     {
-      "termo": "cidadão",
+      "termo": "certificado do ensino médio",
+      "buscas": 1
+    },
+    {
+      "termo": "ciptea",
+      "buscas": 1
+    },
+    {
+      "termo": "compra premiada",
+      "buscas": 1
+    },
+    {
+      "termo": "conta de agua",
       "buscas": 1
     },
     {
@@ -37,65 +73,53 @@
       "buscas": 1
     },
     {
-      "termo": "histórico escolar",
+      "termo": "empresa",
       "buscas": 1
     },
     {
-      "termo": "licenciamento",
-      "buscas": 1
-    },
-    {
-      "termo": "licenciamento bros 2023 leandro santos de lima",
-      "buscas": 1
-    },
-    {
-      "termo": "pagar licenciamento",
-      "buscas": 1
-    },
-    {
-      "termo": "tg",
-      "buscas": 1
-    },
-    {
-      "termo": "vagas de emprego",
+      "termo": "fui protestado pela energisa com a conta paga não tenho débitos mais colocaram meu nome no serasa solicito a retirada",
       "buscas": 1
     }
   ],
   "semana": [
     {
       "termo": "ipva",
-      "buscas": 231
+      "buscas": 311
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 138
+      "buscas": 157
     },
     {
       "termo": "procon",
-      "buscas": 60
+      "buscas": 71
     },
     {
       "termo": "substituição tributária",
-      "buscas": 47
+      "buscas": 57
     },
     {
       "termo": "itcd",
-      "buscas": 21
+      "buscas": 26
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 15
+      "buscas": 17
     },
     {
       "termo": "empresa",
-      "buscas": 15
+      "buscas": 16
     },
     {
       "termo": "cidadão",
-      "buscas": 11
+      "buscas": 14
     },
     {
       "termo": "servidor",
+      "buscas": 7
+    },
+    {
+      "termo": "licenciamento",
       "buscas": 7
     },
     {
@@ -103,12 +127,8 @@
       "buscas": 7
     },
     {
-      "termo": "licenciamento",
-      "buscas": 6
-    },
-    {
       "termo": "cancelamento de comunicação de venda",
-      "buscas": 5
+      "buscas": 6
     },
     {
       "termo": "assinatura digital",
@@ -131,50 +151,50 @@
       "buscas": 3
     },
     {
+      "termo": "itdc",
+      "buscas": 3
+    },
+    {
       "termo": "2 via do rg",
       "buscas": 2
     },
     {
       "termo": "boletim escolar",
       "buscas": 2
-    },
-    {
-      "termo": "certificado ensino médio encejja",
-      "buscas": 2
     }
   ],
   "mes": [
     {
       "termo": "ipva",
-      "buscas": 733
+      "buscas": 813
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 671
+      "buscas": 690
     },
     {
       "termo": "procon",
-      "buscas": 306
+      "buscas": 317
     },
     {
       "termo": "substituição tributária",
-      "buscas": 283
-    },
-    {
-      "termo": "autoparcelamento",
-      "buscas": 103
+      "buscas": 293
     },
     {
       "termo": "itcd",
-      "buscas": 102
+      "buscas": 107
+    },
+    {
+      "termo": "autoparcelamento",
+      "buscas": 105
     },
     {
       "termo": "cidadão",
-      "buscas": 68
+      "buscas": 71
     },
     {
       "termo": "empresa",
-      "buscas": 45
+      "buscas": 46
     },
     {
       "termo": "servidor",
@@ -182,7 +202,7 @@
     },
     {
       "termo": "licenciamento",
-      "buscas": 36
+      "buscas": 37
     },
     {
       "termo": "cnh",
@@ -217,38 +237,38 @@
       "buscas": 8
     },
     {
-      "termo": "programa de nota fiscal",
+      "termo": "cancelamento de comunicação de venda",
       "buscas": 6
     },
     {
-      "termo": "cancelamento de comunicação de venda",
-      "buscas": 5
+      "termo": "programa de nota fiscal",
+      "buscas": 6
     }
   ],
   "ano": [
     {
       "termo": "ipva",
-      "buscas": 27444
+      "buscas": 27524
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 7776
+      "buscas": 7795
     },
     {
       "termo": "procon",
-      "buscas": 6036
+      "buscas": 6047
     },
     {
       "termo": "substituição tributária",
-      "buscas": 3962
+      "buscas": 3972
     },
     {
       "termo": "itcd",
-      "buscas": 1488
+      "buscas": 1493
     },
     {
       "termo": "cidadão",
-      "buscas": 1307
+      "buscas": 1310
     },
     {
       "termo": "servidor",
@@ -256,11 +276,11 @@
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 1082
+      "buscas": 1084
     },
     {
       "termo": "empresa",
-      "buscas": 610
+      "buscas": 611
     },
     {
       "termo": "nota fiscal",
@@ -268,7 +288,7 @@
     },
     {
       "termo": "licenciamento",
-      "buscas": 234
+      "buscas": 235
     },
     {
       "termo": "mulher",

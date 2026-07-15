@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "cartas/erros-resumo",
+  "description": "Retrato geral dos erros reportados nas cartas de serviço (domínio Qualidade, ADR-005) — 1 linha só.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["total", "atendidos", "pendentes", "percentAtendido", "tempoMedioResolucaoDias"],
+    "properties": {
+      "total": { "type": "integer", "minimum": 0 },
+      "atendidos": { "type": "integer", "minimum": 0 },
+      "pendentes": { "type": "integer", "minimum": 0 },
+      "percentAtendido": { "type": "number", "minimum": 0, "maximum": 100 },
+      "tempoMedioResolucaoDias": { "type": "number", "minimum": 0 }
+    }
+  }
+}
