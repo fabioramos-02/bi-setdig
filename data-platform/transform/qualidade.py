@@ -93,6 +93,27 @@ def resumo_percepcao(votos: list[dict], avaliacoes_info: list[dict]) -> dict:
     }
 
 
+def percepcao_por_orgao(votos: list[dict], avaliacoes_info: list[dict]) -> list[dict]:
+    # Extrair map de sigla -> nome do orgao
+    sigla_nome = {}
+    for r in votos + avaliacoes_info:
+        if r.get("orgao_sigla") and r.get("orgao"):
+            sigla_nome[r["orgao_sigla"]] = r["orgao"]
+            
+    saida = []
+    for sigla, nome in sigla_nome.items():
+        v_orgao = [v for v in votos if v.get("orgao_sigla") == sigla]
+        a_orgao = [a for a in avaliacoes_info if a.get("orgao_sigla") == sigla]
+        
+        resumo = resumo_percepcao(v_orgao, a_orgao)
+        saida.append({
+            "orgao": nome,
+            "orgaoSigla": sigla,
+            **resumo
+        })
+    return sorted(saida, key=lambda x: x["totalVotos"], reverse=True)
+
+
 def relacao(rows: list[dict]) -> list[dict]:
     """1 linha por erro — mirror de servicos_cartas.py::relacao(). `diasAberto`
     é aproximação (`agora - created_at`), coerente com o resto do domínio

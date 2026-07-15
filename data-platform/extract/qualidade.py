@@ -37,13 +37,19 @@ _ERROS_SQL = """
 """
 
 _VOTOS_SQL = """
-    SELECT id, servicos_id AS servico_id, avaliacao, created_at
-    FROM gerenciamento_votosservicos
+    SELECT v.id, v.servicos_id AS servico_id, v.avaliacao, v.created_at, o.sigla AS orgao_sigla, o.nome AS orgao
+    FROM gerenciamento_votosservicos v
+    JOIN gerenciamento_servicos s ON v.servicos_id = s.id
+    JOIN gerenciamento_setor st ON s.setor_id = st.id
+    JOIN gerenciamento_orgaos o ON st.orgao_id = o.id
 """
 
 _AVALIACAO_INFO_SQL = """
-    SELECT id, servico_id, avaliacao, created_at
-    FROM gerenciamento_avaliacaoinformacaoservicos
+    SELECT a.id, a.servico_id, a.avaliacao, a.created_at, o.sigla AS orgao_sigla, o.nome AS orgao
+    FROM gerenciamento_avaliacaoinformacaoservicos a
+    JOIN gerenciamento_servicos s ON a.servico_id = s.id
+    JOIN gerenciamento_setor st ON s.setor_id = st.id
+    JOIN gerenciamento_orgaos o ON st.orgao_id = o.id
 """
 
 

@@ -293,6 +293,10 @@ export type PercepcaoResumo = {
   clarezaPositivaPct: number;
   totalAvaliacoesClareza: number;
 };
+export type PercepcaoOrgao = PercepcaoResumo & {
+  orgao: string;
+  orgaoSigla: string;
+};
 
 export function getCartasErrosResumo(): ErroResumo | null {
   const rows = readDataset<ErroResumo[]>("cartas", "v1", "erros-resumo");
@@ -307,6 +311,9 @@ export function getCartasErrosEvolucaoMensal(): ErroEvolucaoMensal[] {
 export function getCartasPercepcaoResumo(): PercepcaoResumo | null {
   const rows = readDataset<PercepcaoResumo[]>("cartas", "v1", "percepcao-resumo");
   return rows?.[0] ?? null;
+}
+export function getCartasPercepcaoPorOrgao(): PercepcaoOrgao[] {
+  return readDataset<PercepcaoOrgao[]>("cartas", "v1", "percepcao-por-orgao") ?? [];
 }
 
 export type ErroRelacao = {

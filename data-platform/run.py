@@ -263,6 +263,11 @@ def run_qualidade() -> None:
     out4 = publish("cartas", "percepcao-resumo", [percepcao])
     print(f"[qualidade] percepcao-resumo -> {out4} ({percepcao})")
 
+    percepcao_orgao = t_qualidade.percepcao_por_orgao(votos, avaliacoes_info)
+    validate_rows(percepcao_orgao, required=["orgao", "orgaoSigla", "totalVotos"], non_negative=["totalVotos"])
+    out_po = publish("cartas", "percepcao-por-orgao", percepcao_orgao)
+    print(f"[qualidade] percepcao-por-orgao -> {out_po} ({len(percepcao_orgao)} órgãos)")
+
 
 if __name__ == "__main__":
     for nome, fn in [
