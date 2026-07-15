@@ -5,7 +5,7 @@ import { useState } from "react";
 export type Coluna<T> = {
   key: string;
   label: string;
-  align?: "left" | "right";
+  align?: "left" | "center" | "right";
   sortable?: boolean;
   sortValue?: (row: T) => string | number;
   render: (row: T) => React.ReactNode;
@@ -23,10 +23,14 @@ export function DataTable<T>({
   columns,
   rows,
   rowKey,
+  onRowClick,
 }: {
   columns: Coluna<T>[];
   rows: T[];
   rowKey: (row: T) => string;
+  /** Linha clicável (abrir detalhe, ex. modal) — opcional, sem isso a linha
+   * fica como sempre foi. */
+  onRowClick?: (row: T) => void;
 }) {
   const [ordem, setOrdem] = useState<{ key: string; dir: "asc" | "desc" } | null>(null);
 
@@ -57,7 +61,7 @@ export function DataTable<T>({
               <th
                 key={col.key}
                 onClick={() => alternarOrdem(col)}
-                className={`py-3 px-3 text-xs font-semibold uppercase tracking-wide ${col.align === "right" ? "text-right" : "text-left"} ${col.sortable ? "cursor-pointer select-none" : ""}`}
+                className={`py-3 px-3 text-xs font-semibold uppercase tracking-wide ${col.align === "right" ? "text-right" : col.align === "center" ? "text-center" : "text-left"} ${col.sortable ? "cursor-pointer select-none" : ""}`}
                 style={{ color: "var(--ds-color-text-secondary)" }}
               >
                 <span className="inline-flex items-center gap-1">
@@ -80,11 +84,24 @@ export function DataTable<T>({
           {linhas.map((row) => (
             <tr
               key={rowKey(row)}
-              className="align-top transition-colors data-table-row"
+              className={`align-top transition-colors data-table-row ${onRowClick ? "cursor-pointer hover:bg-[var(--ds-color-background-muted)]" : ""}`}
               style={{ borderTop: "1px solid var(--ds-color-border)" }}
+              {...(onRowClick
+                ? {
+                    onClick: () => onRowClick(row),
+                    tabIndex: 0,
+                    role: "button",
+                    onKeyDown: (e: React.KeyboardEvent) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        onRowClick(row);
+                      }
+                    },
+                  }
+                : {})}
             >
               {columns.map((col) => (
-                <td key={col.key} className={`py-3 px-3 ${col.align === "right" ? "text-right" : ""}`}>
+                <td key={col.key} className={`py-3 px-3 ${col.align === "right" ? "text-right" : col.align === "center" ? "text-center" : ""}`}>
                   {col.render(row)}
                 </td>
               ))}

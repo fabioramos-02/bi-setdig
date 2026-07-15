@@ -106,6 +106,34 @@ Todo componente novo de gráfico/métrica/insight segue isso — não é só pol
   precisar aparecer, ele descreve o que a coisa FAZ em português simples, não
   o nome dela.
 
+## Pensamento Analítico (Analytics First)
+
+Antes de criar, alterar ou refatorar qualquer gráfico, métrica ou componente de
+dashboard, avaliar se a visualização realmente ajuda o usuário a entender o
+problema — o objetivo não é mostrar todo dado disponível, é responder pergunta.
+
+- **Pergunta antes de componente.** Sempre responder: qual pergunta de negócio
+  isso responde? Qual decisão ajuda a tomar? O usuário entende a resposta em
+  menos de 5 segundos? Existe forma mais simples de comunicar? Sem resposta
+  clara pras 3 primeiras — reavaliar antes de implementar.
+- **Todo componente responde uma pergunta, não só lista dado.** O título é a
+  pergunta respondida, não a categoria do dado.
+  - ❌ "Serviços por órgão" → ✔ "Quais órgãos concentram mais serviços?"
+  - ❌ "Serviços digitais" → ✔ "Quanto da transformação digital já foi feito?"
+  - ❌ "Lista de setores" → ✔ "Em quais setores os serviços se concentram?"
+- **Priorizar leitura analítica sobre tabela crua**: maior/menor,
+  crescimento/redução, distribuição, concentração, participação, comparação,
+  tendência, anomalia. Gráfico que só redesenha uma tabela em barra não
+  agrega nada.
+- **Densidade de informação**: cada componente entrega o máximo de contexto
+  no menor espaço — quantidade + percentual + variação + comparação juntos
+  quando fizer sentido, não espalhado em cards genéricos. Ao revisar: "isso
+  mostra só dado, ou já é conhecimento pronto pra decisão?"
+- **5 públicos, 1 princípio**: cidadão, servidor, gestor, secretário,
+  governador — nenhum precisa de treinamento técnico pra entender o gráfico.
+  O componente explica o próprio significado (ver Data Storytelling acima);
+  o usuário nunca "descobre" como ler.
+
 ## Testes
 
 Unitário: `node --test` nativo (zero dependência), arquivo `Componente.test.ts`

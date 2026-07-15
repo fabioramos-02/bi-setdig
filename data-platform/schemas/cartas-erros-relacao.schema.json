@@ -1,14 +1,15 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "cartas/erros-relacao",
-  "description": "Detalhamento de erros reportados nas cartas de serviço, 1 linha por erro (domínio Qualidade, ADR-005). conteudo/resolucao truncados em 300 caracteres (ver transform/qualidade.py).",
+  "description": "Detalhamento de erros reportados nas cartas de serviço, 1 linha por erro (domínio Qualidade, ADR-005). conteudo/resolucao truncados em 2000 caracteres (ver transform/qualidade.py).",
   "type": "array",
   "items": {
     "type": "object",
-    "required": ["id", "servico", "orgao", "orgaoSigla", "atendido", "diasAberto", "createdAt", "updatedAt"],
+    "required": ["id", "servico", "slugServico", "orgao", "orgaoSigla", "atendido", "diasAberto", "createdAt", "updatedAt"],
     "properties": {
       "id": { "type": "string" },
       "servico": { "type": "string" },
+      "slugServico": { "type": "string" },
       "orgao": { "type": "string" },
       "orgaoSigla": { "type": "string" },
       "categoria": { "type": ["string", "null"] },

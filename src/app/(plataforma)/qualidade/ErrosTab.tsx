@@ -9,8 +9,11 @@ import { DetalhamentoErrosTable } from "./DetalhamentoErrosTable";
 import type { ErroResumo, ErroOrgao, ErroEvolucaoMensal, ErroRelacao } from "@/lib/data";
 
 /** Aba "Erros": quantos, de quais órgãos, evolução no tempo, e o
- * detalhamento operacional. O filtro de órgão do menu lateral afeta só
- * Análise por Órgão e Detalhamento — o resto sempre mostra todos. */
+ * detalhamento operacional. O filtro de órgão do menu lateral afeta Análise
+ * por Órgão e Detalhamento; Evolução Mensal continua sempre com todos.
+ * "Erros por Órgão" some quando filtrado — visão geral de todos os órgãos
+ * não faz sentido com 1 órgão já selecionado, Análise por Órgão cobre esse
+ * caso. */
 export function ErrosTab({
   resumo,
   porOrgao,
@@ -43,7 +46,7 @@ export function ErrosTab({
         />
       )}
 
-      <ErrosPorOrgaoChart porOrgao={porOrgao} />
+      {!orgaoFiltro && <ErrosPorOrgaoChart porOrgao={porOrgao} />}
 
       <AnaliseOrgaoSection porOrgao={porOrgao} resumo={resumo} orgaoFiltro={orgaoFiltro} />
 

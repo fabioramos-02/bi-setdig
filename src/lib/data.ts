@@ -312,10 +312,11 @@ export function getCartasPercepcaoResumo(): PercepcaoResumo | null {
 export type ErroRelacao = {
   id: string;
   servico: string;
+  slugServico: string;
   orgao: string;
   orgaoSigla: string;
   categoria: string | null;
-  /** Texto livre digitado pelo cidadão, truncado em 300 caracteres na origem. */
+  /** Texto livre digitado pelo cidadão, truncado em 2000 caracteres na origem. */
   conteudo: string | null;
   resolucao: string | null;
   atendido: boolean;

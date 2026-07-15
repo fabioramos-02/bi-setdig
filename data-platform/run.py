@@ -252,7 +252,7 @@ def run_qualidade() -> None:
     print(f"[qualidade] erros-evolucao-mensal -> {out3} ({len(evolucao)} meses)")
 
     relacao = t_qualidade.relacao(erros)
-    validate_rows(relacao, required=["id", "servico", "orgao", "orgaoSigla", "atendido", "diasAberto"], non_negative=["diasAberto"])
+    validate_rows(relacao, required=["id", "servico", "slugServico", "orgao", "orgaoSigla", "atendido", "diasAberto"], non_negative=["diasAberto"])
     out5 = publish("cartas", "erros-relacao", relacao)
     print(f"[qualidade] erros-relacao -> {out5} ({len(relacao)} erros)")
 

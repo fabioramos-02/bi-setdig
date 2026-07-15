@@ -3,9 +3,16 @@
 import { useEffect, useMemo, useState } from "react";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { DataTable, type Coluna } from "@/components/dashboard/DataTable";
+import { Modal } from "@/components/dashboard/Modal";
+import { labelCategoria } from "@/lib/servicos";
 import type { ErroRelacao } from "@/lib/data";
 
 const PASSO = 50;
+const PORTAL_BASE = "https://www.ms.gov.br";
+
+const linkPortal = (e: ErroRelacao) => `${PORTAL_BASE}/${e.categoria}/${e.slugServico}`;
+
+const formatarData = (iso: string) => new Date(iso).toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit", year: "numeric" });
 
 const colunas: Coluna<ErroRelacao>[] = [
   { key: "orgao", label: "Órgão", sortable: true, sortValue: (e) => e.orgaoSigla, render: (e) => (
@@ -23,7 +30,7 @@ const colunas: Coluna<ErroRelacao>[] = [
       {e.conteudo ?? "—"}
     </span>
   ) },
-  { key: "status", label: "Status", sortable: true, sortValue: (e) => (e.atendido ? 1 : 0), render: (e) => (
+  { key: "status", label: "Status", align: "center", sortable: true, sortValue: (e) => (e.atendido ? 1 : 0), render: (e) => (
     <span
       className="text-xs font-semibold px-2 py-0.5 rounded"
       style={{
@@ -46,13 +53,28 @@ const colunas: Coluna<ErroRelacao>[] = [
       {e.atendido ? (e.resolucao ?? "—") : "—"}
     </span>
   ) },
+  { key: "portal", label: "Portal", align: "center", render: (e) => (
+    <a
+      href={linkPortal(e)}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={(ev) => ev.stopPropagation()}
+      className="hover:underline text-xs"
+      style={{ color: "var(--ds-color-primary-600)" }}
+    >
+      Abrir ↗
+    </a>
+  ) },
 ];
 
 /** "📄 Detalhamento de Erros" — tabela operacional, 1 linha por erro (não
  * agregada). Reage ao filtro lateral de órgão. 708 erros é grande demais pra
- * renderizar tudo de uma vez — mesmo padrão de paginação de ExplorarTab.tsx. */
+ * renderizar tudo de uma vez — mesmo padrão de paginação de ExplorarTab.tsx.
+ * Clicar na linha abre modal com o erro completo (a célula "Erro relatado"/
+ * "Resolução" trunca visualmente, o modal mostra o texto inteiro). */
 export function DetalhamentoErrosTable({ relacao, orgaoFiltro }: { relacao: ErroRelacao[]; orgaoFiltro: string }) {
   const [visiveis, setVisiveis] = useState(PASSO);
+  const [selecionado, setSelecionado] = useState<ErroRelacao | null>(null);
 
   useEffect(() => {
     setVisiveis(PASSO);
@@ -71,7 +93,7 @@ export function DetalhamentoErrosTable({ relacao, orgaoFiltro }: { relacao: Erro
         {mostrando.length.toLocaleString("pt-BR")}
       </p>
       <div className="overflow-x-auto">
-        <DataTable columns={colunas} rows={mostrando} rowKey={(e) => e.id} />
+        <DataTable columns={colunas} rows={mostrando} rowKey={(e) => e.id} onRowClick={setSelecionado} />
       </div>
       {visiveis < filtrados.length && (
         <button
@@ -83,6 +105,51 @@ export function DetalhamentoErrosTable({ relacao, orgaoFiltro }: { relacao: Erro
           Carregar mais ({(filtrados.length - visiveis).toLocaleString("pt-BR")} restantes)
         </button>
       )}
+
+      <Modal open={!!selecionado} onClose={() => setSelecionado(null)} title={selecionado?.servico ?? ""}>
+        {selecionado && (
+          <div className="flex flex-col gap-4 text-sm">
+            <div className="flex flex-wrap gap-x-6 gap-y-1" style={{ color: "var(--ds-color-text-secondary)" }}>
+              <span><strong>Órgão:</strong> {selecionado.orgaoSigla}</span>
+              {selecionado.categoria && <span><strong>Categoria:</strong> {labelCategoria(selecionado.categoria)}</span>}
+              <span>
+                <strong>Status:</strong>{" "}
+                <span style={{ color: selecionado.atendido ? "var(--ds-color-success)" : "var(--ds-color-danger)" }}>
+                  {selecionado.atendido ? "Atendido" : "Pendente"}
+                </span>
+              </span>
+              <span><strong>Reportado em:</strong> {formatarData(selecionado.createdAt)}</span>
+              <span><strong>Dias em aberto:</strong> {selecionado.diasAberto.toLocaleString("pt-BR")}</span>
+            </div>
+
+            <div>
+              <h3 className="text-xs font-semibold uppercase mb-1" style={{ color: "var(--ds-color-text-muted)" }}>
+                Erro relatado pelo cidadão
+              </h3>
+              <p style={{ color: "var(--ds-color-text-primary)" }}>{selecionado.conteudo ?? "Sem descrição."}</p>
+            </div>
+
+            {selecionado.atendido && (
+              <div>
+                <h3 className="text-xs font-semibold uppercase mb-1" style={{ color: "var(--ds-color-text-muted)" }}>
+                  Resolução
+                </h3>
+                <p style={{ color: "var(--ds-color-text-primary)" }}>{selecionado.resolucao ?? "Sem registro de resolução."}</p>
+              </div>
+            )}
+
+            <a
+              href={linkPortal(selecionado)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="self-start text-sm font-medium hover:underline"
+              style={{ color: "var(--ds-color-primary-600)" }}
+            >
+              Abrir serviço no portal ↗
+            </a>
+          </div>
+        )}
+      </Modal>
     </DashboardSection>
   );
 }

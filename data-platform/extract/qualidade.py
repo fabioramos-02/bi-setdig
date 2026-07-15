@@ -26,7 +26,7 @@ def _connection_url() -> str:
 
 
 _ERROS_SQL = """
-    SELECT e.id, e.servico_id, s.titulo AS titulo_servico,
+    SELECT e.id, e.servico_id, s.titulo AS titulo_servico, s.slug AS slug_servico,
            t.slug AS categoria_slug, o.sigla AS orgao_sigla, o.nome AS orgao,
            e.atendido, e.conteudo, e.resolucao, e.created_at, e.updated_at
     FROM gerenciamento_servicoserros e

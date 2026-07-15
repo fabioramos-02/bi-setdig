@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from datetime import datetime
 
-_MAX_TEXTO = 300  # ponytail: cap texto livre pra não flertar com o limite de 2MB do publish() (~700 linhas com 2 campos de texto)
+_MAX_TEXTO = 2000  # rede de segurança contra outlier patológico — 300 chars truncava 12,5% das linhas reais (708 erros = 458KB, bem abaixo do limite de 2MB do publish()); exibição em tabela já trunca via CSS, isso aqui só protege contra texto absurdamente longo
 
 
 def _truncar(texto: str | None) -> str | None:
@@ -104,6 +104,7 @@ def relacao(rows: list[dict]) -> list[dict]:
         {
             "id": str(r["id"]),
             "servico": r["titulo_servico"],
+            "slugServico": r["slug_servico"],
             "orgao": r["orgao"],
             "orgaoSigla": r["orgao_sigla"],
             "categoria": r.get("categoria_slug"),
