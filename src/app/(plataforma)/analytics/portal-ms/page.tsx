@@ -1,9 +1,7 @@
-import fs from "node:fs";
-import path from "node:path";
 import type { Metadata } from "next";
 import { ContentTopBar } from "@/components/ds/ContentTopBar";
 import { EmptyCard } from "@/components/ds/EmptyCard";
-import { normalizarNomeCidade } from "@/lib/normalizar-cidade";
+import { calcularMatchRateMapa } from "@/lib/server/geo-match";
 import { PortalMsClient } from "./PortalMsClient";
 import {
   getMatomoVisitasDiarias,
@@ -22,17 +20,6 @@ import {
 export const metadata: Metadata = {
   title: "Analytics — Portal Único | SETDIG",
 };
-
-function calcularMatchRateMapa(cidadesMes: { cidade: string; visitas: number }[]): number {
-  const geojsonPath = path.join(process.cwd(), "public", "geo", "ms-municipios.geojson");
-  const nomesGeojson = new Set<string>(
-    JSON.parse(fs.readFileSync(geojsonPath, "utf-8")).features.map((f: { properties: { name: string } }) =>
-      normalizarNomeCidade(f.properties.name)
-    )
-  );
-  if (cidadesMes.length === 0) return 0;
-  return cidadesMes.filter((c) => nomesGeojson.has(normalizarNomeCidade(c.cidade))).length / cidadesMes.length;
-}
 
 export default function AnalyticsPortalMsPage() {
   const diarias = getMatomoVisitasDiarias();

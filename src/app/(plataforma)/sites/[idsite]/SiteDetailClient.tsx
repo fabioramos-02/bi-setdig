@@ -4,15 +4,22 @@ import { useEffect, useState } from "react";
 import type { StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
 import { ContentTopBar } from "@/components/ds/ContentTopBar";
 import { EmptyCard } from "@/components/ds/EmptyCard";
-import { DashboardSection } from "@/components/dashboard/DashboardSection";
-import { ChartLoading } from "@/components/dashboard/ChartLoading";
-import { LineChart } from "@/components/charts/LineChart";
-import { RankingBarChart } from "@/components/charts/RankingBarChart";
-import { DeviceBarChart } from "@/components/charts/DeviceBarChart";
-import { BrowserBarChart } from "@/components/charts/BrowserBarChart";
+import { Tabs, type TabItem } from "@/components/dashboard/Tabs";
+import { VisaoGeralTab } from "./VisaoGeralTab";
+import { PerfilCidadaoTab } from "./PerfilCidadaoTab";
+import { BuscaTab } from "./BuscaTab";
+import { PaginasTab } from "./PaginasTab";
 import { usePeriodo } from "@/lib/periodo-context";
 import { intervaloDoBucket } from "@/lib/period-filter";
-import type { Site, VisitaDiaria, Pagina, Navegador, Dispositivo } from "@/lib/data";
+import {
+  calcularInsightNavegador,
+  calcularInsightDispositivo,
+  calcularInsightPagina,
+  calcularInsightBusca,
+} from "@/lib/insights";
+import type { Site, VisitaDiaria, Pagina, Navegador, Dispositivo, Horario, Cidade, TermoBusca } from "@/lib/data";
+
+const ROTULO_PERIODO = { dia: "no dia", semana: "na semana", mes: "no mês", ano: "no ano", intervalo: "no intervalo" };
 
 // Shape devolvido por /api/analytics/sites/[idsite] — sempre ao vivo, não
 // existe dataset estático pra nenhum dos sites do catálogo.
@@ -21,11 +28,16 @@ type SiteLive = {
   paginas: Pagina[];
   navegadores: Navegador[];
   dispositivos: Dispositivo[];
+  horarios: Horario[];
+  geografia: Cidade[];
+  matchRateMapa: number;
+  busca: TermoBusca[];
 };
 
 export function SiteDetailClient({ site }: { site: Site }) {
   const { estado, min, max } = usePeriodo();
   const range = intervaloDoBucket(estado, min, max);
+  const [abaAtiva, setAbaAtiva] = useState("visao-geral");
 
   const [dados, setDados] = useState<SiteLive | null>(null);
   const [dadosRange, setDadosRange] = useState<{ inicio: string; fim: string } | null>(null);
@@ -57,6 +69,66 @@ export function SiteDetailClient({ site }: { site: Site }) {
 
   const valido = dados !== null && dadosRange?.inicio === range.inicio && dadosRange?.fim === range.fim;
   const statusChart: StatusIntervalo = valido ? "ok" : status === "erro" ? "fallback" : "carregando";
+  const rotuloPeriodo = ROTULO_PERIODO[estado.tipo];
+
+  const tendencia = dados?.tendencia ?? [];
+  const paginas = dados?.paginas ?? [];
+  const navegadores = dados?.navegadores ?? [];
+  const dispositivos = dados?.dispositivos ?? [];
+  const horarios = dados?.horarios ?? [];
+  const cidades = dados?.geografia ?? [];
+  const busca = dados?.busca ?? [];
+
+  const insightNavegador = calcularInsightNavegador(navegadores);
+  const insightDispositivo = calcularInsightDispositivo(dispositivos);
+  const insightPagina = calcularInsightPagina(paginas);
+  const insightBusca = calcularInsightBusca(busca);
+
+  const abas: TabItem[] = [
+    {
+      id: "visao-geral",
+      label: "1. Visão Geral",
+      content: (
+        <VisaoGeralTab
+          tendencia={tendencia}
+          rotuloPeriodo={rotuloPeriodo}
+          insightNavegador={insightNavegador}
+          insightDispositivo={insightDispositivo}
+          insightPagina={insightPagina}
+          insightBusca={insightBusca}
+          status={statusChart}
+          onIrPara={setAbaAtiva}
+        />
+      ),
+    },
+    {
+      id: "perfil",
+      label: "2. Perfil do Cidadão",
+      content: (
+        <PerfilCidadaoTab
+          matchRate={dados?.matchRateMapa ?? 0}
+          cidadesAtual={cidades}
+          navegadoresAtual={navegadores}
+          insightNavegador={insightNavegador}
+          dispositivosAtual={dispositivos}
+          horariosAtual={horarios}
+          status={statusChart}
+        />
+      ),
+    },
+    {
+      id: "busca",
+      label: "3. Intenção de Busca",
+      content: <BuscaTab busca={busca} rotuloPeriodo={rotuloPeriodo} insightBusca={insightBusca} status={statusChart} />,
+    },
+    {
+      id: "paginas",
+      label: "4. Páginas mais acessadas",
+      content: (
+        <PaginasTab paginas={paginas} rotuloPeriodo={rotuloPeriodo} insightPagina={insightPagina} status={statusChart} />
+      ),
+    },
+  ];
 
   return (
     <div className="flex flex-col flex-1">
@@ -75,42 +147,7 @@ export function SiteDetailClient({ site }: { site: Site }) {
         {statusChart === "fallback" ? (
           <EmptyCard message="Não foi possível carregar os dados desse site agora. Tenta de novo em instantes." />
         ) : (
-          <>
-            <DashboardSection title="Visitas ao longo do tempo">
-              <ChartLoading status={statusChart} height={280}>
-                {valido && dados!.tendencia.length === 0 ? (
-                  <EmptyCard message="Sem dados suficientes nesse período." />
-                ) : (
-                  <LineChart data={dados?.tendencia ?? []} xKey="data" yKey="visitas" height={280} />
-                )}
-              </ChartLoading>
-            </DashboardSection>
-
-            <DashboardSection title="Páginas mais acessadas">
-              <ChartLoading status={statusChart} height={260}>
-                {valido && dados!.paginas.length === 0 ? (
-                  <EmptyCard message="Sem dados suficientes nesse período." />
-                ) : (
-                  <RankingBarChart itens={(dados?.paginas ?? []).map((p) => ({ label: p.url, valor: p.visitas, href: p.url }))} />
-                )}
-              </ChartLoading>
-            </DashboardSection>
-
-            <DashboardSection title="Dispositivos e navegadores">
-              <div className="grid gap-6 grid-cols-1 lg:grid-cols-2">
-                <div className="min-w-0">
-                  <ChartLoading status={statusChart} height={220}>
-                    <DeviceBarChart dados={dados?.dispositivos ?? []} />
-                  </ChartLoading>
-                </div>
-                <div className="min-w-0">
-                  <ChartLoading status={statusChart} height={220}>
-                    <BrowserBarChart dados={dados?.navegadores ?? []} />
-                  </ChartLoading>
-                </div>
-              </div>
-            </DashboardSection>
-          </>
+          <Tabs items={abas} ativa={abaAtiva} onAtivaChange={setAbaAtiva} />
         )}
       </main>
     </div>

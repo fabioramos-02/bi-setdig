@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import * as matomo from "@/lib/server/matomo-client";
 import * as t from "@/lib/server/matomo-transform";
+import { calcularMatchRateMapa } from "@/lib/server/geo-match";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -16,18 +17,29 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ idsi
   }
 
   try {
-    const [dailyRaw, pageUrlsRaw, browsersRaw, deviceTypeRaw] = await Promise.all([
+    const [dailyRaw, pageUrlsRaw, browsersRaw, deviceTypeRaw, visitTimeRaw, cityRaw, searchRaw] = await Promise.all([
       matomo.getVisitsSummaryDaily(inicio, fim, idsite),
-      matomo.getPageUrls(inicio, fim, 20, idsite),
+      matomo.getPageUrls(inicio, fim, -1, idsite),
       matomo.getBrowsers(inicio, fim, 20, idsite),
       matomo.getDeviceType(inicio, fim, idsite),
+      matomo.getVisitTime(inicio, fim, idsite),
+      matomo.getCity(inicio, fim, 200, idsite),
+      matomo.getSiteSearchKeywords(inicio, fim, 50, idsite),
     ]);
+
+    const geografia = t.citiesMs(cityRaw);
+    const buscaNativa = t.searchKeywords(searchRaw);
+    const buscaUrls = t.searchFromUrls(pageUrlsRaw);
 
     return NextResponse.json({
       tendencia: t.visitsDaily(dailyRaw),
       paginas: t.topPages(pageUrlsRaw, 20),
       navegadores: t.topNWithOthers(browsersRaw, "navegador", 4),
       dispositivos: t.topNWithOthers(deviceTypeRaw, "dispositivo", 2),
+      horarios: t.visitTime(visitTimeRaw),
+      geografia,
+      matchRateMapa: calcularMatchRateMapa(geografia),
+      busca: t.mergeSearch(buscaNativa, buscaUrls, 20),
     });
   } catch (exc) {
     console.error(`[api/analytics/sites/${idsite}] falhou:`, exc);
