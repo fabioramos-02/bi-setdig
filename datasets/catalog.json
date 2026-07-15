@@ -209,17 +209,6 @@
     "bytes": 4010
   },
   {
-    "dataset": "sites",
-    "source": "matomo",
-    "owner": "SETDIG",
-    "updatedAt": "2026-07-14T13:45:55.513114+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/matomo-sites.schema.json",
-    "rows": 144,
-    "bytes": 14877
-  },
-  {
     "dataset": "inventario-resumo",
     "source": "cartas",
     "owner": "SETDIG",
@@ -273,5 +262,16 @@
     "schema": "data-platform/schemas/cartas-jornada-resumo.schema.json",
     "rows": 1,
     "bytes": 404
+  },
+  {
+    "dataset": "sites",
+    "source": "matomo",
+    "owner": "SETDIG",
+    "updatedAt": "2026-07-15T13:02:40.664617+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/matomo-sites.schema.json",
+    "rows": 144,
+    "bytes": 14877
   }
 ]
