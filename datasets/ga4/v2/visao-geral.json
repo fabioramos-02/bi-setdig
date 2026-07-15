@@ -2,41 +2,41 @@
   "dia": [
     {
       "newVsReturning": "returning",
-      "activeUsers": 1037,
-      "sessions": 1151,
-      "screenPageViews": 2448
+      "activeUsers": 1116,
+      "sessions": 1244,
+      "screenPageViews": 2636
     },
     {
       "newVsReturning": "new",
-      "activeUsers": 127,
-      "sessions": 127,
-      "screenPageViews": 247
+      "activeUsers": 151,
+      "sessions": 151,
+      "screenPageViews": 269
     },
     {
       "newVsReturning": "",
       "activeUsers": 0,
-      "sessions": 248,
-      "screenPageViews": 17
+      "sessions": 256,
+      "screenPageViews": 19
     }
   ],
   "semana": [
     {
       "newVsReturning": "returning",
-      "activeUsers": 13082,
-      "sessions": 23517,
-      "screenPageViews": 48714
+      "activeUsers": 13110,
+      "sessions": 23645,
+      "screenPageViews": 48902
     },
     {
       "newVsReturning": "new",
-      "activeUsers": 1898,
-      "sessions": 1846,
-      "screenPageViews": 4370
+      "activeUsers": 1922,
+      "sessions": 1870,
+      "screenPageViews": 4392
     },
     {
       "newVsReturning": "",
       "activeUsers": 0,
-      "sessions": 266,
-      "screenPageViews": 17
+      "sessions": 274,
+      "screenPageViews": 19
     },
     {
       "newVsReturning": "(not set)",
@@ -48,21 +48,21 @@
   "mes": [
     {
       "newVsReturning": "returning",
-      "activeUsers": 34677,
-      "sessions": 101035,
-      "screenPageViews": 222949
+      "activeUsers": 34698,
+      "sessions": 101071,
+      "screenPageViews": 223137
     },
     {
       "newVsReturning": "new",
-      "activeUsers": 7271,
-      "sessions": 7130,
-      "screenPageViews": 16802
+      "activeUsers": 7298,
+      "sessions": 7160,
+      "screenPageViews": 16824
     },
     {
       "newVsReturning": "",
       "activeUsers": 0,
-      "sessions": 266,
-      "screenPageViews": 17
+      "sessions": 274,
+      "screenPageViews": 19
     },
     {
       "newVsReturning": "(not set)",
@@ -76,19 +76,19 @@
       "newVsReturning": "returning",
       "activeUsers": 132753,
       "sessions": 1192755,
-      "screenPageViews": 2594732
+      "screenPageViews": 2594920
     },
     {
       "newVsReturning": "new",
-      "activeUsers": 106701,
+      "activeUsers": 106733,
       "sessions": 106102,
-      "screenPageViews": 274287
+      "screenPageViews": 274309
     },
     {
       "newVsReturning": "",
       "activeUsers": 0,
-      "sessions": 266,
-      "screenPageViews": 17
+      "sessions": 274,
+      "screenPageViews": 19
     },
     {
       "newVsReturning": "(not set)",

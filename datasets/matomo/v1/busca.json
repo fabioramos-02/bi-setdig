@@ -2,31 +2,31 @@
   "dia": [
     {
       "termo": "ipva",
-      "buscas": 106
+      "buscas": 115
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 42
+      "buscas": 43
     },
     {
       "termo": "procon",
-      "buscas": 19
+      "buscas": 20
     },
     {
       "termo": "substituição tributária",
-      "buscas": 15
+      "buscas": 17
+    },
+    {
+      "termo": "itcd",
+      "buscas": 9
     },
     {
       "termo": "autoparcelamento",
       "buscas": 8
     },
     {
-      "termo": "itcd",
-      "buscas": 7
-    },
-    {
       "termo": "cidadão",
-      "buscas": 5
+      "buscas": 6
     },
     {
       "termo": "cancelamento de comunicação de venda",
@@ -35,6 +35,18 @@
     {
       "termo": "licenciamento",
       "buscas": 3
+    },
+    {
+      "termo": "empresa",
+      "buscas": 2
+    },
+    {
+      "termo": "servidor",
+      "buscas": 2
+    },
+    {
+      "termo": "63958910149",
+      "buscas": 1
     },
     {
       "termo": "agendamento carteira identidade uai viçosa mg",
@@ -49,6 +61,10 @@
       "buscas": 1
     },
     {
+      "termo": "certidão antecedentes criminais",
+      "buscas": 1
+    },
+    {
       "termo": "certidão positiva",
       "buscas": 1
     },
@@ -57,50 +73,34 @@
       "buscas": 1
     },
     {
+      "termo": "cin",
+      "buscas": 1
+    },
+    {
       "termo": "ciptea",
-      "buscas": 1
-    },
-    {
-      "termo": "compra premiada",
-      "buscas": 1
-    },
-    {
-      "termo": "conta de agua",
-      "buscas": 1
-    },
-    {
-      "termo": "dirceu sales de oliveira",
-      "buscas": 1
-    },
-    {
-      "termo": "empresa",
-      "buscas": 1
-    },
-    {
-      "termo": "fui protestado pela energisa com a conta paga não tenho débitos mais colocaram meu nome no serasa solicito a retirada",
       "buscas": 1
     }
   ],
   "semana": [
     {
       "termo": "ipva",
-      "buscas": 322
+      "buscas": 331
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 168
+      "buscas": 169
     },
     {
       "termo": "procon",
-      "buscas": 72
+      "buscas": 73
     },
     {
       "termo": "substituição tributária",
-      "buscas": 58
+      "buscas": 60
     },
     {
       "termo": "itcd",
-      "buscas": 28
+      "buscas": 30
     },
     {
       "termo": "autoparcelamento",
@@ -108,15 +108,15 @@
     },
     {
       "termo": "empresa",
-      "buscas": 16
+      "buscas": 17
     },
     {
       "termo": "cidadão",
-      "buscas": 15
+      "buscas": 16
     },
     {
       "termo": "servidor",
-      "buscas": 8
+      "buscas": 9
     },
     {
       "termo": "licenciamento",
@@ -124,7 +124,7 @@
     },
     {
       "termo": "cnh",
-      "buscas": 7
+      "buscas": 8
     },
     {
       "termo": "cancelamento de comunicação de venda",
@@ -135,12 +135,12 @@
       "buscas": 4
     },
     {
-      "termo": "mulher",
+      "termo": "defesa civil",
       "buscas": 4
     },
     {
-      "termo": "defesa civil",
-      "buscas": 3
+      "termo": "mulher",
+      "buscas": 4
     },
     {
       "termo": "efd",
@@ -166,23 +166,23 @@
   "mes": [
     {
       "termo": "ipva",
-      "buscas": 824
+      "buscas": 833
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 701
+      "buscas": 702
     },
     {
       "termo": "procon",
-      "buscas": 318
+      "buscas": 319
     },
     {
       "termo": "substituição tributária",
-      "buscas": 294
+      "buscas": 296
     },
     {
       "termo": "itcd",
-      "buscas": 109
+      "buscas": 111
     },
     {
       "termo": "autoparcelamento",
@@ -190,15 +190,15 @@
     },
     {
       "termo": "cidadão",
-      "buscas": 72
+      "buscas": 73
     },
     {
       "termo": "empresa",
-      "buscas": 46
+      "buscas": 47
     },
     {
       "termo": "servidor",
-      "buscas": 44
+      "buscas": 45
     },
     {
       "termo": "licenciamento",
@@ -206,7 +206,7 @@
     },
     {
       "termo": "cnh",
-      "buscas": 20
+      "buscas": 21
     },
     {
       "termo": "efd",
@@ -222,7 +222,7 @@
     },
     {
       "termo": "defesa civil",
-      "buscas": 11
+      "buscas": 12
     },
     {
       "termo": "rg",
@@ -248,31 +248,31 @@
   "ano": [
     {
       "termo": "ipva",
-      "buscas": 27535
+      "buscas": 27544
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 7806
+      "buscas": 7807
     },
     {
       "termo": "procon",
-      "buscas": 6048
+      "buscas": 6049
     },
     {
       "termo": "substituição tributária",
-      "buscas": 3973
+      "buscas": 3975
     },
     {
       "termo": "itcd",
-      "buscas": 1495
+      "buscas": 1497
     },
     {
       "termo": "cidadão",
-      "buscas": 1311
+      "buscas": 1312
     },
     {
       "termo": "servidor",
-      "buscas": 1128
+      "buscas": 1129
     },
     {
       "termo": "autoparcelamento",
@@ -280,7 +280,7 @@
     },
     {
       "termo": "empresa",
-      "buscas": 611
+      "buscas": 612
     },
     {
       "termo": "nota fiscal",
@@ -296,11 +296,11 @@
     },
     {
       "termo": "cnh",
-      "buscas": 198
+      "buscas": 199
     },
     {
       "termo": "defesa civil",
-      "buscas": 193
+      "buscas": 194
     },
     {
       "termo": "efd",

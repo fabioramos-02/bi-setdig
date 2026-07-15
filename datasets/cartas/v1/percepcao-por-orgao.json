@@ -1,0 +1,587 @@
+[
+  {
+    "orgao": "Departamento Estadual de Trânsito de Mato Grosso do Sul",
+    "orgaoSigla": "DETRAN",
+    "csatMedia": 2.6,
+    "csatDistribuicao": {
+      "1": 191,
+      "2": 46,
+      "3": 84,
+      "4": 62,
+      "5": 87
+    },
+    "totalVotos": 470,
+    "clarezaPositivaPct": 46.1,
+    "totalAvaliacoesClareza": 1778
+  },
+  {
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "csatMedia": 2.6,
+    "csatDistribuicao": {
+      "1": 154,
+      "2": 37,
+      "3": 55,
+      "4": 44,
+      "5": 70
+    },
+    "totalVotos": 360,
+    "clarezaPositivaPct": 44.1,
+    "totalAvaliacoesClareza": 1221
+  },
+  {
+    "orgao": "Secretaria de Estado de Educação de Mato Grosso do Sul",
+    "orgaoSigla": "SED MS",
+    "csatMedia": 3.1,
+    "csatDistribuicao": {
+      "1": 65,
+      "2": 36,
+      "3": 47,
+      "4": 58,
+      "5": 74
+    },
+    "totalVotos": 280,
+    "clarezaPositivaPct": 57.3,
+    "totalAvaliacoesClareza": 1135
+  },
+  {
+    "orgao": "Secretaria de Estado de Assistência Social e Direitos Humanos",
+    "orgaoSigla": "SEAD",
+    "csatMedia": 3.1,
+    "csatDistribuicao": {
+      "1": 63,
+      "2": 33,
+      "3": 51,
+      "4": 38,
+      "5": 72
+    },
+    "totalVotos": 257,
+    "clarezaPositivaPct": 69.2,
+    "totalAvaliacoesClareza": 855
+  },
+  {
+    "orgao": "Polícia Civil de Mato Grosso do Sul",
+    "orgaoSigla": "PCMS",
+    "csatMedia": 2.8,
+    "csatDistribuicao": {
+      "1": 83,
+      "2": 32,
+      "3": 45,
+      "4": 37,
+      "5": 58
+    },
+    "totalVotos": 255,
+    "clarezaPositivaPct": 76.6,
+    "totalAvaliacoesClareza": 1426
+  },
+  {
+    "orgao": "Procuradoria Geral do Estado de Mato Grosso do Sul",
+    "orgaoSigla": "PGE MS",
+    "csatMedia": 2.2,
+    "csatDistribuicao": {
+      "1": 78,
+      "2": 31,
+      "3": 29,
+      "4": 16,
+      "5": 18
+    },
+    "totalVotos": 172,
+    "clarezaPositivaPct": 33.6,
+    "totalAvaliacoesClareza": 527
+  },
+  {
+    "orgao": "Coordenadoria Geral de Perícias de Mato Grosso do Sul",
+    "orgaoSigla": "CGP",
+    "csatMedia": 2.5,
+    "csatDistribuicao": {
+      "1": 79,
+      "2": 16,
+      "3": 12,
+      "4": 27,
+      "5": 30
+    },
+    "totalVotos": 164,
+    "clarezaPositivaPct": 53.6,
+    "totalAvaliacoesClareza": 522
+  },
+  {
+    "orgao": "Junta Comercial do Estado de Mato Grosso do Sul",
+    "orgaoSigla": "JUCEMS",
+    "csatMedia": 3.6,
+    "csatDistribuicao": {
+      "1": 26,
+      "2": 7,
+      "3": 10,
+      "4": 13,
+      "5": 61
+    },
+    "totalVotos": 117,
+    "clarezaPositivaPct": 70.3,
+    "totalAvaliacoesClareza": 310
+  },
+  {
+    "orgao": "Secretaria de Estado de Saúde de Mato Grosso do Sul",
+    "orgaoSigla": "SES",
+    "csatMedia": 3.1,
+    "csatDistribuicao": {
+      "1": 31,
+      "2": 9,
+      "3": 14,
+      "4": 20,
+      "5": 29
+    },
+    "totalVotos": 103,
+    "clarezaPositivaPct": 56.2,
+    "totalAvaliacoesClareza": 324
+  },
+  {
+    "orgao": "Universidade Estadual de Mato Grosso do Sul",
+    "orgaoSigla": "UEMS",
+    "csatMedia": 3.7,
+    "csatDistribuicao": {
+      "1": 12,
+      "2": 6,
+      "3": 19,
+      "4": 13,
+      "5": 39
+    },
+    "totalVotos": 89,
+    "clarezaPositivaPct": 54.4,
+    "totalAvaliacoesClareza": 294
+  },
+  {
+    "orgao": "Agência de Habitação Popular de Mato Grosso do Sul",
+    "orgaoSigla": "AGEHAB",
+    "csatMedia": 3.5,
+    "csatDistribuicao": {
+      "1": 13,
+      "2": 9,
+      "3": 16,
+      "4": 22,
+      "5": 26
+    },
+    "totalVotos": 86,
+    "clarezaPositivaPct": 71.0,
+    "totalAvaliacoesClareza": 283
+  },
+  {
+    "orgao": "Secretaria de Estado de Governo e Gestão Estratégica de Mato Grosso do Sul",
+    "orgaoSigla": "SEGOV MS",
+    "csatMedia": 3.5,
+    "csatDistribuicao": {
+      "1": 16,
+      "2": 6,
+      "3": 11,
+      "4": 19,
+      "5": 29
+    },
+    "totalVotos": 81,
+    "clarezaPositivaPct": 75.6,
+    "totalAvaliacoesClareza": 295
+  },
+  {
+    "orgao": "Agência de Previdência Social de Mato Grosso do Sul",
+    "orgaoSigla": "AGEPREV",
+    "csatMedia": 3.1,
+    "csatDistribuicao": {
+      "1": 20,
+      "2": 4,
+      "3": 10,
+      "4": 16,
+      "5": 19
+    },
+    "totalVotos": 69,
+    "clarezaPositivaPct": 48.9,
+    "totalAvaliacoesClareza": 190
+  },
+  {
+    "orgao": "Instituto de Meio Ambiente de Mato Grosso do Sul",
+    "orgaoSigla": "IMASUL",
+    "csatMedia": 2.4,
+    "csatDistribuicao": {
+      "1": 27,
+      "2": 14,
+      "3": 8,
+      "4": 12,
+      "5": 8
+    },
+    "totalVotos": 69,
+    "clarezaPositivaPct": 53.2,
+    "totalAvaliacoesClareza": 139
+  },
+  {
+    "orgao": "Agência Estadual de Administração do Sistema Penitenciário",
+    "orgaoSigla": "AGEPEN",
+    "csatMedia": 3.3,
+    "csatDistribuicao": {
+      "1": 11,
+      "2": 8,
+      "3": 11,
+      "4": 14,
+      "5": 17
+    },
+    "totalVotos": 61,
+    "clarezaPositivaPct": 68.5,
+    "totalAvaliacoesClareza": 197
+  },
+  {
+    "orgao": "Fundação de Trabalho de Mato Grosso do Sul",
+    "orgaoSigla": "FUNTRAB",
+    "csatMedia": 2.6,
+    "csatDistribuicao": {
+      "1": 17,
+      "2": 7,
+      "3": 8,
+      "4": 9,
+      "5": 6
+    },
+    "totalVotos": 47,
+    "clarezaPositivaPct": 46.7,
+    "totalAvaliacoesClareza": 122
+  },
+  {
+    "orgao": "Agência Estadual de Defesa Sanitária Animal Vegetal  Mato Grosso do Sul",
+    "orgaoSigla": "IAGRO",
+    "csatMedia": 3.4,
+    "csatDistribuicao": {
+      "1": 9,
+      "2": 4,
+      "3": 6,
+      "4": 9,
+      "5": 14
+    },
+    "totalVotos": 42,
+    "clarezaPositivaPct": 64.2,
+    "totalAvaliacoesClareza": 187
+  },
+  {
+    "orgao": "Empresa de Saneamento de Mato Grosso do Sul",
+    "orgaoSigla": "SANESUL",
+    "csatMedia": 2.2,
+    "csatDistribuicao": {
+      "1": 19,
+      "2": 7,
+      "3": 5,
+      "4": 3,
+      "5": 6
+    },
+    "totalVotos": 40,
+    "clarezaPositivaPct": 23.9,
+    "totalAvaliacoesClareza": 92
+  },
+  {
+    "orgao": "Secretaria de Estado de Administração de Mato Grosso do Sul",
+    "orgaoSigla": "SAD",
+    "csatMedia": 3.0,
+    "csatDistribuicao": {
+      "1": 9,
+      "2": 6,
+      "3": 8,
+      "4": 6,
+      "5": 9
+    },
+    "totalVotos": 38,
+    "clarezaPositivaPct": 67.2,
+    "totalAvaliacoesClareza": 122
+  },
+  {
+    "orgao": "Secretaria de Estado de Turismo, Esporte e Cultura",
+    "orgaoSigla": "SETESC",
+    "csatMedia": 3.1,
+    "csatDistribuicao": {
+      "1": 7,
+      "2": 7,
+      "3": 7,
+      "4": 8,
+      "5": 9
+    },
+    "totalVotos": 38,
+    "clarezaPositivaPct": 65.0,
+    "totalAvaliacoesClareza": 123
+  },
+  {
+    "orgao": "Secretaria de Estado da Cidadania",
+    "orgaoSigla": "SEC",
+    "csatMedia": 2.5,
+    "csatDistribuicao": {
+      "1": 10,
+      "2": 3,
+      "3": 12,
+      "4": 3,
+      "5": 3
+    },
+    "totalVotos": 31,
+    "clarezaPositivaPct": 50.4,
+    "totalAvaliacoesClareza": 137
+  },
+  {
+    "orgao": "Fundação Serviços de Saúde de MS",
+    "orgaoSigla": "FUNSAU",
+    "csatMedia": 2.8,
+    "csatDistribuicao": {
+      "1": 9,
+      "2": 5,
+      "3": 2,
+      "4": 1,
+      "5": 8
+    },
+    "totalVotos": 25,
+    "clarezaPositivaPct": 44.9,
+    "totalAvaliacoesClareza": 49
+  },
+  {
+    "orgao": "Polícia Militar de Mato Grosso do Sul",
+    "orgaoSigla": "PMMS",
+    "csatMedia": 2.7,
+    "csatDistribuicao": {
+      "1": 9,
+      "2": 1,
+      "3": 6,
+      "4": 2,
+      "5": 5
+    },
+    "totalVotos": 23,
+    "clarezaPositivaPct": 65.7,
+    "totalAvaliacoesClareza": 70
+  },
+  {
+    "orgao": "Fundação de Cultura de Mato Grosso do Sul",
+    "orgaoSigla": "FCMS",
+    "csatMedia": 3.5,
+    "csatDistribuicao": {
+      "1": 2,
+      "2": 1,
+      "3": 9,
+      "4": 5,
+      "5": 6
+    },
+    "totalVotos": 23,
+    "clarezaPositivaPct": 89.2,
+    "totalAvaliacoesClareza": 93
+  },
+  {
+    "orgao": "Controladoria Geral do Estado de Mato Grosso do Sul",
+    "orgaoSigla": "CGE MS",
+    "csatMedia": 3.5,
+    "csatDistribuicao": {
+      "1": 4,
+      "2": 3,
+      "3": 0,
+      "4": 2,
+      "5": 9
+    },
+    "totalVotos": 18,
+    "clarezaPositivaPct": 56.1,
+    "totalAvaliacoesClareza": 41
+  },
+  {
+    "orgao": "Fundação de Desporto e Lazer de Mato Grosso do Sul",
+    "orgaoSigla": "FUNDESPORTE",
+    "csatMedia": 4.7,
+    "csatDistribuicao": {
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 2,
+      "5": 11
+    },
+    "totalVotos": 14,
+    "clarezaPositivaPct": 75.0,
+    "totalAvaliacoesClareza": 32
+  },
+  {
+    "orgao": "Companhia de Gás do Estado de Mato Grosso do Sul",
+    "orgaoSigla": "MSGÁS",
+    "csatMedia": 3.2,
+    "csatDistribuicao": {
+      "1": 1,
+      "2": 3,
+      "3": 5,
+      "4": 2,
+      "5": 3
+    },
+    "totalVotos": 14,
+    "clarezaPositivaPct": 42.6,
+    "totalAvaliacoesClareza": 47
+  },
+  {
+    "orgao": "Corpo de Bombeiros Militar",
+    "orgaoSigla": "CBMMS",
+    "csatMedia": 3.6,
+    "csatDistribuicao": {
+      "1": 3,
+      "2": 1,
+      "3": 1,
+      "4": 3,
+      "5": 6
+    },
+    "totalVotos": 14,
+    "clarezaPositivaPct": 75.0,
+    "totalAvaliacoesClareza": 32
+  },
+  {
+    "orgao": "Agência de Desenvolvimento Agrário e Extensão Rural de Mato Grosso do Sul",
+    "orgaoSigla": "AGRAER",
+    "csatMedia": 4.1,
+    "csatDistribuicao": {
+      "1": 1,
+      "2": 0,
+      "3": 2,
+      "4": 5,
+      "5": 6
+    },
+    "totalVotos": 14,
+    "clarezaPositivaPct": 78.3,
+    "totalAvaliacoesClareza": 69
+  },
+  {
+    "orgao": "Agência Estadual de Regulação de Serviços Públicos de Mato Grosso do Sul",
+    "orgaoSigla": "AGEMS",
+    "csatMedia": 3.5,
+    "csatDistribuicao": {
+      "1": 2,
+      "2": 1,
+      "3": 3,
+      "4": 3,
+      "5": 4
+    },
+    "totalVotos": 13,
+    "clarezaPositivaPct": 55.9,
+    "totalAvaliacoesClareza": 34
+  },
+  {
+    "orgao": "Agência Estadual de Gestão de Empreendimentos de Mato Grosso do Sul",
+    "orgaoSigla": "AGESUL",
+    "csatMedia": 2.6,
+    "csatDistribuicao": {
+      "1": 3,
+      "2": 3,
+      "3": 1,
+      "4": 3,
+      "5": 1
+    },
+    "totalVotos": 11,
+    "clarezaPositivaPct": 55.6,
+    "totalAvaliacoesClareza": 18
+  },
+  {
+    "orgao": "Agência Estadual de Metrologia de Mato Grosso do Sul",
+    "orgaoSigla": "AEM",
+    "csatMedia": 3.4,
+    "csatDistribuicao": {
+      "1": 3,
+      "2": 0,
+      "3": 1,
+      "4": 2,
+      "5": 4
+    },
+    "totalVotos": 10,
+    "clarezaPositivaPct": 40.0,
+    "totalAvaliacoesClareza": 25
+  },
+  {
+    "orgao": "Secretaria de Estado de Justiça e Segurança Pública de Mato Grosso do Sul",
+    "orgaoSigla": "SEJUSP",
+    "csatMedia": 2.9,
+    "csatDistribuicao": {
+      "1": 2,
+      "2": 0,
+      "3": 5,
+      "4": 1,
+      "5": 1
+    },
+    "totalVotos": 9,
+    "clarezaPositivaPct": 36.0,
+    "totalAvaliacoesClareza": 25
+  },
+  {
+    "orgao": "Secretaria de Estado de Meio Ambiente, Desenvolvimento, Ciência, Tecnologia e Inovação de Mato Grosso do Sul",
+    "orgaoSigla": "SEMADESC",
+    "csatMedia": 4.2,
+    "csatDistribuicao": {
+      "1": 1,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 4
+    },
+    "totalVotos": 5,
+    "clarezaPositivaPct": 78.9,
+    "totalAvaliacoesClareza": 19
+  },
+  {
+    "orgao": "Fundação Escola de Governo",
+    "orgaoSigla": "ESCOLAGOV",
+    "csatMedia": 3.0,
+    "csatDistribuicao": {
+      "1": 2,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 2
+    },
+    "totalVotos": 4,
+    "clarezaPositivaPct": 73.7,
+    "totalAvaliacoesClareza": 19
+  },
+  {
+    "orgao": "Fundação de Turismo de Mato Grosso do Sul",
+    "orgaoSigla": "FUNDTUR",
+    "csatMedia": 3.3,
+    "csatDistribuicao": {
+      "1": 1,
+      "2": 0,
+      "3": 0,
+      "4": 1,
+      "5": 1
+    },
+    "totalVotos": 3,
+    "clarezaPositivaPct": 66.7,
+    "totalAvaliacoesClareza": 6
+  },
+  {
+    "orgao": "Fundação da Apoio e Desenvolvimento à Educação Básica",
+    "orgaoSigla": "FADEB",
+    "csatMedia": 5.0,
+    "csatDistribuicao": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 2
+    },
+    "totalVotos": 2,
+    "clarezaPositivaPct": 100.0,
+    "totalAvaliacoesClareza": 4
+  },
+  {
+    "orgao": "Fundação Estadual Jornalista Luiz Chagas de Rádio e Televisão",
+    "orgaoSigla": "FERTEL - Educativa MS",
+    "csatMedia": 0,
+    "csatDistribuicao": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "totalVotos": 0,
+    "clarezaPositivaPct": 40.0,
+    "totalAvaliacoesClareza": 5
+  },
+  {
+    "orgao": "Fundação de Apoio ao Desenvolvimento do Ensino, Ciência e Tecnologia de Mato Grosso do Sul",
+    "orgaoSigla": "FUNDECT",
+    "csatMedia": 0,
+    "csatDistribuicao": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "totalVotos": 0,
+    "clarezaPositivaPct": 75.0,
+    "totalAvaliacoesClareza": 4
+  }
+]
