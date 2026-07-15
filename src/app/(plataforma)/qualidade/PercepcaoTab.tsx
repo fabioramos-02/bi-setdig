@@ -127,7 +127,7 @@ export function PercepcaoTab({
               <XAxis type="number" hide />
               <YAxis dataKey="orgao" type="category" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: "var(--ds-color-text-secondary)" }} />
               <Tooltip
-                formatter={(value: number) => `${value.toFixed(1)}%`}
+                formatter={(value: any) => `${Number(value || 0).toFixed(1)}%`}
                 contentStyle={{ background: "var(--ds-color-background)", border: "1px solid var(--ds-color-border)", color: "var(--ds-color-text-primary)", fontSize: 12 }}
               />
               <Legend verticalAlign="top" align="right" iconType="square" wrapperStyle={{ fontSize: 12, paddingBottom: 10 }} />
