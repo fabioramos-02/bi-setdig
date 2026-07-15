@@ -85,6 +85,7 @@ export function DetalhamentoErrosTable({ relacao, orgaoFiltro, servicoToLinkInfo
   ], [servicoToLinkInfo]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setVisiveis(PASSO);
   }, [orgaoFiltro]);
 
