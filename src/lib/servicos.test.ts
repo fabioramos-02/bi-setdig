@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { prazoServico, labelCategoria, resumoPrazo, resumoPublico } from "./servicos.ts";
-import type { CartaRelacao } from "@/lib/data";
+import { prazoServico, labelCategoria, resumoPrazo, resumoPublico, agruparOrgaosSetores } from "./servicos.ts";
+import type { CartaRelacao, InventarioOrgao } from "@/lib/data";
 
 function carta(over: Partial<CartaRelacao>): CartaRelacao {
   return {
@@ -76,4 +76,40 @@ test("resumoPublico conta por público — uma carta pode contar em mais de um",
   assert.equal(porLabel["Cidadão"], 2);
   assert.equal(porLabel["Empresa"], 1);
   assert.equal(r.find((f) => f.label === "Cidadão")?.icone, "person");
+});
+
+function orgao(over: Partial<InventarioOrgao>): InventarioOrgao {
+  return { orgao: "Órgão X", orgaoSigla: "OX", total: 0, ativos: 0, digitais: 0, percentDigital: 0, ...over };
+}
+
+test("agruparOrgaosSetores agrupa por órgão e setor quando o dado existe", () => {
+  const cartas: CartaRelacao[] = [
+    carta({ orgaoSigla: "SEFAZ", setor: "Tributação" }),
+    carta({ orgaoSigla: "SEFAZ", setor: "Tributação" }),
+    carta({ orgaoSigla: "SEFAZ", setor: "Fiscalização" }),
+    carta({ orgaoSigla: "UEMS", setor: "Ensino" }),
+  ];
+  const { grupos, temSetor } = agruparOrgaosSetores([], cartas);
+  assert.equal(temSetor, true);
+  assert.deepEqual(
+    grupos.map((g) => g.orgaoSigla),
+    ["SEFAZ", "UEMS"], // ordenado desc por total
+  );
+  const sefaz = grupos[0];
+  assert.equal(sefaz.total, 3);
+  assert.deepEqual(sefaz.setores, [
+    { setor: "Tributação", total: 2 },
+    { setor: "Fiscalização", total: 1 },
+  ]);
+});
+
+test("agruparOrgaosSetores cai pro agregado plano sem quebra de setor", () => {
+  const cartas: CartaRelacao[] = [carta({ orgaoSigla: "SEFAZ", setor: null })];
+  const orgaos: InventarioOrgao[] = [orgao({ orgaoSigla: "SEFAZ", ativos: 10 }), orgao({ orgaoSigla: "UEMS", ativos: 5 })];
+  const { grupos, temSetor } = agruparOrgaosSetores(orgaos, cartas);
+  assert.equal(temSetor, false);
+  assert.deepEqual(grupos, [
+    { orgaoSigla: "SEFAZ", total: 10, setores: [] },
+    { orgaoSigla: "UEMS", total: 5, setores: [] },
+  ]);
 });

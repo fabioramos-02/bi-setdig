@@ -1,7 +1,7 @@
 /**
  * Rótulos do domínio Serviços — cálculo fora do componente (convencoes.md).
  */
-import type { CartaRelacao } from "@/lib/data";
+import type { CartaRelacao, InventarioOrgao } from "@/lib/data";
 
 /** "saude-e-cuidado" -> "Saúde e cuidado" — slug de tema não tem coluna de
  * nome confirmada no banco (ver investigação), então formata em runtime. */
@@ -103,4 +103,45 @@ export function resumoPublico(cartas: CartaRelacao[]): FaixaPublico[] {
   return [...contagem.entries()]
     .map(([label, total]) => ({ label, total, icone: ICONE_PUBLICO[label] ?? "groups" }))
     .sort((a, b) => b.total - a.total);
+}
+
+export type SetorGrupo = { setor: string; total: number };
+export type OrgaoGrupo = { orgaoSigla: string; total: number; setores: SetorGrupo[] };
+
+/** Serviços por órgão e, quando disponível, por setor dentro do órgão.
+ * Setor só existe depois de rodar o pipeline com a SQL estendida (VPN) —
+ * sem ele, cai pro agregado plano (InventarioOrgao.ativos) sem quebra por
+ * setor. Mostra TODOS os órgãos, nunca só um top N: é inventário, não
+ * ranking, e um corte escondido já confundiu (soma dos primeiros não
+ * batendo com o total de cartas ativas pareceu bug de dado quando era só
+ * truncamento). */
+export function agruparOrgaosSetores(
+  orgaos: InventarioOrgao[],
+  cartas: CartaRelacao[],
+): { grupos: OrgaoGrupo[]; temSetor: boolean } {
+  const temSetor = cartas.some((c) => c.setor);
+
+  if (!temSetor) {
+    const grupos = orgaos
+      .map((o) => ({ orgaoSigla: o.orgaoSigla, total: o.ativos, setores: [] as SetorGrupo[] }))
+      .sort((a, b) => b.total - a.total);
+    return { grupos, temSetor };
+  }
+
+  const porOrgao = new Map<string, Map<string, number>>();
+  for (const c of cartas) {
+    if (!c.setor) continue;
+    const porSetor = porOrgao.get(c.orgaoSigla) ?? new Map<string, number>();
+    porSetor.set(c.setor, (porSetor.get(c.setor) ?? 0) + 1);
+    porOrgao.set(c.orgaoSigla, porSetor);
+  }
+  const grupos = [...porOrgao.entries()]
+    .map(([orgaoSigla, porSetor]) => {
+      const setores = [...porSetor.entries()]
+        .map(([setor, total]) => ({ setor, total }))
+        .sort((a, b) => b.total - a.total);
+      return { orgaoSigla, total: setores.reduce((acc, s) => acc + s.total, 0), setores };
+    })
+    .sort((a, b) => b.total - a.total);
+  return { grupos, temSetor };
 }

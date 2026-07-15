@@ -35,7 +35,7 @@ export default function AnalyticsMsDigitalPage() {
   if (visaoGeral.mes.length === 0) {
     return (
       <div className="flex flex-col flex-1">
-        <ContentTopBar title="Analytics — MS Digital" />
+        <ContentTopBar title="MS Digital" />
         <main className="flex-1 p-6">
           <EmptyCard message="Ainda não há dados disponíveis aqui." />
         </main>

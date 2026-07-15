@@ -18,7 +18,7 @@ import {
 } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Analytics — Portal Único | SETDIG",
+  title: "Portal Único | SETDIG",
 };
 
 export default function AnalyticsPortalMsPage() {
@@ -37,7 +37,7 @@ export default function AnalyticsPortalMsPage() {
   if (diarias.length === 0) {
     return (
       <div className="flex flex-col flex-1">
-        <ContentTopBar title="Analytics — Portal Único" />
+        <ContentTopBar title="Portal Único" />
         <main className="flex-1 p-6">
           <EmptyCard message="Ainda não há dados disponíveis aqui." />
         </main>

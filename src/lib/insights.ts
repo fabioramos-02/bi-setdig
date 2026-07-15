@@ -1,6 +1,7 @@
 import type { TermoBusca, Navegador, Dispositivo, Plataforma, Servico, EventoFunil, HorarioGa4, PaginaEntrada, Pagina } from "./data";
 import type { FatiaCategoria } from "@/components/charts/CategoryDonut";
 import type { PeriodoTipo, PontoAgregado } from "./period-filter";
+import type { OrgaoGrupo } from "./servicos";
 
 /**
  * Cálculos pra storytelling (StoryCard) — réplica do padrão de
@@ -171,4 +172,29 @@ export function calcularInsightFunil(funil: EventoFunil[]): InsightFunil | null 
   const maior = quedas.reduce((a, b) => (b.quedaPct > a.quedaPct ? b : a));
   const chave = `${maior.estagioAtual}->${maior.estagioProximo}`;
   return { ...maior, interpretacao: INTERPRETACAO_QUEDA[chave] ?? "Vale observar esse ponto com mais atenção." };
+}
+
+export type InsightConcentracaoOrgaos = {
+  orgaoSigla: string;
+  totalServicos: number;
+  totalSetores: number;
+  participacaoPct: number;
+  totalOrgaos: number;
+};
+
+/** Órgão que concentra mais serviços cadastrados, e em quantos setores
+ * internos ele distribui esse volume — só faz sentido com dado de setor
+ * disponível (sem ele, `agruparOrgaosSetores` não separa por setor e a
+ * pergunta central não tem resposta). */
+export function calcularInsightConcentracaoOrgaos(grupos: OrgaoGrupo[], temSetor: boolean): InsightConcentracaoOrgaos | null {
+  if (!temSetor || grupos.length === 0) return null;
+  const totalGeral = grupos.reduce((acc, g) => acc + g.total, 0);
+  const top = grupos[0];
+  return {
+    orgaoSigla: top.orgaoSigla,
+    totalServicos: top.total,
+    totalSetores: top.setores.length,
+    participacaoPct: totalGeral > 0 ? (top.total / totalGeral) * 100 : 0,
+    totalOrgaos: grupos.length,
+  };
 }
