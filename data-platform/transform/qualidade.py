@@ -7,6 +7,17 @@ pro inventário de cartas no AGENTS.md).
 """
 from __future__ import annotations
 
+from datetime import datetime
+
+_MAX_TEXTO = 300  # ponytail: cap texto livre pra não flertar com o limite de 2MB do publish() (~700 linhas com 2 campos de texto)
+
+
+def _truncar(texto: str | None) -> str | None:
+    if not texto:
+        return texto
+    texto = texto.strip()
+    return texto if len(texto) <= _MAX_TEXTO else texto[:_MAX_TEXTO] + "…"
+
 
 def _tempo_medio_dias(atendidos: list[dict]) -> float:
     """Aproximação: `updated_at - created_at` só nos erros já atendidos —
@@ -80,3 +91,28 @@ def resumo_percepcao(votos: list[dict], avaliacoes_info: list[dict]) -> dict:
         "clarezaPositivaPct": round(100 * positivas / total_clareza, 1) if total_clareza else 0,
         "totalAvaliacoesClareza": total_clareza,
     }
+
+
+def relacao(rows: list[dict]) -> list[dict]:
+    """1 linha por erro — mirror de servicos_cartas.py::relacao(). `diasAberto`
+    é aproximação (`agora - created_at`), coerente com o resto do domínio
+    (pipeline roda 1x/dia). `conteudo`/`resolucao` truncados (ver _MAX_TEXTO)."""
+    if not rows:
+        return []
+    agora = datetime.now(rows[0]["created_at"].tzinfo)
+    return [
+        {
+            "id": str(r["id"]),
+            "servico": r["titulo_servico"],
+            "orgao": r["orgao"],
+            "orgaoSigla": r["orgao_sigla"],
+            "categoria": r.get("categoria_slug"),
+            "conteudo": _truncar(r.get("conteudo")),
+            "resolucao": _truncar(r.get("resolucao")),
+            "atendido": r["atendido"],
+            "diasAberto": (agora - r["created_at"]).days,
+            "createdAt": r["created_at"].isoformat(),
+            "updatedAt": r["updated_at"].isoformat(),
+        }
+        for r in rows
+    ]

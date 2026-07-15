@@ -2,7 +2,7 @@ import type { TermoBusca, Navegador, Dispositivo, Plataforma, Servico, EventoFun
 import type { FatiaCategoria } from "@/components/charts/CategoryDonut";
 import type { PeriodoTipo, PontoAgregado } from "./period-filter";
 import type { OrgaoGrupo } from "./servicos";
-import type { ErroResumo, PercepcaoResumo } from "./data";
+import type { ErroResumo, ErroOrgao, PercepcaoResumo } from "./data";
 
 /**
  * Cálculos pra storytelling (StoryCard) — réplica do padrão de
@@ -220,4 +220,24 @@ export type InsightPercepcao = { csatMedia: number; totalVotos: number; clarezaP
 export function calcularInsightPercepcao(resumo: PercepcaoResumo | null): InsightPercepcao | null {
   if (!resumo || resumo.totalVotos === 0) return null;
   return { csatMedia: resumo.csatMedia, totalVotos: resumo.totalVotos, clarezaPositivaPct: resumo.clarezaPositivaPct };
+}
+
+export type InsightComparacaoOrgao = {
+  orgaoSigla: string;
+  tempoMedioOrgao: number;
+  tempoMedioGeral: number;
+  /** >0 = mais lento que a média geral, <0 = mais rápido. */
+  diferencaDias: number;
+};
+
+/** Quanto o órgão selecionado no filtro demora pra corrigir um erro, comparado
+ * à média geral (não à média das médias por órgão — usa o resumo geral, que
+ * já é ponderado pelo total real de erros). */
+export function calcularComparacaoOrgao(orgao: ErroOrgao, resumoGeral: ErroResumo): InsightComparacaoOrgao {
+  return {
+    orgaoSigla: orgao.orgaoSigla,
+    tempoMedioOrgao: orgao.tempoMedioResolucaoDias,
+    tempoMedioGeral: resumoGeral.tempoMedioResolucaoDias,
+    diferencaDias: Math.round((orgao.tempoMedioResolucaoDias - resumoGeral.tempoMedioResolucaoDias) * 10) / 10,
+  };
 }

@@ -38,7 +38,10 @@ _INVENTARIO_SQL = """
 
 
 def _query(sql: str) -> list[dict]:
-    conn = psycopg2.connect(_connection_url(), connect_timeout=10)
+    # client_encoding explícito: sem isso, psycopg2 nesta máquina negocia um
+    # encoding que corrompe acento (Ag�ncia, Sa�de) mesmo com o banco em
+    # UTF-8 — achado ao inspecionar orgao/conteudo publicados com "�".
+    conn = psycopg2.connect(_connection_url(), connect_timeout=10, client_encoding="utf8")
     try:
         with conn.cursor() as cur:
             cur.execute(sql)

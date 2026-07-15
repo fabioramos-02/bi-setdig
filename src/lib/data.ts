@@ -308,3 +308,22 @@ export function getCartasPercepcaoResumo(): PercepcaoResumo | null {
   const rows = readDataset<PercepcaoResumo[]>("cartas", "v1", "percepcao-resumo");
   return rows?.[0] ?? null;
 }
+
+export type ErroRelacao = {
+  id: string;
+  servico: string;
+  orgao: string;
+  orgaoSigla: string;
+  categoria: string | null;
+  /** Texto livre digitado pelo cidadão, truncado em 300 caracteres na origem. */
+  conteudo: string | null;
+  resolucao: string | null;
+  atendido: boolean;
+  diasAberto: number;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export function getCartasErrosRelacao(): ErroRelacao[] {
+  return readDataset<ErroRelacao[]>("cartas", "v1", "erros-relacao") ?? [];
+}

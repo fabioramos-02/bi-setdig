@@ -251,6 +251,11 @@ def run_qualidade() -> None:
     out3 = publish("cartas", "erros-evolucao-mensal", evolucao)
     print(f"[qualidade] erros-evolucao-mensal -> {out3} ({len(evolucao)} meses)")
 
+    relacao = t_qualidade.relacao(erros)
+    validate_rows(relacao, required=["id", "servico", "orgao", "orgaoSigla", "atendido", "diasAberto"], non_negative=["diasAberto"])
+    out5 = publish("cartas", "erros-relacao", relacao)
+    print(f"[qualidade] erros-relacao -> {out5} ({len(relacao)} erros)")
+
     votos = qualidade.get_votos()
     avaliacoes_info = qualidade.get_avaliacao_informacao()
     percepcao = t_qualidade.resumo_percepcao(votos, avaliacoes_info)

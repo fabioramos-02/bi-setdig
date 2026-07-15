@@ -1,10 +1,10 @@
 """Cliente Postgres (Qualidade das Cartas) — exige VPN da SETDIG.
 
 Espelha extract/cartas.py: mesma conexão, mesmo padrão de query crua.
-Deliberadamente NÃO seleciona `conteudo`/`resolucao`/`comentario` (texto livre
-do cidadão), `ip`, `reportado_por_id`/`corrigido_por_id` (FK de pessoa) — são
-PII/texto livre sensível e não servem às métricas agregadas do domínio
-Qualidade (erros por órgão, evolução mensal, percepção do cidadão).
+`conteudo`/`resolucao` (texto livre do cidadão) alimentam o detalhamento
+operacional (transform/qualidade.py::relacao, truncado antes de publicar).
+`ip`, `reportado_por_id`/`corrigido_por_id` (FK de pessoa) continuam de fora —
+PII, nunca selecionados.
 """
 from __future__ import annotations
 
@@ -28,7 +28,7 @@ def _connection_url() -> str:
 _ERROS_SQL = """
     SELECT e.id, e.servico_id, s.titulo AS titulo_servico,
            t.slug AS categoria_slug, o.sigla AS orgao_sigla, o.nome AS orgao,
-           e.atendido, e.created_at, e.updated_at
+           e.atendido, e.conteudo, e.resolucao, e.created_at, e.updated_at
     FROM gerenciamento_servicoserros e
     JOIN gerenciamento_servicos s ON e.servico_id = s.id
     JOIN gerenciamento_setor st ON s.setor_id = st.id
@@ -48,7 +48,10 @@ _AVALIACAO_INFO_SQL = """
 
 
 def _query(sql: str) -> list[dict]:
-    conn = psycopg2.connect(_connection_url(), connect_timeout=10)
+    # client_encoding explícito: sem isso, psycopg2 nesta máquina negocia um
+    # encoding que corrompe acento (Ag�ncia, Sa�de) mesmo com o banco em
+    # UTF-8 — mesmo achado de extract/cartas.py.
+    conn = psycopg2.connect(_connection_url(), connect_timeout=10, client_encoding="utf8")
     try:
         with conn.cursor() as cur:
             cur.execute(sql)

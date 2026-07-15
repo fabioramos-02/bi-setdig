@@ -2,249 +2,249 @@
   "dia": [
     {
       "servico": "Saúde",
-      "acessos": 290
+      "acessos": 458
     },
     {
       "servico": "Cartão SUS Online",
-      "acessos": 271
+      "acessos": 423
     },
     {
       "servico": "Servidor Público",
-      "acessos": 166
+      "acessos": 286
     },
     {
       "servico": "Documentos Pendentes",
-      "acessos": 108
+      "acessos": 203
     },
     {
       "servico": "Cartão do Doador de Sangue",
-      "acessos": 98
+      "acessos": 183
     },
     {
       "servico": "Trânsito",
-      "acessos": 65
-    },
-    {
-      "servico": "Débito de Veículos",
-      "acessos": 57
-    },
-    {
-      "servico": "Educação",
-      "acessos": 54
+      "acessos": 106
     },
     {
       "servico": "Portal do Servidor",
-      "acessos": 50
+      "acessos": 95
     },
     {
-      "servico": "Documentos Assinados",
-      "acessos": 48
-    },
-    {
-      "servico": "Consultar CDIEMS",
-      "acessos": 44
-    },
-    {
-      "servico": "Carteira do Estudante - CDIEMS",
-      "acessos": 40
-    },
-    {
-      "servico": "Cartão de Vacinação de Rotina",
-      "acessos": 31
+      "servico": "Educação",
+      "acessos": 87
     },
     {
       "servico": "Resultado de Exames Hemosul",
-      "acessos": 30
+      "acessos": 87
+    },
+    {
+      "servico": "Débito de Veículos",
+      "acessos": 83
+    },
+    {
+      "servico": "Carteira do Estudante - CDIEMS",
+      "acessos": 67
+    },
+    {
+      "servico": "Consultar CDIEMS",
+      "acessos": 67
+    },
+    {
+      "servico": "Documentos Assinados",
+      "acessos": 66
+    },
+    {
+      "servico": "Solicitar CDIEMS",
+      "acessos": 58
     },
     {
       "servico": "Contracheque",
-      "acessos": 29
+      "acessos": 49
     }
   ],
   "semana": [
     {
       "servico": "Saúde",
-      "acessos": 6759
+      "acessos": 6927
     },
     {
       "servico": "Cartão SUS Online",
-      "acessos": 5973
+      "acessos": 6125
     },
     {
       "servico": "Servidor Público",
-      "acessos": 5767
+      "acessos": 5887
     },
     {
       "servico": "Documentos Pendentes",
-      "acessos": 3677
+      "acessos": 3772
     },
     {
       "servico": "Educação",
-      "acessos": 2868
+      "acessos": 2901
     },
     {
       "servico": "Consultar CDIEMS",
-      "acessos": 2802
-    },
-    {
-      "servico": "Portal do Servidor",
-      "acessos": 2481
+      "acessos": 2825
     },
     {
       "servico": "Cartão do Doador de Sangue",
-      "acessos": 2463
+      "acessos": 2548
+    },
+    {
+      "servico": "Portal do Servidor",
+      "acessos": 2526
     },
     {
       "servico": "Carteira do Estudante - CDIEMS",
-      "acessos": 2281
+      "acessos": 2308
     },
     {
       "servico": "Trânsito",
-      "acessos": 2136
+      "acessos": 2177
     },
     {
       "servico": "Contracheque",
-      "acessos": 1413
+      "acessos": 1433
     },
     {
       "servico": "Débito de Veículos",
-      "acessos": 1382
+      "acessos": 1408
     },
     {
       "servico": "Resultado de Exames Hemosul",
-      "acessos": 1217
+      "acessos": 1274
     },
     {
       "servico": "Documentos Assinados",
-      "acessos": 1193
+      "acessos": 1211
     },
     {
       "servico": "Solicitar CDIEMS",
-      "acessos": 1015
+      "acessos": 1058
     }
   ],
   "mes": [
     {
       "servico": "Servidor Público",
-      "acessos": 33774
+      "acessos": 33894
     },
     {
       "servico": "Saúde",
-      "acessos": 27788
+      "acessos": 27956
     },
     {
       "servico": "Cartão SUS Online",
-      "acessos": 24939
+      "acessos": 25091
     },
     {
       "servico": "Portal do Servidor",
-      "acessos": 20965
+      "acessos": 21010
     },
     {
       "servico": "Contracheque",
-      "acessos": 16300
+      "acessos": 16320
     },
     {
       "servico": "Documentos Pendentes",
-      "acessos": 15570
+      "acessos": 15665
     },
     {
       "servico": "Cartão do Doador de Sangue",
-      "acessos": 10859
+      "acessos": 10944
     },
     {
       "servico": "Educação",
-      "acessos": 9093
+      "acessos": 9126
     },
     {
       "servico": "Consultar CDIEMS",
-      "acessos": 8917
+      "acessos": 8940
     },
     {
       "servico": "Trânsito",
-      "acessos": 8169
+      "acessos": 8210
     },
     {
       "servico": "Carteira do Estudante - CDIEMS",
-      "acessos": 7320
+      "acessos": 7347
     },
     {
       "servico": "Resultado de Exames Hemosul",
-      "acessos": 5810
+      "acessos": 5867
     },
     {
       "servico": "Documentos Assinados",
-      "acessos": 5202
+      "acessos": 5220
     },
     {
       "servico": "Débito de Veículos",
-      "acessos": 4689
+      "acessos": 4715
     },
     {
       "servico": "Solicitar CDIEMS",
-      "acessos": 3268
+      "acessos": 3311
     }
   ],
   "ano": [
     {
       "servico": "Servidor Público",
-      "acessos": 354462
+      "acessos": 354582
     },
     {
       "servico": "Saúde",
-      "acessos": 331777
+      "acessos": 331945
     },
     {
       "servico": "Cartão SUS Online",
-      "acessos": 311208
+      "acessos": 311360
     },
     {
       "servico": "Portal do Servidor",
-      "acessos": 240806
+      "acessos": 240851
     },
     {
       "servico": "Contracheque",
-      "acessos": 179140
+      "acessos": 179160
     },
     {
       "servico": "Educação",
-      "acessos": 148681
+      "acessos": 148714
     },
     {
       "servico": "Consultar CDIEMS",
-      "acessos": 143899
+      "acessos": 143922
     },
     {
       "servico": "Documentos Pendentes",
-      "acessos": 140068
+      "acessos": 140163
     },
     {
       "servico": "Cartão do Doador de Sangue",
-      "acessos": 138258
+      "acessos": 138343
     },
     {
       "servico": "Carteira do Estudante - CDIEMS",
-      "acessos": 117728
+      "acessos": 117755
     },
     {
       "servico": "Trânsito",
-      "acessos": 99205
+      "acessos": 99246
     },
     {
       "servico": "Cartão de Vacinação",
-      "acessos": 68793
+      "acessos": 68798
     },
     {
       "servico": "Solicitar CDIEMS",
-      "acessos": 65508
+      "acessos": 65551
     },
     {
       "servico": "Documentos Assinados",
-      "acessos": 55118
+      "acessos": 55136
     },
     {
       "servico": "Débito de Veículos",
-      "acessos": 50678
+      "acessos": 50704
     }
   ]
 }

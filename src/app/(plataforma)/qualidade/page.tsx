@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { ContentTopBar } from "@/components/ds/ContentTopBar";
 import { EmptyCard } from "@/components/ds/EmptyCard";
 import {
   getCartasErrosResumo,
   getCartasErrosPorOrgao,
   getCartasErrosEvolucaoMensal,
+  getCartasErrosRelacao,
   getCartasPercepcaoResumo,
 } from "@/lib/data";
 import { QualidadeClient } from "./QualidadeClient";
@@ -17,6 +19,7 @@ export default function QualidadePage() {
   const resumo = getCartasErrosResumo();
   const porOrgao = getCartasErrosPorOrgao();
   const evolucaoMensal = getCartasErrosEvolucaoMensal();
+  const relacao = getCartasErrosRelacao();
   const percepcao = getCartasPercepcaoResumo();
 
   if (!resumo) {
@@ -30,5 +33,10 @@ export default function QualidadePage() {
     );
   }
 
-  return <QualidadeClient resumo={resumo} porOrgao={porOrgao} evolucaoMensal={evolucaoMensal} percepcao={percepcao} />;
+  return (
+    // useSearchParams (filtro de órgão) exige Suspense — ver QualidadeClient.
+    <Suspense>
+      <QualidadeClient resumo={resumo} porOrgao={porOrgao} evolucaoMensal={evolucaoMensal} relacao={relacao} percepcao={percepcao} />
+    </Suspense>
+  );
 }

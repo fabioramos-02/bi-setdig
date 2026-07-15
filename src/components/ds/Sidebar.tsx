@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { SidebarLogo } from "@/components/ds/SidebarLogo";
 import { SidebarNavItem } from "@/components/ds/SidebarNavItem";
 import { SidebarSiteSelect } from "@/components/dashboard/SidebarSiteSelect";
 import { SidebarPeriodFilter } from "@/components/dashboard/SidebarPeriodFilter";
+import { SidebarOrgaoFilter } from "@/components/dashboard/SidebarOrgaoFilter";
 import { ThemeToggle } from "@/components/ds/ThemeToggle";
-import type { Site } from "@/lib/data";
+import type { Site, ErroOrgao } from "@/lib/data";
 
 const DOMINIOS = [
   { nome: "Portal Único", rota: "/analytics/portal-ms" },
@@ -22,7 +23,7 @@ const DOMINIOS = [
  * Drawer com hambúrguer em mobile (não bottom bar — 5 rótulos de texto não
  * cabem sem cortar, drawer preserva legibilidade).
  */
-export function Sidebar({ sites }: { sites: Site[] }) {
+export function Sidebar({ sites, orgaosQualidade }: { sites: Site[]; orgaosQualidade: ErroOrgao[] }) {
   const [aberta, setAberta] = useState(false);
 
   return (
@@ -63,6 +64,9 @@ export function Sidebar({ sites }: { sites: Site[] }) {
           </nav>
           <SidebarSiteSelect sites={sites} />
           <SidebarPeriodFilter />
+          <Suspense fallback={null}>
+            <SidebarOrgaoFilter orgaos={orgaosQualidade} />
+          </Suspense>
         </div>
         <div style={{ borderTop: "1px solid var(--ds-color-border)" }} className="p-4 flex justify-center">
           <ThemeToggle />

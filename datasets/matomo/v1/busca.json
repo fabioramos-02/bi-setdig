@@ -2,31 +2,31 @@
   "dia": [
     {
       "termo": "ipva",
-      "buscas": 95
+      "buscas": 106
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 31
+      "buscas": 42
     },
     {
       "termo": "procon",
-      "buscas": 18
+      "buscas": 19
     },
     {
       "termo": "substituição tributária",
-      "buscas": 14
+      "buscas": 15
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 5
+      "buscas": 8
     },
     {
       "termo": "itcd",
-      "buscas": 5
+      "buscas": 7
     },
     {
       "termo": "cidadão",
-      "buscas": 4
+      "buscas": 5
     },
     {
       "termo": "cancelamento de comunicação de venda",
@@ -34,7 +34,7 @@
     },
     {
       "termo": "licenciamento",
-      "buscas": 2
+      "buscas": 3
     },
     {
       "termo": "agendamento carteira identidade uai viçosa mg",
@@ -84,27 +84,27 @@
   "semana": [
     {
       "termo": "ipva",
-      "buscas": 311
+      "buscas": 322
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 157
+      "buscas": 168
     },
     {
       "termo": "procon",
-      "buscas": 71
+      "buscas": 72
     },
     {
       "termo": "substituição tributária",
-      "buscas": 57
+      "buscas": 58
     },
     {
       "termo": "itcd",
-      "buscas": 26
+      "buscas": 28
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 17
+      "buscas": 20
     },
     {
       "termo": "empresa",
@@ -112,15 +112,15 @@
     },
     {
       "termo": "cidadão",
-      "buscas": 14
+      "buscas": 15
     },
     {
       "termo": "servidor",
-      "buscas": 7
+      "buscas": 8
     },
     {
       "termo": "licenciamento",
-      "buscas": 7
+      "buscas": 8
     },
     {
       "termo": "cnh",
@@ -166,31 +166,31 @@
   "mes": [
     {
       "termo": "ipva",
-      "buscas": 813
+      "buscas": 824
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 690
+      "buscas": 701
     },
     {
       "termo": "procon",
-      "buscas": 317
+      "buscas": 318
     },
     {
       "termo": "substituição tributária",
-      "buscas": 293
+      "buscas": 294
     },
     {
       "termo": "itcd",
-      "buscas": 107
+      "buscas": 109
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 105
+      "buscas": 108
     },
     {
       "termo": "cidadão",
-      "buscas": 71
+      "buscas": 72
     },
     {
       "termo": "empresa",
@@ -198,11 +198,11 @@
     },
     {
       "termo": "servidor",
-      "buscas": 43
+      "buscas": 44
     },
     {
       "termo": "licenciamento",
-      "buscas": 37
+      "buscas": 38
     },
     {
       "termo": "cnh",
@@ -248,35 +248,35 @@
   "ano": [
     {
       "termo": "ipva",
-      "buscas": 27524
+      "buscas": 27535
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 7795
+      "buscas": 7806
     },
     {
       "termo": "procon",
-      "buscas": 6047
+      "buscas": 6048
     },
     {
       "termo": "substituição tributária",
-      "buscas": 3972
+      "buscas": 3973
     },
     {
       "termo": "itcd",
-      "buscas": 1493
+      "buscas": 1495
     },
     {
       "termo": "cidadão",
-      "buscas": 1310
+      "buscas": 1311
     },
     {
       "termo": "servidor",
-      "buscas": 1127
+      "buscas": 1128
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 1084
+      "buscas": 1087
     },
     {
       "termo": "empresa",
@@ -288,7 +288,7 @@
     },
     {
       "termo": "licenciamento",
-      "buscas": 235
+      "buscas": 236
     },
     {
       "termo": "mulher",
