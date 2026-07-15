@@ -27,14 +27,54 @@
   --ds-color-primary-600: #4f9ddb;
 }
 
+/* .ds-select NUNCA existiu no pacote vendorizado (`grep` em styles/ds-sis
+   inteiro não acha a classe em lugar nenhum — só `.ds-input`/`.ds-field`
+   têm CSS real). Select renderizava cru (aparência nativa do navegador,
+   sem borda/raio/foco) desde sempre. Adicionando aqui — mesmo tratamento
+   visual de `.ds-input` (styles/ds-sis/styles/input.css) + seta custom
+   (select nativo não aceita estilizar a seta do SO só com CSS). */
+.ds-select {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 40px 12px 16px;
+  border: 1px solid var(--ds-color-neutral-300, #d1d1d1);
+  border-radius: var(--ds-radius-sm, 8px);
+  background-color: var(--ds-color-white, #ffffff);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%236f6f6f' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  color: var(--ds-color-neutral-900, #1d1d1b);
+  font-family: var(--ds-font-family-body);
+  font-size: var(--ds-body-md-font-size);
+  line-height: var(--ds-body-md-line-height);
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.ds-select:hover {
+  border-color: var(--ds-color-neutral-500, #777777);
+}
+
+.ds-select:focus {
+  border-color: var(--ds-color-primary-600, #004f9f);
+  box-shadow: 0 0 0 2px rgba(0, 79, 159, 0.16);
+}
+
 /* .ds-input/.ds-select do DS fixam fundo branco (--ds-color-white) — correto
    no tema claro, mas vira caixa branca sobre fundo escuro no dark. Override
    pontual, não mexe no CSS vendorizado (ADR-006: cópia fiel da fonte). */
 [data-theme="dark"] .ds-input,
 [data-theme="dark"] .ds-select {
-  background: var(--ds-color-background-muted);
+  background-color: var(--ds-color-background-muted);
   color: var(--ds-color-text-primary);
   border-color: var(--ds-color-border);
+}
+
+[data-theme="dark"] .ds-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%23d5d5d5' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
 }
 
 @theme inline {
@@ -49,6 +89,13 @@
 body {
   background: var(--ds-color-background);
   color: var(--ds-color-text-primary);
+}
+
+/* DataTable.tsx — hover de linha. Classe própria em vez de arbitrary value
+   do Tailwind (`hover:[...]`) por confiabilidade: token com var() dentro de
+   arbitrary property tem suporte inconsistente entre versões do Tailwind. */
+.data-table-row:hover {
+  background: var(--ds-color-background-muted);
 }
 
 /* Impressão/PDF (ExportPdfButton -> window.print()) — sempre tema claro,

@@ -85,7 +85,7 @@ export function ServicosClient({
     {
       id: "visao-geral",
       label: "1. Visão Geral",
-      content: <VisaoGeralTab resumo={resumo} live={valido ? live : null} status={status} rotuloPeriodo={rotuloPeriodo} />,
+      content: <VisaoGeralTab resumo={resumo} cartas={cartasAtivas} live={valido ? live : null} status={status} rotuloPeriodo={rotuloPeriodo} />,
     },
     {
       id: "explorar",

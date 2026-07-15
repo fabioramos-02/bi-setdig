@@ -33,12 +33,14 @@ export function OrgaosSetoresTab({
 
   // Oferta: cartas ativas por órgão, com o total do órgão = soma dos setores
   // (não o agregado InventarioOrgao.ativos, que pode contar carta sem setor).
+  // Mostra TODOS os órgãos (não só top N) — é inventário, não ranking, e um
+  // corte escondido já confundiu (soma dos 10 primeiros não batendo com o
+  // total de cartas ativas pareceu bug de dado quando era só truncamento).
   const grupos: OrgaoGrupo[] = useMemo(() => {
     if (!temSetor) {
       return orgaos
         .map((o) => ({ orgaoSigla: o.orgaoSigla, total: o.ativos, setores: [] as SetorGrupo[] }))
-        .sort((a, b) => b.total - a.total)
-        .slice(0, 10);
+        .sort((a, b) => b.total - a.total);
     }
     const porOrgao = new Map<string, Map<string, number>>();
     for (const c of cartas) {
@@ -54,9 +56,10 @@ export function OrgaosSetoresTab({
           .sort((a, b) => b.total - a.total);
         return { orgaoSigla, total: setores.reduce((acc, s) => acc + s.total, 0), setores };
       })
-      .sort((a, b) => b.total - a.total)
-      .slice(0, 10);
+      .sort((a, b) => b.total - a.total);
   }, [cartas, orgaos, temSetor]);
+
+  const totalGeral = grupos.reduce((acc, g) => acc + g.total, 0);
 
   const avisoSetor = (
     <p className="text-sm" style={{ color: "var(--ds-color-text-muted)" }}>
@@ -84,6 +87,9 @@ export function OrgaosSetoresTab({
             </p>
           )}
           <OrgaoSetorTable grupos={grupos} expansivel={temSetor} />
+          <p className="mt-3 pt-3 text-xs" style={{ color: "var(--ds-color-text-muted)", borderTop: "1px solid var(--ds-color-border)" }}>
+            Total: {totalGeral.toLocaleString("pt-BR")} serviços em {grupos.length} órgãos.
+          </p>
         </DashboardSection>
       </div>
 
@@ -114,7 +120,7 @@ function OrgaoSetorTable({ grupos, expansivel }: { grupos: OrgaoGrupo[]; expansi
     });
 
   return (
-    <ul className="flex flex-col gap-1">
+    <ul className="flex flex-col gap-1 max-h-[420px] overflow-y-auto pr-1">
       {grupos.map((g) => {
         const aberto = expansivel && abertos.has(g.orgaoSigla);
         return (

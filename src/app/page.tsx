@@ -66,14 +66,14 @@ export default function Home() {
     <div className="min-h-screen flex flex-col" style={{ background: "var(--ds-color-background)" }}>
       <header
         style={{ background: "var(--ds-color-primary-600)" }}
-        className="flex items-center justify-between px-4 sm:px-8 py-4"
+        className="flex items-center justify-between px-4 sm:px-8 h-[72px]"
       >
         {/* eslint-disable-next-line @next/next/no-img-element -- SVG vendorizado, sem otimização de imagem necessária */}
         <img src="/images/logo-ms-horizontal.svg" alt="Governo de Mato Grosso do Sul" className="h-7 sm:h-8 w-auto" />
         <ThemeToggle />
       </header>
 
-      <section className="relative overflow-hidden px-4 sm:px-8 py-16 sm:py-24">
+      <section className="relative overflow-hidden px-4 sm:px-8 py-10 sm:py-16">
         <DecoracaoRede />
         <div className="relative max-w-2xl">
           <h1
@@ -89,7 +89,7 @@ export default function Home() {
         </div>
       </section>
 
-      <main className="flex-1 px-4 sm:px-8 pb-16 sm:pb-24">
+      <main className="flex-1 px-4 sm:px-8 pb-10 sm:pb-16">
         <h2
           style={{ color: "var(--ds-color-text-primary)", fontFamily: "var(--ds-font-family-heading)" }}
           className="text-xl sm:text-2xl font-semibold mb-2"
@@ -122,8 +122,8 @@ function PainelCard({ painel }: { painel: Painel }) {
         boxShadow: "var(--ds-shadow-card-sm)",
       }}
     >
-      <span
-        className="material-icons flex items-center justify-center shrink-0 mb-4 transition-colors"
+      <div
+        className="flex items-center justify-center shrink-0 mb-4 transition-colors"
         aria-hidden
         style={{
           width: 52,
@@ -131,11 +131,12 @@ function PainelCard({ painel }: { painel: Painel }) {
           borderRadius: "var(--ds-radius-md)",
           background: `color-mix(in srgb, ${painel.cor} 12%, transparent)`,
           color: painel.cor,
-          fontSize: 28,
         }}
       >
-        {painel.icone}
-      </span>
+        <span className="material-icons" style={{ fontSize: 28, lineHeight: 1 }}>
+          {painel.icone}
+        </span>
+      </div>
 
       <h3 style={{ color: "var(--ds-color-text-primary)" }} className="text-lg font-semibold mb-2">
         {painel.nome}
