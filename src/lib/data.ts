@@ -193,9 +193,9 @@ export function getMatomoSites(): Site[] {
   return readDataset<Site[]>("matomo", "v1", "sites") ?? [];
 }
 
-// --- Serviços: inventário de cartas + maturidade digital (ADR-005) ---
-// Estático (snapshot de cadastro, não métrica de uso) — sem breakdown de período.
-export type MaturidadeBucket = { nivel: 0 | 1 | 2 | 3 | 4; total: number };
+// --- Serviços: inventário de cartas (ADR-005) ---
+// Inventário estático (cadastro). A DEMANDA (visitas) reage ao período e é
+// calculada ao vivo cruzando com o Matomo — ver lib/server/cartas-visitas.ts.
 export type InventarioResumo = {
   total: number;
   ativos: number;
@@ -204,9 +204,6 @@ export type InventarioResumo = {
   presenciais: number;
   hibridos: number;
   percentDigital: number;
-  maturidade: MaturidadeBucket[];
-  /** Cartas ativas com nível de maturidade real (rubrica humana/LLM), não heurística. */
-  classificadas: number;
 };
 export type InventarioOrgao = {
   orgao: string;
@@ -215,8 +212,6 @@ export type InventarioOrgao = {
   ativos: number;
   digitais: number;
   percentDigital: number;
-  maturidadeMedia: number;
-  classificadas: number;
 };
 export type InventarioCategoria = {
   categoria: string;
@@ -225,13 +220,15 @@ export type InventarioCategoria = {
   digitais: number;
   percentDigital: number;
 };
-export type MaturidadeOrigem = "classificada" | "heuristica";
 export type CartaRelacao = {
   titulo: string;
   nomePopular: string | null;
   slug: string;
   orgao: string;
   orgaoSigla: string;
+  /** Nome da unidade/setor do órgão. Só existe após rodar o pipeline com a SQL
+   * estendida (VPN) — ausente no dataset antigo. */
+  setor?: string | null;
   categoria: string | null;
   publico: string | null;
   publicoEspecifico: string[];
@@ -242,16 +239,9 @@ export type CartaRelacao = {
   custo: string | null;
   tempoTotal: number | null;
   tipoTempo: string | null;
-  nivelMaturidade: 0 | 1 | 2 | 3 | 4;
-  maturidadeOrigem: MaturidadeOrigem;
+  /** Data de cadastro — alimenta "Novos Serviços". Ausente no dataset antigo. */
+  createdAt?: string | null;
   updatedAt: string | null;
-};
-export type JornadaCanal = { canal: string; total: number };
-export type JornadaResumo = {
-  totalEtapas: number;
-  servicosComJornada: number;
-  mediaEtapasPorServico: number;
-  porCanal: JornadaCanal[];
 };
 
 export function getCartasInventarioResumo(): InventarioResumo | null {
@@ -266,8 +256,4 @@ export function getCartasInventarioPorCategoria(): InventarioCategoria[] {
 }
 export function getCartasInventarioRelacao(): CartaRelacao[] {
   return readDataset<CartaRelacao[]>("cartas", "v1", "inventario-relacao") ?? [];
-}
-export function getCartasJornadaResumo(): JornadaResumo | null {
-  const rows = readDataset<JornadaResumo[]>("cartas", "v1", "jornada-resumo");
-  return rows?.[0] ?? null;
 }

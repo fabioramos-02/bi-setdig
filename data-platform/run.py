@@ -208,15 +208,14 @@ def run_cartas() -> None:
     from transform import servicos_cartas as t_servicos
 
     raw = cartas.get_inventario()
-    classificados = t_servicos.carregar_classificados()
 
-    resumo = t_servicos.resumo_geral(raw, classificados)
-    validate_rows([resumo], required=["total", "ativos"], non_negative=["total", "ativos", "inativos", "digitais", "classificadas"])
+    resumo = t_servicos.resumo_geral(raw)
+    validate_rows([resumo], required=["total", "ativos"], non_negative=["total", "ativos", "inativos", "digitais"])
     out = publish("cartas", "inventario-resumo", [resumo])
     print(f"[cartas] resumo -> {out} ({resumo})")
 
-    orgaos = t_servicos.por_orgao(raw, classificados)
-    validate_rows(orgaos, required=["orgao", "total"], non_negative=["total", "ativos", "digitais", "percentDigital", "classificadas"])
+    orgaos = t_servicos.por_orgao(raw)
+    validate_rows(orgaos, required=["orgao", "total"], non_negative=["total", "ativos", "digitais", "percentDigital"])
     out2 = publish("cartas", "inventario-por-orgao", orgaos)
     print(f"[cartas] por-orgao -> {out2} ({len(orgaos)} órgãos)")
 
@@ -225,16 +224,10 @@ def run_cartas() -> None:
     out3 = publish("cartas", "inventario-por-categoria", categorias)
     print(f"[cartas] por-categoria -> {out3} ({len(categorias)} categorias)")
 
-    relacao = t_servicos.relacao(raw, classificados)
-    validate_rows(relacao, required=["titulo", "orgao"], non_negative=["nivelMaturidade"])
+    relacao = t_servicos.relacao(raw)
+    validate_rows(relacao, required=["titulo", "orgao"], non_negative=[])
     out4 = publish("cartas", "inventario-relacao", relacao)
     print(f"[cartas] relacao -> {out4} ({len(relacao)} cartas)")
-
-    etapas = cartas.get_jornada()
-    jornada = t_servicos.jornada_resumo(etapas)
-    validate_rows([jornada], required=["totalEtapas", "servicosComJornada"], non_negative=["totalEtapas", "servicosComJornada", "mediaEtapasPorServico"])
-    out5 = publish("cartas", "jornada-resumo", [jornada])
-    print(f"[cartas] jornada -> {out5} ({jornada})")
 
 
 if __name__ == "__main__":

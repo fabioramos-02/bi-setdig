@@ -2,11 +2,11 @@
   "dia": [
     {
       "termo": "ipva",
-      "buscas": 18
+      "buscas": 15
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 10
+      "buscas": 12
     },
     {
       "termo": "procon",
@@ -14,93 +14,109 @@
     },
     {
       "termo": "substituição tributária",
-      "buscas": 5
-    },
-    {
-      "termo": "itcd",
-      "buscas": 3
-    },
-    {
-      "termo": "efd",
-      "buscas": 2
-    },
-    {
-      "termo": "empresa",
-      "buscas": 2
-    },
-    {
-      "termo": "mulher",
-      "buscas": 2
+      "buscas": 4
     },
     {
       "termo": "autoparcelamento",
+      "buscas": 3
+    },
+    {
+      "termo": "cancelamento de comunicação de venda",
+      "buscas": 2
+    },
+    {
+      "termo": "certidão positiva",
       "buscas": 1
     },
     {
-      "termo": "boletim",
+      "termo": "cidadão",
       "buscas": 1
     },
     {
-      "termo": "pagar ipva",
+      "termo": "dirceu sales de oliveira",
       "buscas": 1
     },
     {
-      "termo": "registra um boletim de ocorrência",
+      "termo": "histórico escolar",
       "buscas": 1
     },
     {
-      "termo": "servidor",
+      "termo": "licenciamento",
+      "buscas": 1
+    },
+    {
+      "termo": "licenciamento bros 2023 leandro santos de lima",
+      "buscas": 1
+    },
+    {
+      "termo": "pagar licenciamento",
+      "buscas": 1
+    },
+    {
+      "termo": "tg",
+      "buscas": 1
+    },
+    {
+      "termo": "vagas de emprego",
       "buscas": 1
     }
   ],
   "semana": [
     {
       "termo": "ipva",
-      "buscas": 122
+      "buscas": 231
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 84
+      "buscas": 138
     },
     {
       "termo": "procon",
-      "buscas": 31
+      "buscas": 60
     },
     {
       "termo": "substituição tributária",
-      "buscas": 28
+      "buscas": 47
     },
     {
       "termo": "itcd",
-      "buscas": 15
+      "buscas": 21
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 9
-    },
-    {
-      "termo": "cidadão",
-      "buscas": 8
+      "buscas": 15
     },
     {
       "termo": "empresa",
-      "buscas": 8
+      "buscas": 15
     },
     {
-      "termo": "cnh",
-      "buscas": 6
+      "termo": "cidadão",
+      "buscas": 11
     },
     {
       "termo": "servidor",
-      "buscas": 5
+      "buscas": 7
+    },
+    {
+      "termo": "cnh",
+      "buscas": 7
     },
     {
       "termo": "licenciamento",
-      "buscas": 4
+      "buscas": 6
+    },
+    {
+      "termo": "cancelamento de comunicação de venda",
+      "buscas": 5
     },
     {
       "termo": "assinatura digital",
-      "buscas": 3
+      "buscas": 4
+    },
+    {
+      "termo": "mulher",
+      "buscas": 4
     },
     {
       "termo": "defesa civil",
@@ -111,7 +127,7 @@
       "buscas": 3
     },
     {
-      "termo": "mulher",
+      "termo": "fundação estadual jornalista luiz chagas de rádio e televisão",
       "buscas": 3
     },
     {
@@ -119,78 +135,70 @@
       "buscas": 2
     },
     {
-      "termo": "fundação estadual jornalista luiz chagas de rádio e televisão",
+      "termo": "boletim escolar",
       "buscas": 2
     },
     {
-      "termo": "operador de maquinas",
-      "buscas": 2
-    },
-    {
-      "termo": "rondônia",
-      "buscas": 2
-    },
-    {
-      "termo": "cin",
+      "termo": "certificado ensino médio encejja",
       "buscas": 2
     }
   ],
   "mes": [
     {
       "termo": "ipva",
-      "buscas": 624
+      "buscas": 733
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 617
+      "buscas": 671
     },
     {
       "termo": "procon",
-      "buscas": 277
+      "buscas": 306
     },
     {
       "termo": "substituição tributária",
-      "buscas": 264
+      "buscas": 283
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 97
+      "buscas": 103
     },
     {
       "termo": "itcd",
-      "buscas": 96
+      "buscas": 102
     },
     {
       "termo": "cidadão",
-      "buscas": 65
-    },
-    {
-      "termo": "servidor",
-      "buscas": 41
+      "buscas": 68
     },
     {
       "termo": "empresa",
-      "buscas": 38
+      "buscas": 45
+    },
+    {
+      "termo": "servidor",
+      "buscas": 43
     },
     {
       "termo": "licenciamento",
-      "buscas": 34
+      "buscas": 36
     },
     {
       "termo": "cnh",
-      "buscas": 19
+      "buscas": 20
     },
     {
       "termo": "efd",
       "buscas": 16
     },
     {
-      "termo": "nota fiscal",
+      "termo": "mulher",
       "buscas": 13
     },
     {
-      "termo": "mulher",
-      "buscas": 12
+      "termo": "nota fiscal",
+      "buscas": 13
     },
     {
       "termo": "defesa civil",
@@ -198,11 +206,11 @@
     },
     {
       "termo": "rg",
-      "buscas": 10
+      "buscas": 11
     },
     {
       "termo": "fundação estadual jornalista luiz chagas de rádio e televisão",
-      "buscas": 9
+      "buscas": 10
     },
     {
       "termo": "gestão pública",
@@ -213,46 +221,46 @@
       "buscas": 6
     },
     {
-      "termo": "pagar ipva",
+      "termo": "cancelamento de comunicação de venda",
       "buscas": 5
     }
   ],
   "ano": [
     {
       "termo": "ipva",
-      "buscas": 27335
+      "buscas": 27444
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 7722
+      "buscas": 7776
     },
     {
       "termo": "procon",
-      "buscas": 6007
+      "buscas": 6036
     },
     {
       "termo": "substituição tributária",
-      "buscas": 3943
+      "buscas": 3962
     },
     {
       "termo": "itcd",
-      "buscas": 1482
+      "buscas": 1488
     },
     {
       "termo": "cidadão",
-      "buscas": 1304
+      "buscas": 1307
     },
     {
       "termo": "servidor",
-      "buscas": 1125
+      "buscas": 1127
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 1076
+      "buscas": 1082
     },
     {
       "termo": "empresa",
-      "buscas": 603
+      "buscas": 610
     },
     {
       "termo": "nota fiscal",
@@ -260,15 +268,15 @@
     },
     {
       "termo": "licenciamento",
-      "buscas": 232
+      "buscas": 234
     },
     {
       "termo": "mulher",
-      "buscas": 211
+      "buscas": 212
     },
     {
       "termo": "cnh",
-      "buscas": 197
+      "buscas": 198
     },
     {
       "termo": "defesa civil",
@@ -284,11 +292,11 @@
     },
     {
       "termo": "fundação estadual jornalista luiz chagas de rádio e televisão",
-      "buscas": 138
+      "buscas": 139
     },
     {
       "termo": "rg",
-      "buscas": 132
+      "buscas": 133
     },
     {
       "termo": "gestão pública",

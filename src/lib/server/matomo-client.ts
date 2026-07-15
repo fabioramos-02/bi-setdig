@@ -14,7 +14,7 @@ const MATOMO_TOKEN = process.env.MATOMO_TOKEN ?? "";
 
 async function callRaw<T = unknown>(
   method: string,
-  period: "range" | "day",
+  period: "range" | "day" | "week" | "month",
   date: string,
   extra?: Record<string, string | number>,
   siteId?: string,
@@ -102,4 +102,16 @@ export function getOutlinks(inicio: string, fim: string, limit = 50, siteId?: st
 
 export function getVisitsSummaryDaily(inicio: string, fim: string, siteId?: string) {
   return callDaily<MatomoDailyRaw>("VisitsSummary.get", inicio, fim, siteId);
+}
+
+/** getPageUrls quebrado por bucket de tempo (period=week/month, date=range) —
+ * Matomo devolve dict keyed by data. Base da evolução temporal por serviço. */
+export function getPageUrlsPorPeriodo(inicio: string, fim: string, period: "week" | "month", limit = 200, siteId?: string) {
+  return callRaw<Record<string, MatomoRow[]>>(
+    "Actions.getPageUrls",
+    period,
+    `${inicio},${fim}`,
+    { filter_limit: limit, flat: 1, expanded: 0 },
+    siteId,
+  );
 }

@@ -27,18 +27,13 @@ _INVENTARIO_SQL = """
     SELECT s.id, s.titulo, s.slug, s.nome_popular, s.ativo, s.digital, s.online,
            s.agendavel, s.acesso_externo, s.url_externo, s.publico,
            s.publico_especifico, s.custo, s.tempo_total, s.tipo_tempo,
-           s.destaque, s.updated_at,
-           o.nome AS orgao, o.sigla AS orgao_sigla,
+           s.destaque, s.updated_at, s.created_at,
+           o.nome AS orgao, o.sigla AS orgao_sigla, st.nome AS setor,
            t.slug AS categoria_slug
     FROM gerenciamento_servicos s
     JOIN gerenciamento_setor st ON s.setor_id = st.id
     JOIN gerenciamento_orgaos o ON st.orgao_id = o.id
     LEFT JOIN gerenciamento_temas t ON s.tema_id = t.id
-"""
-
-_JORNADA_SQL = """
-    SELECT servico_id, canal_prestacao::text AS canal_prestacao
-    FROM gerenciamento_jornada
 """
 
 
@@ -54,11 +49,7 @@ def _query(sql: str) -> list[dict]:
 
 
 def get_inventario() -> list[dict]:
-    """Cartas de serviço + órgão + categoria — base do domínio Serviços (ADR-005)."""
+    """Cartas de serviço + órgão + setor + categoria — base do domínio Serviços
+    (ADR-005). `created_at` alimenta "Novos Serviços"; `setor` (nome da unidade)
+    alimenta a análise de setor mais demandado."""
     return _query(_INVENTARIO_SQL)
-
-
-def get_jornada() -> list[dict]:
-    """Etapas da jornada do cidadão por carta — canal_prestacao é enum no banco,
-    valores não hardcoded aqui (ver transform/servicos_cartas.py::jornada_resumo)."""
-    return _query(_JORNADA_SQL)

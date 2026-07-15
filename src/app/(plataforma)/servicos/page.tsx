@@ -1,13 +1,7 @@
 import type { Metadata } from "next";
 import { ContentTopBar } from "@/components/ds/ContentTopBar";
 import { EmptyCard } from "@/components/ds/EmptyCard";
-import {
-  getCartasInventarioResumo,
-  getCartasInventarioPorOrgao,
-  getCartasInventarioPorCategoria,
-  getCartasInventarioRelacao,
-  getCartasJornadaResumo,
-} from "@/lib/data";
+import { getCartasInventarioResumo, getCartasInventarioPorOrgao, getCartasInventarioRelacao } from "@/lib/data";
 import { ServicosClient } from "./ServicosClient";
 
 export const metadata: Metadata = {
@@ -17,9 +11,7 @@ export const metadata: Metadata = {
 export default function ServicosPage() {
   const resumo = getCartasInventarioResumo();
   const orgaos = getCartasInventarioPorOrgao();
-  const categorias = getCartasInventarioPorCategoria();
   const relacao = getCartasInventarioRelacao();
-  const jornada = getCartasJornadaResumo();
 
   if (!resumo) {
     return (
@@ -32,5 +24,5 @@ export default function ServicosPage() {
     );
   }
 
-  return <ServicosClient resumo={resumo} orgaos={orgaos} categorias={categorias} relacao={relacao} jornada={jornada} />;
+  return <ServicosClient resumo={resumo} orgaos={orgaos} relacao={relacao} />;
 }

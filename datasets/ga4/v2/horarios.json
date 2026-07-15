@@ -1,9 +1,14 @@
 {
-  "dia": [],
+  "dia": [
+    {
+      "hora": "0",
+      "sessoes": 3
+    }
+  ],
   "semana": [
     {
       "hora": "0",
-      "sessoes": 309
+      "sessoes": 304
     },
     {
       "hora": "1",
@@ -11,287 +16,287 @@
     },
     {
       "hora": "2",
-      "sessoes": 101
+      "sessoes": 106
     },
     {
       "hora": "3",
-      "sessoes": 100
+      "sessoes": 99
     },
     {
       "hora": "4",
-      "sessoes": 126
+      "sessoes": 117
     },
     {
       "hora": "5",
-      "sessoes": 326
+      "sessoes": 311
     },
     {
       "hora": "6",
-      "sessoes": 799
+      "sessoes": 742
     },
     {
       "hora": "7",
-      "sessoes": 1606
+      "sessoes": 1518
     },
     {
       "hora": "8",
-      "sessoes": 2156
+      "sessoes": 2003
     },
     {
       "hora": "9",
-      "sessoes": 2448
+      "sessoes": 2155
     },
     {
       "hora": "10",
-      "sessoes": 2541
-    },
-    {
-      "hora": "11",
       "sessoes": 2268
     },
     {
+      "hora": "11",
+      "sessoes": 1990
+    },
+    {
       "hora": "12",
-      "sessoes": 1962
+      "sessoes": 1738
     },
     {
       "hora": "13",
-      "sessoes": 2045
+      "sessoes": 1833
     },
     {
       "hora": "14",
-      "sessoes": 2096
+      "sessoes": 1789
     },
     {
       "hora": "15",
-      "sessoes": 2070
+      "sessoes": 1800
     },
     {
       "hora": "16",
-      "sessoes": 1751
+      "sessoes": 1569
     },
     {
       "hora": "17",
-      "sessoes": 1469
+      "sessoes": 1458
     },
     {
       "hora": "18",
-      "sessoes": 1341
+      "sessoes": 1368
     },
     {
       "hora": "19",
-      "sessoes": 1284
+      "sessoes": 1379
     },
     {
       "hora": "20",
-      "sessoes": 1151
+      "sessoes": 1208
     },
     {
       "hora": "21",
-      "sessoes": 1034
+      "sessoes": 1059
     },
     {
       "hora": "22",
-      "sessoes": 697
+      "sessoes": 731
     },
     {
       "hora": "23",
-      "sessoes": 484
+      "sessoes": 471
     }
   ],
   "mes": [
     {
       "hora": "0",
-      "sessoes": 1304
+      "sessoes": 1277
     },
     {
       "hora": "1",
-      "sessoes": 772
+      "sessoes": 770
     },
     {
       "hora": "2",
-      "sessoes": 484
+      "sessoes": 480
     },
     {
       "hora": "3",
-      "sessoes": 419
+      "sessoes": 418
     },
     {
       "hora": "4",
-      "sessoes": 565
+      "sessoes": 560
     },
     {
       "hora": "5",
-      "sessoes": 1447
+      "sessoes": 1467
     },
     {
       "hora": "6",
-      "sessoes": 3512
+      "sessoes": 3575
     },
     {
       "hora": "7",
-      "sessoes": 6708
+      "sessoes": 6904
     },
     {
       "hora": "8",
-      "sessoes": 9521
+      "sessoes": 9676
     },
     {
       "hora": "9",
-      "sessoes": 10332
+      "sessoes": 10376
     },
     {
       "hora": "10",
-      "sessoes": 10165
+      "sessoes": 10260
     },
     {
       "hora": "11",
-      "sessoes": 9169
+      "sessoes": 9216
     },
     {
       "hora": "12",
-      "sessoes": 8559
+      "sessoes": 8481
     },
     {
       "hora": "13",
-      "sessoes": 8708
+      "sessoes": 8754
     },
     {
       "hora": "14",
-      "sessoes": 8593
+      "sessoes": 8548
     },
     {
       "hora": "15",
-      "sessoes": 8390
+      "sessoes": 8288
     },
     {
       "hora": "16",
-      "sessoes": 7627
+      "sessoes": 7522
     },
     {
       "hora": "17",
-      "sessoes": 7135
+      "sessoes": 7242
     },
     {
       "hora": "18",
-      "sessoes": 7063
+      "sessoes": 7190
     },
     {
       "hora": "19",
-      "sessoes": 6541
+      "sessoes": 6675
     },
     {
       "hora": "20",
-      "sessoes": 5829
+      "sessoes": 5889
     },
     {
       "hora": "21",
-      "sessoes": 4985
+      "sessoes": 5001
     },
     {
       "hora": "22",
-      "sessoes": 3602
+      "sessoes": 3636
     },
     {
       "hora": "23",
-      "sessoes": 2145
+      "sessoes": 2141
     }
   ],
   "ano": [
     {
       "hora": "0",
-      "sessoes": 17588
+      "sessoes": 17655
     },
     {
       "hora": "1",
-      "sessoes": 9631
+      "sessoes": 9659
     },
     {
       "hora": "2",
-      "sessoes": 6376
+      "sessoes": 6400
     },
     {
       "hora": "3",
-      "sessoes": 5397
+      "sessoes": 5396
     },
     {
       "hora": "4",
-      "sessoes": 7669
+      "sessoes": 7677
     },
     {
       "hora": "5",
-      "sessoes": 18394
+      "sessoes": 18373
     },
     {
       "hora": "6",
-      "sessoes": 44838
+      "sessoes": 44768
     },
     {
       "hora": "7",
-      "sessoes": 84286
+      "sessoes": 84343
     },
     {
       "hora": "8",
-      "sessoes": 114321
+      "sessoes": 114292
     },
     {
       "hora": "9",
-      "sessoes": 129000
+      "sessoes": 128147
     },
     {
       "hora": "10",
-      "sessoes": 124261
+      "sessoes": 123815
     },
     {
       "hora": "11",
-      "sessoes": 113273
+      "sessoes": 113427
     },
     {
       "hora": "12",
-      "sessoes": 106878
+      "sessoes": 106757
     },
     {
       "hora": "13",
-      "sessoes": 110713
+      "sessoes": 110460
     },
     {
       "hora": "14",
-      "sessoes": 111403
+      "sessoes": 110750
     },
     {
       "hora": "15",
-      "sessoes": 104352
+      "sessoes": 104064
     },
     {
       "hora": "16",
-      "sessoes": 99626
+      "sessoes": 99196
     },
     {
       "hora": "17",
-      "sessoes": 90368
+      "sessoes": 90294
     },
     {
       "hora": "18",
-      "sessoes": 88963
+      "sessoes": 88851
     },
     {
       "hora": "19",
-      "sessoes": 87016
+      "sessoes": 87048
     },
     {
       "hora": "20",
-      "sessoes": 79912
+      "sessoes": 79941
     },
     {
       "hora": "21",
-      "sessoes": 69498
+      "sessoes": 69412
     },
     {
       "hora": "22",
-      "sessoes": 48773
+      "sessoes": 48739
     },
     {
       "hora": "23",
-      "sessoes": 31845
+      "sessoes": 31877
     }
   ]
 }

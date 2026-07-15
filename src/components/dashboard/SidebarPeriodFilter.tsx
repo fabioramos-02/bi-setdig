@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { PeriodFilter } from "@/components/dashboard/PeriodFilter";
 import { usePeriodo } from "@/lib/periodo-context";
 
-const ROTAS_COM_FILTRO = ["/analytics/portal-ms", "/analytics/ms-digital"];
+const ROTAS_COM_FILTRO = ["/analytics/portal-ms", "/analytics/ms-digital", "/servicos"];
 // Drill-down de site (/sites/[idsite]) é sempre ao vivo — precisa do filtro
 // mesmo sem estar na lista acima (rota dinâmica, não dá pra listar exata).
 const PREFIXOS_COM_FILTRO = ["/sites/"];
