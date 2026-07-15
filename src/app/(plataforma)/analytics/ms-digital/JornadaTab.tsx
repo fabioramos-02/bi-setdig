@@ -25,7 +25,7 @@ export function JornadaTab({
       <AvisoSnapshotAproximado status={status} />
       <div>
         <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold mb-2">
-          Funil de engajamento: aquisição → ativação → navegação → retenção
+          Jornada do usuário no app: download → primeiro uso → uso do app → uso recorrente
         </h3>
         <ChartLoading status={status} height={280}>
           <BarChart data={dadosFunil} xKey="estagio" yKey="usuarios" height={280} />
@@ -40,7 +40,7 @@ export function JornadaTab({
             insightFunil.usuariosPerdidos >= 0 ? "somem" : "aparecem a mais"
           } (${insightFunil.quedaPct.toFixed(0)}%).`}
           caption={insightFunil.interpretacao}
-          comoLer="Cada estágio conta usuários únicos que dispararam aquele evento no período — não é uma jornada estritamente sequencial por pessoa, mas revela onde o volume de gente cai mais entre uma etapa e a próxima."
+          comoLer="Cada etapa conta usuários únicos que realizaram aquela ação no período — não é uma jornada estritamente sequencial por pessoa, mas revela onde o volume de gente cai mais entre uma etapa e a próxima."
         />
       )}
     </div>

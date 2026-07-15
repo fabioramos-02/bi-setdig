@@ -11,7 +11,7 @@ export default function QualidadePage() {
     <div className="flex flex-col flex-1">
       <ContentTopBar title="Qualidade" />
       <main className="flex-1 p-6">
-        <EmptyCard message="Nenhuma fonte de dados conectada ainda." />
+        <EmptyCard message="Ainda não há dados disponíveis aqui." />
       </main>
     </div>
   );

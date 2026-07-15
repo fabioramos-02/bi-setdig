@@ -13,7 +13,7 @@ export default function SitesPage() {
       <div className="flex flex-col flex-1">
         <ContentTopBar title="Sites" />
         <main className="flex-1 p-4 sm:p-6">
-          <EmptyCard message="Nenhum site conectado ainda." />
+          <EmptyCard message="Ainda não há sites disponíveis aqui." />
         </main>
       </div>
     );

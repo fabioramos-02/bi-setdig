@@ -45,7 +45,7 @@ export function VisaoGeralTab({
       {tendencia.length === 0 && status !== "carregando" ? (
         <StoryCard
           anchor="Sem dados suficientes nesse período."
-          caption="Esse site não teve tráfego registrado no Matomo pro intervalo selecionado."
+          caption="Esse site não teve tráfego registrado nesse período."
           comoLer="Troque o período no filtro da barra lateral pra tentar um intervalo maior."
         />
       ) : (

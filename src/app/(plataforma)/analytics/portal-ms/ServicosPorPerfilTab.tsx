@@ -52,16 +52,16 @@ export function ServicosPorPerfilTab({
                 um serviço pelo filtro de Perfil.
               </>
             }
-            caption={`No período, os serviços em destaque somaram ${resumo.atribuiveis.toLocaleString("pt-BR")} visitas — ${resumo.proxyRatePct.toFixed(2)}% dos visitantes da home. Nem tudo isso vem do filtro: menu e busca levam aos mesmos serviços.`}
-            comoLer="O clique na aba de perfil (Cidadão, Servidor Público, Empresa, Gestão Pública) não fica registrado separadamente no Matomo — só dá pra medir direto quantas visitas os serviços em destaque receberam. A estimativa de uso do filtro (1 em cada N) vem de uma amostra pequena de 2025 e é um teto: o uso real tende a ser ainda menor."
+            caption={`No período, os serviços em destaque somaram ${resumo.atribuiveis.toLocaleString("pt-BR")} visitas — ${resumo.proxyRatePct.toFixed(2)}% dos visitantes da página inicial. Nem tudo isso vem do filtro: menu e busca levam aos mesmos serviços.`}
+            comoLer="O clique na aba de perfil (Cidadão, Servidor Público, Empresa, Gestão Pública) não é registrado separadamente pela ferramenta de estatísticas do portal — só dá pra medir direto quantas visitas os serviços em destaque receberam. A estimativa de uso do filtro (1 em cada N) vem de um estudo pequeno feito em 2025 e é um número máximo possível: o uso real tende a ser ainda menor."
           />
         </div>
         <div className="grid grid-cols-1 gap-4">
-          <MetricCard label="Visitantes da home" value={resumo.homeVisitors} />
+          <MetricCard label="Visitantes da página inicial" value={resumo.homeVisitors} />
           <MetricCard
             label="Visitas aos serviços em destaque"
             value={resumo.atribuiveis}
-            sub={`meta mínima considerada relevante: ${resumo.limiarPct}%`}
+            sub={`mínimo considerado relevante: ${resumo.limiarPct}%`}
           />
         </div>
       </div>
@@ -79,14 +79,14 @@ export function ServicosPorPerfilTab({
         <ChartLoading status={status} height={120}>
           <FunnelChart
             steps={[
-              { label: "Visitantes da home", value: resumo.homeVisitors },
+              { label: "Visitantes da página inicial", value: resumo.homeVisitors },
               { label: "Visitas aos serviços em destaque", value: resumo.atribuiveis },
               { label: "Estimativa de uso do filtro", value: estimativaUsoFiltro },
             ]}
           />
         </ChartLoading>
         <p className="mt-4 text-xs" style={{ color: "var(--ds-color-text-muted)" }}>
-          Cada barra é uma etapa: quem visita a home, quem chega aos serviços em destaque, e quantos desses acessos vêm
+          Cada barra é uma etapa: quem visita a página inicial, quem chega aos serviços em destaque, e quantos desses acessos vêm
           de fato do filtro de Perfil — a última barra é estimativa, não medida direta.
         </p>
       </DashboardSection>

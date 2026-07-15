@@ -42,7 +42,7 @@ export function PaginasTab({
         <StoryCard
           anchor={`"${labelPagina(insightPagina.url).label}" é a página mais acessada: ${insightPagina.participacaoPct.toFixed(0)}% das visitas ${rotuloPeriodo} passam por ela.`}
           caption={`${insightPagina.visitas.toLocaleString("pt-BR")} visitas registradas nessa página no período.`}
-          comoLer="Ranking das 20 páginas com mais visitas no período selecionado no filtro da sidebar — não é acumulado histórico."
+          comoLer="Ranking das 20 páginas com mais visitas no período escolhido no filtro de período — não é um acumulado histórico."
         />
       )}
 

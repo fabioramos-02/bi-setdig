@@ -52,7 +52,7 @@ export function FuncionalidadesTab({
       {insightServico && (
         <StoryCard
           anchor={`"${insightServico.servico}" é o serviço individual mais usado, com ${insightServico.participacaoPct.toFixed(0)}% dos acessos a serviços no período.`}
-          caption="Baseado em visualizações de tela (screen_view) dentro do app, já sem contar telas de menu/categoria."
+          caption="Baseado nas telas abertas dentro do app, já sem contar telas de menu/categoria."
           comoLer="Mostra quais serviços (não categorias) os cidadãos mais utilizam dentro do MS Digital — útil pra priorizar manutenção e evolução dos serviços com mais uso real. Barra mais longa e mais escura = mais acessos."
         />
       )}

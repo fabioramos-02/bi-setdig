@@ -127,10 +127,10 @@ export function calcularInsightHorario(horarios: HorarioGa4[]): InsightHorario |
 /** Rótulo de estágio pro funil de aquisição -> ativação -> navegação ->
  * retenção — porta de _EVENTOS_SISTEMA em views/ms_digital/tab4_jornada.py. */
 const ROTULO_ESTAGIO: Record<string, string> = {
-  first_open: "Aquisição (Downloads)",
-  session_start: "Ativação (Sessão)",
-  screen_view: "Navegação (Telas)",
-  user_engagement: "Retenção (Engajamento)",
+  first_open: "Download do app",
+  session_start: "Primeiro uso",
+  screen_view: "Uso do app",
+  user_engagement: "Uso recorrente",
 };
 
 export function rotuloEstagioFunil(evento: string): string {
@@ -170,5 +170,5 @@ export function calcularInsightFunil(funil: EventoFunil[]): InsightFunil | null 
   });
   const maior = quedas.reduce((a, b) => (b.quedaPct > a.quedaPct ? b : a));
   const chave = `${maior.estagioAtual}->${maior.estagioProximo}`;
-  return { ...maior, interpretacao: INTERPRETACAO_QUEDA[chave] ?? "Ponto de atenção — investigar contexto específico dessa transição." };
+  return { ...maior, interpretacao: INTERPRETACAO_QUEDA[chave] ?? "Vale observar esse ponto com mais atenção." };
 }

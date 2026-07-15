@@ -32,7 +32,7 @@ export function FluxoNavegacaoTab({
   status: StatusIntervalo;
 }) {
   if (portasEntrada.length === 0 && fugaHub.length === 0) {
-    return <EmptyCard message="Sem dado de fluxo de navegação ainda — pipeline não extraiu essa amostra." />;
+    return <EmptyCard message="Ainda não há esse dado disponível — deve aparecer aqui em breve." />;
   }
 
   const insightEntrada = calcularInsightEntrada(portasEntrada);
@@ -44,12 +44,12 @@ export function FluxoNavegacaoTab({
         <StoryCard
           anchor={`"${insightEntrada.pagina}" é a porta de entrada mais usada: ${insightEntrada.participacaoPct.toFixed(0)}% de quem chega direto ao portal cai nela.`}
           caption={`${insightEntrada.entradas.toLocaleString("pt-BR")} entradas registradas nessa página no período.`}
-          comoLer="Entrada é a primeira página que a pessoa abre na visita. Saída é pra qual outro serviço do governo ela segue depois. Os números refletem o dia/semana/mês/ano selecionado, incluindo a data de referência na sidebar."
+          comoLer="Entrada é a primeira página que a pessoa abre na visita. Saída é pra qual outro serviço do governo ela segue depois. Os números refletem o período escolhido no filtro, incluindo a data de referência."
         />
       )}
 
       <div className="grid gap-6 grid-cols-1 lg:grid-cols-2">
-        <DashboardSection title="Portas de Entrada (Landing Pages)">
+        <DashboardSection title="Portas de Entrada">
           <p className="mb-3 text-sm" style={{ color: "var(--ds-color-text-secondary)" }}>
             Por onde os cidadãos começaram a navegação?
           </p>

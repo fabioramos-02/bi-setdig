@@ -33,7 +33,7 @@ export function BuscaTab({
           <StoryCard
             anchor={`O termo mais buscado foi "${insightBusca.termo}", com ${insightBusca.participacaoPct.toFixed(0)}% das buscas ${rotuloPeriodo}.`}
             caption={`${insightBusca.buscas.toLocaleString("pt-BR")} buscas registradas por esse termo.`}
-            comoLer="Combina buscas feitas na caixa de pesquisa interna do site com termos extraídos de URLs com parâmetro de busca (?q=) — não inclui quem chegou via Google ou outro buscador externo."
+            comoLer="Combina buscas feitas na caixa de pesquisa interna do site com termos digitados que aparecem no endereço da página — não inclui quem chegou via Google ou outro buscador externo."
           />
         </div>
       )}

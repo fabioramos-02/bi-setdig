@@ -92,9 +92,19 @@ Todo componente novo de gráfico/métrica/insight segue isso — não é só pol
   ressalva relevante (aproximação, viés, o que NÃO está sendo medido).
 - **Honestidade sobre limitação do dado > omissão.** Quando o número é
   aproximado, incompleto ou não pôde ser classificado (ex.: `naoIdentificadoPct`
-  em `servico-app-classifier.ts`, "link não cadastrado" em `CategoriasTab`),
+  em `servico-app-classifier.ts`, "sem link disponível" em `CategoriasTab`),
   mostrar isso explicitamente e em linguagem simples — nunca esconder a
   lacuna nem fingir precisão que o dado não tem.
+- **Checklist de termo banido em texto visível** (achado real: vazou pro repo
+  inteiro até a revisão de 2026-07 — `AvisoSnapshotAproximado`, `BuscaTab`,
+  `ServicosPorPerfilTab` e outros): nunca aparecer em `anchor`/`caption`/
+  `comoLer`/`label`/`message`/heading — nome de ferramenta/vendor ("Matomo",
+  "GA4", "screen_view"), código interno ("ADR-XXX"), sintaxe técnica de URL
+  ("?q="), termo de UI/dev ("sidebar", "snapshot", "recorte"/"recortam",
+  "pipeline", "fonte de dados", "status" como rótulo cru), anglicismo evitável
+  ("Top N" → "com mais acessos", "home" → "página inicial"). Se o termo
+  precisar aparecer, ele descreve o que a coisa FAZ em português simples, não
+  o nome dela.
 
 ## Testes
 

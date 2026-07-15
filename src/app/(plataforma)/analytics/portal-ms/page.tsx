@@ -39,7 +39,7 @@ export default function AnalyticsPortalMsPage() {
       <div className="flex flex-col flex-1">
         <ContentTopBar title="Analytics — Portal Único" />
         <main className="flex-1 p-6">
-          <EmptyCard message="Nenhuma fonte de dados conectada ainda." />
+          <EmptyCard message="Ainda não há dados disponíveis aqui." />
         </main>
       </div>
     );

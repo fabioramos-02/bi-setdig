@@ -14,7 +14,7 @@ const PREFIXOS_COM_FILTRO = ["/sites/"];
 // lista aqui desatualiza toda vez que um dataset novo vira breakdown por
 // período (já aconteceu: esta lista chegou a ficar incompleta e um par de
 // abas chegou a rotular o dado errado como "do intervalo").
-const AVISO_INTERVALO = "Alguns painéis mostram o snapshot mais recente do mês nesse modo — veja o aviso na aba específica.";
+const AVISO_INTERVALO = "Alguns painéis ainda mostram os dados mais recentes do mês nesse modo — veja o aviso em cada aba.";
 
 /**
  * Filtro de período dentro da sidebar — aparece nas rotas com dados reativos a
@@ -44,8 +44,8 @@ export function SidebarPeriodFilter() {
         vertical
       />
       <p style={{ color: "var(--ds-color-text-muted)" }} className="text-xs mt-2">
-        A granularidade e a data de referência recortam todos os gráficos. Períodos
-        passados são buscados ao vivo — pode levar 1–2 s pra atualizar.
+        Todos os gráficos são atualizados conforme o período escolhido. Em datas
+        anteriores, a atualização pode levar até 2 segundos.
       </p>
       {estado.tipo === "intervalo" && (
         <p style={{ color: "var(--ds-color-text-muted)" }} className="text-xs mt-2">

@@ -18,11 +18,11 @@ export function AvisoSnapshotAproximado({
 
   const texto =
     efetivo === "carregando"
-      ? "Buscando o dado exato do intervalo…"
+      ? "Buscando os dados mais recentes desse período…"
       : (
           <>
-            Este painel não tem recorte por intervalo arbitrário nesta versão (ADR-007/ADR-010) — exibindo o snapshot do{" "}
-            <strong>mês</strong>.
+            Este painel ainda não busca dados de qualquer período em tempo real — está mostrando os números mais
+            recentes do <strong>mês</strong>.
           </>
         );
 

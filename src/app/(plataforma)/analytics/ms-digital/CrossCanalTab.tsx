@@ -26,7 +26,7 @@ export function CrossCanalTab({
       <StoryCard
         anchor={`No período, ${maior === "app" ? "o app" : "o portal na internet"} foi o canal que mais gente usou para chegar aos serviços do Estado.`}
         caption={`App: ${alcanceApp.toLocaleString("pt-BR")} pessoas. Portal na internet: ${alcancePortal.toLocaleString("pt-BR")} pessoas.`}
-        comoLer="São dois caminhos para o mesmo serviço. Não dá para somar os dois: a mesma pessoa pode usar o app e o site. Os números também vêm de ferramentas diferentes (GA4 no app, Matomo no site), então servem para comparar tamanho, não para uma conta exata."
+        comoLer="São dois caminhos para o mesmo serviço. Não dá para somar os dois: a mesma pessoa pode usar o app e o site. Os números também vêm de sistemas de medição diferentes para app e site, então servem para comparar tamanho, não para uma conta exata."
       />
 
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">

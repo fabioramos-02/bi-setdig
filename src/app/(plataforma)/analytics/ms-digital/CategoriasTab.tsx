@@ -38,7 +38,7 @@ export function CategoriasTab({
     Categoria: s.categoria,
     Serviço: s.servico,
     Tipo: s.tipo === "nativo" ? "Nativo" : "Web",
-    Status: s.ativo ? "Ativo" : "Inativo",
+    Situação: s.ativo ? "Ativo" : "Inativo",
     URL: s.url ?? "",
   }));
   const servicosSel = sel ? servicos.filter((s) => s.categoria === sel) : [];
@@ -145,7 +145,7 @@ export function CategoriasTab({
                       )}
                       {s.tipo === "web" && !s.url && (
                         <span className="ml-2 text-xs" style={{ color: "var(--ds-color-text-muted)" }}>
-                          (link não cadastrado)
+                          (sem link disponível)
                         </span>
                       )}
                     </span>

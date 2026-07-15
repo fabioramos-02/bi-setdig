@@ -131,7 +131,7 @@ export function PeriodFilter({
 
       {resolvido && (
         <p id="periodo-resolvido" className="text-xs" style={{ color: "var(--ds-color-text-muted)" }}>
-          Mostrando: <strong style={{ color: "var(--ds-color-text-secondary)" }}>{resolvido}</strong>
+          Período analisado: <strong style={{ color: "var(--ds-color-text-secondary)" }}>{resolvido}</strong>
         </p>
       )}
     </div>

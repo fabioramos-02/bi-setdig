@@ -48,7 +48,7 @@ export function PerfilCidadaoTab({
         </div>
         <div>
           <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold mb-2">
-            Top cidades (MS)
+            Cidades com mais acessos (MS)
           </h3>
           <ul className="text-sm space-y-1 max-h-64 overflow-y-auto">
             {cidadesAtual.slice(0, 10).map((c) => (
