@@ -29,37 +29,40 @@ export function VisaoGeralTab({
 
   return (
     <div className="flex flex-col gap-6">
-      <AvisoSnapshotAproximado status={status} />
+      <AvisoSnapshotAproximado
+        status={status}
+        mensagemFallback="Não foi possível buscar os acessos desse período agora — tenta um período menor ou tenta de novo em instantes."
+      />
 
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         <MetricCard label="Serviços ativos" value={resumo.ativos} sub={`de ${resumo.total.toLocaleString("pt-BR")} cadastrados`} />
         <MetricCard label={`Acessos a serviços ${rotuloPeriodo}`} value={live ? totalVisitas : "—"} />
-        <MetricCard label="Órgão mais procurado" value={orgaoTop?.rotulo ?? "—"} sub={orgaoTop ? `${pct(orgaoTop.visitas).toFixed(0)}% dos acessos` : undefined} />
-        <MetricCard label="Área mais procurada" value={categoriaTop ? labelCategoria(categoriaTop.rotulo) : "—"} sub={categoriaTop ? `${pct(categoriaTop.visitas).toFixed(0)}% dos acessos` : undefined} />
+        <MetricCard label="Órgão com mais acessos" value={orgaoTop?.rotulo ?? "—"} sub={orgaoTop ? `${pct(orgaoTop.visitas).toFixed(0)}% dos acessos` : undefined} />
+        <MetricCard label="Área com mais acessos" value={categoriaTop ? labelCategoria(categoriaTop.rotulo) : "—"} sub={categoriaTop ? `${pct(categoriaTop.visitas).toFixed(0)}% dos acessos` : undefined} />
       </div>
 
       {orgaoTop && (
         <StoryCard
-          anchor={`${orgaoTop.rotulo} é o órgão cujos serviços o cidadão mais procurou ${rotuloPeriodo}, com ${pct(orgaoTop.visitas).toFixed(0)}% dos acessos.`}
+          anchor={`${orgaoTop.rotulo} é o órgão cujos serviços o cidadão mais acessou ${rotuloPeriodo}, com ${pct(orgaoTop.visitas).toFixed(0)}% dos acessos.`}
           caption={`${totalVisitas.toLocaleString("pt-BR")} acessos a páginas de serviço no período, somando todas as cartas.`}
-          comoLer="Contamos quantas vezes cada página de serviço do portal foi aberta no período. Só entram cartas com pelo menos um acesso — quem não teve acesso não aparece no ranking. É procura pelo serviço, não conclusão dele."
+          comoLer="Contamos quantas vezes cada página de serviço do portal foi aberta no período. Só entram cartas com pelo menos um acesso — quem não teve acesso não aparece no ranking. É acesso à página do serviço — não significa que o cidadão concluiu o atendimento."
         />
       )}
 
       <div className="grid gap-6 grid-cols-1 lg:grid-cols-2">
-        <DashboardSection title="Órgãos mais procurados">
+        <DashboardSection title="Órgãos com mais acessos">
           <ChartLoading status={status} height={260}>
             <RankingBarChart itens={(live?.porOrgao ?? []).slice(0, 10).map((o) => ({ label: o.rotulo, valor: o.visitas }))} />
           </ChartLoading>
         </DashboardSection>
-        <DashboardSection title="Áreas mais procuradas">
+        <DashboardSection title="Áreas com mais acessos">
           <ChartLoading status={status} height={260}>
             <RankingBarChart itens={(live?.porCategoria ?? []).slice(0, 10).map((c) => ({ label: labelCategoria(c.rotulo), valor: c.visitas }))} />
           </ChartLoading>
         </DashboardSection>
       </div>
 
-      <DashboardSection title="Evolução dos 5 serviços mais procurados">
+      <DashboardSection title="Evolução dos 5 serviços com mais acessos">
         <ChartLoading status={status} height={280}>
           {live && live.evolucao.length > 0 ? (
             <MultiLineChart data={live.evolucao} xKey="rotulo" series={live.top5.map((k) => ({ key: k, label: k }))} />

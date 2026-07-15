@@ -227,7 +227,7 @@ export function MsDigitalClient({
     {
       id: "app-portal",
       label: "5. App × Portal",
-      content: <CrossCanalTab comparacao={comparacao} tipoIntervalo={precisaLive} />,
+      content: <CrossCanalTab comparacao={comparacao} status={statusGa4} />,
     },
     {
       id: "categorias",

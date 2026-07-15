@@ -51,7 +51,10 @@ export function ExplorarTab({
 
   return (
     <div className="flex flex-col gap-4">
-      <AvisoSnapshotAproximado status={status} />
+      <AvisoSnapshotAproximado
+        status={status}
+        mensagemFallback="Não foi possível buscar os acessos desse período agora — tenta um período menor ou tenta de novo em instantes."
+      />
       <DashboardSection
         title="Explorar cartas de serviço"
         action={
@@ -62,7 +65,7 @@ export function ExplorarTab({
               Categoria: labelCategoria(c.categoria),
               Prazo: prazoDe(c),
               Custo: c.custo ?? "",
-              [`Visitas ${rotuloPeriodo}`]: visitasPorSlug.get(c.slug) ?? 0,
+              [`Acessos ${rotuloPeriodo}`]: visitasPorSlug.get(c.slug) ?? 0,
               Link: `${PORTAL_BASE}/${c.categoria}/${c.slug}`,
             }))}
             filename="cartas-servico"
@@ -94,7 +97,7 @@ export function ExplorarTab({
                   <th className="pb-2">Órgão</th>
                   <th className="pb-2">Categoria</th>
                   <th className="pb-2">Prazo</th>
-                  <th className="pb-2 text-right">Visitas</th>
+                  <th className="pb-2 text-right">Acessos</th>
                   <th className="pb-2 text-right">Portal</th>
                 </tr>
               </thead>

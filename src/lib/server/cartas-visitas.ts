@@ -91,7 +91,13 @@ export function joinVisitas(pageUrlsRaw: MatomoRow[], inventario: CartaRelacao[]
     });
     orgao.set(c.orgaoSigla, (orgao.get(c.orgaoSigla) ?? 0) + visitas);
     categoria.set(c.categoria!, (categoria.get(c.categoria!) ?? 0) + visitas);
-    if (c.setor) setor.set(c.setor, (setor.get(c.setor) ?? 0) + visitas);
+    // Chave composta (setor + sigla do órgão) — 2 setores homônimos em órgãos
+    // diferentes não devem ser somados juntos, e o rótulo já sai pronto pro
+    // ranking (ex. "Financeiro — SEFAZ").
+    if (c.setor) {
+      const chaveSetor = `${c.setor} — ${c.orgaoSigla}`;
+      setor.set(chaveSetor, (setor.get(chaveSetor) ?? 0) + visitas);
+    }
   }
 
   porCarta.sort((a, b) => b.visitas - a.visitas);

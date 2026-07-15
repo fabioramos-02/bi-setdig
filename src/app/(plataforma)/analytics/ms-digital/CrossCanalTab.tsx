@@ -4,25 +4,28 @@ import { DeviceBarChart } from "@/components/charts/DeviceBarChart";
 import { MetricCard } from "@/components/dashboard/MetricCard";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
-import { AvisoSnapshotAproximado } from "@/components/dashboard/AvisoSnapshotAproximado";
+import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
+import { ChartLoading } from "@/components/dashboard/ChartLoading";
 import type { ComparacaoCanais } from "@/lib/cross-canal";
 
 /** Contexto cross-BI: o mesmo cidadão em dois canais — app (MS Digital / GA4) e
  * portal web (www.ms.gov.br / Matomo). Não é soma: a mesma pessoa pode usar os
- * dois, e as janelas de cada fonte não batem exatamente (ver comoLer). */
+ * dois, e as janelas de cada fonte não batem exatamente (ver comoLer).
+ * Lado portal (portalServicos/portalDispositivos) é sempre snapshot — Matomo
+ * não vai ao vivo nesta rota — por isso só o lado app entra em ChartLoading. */
 export function CrossCanalTab({
   comparacao,
-  tipoIntervalo,
+  status,
 }: {
   comparacao: ComparacaoCanais;
-  tipoIntervalo: boolean;
+  status: StatusIntervalo;
 }) {
   const { alcanceApp, alcancePortal, appServicos, portalServicos, appPlataforma, portalDispositivos } = comparacao;
   const maior = alcanceApp >= alcancePortal ? "app" : "portal";
 
   return (
     <div className="flex flex-col gap-6">
-      <AvisoSnapshotAproximado tipoIntervalo={tipoIntervalo} />
+      <AvisoSnapshotAproximado status={status} />
       <StoryCard
         anchor={`No período, ${maior === "app" ? "o app" : "o portal na internet"} foi o canal que mais gente usou para chegar aos serviços do Estado.`}
         caption={`App: ${alcanceApp.toLocaleString("pt-BR")} pessoas. Portal na internet: ${alcancePortal.toLocaleString("pt-BR")} pessoas.`}
@@ -44,13 +47,15 @@ export function CrossCanalTab({
             <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold mb-2">
               No app
             </h3>
-            <BarChart
-              data={appServicos}
-              xKey="servico"
-              yKey="valor"
-              height={260}
-              corPorIndice={(i) => (i === 0 ? "var(--ds-color-primary-600)" : "var(--ds-color-text-muted)")}
-            />
+            <ChartLoading status={status} height={260}>
+              <BarChart
+                data={appServicos}
+                xKey="servico"
+                yKey="valor"
+                height={260}
+                corPorIndice={(i) => (i === 0 ? "var(--ds-color-primary-600)" : "var(--ds-color-text-muted)")}
+              />
+            </ChartLoading>
           </div>
           <div>
             <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold mb-2">
@@ -73,7 +78,9 @@ export function CrossCanalTab({
             <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold mb-2">
               App — por aparelho
             </h3>
-            <PlatformBarChart dados={appPlataforma} />
+            <ChartLoading status={status} height={220}>
+              <PlatformBarChart dados={appPlataforma} />
+            </ChartLoading>
           </div>
           <div>
             <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold mb-2">

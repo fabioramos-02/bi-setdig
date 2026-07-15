@@ -60,8 +60,27 @@ test("agrega por órgão, categoria e setor", () => {
   const r = joinVisitas(raw, inventario);
   assert.deepEqual(r.porOrgao[0], { rotulo: "DETRAN", visitas: 150 });
   assert.deepEqual(r.porCategoria[0], { rotulo: "transito-e-transportes", visitas: 150 });
-  assert.deepEqual(r.porSetor[0], { rotulo: "Habilitação", visitas: 150 });
+  assert.deepEqual(r.porSetor[0], { rotulo: "Habilitação — DETRAN", visitas: 150 });
   assert.equal(r.porSetor.length, 2); // Habilitação + Arrecadação (cartas sem setor não entram)
+});
+
+test("setor homônimo em órgãos diferentes não soma junto", () => {
+  const inv: CartaRelacao[] = [
+    carta({ titulo: "A", slug: "a1", categoria: "cat", orgaoSigla: "DETRAN", setor: "Financeiro" }),
+    carta({ titulo: "B", slug: "b1", categoria: "cat", orgaoSigla: "SEFAZ", setor: "Financeiro" }),
+  ];
+  const r = joinVisitas(
+    [
+      { url: "/cat/a1", nb_visits: 10 },
+      { url: "/cat/b1", nb_visits: 20 },
+    ],
+    inv,
+  );
+  assert.equal(r.porSetor.length, 2);
+  assert.deepEqual(
+    r.porSetor.map((s) => s.rotulo).sort(),
+    ["Financeiro — DETRAN", "Financeiro — SEFAZ"],
+  );
 });
 
 test("host e caixa alta no path não quebram o match", () => {

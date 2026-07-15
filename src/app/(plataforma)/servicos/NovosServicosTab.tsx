@@ -1,5 +1,9 @@
+"use client";
+
+import { useMemo } from "react";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { EmptyCard } from "@/components/ds/EmptyCard";
+import { LineChart } from "@/components/charts/LineChart";
 import { labelCategoria, prazoServico } from "@/lib/servicos";
 import type { CartaRelacao } from "@/lib/data";
 
@@ -11,7 +15,18 @@ const prazoDe = (c: CartaRelacao) => prazoServico(c.tempoTotal, c.tipoTempo);
  * `createdAt`, que só vem após rodar o pipeline com a SQL estendida (VPN) —
  * antes disso mostra um estado vazio honesto. */
 export function NovosServicosTab({ cartas }: { cartas: CartaRelacao[] }) {
-  const comData = cartas.filter((c) => c.createdAt);
+  const comData = useMemo(() => cartas.filter((c) => c.createdAt), [cartas]);
+
+  // Quantos serviços entraram no cadastro por mês — mesmo dado da tabela
+  // abaixo (createdAt), só agrupado; não precisa de fetch novo.
+  const porMes = useMemo(() => {
+    const m = new Map<string, number>();
+    for (const c of comData) {
+      const chave = c.createdAt!.slice(0, 7);
+      m.set(chave, (m.get(chave) ?? 0) + 1);
+    }
+    return [...m.entries()].map(([mes, total]) => ({ mes, total })).sort((a, b) => a.mes.localeCompare(b.mes));
+  }, [comData]);
 
   if (comData.length === 0) {
     return (
@@ -22,11 +37,19 @@ export function NovosServicosTab({ cartas }: { cartas: CartaRelacao[] }) {
   const recentes = [...comData].sort((a, b) => (b.createdAt! > a.createdAt! ? 1 : -1)).slice(0, 30);
 
   return (
-    <DashboardSection title="Serviços cadastrados mais recentemente">
-      <p className="mb-4 text-sm" style={{ color: "var(--ds-color-text-secondary)" }}>
-        Os 30 serviços mais novos no cadastro do portal, do mais recente ao mais antigo.
-      </p>
-      <div className="overflow-x-auto">
+    <div className="flex flex-col gap-6">
+      <DashboardSection title="Evolução de serviços incluídos no portal">
+        <p className="mb-3 text-sm" style={{ color: "var(--ds-color-text-secondary)" }}>
+          Quantos serviços novos entraram no cadastro do portal a cada mês.
+        </p>
+        <LineChart data={porMes} xKey="mes" yKey="total" height={240} />
+      </DashboardSection>
+
+      <DashboardSection title="Serviços cadastrados mais recentemente">
+        <p className="mb-4 text-sm" style={{ color: "var(--ds-color-text-secondary)" }}>
+          Os 30 serviços mais novos no cadastro do portal, do mais recente ao mais antigo.
+        </p>
+        <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
             <tr className="text-left" style={{ color: "var(--ds-color-text-secondary)" }}>
@@ -55,7 +78,8 @@ export function NovosServicosTab({ cartas }: { cartas: CartaRelacao[] }) {
             ))}
           </tbody>
         </table>
-      </div>
-    </DashboardSection>
+        </div>
+      </DashboardSection>
+    </div>
   );
 }
