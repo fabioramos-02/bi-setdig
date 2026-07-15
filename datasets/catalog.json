@@ -22,17 +22,6 @@
     "bytes": 19384
   },
   {
-    "dataset": "jornada-resumo",
-    "source": "cartas",
-    "owner": "SETDIG",
-    "updatedAt": "2026-07-14T13:45:55.941971+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/cartas-jornada-resumo.schema.json",
-    "rows": 1,
-    "bytes": 404
-  },
-  {
     "dataset": "visitas-resumo",
     "source": "matomo",
     "owner": "SETDIG",

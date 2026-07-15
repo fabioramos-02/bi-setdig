@@ -5,13 +5,14 @@
   "type": "array",
   "items": {
     "type": "object",
-    "required": ["titulo", "slug", "orgao", "orgaoSigla", "ativo", "digital", "online", "nivelMaturidade", "maturidadeOrigem"],
+    "required": ["titulo", "slug", "orgao", "orgaoSigla", "ativo", "digital", "online"],
     "properties": {
       "titulo": { "type": "string" },
       "nomePopular": { "type": ["string", "null"] },
       "slug": { "type": "string" },
       "orgao": { "type": "string" },
       "orgaoSigla": { "type": "string" },
+      "setor": { "type": ["string", "null"] },
       "categoria": { "type": ["string", "null"] },
       "publico": { "type": ["string", "null"] },
       "publicoEspecifico": { "type": "array", "items": { "type": "string" } },
@@ -22,8 +23,7 @@
       "custo": { "type": ["string", "null"] },
       "tempoTotal": { "type": ["integer", "null"] },
       "tipoTempo": { "type": ["string", "null"] },
-      "nivelMaturidade": { "type": "integer", "minimum": 0, "maximum": 4 },
-      "maturidadeOrigem": { "type": "string", "enum": ["classificada", "heuristica"] },
+      "createdAt": { "type": ["string", "null"] },
       "updatedAt": { "type": ["string", "null"] }
     }
   }

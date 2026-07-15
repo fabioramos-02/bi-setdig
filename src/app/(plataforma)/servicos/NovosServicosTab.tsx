@@ -1,14 +1,11 @@
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { EmptyCard } from "@/components/ds/EmptyCard";
-import { labelCategoria } from "@/lib/servicos";
+import { labelCategoria, prazoServico } from "@/lib/servicos";
 import type { CartaRelacao } from "@/lib/data";
 
 const PORTAL_BASE = "https://www.ms.gov.br";
 
-function prazoDe(c: CartaRelacao): string {
-  if (!c.tipoTempo) return "—";
-  return c.tempoTotal && c.tempoTotal > 0 ? `${c.tempoTotal} ${c.tipoTempo}` : c.tipoTempo;
-}
+const prazoDe = (c: CartaRelacao) => prazoServico(c.tempoTotal, c.tipoTempo);
 
 /** Serviços cadastrados mais recentemente (por data de cadastro). Depende de
  * `createdAt`, que só vem após rodar o pipeline com a SQL estendida (VPN) —

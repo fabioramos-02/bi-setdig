@@ -5,16 +5,13 @@ import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { ExportCsvButton } from "@/components/dashboard/ExportCsvButton";
 import { EmptyCard } from "@/components/ds/EmptyCard";
 import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
-import { labelCategoria } from "@/lib/servicos";
+import { labelCategoria, prazoServico } from "@/lib/servicos";
 import type { CartaRelacao } from "@/lib/data";
 
 const PASSO = 50;
 const PORTAL_BASE = "https://www.ms.gov.br";
 
-function prazoDe(c: CartaRelacao): string {
-  if (!c.tipoTempo) return "—";
-  return c.tempoTotal && c.tempoTotal > 0 ? `${c.tempoTotal} ${c.tipoTempo}` : c.tipoTempo;
-}
+const prazoDe = (c: CartaRelacao) => prazoServico(c.tempoTotal, c.tipoTempo);
 
 /** Tabela operacional das cartas ativas — Nome/Órgão/Categoria/Prazo/Visitas +
  * link pro portal. Ordena pela procura (visitas no período). Busca client-side
