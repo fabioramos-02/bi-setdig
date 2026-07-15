@@ -8,6 +8,7 @@ import {
   getCartasErrosEvolucaoMensal,
   getCartasErrosRelacao,
   getCartasPercepcaoResumo,
+  getCartasInventarioRelacao,
 } from "@/lib/data";
 import { QualidadeClient } from "./QualidadeClient";
 
@@ -21,6 +22,14 @@ export default function QualidadePage() {
   const evolucaoMensal = getCartasErrosEvolucaoMensal();
   const relacao = getCartasErrosRelacao();
   const percepcao = getCartasPercepcaoResumo();
+  const cartas = getCartasInventarioRelacao();
+
+  const servicoToLinkInfo: Record<string, { slug: string; categoria: string }> = {};
+  for (const c of cartas) {
+    if (c.titulo && c.slug) {
+      servicoToLinkInfo[c.titulo] = { slug: c.slug, categoria: c.categoria || "servicos" };
+    }
+  }
 
   if (!resumo) {
     return (
@@ -36,7 +45,7 @@ export default function QualidadePage() {
   return (
     // useSearchParams (filtro de órgão) exige Suspense — ver QualidadeClient.
     <Suspense>
-      <QualidadeClient resumo={resumo} porOrgao={porOrgao} evolucaoMensal={evolucaoMensal} relacao={relacao} percepcao={percepcao} />
+      <QualidadeClient resumo={resumo} porOrgao={porOrgao} evolucaoMensal={evolucaoMensal} relacao={relacao} percepcao={percepcao} servicoToLinkInfo={servicoToLinkInfo} />
     </Suspense>
   );
 }

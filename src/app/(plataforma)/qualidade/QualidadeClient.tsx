@@ -19,12 +19,14 @@ export function QualidadeClient({
   evolucaoMensal,
   relacao,
   percepcao,
+  servicoToLinkInfo,
 }: {
   resumo: ErroResumo;
   porOrgao: ErroOrgao[];
   evolucaoMensal: ErroEvolucaoMensal[];
   relacao: ErroRelacao[];
   percepcao: PercepcaoResumo | null;
+  servicoToLinkInfo: Record<string, { slug: string; categoria: string }>;
 }) {
   const orgaoFiltro = useSearchParams().get("orgao") ?? "";
 
@@ -32,7 +34,7 @@ export function QualidadeClient({
     {
       id: "erros",
       label: "Erros",
-      content: <ErrosTab resumo={resumo} porOrgao={porOrgao} evolucaoMensal={evolucaoMensal} relacao={relacao} orgaoFiltro={orgaoFiltro} />,
+      content: <ErrosTab resumo={resumo} porOrgao={porOrgao} evolucaoMensal={evolucaoMensal} relacao={relacao} orgaoFiltro={orgaoFiltro} servicoToLinkInfo={servicoToLinkInfo} />,
     },
     {
       id: "qualidade",

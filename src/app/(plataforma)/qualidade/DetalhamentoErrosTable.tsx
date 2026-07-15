@@ -10,71 +10,79 @@ import type { ErroRelacao } from "@/lib/data";
 const PASSO = 50;
 const PORTAL_BASE = "https://www.ms.gov.br";
 
-const linkPortal = (e: ErroRelacao) => `${PORTAL_BASE}/${e.categoria}/${e.slugServico}`;
+const linkPortal = (e: ErroRelacao, servicoToLinkInfo: Record<string, { slug: string; categoria: string }>) => {
+  const info = servicoToLinkInfo[e.servico];
+  const slug = e.slugServico || info?.slug;
+  if (!slug) return `${PORTAL_BASE}/servicos`; // fallback se não tiver nenhum slug
+  const cat = info?.categoria || e.categoria || "servicos";
+  return `${PORTAL_BASE}/${cat}/${slug}`;
+};
 
 const formatarData = (iso: string) => new Date(iso).toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit", year: "numeric" });
 
-const colunas: Coluna<ErroRelacao>[] = [
-  { key: "orgao", label: "Órgão", sortable: true, sortValue: (e) => e.orgaoSigla, render: (e) => (
-    <span className="font-medium" style={{ color: "var(--ds-color-text-primary)" }}>{e.orgaoSigla}</span>
-  ) },
-  { key: "servico", label: "Serviço", sortable: true, sortValue: (e) => e.servico, render: (e) => (
-    <span style={{ color: "var(--ds-color-text-secondary)" }}>{e.servico}</span>
-  ) },
-  { key: "conteudo", label: "Erro relatado", render: (e) => (
-    <span
-      className="block max-w-[280px] truncate text-xs"
-      style={{ color: "var(--ds-color-text-secondary)" }}
-      title={e.conteudo ?? undefined}
-    >
-      {e.conteudo ?? "—"}
-    </span>
-  ) },
-  { key: "status", label: "Status", align: "center", sortable: true, sortValue: (e) => (e.atendido ? 1 : 0), render: (e) => (
-    <span
-      className="text-xs font-semibold px-2 py-0.5 rounded"
-      style={{
-        color: e.atendido ? "var(--ds-color-success)" : "var(--ds-color-danger)",
-        background: e.atendido ? "color-mix(in srgb, var(--ds-color-success) 12%, transparent)" : "color-mix(in srgb, var(--ds-color-danger) 12%, transparent)",
-      }}
-    >
-      {e.atendido ? "Atendido" : "Pendente"}
-    </span>
-  ) },
-  { key: "diasAberto", label: "Dias em aberto", align: "right", sortable: true, sortValue: (e) => e.diasAberto, render: (e) => (
-    <span className="text-xs" style={{ color: "var(--ds-color-text-secondary)" }}>{e.diasAberto.toLocaleString("pt-BR")}</span>
-  ) },
-  { key: "resolucao", label: "Resolução", render: (e) => (
-    <span
-      className="block max-w-[220px] truncate text-xs"
-      style={{ color: "var(--ds-color-text-muted)" }}
-      title={e.resolucao ?? undefined}
-    >
-      {e.atendido ? (e.resolucao ?? "—") : "—"}
-    </span>
-  ) },
-  { key: "portal", label: "Portal", align: "center", render: (e) => (
-    <a
-      href={linkPortal(e)}
-      target="_blank"
-      rel="noopener noreferrer"
-      onClick={(ev) => ev.stopPropagation()}
-      className="hover:underline text-xs"
-      style={{ color: "var(--ds-color-primary-600)" }}
-    >
-      Abrir ↗
-    </a>
-  ) },
-];
 
 /** "📄 Detalhamento de Erros" — tabela operacional, 1 linha por erro (não
  * agregada). Reage ao filtro lateral de órgão. 708 erros é grande demais pra
  * renderizar tudo de uma vez — mesmo padrão de paginação de ExplorarTab.tsx.
  * Clicar na linha abre modal com o erro completo (a célula "Erro relatado"/
  * "Resolução" trunca visualmente, o modal mostra o texto inteiro). */
-export function DetalhamentoErrosTable({ relacao, orgaoFiltro }: { relacao: ErroRelacao[]; orgaoFiltro: string }) {
+export function DetalhamentoErrosTable({ relacao, orgaoFiltro, servicoToLinkInfo }: { relacao: ErroRelacao[]; orgaoFiltro: string; servicoToLinkInfo: Record<string, { slug: string; categoria: string }> }) {
   const [visiveis, setVisiveis] = useState(PASSO);
   const [selecionado, setSelecionado] = useState<ErroRelacao | null>(null);
+
+  const colunas = useMemo<Coluna<ErroRelacao>[]>(() => [
+    { key: "orgao", label: "Órgão", sortable: true, sortValue: (e) => e.orgaoSigla, render: (e) => (
+      <span className="font-medium" style={{ color: "var(--ds-color-text-primary)" }}>{e.orgaoSigla}</span>
+    ) },
+    { key: "servico", label: "Serviço", sortable: true, sortValue: (e) => e.servico, render: (e) => (
+      <span style={{ color: "var(--ds-color-text-secondary)" }}>{e.servico}</span>
+    ) },
+    { key: "conteudo", label: "Erro relatado", render: (e) => (
+      <span
+        className="line-clamp-2"
+        title={e.conteudo ?? ""}
+        style={{ color: "var(--ds-color-text-secondary)" }}
+      >
+        {e.conteudo ?? "—"}
+      </span>
+    ) },
+    { key: "status", label: "Status", align: "center", sortable: true, sortValue: (e) => (e.atendido ? 1 : 0), render: (e) => (
+      <span
+        className="text-xs font-semibold px-2 py-0.5 rounded"
+        style={{
+          color: e.atendido ? "var(--ds-color-success)" : "var(--ds-color-danger)",
+          background: e.atendido ? "color-mix(in srgb, var(--ds-color-success) 12%, transparent)" : "color-mix(in srgb, var(--ds-color-danger) 12%, transparent)",
+        }}
+      >
+        {e.atendido ? "Atendido" : "Pendente"}
+      </span>
+    ) },
+    { key: "diasAberto", label: "Dias em aberto", align: "right", sortable: true, sortValue: (e) => e.diasAberto, render: (e) => (
+      <span style={{ color: "var(--ds-color-text-secondary)" }}>{e.diasAberto} dias</span>
+    ) },
+    { key: "resolucao", label: "Resolução", render: (e) => (
+      <span
+        className="line-clamp-2"
+        title={e.atendido ? (e.resolucao ?? "") : ""}
+        style={{ color: "var(--ds-color-text-secondary)" }}
+      >
+        {e.atendido ? (e.resolucao ?? "—") : "—"}
+      </span>
+    ) },
+    { key: "portal", label: "Portal", align: "center", render: (e) => (
+      <a
+        href={linkPortal(e, servicoToLinkInfo)}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={(ev) => ev.stopPropagation()}
+        className="text-[var(--ds-color-primary-600)] hover:underline flex items-center justify-center"
+        title="Abrir serviço no portal ↗"
+        aria-label="Abrir serviço no portal ↗"
+      >
+        <span className="material-icons text-lg" aria-hidden>open_in_new</span>
+      </a>
+    ) },
+  ], [servicoToLinkInfo]);
 
   useEffect(() => {
     setVisiveis(PASSO);
@@ -139,7 +147,7 @@ export function DetalhamentoErrosTable({ relacao, orgaoFiltro }: { relacao: Erro
             )}
 
             <a
-              href={linkPortal(selecionado)}
+              href={linkPortal(selecionado, servicoToLinkInfo)}
               target="_blank"
               rel="noopener noreferrer"
               className="self-start text-sm font-medium hover:underline"

@@ -20,12 +20,14 @@ export function ErrosTab({
   evolucaoMensal,
   relacao,
   orgaoFiltro,
+  servicoToLinkInfo,
 }: {
   resumo: ErroResumo;
   porOrgao: ErroOrgao[];
   evolucaoMensal: ErroEvolucaoMensal[];
   relacao: ErroRelacao[];
   orgaoFiltro: string;
+  servicoToLinkInfo: Record<string, { slug: string; categoria: string }>;
 }) {
   const insightQualidade = calcularInsightQualidade(resumo);
 
@@ -63,7 +65,7 @@ export function ErrosTab({
         </DashboardSection>
       )}
 
-      <DetalhamentoErrosTable relacao={relacao} orgaoFiltro={orgaoFiltro} />
+      <DetalhamentoErrosTable relacao={relacao} orgaoFiltro={orgaoFiltro} servicoToLinkInfo={servicoToLinkInfo} />
     </div>
   );
 }
