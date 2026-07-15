@@ -11,7 +11,7 @@ export function SidebarLogo() {
       href="/"
       aria-label="Plataforma de Analytics — SETDIG"
       style={{ background: "var(--ds-color-primary-600)" }}
-      className="flex items-center justify-center px-4 h-[72px]"
+      className="flex items-center justify-center px-4 h-[88px]"
     >
       {/* eslint-disable-next-line @next/next/no-img-element -- SVG vendorizado, sem otimização de imagem necessária */}
       <img src="/images/logo-ms-horizontal.svg" alt="Governo de Mato Grosso do Sul" className="w-full max-w-[180px]" />

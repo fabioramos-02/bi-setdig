@@ -75,8 +75,8 @@ export function VisaoGeralTab({
                 className="flex flex-col items-center text-center gap-2 p-4"
                 style={{ border: "1px solid var(--ds-color-border)", borderRadius: "var(--ds-radius-md)" }}
               >
-                <span
-                  className="material-icons flex items-center justify-center"
+                <div
+                  className="flex items-center justify-center"
                   aria-hidden
                   style={{
                     width: 44,
@@ -84,11 +84,12 @@ export function VisaoGeralTab({
                     borderRadius: "var(--ds-radius-md)",
                     background: "color-mix(in srgb, var(--ds-color-primary-600) 12%, transparent)",
                     color: "var(--ds-color-primary-600)",
-                    fontSize: 24,
                   }}
                 >
-                  {p.icone}
-                </span>
+                  <span className="material-icons" style={{ fontSize: 24, lineHeight: 1 }}>
+                    {p.icone}
+                  </span>
+                </div>
                 <div style={{ color: "var(--ds-color-text-primary)" }} className="text-lg font-semibold">
                   {p.total.toLocaleString("pt-BR")}
                 </div>
