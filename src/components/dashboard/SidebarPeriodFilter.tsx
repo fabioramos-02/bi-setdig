@@ -5,6 +5,9 @@ import { PeriodFilter } from "@/components/dashboard/PeriodFilter";
 import { usePeriodo } from "@/lib/periodo-context";
 
 const ROTAS_COM_FILTRO = ["/analytics/portal-ms", "/analytics/ms-digital"];
+// Drill-down de site (/sites/[idsite]) é sempre ao vivo — precisa do filtro
+// mesmo sem estar na lista acima (rota dinâmica, não dá pra listar exata).
+const PREFIXOS_COM_FILTRO = ["/sites/"];
 
 // Texto curto e genérico de propósito: o detalhe de QUAIS painéis caem no
 // snapshot do mês fica no aviso de cada aba (AvisoSnapshotAproximado) — uma
@@ -22,7 +25,8 @@ export function SidebarPeriodFilter() {
   const pathname = usePathname();
   const { estado, setEstado, min, max } = usePeriodo();
 
-  if (!ROTAS_COM_FILTRO.includes(pathname)) return null;
+  const temFiltro = ROTAS_COM_FILTRO.includes(pathname) || PREFIXOS_COM_FILTRO.some((p) => pathname.startsWith(p));
+  if (!temFiltro) return null;
 
   return (
     <div style={{ borderTop: "1px solid var(--ds-color-border)" }} className="px-4 py-4">

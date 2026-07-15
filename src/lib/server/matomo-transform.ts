@@ -5,9 +5,21 @@
  * (Navegador, Dispositivo, Horario, Cidade, Pagina, TermoBusca, ...) — as
  * Tabs que já existem não precisam saber se o dado veio do JSON ou daqui.
  */
-import type { Cidade, Horario, Pagina, TermoBusca, PaginaEntrada, DominioSaida } from "@/lib/data";
+import type { Cidade, Horario, Pagina, TermoBusca, PaginaEntrada, DominioSaida, VisitaDiaria } from "@/lib/data";
 
 type MatomoRow = { label?: string; nb_visits?: number; url?: string };
+type MatomoDailyRaw = Record<string, { nb_visits?: number; nb_uniq_visitors?: number; nb_actions?: number }>;
+
+/** VisitsSummary.get com period=day&date="inicio,fim" retorna {data: {...}} por dia. */
+export function visitsDaily(raw: MatomoDailyRaw): VisitaDiaria[] {
+  const out: VisitaDiaria[] = [];
+  for (const [data, values] of Object.entries(raw ?? {})) {
+    if (!values || typeof values !== "object") continue;
+    out.push({ data, visitas: values.nb_visits ?? 0, visitantesUnicos: values.nb_uniq_visitors ?? 0, acoes: values.nb_actions ?? 0 });
+  }
+  out.sort((a, b) => a.data.localeCompare(b.data));
+  return out;
+}
 
 export function topNWithOthers<K extends string>(rows: MatomoRow[], labelField: K, n: number): (Record<K, string> & { visitas: number })[] {
   if (!rows || rows.length === 0) return [];

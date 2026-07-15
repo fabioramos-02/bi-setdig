@@ -3,8 +3,10 @@
 import { useState } from "react";
 import { SidebarLogo } from "@/components/ds/SidebarLogo";
 import { SidebarNavItem } from "@/components/ds/SidebarNavItem";
+import { SidebarSiteSelect } from "@/components/dashboard/SidebarSiteSelect";
 import { SidebarPeriodFilter } from "@/components/dashboard/SidebarPeriodFilter";
 import { ThemeToggle } from "@/components/ds/ThemeToggle";
+import type { Site } from "@/lib/data";
 
 const DOMINIOS = [
   { nome: "Portal Único", rota: "/analytics/portal-ms" },
@@ -20,7 +22,7 @@ const DOMINIOS = [
  * Drawer com hambúrguer em mobile (não bottom bar — 5 rótulos de texto não
  * cabem sem cortar, drawer preserva legibilidade).
  */
-export function Sidebar() {
+export function Sidebar({ sites }: { sites: Site[] }) {
   const [aberta, setAberta] = useState(false);
 
   return (
@@ -59,6 +61,7 @@ export function Sidebar() {
               <SidebarNavItem key={d.rota} {...d} onClick={() => setAberta(false)} />
             ))}
           </nav>
+          <SidebarSiteSelect sites={sites} />
           <SidebarPeriodFilter />
         </div>
         <div style={{ borderTop: "1px solid var(--ds-color-border)" }} className="p-4 flex justify-center">

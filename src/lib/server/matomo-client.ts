@@ -12,13 +12,19 @@ const MATOMO_URL = process.env.MATOMO_URL ?? "";
 const MATOMO_SITE_ID = process.env.MATOMO_SITE_ID ?? "";
 const MATOMO_TOKEN = process.env.MATOMO_TOKEN ?? "";
 
-async function call<T = unknown>(method: string, dataInicio: string, dataFim: string, extra?: Record<string, string | number>): Promise<T> {
+async function callRaw<T = unknown>(
+  method: string,
+  period: "range" | "day",
+  date: string,
+  extra?: Record<string, string | number>,
+  siteId?: string,
+): Promise<T> {
   const params = new URLSearchParams({
     module: "API",
     method,
-    idSite: MATOMO_SITE_ID,
-    period: "range",
-    date: `${dataInicio},${dataFim}`,
+    idSite: siteId ?? MATOMO_SITE_ID,
+    period,
+    date,
     format: "JSON",
     token_auth: MATOMO_TOKEN,
   });
@@ -49,36 +55,51 @@ async function call<T = unknown>(method: string, dataInicio: string, dataFim: st
   throw ultimoErro;
 }
 
+function call<T = unknown>(method: string, dataInicio: string, dataFim: string, extra?: Record<string, string | number>, siteId?: string): Promise<T> {
+  return callRaw<T>(method, "range", `${dataInicio},${dataFim}`, extra, siteId);
+}
+
+/** period=day com date="inicio,fim" — Matomo retorna dict keyed by date em vez
+ * de array (confirmado no pipeline Python, transform/matomo.py::visits_daily). */
+function callDaily<T = unknown>(method: string, dataInicio: string, dataFim: string, siteId?: string): Promise<T> {
+  return callRaw<T>(method, "day", `${dataInicio},${dataFim}`, undefined, siteId);
+}
+
 type MatomoRow = { label?: string; nb_visits?: number; url?: string };
+type MatomoDailyRaw = Record<string, { nb_visits?: number; nb_uniq_visitors?: number; nb_actions?: number }>;
 
-export function getCity(inicio: string, fim: string, limit = 200) {
-  return call<MatomoRow[]>("UserCountry.getCity", inicio, fim, { filter_limit: limit });
+export function getCity(inicio: string, fim: string, limit = 200, siteId?: string) {
+  return call<MatomoRow[]>("UserCountry.getCity", inicio, fim, { filter_limit: limit }, siteId);
 }
 
-export function getVisitTime(inicio: string, fim: string) {
-  return call<MatomoRow[]>("VisitTime.getVisitInformationPerServerTime", inicio, fim);
+export function getVisitTime(inicio: string, fim: string, siteId?: string) {
+  return call<MatomoRow[]>("VisitTime.getVisitInformationPerServerTime", inicio, fim, undefined, siteId);
 }
 
-export function getBrowsers(inicio: string, fim: string, limit = 20) {
-  return call<MatomoRow[]>("DevicesDetection.getBrowsers", inicio, fim, { filter_limit: limit });
+export function getBrowsers(inicio: string, fim: string, limit = 20, siteId?: string) {
+  return call<MatomoRow[]>("DevicesDetection.getBrowsers", inicio, fim, { filter_limit: limit }, siteId);
 }
 
-export function getDeviceType(inicio: string, fim: string) {
-  return call<MatomoRow[]>("DevicesDetection.getType", inicio, fim);
+export function getDeviceType(inicio: string, fim: string, siteId?: string) {
+  return call<MatomoRow[]>("DevicesDetection.getType", inicio, fim, undefined, siteId);
 }
 
-export function getPageUrls(inicio: string, fim: string, limit = 500) {
-  return call<MatomoRow[]>("Actions.getPageUrls", inicio, fim, { filter_limit: limit, flat: 1, expanded: 0 });
+export function getPageUrls(inicio: string, fim: string, limit = 500, siteId?: string) {
+  return call<MatomoRow[]>("Actions.getPageUrls", inicio, fim, { filter_limit: limit, flat: 1, expanded: 0 }, siteId);
 }
 
-export function getSiteSearchKeywords(inicio: string, fim: string, limit = 50) {
-  return call<MatomoRow[]>("Actions.getSiteSearchKeywords", inicio, fim, { filter_limit: limit });
+export function getSiteSearchKeywords(inicio: string, fim: string, limit = 50, siteId?: string) {
+  return call<MatomoRow[]>("Actions.getSiteSearchKeywords", inicio, fim, { filter_limit: limit }, siteId);
 }
 
-export function getEntryPages(inicio: string, fim: string, limit = 20) {
-  return call<MatomoRow[]>("Actions.getEntryPageUrls", inicio, fim, { filter_limit: limit, flat: 1 });
+export function getEntryPages(inicio: string, fim: string, limit = 20, siteId?: string) {
+  return call<MatomoRow[]>("Actions.getEntryPageUrls", inicio, fim, { filter_limit: limit, flat: 1 }, siteId);
 }
 
-export function getOutlinks(inicio: string, fim: string, limit = 50) {
-  return call<MatomoRow[]>("Actions.getOutlinks", inicio, fim, { filter_limit: limit });
+export function getOutlinks(inicio: string, fim: string, limit = 50, siteId?: string) {
+  return call<MatomoRow[]>("Actions.getOutlinks", inicio, fim, { filter_limit: limit }, siteId);
+}
+
+export function getVisitsSummaryDaily(inicio: string, fim: string, siteId?: string) {
+  return callDaily<MatomoDailyRaw>("VisitsSummary.get", inicio, fim, siteId);
 }
