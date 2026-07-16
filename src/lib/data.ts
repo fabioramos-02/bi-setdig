@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { SIGLAS_CENSO, type OrgaoCenso } from "./censo";
 
 /**
  * Único ponto de leitura de datasets/ (ver docs/architecture/data-flow.md).
@@ -314,6 +315,18 @@ export function getCartasPercepcaoResumo(): PercepcaoResumo | null {
 }
 export function getCartasPercepcaoPorOrgao(): PercepcaoOrgao[] {
   return readDataset<PercepcaoOrgao[]>("cartas", "v1", "percepcao-por-orgao") ?? [];
+}
+
+// --- Censo de maturidade digital ---
+// Estático por natureza: é um retrato do estado de cada órgão (classificação
+// assistida por IA + revisão humana), não analytics de acesso ao vivo — por isso
+// não tem filtro de período. Cresce adicionando 1 arquivo por órgão + a sigla em
+// SIGLAS_CENSO (ver docs/censo-maturidade.md). Tipos/cálculo em lib/censo.ts.
+export function getCensoOrgao(sigla: string): OrgaoCenso | null {
+  return readDataset<OrgaoCenso>("censo", "v1", sigla.toLowerCase());
+}
+export function getCensoTodos(): OrgaoCenso[] {
+  return SIGLAS_CENSO.map((s) => getCensoOrgao(s)).filter((o): o is OrgaoCenso => o !== null);
 }
 
 export type ErroRelacao = {

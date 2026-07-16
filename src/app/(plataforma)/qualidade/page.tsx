@@ -14,7 +14,7 @@ import {
 import { QualidadeClient } from "./QualidadeClient";
 
 export const metadata: Metadata = {
-  title: "Qualidade | SETDIG",
+  title: "Avaliação sobre a carta de serviço | SETDIG",
 };
 
 export default function QualidadePage() {
@@ -36,7 +36,7 @@ export default function QualidadePage() {
   if (!resumo) {
     return (
       <div className="flex flex-col flex-1">
-        <ContentTopBar title="Qualidade" />
+        <ContentTopBar title="Avaliação sobre a carta de serviço" />
         <main className="flex-1 p-6">
           <EmptyCard message="Ainda não há dados disponíveis aqui." />
         </main>

@@ -39,19 +39,19 @@ export function QualidadeClient({
   const abas: TabItem[] = [
     {
       id: "erros",
-      label: "Erros",
+      label: "Erros reportados",
       content: <ErrosTab resumo={resumo} porOrgao={porOrgao} evolucaoMensal={evolucaoMensal} relacao={relacao} orgaoFiltro={orgaoFiltro} servicoToLinkInfo={servicoToLinkInfo} />,
     },
     {
       id: "qualidade",
-      label: "Qualidade",
+      label: "Satisfação",
       content: <PercepcaoTab percepcao={percepcaoAtual} percepcaoPorOrgao={percepcaoPorOrgao} orgaoFiltro={orgaoFiltro} />,
     },
   ];
 
   return (
     <div className="flex flex-col flex-1">
-      <ContentTopBar title="Qualidade" />
+      <ContentTopBar title="Avaliação sobre a carta de serviço" />
       <main className="flex-1 p-6">
         <Tabs items={abas} />
       </main>

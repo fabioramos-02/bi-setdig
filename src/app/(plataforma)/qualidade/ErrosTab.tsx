@@ -3,17 +3,18 @@ import { StoryCard } from "@/components/dashboard/StoryCard";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { MultiLineChart } from "@/components/charts/MultiLineChart";
 import { calcularInsightQualidade } from "@/lib/insights";
-import { ErrosPorOrgaoChart } from "./ErrosPorOrgaoChart";
+import { PendenciasPorOrgao } from "./PendenciasPorOrgao";
 import { AnaliseOrgaoSection } from "./AnaliseOrgaoSection";
 import { DetalhamentoErrosTable } from "./DetalhamentoErrosTable";
 import type { ErroResumo, ErroOrgao, ErroEvolucaoMensal, ErroRelacao } from "@/lib/data";
 
-/** Aba "Erros": quantos, de quais órgãos, evolução no tempo, e o
- * detalhamento operacional. O filtro de órgão do menu lateral afeta Análise
- * por Órgão e Detalhamento; Evolução Mensal continua sempre com todos.
- * "Erros por Órgão" some quando filtrado — visão geral de todos os órgãos
- * não faz sentido com 1 órgão já selecionado, Análise por Órgão cobre esse
- * caso. */
+/** Aba "Erros reportados" — leitura executiva, do panorama ao detalhe: KPIs →
+ * frase-âncora → onde estão as pendências (só os órgãos que mais concentram) →
+ * ranking completo por órgão → evolução no tempo → detalhamento. O filtro de
+ * órgão do menu lateral afeta Análise por Órgão e Detalhamento; Evolução Mensal
+ * segue com todos. "Onde estão as pendências" some quando um órgão já está
+ * filtrado — com 1 órgão selecionado a comparação entre órgãos não faz sentido,
+ * Análise por Órgão cobre esse caso. */
 export function ErrosTab({
   resumo,
   porOrgao,
@@ -48,7 +49,7 @@ export function ErrosTab({
         />
       )}
 
-      {!orgaoFiltro && <ErrosPorOrgaoChart porOrgao={porOrgao} />}
+      {!orgaoFiltro && <PendenciasPorOrgao porOrgao={porOrgao} />}
 
       <AnaliseOrgaoSection porOrgao={porOrgao} resumo={resumo} orgaoFiltro={orgaoFiltro} />
 

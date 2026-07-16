@@ -328,5 +328,38 @@
     "schema": "data-platform/schemas/cartas-percepcao-por-orgao.schema.json",
     "rows": 39,
     "bytes": 12585
+  },
+  {
+    "dataset": "iagro",
+    "source": "censo",
+    "owner": "SETDIG",
+    "updatedAt": "2026-07-16T00:00:00+00:00",
+    "frequency": "manual",
+    "version": "v1",
+    "schema": "datasets/censo/README.md",
+    "rows": 119,
+    "bytes": 80623
+  },
+  {
+    "dataset": "detran",
+    "source": "censo",
+    "owner": "SETDIG",
+    "updatedAt": "2026-07-16T00:00:00+00:00",
+    "frequency": "manual",
+    "version": "v1",
+    "schema": "datasets/censo/README.md",
+    "rows": 65,
+    "bytes": 42831
+  },
+  {
+    "dataset": "sead",
+    "source": "censo",
+    "owner": "SETDIG",
+    "updatedAt": "2026-07-16T00:00:00+00:00",
+    "frequency": "manual",
+    "version": "v1",
+    "schema": "datasets/censo/README.md",
+    "rows": 26,
+    "bytes": 19215
   }
 ]
