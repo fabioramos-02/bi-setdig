@@ -54,7 +54,7 @@ const PAINEIS: Painel[] = [
   },
   {
     nome: "Governança",
-    rota: "/governanca",
+    rota: "/censo-digital",
     icone: "account_balance",
     descricao: "Reúne indicadores estratégicos para acompanhar a transformação digital do Estado.",
     cor: "var(--ds-color-primary-600)",

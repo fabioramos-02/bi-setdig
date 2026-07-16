@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ContentTopBar } from "@/components/ds/ContentTopBar";
-import { MetricCard } from "@/components/dashboard/MetricCard";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { getCensoOrgao } from "@/lib/data";
@@ -10,6 +9,8 @@ import { resumirOrgao, SIGLAS_CENSO } from "@/lib/censo";
 import { ComoLerEscala } from "../ComoLerEscala";
 import { EspectroMaturidade } from "../EspectroMaturidade";
 import { CartasTable } from "../CartasTable";
+import { KpiCenso } from "../KpiCenso";
+import { DonutProgresso } from "../DonutProgresso";
 
 export function generateStaticParams() {
   return SIGLAS_CENSO.map((orgao) => ({ orgao }));
@@ -41,18 +42,23 @@ export default async function CensoOrgaoPage({ params }: { params: Promise<{ org
           comoLer="Cada carta é medida numa régua de 0 (só no balcão) a 4 (100% pela internet). A tabela abaixo mostra onde cada serviço está e o que ainda trava. A classificação usa inteligência artificial com revisão humana."
         />
 
-        <ComoLerEscala />
+        <ComoLerEscala distribuicao={r.distribuicao} />
 
         <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
-          <MetricCard label="Serviços avaliados" value={r.total} />
-          <MetricCard label="Já resolvem online" value={`${r.pctDigital.toLocaleString("pt-BR")}%`} sub={`${r.nDigital.toLocaleString("pt-BR")} serviços`} />
-          <MetricCard label="A um passo" value={r.aUmPasso} sub="começam online, terminam no balcão" />
-          <MetricCard label="Usam algum sistema" value={r.nFalaSistema} />
+          <KpiCenso label="Serviços avaliados" value={r.total} />
+          <KpiCenso label="Já resolvem online" value={`${r.pctDigital.toLocaleString("pt-BR")}%`} sub={`${r.nDigital.toLocaleString("pt-BR")} serviços`} tom="digital" />
+          <KpiCenso label="A um passo" value={r.aUmPasso} sub="começam online, terminam no balcão" tom="win" />
+          <KpiCenso label="Usam algum sistema" value={r.nFalaSistema} tom="info" />
         </div>
 
-        <DashboardSection title="Como os serviços deste órgão se distribuem entre o balcão e a internet">
-          <EspectroMaturidade distribuicao={r.distribuicao} total={r.total} />
-        </DashboardSection>
+        <div className="grid gap-6 lg:grid-cols-[1.6fr_1fr]">
+          <DashboardSection title="Como os serviços deste órgão se distribuem entre o balcão e a internet">
+            <EspectroMaturidade distribuicao={r.distribuicao} total={r.total} />
+          </DashboardSection>
+          <DashboardSection title="Quanto já dá para resolver pela internet">
+            <DonutProgresso pct={r.pctDigital} legenda="dos serviços já resolvem pela internet" />
+          </DashboardSection>
+        </div>
 
         <DashboardSection title="Onde cada serviço está — e o que falta para ficar 100% online">
           <CartasTable cartas={dados.cartas} />

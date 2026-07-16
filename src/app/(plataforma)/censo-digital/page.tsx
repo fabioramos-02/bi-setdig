@@ -2,14 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ContentTopBar } from "@/components/ds/ContentTopBar";
 import { EmptyCard } from "@/components/ds/EmptyCard";
-import { MetricCard } from "@/components/dashboard/MetricCard";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { RankingBarChart } from "@/components/charts/RankingBarChart";
 import { getCensoTodos } from "@/lib/data";
 import { agregarGoverno } from "@/lib/censo";
 import { ComoLerEscala } from "./ComoLerEscala";
-import { EspectroMaturidade } from "./EspectroMaturidade";
+import { KpiCenso } from "./KpiCenso";
+import { DonutProgresso } from "./DonutProgresso";
+import { PizzaDistribuicao } from "./PizzaDistribuicao";
 
 export const metadata: Metadata = {
   title: "Censo Digital | SETDIG",
@@ -43,23 +44,29 @@ export default function CensoDigitalPage() {
           comoLer="Cada serviço é medido numa régua de 0 (só no balcão) a 4 (100% pela internet). Chamamos de digital quem chega aos níveis 3 e 4. A classificação usa inteligência artificial com revisão humana — pode conter aproximações."
         />
 
-        <ComoLerEscala />
+        <ComoLerEscala distribuicao={p.distribuicao} />
 
         <div className="grid gap-4 grid-cols-2 lg:grid-cols-5">
-          <MetricCard label="Órgãos avaliados" value={p.nOrgaos} />
-          <MetricCard label="Serviços mapeados" value={p.total} />
-          <MetricCard label="Já resolvem online" value={`${p.pctDigital.toLocaleString("pt-BR")}%`} sub={`${p.nDigital.toLocaleString("pt-BR")} serviços`} />
-          <MetricCard label="100% pela internet" value={p.n4} />
-          <MetricCard label="A um passo" value={p.aUmPasso} sub="começam online, terminam no balcão" />
+          <KpiCenso label="Órgãos avaliados" value={p.nOrgaos} />
+          <KpiCenso label="Serviços avaliados" value={p.total} />
+          <KpiCenso label="Já resolvem online" value={`${p.pctDigital.toLocaleString("pt-BR")}%`} sub={`${p.nDigital.toLocaleString("pt-BR")} serviços`} tom="digital" />
+          <KpiCenso label="100% pela internet" value={p.n4} tom="digital" />
+          <KpiCenso label="A um passo" value={p.aUmPasso} sub="começam online, terminam no balcão" tom="win" />
         </div>
 
-        <DashboardSection title="Como os serviços se distribuem entre o balcão e a internet">
-          <EspectroMaturidade distribuicao={p.distribuicao} total={p.total} />
-        </DashboardSection>
+        <div className="grid gap-6 lg:grid-cols-[1.6fr_1fr]">
+          <DashboardSection title="Como os serviços se distribuem entre o balcão e a internet">
+            <PizzaDistribuicao distribuicao={p.distribuicao} total={p.total} />
+          </DashboardSection>
+          <DashboardSection title="Quanto já dá para resolver pela internet">
+            <DonutProgresso pct={p.pctDigital} legenda="dos serviços já resolvem pela internet" />
+          </DashboardSection>
+        </div>
 
         <DashboardSection title="Quais órgãos estão mais avançados na digitalização?">
           <RankingBarChart
             itens={p.orgaos.map((o) => ({ label: o.sigla, valor: o.pctDigital, sublabel: `${o.total} serviços` }))}
+            formatarValor={(v) => `${v.toLocaleString("pt-BR")}%`}
           />
           {lider && lanterna && lider.sigla !== lanterna.sigla && (
             <p className="mt-4 text-sm" style={{ color: "var(--ds-color-text-secondary)" }}>

@@ -6,16 +6,19 @@ import type { NivelContagem } from "@/lib/censo";
 export function EspectroMaturidade({ distribuicao, total }: { distribuicao: NivelContagem[]; total: number }) {
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex h-3 rounded overflow-hidden" style={{ background: "var(--ds-color-background-muted)" }}>
+      <div className="flex rounded-md overflow-hidden" style={{ height: 44, background: "var(--ds-color-background-muted)" }}>
         {distribuicao.map((d) => {
           const pct = total ? (d.qtd / total) * 100 : 0;
           if (pct === 0) return null;
           return (
             <div
               key={d.nivel}
-              style={{ width: `${pct}%`, background: d.cor }}
+              className="flex items-center justify-center text-xs font-bold min-w-0"
+              style={{ width: `${pct}%`, background: d.cor, color: d.nivel === 2 ? "var(--ds-color-text-primary)" : "#fff" }}
               title={`N${d.nivel} — ${d.rotulo}: ${d.qtd} (${pct.toFixed(0)}%)`}
-            />
+            >
+              {pct >= 8 && <span className="truncate px-1">N{d.nivel}</span>}
+            </div>
           );
         })}
       </div>

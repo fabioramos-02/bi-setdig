@@ -13,7 +13,7 @@ const DOMINIOS = [
   { nome: "Portal Único", rota: "/analytics/portal-ms" },
   { nome: "MS Digital", rota: "/analytics/ms-digital" },
   { nome: "Sites", rota: "/sites" },
-  { nome: "Serviços", rota: "/servicos" },
+  { nome: "Carta de Serviços", rota: "/servicos" },
   { nome: "Avaliação da Carta", rota: "/qualidade" },
   { nome: "Censo Digital", rota: "/censo-digital" },
 ];

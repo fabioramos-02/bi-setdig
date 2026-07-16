@@ -4,8 +4,8 @@ import { EmptyCard } from "@/components/ds/EmptyCard";
 import { getMatomoSites } from "@/lib/data";
 
 /** Sem listagem própria — o select "Site" na Sidebar (SidebarSiteSelect) é a
- * navegação entre sites. /sites cai direto no primeiro (ordem alfabética,
- * já vem assim de transform/matomo.py::sites). */
+ * navegação entre sites. /sites cai direto no Portal de Serviços MS (o principal);
+ * se não existir no dataset, cai no primeiro (ordem alfabética). */
 export default function SitesPage() {
   const sites = getMatomoSites();
   if (sites.length === 0) {
@@ -18,5 +18,6 @@ export default function SitesPage() {
       </div>
     );
   }
-  redirect(`/sites/${sites[0].idsite}`);
+  const preferido = sites.find((s) => s.nome === "PORTAL DE SERVICOS MS") ?? sites[0];
+  redirect(`/sites/${preferido.idsite}`);
 }

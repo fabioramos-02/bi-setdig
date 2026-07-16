@@ -7,7 +7,17 @@
  */
 export type ItemRanking = { label: string; valor: number; sublabel?: string; href?: string };
 
-export function RankingBarChart({ itens, cor = "var(--ds-color-primary-600)" }: { itens: ItemRanking[]; cor?: string }) {
+export function RankingBarChart({
+  itens,
+  cor = "var(--ds-color-primary-600)",
+  formatarValor = (v: number) => v.toLocaleString("pt-BR"),
+}: {
+  itens: ItemRanking[];
+  cor?: string;
+  /** Formata o número à direita da barra — default pt-BR sem unidade. Passe
+   * `(v) => `${v}%`` para percentuais, por ex. */
+  formatarValor?: (valor: number) => string;
+}) {
   const max = itens.reduce((m, x) => Math.max(m, x.valor), 0);
 
   return (
@@ -47,7 +57,7 @@ export function RankingBarChart({ itens, cor = "var(--ds-color-primary-600)" }: 
                 className="shrink-0 w-14 text-right text-sm font-semibold"
                 style={{ color: cor }}
               >
-                {it.valor.toLocaleString("pt-BR")}
+                {formatarValor(it.valor)}
               </span>
             </div>
           </Wrapper>

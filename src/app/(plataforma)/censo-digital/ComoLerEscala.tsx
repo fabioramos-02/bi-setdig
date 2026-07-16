@@ -1,46 +1,62 @@
-import { NIVEIS } from "@/lib/censo";
+import { NIVEIS, type NivelContagem } from "@/lib/censo";
+import { NivelBadge } from "./NivelBadge";
 
-/** "Como ler a escala 0–4" — a régua de maturidade explicada em linguagem
- * simples, recolhida por padrão pra não pesar a tela. Presente nas duas telas
- * do censo (panorama e por órgão). */
-export function ComoLerEscala() {
+/** "Como ler a escala de maturidade (0–4)" — a régua explicada em linguagem
+ * simples, recolhida por padrão. Réplica da rubrica do site original: badge
+ * colorido por nível, o que significa, se resolve online e quantos serviços há
+ * em cada faixa. `distribuicao` (governo ou órgão) alimenta a coluna de contagem;
+ * sem ela, a coluna some. Presente nas duas telas do censo. */
+export function ComoLerEscala({ distribuicao }: { distribuicao?: NivelContagem[] }) {
+  const qtd = (nivel: number) => distribuicao?.find((d) => d.nivel === nivel)?.qtd;
+
   return (
     <details
       style={{ border: "1px solid var(--ds-color-border)", borderRadius: "var(--ds-radius-md)", background: "var(--ds-color-background)" }}
       className="break-inside-avoid"
     >
       <summary
-        className="cursor-pointer select-none px-4 py-3 text-sm font-semibold"
-        style={{ color: "var(--ds-color-text-primary)" }}
+        className="cursor-pointer select-none px-4 py-3 text-base font-bold"
+        style={{ color: "var(--ds-color-primary-600)" }}
       >
-        Como ler a escala de 0 a 4
+        Como ler a escala de maturidade (0–4)
       </summary>
-      <div className="px-4 pb-4 overflow-x-auto">
+      <div className="border-t px-4 pb-4 overflow-x-auto" style={{ borderColor: "var(--ds-color-border)" }}>
         <table className="w-full text-sm border-collapse">
           <thead>
             <tr style={{ color: "var(--ds-color-text-secondary)" }} className="text-left text-xs uppercase tracking-wide">
-              <th className="py-2 pr-3 font-semibold">Nível</th>
-              <th className="py-2 pr-3 font-semibold">O que significa</th>
-              <th className="py-2 font-semibold whitespace-nowrap">Resolve online?</th>
+              <th className="py-3 pr-3 font-semibold">Nível</th>
+              <th className="py-3 pr-3 font-semibold">O que significa</th>
+              <th className="py-3 pr-3 font-semibold whitespace-nowrap">Resolve online?</th>
+              {distribuicao && <th className="py-3 font-semibold text-right whitespace-nowrap">Serviços</th>}
             </tr>
           </thead>
           <tbody>
             {NIVEIS.map((n) => (
-              <tr key={n.nivel} style={{ borderTop: "1px solid var(--ds-color-border)" }} className="align-top">
-                <td className="py-2 pr-3 whitespace-nowrap font-semibold" style={{ color: n.cor }}>
-                  N{n.nivel} — {n.rotulo}
+              <tr key={n.nivel} style={{ borderTop: "1px solid var(--ds-color-border)" }} className="align-middle">
+                <td className="py-3 pr-3 whitespace-nowrap">
+                  <NivelBadge nivel={n.nivel} solido />
                 </td>
-                <td className="py-2 pr-3" style={{ color: "var(--ds-color-text-secondary)" }}>
+                <td className="py-3 pr-3" style={{ color: "var(--ds-color-text-secondary)" }}>
                   {n.descricao}
                 </td>
-                <td className="py-2 whitespace-nowrap" style={{ color: "var(--ds-color-text-secondary)" }}>
+                <td className="py-3 pr-3 whitespace-nowrap" style={{ color: "var(--ds-color-text-secondary)" }}>
                   {n.ehDigital}
                 </td>
+                {distribuicao && (
+                  <td className="py-3 text-right text-lg font-bold whitespace-nowrap" style={{ color: "var(--ds-color-primary-600)" }}>
+                    {(qtd(n.nivel) ?? 0).toLocaleString("pt-BR")}
+                  </td>
+                )}
               </tr>
             ))}
           </tbody>
         </table>
-        <p className="mt-3 text-xs" style={{ color: "var(--ds-color-text-muted)" }}>
+
+        <p className="mt-4 rounded-md p-3 text-sm" style={{ background: "var(--ds-color-background-muted)", color: "var(--ds-color-text-secondary)" }}>
+          <strong style={{ color: "var(--ds-color-text-primary)" }}>Serviços a um passo (níveis 2–3):</strong>{" "}
+          serviços prestes a ficarem 100% pela internet — onde o esforço para digitalizar é menor e o ganho, mais rápido. São o ponto de partida do plano.
+        </p>
+        <p className="mt-2 text-xs" style={{ color: "var(--ds-color-text-muted)" }}>
           A classificação é feita com apoio de inteligência artificial e revisada por pessoas — pode conter aproximações.
         </p>
       </div>

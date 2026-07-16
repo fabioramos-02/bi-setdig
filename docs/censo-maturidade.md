@@ -36,23 +36,76 @@ No panorama do governo, o **% digital é recalculado sobre o total geral** de
 serviços (não é a média das médias entre órgãos), e o ranking ordena os órgãos do
 mais ao menos avançado por esse percentual.
 
-## De onde vêm os dados
+## Como os dados são coletados
 
-1. **Cartas de serviço** — extraídas do portal ms.gov.br (título, etapas, canais
-   de atendimento de cada serviço).
-2. **Classificação** — cada carta é lida e recebe um nível de 0 a 4 com apoio de
-   **inteligência artificial**, seguindo a régua acima, e passa por **revisão
-   humana**. O canal de atendimento de cada etapa é o sinal mais forte: se a
-   jornada inteira é online, é nível 4; se trava só numa vistoria ou assinatura
-   física, é nível 3; e assim por diante. Na dúvida, escolhe-se o menor nível
-   (critério conservador).
-3. **Retrato estático** — o resultado é congelado em `datasets/censo/v1/<sigla>.json`
-   (ver [`datasets/censo/README.md`](../datasets/censo/README.md)).
+A maturidade de cada serviço é levantada num processo de **três etapas**. Ele roda
+no repositório de origem (`mapeamento-inicial-servicos-digitais`); aqui no portal
+o que existe é o **resultado congelado** (ver "Estado atual" abaixo).
 
-> **Honestidade sobre o dado:** a classificação é assistida por IA e pode conter
-> aproximações. Por isso o painel sempre mostra a justificativa de cada nível e
-> deixa claro que houve revisão humana — o número orienta a decisão, não a
-> substitui.
+### 1. Levantamento dos serviços
+
+Os serviços e a **jornada de cada um** (o passo a passo que o cidadão percorre) são
+lidos direto da base de serviços do Estado — a mesma que alimenta o portal
+ms.gov.br. Para cada serviço registra-se: título, descrição, requisitos, e a lista
+de **etapas** da jornada, cada etapa com o seu **canal de atendimento** (se aquele
+passo é feito pela internet, presencialmente, ou dos dois jeitos). As etapas são
+guardadas uma a uma, sem juntar num texto só — porque o canal de cada etapa é o
+sinal mais importante para medir a maturidade.
+
+### 2. Classificação na régua 0–4
+
+Cada serviço é lido e recebe um nível de 0 a 4 com apoio de **inteligência
+artificial**, seguindo a régua e as regras abaixo, e passa por **revisão humana**.
+
+**O sinal mais forte é o canal de cada etapa da jornada:**
+
+- Todas as etapas pela internet → candidato a **nível 3 ou 4**.
+- Todas presenciais → **nível 0 ou 1**.
+- Mistura de online e presencial → **nível 2 ou 3**.
+
+**Regras de desempate** (quando o serviço fica entre dois níveis):
+
+1. O canal das etapas decide primeiro (regra acima).
+2. Se a jornada é toda online e trava **só numa** etapa física — uma vistoria no
+   local, uma perícia, uma junta médica ou uma assinatura à mão — é **nível 3**
+   (não 2). É o caso típico de vistoria sanitária, por exemplo.
+3. Se há várias etapas presenciais, ou a conclusão obrigatoriamente acontece no
+   balcão, é **nível 2**.
+4. Se só existe informação online (requisitos, prazos), sem nenhum passo de
+   solicitação pela internet, é **nível 1**. Se nem isso, **nível 0**.
+5. Um serviço que usa um sistema/plataforma próprio reforça o nível 3 ou 4 —
+   conferindo se o sistema cobre a jornada inteira ou só um pedaço.
+6. **Na dúvida entre dois níveis, escolhe-se o menor** (critério conservador), e o
+   motivo fica registrado na justificativa daquele serviço.
+
+Para cada serviço o resultado guarda: o nível, **a etapa que impede subir de
+nível** (o que ainda trava), se menciona algum sistema (e qual), e uma
+justificativa de 1–2 frases citando a evidência.
+
+### 3. Montagem do painel
+
+O levantamento e a classificação são cruzados serviço a serviço, e viram os
+indicadores e a tabela que este painel mostra.
+
+## Por que dá para crescer sem retrabalho
+
+O censo foi montado em duas camadas: uma **base comum** (a régua, o cálculo dos
+indicadores, o layout) que vale para qualquer órgão, e uma **parte por órgão**
+(a identidade e os sistemas próprios daquele órgão). Adicionar um órgão novo mexe
+só na parte dele — a base não muda. Por isso o painel escala para outros órgãos do
+Estado com pouco esforço.
+
+## Estado atual
+
+Hoje o portal traz um **retrato estático** de 3 órgãos. Os números são um
+congelamento da classificação — não se atualizam sozinhos a cada acesso. Quando um
+órgão é reavaliado, o retrato dele é regerado e substituído (ver
+[`datasets/censo/README.md`](../datasets/censo/README.md)).
+
+> **Honestidade sobre o dado:** a classificação é assistida por inteligência
+> artificial e pode conter aproximações. Por isso o painel sempre mostra a
+> justificativa de cada nível e deixa claro que houve revisão humana — o número
+> orienta a decisão, não a substitui.
 
 ## Como adicionar um órgão
 
