@@ -202,7 +202,7 @@ export function calcularInsightConcentracaoOrgaos(grupos: OrgaoGrupo[], temSetor
 
 export type InsightQualidade = { percentAtendido: number; tempoMedioResolucaoDias: number; pendentes: number };
 
-/** Retrato central da qualidade das cartas — quantos erros já foram
+/** Retrato central da avaliação das cartas — quantos erros já foram
  * corrigidos e em quanto tempo, em média. */
 export function calcularInsightQualidade(resumo: ErroResumo | null): InsightQualidade | null {
   if (!resumo || resumo.total === 0) return null;

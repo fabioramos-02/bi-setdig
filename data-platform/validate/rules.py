@@ -1,4 +1,4 @@
-"""Regras de qualidade — ver docs/architecture/convencoes.md.
+"""Regras de avaliação da carta — ver docs/architecture/convencoes.md.
 
 Sem dependência de jsonschema: as checagens do POC (campo obrigatório,
 não-negativo) são simples o bastante pra função pura. Adicionar jsonschema

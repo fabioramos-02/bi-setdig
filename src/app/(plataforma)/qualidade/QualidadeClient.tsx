@@ -7,7 +7,7 @@ import { ErrosTab } from "./ErrosTab";
 import { PercepcaoTab } from "./PercepcaoTab";
 import type { ErroOrgao, ErroResumo, ErroEvolucaoMensal, ErroRelacao, PercepcaoResumo, PercepcaoOrgao } from "@/lib/data";
 
-/** Retrato da qualidade das cartas de serviço, em 2 abas: "Erros" (o serviço
+/** Retrato da avaliação das cartas de serviço, em 2 abas: "Erros" (o serviço
  * tem problema técnico?) e "Qualidade" (o cidadão entende/gosta do serviço?)
  * — perguntas diferentes, por isso separadas. Sem filtro de período: é
  * estado + série histórica, não analytics de acesso ao vivo. O filtro de

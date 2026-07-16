@@ -12,7 +12,7 @@ export default function PlataformaLayout({ children }: { children: React.ReactNo
   // Catálogo de sites alimenta o select da Sidebar (/sites/[idsite]) — leitura
   // build-time igual acima, Sidebar é Client e não pode ler o dataset (fs).
   const sites = getMatomoSites();
-  // Lista de órgãos pro filtro de /qualidade — mesmo motivo: Sidebar é Client.
+  // Lista de órgãos pro filtro de /avaliacao-carta — mesmo motivo: Sidebar é Client.
   const orgaosQualidade = getCartasErrosPorOrgao()
     .slice()
     .sort((a, b) => a.orgaoSigla.localeCompare(b.orgaoSigla));
