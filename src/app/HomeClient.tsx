@@ -64,7 +64,7 @@ const DOMINIOS: Dominio[] = [
       },
       {
         nome: "Avaliação da Carta",
-        rota: "/qualidade",
+        rota: "/avaliacao-carta",
         icone: "verified",
         descricao: "Erros reportados e satisfação",
         cor: "var(--ds-color-primary-600)",
