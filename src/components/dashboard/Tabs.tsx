@@ -82,7 +82,7 @@ export function Tabs({
         })}
       </div>
       {items.map((item) => (
-        <div key={item.id} id={`panel-${item.id}`} role="tabpanel" aria-labelledby={`tab-${item.id}`} hidden={ativa !== item.id}>
+        <div key={item.id} id={`panel-${item.id}`} role="tabpanel" aria-labelledby={`tab-${item.id}`} className={ativa !== item.id ? "hidden print:block" : "print:block"}>
           {item.content}
         </div>
       ))}

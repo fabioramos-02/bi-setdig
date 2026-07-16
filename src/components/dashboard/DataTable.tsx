@@ -53,7 +53,7 @@ export function DataTable<T>({
   };
 
   return (
-    <div style={{ border: "1px solid var(--ds-color-border)", borderRadius: "var(--ds-radius-md)", overflow: "hidden" }}>
+    <div className="overflow-hidden print:overflow-visible" style={{ border: "1px solid var(--ds-color-border)", borderRadius: "var(--ds-radius-md)" }}>
       <table className="w-full text-sm border-collapse">
         <thead>
           <tr style={{ background: "var(--ds-color-background-muted)" }}>

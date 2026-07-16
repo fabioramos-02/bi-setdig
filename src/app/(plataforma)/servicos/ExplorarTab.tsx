@@ -216,7 +216,7 @@ export function ExplorarTab({
             {ordenadas.length === 1 ? "" : "s"} · ordenadas pela procura {rotuloPeriodo} · mostrando {mostrando.length.toLocaleString("pt-BR")}
           </p>
 
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto print:overflow-visible">
             <ChartLoading status={status} height={400}>
               <DataTable columns={colunas} rows={mostrando} rowKey={(c) => c.slug} />
             </ChartLoading>

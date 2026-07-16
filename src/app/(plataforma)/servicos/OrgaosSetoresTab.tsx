@@ -110,7 +110,7 @@ function OrgaoSetorTable({ grupos, expansivel }: { grupos: OrgaoGrupo[]; expansi
         {expansivel && <span className="w-14 text-right shrink-0">Setores</span>}
         <span className="w-16 text-right shrink-0">Serviços</span>
       </div>
-      <ul className="flex flex-col gap-1 max-h-[360px] overflow-y-auto pr-1">
+      <ul className="flex flex-col gap-1 max-h-[360px] overflow-y-auto pr-1 print:max-h-none print:overflow-visible">
         {grupos.map((g) => {
           const aberto = expansivel && abertos.has(g.orgaoSigla);
           return (
