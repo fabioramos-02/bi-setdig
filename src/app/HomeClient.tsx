@@ -210,7 +210,7 @@ export function HomeClient() {
             </span>
             <h3 className="text-xl font-semibold mb-2" style={{ color: "var(--ds-color-text-primary)" }}>Nenhum painel encontrado</h3>
             <p style={{ color: "var(--ds-color-text-secondary)" }}>
-              Não encontramos resultados para "{busca}". Tente usar outros termos.
+              Não encontramos resultados para &quot;{busca}&quot;. Tente usar outros termos.
             </p>
           </div>
         )}
