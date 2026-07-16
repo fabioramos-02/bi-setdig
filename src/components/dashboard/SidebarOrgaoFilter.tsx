@@ -12,7 +12,7 @@ export function SidebarOrgaoFilter({ orgaos }: { orgaos: ErroOrgao[] }) {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  if (pathname !== "/qualidade" || orgaos.length === 0) return null;
+  if (pathname !== "/avaliacao-carta" || orgaos.length === 0) return null;
 
   const atual = searchParams.get("orgao") ?? "";
 
@@ -20,7 +20,7 @@ export function SidebarOrgaoFilter({ orgaos }: { orgaos: ErroOrgao[] }) {
     const params = new URLSearchParams(searchParams);
     if (sigla) params.set("orgao", sigla);
     else params.delete("orgao");
-    router.push(`/qualidade${params.toString() ? `?${params}` : ""}`);
+    router.push(`/avaliacao-carta${params.toString() ? `?${params}` : ""}`);
   };
 
   return (

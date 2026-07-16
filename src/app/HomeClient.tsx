@@ -223,6 +223,7 @@ function LinkItem({ painel }: { painel: Painel }) {
   return (
     <Link
       href={painel.rota}
+      title={`${painel.nome}: ${painel.descricao}`}
       className="group flex items-center p-4 transition-all duration-200 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-offset-2"
       style={{
         background: "var(--ds-color-background)",
@@ -246,9 +247,9 @@ function LinkItem({ painel }: { painel: Painel }) {
         </span>
       </div>
       <div className="flex-1 min-w-0 pr-2">
-        <h4 style={{ color: "var(--ds-color-text-primary)" }} className="text-base font-semibold truncate group-hover:underline">
+        <h3 style={{ color: "var(--ds-color-text-primary)" }} className="text-base font-semibold truncate group-hover:underline">
           {painel.nome}
-        </h4>
+        </h3>
         <p style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm truncate">
           {painel.descricao}
         </p>
