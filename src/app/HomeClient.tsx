@@ -108,7 +108,7 @@ export function HomeClient() {
     <div className="min-h-screen md:h-screen md:overflow-hidden flex flex-col" style={{ background: "var(--ds-color-background)" }}>
       <header
         style={{ background: "var(--ds-color-primary-600)" }}
-        className="flex items-center justify-between px-4 sm:px-8 h-[64px] shrink-0 z-10"
+        className="flex items-center justify-between px-4 sm:px-8 h-[88px] shrink-0 z-10"
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/images/logo-ms-horizontal.svg" alt="Governo de Mato Grosso do Sul" className="h-7 w-auto" />
