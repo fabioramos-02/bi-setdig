@@ -141,7 +141,7 @@ export function HomeClient() {
               placeholder="Pesquisar painéis ou indicadores..."
               value={busca}
               onChange={(e) => setBusca(e.target.value)}
-              className="w-full pl-14 pr-5 py-4 rounded-2xl outline-none transition-all duration-300 text-lg focus:-translate-y-1"
+              className="w-full pl-14 pr-5 py-4 rounded-2xl outline-none transition-all duration-300 text-base sm:text-lg focus:-translate-y-1"
               style={{
                 background: "var(--ds-color-background)",
                 color: "var(--ds-color-text-primary)",
@@ -181,20 +181,20 @@ export function HomeClient() {
         </div>
 
         {/* Domínios Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto w-full relative z-10">
           {dominiosFiltrados.map(dominio => (
             <div key={dominio.id} className="flex flex-col">
               <h2
-                className="text-lg font-bold mb-4 pb-2 border-b uppercase tracking-wider"
+                className="text-lg font-bold mb-5 pb-2 border-b uppercase tracking-wider h-16 flex items-end"
                 style={{
                   color: "var(--ds-color-text-primary)",
                   fontFamily: "var(--ds-font-family-heading)",
                   borderColor: "var(--ds-color-border)"
                 }}
               >
-                {dominio.nome}
+                <span className="w-full leading-tight">{dominio.nome}</span>
               </h2>
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-4">
                 {dominio.paineis.map(painel => (
                   <LinkItem key={painel.rota} painel={painel} />
                 ))}
