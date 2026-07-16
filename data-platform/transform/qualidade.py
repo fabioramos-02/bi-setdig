@@ -1,5 +1,5 @@
 """Erros, tempo de resolução e percepção do cidadão nas cartas de serviço
-(ADR-005: domínio Qualidade).
+(ADR-005: domínio Avaliação da Carta).
 
 Só agrega o dado cru do Postgres — sem filtro de período (é estado/série
 histórica, não analytics de acesso ao vivo; mesma exceção já documentada

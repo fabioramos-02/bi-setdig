@@ -94,7 +94,7 @@ export function getMatomoBusca(): BreakdownPorPeriodo<TermoBusca> {
   return readDataset<BreakdownPorPeriodo<TermoBusca>>("matomo", "v1", "busca") ?? BREAKDOWN_VAZIO;
 }
 
-// --- Governança: adoção do filtro de Perfil (estudo portado do bench-carta) ---
+// --- Censo Digital:  ---
 export type PerfilResumo = {
   homeVisitors: number;
   atribuiveis: number;
@@ -259,7 +259,7 @@ export function getCartasInventarioRelacao(): CartaRelacao[] {
   return readDataset<CartaRelacao[]>("cartas", "v1", "inventario-relacao") ?? [];
 }
 
-// --- Qualidade: erros e percepção do cidadão (ADR-005) ---
+// --- Avaliação da Carta: erros e percepção do cidadão (ADR-005) ---
 // Estado/série histórica (não analytics de acesso ao vivo) — mesma exceção de
 // "catálogo/estático por natureza" do inventário de cartas, sem PeriodoProvider.
 export type ErroResumo = {

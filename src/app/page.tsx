@@ -46,14 +46,14 @@ const PAINEIS: Painel[] = [
     cor: "var(--ds-color-primary-600)",
   },
   {
-    nome: "Qualidade",
+    nome: "Avaliação da Carta",
     rota: "/qualidade",
     icone: "verified",
     descricao: "Reúne indicadores de qualidade e melhoria contínua dos serviços digitais do Estado.",
     cor: "var(--ds-color-primary-600)",
   },
   {
-    nome: "Governança",
+    nome: "Censo Digital",
     rota: "/censo-digital",
     icone: "account_balance",
     descricao: "Reúne indicadores estratégicos para acompanhar a transformação digital do Estado.",

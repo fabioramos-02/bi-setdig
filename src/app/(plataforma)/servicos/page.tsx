@@ -5,7 +5,7 @@ import { getCartasInventarioResumo, getCartasInventarioPorOrgao, getCartasInvent
 import { ServicosClient } from "./ServicosClient";
 
 export const metadata: Metadata = {
-  title: "Serviços | SETDIG",
+  title: "Carta de Serviços | SETDIG",
 };
 
 export default function ServicosPage() {
@@ -16,7 +16,7 @@ export default function ServicosPage() {
   if (!resumo) {
     return (
       <div className="flex flex-col flex-1">
-        <ContentTopBar title="Serviços" />
+        <ContentTopBar title="Carta de Serviços" />
         <main className="flex-1 p-6">
           <EmptyCard message="Ainda não há dados disponíveis aqui." />
         </main>

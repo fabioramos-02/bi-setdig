@@ -82,11 +82,21 @@ export function AnaliseOrgaoSection({
     );
   }
 
+  // Sem órgão escolhido: a tabela dos ~37 órgãos é longa e o destaque (top
+  // pendências) já aparece acima — deixa recolhida, a um clique.
   return (
     <DashboardSection title="🏛️ Análise por Órgão">
-      <div className="overflow-x-auto">
-        <DataTable columns={colunas} rows={porOrgao} rowKey={(o) => o.orgaoSigla} />
-      </div>
+      <details>
+        <summary
+          className="cursor-pointer select-none text-sm font-medium"
+          style={{ color: "var(--ds-color-primary-600)" }}
+        >
+          Ver comparação completa entre órgãos ({porOrgao.length})
+        </summary>
+        <div className="overflow-x-auto mt-4">
+          <DataTable columns={colunas} rows={porOrgao} rowKey={(o) => o.orgaoSigla} />
+        </div>
+      </details>
     </DashboardSection>
   );
 }

@@ -28,7 +28,7 @@
 | Troca de página              | < 300ms |
 | Tamanho de cada dataset JSON | < 2MB   |
 
-## Qualidade de dado (data-platform/validate/)
+## Avaliação da Carta de dado (data-platform/validate/)
 
 - Nenhuma métrica de contagem negativa.
 - Total ≥ únicos (quando ambos existem no mesmo dataset).

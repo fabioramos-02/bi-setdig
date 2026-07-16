@@ -12,7 +12,7 @@ O portal se organiza por **domínio de negócio**, desacoplado da origem histór
 ```
 Analytics    → Portal Único (Matomo) · MS Digital (GA4)
 Serviços     → inventário de cartas · maturidade digital (0-4)
-Qualidade    → erros/satisfação das cartas · deduplicação/perfis
+Avaliação da Carta    → erros/satisfação das cartas · deduplicação/perfis
 Governança   → relatório CGE · estudos de adoção de funcionalidade
 ```
 

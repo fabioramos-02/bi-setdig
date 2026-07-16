@@ -17,7 +17,7 @@ formato interno de cada fonte.
 
 ## Consequências
 - Portal nunca lê Postgres/Matomo/GA4 diretamente — só `datasets/`.
-- Qualidade de dado é responsabilidade do publish (ver `data-platform/validate/`),
+- Avaliação da Carta de dado é responsabilidade do publish (ver `data-platform/validate/`),
   não do consumidor.
 - Tamanho de dataset é uma restrição de design: meta <2MB por arquivo (ver
   metas de performance) — agregações no transform, nunca dado bruto.

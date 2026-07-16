@@ -7,7 +7,7 @@
 | Portal Único | `/analytics/portal-ms` | Matomo | 5 abas `matomo` + painel 1 `bench-carta` |
 | MS Digital | `/analytics/ms-digital` | GA4 | 4 abas `matomo` + painel 2 `bench-carta` |
 | Serviços | `/servicos` | Postgres cartas + JSON maturidade | 6 abas cartas `matomo` + `mapeamento-inicial` |
-| Qualidade | `/qualidade` | Postgres cartas | `cruzamento-carta` |
+| Avaliação da Carta | `/qualidade` | Postgres cartas | `cruzamento-carta` |
 | Governança | `/governanca` | Matomo (estudos) | estudo filtro-perfil do `bench-carta` |
 
 ## Estrutura de código (portal)

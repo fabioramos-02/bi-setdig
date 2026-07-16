@@ -10,7 +10,7 @@ a página no portal lendo de `datasets/` (Fase 2), com os componentes da Fase 1.
 
 ## Ordem e por quê
 
-**Serviços+Qualidade (cartas) → Analytics Portal Único → Analytics MS Digital → Governança**
+**Serviços+Avaliação da Carta (cartas) → Analytics Portal Único → Analytics MS Digital → Governança**
 
 - Cartas primeiro: consolida **3 repos de uma vez** (matomo abas cartas +
   cruzamento-carta + mapeamento-inicial), dados já batem como estático/JSON —

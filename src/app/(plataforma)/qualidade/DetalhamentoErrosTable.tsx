@@ -95,6 +95,24 @@ export function DetalhamentoErrosTable({ relacao, orgaoFiltro, servicoToLinkInfo
   );
   const mostrando = filtrados.slice(0, visiveis);
 
+  // Sem órgão escolhido, listar os 708 erros um a um só cansa e ninguém percorre.
+  // O detalhe caso a caso só faz sentido depois de estreitar para um órgão.
+  if (!orgaoFiltro) {
+    return (
+      <DashboardSection title="📄 Detalhamento de Erros">
+        <div className="flex flex-col items-center text-center gap-2 py-8" style={{ color: "var(--ds-color-text-secondary)" }}>
+          <span className="material-icons text-3xl" style={{ color: "var(--ds-color-text-muted)" }} aria-hidden>filter_list</span>
+          <p className="text-sm max-w-md">
+            Escolha um órgão no menu ao lado para ver cada erro reportado, um a um — com o texto do cidadão e a resposta dada.
+          </p>
+          <p className="text-xs" style={{ color: "var(--ds-color-text-muted)" }}>
+            São {relacao.length.toLocaleString("pt-BR")} erros no total.
+          </p>
+        </div>
+      </DashboardSection>
+    );
+  }
+
   return (
     <DashboardSection title="📄 Detalhamento de Erros">
       <p className="mb-3 text-xs" style={{ color: "var(--ds-color-text-muted)" }}>

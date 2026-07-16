@@ -12,7 +12,7 @@ const FACES = [
   { nota: "5", label: "MUITO SATISFEITO", icon: "sentiment_very_satisfied", color: "#16a34a" },
 ];
 
-/** Aba "Qualidade": o cidadão entende e gosta do serviço — pergunta
+/** Aba "Avaliação da Carta": o cidadão entende e gosta do serviço — pergunta
  * diferente de "tem erro técnico" (essa é a aba Erros). CSAT (nota 1-5) +
  * clareza da descrição da carta. */
 export function PercepcaoTab({
@@ -121,11 +121,11 @@ export function PercepcaoTab({
 
       {chartData.length > 0 && (
         <DashboardSection title="Satisfação por Órgão">
-          <ResponsiveContainer width="100%" height={Math.max(chartData.length * 40 + 80, 200)}>
-            <RBarChart data={chartData} layout="vertical" margin={{ top: 20, right: 30, left: 40, bottom: 5 }}>
+          <ResponsiveContainer width="100%" height={Math.max(chartData.length * 44 + 80, 200)}>
+            <RBarChart data={chartData} layout="vertical" margin={{ top: 20, right: 30, left: 10, bottom: 5 }}>
               <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="var(--ds-color-border)" />
               <XAxis type="number" hide />
-              <YAxis dataKey="orgao" type="category" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: "var(--ds-color-text-secondary)" }} />
+              <YAxis dataKey="orgao" type="category" width={110} axisLine={false} tickLine={false} tick={{ fontSize: 13, fontWeight: 600, fill: "var(--ds-color-text-primary)" }} />
               <Tooltip
                 formatter={(value) => `${Number(value || 0).toFixed(1)}%`}
                 contentStyle={{ background: "var(--ds-color-background)", border: "1px solid var(--ds-color-border)", color: "var(--ds-color-text-primary)", fontSize: 12 }}
