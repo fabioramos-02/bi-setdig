@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import type { StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
 import { ContentTopBar } from "@/components/ds/ContentTopBar";
-import { ExportPdfButton } from "@/components/dashboard/ExportPdfButton";
+import { ExportarRelatorioButton } from "@/components/dashboard/ExportarRelatorioButton";
+import { RelatorioCapa } from "@/components/dashboard/RelatorioCapa";
 import { Tabs, type TabItem } from "@/components/dashboard/Tabs";
 import { VisaoGeralTab } from "./VisaoGeralTab";
 import { FuncionalidadesTab } from "./FuncionalidadesTab";
@@ -21,7 +22,7 @@ import {
 import { classificarAcessosApp } from "@/lib/servico-app-classifier";
 import { compararCanais } from "@/lib/cross-canal";
 import { usePeriodo } from "@/lib/periodo-context";
-import { chavePeriodoFixo, resumoDoPeriodo, intervaloDoBucket, ehPeriodoCorrente } from "@/lib/period-filter";
+import { chavePeriodoFixo, resumoDoPeriodo, intervaloDoBucket, ehPeriodoCorrente, rotuloPeriodoResolvido } from "@/lib/period-filter";
 import type {
   BreakdownPorPeriodo,
   GA4Overview,
@@ -248,9 +249,10 @@ export function MsDigitalClient({
   return (
     <div className="flex flex-col flex-1">
       <ContentTopBar title="MS Digital">
-        <ExportPdfButton />
+        <ExportarRelatorioButton secoes={abas.map((a) => ({ id: a.id, label: a.label }))} ativaId={abaAtiva} filtro={rotuloPeriodoResolvido(estado) || "período atual"} />
       </ContentTopBar>
       <main className="flex-1 p-4 sm:p-6">
+        <RelatorioCapa titulo="MS Digital" filtro={rotuloPeriodoResolvido(estado) || "período atual"} />
         <Tabs items={abas} ativa={abaAtiva} onAtivaChange={setAbaAtiva} />
       </main>
     </div>

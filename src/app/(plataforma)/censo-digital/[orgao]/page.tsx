@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ContentTopBar } from "@/components/ds/ContentTopBar";
+import { ExportarRelatorioButton } from "@/components/dashboard/ExportarRelatorioButton";
+import { RelatorioCapa } from "@/components/dashboard/RelatorioCapa";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { getCensoOrgao } from "@/lib/data";
@@ -30,8 +32,11 @@ export default async function CensoOrgaoPage({ params }: { params: Promise<{ org
 
   return (
     <div className="flex flex-col flex-1">
-      <ContentTopBar title={`Censo Digital — ${dados.orgaoSigla}`} />
+      <ContentTopBar title={`Censo Digital — ${dados.orgaoSigla}`}>
+        <ExportarRelatorioButton filtro={`Órgão: ${dados.orgaoSigla}`} />
+      </ContentTopBar>
       <main className="flex-1 p-6 flex flex-col gap-6">
+        <RelatorioCapa titulo={`Censo Digital — ${dados.orgaoSigla}`} filtro={`Órgão: ${dados.orgaoSigla}`} />
         <Link href="/censo-digital" className="text-sm font-medium hover:underline self-start" style={{ color: "var(--ds-color-primary-600)" }}>
           ← Todos os órgãos
         </Link>

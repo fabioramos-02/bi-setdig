@@ -3,7 +3,8 @@
 import { useEffect, useMemo, useState } from "react";
 import type { StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
 import { ContentTopBar } from "@/components/ds/ContentTopBar";
-import { ExportPdfButton } from "@/components/dashboard/ExportPdfButton";
+import { ExportarRelatorioButton } from "@/components/dashboard/ExportarRelatorioButton";
+import { RelatorioCapa } from "@/components/dashboard/RelatorioCapa";
 import { Tabs, type TabItem } from "@/components/dashboard/Tabs";
 import { PerfilCidadaoTab } from "./PerfilCidadaoTab";
 import { ServicosPorPerfilTab } from "./ServicosPorPerfilTab";
@@ -11,7 +12,7 @@ import { FluxoNavegacaoTab } from "./FluxoNavegacaoTab";
 import { VisaoGeralTab } from "./VisaoGeralTab";
 import { BuscaTab } from "./BuscaTab";
 import { PaginasTab } from "./PaginasTab";
-import { aplicarFiltroPeriodo, chavePeriodoFixo, resumoDoPeriodo, intervaloDoBucket, ehPeriodoCorrente } from "@/lib/period-filter";
+import { aplicarFiltroPeriodo, chavePeriodoFixo, resumoDoPeriodo, intervaloDoBucket, ehPeriodoCorrente, rotuloPeriodoResolvido } from "@/lib/period-filter";
 import { usePeriodo } from "@/lib/periodo-context";
 import {
   calcularInsightBusca,
@@ -182,6 +183,7 @@ export function PortalMsClient({
           insightDispositivo={insightDispositivo}
           paginaTop={paginaTop}
           insightBusca={insightBusca}
+          status={statusBreakdown}
           onIrPara={setAbaAtiva}
         />
       ),
@@ -243,9 +245,10 @@ export function PortalMsClient({
   return (
     <div className="flex flex-col flex-1">
       <ContentTopBar title="Portal Único">
-        <ExportPdfButton />
+        <ExportarRelatorioButton secoes={abas.map((a) => ({ id: a.id, label: a.label }))} ativaId={abaAtiva} filtro={rotuloPeriodoResolvido(estado) || "período atual"} />
       </ContentTopBar>
       <main className="flex-1 p-4 sm:p-6">
+        <RelatorioCapa titulo="Portal Único" filtro={rotuloPeriodoResolvido(estado) || "período atual"} />
         <Tabs items={abas} ativa={abaAtiva} onAtivaChange={setAbaAtiva} />
       </main>
     </div>

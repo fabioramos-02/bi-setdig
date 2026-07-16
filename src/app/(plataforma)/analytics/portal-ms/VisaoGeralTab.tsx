@@ -1,6 +1,7 @@
 import { MetricCard } from "@/components/dashboard/MetricCard";
 import { ExportCsvButton } from "@/components/dashboard/ExportCsvButton";
 import { StoryCard } from "@/components/dashboard/StoryCard";
+import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
 import { LineChart } from "@/components/charts/LineChart";
 import type { InsightVisitas, InsightNavegador, InsightDispositivo, InsightBusca } from "@/lib/insights";
 import type { ResumoPeriodo, PontoAgregado } from "@/lib/period-filter";
@@ -21,6 +22,7 @@ export function VisaoGeralTab({
   insightDispositivo,
   paginaTop,
   insightBusca,
+  status,
   onIrPara,
 }: {
   kpis: ResumoPeriodo;
@@ -33,10 +35,12 @@ export function VisaoGeralTab({
   insightDispositivo: InsightDispositivo | null;
   paginaTop: Pagina | null;
   insightBusca: InsightBusca | null;
+  status: StatusIntervalo;
   onIrPara: (id: string) => void;
 }) {
   return (
     <div className="flex flex-col gap-6">
+      <AvisoSnapshotAproximado status={status} />
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         <MetricCard label={`Visitas ${rotuloPeriodo}`} value={kpis.visitas} />
         <MetricCard label={`Visitantes únicos ${rotuloPeriodo}`} value={kpis.visitantesUnicos} />

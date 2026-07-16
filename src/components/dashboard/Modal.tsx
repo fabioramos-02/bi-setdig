@@ -36,13 +36,20 @@ export function Modal({
         // num filho) é sempre backdrop.
         if (e.target === ref.current) onClose();
       }}
-      className="backdrop:bg-black/50 p-0 max-h-[85vh]"
+      className="backdrop:bg-black/50 backdrop:backdrop-blur-sm p-0 max-h-[85vh] print:hidden"
       style={{
         border: "1px solid var(--ds-color-border)",
         borderRadius: "var(--ds-radius-md)",
         background: "var(--ds-color-background)",
         color: "var(--ds-color-text-primary)",
         width: "min(560px, 92vw)",
+        // Centraliza de forma confiável — o padrão de margin auto do <dialog>
+        // encosta no topo com conteúdo alto.
+        position: "fixed",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        margin: 0,
       }}
     >
       <div className="flex items-start justify-between gap-3 p-5" style={{ borderBottom: "1px solid var(--ds-color-border)" }}>

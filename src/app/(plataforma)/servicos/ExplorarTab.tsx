@@ -7,6 +7,7 @@ import { DataTable, type Coluna } from "@/components/dashboard/DataTable";
 import { Select } from "@/components/dashboard/Select";
 import { EmptyCard } from "@/components/ds/EmptyCard";
 import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
+import { ChartLoading } from "@/components/dashboard/ChartLoading";
 import { labelCategoria, prazoServico } from "@/lib/servicos";
 import type { CartaRelacao } from "@/lib/data";
 
@@ -216,7 +217,9 @@ export function ExplorarTab({
           </p>
 
           <div className="overflow-x-auto">
-            <DataTable columns={colunas} rows={mostrando} rowKey={(c) => c.slug} />
+            <ChartLoading status={status} height={400}>
+              <DataTable columns={colunas} rows={mostrando} rowKey={(c) => c.slug} />
+            </ChartLoading>
           </div>
 
           {visiveis < ordenadas.length && (

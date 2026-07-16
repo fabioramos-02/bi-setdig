@@ -1,7 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { ContentTopBar } from "@/components/ds/ContentTopBar";
+import { ExportarRelatorioButton } from "@/components/dashboard/ExportarRelatorioButton";
+import { RelatorioCapa } from "@/components/dashboard/RelatorioCapa";
 import { Tabs, type TabItem } from "@/components/dashboard/Tabs";
 import { ErrosTab } from "./ErrosTab";
 import { PercepcaoTab } from "./PercepcaoTab";
@@ -31,6 +34,8 @@ export function QualidadeClient({
   servicoToLinkInfo: Record<string, { slug: string; categoria: string }>;
 }) {
   const orgaoFiltro = useSearchParams().get("orgao") ?? "";
+  const [abaAtiva, setAbaAtiva] = useState("erros");
+  const filtroRelatorio = orgaoFiltro ? `Órgão: ${orgaoFiltro}` : "Todos os órgãos";
 
   const percepcaoAtual = orgaoFiltro
     ? percepcaoPorOrgao.find((p) => p.orgaoSigla === orgaoFiltro) || null
@@ -51,9 +56,12 @@ export function QualidadeClient({
 
   return (
     <div className="flex flex-col flex-1">
-      <ContentTopBar title="Avaliação sobre a carta de serviço" />
+      <ContentTopBar title="Avaliação sobre a carta de serviço">
+        <ExportarRelatorioButton secoes={abas.map((a) => ({ id: a.id, label: a.label }))} ativaId={abaAtiva} filtro={filtroRelatorio} />
+      </ContentTopBar>
       <main className="flex-1 p-6">
-        <Tabs items={abas} />
+        <RelatorioCapa titulo="Avaliação sobre a carta de serviço" filtro={filtroRelatorio} />
+        <Tabs items={abas} ativa={abaAtiva} onAtivaChange={setAbaAtiva} />
       </main>
     </div>
   );

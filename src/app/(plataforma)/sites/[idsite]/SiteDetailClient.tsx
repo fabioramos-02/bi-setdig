@@ -4,13 +4,15 @@ import { useEffect, useState } from "react";
 import type { StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
 import { ContentTopBar } from "@/components/ds/ContentTopBar";
 import { EmptyCard } from "@/components/ds/EmptyCard";
+import { ExportarRelatorioButton } from "@/components/dashboard/ExportarRelatorioButton";
+import { RelatorioCapa } from "@/components/dashboard/RelatorioCapa";
 import { Tabs, type TabItem } from "@/components/dashboard/Tabs";
 import { VisaoGeralTab } from "./VisaoGeralTab";
 import { PerfilCidadaoTab } from "./PerfilCidadaoTab";
 import { BuscaTab } from "./BuscaTab";
 import { PaginasTab } from "./PaginasTab";
 import { usePeriodo } from "@/lib/periodo-context";
-import { intervaloDoBucket } from "@/lib/period-filter";
+import { intervaloDoBucket, rotuloPeriodoResolvido } from "@/lib/period-filter";
 import {
   calcularInsightNavegador,
   calcularInsightDispositivo,
@@ -132,8 +134,11 @@ export function SiteDetailClient({ site }: { site: Site }) {
 
   return (
     <div className="flex flex-col flex-1">
-      <ContentTopBar title={site.nome} />
+      <ContentTopBar title={site.nome}>
+        <ExportarRelatorioButton secoes={abas.map((a) => ({ id: a.id, label: a.label }))} ativaId={abaAtiva} filtro={rotuloPeriodoResolvido(estado) || "período atual"} />
+      </ContentTopBar>
       <main className="flex-1 p-4 sm:p-6 flex flex-col gap-6">
+        <RelatorioCapa titulo={`Site — ${site.nome}`} filtro={rotuloPeriodoResolvido(estado) || "período atual"} />
         <a
           href={site.url}
           target="_blank"

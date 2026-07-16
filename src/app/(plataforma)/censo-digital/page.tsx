@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ContentTopBar } from "@/components/ds/ContentTopBar";
 import { EmptyCard } from "@/components/ds/EmptyCard";
+import { ExportarRelatorioButton } from "@/components/dashboard/ExportarRelatorioButton";
+import { RelatorioCapa } from "@/components/dashboard/RelatorioCapa";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { RankingBarChart } from "@/components/charts/RankingBarChart";
@@ -36,8 +38,11 @@ export default function CensoDigitalPage() {
 
   return (
     <div className="flex flex-col flex-1">
-      <ContentTopBar title="Censo Digital" />
+      <ContentTopBar title="Censo Digital">
+        <ExportarRelatorioButton filtro="Retrato atual da maturidade" />
+      </ContentTopBar>
       <main className="flex-1 p-6 flex flex-col gap-6">
+        <RelatorioCapa titulo="Censo Digital — Maturidade dos serviços" filtro="Retrato atual da maturidade" />
         <StoryCard
           anchor={`O Governo de MS tem ${p.total.toLocaleString("pt-BR")} serviços mapeados em ${p.nOrgaos} ${p.nOrgaos === 1 ? "órgão" : "órgãos"}. Hoje, ${p.pctDigital.toLocaleString("pt-BR")}% já podem ser resolvidos sem sair de casa.`}
           caption={`${p.aUmPasso.toLocaleString("pt-BR")} serviços estão a um passo disso — começam online, mas ainda terminam no balcão.`}

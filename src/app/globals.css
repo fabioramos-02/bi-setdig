@@ -127,4 +127,11 @@ body {
   [role="tabpanel"][hidden] {
     display: block !important;
   }
+
+  /* ExportarRelatorioButton: quando o usuário escolhe só algumas seções, as
+     não escolhidas recebem esta classe e somem do PDF. Sem nada marcado
+     (Ctrl+P manual), tudo continua saindo pela regra acima. */
+  [role="tabpanel"].exportar-excluir {
+    display: none !important;
+  }
 }
