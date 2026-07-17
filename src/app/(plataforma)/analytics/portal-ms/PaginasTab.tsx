@@ -118,7 +118,13 @@ function RankingSecao({
           <ul className="text-sm mt-2 space-y-1">
             {restante.map((p) => (
               <li key={p.nome} className="flex justify-between border-t py-1" style={{ borderColor: "var(--ds-color-border)" }}>
-                <span>{p.nome}</span>
+                {p.href ? (
+                  <a href={p.href} target="_blank" rel="noopener noreferrer" className="hover:underline" title={p.href}>
+                    {p.nome}
+                  </a>
+                ) : (
+                  <span>{p.nome}</span>
+                )}
                 <span style={{ color: "var(--ds-color-text-muted)" }}>{p.visitas.toLocaleString("pt-BR")}</span>
               </li>
             ))}
