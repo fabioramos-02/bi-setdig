@@ -113,15 +113,19 @@ export function ExportarRelatorioButton({
             ))}
           </ul>
 
-          <div className="flex justify-end gap-2 pt-2">
-            <button type="button" onClick={() => setAberto(false)} className="ds-button ds-button--ghost">
+          <div className="flex justify-end gap-3 pt-4">
+            <button 
+              type="button" 
+              onClick={() => setAberto(false)} 
+              className="ds-button ds-button--ghost px-4 py-2 text-sm font-semibold rounded-md"
+            >
               Cancelar
             </button>
             <button
               type="button"
               onClick={() => imprimir(idsExcluidos(secoes, selecionadas))}
               disabled={selecionadas.size === 0 || gerando}
-              className="ds-button ds-button--primary"
+              className="ds-button ds-button--primary px-4 py-2 text-sm font-semibold rounded-md transition-opacity hover:opacity-90 disabled:opacity-50"
             >
               {gerando ? "Gerando…" : "Gerar PDF"}
             </button>
