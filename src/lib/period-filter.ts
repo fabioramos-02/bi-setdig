@@ -47,8 +47,14 @@ export function aplicarFiltroPeriodo(dados: VisitaDiaria[], estado: PeriodoState
   }
 
   const granularidade = estado.tipo === "semana" ? "semana" : estado.tipo === "mes" ? "mes" : "ano";
-  return agregarPor(base, granularidade);
+  const agregado = agregarPor(base, granularidade);
+  // "Semana"/"mês" truncam nas últimas 12 pra tendência não virar ruído de
+  // anos de histórico (o gestor não consegue achar o ponto certo no eixo X
+  // filtrando 1 semana específica) — "ano" já tem poucos pontos por natureza.
+  return granularidade === "ano" ? agregado : agregado.slice(-JANELA_TENDENCIA);
 }
+
+const JANELA_TENDENCIA = 12;
 
 export function agregarPor(dados: VisitaDiaria[], granularidade: "semana" | "mes" | "ano"): PontoAgregado[] {
   const grupos = new Map<string, PontoAgregado>();

@@ -1,6 +1,6 @@
 import type { VisitaDiaria } from "./data";
 import { type PeriodoState, type PeriodoTipo, type ResumoPeriodo, agregarPor, intervaloDoBucket } from "./period-filter.ts";
-import type { InsightVisitas, InsightBusca, InsightDispositivo } from "./insights";
+import type { InsightBusca, InsightDispositivo } from "./insights";
 
 /**
  * Composição dos insights de `insights.ts` em texto e diagnóstico pra
@@ -201,55 +201,6 @@ export function calcularNavegacao(kpis: ResumoPeriodo, diarias: VisitaDiaria[], 
   }
 
   return { paginasPorVisita, variacaoAnualPct };
-}
-
-// --- Resumo executivo -----------------------------------------------------
-
-function fmt(n: number): string {
-  return n.toLocaleString("pt-BR");
-}
-
-/** 3-4 frases prontas pro topo da Visão Geral — pula peça indisponível
- * (`null`), some inteiro se sobrarem menos de 2 frases (nunca resumo pela
- * metade fingindo estar completo). */
-export function gerarResumoExecutivo(p: {
-  kpis: ResumoPeriodo;
-  rotuloPeriodo: string;
-  saude: SaudePortal | null;
-  insightVisitas: InsightVisitas | null;
-  insightBusca: InsightBusca | null;
-  navegacao: Navegacao | null;
-  municipiosComAcesso: number;
-  totalMunicipios: number;
-  /** Serviço mais procurado + órgão que concentra a demanda (ADR-012) — ver lib/servicos-portal.ts. */
-  fraseServicoOrgao?: string | null;
-}): string | null {
-  const frases: string[] = [`O portal registrou ${fmt(p.kpis.visitas)} visitas ${p.rotuloPeriodo}.`];
-
-  if (p.saude) {
-    frases.push(p.saude.frase);
-  } else if (p.insightVisitas && p.insightVisitas.variacaoPct !== null) {
-    const v = p.insightVisitas;
-    frases.push(
-      `Foram ${Math.abs(Math.round(v.variacaoPct!))}% ${v.variacaoPct! >= 0 ? "a mais" : "a menos"} de visitas do que ${v.rotuloAnterior}.`,
-    );
-  }
-
-  if (p.insightBusca) frases.push(`O assunto mais buscado foi "${p.insightBusca.termo}".`);
-
-  if (p.fraseServicoOrgao) frases.push(p.fraseServicoOrgao);
-
-  frases.push(`O portal alcançou cidadãos de ${p.municipiosComAcesso} dos ${p.totalMunicipios} municípios de MS.`);
-
-  // Acesso não é valor entregue: a profundidade de navegação é a pista mais
-  // próxima que este dado dá de "o cidadão achou o que procurava".
-  if (p.navegacao) {
-    frases.push(
-      `Em média, cada visita passou por ${p.navegacao.paginasPorVisita.toLocaleString("pt-BR", { maximumFractionDigits: 1 })} páginas antes de sair.`,
-    );
-  }
-
-  return frases.length >= 2 ? frases.join(" ") : null;
 }
 
 // --- Recomendações ----------------------------------------------------

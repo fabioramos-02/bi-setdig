@@ -65,3 +65,11 @@ export function municipiosSemAcesso(cidades: Cidade[]): string[] {
   const reportados = reportadosNormalizados(cidades);
   return MUNICIPIOS_MS.filter((m) => !reportados.has(normalizar(m)));
 }
+
+/** Slug do padrão de URL do IBGE (`cidades.ibge.gov.br/brasil/ms/{slug}/panorama`)
+ * — acento fora, minúsculo, espaço/apóstrofo vira hífen. Link de contexto,
+ * não fonte de dado do painel — melhor esforço (nome oficial já bate com o
+ * slug do IBGE na esmagadora maioria dos casos). */
+export function slugIbge(nome: string): string {
+  return normalizar(nome).replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+}

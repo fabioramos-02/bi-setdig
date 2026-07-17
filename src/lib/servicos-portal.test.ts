@@ -4,10 +4,10 @@ import {
   calcularServicoTop,
   calcularOrgaoTop,
   pctSemOrgao,
-  fraseServicoOrgao,
   recomendacaoConcentracao,
+  fraseNavegacaoPorPerfil,
 } from "./servicos-portal.ts";
-import type { ServicoAcessado, DemandaOrgao } from "./data.ts";
+import type { ServicoAcessado, DemandaOrgao, PerfilResumo } from "./data.ts";
 
 const servicos: ServicoAcessado[] = [
   { servico: "IPVA - consulta de débito", orgaoSigla: "SEFAZ MS", path: "/financas-e-impostos/ipva-consulta-de-debito54", visitas: 100 },
@@ -43,16 +43,6 @@ test("calcularOrgaoTop: pega o primeiro", () => {
   assert.equal(calcularOrgaoTop(demanda)?.orgaoSigla, "SEFAZ MS");
 });
 
-test("fraseServicoOrgao: junta serviço + órgão numa frase só", () => {
-  const frase = fraseServicoOrgao(calcularServicoTop(servicos), calcularOrgaoTop(demanda));
-  assert.match(frase!, /IPVA - consulta de débito/);
-  assert.match(frase!, /45% da demanda/);
-});
-
-test("fraseServicoOrgao: sem nenhum dos dois -> null", () => {
-  assert.equal(fraseServicoOrgao(null, null), null);
-});
-
 test("recomendacaoConcentracao: >=40% gera recomendação", () => {
   const r = recomendacaoConcentracao(calcularOrgaoTop(demanda));
   assert.match(r!.texto, /45%/);
@@ -60,4 +50,23 @@ test("recomendacaoConcentracao: >=40% gera recomendação", () => {
 
 test("recomendacaoConcentracao: abaixo do limiar -> null", () => {
   assert.equal(recomendacaoConcentracao({ orgaoSigla: "X", orgao: "X", visitas: 10, pct: 39 }), null);
+});
+
+function resumo(over: Partial<PerfilResumo>): PerfilResumo {
+  return { homeVisitors: 1000, atribuiveis: 10, proxyRatePct: 1, usoRealPct: 0.1, umACada: 467, limiarPct: 2, ...over };
+}
+
+test("fraseNavegacaoPorPerfil: abaixo do limiar -> frase de pouco uso", () => {
+  const frase = fraseNavegacaoPorPerfil(resumo({ usoRealPct: 0.1, limiarPct: 2, umACada: 467 }));
+  assert.match(frase!, /Só 1 em cada 467/);
+});
+
+test("fraseNavegacaoPorPerfil: acima do limiar -> não afirma \"pouco usado\"", () => {
+  const frase = fraseNavegacaoPorPerfil(resumo({ usoRealPct: 5, limiarPct: 2, umACada: 20 }));
+  assert.doesNotMatch(frase!, /Só/);
+  assert.match(frase!, /acima do mínimo/);
+});
+
+test("fraseNavegacaoPorPerfil: sem visitantes na home -> null", () => {
+  assert.equal(fraseNavegacaoPorPerfil(resumo({ homeVisitors: 0, umACada: 0 })), null);
 });

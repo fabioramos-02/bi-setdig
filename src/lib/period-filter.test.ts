@@ -28,6 +28,18 @@ test("mes agrega por YYYY-MM", () => {
   assert.equal(jan2026?.visitas, 30); // 10 + 20
 });
 
+test("semana/mes truncam nas ultimas 12 (nao vira ruido de anos de historico)", () => {
+  const muitosMeses: VisitaDiaria[] = [];
+  for (let ano = 2024; ano <= 2026; ano++) {
+    for (let mes = 1; mes <= 12; mes++) {
+      muitosMeses.push({ data: `${ano}-${String(mes).padStart(2, "0")}-01`, visitas: 1, visitantesUnicos: 1, acoes: 1 });
+    }
+  }
+  const r = aplicarFiltroPeriodo(muitosMeses, { tipo: "mes", dataRef: "2026-12-31" });
+  assert.equal(r.length, 12);
+  assert.equal(r[r.length - 1].rotulo, "2026-12");
+});
+
 test("ano agrega por YYYY", () => {
   const estado: PeriodoState = { tipo: "ano", dataRef: "2027-12-31" };
   const r = aplicarFiltroPeriodo(dados, estado);

@@ -1,4 +1,16 @@
-export function MetricCard({ label, value, sub }: { label: string; value: string | number; sub?: string }) {
+import type { LucideIcon } from "lucide-react";
+
+export function MetricCard({
+  label,
+  value,
+  sub,
+  icon: Icon,
+}: {
+  label: string;
+  value: string | number;
+  sub?: string;
+  icon?: LucideIcon;
+}) {
   return (
     <div
       style={{
@@ -8,7 +20,8 @@ export function MetricCard({ label, value, sub }: { label: string; value: string
         background: "var(--ds-color-background)",
       }}
     >
-      <div style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm mb-1">
+      <div style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm mb-1 flex items-center gap-1.5">
+        {Icon && <Icon size={16} aria-hidden style={{ color: "var(--ds-color-text-muted)" }} />}
         {label}
       </div>
       <div style={{ color: "var(--ds-color-primary-600)" }} className="text-3xl font-semibold">

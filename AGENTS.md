@@ -142,14 +142,26 @@ agir agora? onde investir? qual o risco? (Origem: revisão de 2026-07 da Visão
 Geral do Portal Único por gestor real — nota 6,5/10, "muito orientada para
 métrica, pouco para gestão".)
 
-- **Ordem de leitura padrão de toda Visão Geral:** resumo executivo em texto
-  (3-4 frases geradas em `lib/`) → saúde (semáforo verde/amarelo/vermelho com
-  frase justificando contra o histórico — nunca cor sem palavra) → KPIs →
-  tendência com contexto (comparação com o ano anterior/sazonalidade, sem
-  repetir o que o texto já disse) → destaques/insights → pontos de atenção
-  (bullets acionáveis; sem recomendação aplicável, a seção some — nunca bullet
-  de enchimento). Domínio sem histórico comparável degrada honestamente:
-  omite a saúde e diz numa linha por quê (ver `lib/saude-portal.ts`).
+- **Pergunta de negócio como critério de entrada.** Toda seção nova da Visão
+  Geral precisa justificar a própria existência respondendo explicitamente a
+  uma pergunta de negócio que apoie uma decisão de gestão. Se ela só
+  apresenta números sem apoiar decisão, provavelmente pertence a uma aba
+  analítica, não à Visão Geral.
+- **Ordem de leitura padrão de toda Visão Geral (formato Executive Briefing):**
+  4 blocos narrativos, nessa ordem — **Situação Geral** (o que aconteceu:
+  resumo executivo em texto, 3-4 frases geradas em `lib/`, → saúde — semáforo
+  verde/amarelo/vermelho com frase justificando contra o histórico, nunca cor
+  sem palavra — → KPIs de escala [visitas/visitantes únicos] → tendência com
+  contexto, comparação com o ano anterior/sazonalidade, sem repetir o que o
+  texto já disse) → **Achados** (o que significa: serviço/órgão em destaque,
+  navegação por perfil pouco usada e demais leituras que o dado sustenta
+  direto — sem hipótese causal especulativa) → **Impacto pra Gestão** (KPIs de
+  alcance/experiência: municípios com acesso, páginas por visita) → **Pontos
+  de atenção** (onde agir: bullets acionáveis, já absorve o que seria "risco"
+  — não duplicar numa seção de risco à parte; sem recomendação aplicável, a
+  seção some — nunca bullet de enchimento). Domínio sem histórico comparável
+  degrada honestamente: omite a saúde e diz numa linha por quê (ver
+  `lib/saude-portal.ts`).
 - **Número nunca anda sozinho.** Todo KPI carrega referência: total ("47 de 79
   municípios"), histórico ou meta. Número absoluto sem base de comparação não
   responde "está bom ou ruim?".

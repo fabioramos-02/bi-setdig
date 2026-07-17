@@ -115,10 +115,29 @@ body {
 
   body {
     background: #ffffff;
+    /* Sem isso o navegador descarta cor de fundo na impressão — as barras do
+       RankingBarChart (fundo colorido em <div>, não SVG) saíam vazias no PDF.
+       print-color-adjust é herdada, então cascateia pra todos os filhos. */
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
   a[href]::after {
     content: none;
+  }
+
+  /* Cabeçalho de seção não fica órfão no fim da página — segue junto do
+     conteúdo (evitava "Achados" sozinho no rodapé da 1ª página). */
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+
+  /* <details> colapsado esconde o conteúdo no papel — revela a lista (ex.
+     municípios sem acesso) no PDF. Escopado por classe pra não expandir os
+     outros <details> do app. */
+  details.print-expandir > *:not(summary) {
+    display: block !important;
   }
 
   /* Tabs.tsx: painéis inativos ficam com [hidden] pra não montar/desmontar

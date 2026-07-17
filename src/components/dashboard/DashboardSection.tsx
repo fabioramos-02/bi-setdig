@@ -8,7 +8,7 @@ export function DashboardSection({
   action?: React.ReactNode;
 }) {
   return (
-    <section className="mb-8 break-inside-avoid">
+    <section className="mb-4 break-inside-avoid">
       <div className="flex items-center justify-between mb-3">
         <h2 style={{ color: "var(--ds-color-text-primary)" }} className="text-lg font-semibold">
           {title}

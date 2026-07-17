@@ -1,4 +1,4 @@
-import type { ServicoAcessado, DemandaOrgao } from "./data.ts";
+import type { ServicoAcessado, DemandaOrgao, PerfilResumo } from "./data.ts";
 import type { Recomendacao } from "./saude-portal.ts";
 
 /**
@@ -34,15 +34,17 @@ export function pctSemOrgao(servicos: ServicoAcessado[]): number {
   return Math.round((semOrgao / total) * 100);
 }
 
-/** 1 frase pro resumo executivo — serviço mais procurado + órgão que
- * concentra a demanda (nunca 2 frases soltas pra 2 números do mesmo tema). */
-export function fraseServicoOrgao(servicoTop: ServicoTop | null, orgaoTop: OrgaoTop | null): string | null {
-  if (servicoTop && orgaoTop) {
-    return `O serviço mais procurado foi "${servicoTop.nome}", e ${orgaoTop.orgao} concentrou ${orgaoTop.pct.toFixed(0)}% da demanda por serviços no período.`;
-  }
-  if (servicoTop) return `O serviço mais procurado foi "${servicoTop.nome}".`;
-  if (orgaoTop) return `${orgaoTop.orgao} concentrou ${orgaoTop.pct.toFixed(0)}% da demanda por serviços no período.`;
-  return null;
+/** Achado pra Visão Geral: o cidadão acha o serviço pela navegação por
+ * perfil (Cidadão/Empresa/Servidor Público/Gestão Pública), ou vai direto
+ * pro que precisa? Honesto nos 2 sentidos — nunca afirma "pouco usado"
+ * quando o uso está acima do mínimo considerado relevante (`limiarPct`,
+ * ver transform/perfil.py::ADOPTION_THRESHOLD). */
+export function fraseNavegacaoPorPerfil(resumo: PerfilResumo): string | null {
+  if (resumo.homeVisitors <= 0 || resumo.umACada <= 0) return null;
+  const umACada = resumo.umACada.toLocaleString("pt-BR");
+  return resumo.usoRealPct < resumo.limiarPct
+    ? `Só 1 em cada ${umACada} visitantes da página inicial chega a um serviço pela navegação por perfil (Cidadão, Empresa, Servidor Público, Gestão Pública) — a maior parte busca direto o serviço que precisa.`
+    : `1 em cada ${umACada} visitantes da página inicial chega a um serviço pela navegação por perfil — acima do mínimo considerado relevante (${resumo.limiarPct}%).`;
 }
 
 /** Órgão com ≥40% da demanda por serviços — dependência de 1 órgão só pro

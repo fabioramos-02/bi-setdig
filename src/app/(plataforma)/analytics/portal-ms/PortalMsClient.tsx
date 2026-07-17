@@ -17,13 +17,12 @@ import { usePeriodo } from "@/lib/periodo-context";
 import {
   calcularInsightBusca,
   calcularInsightPagina,
-  calcularInsightVisitas,
   calcularInsightNavegador,
   calcularInsightDispositivo,
 } from "@/lib/insights";
-import { calcularSaude, calcularContextoAnual, calcularNavegacao, gerarResumoExecutivo, gerarRecomendacoes } from "@/lib/saude-portal";
-import { calcularServicoTop, calcularOrgaoTop, fraseServicoOrgao, recomendacaoConcentracao, pctSemOrgao } from "@/lib/servicos-portal";
-import { MUNICIPIOS_MS, municipiosComAcesso, municipiosSemAcesso } from "@/lib/municipios-ms";
+import { calcularSaude, calcularContextoAnual, calcularNavegacao, gerarRecomendacoes } from "@/lib/saude-portal";
+import { calcularServicoTop, calcularOrgaoTop, recomendacaoConcentracao, pctSemOrgao, fraseNavegacaoPorPerfil } from "@/lib/servicos-portal";
+import { municipiosSemAcesso } from "@/lib/municipios-ms";
 import { construirContexto } from "@/lib/pagina-tipo";
 import type {
   VisitaDiaria,
@@ -175,7 +174,6 @@ export function PortalMsClient({
   const kpis = useMemo(() => resumoDoPeriodo(diarias, estado), [diarias, estado]);
   const insightBusca = calcularInsightBusca(buscaAtual, buscaTotalAtual);
   const insightPagina = calcularInsightPagina(paginasAtual);
-  const insightVisitas = calcularInsightVisitas(tendencia, estado.tipo);
   const insightNavegador = calcularInsightNavegador(navegadoresAtual);
   const insightDispositivo = calcularInsightDispositivo(dispositivosAtual);
   const rotuloPeriodo = ROTULO_PERIODO[estado.tipo];
@@ -197,19 +195,7 @@ export function PortalMsClient({
   const servicoTop = calcularServicoTop(servicosAcessadosAtual);
   const orgaoTop = calcularOrgaoTop(demandaPorOrgaoAtual);
   const concentracao = recomendacaoConcentracao(orgaoTop);
-  const resumo = gerarResumoExecutivo({
-    kpis,
-    rotuloPeriodo,
-    saude,
-    insightVisitas,
-    insightBusca: statusBreakdown === "ok" ? insightBusca : null,
-    navegacao,
-    // Conta sobre a lista oficial (não `cidadesAtual.length`) pra bater com o
-    // KPI e com os ausentes — ver municipios-ms.ts.
-    municipiosComAcesso: municipiosComAcesso(cidadesAtual).length,
-    totalMunicipios: MUNICIPIOS_MS.length,
-    fraseServicoOrgao: fraseServicoOrgao(servicoTop, orgaoTop),
-  });
+  const fraseNavegacaoPerfil = fraseNavegacaoPorPerfil(perfilAtual.resumo);
   const recomendacoes = gerarRecomendacoes({
     saude,
     insightDispositivo,
@@ -225,14 +211,10 @@ export function PortalMsClient({
       content: (
         <VisaoGeralTab
           kpis={kpis}
-          rotuloPeriodo={rotuloPeriodo}
-          rotuloSnapshot={rotuloSnapshot}
           cidadesAtual={cidadesAtual}
           tendencia={tendencia}
           saude={saude}
-          resumo={resumo}
           contextoAnual={contextoAnual}
-          navegacao={navegacao}
           recomendacoes={recomendacoes}
           insightBusca={insightBusca}
           status={statusBreakdown}
@@ -241,6 +223,8 @@ export function PortalMsClient({
           servicoTop={servicoTop}
           orgaoTop={orgaoTop}
           pctServicoSemOrgao={pctSemOrgao(servicosAcessadosAtual)}
+          fraseNavegacaoPerfil={fraseNavegacaoPerfil}
+          matchRate={matchRate}
         />
       ),
     },
@@ -254,7 +238,9 @@ export function PortalMsClient({
           navegadoresAtual={navegadoresAtual}
           insightNavegador={insightNavegador}
           dispositivosAtual={dispositivosAtual}
+          insightDispositivo={insightDispositivo}
           horariosAtual={horariosAtual}
+          navegacao={navegacao}
           status={statusBreakdown}
         />
       ),

@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { MUNICIPIOS_MS, municipiosComAcesso, municipiosSemAcesso } from "./municipios-ms.ts";
+import { MUNICIPIOS_MS, municipiosComAcesso, municipiosSemAcesso, slugIbge } from "./municipios-ms.ts";
 
 test("MS tem exatamente 79 municipios, sem duplicata", () => {
   assert.equal(MUNICIPIOS_MS.length, 79);
@@ -52,4 +52,11 @@ test("com + sem acesso sempre fecha em 79, mesmo com ruido de geolocalizacao", (
   assert.equal(com.length, 2); // só os 2 municípios reais
   assert.equal(com.length + sem.length, MUNICIPIOS_MS.length);
   assert.equal(new Set([...com, ...sem]).size, 79); // sem sobreposição
+});
+
+test("slugIbge: acento, espaço e caixa viram o padrão de URL do IBGE", () => {
+  assert.equal(slugIbge("Ponta Porã"), "ponta-pora");
+  assert.equal(slugIbge("Água Clara"), "agua-clara");
+  assert.equal(slugIbge("São Gabriel do Oeste"), "sao-gabriel-do-oeste");
+  assert.equal(slugIbge("Aparecida do Taboado"), "aparecida-do-taboado");
 });

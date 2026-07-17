@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { calcularSaude, calcularContextoAnual, calcularNavegacao, gerarResumoExecutivo, gerarRecomendacoes } from "./saude-portal.ts";
+import { calcularSaude, calcularContextoAnual, calcularNavegacao, gerarRecomendacoes } from "./saude-portal.ts";
 import type { PeriodoState } from "./period-filter.ts";
 import type { VisitaDiaria } from "./data.ts";
 
@@ -151,40 +151,6 @@ test("calcularNavegacao: sem ano anterior -> variacao null (numero ainda sai)", 
 test("calcularNavegacao: zero visitas -> null (nao divide por zero)", () => {
   const r = calcularNavegacao({ visitas: 0, visitantesUnicos: 0, acoes: 0 }, [], { tipo: "mes", dataRef: "2026-07-01" }, MIN, MAX);
   assert.equal(r, null);
-});
-
-test("gerarResumoExecutivo: monta frases pulando pecas nulas", () => {
-  const r = gerarResumoExecutivo({
-    kpis: { visitas: 1000, visitantesUnicos: 500, acoes: 2000 },
-    rotuloPeriodo: "no mês",
-    saude: { nivel: "saudavel", variacaoPct: 2, frase: "As visitas este mês estão no ritmo típico." },
-    insightVisitas: null,
-    insightBusca: { termo: "IPVA", buscas: 833, participacaoPct: 25, baseTotalReal: false },
-    navegacao: { paginasPorVisita: 2.1, variacaoAnualPct: 5 },
-    municipiosComAcesso: 47,
-    totalMunicipios: 79,
-  });
-  assert.ok(r?.includes("1.000 visitas"));
-  assert.ok(r?.includes("ritmo típico"));
-  assert.ok(r?.includes("IPVA"));
-  assert.ok(r?.includes("47 dos 79"));
-  assert.ok(r?.includes("2,1 páginas"));
-});
-
-test("gerarResumoExecutivo: menos de 2 pecas -> null", () => {
-  const r = gerarResumoExecutivo({
-    kpis: { visitas: 0, visitantesUnicos: 0, acoes: 0 },
-    rotuloPeriodo: "no mês",
-    saude: null,
-    insightVisitas: null,
-    insightBusca: null,
-    navegacao: null,
-    municipiosComAcesso: 0,
-    totalMunicipios: 79,
-  });
-  // sempre tem >= 2 frases (visitas + municípios) — este caso testa que a
-  // função nao quebra com tudo nulo, nao que ela retorne null aqui.
-  assert.ok(r !== null);
 });
 
 test("gerarRecomendacoes: nada aplicavel -> lista vazia", () => {
