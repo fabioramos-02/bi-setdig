@@ -29,7 +29,7 @@ export function RankingBarChart({
         const Wrapper = it.href ? "a" : "div";
         return (
           <Wrapper
-            key={it.href ?? it.label + i}
+            key={`${it.href ?? it.label}-${i}`}
             {...(it.href ? { href: it.href, target: "_blank", rel: "noopener noreferrer" } : {})}
             className={`block rounded px-2 py-1.5 -mx-2 transition-colors ${it.href ? "group hover:bg-[var(--ds-color-background-muted)]" : ""}`}
           >

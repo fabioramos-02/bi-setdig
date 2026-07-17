@@ -134,11 +134,16 @@ export function topServicosLive(rows: MatomoRow[], inventario: CartaRelacao[], n
   const index = buildIndex(rows);
   const ctx = construirContexto(inventario);
 
-  const linhas: ServicoAcessado[] = [];
+  // Agrupa por slug da carta — a mesma carta pode ser alcançada por mais de
+  // 1 categoria no site real (ADR-012); sem agrupar, ela apareceria 2x no
+  // ranking com visitas divididas.
+  const porSlug = new Map<string, ServicoAcessado>();
   for (const [path, visitas] of index) {
     const classificado = classificarPagina(path, ctx);
     if (classificado.tipo !== "servico") continue;
-    linhas.push({ servico: classificado.nome, orgaoSigla: classificado.orgaoSigla ?? null, path, visitas });
+    const atual = porSlug.get(classificado.slug!);
+    if (atual) atual.visitas += visitas;
+    else porSlug.set(classificado.slug!, { servico: classificado.nome, orgaoSigla: classificado.orgaoSigla ?? null, path, visitas });
   }
-  return linhas.sort((a, b) => b.visitas - a.visitas).slice(0, n);
+  return [...porSlug.values()].sort((a, b) => b.visitas - a.visitas).slice(0, n);
 }

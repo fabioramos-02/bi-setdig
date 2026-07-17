@@ -8,10 +8,8 @@ import type { InsightBusca } from "@/lib/insights";
 import type { ResumoPeriodo, PontoAgregado } from "@/lib/period-filter";
 import type { SaudePortal, ContextoAnual, Recomendacao, Navegacao } from "@/lib/saude-portal";
 import type { ServicoTop, OrgaoTop } from "@/lib/servicos-portal";
-import type { Pagina, Cidade, ServicoAcessado } from "@/lib/data";
+import type { Cidade, ServicoAcessado } from "@/lib/data";
 import { municipiosComAcesso, municipiosSemAcesso, MUNICIPIOS_MS } from "@/lib/municipios-ms";
-import { labelPagina } from "@/lib/pagina-label";
-import type { ContextoSemantico } from "@/lib/pagina-tipo";
 
 const COR_NIVEL: Record<SaudePortal["nivel"], string> = {
   saudavel: "var(--ds-color-success)",
@@ -40,11 +38,9 @@ export function VisaoGeralTab({
   contextoAnual,
   navegacao,
   recomendacoes,
-  paginaTop,
   insightBusca,
   status,
   onIrPara,
-  ctxSemantico,
   servicosMaisAcessados,
   servicoTop,
   orgaoTop,
@@ -60,11 +56,9 @@ export function VisaoGeralTab({
   contextoAnual: ContextoAnual | null;
   navegacao: Navegacao | null;
   recomendacoes: Recomendacao[];
-  paginaTop: Pagina | null;
   insightBusca: InsightBusca | null;
   status: StatusIntervalo;
   onIrPara: (id: string) => void;
-  ctxSemantico: ContextoSemantico;
   servicosMaisAcessados: ServicoAcessado[];
   servicoTop: ServicoTop | null;
   orgaoTop: OrgaoTop | null;
@@ -125,9 +119,17 @@ export function VisaoGeralTab({
           <summary className="text-sm cursor-pointer" style={{ color: "var(--ds-color-text-secondary)" }}>
             Ver os {semAcesso.length} municípios sem acesso no período
           </summary>
-          <p className="text-sm mt-2" style={{ color: "var(--ds-color-text-secondary)" }}>
-            {semAcesso.join(", ")}
-          </p>
+          <div className="flex flex-wrap gap-2 mt-2">
+            {semAcesso.map((m) => (
+              <span
+                key={m}
+                className="text-xs px-2.5 py-1 rounded-full"
+                style={{ background: "var(--ds-color-background-muted)", color: "var(--ds-color-text-secondary)" }}
+              >
+                {m}
+              </span>
+            ))}
+          </div>
         </details>
       )}
 
@@ -168,7 +170,7 @@ export function VisaoGeralTab({
         <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold mb-3">
           Destaques
         </h3>
-        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           <button type="button" onClick={() => onIrPara("servicos")} className="text-left">
             <MetricCard
               label="Serviço mais procurado"
@@ -181,13 +183,6 @@ export function VisaoGeralTab({
               label="Órgão com mais demanda"
               value={orgaoTop?.orgaoSigla ?? "—"}
               sub={orgaoTop ? `${orgaoTop.pct.toFixed(0)}% da demanda por serviços` : undefined}
-            />
-          </button>
-          <button type="button" onClick={() => onIrPara("paginas")} className="text-left">
-            <MetricCard
-              label={`Página mais acessada ${rotuloSnapshot}`}
-              value={paginaTop ? labelPagina(paginaTop.url, ctxSemantico).label : "—"}
-              sub={paginaTop ? `${paginaTop.visitas.toLocaleString("pt-BR")} visitas` : undefined}
             />
           </button>
           <button type="button" onClick={() => onIrPara("busca")} className="text-left">

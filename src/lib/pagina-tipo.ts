@@ -121,7 +121,42 @@ export function classificarPagina(url: string, ctx: ContextoSemantico): PaginaCl
   if (p0n === "noticias") return { tipo: "noticia", nome: "Notícia" };
   if (p0n === "buscar") return { tipo: "busca", nome: "Busca no portal" };
 
+  // Bucket de agregação do Matomo (`/{categoria}/ - Others`): páginas de
+  // serviço que o Matomo não desagregou — não é 1 página específica, é
+  // "o resto" do tema. Cobre " - Others", "-Others", "Others".
+  if (p1 && normalizar(p1).replace(/^-\s*/, "") === "others") {
+    return { tipo: "lista-categoria", nome: `Outras páginas de ${labelCategoria(p0)}`, categoria: p0 };
+  }
+  // `/categoria/{slug}` — página real do portal que lista os serviços de um
+  // tema (distinta de `/{slug}` sozinho, tratado abaixo).
+  if (p0n === "categoria" && p1) {
+    return { tipo: "lista-categoria", nome: `Lista de serviços de ${labelCategoria(p1)}`, categoria: p1 };
+  }
+
   if (!p1) return { tipo: "lista-categoria", nome: `Lista de serviços de ${labelCategoria(p0)}`, categoria: p0 };
 
   return { tipo: "outro", nome: "/" + partes.join("/") };
+}
+
+/**
+ * Classifica e agrega por IDENTIDADE resolvida — não por URL crua. A mesma
+ * carta/órgão pode ser alcançada por mais de 1 URL (ex. 2 categorias
+ * diferentes levando à mesma carta); sem agrupar, a UI mostra a mesma
+ * entidade 2x (visitas divididas, e no React 2 keys idênticas — foi assim
+ * que o ranking de páginas quebrou em produção). Chave de agrupamento:
+ * slug da carta (serviço), sigla do órgão, ou nome (demais tipos).
+ */
+export function agruparPaginasClassificadas(
+  paginas: { url: string; visitas: number }[],
+  ctx: ContextoSemantico,
+): Array<PaginaClassificada & { visitas: number }> {
+  const porChave = new Map<string, PaginaClassificada & { visitas: number }>();
+  for (const p of paginas) {
+    const classificado = classificarPagina(p.url, ctx);
+    const chave = `${classificado.tipo}:${classificado.slug ?? classificado.orgaoSigla ?? classificado.nome}`;
+    const atual = porChave.get(chave);
+    if (atual) atual.visitas += p.visitas;
+    else porChave.set(chave, { ...classificado, visitas: p.visitas });
+  }
+  return [...porChave.values()].sort((a, b) => b.visitas - a.visitas);
 }

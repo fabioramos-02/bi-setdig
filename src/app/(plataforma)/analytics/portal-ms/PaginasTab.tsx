@@ -6,7 +6,7 @@ import { RankingBarChart } from "@/components/charts/RankingBarChart";
 import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
 import { ChartLoading } from "@/components/dashboard/ChartLoading";
 import { labelPagina } from "@/lib/pagina-label";
-import type { ContextoSemantico } from "@/lib/pagina-tipo";
+import { agruparPaginasClassificadas, type ContextoSemantico } from "@/lib/pagina-tipo";
 import type { InsightPagina } from "@/lib/insights";
 import type { Pagina } from "@/lib/data";
 
@@ -33,10 +33,14 @@ export function PaginasTab({
     return <EmptyCard message="Sem páginas acessadas no período." />;
   }
 
-  const ranking = paginas.map((p) => {
-    const { label, href } = labelPagina(p.url, ctxSemantico);
-    return { label, valor: p.visitas, href };
-  });
+  // Agrupa por identidade resolvida, não por URL crua — a mesma carta pode
+  // ser alcançada por mais de uma categoria no site real (ADR-012); sem
+  // agrupar, ela aparece 2x no ranking (visitas divididas, key duplicada).
+  const ranking = agruparPaginasClassificadas(paginas, ctxSemantico).map((p) => ({
+    label: p.nome,
+    valor: p.visitas,
+    href: p.href,
+  }));
 
   return (
     <div className="flex flex-col gap-6">

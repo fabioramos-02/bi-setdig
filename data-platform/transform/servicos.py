@@ -86,7 +86,11 @@ def top_servicos_acessados(page_urls_raw: list, inventario: list[dict] | None = 
     conhecidos = _nomes_conhecidos()
     cartas = _carta_por_slug(inventario or [])
 
-    linhas: list[dict] = []
+    # Agrupa por slug da carta (quando casou) — a mesma carta pode ser
+    # alcançada por mais de uma categoria no site real (ADR-012); sem
+    # agrupar, apareceria 2x no ranking com visitas divididas. Path sem
+    # match usa o próprio path como chave (não há identidade melhor).
+    linhas_por_chave: dict[str, dict] = {}
     for path, visitas in index.items():
         partes = [p for p in path.split("/") if p]
         if len(partes) < 2 or partes[0] not in CATEGORIAS_SERVICO:
@@ -97,13 +101,18 @@ def top_servicos_acessados(page_urls_raw: list, inventario: list[dict] | None = 
             continue
         carta = cartas.get(slug.lower())
         nome = carta["titulo"] if carta else (conhecidos.get(path) or _nome_do_slug(slug))
-        linhas.append({
-            "servico": nome,
-            "orgaoSigla": carta["orgaoSigla"] if carta else None,
-            "path": path,
-            "visitas": int(visitas),
-        })
+        chave = f"carta:{carta['slug']}" if carta else f"path:{path}"
+        if chave in linhas_por_chave:
+            linhas_por_chave[chave]["visitas"] += int(visitas)
+        else:
+            linhas_por_chave[chave] = {
+                "servico": nome,
+                "orgaoSigla": carta["orgaoSigla"] if carta else None,
+                "path": path,
+                "visitas": int(visitas),
+            }
 
+    linhas = list(linhas_por_chave.values())
     linhas.sort(key=lambda r: -r["visitas"])
     return linhas[:n]
 

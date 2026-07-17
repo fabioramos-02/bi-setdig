@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { construirContexto, classificarPagina } from "./pagina-tipo.ts";
+import { construirContexto, classificarPagina, agruparPaginasClassificadas } from "./pagina-tipo.ts";
 import type { CartaRelacao } from "@/lib/data";
 
 function carta(over: Partial<CartaRelacao>): CartaRelacao {
@@ -109,4 +109,62 @@ test("querystring e caixa alta não quebram o match", () => {
   const ctx = construirContexto(inventario);
   const c = classificarPagina("https://www.ms.gov.br/Financas-E-Impostos/Ipva-Consulta-De-Debito54?x=1", ctx);
   assert.equal(c.tipo, "servico");
+});
+
+test("/categoria/{slug} -> lista de serviços do tema (não confundir com /{slug} sozinho)", () => {
+  const ctx = construirContexto(inventario);
+  const c = classificarPagina("https://www.ms.gov.br/categoria/financas-e-impostos", ctx);
+  assert.equal(c.tipo, "lista-categoria");
+  assert.equal(c.nome, "Lista de serviços de Financas e impostos");
+});
+
+test("/categoria/administracao-publica -> Administracao publica", () => {
+  const ctx = construirContexto(inventario);
+  const c = classificarPagina("https://www.ms.gov.br/categoria/administracao-publica", ctx);
+  assert.equal(c.nome, "Lista de serviços de Administracao publica");
+});
+
+test("bucket de agregação do Matomo ' - Others' -> honesto, sem path cru", () => {
+  const ctx = construirContexto(inventario);
+  const c1 = classificarPagina("/financas-e-impostos/ - Others", ctx);
+  assert.equal(c1.tipo, "lista-categoria");
+  assert.equal(c1.nome, "Outras páginas de Financas e impostos");
+  const c2 = classificarPagina("/noticias/ - Others", ctx);
+  // "noticias" já tem regra própria (prioridade sobre o bucket Others).
+  assert.equal(c2.tipo, "noticia");
+});
+
+test("variações do sufixo Others (case, hífen, espaço) casam", () => {
+  const ctx = construirContexto(inventario);
+  assert.equal(classificarPagina("/financas-e-impostos/Others", ctx).nome, "Outras páginas de Financas e impostos");
+  assert.equal(classificarPagina("/financas-e-impostos/-Others", ctx).nome, "Outras páginas de Financas e impostos");
+  assert.equal(classificarPagina("/financas-e-impostos/ - others", ctx).nome, "Outras páginas de Financas e impostos");
+});
+
+test("agruparPaginasClassificadas: 2 URLs cruas da MESMA carta (categorias diferentes) viram 1 linha só, visitas somadas", () => {
+  const ctx = construirContexto(inventario);
+  const linhas = agruparPaginasClassificadas(
+    [
+      { url: "/financas-e-impostos/ipva-consulta-de-debito54", visitas: 100 },
+      { url: "/administracao-publica/ipva-consulta-de-debito54", visitas: 30 },
+    ],
+    ctx,
+  );
+  assert.equal(linhas.length, 1);
+  assert.equal(linhas[0].nome, "IPVA - consulta de débito");
+  assert.equal(linhas[0].visitas, 130);
+});
+
+test("agruparPaginasClassificadas: entidades diferentes não se misturam, ordena desc", () => {
+  const ctx = construirContexto(inventario);
+  const linhas = agruparPaginasClassificadas(
+    [
+      { url: "/transito-e-transportes/emitir-guia-de-licenciamento-anual100", visitas: 10 },
+      { url: "/", visitas: 50 },
+    ],
+    ctx,
+  );
+  assert.equal(linhas.length, 2);
+  assert.equal(linhas[0].nome, "Página inicial");
+  assert.equal(linhas[1].nome, "Emitir guia de licenciamento anual");
 });

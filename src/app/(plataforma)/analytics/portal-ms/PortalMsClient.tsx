@@ -178,7 +178,6 @@ export function PortalMsClient({
   const insightVisitas = calcularInsightVisitas(tendencia, estado.tipo);
   const insightNavegador = calcularInsightNavegador(navegadoresAtual);
   const insightDispositivo = calcularInsightDispositivo(dispositivosAtual);
-  const paginaTop = paginasAtual[0] ?? null;
   const rotuloPeriodo = ROTULO_PERIODO[estado.tipo];
   // Breakdowns de categoria só podem usar o rótulo que o usuário escolheu
   // ("no intervalo") quando o dado é mesmo ao vivo pro intervalo (liveData) —
@@ -235,11 +234,9 @@ export function PortalMsClient({
           contextoAnual={contextoAnual}
           navegacao={navegacao}
           recomendacoes={recomendacoes}
-          paginaTop={paginaTop}
           insightBusca={insightBusca}
           status={statusBreakdown}
           onIrPara={setAbaAtiva}
-          ctxSemantico={ctxSemantico}
           servicosMaisAcessados={servicosAcessadosAtual}
           servicoTop={servicoTop}
           orgaoTop={orgaoTop}
