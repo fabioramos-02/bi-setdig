@@ -16,7 +16,6 @@ import { aplicarFiltroPeriodo, chavePeriodoFixo, resumoDoPeriodo, intervaloDoBuc
 import { usePeriodo } from "@/lib/periodo-context";
 import {
   calcularInsightBusca,
-  calcularInsightPagina,
   calcularInsightNavegador,
   calcularInsightDispositivo,
   calcularInsightConcentracaoGeo,
@@ -175,7 +174,6 @@ export function PortalMsClient({
   const tendencia = useMemo(() => aplicarFiltroPeriodo(diarias, estado), [diarias, estado]);
   const kpis = useMemo(() => resumoDoPeriodo(diarias, estado), [diarias, estado]);
   const insightBusca = calcularInsightBusca(buscaAtual, buscaTotalAtual);
-  const insightPagina = calcularInsightPagina(paginasAtual);
   const insightNavegador = calcularInsightNavegador(navegadoresAtual);
   const insightDispositivo = calcularInsightDispositivo(dispositivosAtual);
   const insightGeo = calcularInsightConcentracaoGeo(cidadesAtual);
@@ -265,7 +263,7 @@ export function PortalMsClient({
         <PaginasTab
           paginas={paginasAtual}
           rotuloPeriodo={rotuloSnapshot}
-          insightPagina={insightPagina}
+          totalVisitas={kpis.visitas}
           status={statusBreakdown}
           ctxSemantico={ctxSemantico}
         />

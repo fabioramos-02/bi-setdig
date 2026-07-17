@@ -6,28 +6,28 @@
     "csatDistribuicao": {
       "1": 193,
       "2": 46,
-      "3": 84,
+      "3": 85,
       "4": 62,
       "5": 87
     },
-    "totalVotos": 472,
-    "clarezaPositivaPct": 46.1,
-    "totalAvaliacoesClareza": 1782
+    "totalVotos": 473,
+    "clarezaPositivaPct": 46.0,
+    "totalAvaliacoesClareza": 1783
   },
   {
     "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
     "orgaoSigla": "SEFAZ MS",
     "csatMedia": 2.6,
     "csatDistribuicao": {
-      "1": 154,
+      "1": 155,
       "2": 37,
       "3": 55,
       "4": 45,
       "5": 70
     },
-    "totalVotos": 361,
-    "clarezaPositivaPct": 44.2,
-    "totalAvaliacoesClareza": 1223
+    "totalVotos": 362,
+    "clarezaPositivaPct": 44.1,
+    "totalAvaliacoesClareza": 1225
   },
   {
     "orgao": "Secretaria de Estado de Educação de Mato Grosso do Sul",
@@ -41,8 +41,8 @@
       "5": 74
     },
     "totalVotos": 280,
-    "clarezaPositivaPct": 57.2,
-    "totalAvaliacoesClareza": 1139
+    "clarezaPositivaPct": 57.1,
+    "totalAvaliacoesClareza": 1143
   },
   {
     "orgao": "Secretaria de Estado de Assistência Social e Direitos Humanos",
@@ -72,7 +72,7 @@
     },
     "totalVotos": 256,
     "clarezaPositivaPct": 76.5,
-    "totalAvaliacoesClareza": 1429
+    "totalAvaliacoesClareza": 1430
   },
   {
     "orgao": "Procuradoria Geral do Estado de Mato Grosso do Sul",
@@ -116,8 +116,8 @@
       "5": 62
     },
     "totalVotos": 118,
-    "clarezaPositivaPct": 70.2,
-    "totalAvaliacoesClareza": 312
+    "clarezaPositivaPct": 69.6,
+    "totalAvaliacoesClareza": 316
   },
   {
     "orgao": "Secretaria de Estado de Saúde de Mato Grosso do Sul",

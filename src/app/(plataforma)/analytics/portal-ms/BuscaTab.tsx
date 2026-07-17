@@ -1,5 +1,6 @@
 import { EmptyCard } from "@/components/ds/EmptyCard";
 import { StoryCard } from "@/components/dashboard/StoryCard";
+import { OportunidadeCard } from "@/components/dashboard/OportunidadeCard";
 import { RankingBarChart } from "@/components/charts/RankingBarChart";
 import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
 import { ChartLoading } from "@/components/dashboard/ChartLoading";
@@ -46,17 +47,7 @@ export function BuscaTab({
           caption={resumo.oQueSignifica}
           comoLer="Combina buscas feitas na caixa de pesquisa interna do portal com termos digitados que aparecem no endereço da página — não inclui quem chegou via Google ou outro buscador externo."
         >
-          <div
-            style={{
-              background: "var(--ds-color-background-muted)",
-              borderLeft: "3px solid var(--ds-color-primary-600)",
-              borderRadius: "var(--ds-radius-sm)",
-              padding: "var(--ds-spacing-12)",
-            }}
-            className="text-sm"
-          >
-            <strong style={{ color: "var(--ds-color-primary-600)" }}>Oportunidade:</strong> {resumo.oportunidade}
-          </div>
+          <OportunidadeCard texto={resumo.oportunidade} />
         </StoryCard>
       )}
 

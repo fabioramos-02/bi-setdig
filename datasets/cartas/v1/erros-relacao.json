@@ -23,7 +23,7 @@
     "conteudo": "Não estou conseguindo colocar a cidade que quero fazer a castração do meu gat9 como faço?",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 83,
+    "diasAberto": 84,
     "createdAt": "2026-04-24T15:07:02.038143-04:00",
     "updatedAt": "2026-04-24T15:07:02.038157-04:00"
   },
@@ -37,7 +37,7 @@
     "conteudo": "Nao consigo fazer boletim de ocorrencia on line",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 377,
+    "diasAberto": 378,
     "createdAt": "2025-07-04T14:50:50.921333-04:00",
     "updatedAt": "2025-07-04T14:50:50.921348-04:00"
   },
@@ -65,7 +65,7 @@
     "conteudo": "Estado rio grande do sul",
     "resolucao": "Erro reportado não é um erro da descrição do serviço.",
     "atendido": true,
-    "diasAberto": 430,
+    "diasAberto": 431,
     "createdAt": "2025-05-12T12:06:47.380297-04:00",
     "updatedAt": "2025-05-30T09:41:54.802990-04:00"
   },
@@ -79,7 +79,7 @@
     "conteudo": "não existe data para agendamento disponivel o ano todo de 2024",
     "resolucao": "A agenda é aberta  todo dia 30 de cada mês,  não havendo vagas basta o requerente se dirigir a qualquer posto de identificação de Estado e comprovar a necessidade e urgência do documento para realizar um encaixe.",
     "atendido": true,
-    "diasAberto": 813,
+    "diasAberto": 814,
     "createdAt": "2024-04-24T10:51:09.217225-04:00",
     "updatedAt": "2024-10-02T16:26:20.044559-04:00"
   },
@@ -93,7 +93,7 @@
     "conteudo": "Não aparece data disponível para agendamento",
     "resolucao": "A agenda é aberta  todo dia 30 de cada mês,  não havendo vagas basta o requerente se dirigir a qualquer posto de identificação de Estado e comprovar a necessidade e urgência do documento para realizar um encaixe.",
     "atendido": true,
-    "diasAberto": 815,
+    "diasAberto": 816,
     "createdAt": "2024-04-22T13:59:44.861792-04:00",
     "updatedAt": "2024-10-02T16:51:47.424984-04:00"
   },
@@ -149,7 +149,7 @@
     "conteudo": "Resolução 127/2001 foi revogada pela Resolução 957/2022",
     "resolucao": "A mesma servidora que reportou o erro é a coordenadora do setor que auxiliou na atualização.",
     "atendido": true,
-    "diasAberto": 898,
+    "diasAberto": 899,
     "createdAt": "2024-01-30T14:30:04.878198-05:00",
     "updatedAt": "2024-09-30T11:20:04.223956-04:00"
   },
@@ -163,7 +163,7 @@
     "conteudo": "No título (link) fala de atualização de endereço de condutor, mas quando abre, aparece a mesma informação que tem no link de atualização de endereço de veículos.",
     "resolucao": "Link atualizado em 10/05/2024.",
     "atendido": true,
-    "diasAberto": 889,
+    "diasAberto": 890,
     "createdAt": "2024-02-08T12:29:41.882690-05:00",
     "updatedAt": "2024-09-30T12:20:03.336082-04:00"
   },
@@ -177,7 +177,7 @@
     "conteudo": "Não há exigência de requerimento e nem cópia da CNH. A certidão é requerida pelo portal, mediante loguin e senha pessoal. A certidão é emitida de forma digital, imediatamente.",
     "resolucao": "Carta atualizada em 22/08/2024.",
     "atendido": true,
-    "diasAberto": 889,
+    "diasAberto": 890,
     "createdAt": "2024-02-08T12:35:49.748260-05:00",
     "updatedAt": "2024-09-30T12:25:43.553224-04:00"
   },
@@ -191,7 +191,7 @@
     "conteudo": "CNH-ÁGIL e não CNH HÁGIL.",
     "resolucao": "Correção realizada com a nomenclatura correta para o serviço.",
     "atendido": true,
-    "diasAberto": 889,
+    "diasAberto": 890,
     "createdAt": "2024-02-08T12:49:15.988716-05:00",
     "updatedAt": "2024-09-30T12:33:44.503618-04:00"
   },
@@ -233,7 +233,7 @@
     "conteudo": "Minha idade no campo obrigatório não vai? Tá tudo certo mais fala que tá errado",
     "resolucao": "O site enfrentou uma breve instabilidade, mas o serviço já foi restabelecido e está funcionando normalmente.",
     "atendido": true,
-    "diasAberto": 864,
+    "diasAberto": 865,
     "createdAt": "2024-03-04T14:05:19.259229-05:00",
     "updatedAt": "2024-10-02T10:28:17.329289-04:00"
   },
@@ -331,7 +331,7 @@
     "conteudo": "CECLGBTQIA+ ESTA NO NOVO ENDEREÇO RUA CEARÁ 984",
     "resolucao": "Endereço atualizado",
     "atendido": true,
-    "diasAberto": 675,
+    "diasAberto": 676,
     "createdAt": "2024-09-09T14:05:37.920374-04:00",
     "updatedAt": "2024-10-07T10:43:11.572704-04:00"
   },
@@ -359,7 +359,7 @@
     "conteudo": "Não é possível clicar em \"acessar Serviço\" pois a opção está aparentemente desabilitada.",
     "resolucao": "Foi encaminhado para validação as alterações necessárias",
     "atendido": true,
-    "diasAberto": 727,
+    "diasAberto": 728,
     "createdAt": "2024-07-19T11:42:21.379846-04:00",
     "updatedAt": "2024-10-08T11:33:54.443010-04:00"
   },
@@ -373,7 +373,7 @@
     "conteudo": "Não funciona a função oferecida pelo site de vocês!",
     "resolucao": "Conforme reunião realizada com as áreas técnicas desta SES/MS em 06/02/2024, esse serviço ficaria inativo.",
     "atendido": true,
-    "diasAberto": 849,
+    "diasAberto": 850,
     "createdAt": "2024-03-19T13:18:38.393200-04:00",
     "updatedAt": "2025-01-23T15:51:10.121347-05:00"
   },
@@ -401,7 +401,7 @@
     "conteudo": "não consigo acessar o serviço online",
     "resolucao": "Já foi resolvido o link.",
     "atendido": true,
-    "diasAberto": 848,
+    "diasAberto": 849,
     "createdAt": "2024-03-20T13:18:07.292588-04:00",
     "updatedAt": "2025-01-29T07:53:58.425695-05:00"
   },
@@ -415,7 +415,7 @@
     "conteudo": "Ao optar pelo assunto, obtenção de vista e cópia, não é possível clicar na opção de acessar este serviço.",
     "resolucao": "Já foi resolvido o link.",
     "atendido": true,
-    "diasAberto": 909,
+    "diasAberto": 910,
     "createdAt": "2024-01-19T14:15:19.543184-05:00",
     "updatedAt": "2025-01-29T07:54:30.251502-05:00"
   },
@@ -429,7 +429,7 @@
     "conteudo": "Não recebo o SMS para efetivar o cadastro",
     "resolucao": "Não é erro referente à carta de serviços. Trata-se de inconsistência do próprio sistema.",
     "atendido": true,
-    "diasAberto": 652,
+    "diasAberto": 653,
     "createdAt": "2024-10-02T15:18:04.056892-04:00",
     "updatedAt": "2025-01-29T08:49:03.510130-05:00"
   },
@@ -443,7 +443,7 @@
     "conteudo": "Acesso ineficiente.",
     "resolucao": "O site pode ter enfrentado uma breve instabilidade, atualmente está funcionando normalmente.",
     "atendido": true,
-    "diasAberto": 793,
+    "diasAberto": 794,
     "createdAt": "2024-05-14T14:26:10.760984-04:00",
     "updatedAt": "2024-10-02T14:38:34.301083-04:00"
   },
@@ -499,7 +499,7 @@
     "conteudo": "Link da página inexistente",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 412,
+    "diasAberto": 413,
     "createdAt": "2025-05-30T12:58:40.831547-04:00",
     "updatedAt": "2025-05-30T12:58:40.831562-04:00"
   },
@@ -527,7 +527,7 @@
     "conteudo": "O SITE MENCIONA CONFORME \"MODELO\" MAS OS MODELOS NÃO ESTÃO PRESENTES ABAIXO E NEM EM ANEXO",
     "resolucao": "Providenciada a adequação do texto na Carta de Serviços.",
     "atendido": true,
-    "diasAberto": 759,
+    "diasAberto": 760,
     "createdAt": "2024-06-17T12:01:37.740188-04:00",
     "updatedAt": "2024-10-03T08:12:27.110492-04:00"
   },
@@ -569,7 +569,7 @@
     "conteudo": "Nao funciona osait",
     "resolucao": "Foi feita diversas pesquisas no site informado e não consta erro.\r\nO site funcionou bem nas várias tentativas.",
     "atendido": true,
-    "diasAberto": 791,
+    "diasAberto": 792,
     "createdAt": "2024-05-16T10:54:23.638244-04:00",
     "updatedAt": "2024-10-08T11:35:01.808586-04:00"
   },
@@ -583,7 +583,7 @@
     "conteudo": "A página não carrega.",
     "resolucao": "Link foi corrigido.",
     "atendido": true,
-    "diasAberto": 925,
+    "diasAberto": 926,
     "createdAt": "2024-01-03T11:59:10.600177-05:00",
     "updatedAt": "2024-10-09T08:23:16.211603-04:00"
   },
@@ -611,7 +611,7 @@
     "conteudo": "aonde esta a pagina do agendamento",
     "resolucao": "O link foi verificado e funciona normalmente.",
     "atendido": true,
-    "diasAberto": 646,
+    "diasAberto": 647,
     "createdAt": "2024-10-08T12:22:01.181860-04:00",
     "updatedAt": "2024-10-28T15:17:52.414926-04:00"
   },
@@ -625,7 +625,7 @@
     "conteudo": "Sistema Inoperante (inútil)",
     "resolucao": "Trata de inconsistência de sistema e não de erro referente a link ou texto da carta de serviços.",
     "atendido": true,
-    "diasAberto": 750,
+    "diasAberto": 751,
     "createdAt": "2024-06-26T14:17:02.367672-04:00",
     "updatedAt": "2025-01-29T08:47:28.613370-05:00"
   },
@@ -639,7 +639,7 @@
     "conteudo": "Criança de 8 anos paga para entrar visitar",
     "resolucao": "No site está descrito que não há custo para visitação.",
     "atendido": true,
-    "diasAberto": 624,
+    "diasAberto": 625,
     "createdAt": "2024-10-30T12:26:37.728030-04:00",
     "updatedAt": "2025-01-30T08:49:26.654780-05:00"
   },
@@ -667,7 +667,7 @@
     "conteudo": "Não consigo acessar o site para fazer boletim de ocorrencia",
     "resolucao": "Foi retirado o link e inserido o endereço da página https://www.pc.ms.gov.br/.",
     "atendido": true,
-    "diasAberto": 759,
+    "diasAberto": 760,
     "createdAt": "2024-06-17T12:24:08.538460-04:00",
     "updatedAt": "2024-09-20T09:25:47.090774-04:00"
   },
@@ -695,7 +695,7 @@
     "conteudo": "Ao clicar nos endereços, diz que não é seguro",
     "resolucao": "Foi retirado o link e inserido o endereço da página https://www.pc.ms.gov.br/.",
     "atendido": true,
-    "diasAberto": 813,
+    "diasAberto": 814,
     "createdAt": "2024-04-24T14:23:42.894285-04:00",
     "updatedAt": "2024-09-20T09:26:51.047222-04:00"
   },
@@ -723,7 +723,7 @@
     "conteudo": "O sistema não permitiu o acesso, apareceu uma mensagem de erro",
     "resolucao": "Foi retirado o link e inserido o endereço da página https://www.pc.ms.gov.br/.",
     "atendido": true,
-    "diasAberto": 784,
+    "diasAberto": 785,
     "createdAt": "2024-05-23T12:54:26.177605-04:00",
     "updatedAt": "2024-09-20T09:27:55.761389-04:00"
   },
@@ -765,7 +765,7 @@
     "conteudo": "Não consigo acessar o link k",
     "resolucao": "Carta atualizada em 22/08/2024.",
     "atendido": true,
-    "diasAberto": 783,
+    "diasAberto": 784,
     "createdAt": "2024-05-24T13:40:12.073667-04:00",
     "updatedAt": "2024-09-30T12:29:35.872517-04:00"
   },
@@ -779,7 +779,7 @@
     "conteudo": "não esta aparecendo essa opção",
     "resolucao": "Atualizei as etapas, e o texto mencionado pelo cidadão.",
     "atendido": true,
-    "diasAberto": 771,
+    "diasAberto": 772,
     "createdAt": "2024-06-05T15:35:12.271397-04:00",
     "updatedAt": "2024-09-30T12:42:52.599817-04:00"
   },
@@ -835,7 +835,7 @@
     "conteudo": "não tem horario disponivrl em nehum mes até mEÇO DE 2027",
     "resolucao": "A agenda é aberta  todo dia 30 de cada mês,  não havendo vagas basta o requerente se dirigir a qualquer posto de identificação de Estado e comprovar a necessidade e urgência do documento para realizar um encaixe.",
     "atendido": true,
-    "diasAberto": 752,
+    "diasAberto": 753,
     "createdAt": "2024-06-24T11:22:02.718569-04:00",
     "updatedAt": "2024-10-02T14:32:34.293338-04:00"
   },
@@ -891,7 +891,7 @@
     "conteudo": "nao consigo,agendar p solicita qa renovação da minha carterinha",
     "resolucao": "Para agendamento referente a confecção de arteira de visitante o interessado deve entrar em contato com o Patronato Penitenciário da cidade onde reside ou da cidade mais próxima. Caso não haja Patronato no local o contato deve ser feito com a Unidade Prisional da cidade onde reside ou mais próxima a fim de facilitar a retirada do documento.",
     "atendido": true,
-    "diasAberto": 714,
+    "diasAberto": 715,
     "createdAt": "2024-08-01T10:49:54.942194-04:00",
     "updatedAt": "2025-02-05T08:27:03.443064-05:00"
   },
@@ -905,7 +905,7 @@
     "conteudo": "Oi",
     "resolucao": "Problema não relatado.",
     "atendido": true,
-    "diasAberto": 588,
+    "diasAberto": 589,
     "createdAt": "2024-12-05T14:13:17.544487-05:00",
     "updatedAt": "2025-02-18T09:36:39.620544-05:00"
   },
@@ -961,7 +961,7 @@
     "conteudo": "Site fora do ar. ERROR",
     "resolucao": "O site http://devir.pc.ms.gov.br/#/ está operando normalmente.",
     "atendido": true,
-    "diasAberto": 633,
+    "diasAberto": 634,
     "createdAt": "2024-10-21T15:42:21.904375-04:00",
     "updatedAt": "2025-07-02T09:52:35.085521-04:00"
   },
@@ -989,7 +989,7 @@
     "conteudo": "Sou de São Paulo",
     "resolucao": "Cidadão é do Estado de SP.",
     "atendido": true,
-    "diasAberto": 230,
+    "diasAberto": 231,
     "createdAt": "2025-11-28T13:41:02.606652-05:00",
     "updatedAt": "2026-02-05T09:56:32.132175-05:00"
   },
@@ -1003,7 +1003,7 @@
     "conteudo": "com quem eu falo para concertar essa coisa. coloco ali no whats e não abre nada",
     "resolucao": "Foi encontrado um problema no preenchimento do serviço, mas já foi corrigido o erro com as devidas alterações necessárias.",
     "atendido": true,
-    "diasAberto": 714,
+    "diasAberto": 715,
     "createdAt": "2024-08-01T14:29:48.341823-04:00",
     "updatedAt": "2024-10-04T15:36:15.880575-04:00"
   },
@@ -1017,7 +1017,7 @@
     "conteudo": "O site pra fazer o agendamento desde ontem está apresentando inconsistência, não está acessível. Roberto e-mail: karigoms@hotmail.com",
     "resolucao": "O site apresentou instabilidade, no entanto, ao realizarmos um novo acesso, notamos que o mesmo foi reestabelecido.",
     "atendido": true,
-    "diasAberto": 728,
+    "diasAberto": 729,
     "createdAt": "2024-07-18T14:25:15.807015-04:00",
     "updatedAt": "2024-08-06T14:27:44.545774-04:00"
   },
@@ -1045,7 +1045,7 @@
     "conteudo": "TUDO QUE SE TENTA NESSES CANAIS NÃO DÁ CERTO- NÃO CORRESPONDE E SÓ OBTEMOS RESPOSTA QUE O CANAL NÃO SE PRESTA PARA RECEBER DENÚNCIA",
     "resolucao": "O serviço foi excluído da Carta de Serviços da Sefaz, tendo em vista que a CGE/OGE elaborou 3 serviços referentes a isso.",
     "atendido": true,
-    "diasAberto": 738,
+    "diasAberto": 739,
     "createdAt": "2024-07-08T14:01:00.240888-04:00",
     "updatedAt": "2025-01-29T08:48:07.834572-05:00"
   },
@@ -1059,7 +1059,7 @@
     "conteudo": "NÃO CONSEGUI ACESSAR O LINK DE BO ON-LINE E TAMBÉM NÃO CONSEGUI ACESSAR O LINK DA DELEGACIA VIRTUAL.",
     "resolucao": "Foi retirado o link e inserido o endereço da página https://www.pc.ms.gov.br/.",
     "atendido": true,
-    "diasAberto": 682,
+    "diasAberto": 683,
     "createdAt": "2024-09-02T14:53:40.779963-04:00",
     "updatedAt": "2024-09-20T09:20:10.859978-04:00"
   },
@@ -1101,7 +1101,7 @@
     "conteudo": "Muito difícil fazer um BO online.",
     "resolucao": "Foi retirado o link e inserido o endereço da página https://www.pc.ms.gov.br/.",
     "atendido": true,
-    "diasAberto": 708,
+    "diasAberto": 709,
     "createdAt": "2024-08-07T14:08:38.989707-04:00",
     "updatedAt": "2024-09-20T09:21:59.516334-04:00"
   },
@@ -1143,7 +1143,7 @@
     "conteudo": "Links fornecidos não funcionam:\n... digitando endereço eletrônico https://www.pc.ms.gov.br > B.O. on line DELEGACIA VIRTUAL > Registrar Boletim de Ocorrência ou clicando diretamente no link: http://devir.pc.ms.gov.br/#/",
     "resolucao": "Foi retirado o link e inserido o endereço da página https://www.pc.ms.gov.br/.",
     "atendido": true,
-    "diasAberto": 742,
+    "diasAberto": 743,
     "createdAt": "2024-07-04T15:28:04.434338-04:00",
     "updatedAt": "2024-09-20T09:24:21.048116-04:00"
   },
@@ -1157,7 +1157,7 @@
     "conteudo": "Nas denúncias está escrito que se pode denunciar \"violência cotra idoso\" quando seroa \"contra\"",
     "resolucao": "Foi retirado o link e inserido o endereço da página https://www.pc.ms.gov.br/.",
     "atendido": true,
-    "diasAberto": 743,
+    "diasAberto": 744,
     "createdAt": "2024-07-03T13:40:57.781756-04:00",
     "updatedAt": "2024-09-20T09:24:43.455271-04:00"
   },
@@ -1171,7 +1171,7 @@
     "conteudo": "Prezados, quais os procedimentos que devo adotar no caso de perca de prazo para download do livro autenticado na JUCEMS ?",
     "resolucao": "Prezados, boa tarde. \r\n\r\nEm caso de perca do prazo para realizar o download do livro digital autenticado, favor contatar a nossa Gerência de Registro pelo fone +55 (67) 3316-4426 ou por e-mail registro@jucems.ms.gov.br.\r\n\r\nObs: A autenticação de livros digitais, são normatizados pela INSTRUÇÃO NORMATIVA DREI/SGD/ME Nº 82, DE 19 DE FEVEREIRO DE 2021 e suas alterações.",
     "atendido": true,
-    "diasAberto": 735,
+    "diasAberto": 736,
     "createdAt": "2024-07-11T11:27:52.226952-04:00",
     "updatedAt": "2024-09-30T12:54:19.769697-04:00"
   },
@@ -1227,7 +1227,7 @@
     "conteudo": "DESDE OUTUBRO DE 2023 QUE O SITE SEJUSP NÃO ABRE AGENDA PARA A CIDADE DE TRêS lAGOAS MS. ACONTECEU COMIGO COM MINHA MÃE E CONHECIDOS",
     "resolucao": "A agenda é aberta  todo dia 30 de cada mês,  não havendo vagas basta o requerente se dirigir a qualquer posto de identificação de Estado e comprovar a necessidade e urgência do documento para realizar um encaixe.",
     "atendido": true,
-    "diasAberto": 703,
+    "diasAberto": 704,
     "createdAt": "2024-08-12T15:22:07.522253-04:00",
     "updatedAt": "2024-10-02T11:37:08.416459-04:00"
   },
@@ -1255,7 +1255,7 @@
     "conteudo": "Cadê o agendamento...",
     "resolucao": "A agenda é aberta  todo dia 30 de cada mês,  não havendo vagas basta o requerente se dirigir a qualquer posto de identificação de Estado e comprovar a necessidade e urgência do documento para realizar um encaixe.",
     "atendido": true,
-    "diasAberto": 723,
+    "diasAberto": 724,
     "createdAt": "2024-07-23T14:14:43.719368-04:00",
     "updatedAt": "2024-10-02T11:40:10.182221-04:00"
   },
@@ -1269,7 +1269,7 @@
     "conteudo": "SUBSJUVENTUDE ESTA NO ENDEREÇO RUA CEARÁ 984",
     "resolucao": "endereço atualizado",
     "atendido": true,
-    "diasAberto": 675,
+    "diasAberto": 676,
     "createdAt": "2024-09-09T14:02:57.379464-04:00",
     "updatedAt": "2024-10-07T10:44:01.561566-04:00"
   },
@@ -1297,7 +1297,7 @@
     "conteudo": "sim SEC SECRETARIA DE ESTADO DA CIDADANIA ESTA NO NOVO ENDEREÇO RUA CEARA 984",
     "resolucao": "endereço atualizado",
     "atendido": true,
-    "diasAberto": 675,
+    "diasAberto": 676,
     "createdAt": "2024-09-09T14:00:35.887962-04:00",
     "updatedAt": "2024-10-07T10:44:27.303099-04:00"
   },
@@ -1339,7 +1339,7 @@
     "conteudo": "não estou conseguindo acessar o serviço",
     "resolucao": "Foi retirado o link e inserido o endereço da página https://www.pc.ms.gov.br/.",
     "atendido": true,
-    "diasAberto": 674,
+    "diasAberto": 675,
     "createdAt": "2024-09-10T12:43:41.998388-04:00",
     "updatedAt": "2024-09-20T09:18:14.848046-04:00"
   },
@@ -1353,7 +1353,7 @@
     "conteudo": "Erro no site da delegacia virtual",
     "resolucao": "Foi retirado o link e inserido o endereço da página https://www.pc.ms.gov.br/.",
     "atendido": true,
-    "diasAberto": 884,
+    "diasAberto": 885,
     "createdAt": "2024-02-13T12:07:22.787505-05:00",
     "updatedAt": "2024-09-20T09:18:52.560295-04:00"
   },
@@ -1381,7 +1381,7 @@
     "conteudo": "O site para boletim online não está funcionando",
     "resolucao": "Foi retirado o link e inserido o endereço da página https://www.pc.ms.gov.br/.",
     "atendido": true,
-    "diasAberto": 681,
+    "diasAberto": 682,
     "createdAt": "2024-09-03T15:24:50.789946-04:00",
     "updatedAt": "2024-09-20T09:20:29.380040-04:00"
   },
@@ -1451,7 +1451,7 @@
     "conteudo": "O website da Polícia Civil não entra. Está fora do ar.",
     "resolucao": "Foi retirado o link e inserido o endereço da página https://www.pc.ms.gov.br/.",
     "atendido": true,
-    "diasAberto": 757,
+    "diasAberto": 758,
     "createdAt": "2024-06-19T13:52:23.904652-04:00",
     "updatedAt": "2024-09-20T09:25:04.914288-04:00"
   },
@@ -1479,7 +1479,7 @@
     "conteudo": "NAO CONSEGUI ACESSAR",
     "resolucao": "Foi retirado o link e inserido o endereço da página https://www.pc.ms.gov.br/.",
     "atendido": true,
-    "diasAberto": 790,
+    "diasAberto": 791,
     "createdAt": "2024-05-17T15:16:17.105971-04:00",
     "updatedAt": "2024-09-20T09:27:09.857402-04:00"
   },
@@ -1493,7 +1493,7 @@
     "conteudo": "O questionário não aceita as respostas",
     "resolucao": "Foi retirado o link e inserido o endereço da página https://www.pc.ms.gov.br/.",
     "atendido": true,
-    "diasAberto": 785,
+    "diasAberto": 786,
     "createdAt": "2024-05-22T15:04:28.978038-04:00",
     "updatedAt": "2024-09-20T09:28:16.556318-04:00"
   },
@@ -1535,7 +1535,7 @@
     "conteudo": "Preciso solicitar meu modelo 19, mas a escola não existe mais. Escola Estadual Riachuelo, conclui meu ensino médio lá em 2004.\nComo devo proceder? Tem algum e-mail para eu enviar?:\nO meu e-mail é \njoyceazuaga1@gmail.com",
     "resolucao": "O Setor  responsável da Secretaria de Estado de Educação entrou em contato com a cidadã, via e-mail informado, para as devidas orientações.",
     "atendido": true,
-    "diasAberto": 811,
+    "diasAberto": 812,
     "createdAt": "2024-04-26T11:00:24.771294-04:00",
     "updatedAt": "2024-09-24T17:04:46.850031-04:00"
   },
@@ -1549,7 +1549,7 @@
     "conteudo": "Somente teste.",
     "resolucao": "Prezados, boa tarde.\r\n\r\nA equipe da JUCEMS agradece ao vosso contato, e caso tenha algum problema, favor contatar a nossa Central de Informações pelos fones abaixo relacionados:\r\n+55 (67) 3316-4429\r\n+55 (67) 3316-4436\r\n+55 (67) 3316-4457\r\n+55 (67) 3316-4441\r\n+55 (67) 3316-4426\r\n+55 (67) 3316-4458",
     "atendido": true,
-    "diasAberto": 668,
+    "diasAberto": 669,
     "createdAt": "2024-09-16T10:44:48.455324-04:00",
     "updatedAt": "2024-09-30T12:47:16.116269-04:00"
   },
@@ -1563,7 +1563,7 @@
     "conteudo": "Ok",
     "resolucao": "não continha nenhuma mensagem de erro",
     "atendido": true,
-    "diasAberto": 674,
+    "diasAberto": 675,
     "createdAt": "2024-09-10T14:26:43.529434-04:00",
     "updatedAt": "2024-10-01T09:51:59.193795-04:00"
   },
@@ -1577,7 +1577,7 @@
     "conteudo": "o ceam esta no endereço errado  R. Piratininga, 559 - Centro, Campo Grande - MS, 79020-240  R. Piratininga, 559 -\n: (67) 99653-5913\n\n\nCEAMCA (Centro Especializado de Atendimento à Mulher, à Criança e ao Adolescente em Situação de Violência)",
     "resolucao": "Esse serviço pertence ao município, e não a SEAD",
     "atendido": true,
-    "diasAberto": 675,
+    "diasAberto": 676,
     "createdAt": "2024-09-09T13:54:49.463251-04:00",
     "updatedAt": "2024-10-01T10:46:06.122151-04:00"
   },
@@ -1591,7 +1591,7 @@
     "conteudo": "Não estou conseguindo agendar, não tem data e horário disponível",
     "resolucao": "O site enfrentou uma breve instabilidade, mas o serviço já foi restabelecido e está funcionando normalmente.",
     "atendido": true,
-    "diasAberto": 654,
+    "diasAberto": 655,
     "createdAt": "2024-09-30T11:45:14.924480-04:00",
     "updatedAt": "2024-10-02T10:55:34.250323-04:00"
   },
@@ -1619,7 +1619,7 @@
     "conteudo": "Ninguém atende os contatos telefônicos informados.",
     "resolucao": "O Batalhão de Transito informou que há um problema de cabeamento das linhas telefônicas.\r\nFeito Contato com o SEJUSP (Setor de Tecnologia e Informação) e informou que o sistema telefônico será modificado para  sistema VOIP,.\r\nFoi sugerido por este gerente a permanência de numero um telefônico para contato do cidadão.\r\nO Batalhão repassou um numero que atende via WhatsApp, inserido no sistema aguardando a liberação da pagina.\r\nEncerrando o atendimento do erro no serviço.",
     "atendido": true,
-    "diasAberto": 605,
+    "diasAberto": 606,
     "createdAt": "2024-11-18T09:42:17.449935-05:00",
     "updatedAt": "2025-02-05T09:11:59.418954-05:00"
   },
@@ -1689,7 +1689,7 @@
     "conteudo": "O SITE https://certidaodigital.jucems.ms.gov.br/validachancela/ E O https://certidaodigital.jucems.ms.gov.br/valida_certidao_inteiro_teor.php NÃO ESTÃO FUNCIONANDO PARA ESTARMOS VALIDANDO O SELO DIGITAL DE DOCUMENTOS QUE SÓ ABREM POR ESSES LINKS",
     "resolucao": "Prezados, boa tarde.\r\n\r\nO site reportado foi descontinuado em 2017.\r\nPara maiores informações de como obter certidões digitais da JUCEMS, favor acessar o endereço abaixo:\r\n           https://www.jucems.ms.gov.br/certidao-digital-2",
     "atendido": true,
-    "diasAberto": 710,
+    "diasAberto": 711,
     "createdAt": "2024-08-05T11:19:58.378187-04:00",
     "updatedAt": "2024-09-30T12:44:17.790833-04:00"
   },
@@ -1717,7 +1717,7 @@
     "conteudo": "INFORMO O NOVO ENDEREÇO DO CEAMCA - Centro Especializado de Atendimento à Mulher, à Criança e ao Adolescente em Situação de Violência  \n\nO CEANCA está localizado na Rua Piratininga, 559, Jardim dos Estados em Campo Grande, e disponível nos números de telefone: 0800 067 1236, (67) 99653-5913 ou 3361-6191",
     "resolucao": "o usuário solicita atualização de endereço do CEAMCA, porém esse serviço é municipal, ou seja, não pertence à SEAD",
     "atendido": true,
-    "diasAberto": 807,
+    "diasAberto": 808,
     "createdAt": "2024-04-30T13:04:12.636355-04:00",
     "updatedAt": "2024-10-01T10:44:15.792634-04:00"
   },
@@ -1759,7 +1759,7 @@
     "conteudo": "nao abre o sistema",
     "resolucao": "O site enfrentou uma breve instabilidade, mas o serviço já foi restabelecido e está funcionando normalmente.",
     "atendido": true,
-    "diasAberto": 654,
+    "diasAberto": 655,
     "createdAt": "2024-09-30T14:49:25.968882-04:00",
     "updatedAt": "2024-10-02T10:53:54.695925-04:00"
   },
@@ -1787,7 +1787,7 @@
     "conteudo": "Não abre pra solicitar",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 227,
+    "diasAberto": 228,
     "createdAt": "2025-12-01T13:21:00.368951-05:00",
     "updatedAt": "2025-12-01T13:21:00.368975-05:00"
   },
@@ -1801,7 +1801,7 @@
     "conteudo": "NAO CONSIGO ASSINAR COM CERTIFICADO Definição de Domicílio Tributário Eletrônico (DTE) PARA REALIZAR CREDENCIAMENTO DE NF",
     "resolucao": "Não se trata de problema relacionado à carta de serviços, mas sim problema de sistema.",
     "atendido": true,
-    "diasAberto": 426,
+    "diasAberto": 427,
     "createdAt": "2025-05-16T13:43:39.418879-04:00",
     "updatedAt": "2025-05-29T11:08:19.571884-04:00"
   },
@@ -1829,7 +1829,7 @@
     "conteudo": "NÃO CONSIGO FAZER O AGENDAMENTO. DIZ PARA TENTAR NOVAMENTE",
     "resolucao": "A agenda é aberta  todo dia 30 de cada mês,  não havendo vagas basta o requerente se dirigir a qualquer posto de identificação de Estado e comprovar a necessidade e urgência do documento para realizar um encaixe.",
     "atendido": true,
-    "diasAberto": 726,
+    "diasAberto": 727,
     "createdAt": "2024-07-20T12:52:42.888975-04:00",
     "updatedAt": "2024-10-02T11:41:05.365953-04:00"
   },
@@ -1843,7 +1843,7 @@
     "conteudo": "BOLETIM DE OCORRENCIA FORA DO AR",
     "resolucao": "Foi verificado que o link da url esta correto, e foi acrescentado na descrição do serviço o endereço eletrônico http://devir.pc.ms.gov.br/#/",
     "atendido": true,
-    "diasAberto": 664,
+    "diasAberto": 665,
     "createdAt": "2024-09-20T12:53:52.787722-04:00",
     "updatedAt": "2024-10-03T08:56:57.245301-04:00"
   },
@@ -1941,7 +1941,7 @@
     "conteudo": "\"Acessar serviços\" - inoperante!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
     "resolucao": "Campo \"etapas\" corrigido conforme acontece atualmente.",
     "atendido": true,
-    "diasAberto": 813,
+    "diasAberto": 814,
     "createdAt": "2024-04-24T14:27:55.335055-04:00",
     "updatedAt": "2024-10-09T15:44:09.559958-04:00"
   },
@@ -1983,7 +1983,7 @@
     "conteudo": "Não é possível eu colocar meu cep pra buscar na minha região",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 23,
+    "diasAberto": 24,
     "createdAt": "2026-06-23T14:48:39.354276-04:00",
     "updatedAt": "2026-06-23T14:48:39.354288-04:00"
   },
@@ -2025,7 +2025,7 @@
     "conteudo": "Porque não existe para todos os Estados do Brasil?",
     "resolucao": "O serviço de bloqueio de telemarketing, estabelecido pela Lei Estadual 3.641/19, foi criado com abrangência no Estado de Mato Grosso do Sul. Ele consiste no cadastro de número de telefone fixo e móvel para o não recebimento de ligações indesejadas, com validade após 30 dias da realização do cadastro. \r\n\r\nEm outros estados, opte pela plataforma ‘Não Perturbe’ (www.naomeperturbe.com.br), que inclui o bloqueio de chamadas de ofertas de empresas de telefonia, banda larga, empréstimos consignados e cartão de crédito consignado. O processo também passa a valer 30 dias depois da finalização do cadastro.",
     "atendido": true,
-    "diasAberto": 649,
+    "diasAberto": 650,
     "createdAt": "2024-10-05T11:58:51.440354-04:00",
     "updatedAt": "2024-10-21T09:28:52.446316-04:00"
   },
@@ -2095,7 +2095,7 @@
     "conteudo": "Eu sou de são Paulo, não sou do mato grosso do sul",
     "resolucao": "Cidadão busca serviço referente ao Estado de SP",
     "atendido": true,
-    "diasAberto": 227,
+    "diasAberto": 228,
     "createdAt": "2025-12-01T13:50:24.903897-05:00",
     "updatedAt": "2026-02-05T09:54:15.680033-05:00"
   },
@@ -2109,7 +2109,7 @@
     "conteudo": "N me ajudou em nada ,eu precisava da cópia de conclusão do ensino médio",
     "resolucao": "Conforme descrito na Carta de serviço, o solicitante deve procurar a unidade escolar para  expedir o certificado de conclusão do Ensino Médio.\r\nA emissão só não será possível, caso haja pendência pedagógica ou administrativa.\r\n\r\nAcesse aqui o endereço das escolas estaduais:\r\nhttps://www.sed.ms.gov.br/relacao-de-escolas-com-diretores/",
     "atendido": true,
-    "diasAberto": 611,
+    "diasAberto": 612,
     "createdAt": "2024-11-12T11:12:47.088063-05:00",
     "updatedAt": "2024-11-21T14:48:01.961976-05:00"
   },
@@ -2137,7 +2137,7 @@
     "conteudo": "O e-mail cer@sed.ms.gov.br é inacessível e/ou inexistente.",
     "resolucao": "Dados reportados atualizados na Carta de Serviço.",
     "atendido": true,
-    "diasAberto": 640,
+    "diasAberto": 641,
     "createdAt": "2024-10-14T12:45:22.029634-04:00",
     "updatedAt": "2024-11-21T16:03:11.474131-05:00"
   },
@@ -2165,7 +2165,7 @@
     "conteudo": "Boletim de ocorrência para o estado de Mato Grosso do Sul não funciona, não permite login, barra amarela com triângulo.",
     "resolucao": "O site http://devir.pc.ms.gov.br/#/ está operando normalmente.",
     "atendido": true,
-    "diasAberto": 633,
+    "diasAberto": 634,
     "createdAt": "2024-10-21T15:43:30.432360-04:00",
     "updatedAt": "2025-07-02T09:52:21.069179-04:00"
   },
@@ -2179,7 +2179,7 @@
     "conteudo": "Eu quero comfesar a mesma vergonha de acupa 3 porcos do luiz vereador de tacuru para falar q comi peixe para juiza e ela me julgar pelos meus filhos q eu vou convidar a maria da bello da camera de Itaquiraí e convidar o joelzinho presidente da camera pra ver como e o atendimento público que e pelos meus filhos q eu to querendo viver a vida ❤️ ai eu falo para juiza o tamanho da minha vergonha de falar q meu pai e pedofo e a amiguinha dela ter casado com 13 anos com o Messias irmão do vizinho q o Djalma e o ex sogro quiseram arma pra mim q eu vou falar da vergonha do mst  e do Incra ai eu esprico pra vos excelência o meu tamanho da vergonha de ser julgado sem merece que ai eu falo das torres gêmeas e esprico com se joga xadrez ♟️ e o q seguinifica o bispo e porque eu tenho que me me explicar p adeferoura o porque eu falo pelo um presidente q o mesmo q eu falo pra congregacao cristã no Brasil q eu sou servo de Deus e tenho Encino superior em piscologia q eu falo da vergonha de uma juíza me julgar e na onde eu falo pelo um porco e o peixe e q eu comi ai ela me esprica o pq eles querem me matar q eu revelo os 9 dedos e falo sobre o bolsa família q eu falo o tamanho da minha vergonha pros políticos o pq eu não vendo o meu voto e falo q eu tenho os msm trenamento do FBI e falo pra dona perda q dia 6 era o aniversário do Leôncio q eu esprico pela a tatuagem do olho azul q ele tinha se não e 17 q eles deram na juiz q eu falo q a bíblia rebelou pra mim o ante cristo e eu sou batizado na CCB meu nome e Acir machado de Freitas pergunta la pro Djalma se na",
     "resolucao": "Este não é meio de comunicação para resolução do problema apontado.",
     "atendido": true,
-    "diasAberto": 898,
+    "diasAberto": 899,
     "createdAt": "2024-01-30T10:39:48.810149-05:00",
     "updatedAt": "2024-10-30T10:11:56.221312-04:00"
   },
@@ -2193,7 +2193,7 @@
     "conteudo": "NAO CONCEGUI O QUE EU QUERIA, CRIAR UMA CARTEIRA DE PESCA PARA APOSENTADO. PODERIA ME AJUDAR?",
     "resolucao": "Inserida informação no sistema. Aguardando confirmação da CGE MS.",
     "atendido": true,
-    "diasAberto": 507,
+    "diasAberto": 508,
     "createdAt": "2025-02-24T10:20:18.089521-05:00",
     "updatedAt": "2025-02-26T10:13:55.843133-05:00"
   },
@@ -2235,7 +2235,7 @@
     "conteudo": "NAO CONSIGO PREENCHER OS CAMPOS",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 324,
+    "diasAberto": 325,
     "createdAt": "2025-08-26T12:07:39.191695-04:00",
     "updatedAt": "2025-08-26T12:07:39.191710-04:00"
   },
@@ -2277,7 +2277,7 @@
     "conteudo": "link que direciona para a pagina onde poderia ser feito o BO online não funciona.",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 322,
+    "diasAberto": 323,
     "createdAt": "2025-08-28T15:00:22.743464-04:00",
     "updatedAt": "2025-08-28T15:00:22.743480-04:00"
   },
@@ -2319,7 +2319,7 @@
     "conteudo": "Não está aparecendo nova andradina ms",
     "resolucao": "Verificamos que há o endereço de Nova Andradina na listagem dos escritórios que são atendidos pela Sanesul.",
     "atendido": true,
-    "diasAberto": 464,
+    "diasAberto": 465,
     "createdAt": "2025-04-08T15:12:44.862248-04:00",
     "updatedAt": "2026-06-17T14:24:53.887771-04:00"
   },
@@ -2403,7 +2403,7 @@
     "conteudo": "Local errado",
     "resolucao": "Não foi claro no report de erro.",
     "atendido": true,
-    "diasAberto": 276,
+    "diasAberto": 277,
     "createdAt": "2025-10-13T11:57:50.463798-04:00",
     "updatedAt": "2026-02-05T08:58:33.902501-05:00"
   },
@@ -2459,7 +2459,7 @@
     "conteudo": "Eu sou de limoeiro Pernambuco",
     "resolucao": "O relato não é referente a erro.",
     "atendido": true,
-    "diasAberto": 445,
+    "diasAberto": 446,
     "createdAt": "2025-04-27T15:42:00.986738-04:00",
     "updatedAt": "2025-05-30T09:35:19.793161-04:00"
   },
@@ -2473,7 +2473,7 @@
     "conteudo": "Não consegui achar a informação correta pra mim tirar a CNH grátis",
     "resolucao": "O erro reportado é um questionamento sobre o serviço.",
     "atendido": true,
-    "diasAberto": 440,
+    "diasAberto": 441,
     "createdAt": "2025-05-02T12:36:05.937463-04:00",
     "updatedAt": "2025-05-30T09:38:51.176820-04:00"
   },
@@ -2501,7 +2501,7 @@
     "conteudo": "NÃO GEROU A GUIA PARA PAGAMENTO",
     "resolucao": "Realizamos testes para emissão de guias de recolhimento, junto ao Portal de Serviços da JUCEMS e o sistema não apresentou erros.",
     "atendido": true,
-    "diasAberto": 436,
+    "diasAberto": 437,
     "createdAt": "2025-05-06T10:43:10.132671-04:00",
     "updatedAt": "2025-06-05T10:58:16.425021-04:00"
   },
@@ -2515,7 +2515,7 @@
     "conteudo": "Portal não abre.\nSó aparece 404, página não encontrada",
     "resolucao": "o site http://devir.pc.ms.gov.br/#/ esta operando normalmente.",
     "atendido": true,
-    "diasAberto": 448,
+    "diasAberto": 449,
     "createdAt": "2025-04-24T11:11:01.545120-04:00",
     "updatedAt": "2025-07-02T09:42:24.727956-04:00"
   },
@@ -2529,7 +2529,7 @@
     "conteudo": "Não dá pra acessar o portal pra registrar o bo",
     "resolucao": "O site http://devir.pc.ms.gov.br/#/ está operando normalmente.",
     "atendido": true,
-    "diasAberto": 420,
+    "diasAberto": 421,
     "createdAt": "2025-05-22T14:16:40.806496-04:00",
     "updatedAt": "2025-07-02T09:44:22.425544-04:00"
   },
@@ -2543,7 +2543,7 @@
     "conteudo": "O site de boletim de ocorrência online está fora de serviço.",
     "resolucao": "O site http://devir.pc.ms.gov.br/#/ está operando normalmente.",
     "atendido": true,
-    "diasAberto": 458,
+    "diasAberto": 459,
     "createdAt": "2025-04-14T13:00:40.599857-04:00",
     "updatedAt": "2025-07-02T09:44:37.610425-04:00"
   },
@@ -2557,7 +2557,7 @@
     "conteudo": "Pagina não encontrada",
     "resolucao": "O site http://devir.pc.ms.gov.br/#/ está operando normalmente.",
     "atendido": true,
-    "diasAberto": 462,
+    "diasAberto": 463,
     "createdAt": "2025-04-10T11:06:25.938752-04:00",
     "updatedAt": "2025-07-02T09:45:07.464437-04:00"
   },
@@ -2571,7 +2571,7 @@
     "conteudo": "No site não aparece as mais opções de registro de boletim de ocorrência!",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 226,
+    "diasAberto": 227,
     "createdAt": "2025-12-02T13:32:13.811838-05:00",
     "updatedAt": "2025-12-02T13:32:13.811851-05:00"
   },
@@ -2585,7 +2585,7 @@
     "conteudo": "Procu o de Minas Gerais",
     "resolucao": "Cidadão quer emitir do EStado de MG",
     "atendido": true,
-    "diasAberto": 289,
+    "diasAberto": 290,
     "createdAt": "2025-09-30T13:35:12.378375-04:00",
     "updatedAt": "2026-02-05T08:50:10.558745-05:00"
   },
@@ -2599,7 +2599,7 @@
     "conteudo": "Não",
     "resolucao": "Não há edital aberto.",
     "atendido": true,
-    "diasAberto": 274,
+    "diasAberto": 275,
     "createdAt": "2025-10-15T11:31:46.491052-04:00",
     "updatedAt": "2026-02-05T08:59:13.428599-05:00"
   },
@@ -2655,7 +2655,7 @@
     "conteudo": "Não guardei a GR on line. Portanto, não tenho o protocolo. Como faço para ter acesso a Certidão?",
     "resolucao": "Prezados,\r\nEm nosso Portal de Serviços JUCEMS, o usuário/requerente logado, tem uma área de visualização de todas as solicitações realizadas por ele, com a possibilidade de reimpressão de guias emitidas, através da opção OUTROS SERVIÇOS -> GUIA DE ARRECADAÇÃO -> REIMPRESSÃO GR, dessa forma ele terá acesso ao número da solicitação web, bastando apenas realizar a reimpressão da mesma.",
     "atendido": true,
-    "diasAberto": 595,
+    "diasAberto": 596,
     "createdAt": "2024-11-28T12:56:27.531241-05:00",
     "updatedAt": "2024-12-05T10:33:56.333375-05:00"
   },
@@ -2669,7 +2669,7 @@
     "conteudo": "Estas informações sobre o Passe Livre Intermunicipal são referentes ao Estado de Mato Grosso do Sul.\n\n Portanto, para maior clareza, celeridade e economia, deveriam ser disponibilizadas as infopor Estado com a respectiva Lei Estadual, assim como o procedimento de cada Estado pra evitar perda de tempo e informações desencontradas para os cidadãos. \n\nAtt.\nSérgio Rios",
     "resolucao": "Na pagina da Sead onde se refere ao Passe Livre Intermunicipal encontra-se todas as legislações referente ao Programa.\r\n\r\nhttps://www.sead.ms.gov.br/passe-livre-intermunicipal1/",
     "atendido": true,
-    "diasAberto": 590,
+    "diasAberto": 591,
     "createdAt": "2024-12-03T09:39:09.224210-05:00",
     "updatedAt": "2025-01-28T08:47:52.418026-05:00"
   },
@@ -2683,7 +2683,7 @@
     "conteudo": "Eu quero fazer a prova do detran ms sidadi de bataguassu ms Mato-grossense do sul ms",
     "resolucao": "Neste caso, basta o cidadão procurar a Agência de Bataguassu para iniciar o processo de renovação.",
     "atendido": true,
-    "diasAberto": 507,
+    "diasAberto": 508,
     "createdAt": "2025-02-24T11:02:26.053524-05:00",
     "updatedAt": "2025-02-25T13:17:58.787403-05:00"
   },
@@ -2753,7 +2753,7 @@
     "conteudo": "Não aparece os campos para cadastro",
     "resolucao": "Os campos para cadastro estão disponíveis conforme etapa 3 do serviço:\r\n\r\n• Acesse o site: http://www.cursos.ms.gov.br/;\r\n• Informe o login do servidor;\r\n• No menu Escolagov (lado esquerdo, último item), clique no botão \"Parcerias e Descontos\";\r\n• Complemente com os dados solicitados nos campos obrigatórios;\r\n• Para imprimir o comprovante de direito do benefício, clique no botão: \"Solicitar o desconto\".",
     "atendido": true,
-    "diasAberto": 505,
+    "diasAberto": 506,
     "createdAt": "2025-02-26T14:19:48.634319-05:00",
     "updatedAt": "2025-03-14T15:10:58.089788-04:00"
   },
@@ -2795,7 +2795,7 @@
     "conteudo": "Estou tentando acessar minha cnh no celular",
     "resolucao": "Não se trata de erro relacionado à Carta de Serviços.",
     "atendido": true,
-    "diasAberto": 490,
+    "diasAberto": 491,
     "createdAt": "2025-03-13T11:53:05.406411-04:00",
     "updatedAt": "2025-03-18T07:24:49.196484-04:00"
   },
@@ -2809,7 +2809,7 @@
     "conteudo": "COMO FAZER O CANCELAMENTO DO AGENDAMENTO PARA EMISSAO DE IDENTIDADE? NO PORTAL DE SERVIÇOS MANDA CANCELAR NESTE ENDEREÇO?",
     "resolucao": "No próprio site do agendamento há o link para cancelamento.",
     "atendido": true,
-    "diasAberto": 514,
+    "diasAberto": 515,
     "createdAt": "2025-02-17T11:27:32.289013-05:00",
     "updatedAt": "2025-03-21T08:42:15.790415-04:00"
   },
@@ -2893,7 +2893,7 @@
     "conteudo": "não consigo acessar o DEVIR, o site não entra e não consigo fazer meu boletim de ocorrência",
     "resolucao": "O site http://devir.pc.ms.gov.br/#/ está operando normalmente.",
     "atendido": true,
-    "diasAberto": 594,
+    "diasAberto": 595,
     "createdAt": "2024-11-29T09:57:52.257762-05:00",
     "updatedAt": "2025-07-02T09:50:32.276894-04:00"
   },
@@ -2921,7 +2921,7 @@
     "conteudo": "Página da Certidão Simplificada inválida.",
     "resolucao": "Prezados, bom dia.\r\nOs sistemas, incluindo o Portal de Serviços da JUCEMS, ficaram indisponível na data de ontem 26.03.2025, às 10h33,, vindo a ser restabelecido plenamente somente na corrente data, 27.03.2025 às 8h40.",
     "atendido": true,
-    "diasAberto": 477,
+    "diasAberto": 478,
     "createdAt": "2025-03-26T14:27:10.372419-04:00",
     "updatedAt": "2025-03-27T11:35:02.711944-04:00"
   },
@@ -2935,7 +2935,7 @@
     "conteudo": "Preciso tirar o cônjuge e não estou conseguindo moro sozinha com meus 3 filhos",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 79,
+    "diasAberto": 80,
     "createdAt": "2026-04-28T13:47:27.497980-04:00",
     "updatedAt": "2026-04-28T13:47:27.497991-04:00"
   },
@@ -2977,7 +2977,7 @@
     "conteudo": "Estou cadastrado no rio janeiro e está aparecendo mato grosso.",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 324,
+    "diasAberto": 325,
     "createdAt": "2025-08-26T12:19:14.237953-04:00",
     "updatedAt": "2025-08-26T12:19:14.237968-04:00"
   },
@@ -3131,7 +3131,7 @@
     "conteudo": "Onde é que eu posso me escrever para fazer a CNH social.mostraram várias coisas mas não consegui fazer a inscrição.podeiam ser mais simples ou por q e pra pobre aí vcs complicam.",
     "resolucao": "Não há processo em aberto. Erro não é referente a descrição do serviço.",
     "atendido": true,
-    "diasAberto": 429,
+    "diasAberto": 430,
     "createdAt": "2025-05-13T10:43:20.727327-04:00",
     "updatedAt": "2025-05-30T09:46:09.717192-04:00"
   },
@@ -3257,7 +3257,7 @@
     "conteudo": "Não é da minha cidade",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 408,
+    "diasAberto": 409,
     "createdAt": "2025-06-03T15:09:49.391124-04:00",
     "updatedAt": "2025-06-03T15:09:49.391139-04:00"
   },
@@ -3313,7 +3313,7 @@
     "conteudo": "O link para fazer o boletim de ocorrência da erro",
     "resolucao": "o site http://devir.pc.ms.gov.br/#/ esta operando normalmente.",
     "atendido": true,
-    "diasAberto": 413,
+    "diasAberto": 414,
     "createdAt": "2025-05-29T12:21:00.232137-04:00",
     "updatedAt": "2025-07-02T09:40:37.552298-04:00"
   },
@@ -3341,7 +3341,7 @@
     "conteudo": "Não abre para escolher o local de atendimento",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 133,
+    "diasAberto": 134,
     "createdAt": "2026-03-05T11:00:52.700313-05:00",
     "updatedAt": "2026-03-05T11:00:52.700328-05:00"
   },
@@ -3369,7 +3369,7 @@
     "conteudo": "Não é possível abrir a relação de documentos nem o link da emissão de DARF para a emissão de Alvará Sanitário no site https://www.vs.saude.ms.gov.br/coordenadoria-estadual-de-vigilancia-sanitaria/coordenadoria-de-vigilancia-sanitaria-estadual-alvara-sanitario/",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 574,
+    "diasAberto": 575,
     "createdAt": "2024-12-19T09:40:09.974012-05:00",
     "updatedAt": "2024-12-19T09:40:09.974038-05:00"
   },
@@ -3383,7 +3383,7 @@
     "conteudo": "n. de WHATSAPP NÃO FUNCIONA",
     "resolucao": "Não há atendimento via WhatsApp.\r\nO atendimento é via ligação telefônica ou presencial.",
     "atendido": true,
-    "diasAberto": 545,
+    "diasAberto": 546,
     "createdAt": "2025-01-17T10:13:36.945668-05:00",
     "updatedAt": "2025-02-18T09:36:04.424547-05:00"
   },
@@ -3411,7 +3411,7 @@
     "conteudo": "EU CONTITUI UMA EMPRESA NO PARANÁ, MATRIZ, AGORA ESTOU PRETENDENDO ABRIR UMA FILIAL AÍ NO MS, EM TRES LAGOAS, MAS NÃO CONSEGUI ENCONTRAR NA PLATAFORMA DA JCMS COMO FAZER A VIABILIDADE PARA FILIAL QUANDO A MATRIZ É DE OUTRA UF, VOCE PODE ME ORIENTAR POR FAVOR?",
     "resolucao": "Não se trata de erro de sim de informação específica para o ato pretendido.",
     "atendido": true,
-    "diasAberto": 564,
+    "diasAberto": 565,
     "createdAt": "2024-12-29T10:52:56.418734-05:00",
     "updatedAt": "2025-01-07T15:40:38.322989-05:00"
   },
@@ -3425,7 +3425,7 @@
     "conteudo": "Boa tarde!!\n SE AS FAMILIAS DO MAIS SOCIAL NÃO FAZ PERFIL,,É LEI,SABEMOS.\nMAS DESLIGAR A FAMILIA EM PLENO NATAL, DEZEMBRO É UMA FALTA DE EMPATIA.\nACREDITO QUE O  CORRETO ,,AVISAR A FAMÍLIA QUE NÃO IRIA RECEBER O BENEFICIO EM DEZEMBRO.\n\nQUERO AGRADECER A ASSISTENCIA SOCIAL PELA ASSISTENCIA NO MÉS DE DEZEMBRO ,OBRIGADA PELO PRESENTE DE NATAL.\n\nPARABÉNS AS TECNICAS QUE NÃO AVISARAM AS FAMILIAS.",
     "resolucao": "Nesse caso, não haverá uma resposta porque não tem qlqr forma de comunicação com a pessoa que reportou.",
     "atendido": true,
-    "diasAberto": 570,
+    "diasAberto": 571,
     "createdAt": "2024-12-23T12:47:42.582167-05:00",
     "updatedAt": "2025-01-23T12:39:13.121576-05:00"
   },
@@ -3551,7 +3551,7 @@
     "conteudo": "Esse serviço é uma merda",
     "resolucao": "Não é referente erro no sistema, mas sim uma avaliação individual do cliente, não informando o porquê está avaliando desta forma, portanto, a adm\r\nNão é referente erro no sistema, mas sim uma avaliação individual do cliente, não informando o porquê está avaliando desta forma, portanto, a administração diante da informação não tem como agir para deixá-lo satisfeito.inistração diante da informação não tem como agir para deixá-lo satisfeito.",
     "atendido": true,
-    "diasAberto": 788,
+    "diasAberto": 789,
     "createdAt": "2024-05-19T11:39:50.855472-04:00",
     "updatedAt": "2025-01-30T14:02:39.755602-05:00"
   },
@@ -3565,7 +3565,7 @@
     "conteudo": "A opção \"Acessar Serviços\" NÃO está ativa",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 470,
+    "diasAberto": 471,
     "createdAt": "2025-04-02T11:01:42.188393-04:00",
     "updatedAt": "2025-04-02T11:01:42.188408-04:00"
   },
@@ -3649,7 +3649,7 @@
     "conteudo": "site fora do ar",
     "resolucao": "O site http://devir.pc.ms.gov.br/#/ está operando normalmente.",
     "atendido": true,
-    "diasAberto": 562,
+    "diasAberto": 563,
     "createdAt": "2024-12-31T14:09:33.279457-05:00",
     "updatedAt": "2025-07-02T09:49:14.545487-04:00"
   },
@@ -3663,7 +3663,7 @@
     "conteudo": "No formulario para cadastrar a vitima, no campo ( logradouro) nao da para escrever.",
     "resolucao": "O site http://devir.pc.ms.gov.br/#/ está operando normalmente.",
     "atendido": true,
-    "diasAberto": 577,
+    "diasAberto": 578,
     "createdAt": "2024-12-16T12:48:54.305547-05:00",
     "updatedAt": "2025-07-02T09:49:26.679076-04:00"
   },
@@ -3691,7 +3691,7 @@
     "conteudo": "LINKS NÃO FUNCIONAM",
     "resolucao": "O site http://devir.pc.ms.gov.br/#/ está operando normalmente.",
     "atendido": true,
-    "diasAberto": 583,
+    "diasAberto": 584,
     "createdAt": "2024-12-10T13:13:40.742489-05:00",
     "updatedAt": "2025-07-02T09:50:03.466956-04:00"
   },
@@ -3705,7 +3705,7 @@
     "conteudo": "Quando do uso de veículo locado, temos contrato de 48 (quarenta e oito) meses. Como podemos ajustar esta situação. Marcelo (99696-7002)",
     "resolucao": "A observação do usuário não diz respeito a um erro, mas a um questionamento em relação à situação particular do mesmo perante ao que a norma legal exige.\r\n\r\nEsclarecemos que o prazo é uma exigência que está no art. 2º da Portaria nº 043, de 03/08/2005:\r\n\r\n“Art. 2º Para o registro de veículos de titularidade diversa a do operador cadastrado na AGEMS, será exigida a apresentação de instrumento de cessão ou de contrato de locação do veículo registrado em cartório, com prazo de vigência não inferior a 03 (três) meses e não superior a 12 (doze) meses. (alterado pela Portaria AGEMS n° 260, de 27 de dezembro de 2023)”\r\n\r\nDessa forma, o operador deverá apresentar a cada 12 meses um novo instrumento de cessão ou de contrato de locação do veículo, para continuidade do serviço.",
     "atendido": false,
-    "diasAberto": 531,
+    "diasAberto": 532,
     "createdAt": "2025-01-31T14:36:52.271498-05:00",
     "updatedAt": "2025-07-10T12:09:01.744603-04:00"
   },
@@ -3733,7 +3733,7 @@
     "conteudo": "Site não pega da erro",
     "resolucao": "Informamos que o site da Sead, na data de hoje (17), está passando por um processo de transição para o novo padrão digital do Governo do Estado de Mato Grosso do Sul. Por esse motivo, podem ocorrer temporariamente algumas inconsistências ou erros de acesso.\r\n\r\nA equipe técnica já está trabalhando para normalizar o funcionamento o mais breve possível, garantindo mais segurança e melhor experiência aos usuários. Agradecemos a compreensão.",
     "atendido": true,
-    "diasAberto": 272,
+    "diasAberto": 273,
     "createdAt": "2025-10-17T13:55:27.284254-04:00",
     "updatedAt": "2025-10-17T14:31:35.880536-04:00"
   },
@@ -3775,7 +3775,7 @@
     "conteudo": "Qual graduação?",
     "resolucao": "Incompreensão do usuário",
     "atendido": true,
-    "diasAberto": 112,
+    "diasAberto": 113,
     "createdAt": "2026-03-26T13:21:57.446493-04:00",
     "updatedAt": "2026-06-12T08:55:59.291005-04:00"
   },
@@ -3803,7 +3803,7 @@
     "conteudo": "Olá boa tarde , entrei no site para fazer o cadastro de agendamento para realizar o RG , e quanto entra na parte de preencher a data de nascimento ela só dá inválido, mesmo colocando certo é assim não consigo prosseguir com o cadastro.",
     "resolucao": "Prezado solicitante, a agenda é aberta  sempre no final do mês,  não havendo vagas basta o requerente se dirigir a qualquer posto de identificação do Estado e comprovar a necessidade e urgência do documento para realizar um encaixe. Caso ainda assim encontre dificuldades, favor entrar em contato através do e-mail ouvidoria@cgp.sejusp.ms.gov.br e informar seus dados para que possamos lhe auxiliar.\r\nAtenciosamente, Assessoria Especializada",
     "atendido": true,
-    "diasAberto": 437,
+    "diasAberto": 438,
     "createdAt": "2025-05-05T15:05:30.382501-04:00",
     "updatedAt": "2025-09-04T11:52:08.870545-04:00"
   },
@@ -3817,7 +3817,7 @@
     "conteudo": "Não consigo colocar a data de nascimento.  Diz que está inválida mas está correto!",
     "resolucao": "Prezado solicitante, a agenda é aberta  sempre no final do mês,  não havendo vagas basta o requerente se dirigir a qualquer posto de identificação do Estado e comprovar a necessidade e urgência do documento para realizar um encaixe. Caso ainda assim encontre dificuldades, favor entrar em contato através do e-mail ouvidoria@cgp.sejusp.ms.gov.br e informar seus dados para que possamos lhe auxiliar.\r\nAtenciosamente, Assessoria Especializada",
     "atendido": true,
-    "diasAberto": 318,
+    "diasAberto": 319,
     "createdAt": "2025-09-01T13:14:24.614025-04:00",
     "updatedAt": "2025-09-04T11:52:55.126128-04:00"
   },
@@ -3887,7 +3887,7 @@
     "conteudo": "Oia, nessa pagina ta escrito Aguardar Retorno no campo Aguardar retorno. Mas nao deveria aparecer o prazo para aguardar o retorno?",
     "resolucao": "Não há um prazo definido pelo setor, o retorno é de acordo com a demanda.",
     "atendido": true,
-    "diasAberto": 353,
+    "diasAberto": 354,
     "createdAt": "2025-07-28T15:06:02.285784-04:00",
     "updatedAt": "2025-09-01T14:40:31.428054-04:00"
   },
@@ -3985,7 +3985,7 @@
     "conteudo": "Porto real do colégio Alagoas",
     "resolucao": "Cidadão alega ser de Alagoas, e não de MS.",
     "atendido": true,
-    "diasAberto": 344,
+    "diasAberto": 345,
     "createdAt": "2025-08-06T14:23:42.209384-04:00",
     "updatedAt": "2026-02-03T14:58:39.294597-05:00"
   },
@@ -4013,7 +4013,7 @@
     "conteudo": "Cnh social no senatran de luis eduardo",
     "resolucao": "Registro não se refere a um serviço ofertado pelo Estado do Mato Grosso do Sul.",
     "atendido": true,
-    "diasAberto": 394,
+    "diasAberto": 395,
     "createdAt": "2025-06-17T12:32:49.783580-04:00",
     "updatedAt": "2025-07-01T13:57:02.360016-04:00"
   },
@@ -4069,7 +4069,7 @@
     "conteudo": "Não sou de campo grande",
     "resolucao": "Registro não se refere a um serviço ofertado pelo Estado do Mato Grosso do Sul.",
     "atendido": true,
-    "diasAberto": 381,
+    "diasAberto": 382,
     "createdAt": "2025-06-30T12:31:45.753216-04:00",
     "updatedAt": "2025-07-01T14:00:37.582763-04:00"
   },
@@ -4097,7 +4097,7 @@
     "conteudo": "Não existe atendimento online para tirar uma dúvida. O telefone que está disponível ninguém atende. Uma vergonha existir um órgão que diz que defende o consumidor e não fornecer um canal de tira dúvidas antes de prosseguir com a reclamação online.",
     "resolucao": "Informo que foi enviado email ao sr Kleber Clajus, jornalista e coordenador responsável pela carta de serviços do Procon com um print da reclamação do sr Eduardo. Pedi que verificasse se esse telefone existe e se ele esta ativo, em caso de negativa para retirar o telefone que consta no site.\r\nPorém, o sr Eduardo não adicionou nenhuma forma de contato para que passoamos responder à sua reclamação.",
     "atendido": true,
-    "diasAberto": 464,
+    "diasAberto": 465,
     "createdAt": "2025-04-08T11:29:10.475690-04:00",
     "updatedAt": "2025-07-29T09:23:26.305638-04:00"
   },
@@ -4111,7 +4111,7 @@
     "conteudo": "Não consigo acessar o serviço. Ele acusa erro.",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 352,
+    "diasAberto": 353,
     "createdAt": "2025-07-29T14:58:45.395159-04:00",
     "updatedAt": "2025-07-29T14:58:45.395175-04:00"
   },
@@ -4139,7 +4139,7 @@
     "conteudo": "não esta aparecendo a opção de selecionar o fato na hora de registrar um boletim",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 351,
+    "diasAberto": 352,
     "createdAt": "2025-07-30T10:54:49.564812-04:00",
     "updatedAt": "2025-07-30T10:54:49.564827-04:00"
   },
@@ -4167,7 +4167,7 @@
     "conteudo": "Não consigo solicitar o bloqueio de telemarqueting porque não lembro a minha senha e o meu e-mail para recuperar a senha está incorreto. Tentei fazer um novo cadastro, mas não é possível. Preciso também cadastrar a minha empresa, mas não consegui. Recebo ligações o dia todo. CPF 885.010.941-53, E-MAIL feabrao21@hotmail.com, CNPJ 48.690.516/0001-31. Se puderem me ajudar agradeço. Fernanda Abrão Ferzik. EGS Consultoria em Gestão Empresarial Ltda.",
     "resolucao": "A devolutiva do Procon, foi a seguinte: \r\nA demanda foi encaminhada para o nosso setor de TI, contudo nenhuma das tentativas de contato foi retornada pela Senhora Fernanda.\r\nVamos repassar, mais uma vez, a demanda para o setor de suporte, considerando que o sistema do Bloqtel é desenvolvido pela Setdig.",
     "atendido": true,
-    "diasAberto": 400,
+    "diasAberto": 401,
     "createdAt": "2025-06-11T14:39:07.261099-04:00",
     "updatedAt": "2025-07-31T09:28:26.165003-04:00"
   },
@@ -4181,7 +4181,7 @@
     "conteudo": "Quero ver minha nota do Enem de muito tempo Trás e não estou conseguindo",
     "resolucao": "Para consultar a nota não é no sistema da UEMS, é em link externo que não é de controle deste órgão. De toda forma informo que é no link:  enem.inep.gov.br/participante",
     "atendido": true,
-    "diasAberto": 370,
+    "diasAberto": 371,
     "createdAt": "2025-07-11T11:57:22.269685-04:00",
     "updatedAt": "2025-09-01T14:42:08.266913-04:00"
   },
@@ -4195,7 +4195,7 @@
     "conteudo": "PÁGINA NÃO ENCONTRADA",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 350,
+    "diasAberto": 351,
     "createdAt": "2025-07-31T10:58:47.642136-04:00",
     "updatedAt": "2025-07-31T10:58:47.642155-04:00"
   },
@@ -4209,7 +4209,7 @@
     "conteudo": "Não entra o site mencionado",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 318,
+    "diasAberto": 319,
     "createdAt": "2025-09-01T15:20:54.821165-04:00",
     "updatedAt": "2025-09-01T15:20:54.821179-04:00"
   },
@@ -4265,7 +4265,7 @@
     "conteudo": "Moro no  Paraná",
     "resolucao": "Na etapa 3 do serviço, é apresentada a opção de \"postagem do requerimento e documentos\", podendo ser feita pelos segurados que residem fora de CG-MS: \"postar pelos correios, o requerimento e os documentos necessários, para o setor e endereço mencionados no item anterior.\"",
     "atendido": true,
-    "diasAberto": 350,
+    "diasAberto": 351,
     "createdAt": "2025-07-31T15:18:45.063224-04:00",
     "updatedAt": "2025-09-15T10:40:20.773773-04:00"
   },
@@ -4419,7 +4419,7 @@
     "conteudo": "Perda de documentos",
     "resolucao": "O site http://devir.pc.ms.gov.br/#/ está operando normalmente.",
     "atendido": true,
-    "diasAberto": 465,
+    "diasAberto": 466,
     "createdAt": "2025-04-07T12:12:59.272250-04:00",
     "updatedAt": "2025-07-02T09:46:05.057130-04:00"
   },
@@ -4433,7 +4433,7 @@
     "conteudo": "Olá,  não consigo registrar um B.O perda de celular na estrada parque pantanal, o site pede bairro e o local da ocorrência é rural e não consta. Fato ocorreu na estrada parque pantanal um via rural, não tem bairro pra conseguir concluir.",
     "resolucao": "O site http://devir.pc.ms.gov.br/#/ está operando normalmente.",
     "atendido": true,
-    "diasAberto": 472,
+    "diasAberto": 473,
     "createdAt": "2025-03-31T15:42:01.092891-04:00",
     "updatedAt": "2025-07-02T09:46:24.330820-04:00"
   },
@@ -4447,7 +4447,7 @@
     "conteudo": "SITE NAO ABRE (NOT FOUND)",
     "resolucao": "O site http://devir.pc.ms.gov.br/#/ está operando normalmente.",
     "atendido": true,
-    "diasAberto": 479,
+    "diasAberto": 480,
     "createdAt": "2025-03-24T14:08:05.554449-04:00",
     "updatedAt": "2025-07-02T09:46:58.647273-04:00"
   },
@@ -4461,7 +4461,7 @@
     "conteudo": "Naão consigo realizar boletim online",
     "resolucao": "O site http://devir.pc.ms.gov.br/#/ está operando normalmente.",
     "atendido": true,
-    "diasAberto": 479,
+    "diasAberto": 480,
     "createdAt": "2025-03-24T13:48:50.870618-04:00",
     "updatedAt": "2025-07-02T09:47:11.858507-04:00"
   },
@@ -4475,7 +4475,7 @@
     "conteudo": "Ao consultar o site mencionado na página\n\nhttp://devir.pc.ms.gov.br/\n\nDiz não  ser seguro. \n\nObservem na página aparece\nHTTP,   sendo que o correto é https. \n\nGentileza, verificar se o site informado é seguro\nhttp://devir.pc.ms.gov.br/.\n\nGrata\n\nLúcia Isaura",
     "resolucao": "O site http://devir.pc.ms.gov.br/#/ está operando normalmente.",
     "atendido": true,
-    "diasAberto": 496,
+    "diasAberto": 497,
     "createdAt": "2025-03-07T10:54:44.318397-05:00",
     "updatedAt": "2025-07-02T09:47:24.787000-04:00"
   },
@@ -4517,7 +4517,7 @@
     "conteudo": "Não consigo registrar boletim de ocorrencia",
     "resolucao": "O site http://devir.pc.ms.gov.br/#/ está operando normalmente.",
     "atendido": true,
-    "diasAberto": 612,
+    "diasAberto": 613,
     "createdAt": "2024-11-11T09:52:54.571242-05:00",
     "updatedAt": "2025-07-02T09:51:53.881727-04:00"
   },
@@ -4531,7 +4531,7 @@
     "conteudo": "Eu não consigo fazer o boletim de ocorrência dos documentos perdidos",
     "resolucao": "O site http://devir.pc.ms.gov.br/#/ está operando normalmente.",
     "atendido": true,
-    "diasAberto": 630,
+    "diasAberto": 631,
     "createdAt": "2024-10-24T15:13:56.345885-04:00",
     "updatedAt": "2025-07-02T09:52:07.225096-04:00"
   },
@@ -4587,7 +4587,7 @@
     "conteudo": "Página não encontrada.",
     "resolucao": "Foi alterada a carta referente à emissão de DAEMS, corrigindo o link que estava \"quebrado\".",
     "atendido": true,
-    "diasAberto": 265,
+    "diasAberto": 266,
     "createdAt": "2025-10-24T14:29:22.770655-04:00",
     "updatedAt": "2025-10-29T07:11:57.365951-04:00"
   },
@@ -4615,7 +4615,7 @@
     "conteudo": "Alldrye",
     "resolucao": "Não foi identificado o erro.",
     "atendido": true,
-    "diasAberto": 337,
+    "diasAberto": 338,
     "createdAt": "2025-08-13T14:35:56.685154-04:00",
     "updatedAt": "2025-09-01T14:44:51.372036-04:00"
   },
@@ -4643,7 +4643,7 @@
     "conteudo": "BOM DIA PREZADOS\n\nNÃO CONSIGO SOLICITAR A CERTIDÃO NEGATIVA, A INFORMAÇÃO QUE RECEBO CONSTA QUE A DIGITAÇÃO DO NOME ESTA INCORRETA, TODAS AS INFORMAÇÕES QUE ESTÃO SENDO PREENCHIDAS TEM VERACIDADE. NÃO ESTOU CONSEGUINDO ENTENDER O QUE ESTA FALTANDO NO PREENCHIMENTO. PODERIAM ME AJUDAR POR GENTILEZA.\n\nDESDE JÁ AGRADEÇO.\n\nLUCIANA DIAS GOMES\n(67) 98191.7864",
     "resolucao": "Prezado solicitante,  basta o requerente se dirigir a qualquer posto de identificação do Estado, caso ainda assim encontre dificuldades, favor entrar em contato através do e-mail ouvidoria@cgp.sejusp.ms.gov.br e informar seus dados para que possamos lhe auxiliar.\r\nAtenciosamente, Assessoria Especializada",
     "atendido": true,
-    "diasAberto": 370,
+    "diasAberto": 371,
     "createdAt": "2025-07-11T12:18:02.233032-04:00",
     "updatedAt": "2025-09-04T11:55:38.597916-04:00"
   },
@@ -4685,7 +4685,7 @@
     "conteudo": "Sim, onde está o acesso fácil para emissão do DAEMS e do e-Fazenda? cliquei em um link que deveria direcionar para a emissão de DAEMS e veio para cadastro",
     "resolucao": "O serviço correto para emissão de DAEMS é o \"Documento de arrecadação do estado de Mato Grosso do Sul (DAEMS) – emissão\", disponível no link: https://www.ms.gov.br/financas-e-impostos/documento-de-arrecadacao-do-estado-de-mato-grosso-do-sul-daems-emissao5/",
     "atendido": true,
-    "diasAberto": 269,
+    "diasAberto": 270,
     "createdAt": "2025-10-20T15:39:05.367439-04:00",
     "updatedAt": "2025-10-21T08:46:51.856651-04:00"
   },
@@ -4713,7 +4713,7 @@
     "conteudo": "site complicado, ate agora nao consegui fazer a consulta que estou precisando, para que complicar a vida das pessoas, muita informação desnecessária, precisa ser objetivo, precisa ser claro e não dificultar.",
     "resolucao": "O erro reportado não se relaciona à Carta de Serviços.",
     "atendido": true,
-    "diasAberto": 268,
+    "diasAberto": 269,
     "createdAt": "2025-10-21T14:10:46.478853-04:00",
     "updatedAt": "2025-10-29T07:12:58.095941-04:00"
   },
@@ -4727,7 +4727,7 @@
     "conteudo": "Ao selecionar \"solicitar serviço\", a página gera um erro 404",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 259,
+    "diasAberto": 260,
     "createdAt": "2025-10-30T10:58:41.630695-04:00",
     "updatedAt": "2025-10-30T10:58:41.630709-04:00"
   },
@@ -4741,7 +4741,7 @@
     "conteudo": "Boa tarde, na tarde de hoje 04/03/2026 eu solicitei o antecedentes criminais para apresentar no Detran e não baixou depois que ficou pronto, preciso da 2° via, onde posso conseguir?",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 134,
+    "diasAberto": 135,
     "createdAt": "2026-03-04T13:37:53.623277-05:00",
     "updatedAt": "2026-03-04T13:37:53.623300-05:00"
   },
@@ -4755,7 +4755,7 @@
     "conteudo": "Não tem uma opção direta pra registrar a ocorrência\nPrecisa de precisão e menos política",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 255,
+    "diasAberto": 256,
     "createdAt": "2025-11-03T12:24:42.419442-05:00",
     "updatedAt": "2025-11-03T12:24:42.419453-05:00"
   },
@@ -4769,7 +4769,7 @@
     "conteudo": "Peguei meu cartão, dia 20 de outubro, disseram que ia ter o limite liberado dia 22 fui no mais social dia 23, disseram que ia ser liberado hj , mas até agora não foi liberado",
     "resolucao": "Não foi possível atender à solicitação da Sra. Ellen, pois não dispomos de informações suficientes para dar andamento ao atendimento.",
     "atendido": true,
-    "diasAberto": 265,
+    "diasAberto": 266,
     "createdAt": "2025-10-24T13:27:41.840542-04:00",
     "updatedAt": "2025-11-03T14:05:50.131357-05:00"
   },
@@ -4783,7 +4783,7 @@
     "conteudo": "a pagina não abre",
     "resolucao": "Não foi possível atender à solicitação da Sra. Cristiane, porque não tem informações suficientes para saber qual página não esta abrindo.",
     "atendido": true,
-    "diasAberto": 259,
+    "diasAberto": 260,
     "createdAt": "2025-10-30T15:38:12.607956-04:00",
     "updatedAt": "2025-11-03T14:06:44.765283-05:00"
   },
@@ -4797,7 +4797,7 @@
     "conteudo": "portal da transparência, sem acesso ao ano 2026",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 16,
+    "diasAberto": 17,
     "createdAt": "2026-06-30T13:28:46.344014-04:00",
     "updatedAt": "2026-06-30T13:28:46.344024-04:00"
   },
@@ -4825,7 +4825,7 @@
     "conteudo": "Quando clica no link da lista de escolas da erron não consigo acessar a escola",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 254,
+    "diasAberto": 255,
     "createdAt": "2025-11-04T14:36:01.023369-05:00",
     "updatedAt": "2025-11-04T14:36:01.023400-05:00"
   },
@@ -4853,7 +4853,7 @@
     "conteudo": "Os telefones não atende estou deis da parte da manhã tentando achar alguém que atende o telefone, e não atende no final 900.. e as informações de quem foi aprovado, fiz o cadastro e mandaram eu ir embora q eu receberia no email e até agora nada e não atendem",
     "resolucao": "Como não recebemos nenhuma forma de contato coma sra Isabela, encaminhamos apenas esta explicação sobre o telefone. \r\nAs linhas telefônicas dos órgãos do Governo do Estado são operadas pela Infovia, responsável pela infraestrutura de comunicação. No momento, foi identificado um problema que impede o recebimento de chamadas originadas de linhas da operadora Claro. A Infovia já foi acionada e está trabalhando para resolver a situação o mais breve possível.",
     "atendido": true,
-    "diasAberto": 254,
+    "diasAberto": 255,
     "createdAt": "2025-11-04T13:49:16.324887-05:00",
     "updatedAt": "2025-11-06T08:30:12.411694-05:00"
   },
@@ -4965,7 +4965,7 @@
     "conteudo": "a pagina do serviço não abre.",
     "resolucao": "Apesar da sra Natalia nao ter informado como entrar em contato com ela, foi verificado que a página esta acessível.",
     "atendido": true,
-    "diasAberto": 252,
+    "diasAberto": 253,
     "createdAt": "2025-11-06T12:06:47.175978-05:00",
     "updatedAt": "2025-11-25T10:02:36.841735-05:00"
   },
@@ -4979,7 +4979,7 @@
     "conteudo": "onde cadastrar e horário de funcionamento indisponível no sistema",
     "resolucao": "Atualmente já esta na pagina deste serviço como se cadastrar. \r\nQuanto aos horarios, ainda irei fazer as atualizaçõs.",
     "atendido": true,
-    "diasAberto": 252,
+    "diasAberto": 253,
     "createdAt": "2025-11-06T13:47:56.481398-05:00",
     "updatedAt": "2025-11-25T10:14:43.729031-05:00"
   },
@@ -4993,7 +4993,7 @@
     "conteudo": "Suporte online que não funciona final de semana, meio de semana não deve ser diferente preciso registrar um BO por causa de furto de cabos elétrico para poder pedir a religação e não consigo.\nVou ficar sem energia final de semana por causa de um serviço que não presta.",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 313,
+    "diasAberto": 314,
     "createdAt": "2025-09-06T11:37:49.578481-04:00",
     "updatedAt": "2025-09-06T11:37:49.578496-04:00"
   },
@@ -5021,7 +5021,7 @@
     "conteudo": "O site para emissão da certidão de antecedentes criminais está inoperante. Um sistema de tamanha importância não pode ficar assim.",
     "resolucao": "Em consulta ao site, verificamos que o mesmo encontra-se operacional neste momento. Caso encontre qualquer dificuldade para emissão da certidão de antecedentes criminais, orientamos que se dirija a um dos postos de identificação do Estado, onde poderá receber o devido auxílio para a realização do serviço.",
     "atendido": true,
-    "diasAberto": 312,
+    "diasAberto": 313,
     "createdAt": "2025-09-07T13:34:35.871119-04:00",
     "updatedAt": "2025-09-08T10:02:07.946036-04:00"
   },
@@ -5049,7 +5049,7 @@
     "conteudo": "nao funciona, não abre para registrar o pedido",
     "resolucao": "Este serviço foi atualizado mediante orientação da CGE conforme e-mail recebido.",
     "atendido": true,
-    "diasAberto": 813,
+    "diasAberto": 814,
     "createdAt": "2024-04-24T10:49:10.403305-04:00",
     "updatedAt": "2025-09-09T09:23:22.226908-04:00"
   },
@@ -5077,7 +5077,7 @@
     "conteudo": "Prezados,\n\nInformamos que foi aberto o chamado nº 503209, contudo, precisamos de auxílio com urgência, tendo em vista que nosso prazo está se esgotando.\n\nEstamos tentando protocolar um pedido de reconsideração, mas o sistema permanece apenas carregando sem concluir a operação, impossibilitando o envio.\n\nDiante da urgência do prazo, solicitamos a gentileza de priorizar a análise e nos orientar quanto à alternativa para garantir o protocolo tempestivo.",
     "resolucao": "Não se trata de erro relacionado à Carta de Serviços, e sim à sistemas de informação da SEFAZ/MS. O próprio solicitante informa já ter aberto chamado de suporte técnico.",
     "atendido": true,
-    "diasAberto": 365,
+    "diasAberto": 366,
     "createdAt": "2025-07-16T13:29:54.833003-04:00",
     "updatedAt": "2025-09-09T15:02:44.784411-04:00"
   },
@@ -5105,7 +5105,7 @@
     "conteudo": "Não consigo acessar os documentos necessários para realizar o procedimento por questões de segurança do site.",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 309,
+    "diasAberto": 310,
     "createdAt": "2025-09-10T15:31:39.469282-04:00",
     "updatedAt": "2025-09-10T15:31:39.469297-04:00"
   },
@@ -5161,7 +5161,7 @@
     "conteudo": "Informações de que eu devo comparecer a uma agência em Mato Grosso do SUL, mas eu moro em MT",
     "resolucao": "N etapa \"3-Postagem do requerimento e documentos\", é feita orientação para os segurados que moram fora de CG-MS:lpostar pelos correios, o requerimento e os documentos necessários, para o setor e endereço mencionados no item anterior.",
     "atendido": true,
-    "diasAberto": 412,
+    "diasAberto": 413,
     "createdAt": "2025-05-30T12:54:22.737080-04:00",
     "updatedAt": "2025-09-15T10:42:28.707146-04:00"
   },
@@ -5175,7 +5175,7 @@
     "conteudo": "Como fazer denúncia  anônima de uma conta do  kwai",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 304,
+    "diasAberto": 305,
     "createdAt": "2025-09-15T14:14:21.470560-04:00",
     "updatedAt": "2025-09-15T14:14:21.470581-04:00"
   },
@@ -5203,7 +5203,7 @@
     "conteudo": "Não é possível localizar a unidade na janela não aparece",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 132,
+    "diasAberto": 133,
     "createdAt": "2026-03-06T12:36:16.265148-05:00",
     "updatedAt": "2026-03-06T12:36:16.265167-05:00"
   },
@@ -5217,7 +5217,7 @@
     "conteudo": "Precisa de informações mais claras sobre a CNH, principalmente sobre as aulas (práticas e teóricas).",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 79,
+    "diasAberto": 80,
     "createdAt": "2026-04-28T10:36:43.140113-04:00",
     "updatedAt": "2026-04-28T10:36:43.140125-04:00"
   },
@@ -5231,7 +5231,7 @@
     "conteudo": "d",
     "resolucao": "o link do site foi corrigido para o atual https://e-ms.ms.gov.br/#/UIVII/public/consultar-solicitacao",
     "atendido": true,
-    "diasAberto": 43,
+    "diasAberto": 44,
     "createdAt": "2026-06-03T10:37:43.520306-04:00",
     "updatedAt": "2026-07-01T10:09:11.939654-04:00"
   },
@@ -5245,7 +5245,7 @@
     "conteudo": "NÃO ESTOU CONSEGUINDO CONCLUIR MEU CADASTRO, ACREDITO QUE NOME DE MINHA MÃE (IN MEMORIAM) ESTEJA COM ALGUM ERRO",
     "resolucao": "O erro não se relaciona à Carta de Serviços.\r\nA divergência de nomes durante o cadastramento no e-Fazenda deve ser resolvido junto à Receita Federal do Brasil.",
     "atendido": true,
-    "diasAberto": 225,
+    "diasAberto": 226,
     "createdAt": "2025-12-03T14:12:36.783984-05:00",
     "updatedAt": "2025-12-04T11:52:15.511062-05:00"
   },
@@ -5259,7 +5259,7 @@
     "conteudo": "Minha função é fiscal de corte e não auxiliar de motorista",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 297,
+    "diasAberto": 298,
     "createdAt": "2025-09-22T14:13:09.822507-04:00",
     "updatedAt": "2025-09-22T14:13:09.822524-04:00"
   },
@@ -5273,7 +5273,7 @@
     "conteudo": "A página bo online nao abre",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 296,
+    "diasAberto": 297,
     "createdAt": "2025-09-23T14:23:16.491171-04:00",
     "updatedAt": "2025-09-23T14:23:16.491185-04:00"
   },
@@ -5301,7 +5301,7 @@
     "conteudo": "Não consigo selecionar a unidade",
     "resolucao": "A solicitação é  presencialmente à unidade escolar onde concluiu a etapa ou, ainda, via e-mail da respectiva escola, mediante requerimento assinado eletronicamente.",
     "atendido": true,
-    "diasAberto": 413,
+    "diasAberto": 414,
     "createdAt": "2025-05-29T13:50:51.526298-04:00",
     "updatedAt": "2025-09-26T10:00:15.528856-04:00"
   },
@@ -5315,7 +5315,7 @@
     "conteudo": "Não funciona! \nCoisas simples e não sabem fazer",
     "resolucao": "Ligue ou envie e-mail para Ouvidoria-Geral do Estado - OGE: (67) 3318-4041ou (67) 3318-4002, e-mail: oge-cge@cge.ms.gov.br.\r\n\r\nPara atendimento presencial:\r\n\r\nCompareça à OGE para realizar sua manifestação, que será inserida na Plataforma Fala.BR.",
     "atendido": true,
-    "diasAberto": 410,
+    "diasAberto": 411,
     "createdAt": "2025-06-01T10:51:19.335797-04:00",
     "updatedAt": "2025-09-26T10:01:00.375263-04:00"
   },
@@ -5329,7 +5329,7 @@
     "conteudo": "eu não moro no estado em que conclui o ensino medio, como posso solicitar o serviço?",
     "resolucao": "Pode enviar e-mail para a respectiva escola, mediante requerimento assinado eletronicamente.",
     "atendido": true,
-    "diasAberto": 373,
+    "diasAberto": 374,
     "createdAt": "2025-07-08T11:24:27.707377-04:00",
     "updatedAt": "2025-09-26T10:01:25.764557-04:00"
   },
@@ -5385,7 +5385,7 @@
     "conteudo": "Não Consigo encontrar para tirar cópia do CONTRA CHEQUE...HOLERITE.........",
     "resolucao": "O usuário se manifestou, equivocadamente, no pedido de vista ou cópia, sobre sua necessidade de emitir contracheque: no sítio institucional da agência há um \"banner azul com letra amarela\", escrito \"holerite\" para que os segurados emitam tal documento; para reforçar o atendimento, providenciamos anúncio desse novo serviço \"Receber apoio para emitir o contracheque (aposentado ou pensionista)\", na plataforma em 25/9/2025.",
     "atendido": true,
-    "diasAberto": 590,
+    "diasAberto": 591,
     "createdAt": "2024-12-03T10:05:22.437055-05:00",
     "updatedAt": "2025-09-30T10:51:38.041891-04:00"
   },
@@ -5399,7 +5399,7 @@
     "conteudo": "Não consigo preencher o campo da Data de Nascimento. Sempre que completo, ele apaga tudo, mesmo tentando várias vezes",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 288,
+    "diasAberto": 289,
     "createdAt": "2025-10-01T15:17:08.698549-04:00",
     "updatedAt": "2025-10-01T15:17:08.698563-04:00"
   },
@@ -5413,7 +5413,7 @@
     "conteudo": "Não consigo realizar o cadastro, uma vez que ao puxar o acesso pelo gov.br dá erro.",
     "resolucao": "Não se trata de erro relacionado à Carta de Serviços, e sim relacionado à sistemas de informação da SEFAZ/MS. O solicitante deve abrir chamado de suporte técnico através do telefone (67) 3318-3600.",
     "atendido": true,
-    "diasAberto": 287,
+    "diasAberto": 288,
     "createdAt": "2025-10-02T13:11:46.676020-04:00",
     "updatedAt": "2025-10-15T13:41:47.975106-04:00"
   },
@@ -5441,7 +5441,7 @@
     "conteudo": "Tenho todos os requisitos para receber do cuidar de quem cuida preciso muito e não cons Gui por causa do pé de meia do meu filho mais velho .s não que o pé de meia é pro estudante e não pra mãe",
     "resolucao": "É importante esclarecer que a análise do perfil é feita automaticamente pelo próprio sistema, com base nas informações inseridas no cadastro.\r\n\r\nOs servidores do Estado não interferem na aprovação ou reprovação — todo o processo é digital e segue os critérios estabelecidos pelo programa.",
     "atendido": true,
-    "diasAberto": 294,
+    "diasAberto": 295,
     "createdAt": "2025-09-25T14:22:44.954501-04:00",
     "updatedAt": "2025-10-17T14:35:01.220321-04:00"
   },
@@ -5497,7 +5497,7 @@
     "conteudo": "Em Três Lagoas MS Não consta nenhum horário de atendimento para emissão de RG até o final do Ano.",
     "resolucao": "A agenda é disponibilizada todo dia 30 do mês.",
     "atendido": true,
-    "diasAberto": 290,
+    "diasAberto": 291,
     "createdAt": "2025-09-29T13:57:01.175045-04:00",
     "updatedAt": "2025-10-30T13:03:57.388031-04:00"
   },
@@ -5539,7 +5539,7 @@
     "conteudo": "NAO ESTOU CONSEGUINDO FAZER ABERTURA DE INSCRIÇÃO ESTADUAL",
     "resolucao": "O problema não é relacionado à Carta de Serviços. Para dificuldades relacionadas à abertura de inscrição estadual sugere-se a abertura de protocolo no sistema Fale Conosco através do link abaixo:\r\nhttps://www.faleconosco.ms.gov.br/faleconosco/login/login.jsf",
     "atendido": true,
-    "diasAberto": 139,
+    "diasAberto": 140,
     "createdAt": "2026-02-27T14:27:46.901587-05:00",
     "updatedAt": "2026-03-05T08:01:13.758694-05:00"
   },
@@ -5553,7 +5553,7 @@
     "conteudo": "A data de nascimento não preenche de jeito nenhum",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 248,
+    "diasAberto": 249,
     "createdAt": "2025-11-10T14:17:59.808678-05:00",
     "updatedAt": "2025-11-10T14:17:59.808694-05:00"
   },
@@ -5567,7 +5567,7 @@
     "conteudo": "não consigo acesso",
     "resolucao": "o link do site foi atualizado para o https://e-ms.ms.gov.br/#/UIVII/public/consultar-solicitacao",
     "atendido": true,
-    "diasAberto": 37,
+    "diasAberto": 38,
     "createdAt": "2026-06-09T14:29:31.297805-04:00",
     "updatedAt": "2026-07-01T10:09:37.579844-04:00"
   },
@@ -5595,7 +5595,7 @@
     "conteudo": "Sua Internet não é particular",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 221,
+    "diasAberto": 222,
     "createdAt": "2025-12-07T12:51:27.483154-05:00",
     "updatedAt": "2025-12-07T12:51:27.483166-05:00"
   },
@@ -5609,7 +5609,7 @@
     "conteudo": "O serviço de cadastro de fornecedor é totalmente online, havendo o atendimento via telefone quando necessário para esclarecimentos.\nNão tem o telefone para que possamos entrar em contato.",
     "resolucao": "Foi incluído o número para contato.",
     "atendido": true,
-    "diasAberto": 281,
+    "diasAberto": 282,
     "createdAt": "2025-10-08T12:20:12.955420-04:00",
     "updatedAt": "2025-11-13T15:39:55.580520-05:00"
   },
@@ -5735,7 +5735,7 @@
     "conteudo": "Eu quero o gov mg",
     "resolucao": "Cidadão busca serviço referente ao Estado de MG.",
     "atendido": true,
-    "diasAberto": 192,
+    "diasAberto": 193,
     "createdAt": "2026-01-05T11:39:29.777003-05:00",
     "updatedAt": "2026-02-05T09:28:59.324853-05:00"
   },
@@ -5889,7 +5889,7 @@
     "conteudo": "Não sou do Mato Grosso, mas sim de Recife",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 15,
+    "diasAberto": 16,
     "createdAt": "2026-07-01T11:33:10.147137-04:00",
     "updatedAt": "2026-07-01T11:33:10.147149-04:00"
   },
@@ -5945,7 +5945,7 @@
     "conteudo": "não consegui salvar o agendamento, tentei 5 vezes e sempre mudava o código e dava a mesma mensagem.",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 129,
+    "diasAberto": 130,
     "createdAt": "2026-03-09T12:22:09.283017-04:00",
     "updatedAt": "2026-03-09T12:22:09.283032-04:00"
   },
@@ -5959,7 +5959,7 @@
     "conteudo": "nao consigo agendar",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 213,
+    "diasAberto": 214,
     "createdAt": "2025-12-15T13:47:55.115285-05:00",
     "updatedAt": "2025-12-15T13:47:55.115302-05:00"
   },
@@ -6113,7 +6113,7 @@
     "conteudo": "Estado não confere",
     "resolucao": "Cidadão de outro Estado, pois reportou \"Estado nao confere\"",
     "atendido": true,
-    "diasAberto": 195,
+    "diasAberto": 196,
     "createdAt": "2026-01-02T13:36:37.996285-05:00",
     "updatedAt": "2026-02-05T09:29:37.744657-05:00"
   },
@@ -6127,7 +6127,7 @@
     "conteudo": "A localização está errada",
     "resolucao": "Cidadão apenas reportou que a localização está errada, provavelmente ele reside em outro Estado.",
     "atendido": true,
-    "diasAberto": 202,
+    "diasAberto": 203,
     "createdAt": "2025-12-26T09:47:19.944660-05:00",
     "updatedAt": "2026-02-05T09:33:17.264082-05:00"
   },
@@ -6155,7 +6155,7 @@
     "conteudo": "Sou de são José do Rio",
     "resolucao": "Cidadão procura serviço referente a outro Estado.",
     "atendido": true,
-    "diasAberto": 212,
+    "diasAberto": 213,
     "createdAt": "2025-12-16T13:21:43.614582-05:00",
     "updatedAt": "2026-02-05T09:42:17.992376-05:00"
   },
@@ -6169,7 +6169,7 @@
     "conteudo": "Não consigo digitar a data de nascimento. Erro no sistema?",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 190,
+    "diasAberto": 191,
     "createdAt": "2026-01-07T14:45:45.416789-05:00",
     "updatedAt": "2026-01-07T14:45:45.416804-05:00"
   },
@@ -6197,7 +6197,7 @@
     "conteudo": "o ipva de 2026 ficou com maior valor que 2025. por que?",
     "resolucao": "O problema reportado não se relaciona à Carta de Serviços.\r\nEventuais dúvidas e questionamentos a respeito da legislação tributária devem ser direcionadas para o Fale Conosco no endereço abaixo.\r\nhttps://www.faleconosco.ms.gov.br/faleconosco/login/login.jsf",
     "atendido": true,
-    "diasAberto": 192,
+    "diasAberto": 193,
     "createdAt": "2026-01-05T10:57:27.482676-05:00",
     "updatedAt": "2026-01-15T16:28:25.000851-05:00"
   },
@@ -6211,7 +6211,7 @@
     "conteudo": "IPVA janeiro 2025",
     "resolucao": "O usuário não descreveu o problema.",
     "atendido": true,
-    "diasAberto": 189,
+    "diasAberto": 190,
     "createdAt": "2026-01-08T14:38:49.971665-05:00",
     "updatedAt": "2026-01-15T16:32:19.410282-05:00"
   },
@@ -6225,7 +6225,7 @@
     "conteudo": "Não está gerando pelo link a certidão negativa, e não temos nenhuma pendência. Qual seria a solução nesse caso?\nnosso e-mail: fiscal@trouwnutrition.com",
     "resolucao": "O problema reportado não se relaciona à Carta de Serviços.\r\nPara a solução de problemas técnicos o usuário deve abrir chamado de suporte através dos telefones (67) 3318-3600 (voz) ou (67) 3318-3700 (WhatsApp).",
     "atendido": true,
-    "diasAberto": 189,
+    "diasAberto": 190,
     "createdAt": "2026-01-08T14:45:27.488441-05:00",
     "updatedAt": "2026-01-15T16:34:07.792375-05:00"
   },
@@ -6239,7 +6239,7 @@
     "conteudo": "NAO CONSIGO FAZER MEU REGISTRO.",
     "resolucao": "O usuário não descreveu o problema.",
     "atendido": true,
-    "diasAberto": 188,
+    "diasAberto": 189,
     "createdAt": "2026-01-09T11:09:42.706848-05:00",
     "updatedAt": "2026-01-15T16:37:51.915748-05:00"
   },
@@ -6337,7 +6337,7 @@
     "conteudo": "Não está aparecendo a opção de ver o boletim",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 14,
+    "diasAberto": 15,
     "createdAt": "2026-07-02T13:44:49.883010-04:00",
     "updatedAt": "2026-07-02T13:44:49.883024-04:00"
   },
@@ -6421,7 +6421,7 @@
     "conteudo": "Quero fazer na minha cidade praia grande litoral de São Paulo",
     "resolucao": "Não há edital de inscrições aberto no momento.",
     "atendido": true,
-    "diasAberto": 373,
+    "diasAberto": 374,
     "createdAt": "2025-07-08T12:36:49.865817-04:00",
     "updatedAt": "2026-02-03T14:50:47.402647-05:00"
   },
@@ -6449,7 +6449,7 @@
     "conteudo": "Sou de São Paulo, e tenho que marcar uma prova no Mato Grosso do Sul?!!!!",
     "resolucao": "Candidato pode reagendar através da autoescola a qual esta vinculado.",
     "atendido": true,
-    "diasAberto": 330,
+    "diasAberto": 331,
     "createdAt": "2025-08-20T15:40:58.532545-04:00",
     "updatedAt": "2026-02-03T15:04:02.911847-05:00"
   },
@@ -6491,7 +6491,7 @@
     "conteudo": "Não consigo tirar a Certidão de Antecedentes.",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 162,
+    "diasAberto": 163,
     "createdAt": "2026-02-04T09:36:21.647544-05:00",
     "updatedAt": "2026-02-04T09:36:21.647559-05:00"
   },
@@ -6547,7 +6547,7 @@
     "conteudo": "moro no amazonas",
     "resolucao": "MOra no amazonas",
     "atendido": true,
-    "diasAberto": 168,
+    "diasAberto": 169,
     "createdAt": "2026-01-29T14:22:26.130245-05:00",
     "updatedAt": "2026-02-05T09:08:40.210880-05:00"
   },
@@ -6561,7 +6561,7 @@
     "conteudo": "Preciso autorização para o estado do RIO GRANDE DO SUL",
     "resolucao": "Não há edital aberto no momento.",
     "atendido": true,
-    "diasAberto": 168,
+    "diasAberto": 169,
     "createdAt": "2026-01-29T13:16:09.842187-05:00",
     "updatedAt": "2026-02-05T09:09:10.283372-05:00"
   },
@@ -6575,7 +6575,7 @@
     "conteudo": "Sou da Bahia",
     "resolucao": "Cidadão mora na Bahia.",
     "atendido": true,
-    "diasAberto": 169,
+    "diasAberto": 170,
     "createdAt": "2026-01-28T14:28:49.181079-05:00",
     "updatedAt": "2026-02-05T09:09:34.704254-05:00"
   },
@@ -6589,7 +6589,7 @@
     "conteudo": "Moro em Mogi e está aparecendo opções em outro estado",
     "resolucao": "Cidadão mora em outro Estado.",
     "atendido": true,
-    "diasAberto": 173,
+    "diasAberto": 174,
     "createdAt": "2026-01-24T11:27:27.342952-05:00",
     "updatedAt": "2026-02-05T09:12:27.817477-05:00"
   },
@@ -6617,7 +6617,7 @@
     "conteudo": "Localização errada",
     "resolucao": "Cidadão reportou apenas \"localização errada\".",
     "atendido": true,
-    "diasAberto": 202,
+    "diasAberto": 203,
     "createdAt": "2025-12-26T14:44:03.346661-05:00",
     "updatedAt": "2026-02-05T09:30:13.548291-05:00"
   },
@@ -6701,7 +6701,7 @@
     "conteudo": "Quero Detran Bh",
     "resolucao": "Cidadão quer serviço do Detran BH",
     "atendido": true,
-    "diasAberto": 158,
+    "diasAberto": 159,
     "createdAt": "2026-02-08T11:46:12.827533-05:00",
     "updatedAt": "2026-02-19T12:33:44.690060-05:00"
   },
@@ -6771,7 +6771,7 @@
     "conteudo": ".",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 10,
+    "diasAberto": 11,
     "createdAt": "2026-07-06T14:40:02.933518-04:00",
     "updatedAt": "2026-07-06T14:40:02.933535-04:00"
   },
@@ -6799,7 +6799,7 @@
     "conteudo": "Boa tarde! Estou desde manha tentando acessar o meu \"antecedentes criminais\" e nao consigo.  Fui na Dep., eles dizem que só o cidadão que faz on line. Mas é complicado demais para nós que nao mexemos com o sistema do governo.  Por favor, liberem para que nas delegacias façam por nós.",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 184,
+    "diasAberto": 185,
     "createdAt": "2026-01-13T13:06:59.275247-05:00",
     "updatedAt": "2026-01-13T13:06:59.275262-05:00"
   },
@@ -6827,7 +6827,7 @@
     "conteudo": "Rio de Janeiro",
     "resolucao": "Não foi informado qual o erro.",
     "atendido": true,
-    "diasAberto": 392,
+    "diasAberto": 393,
     "createdAt": "2025-06-19T12:15:13.770653-04:00",
     "updatedAt": "2026-01-13T13:49:17.846120-05:00"
   },
@@ -6841,7 +6841,7 @@
     "conteudo": "Como realizo cadastro online",
     "resolucao": "Todas as informações foram atualizadas e disponibilizados vídeos com orientações de como proceder.",
     "atendido": true,
-    "diasAberto": 391,
+    "diasAberto": 392,
     "createdAt": "2025-06-20T14:56:48.287376-04:00",
     "updatedAt": "2026-01-13T13:50:45.857242-05:00"
   },
@@ -6855,7 +6855,7 @@
     "conteudo": "Não tem a opção da penitenciária dois irmãos",
     "resolucao": "Verificamos o sistema disponível e lá consta sim a opção Dois irmãos do Buriti",
     "atendido": true,
-    "diasAberto": 241,
+    "diasAberto": 242,
     "createdAt": "2025-11-17T13:55:15.822019-05:00",
     "updatedAt": "2026-01-13T13:54:06.013205-05:00"
   },
@@ -6869,7 +6869,7 @@
     "conteudo": "a emissão de carteiras de visitante nao esta disponivel on line",
     "resolucao": "A opção está sim disponível on line",
     "atendido": true,
-    "diasAberto": 269,
+    "diasAberto": 270,
     "createdAt": "2025-10-20T11:46:26.798501-04:00",
     "updatedAt": "2026-01-13T13:54:50.904096-05:00"
   },
@@ -6939,7 +6939,7 @@
     "conteudo": "ola?  pessoal\nGostaria de mudar o perfil de cidadão para contador e depois fazer vinculo. Como na página  e-fazenda  é que faço o  cadastro não achei solução para fazer a mudança, preciso fazer  o vinculo para depois assinar o termo, ja tenho o pedido da empresa da emissão de nota, por favor ajudem?\ncomo fazer  o  cadastro, ou no caso é alterar o perfil para contador?  preciso da ajuda de V.Sas.",
     "resolucao": "O problema reportado não se relaciona à Carta de Serviços.\r\nEventuais dúvidas e questionamentos a respeito da legislação tributária e procedimentos operacionais devem ser direcionados para o Fale Conosco no endereço abaixo.\r\nhttps://www.faleconosco.ms.gov.br/faleconosco/login/login.jsf",
     "atendido": true,
-    "diasAberto": 190,
+    "diasAberto": 191,
     "createdAt": "2026-01-07T12:50:09.772273-05:00",
     "updatedAt": "2026-01-15T16:31:24.887663-05:00"
   },
@@ -6967,7 +6967,7 @@
     "conteudo": "AINDA NÃO FOI LIBERADO PARA EMISSÃO DO CT-E NO AMBIENTE DE PRODUÇÃO, E JÁ CUMPRI TODOS OS REQUISITOS.",
     "resolucao": "O problema reportado não se relaciona à Carta de Serviços.\r\nPara a solução de problemas técnicos o usuário deve abrir chamado de suporte através dos telefones (67) 3318-3600 (voz) ou (67) 3318-3700 (WhatsApp).",
     "atendido": true,
-    "diasAberto": 183,
+    "diasAberto": 184,
     "createdAt": "2026-01-14T14:11:25.984073-05:00",
     "updatedAt": "2026-01-15T16:40:03.895001-05:00"
   },
@@ -7009,7 +7009,7 @@
     "conteudo": "não consigo selecionar a unidade",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 10,
+    "diasAberto": 11,
     "createdAt": "2026-07-06T15:41:29.205270-04:00",
     "updatedAt": "2026-07-06T15:41:29.205280-04:00"
   },
@@ -7023,7 +7023,7 @@
     "conteudo": "Nao consigo colocar a data de nascimento...",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 177,
+    "diasAberto": 178,
     "createdAt": "2026-01-20T10:06:57.900150-05:00",
     "updatedAt": "2026-01-20T10:06:57.900165-05:00"
   },
@@ -7065,7 +7065,7 @@
     "conteudo": "Não tem minha cidade",
     "resolucao": "Cidadão é de outro Estado.",
     "atendido": true,
-    "diasAberto": 176,
+    "diasAberto": 177,
     "createdAt": "2026-01-21T09:55:16.087677-05:00",
     "updatedAt": "2026-02-05T09:23:21.231207-05:00"
   },
@@ -7079,7 +7079,7 @@
     "conteudo": "nao sou do mato grosso do sul.sou do ceara",
     "resolucao": "Cidadão de outro Estado.",
     "atendido": true,
-    "diasAberto": 177,
+    "diasAberto": 178,
     "createdAt": "2026-01-20T10:45:33.494671-05:00",
     "updatedAt": "2026-02-05T09:23:52.514545-05:00"
   },
@@ -7149,7 +7149,7 @@
     "conteudo": "Ao digitar o CEP, o campo de endereço recebe no nome da Cidade e não permite alteração. E os campos de cidade e bairro não aceitam preenchimento.",
     "resolucao": "O usuário não se identificou, porém solicitei ao responsável pela Carta de Serviço que verifique se esta ocorrendo de fato este possível erro.",
     "atendido": true,
-    "diasAberto": 176,
+    "diasAberto": 177,
     "createdAt": "2026-01-21T12:35:41.124004-05:00",
     "updatedAt": "2026-01-22T14:35:27.302121-05:00"
   },
@@ -7233,7 +7233,7 @@
     "conteudo": "Não estou conseguindo achar são José dos Campos",
     "resolucao": "Cidadã precisa acessar o portal do Detran do Estado onde reside.",
     "atendido": true,
-    "diasAberto": 300,
+    "diasAberto": 301,
     "createdAt": "2025-09-19T10:45:51.551971-04:00",
     "updatedAt": "2026-02-03T15:09:42.576390-05:00"
   },
@@ -7261,7 +7261,7 @@
     "conteudo": "Está abrindo detran do Mato Grosso e minha habilitação é de Minas Gerais",
     "resolucao": "Cidadão é do Estado de MG.",
     "atendido": true,
-    "diasAberto": 276,
+    "diasAberto": 277,
     "createdAt": "2025-10-13T11:15:28.999607-04:00",
     "updatedAt": "2026-02-05T08:57:00.453241-05:00"
   },
@@ -7303,7 +7303,7 @@
     "conteudo": "Não estou conseguindo emitir",
     "resolucao": "Não há clareza no motivo de não ter conseguido.",
     "atendido": true,
-    "diasAberto": 175,
+    "diasAberto": 176,
     "createdAt": "2026-01-22T12:19:41.543065-05:00",
     "updatedAt": "2026-02-05T09:15:59.913102-05:00"
   },
@@ -7317,7 +7317,7 @@
     "conteudo": "Meu cpf esta a ser utilizado por outra pessoa. Eu sou cidadão estrangeiro residente no Brasil natural de Angola. Carlos Eduardo Reis dos Santos casado com Debirah Dornellas coelho Duarte de Oliveira.",
     "resolucao": "Cidadão é de outra nacionalidade, e não foi claro em sua demanda.",
     "atendido": true,
-    "diasAberto": 185,
+    "diasAberto": 186,
     "createdAt": "2026-01-12T14:11:17.734304-05:00",
     "updatedAt": "2026-02-05T09:26:16.644908-05:00"
   },
@@ -7331,7 +7331,7 @@
     "conteudo": "Cidade de são José do Rio preto",
     "resolucao": "Cidadão é de outro Estado, busca serviços referentes ao Estado de SP",
     "atendido": true,
-    "diasAberto": 212,
+    "diasAberto": 213,
     "createdAt": "2025-12-16T13:30:22.906798-05:00",
     "updatedAt": "2026-02-05T09:34:08.900245-05:00"
   },
@@ -7345,7 +7345,7 @@
     "conteudo": "Não aparece a minha cidade mogi Guacu e tem Detran aqui",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 9,
+    "diasAberto": 10,
     "createdAt": "2026-07-07T11:22:11.709797-04:00",
     "updatedAt": "2026-07-07T11:22:11.709808-04:00"
   },
@@ -7373,7 +7373,7 @@
     "conteudo": "Não consigo solicitar uma certidão de antecedentes criminais",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 154,
+    "diasAberto": 155,
     "createdAt": "2026-02-12T12:43:32.209925-05:00",
     "updatedAt": "2026-02-12T12:43:32.209938-05:00"
   },
@@ -7387,7 +7387,7 @@
     "conteudo": "Quando clico em acessar o serviço para isenção PCD de IPVA o sistema retorna a página inicial do e-fazenda. Estou tentando pelo google chrome em sistema operacional Windows",
     "resolucao": "O erro não se relaciona à Carta de Serviços.\r\nAo clicar em \"Acessar o Serviço\" o sistema redireciona para a página do e-Fazenda pois o serviço prestado é de acesso restrito.",
     "atendido": true,
-    "diasAberto": 156,
+    "diasAberto": 157,
     "createdAt": "2026-02-10T10:12:35.833714-05:00",
     "updatedAt": "2026-02-12T14:12:31.976948-05:00"
   },
@@ -7443,7 +7443,7 @@
     "conteudo": "Não consigo redefinir minha senha do email",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 148,
+    "diasAberto": 149,
     "createdAt": "2026-02-18T11:32:11.786942-05:00",
     "updatedAt": "2026-02-18T11:32:11.786957-05:00"
   },
@@ -7457,7 +7457,7 @@
     "conteudo": "Sou de minas gerais e não estou conseguindo a Ladv",
     "resolucao": "Cidadã busca serviço de outra UF",
     "atendido": true,
-    "diasAberto": 154,
+    "diasAberto": 155,
     "createdAt": "2026-02-12T12:09:22.689525-05:00",
     "updatedAt": "2026-02-19T12:45:52.103040-05:00"
   },
@@ -7499,7 +7499,7 @@
     "conteudo": "Endereço errado do detran",
     "resolucao": "Links estão corretos.",
     "atendido": true,
-    "diasAberto": 149,
+    "diasAberto": 150,
     "createdAt": "2026-02-17T14:00:17.223273-05:00",
     "updatedAt": "2026-02-19T12:49:47.240969-05:00"
   },
@@ -7513,7 +7513,7 @@
     "conteudo": "Gostaria de fazer cartão social",
     "resolucao": "o usuário não se identificou, desta forma não é possível atender a solicitação.",
     "atendido": true,
-    "diasAberto": 153,
+    "diasAberto": 154,
     "createdAt": "2026-02-13T12:58:17.211482-05:00",
     "updatedAt": "2026-02-20T08:55:28.115700-05:00"
   },
@@ -7527,7 +7527,7 @@
     "conteudo": "Não consigo solicitar a inclusão no sistema do Mais social",
     "resolucao": "A Sra. Stefanyu relata que não consegue acessar o sistema do Mais Social. Contudo, a usuária não deixou nenhuma forma de contato, o que impossibilita que a equipe realize os devidos esclarecimentos e compreenda o real motivo da dificuldade apresentada.",
     "atendido": true,
-    "diasAberto": 149,
+    "diasAberto": 150,
     "createdAt": "2026-02-17T13:45:53.479369-05:00",
     "updatedAt": "2026-02-20T09:02:02.251924-05:00"
   },
@@ -7555,7 +7555,7 @@
     "conteudo": "nao estou conseguindo agendar a junta medica junto ao site",
     "resolucao": "Links foram corrigidos.",
     "atendido": true,
-    "diasAberto": 154,
+    "diasAberto": 155,
     "createdAt": "2026-02-12T10:24:07.615671-05:00",
     "updatedAt": "2026-02-19T12:45:21.873600-05:00"
   },
@@ -7569,7 +7569,7 @@
     "conteudo": "Estou tentando acessar processo administrativo de cassação da CNH de meu cliente, mas o link de acessar serviço nao está acessando. Processo 022300/2025 em nome de Eduardo Araújo Souza.\nMárcio Vieira Quércia\nOAB/MG 94.571\n34 999772519\ndireitotransito1@gmail.com",
     "resolucao": "Embora a OAB seja de ouro Estado, informo que os links estão corretos.",
     "atendido": true,
-    "diasAberto": 152,
+    "diasAberto": 153,
     "createdAt": "2026-02-14T11:11:06.014246-05:00",
     "updatedAt": "2026-02-19T12:47:29.734044-05:00"
   },
@@ -7597,7 +7597,7 @@
     "conteudo": "Estou tentando efetuar o cadastro e logo após a inserção da senha e leitura dos termos de uso ele dá uma mensagem de erro e não completa o cadastro. Estou usando o Chrome em um Macbook.",
     "resolucao": "Ja foi encaminhado ao setor para a verificação deste problema.",
     "atendido": true,
-    "diasAberto": 243,
+    "diasAberto": 244,
     "createdAt": "2025-11-15T14:34:28.879652-05:00",
     "updatedAt": "2026-02-20T09:06:26.402801-05:00"
   },
@@ -7625,7 +7625,7 @@
     "conteudo": "Boa tarde.....preciso fazer a identidade do meu filho e o campo da data de nascimento não me deixa preencher....diz data inválida",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 142,
+    "diasAberto": 143,
     "createdAt": "2026-02-24T13:37:05.684995-05:00",
     "updatedAt": "2026-02-24T13:37:05.685012-05:00"
   },
@@ -7723,7 +7723,7 @@
     "conteudo": "erro no sistema",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 9,
+    "diasAberto": 10,
     "createdAt": "2026-07-07T12:42:28.882082-04:00",
     "updatedAt": "2026-07-07T12:42:28.882093-04:00"
   },
@@ -7737,7 +7737,7 @@
     "conteudo": "não estou consegui fazer um b.o online",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 9,
+    "diasAberto": 10,
     "createdAt": "2026-07-07T12:59:23.829377-04:00",
     "updatedAt": "2026-07-07T12:59:23.829391-04:00"
   },
@@ -7751,7 +7751,7 @@
     "conteudo": "Eu moro no Rio Grande do Sul não em",
     "resolucao": "Informo que a usuária Elizângela não preencheu todas as informações necessárias para a análise da solicitação; dessa forma, não é possível dar andamento ao atendimento no momento, sendo necessário o envio dos dados completos para que possamos verificar e solucionar a demanda.",
     "atendido": true,
-    "diasAberto": 131,
+    "diasAberto": 132,
     "createdAt": "2026-03-07T14:19:03.997934-05:00",
     "updatedAt": "2026-03-17T08:37:48.892969-04:00"
   },
@@ -7793,7 +7793,7 @@
     "conteudo": "Boa tarde quero reabilitar meu cartão,  como devo proceder?\nE-mail aparecidaanadir640@gmail.com",
     "resolucao": "informo que a Superintendência do Mais Social, entrou em contato com a usuária, via email, e esclareu sobre as etapas do Programa Mais Social. Segue parte do conteudo do email:\r\n\r\n''Em atenção à solicitação e em conformidade com as Leis de Acesso à Informação e Lei Geral de Proteção de Dados, prestam-se os seguintes esclarecimentos: Para participar ou retornar ao Programa Mais Social, é necessário realizar a inscrição presencialmente na unidade responsável pelo atendimento em seu município. No local, a equipe procederá à verificação dos documentos e à análise do atendimento aos requisitos estabelecidos pelo Decreto nº 16.575, de 27 de fevereiro de 2025, que regulamenta o programa.''\r\n\r\nNas linhas seguinte do email, informa os requisitos do Programa",
     "atendido": true,
-    "diasAberto": 129,
+    "diasAberto": 130,
     "createdAt": "2026-03-09T13:13:11.114944-04:00",
     "updatedAt": "2026-03-18T10:58:56.940954-04:00"
   },
@@ -7821,7 +7821,7 @@
     "conteudo": "Não atende o telefone",
     "resolucao": "Foi verificado que nao há nenhum problema com a linha telefônica do prédio do Mais Social.",
     "atendido": true,
-    "diasAberto": 142,
+    "diasAberto": 143,
     "createdAt": "2026-02-24T09:58:02.005324-05:00",
     "updatedAt": "2026-03-18T10:59:58.676663-04:00"
   },
@@ -7863,7 +7863,7 @@
     "conteudo": "Nao consigo anexar data de nascimento",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 76,
+    "diasAberto": 77,
     "createdAt": "2026-05-01T12:30:57.534188-04:00",
     "updatedAt": "2026-05-01T12:30:57.534198-04:00"
   },
@@ -7891,7 +7891,7 @@
     "conteudo": "Não consigo fazer agendamento.",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 75,
+    "diasAberto": 76,
     "createdAt": "2026-05-02T15:17:58.888762-04:00",
     "updatedAt": "2026-05-02T15:17:58.888774-04:00"
   },
@@ -7905,7 +7905,7 @@
     "conteudo": "Eu sou natural de Salvador-Ba. E fica aparecendo outra localização avenida Ceará.",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 73,
+    "diasAberto": 74,
     "createdAt": "2026-05-04T11:34:56.492889-04:00",
     "updatedAt": "2026-05-04T11:34:56.492901-04:00"
   },
@@ -7933,7 +7933,7 @@
     "conteudo": "Eu não estou conseguindo ver a nota do meu neto",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 69,
+    "diasAberto": 70,
     "createdAt": "2026-05-08T12:17:48.581252-04:00",
     "updatedAt": "2026-05-08T12:17:48.581271-04:00"
   },
@@ -7975,7 +7975,7 @@
     "conteudo": "Não consigo ver meu boletim",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 65,
+    "diasAberto": 66,
     "createdAt": "2026-05-12T14:47:25.365480-04:00",
     "updatedAt": "2026-05-12T14:47:25.365491-04:00"
   },
@@ -7989,7 +7989,7 @@
     "conteudo": "Não estou conseguindo acessar o sistema eletr^nico de licenciamento, desde a semana passada.",
     "resolucao": "http://licenciamento.imasul.ms.gov.br/licenciamento-simplificado/#/login - o link está correto",
     "atendido": true,
-    "diasAberto": 71,
+    "diasAberto": 72,
     "createdAt": "2026-05-06T11:21:24.220010-04:00",
     "updatedAt": "2026-05-12T15:32:12.646238-04:00"
   },
@@ -8031,7 +8031,7 @@
     "conteudo": "FAVOR RETIRAR A RESOLUÇÃO SEMADE Nº 15, DE 14 DE JULHO DE 2015.JÁ FOI REVOGADA.",
     "resolucao": "Quanto à Res. Semade n. 15/2015, nao consta revogaçao expressa. No caput cita a Lei de pesca que é válida, o decreto 11.724 , já foi revogado mas a Lei é maior.",
     "atendido": true,
-    "diasAberto": 73,
+    "diasAberto": 74,
     "createdAt": "2026-05-04T13:42:43.952543-04:00",
     "updatedAt": "2026-05-14T13:33:07.519565-04:00"
   },
@@ -8059,7 +8059,7 @@
     "conteudo": "Não consigo dar continuidade ao cadastro. \nNão recebo nenhuma mensagem de validação por email ou telefone e o site mostra uma mensagem:\nERRO - NÃO FOI POSSÍVEL ENCONTRAR O CADASTRO COM A HASH 00000000-0000-0000-0000-000000000000\n\nPOLIERG INDUSTRIA E COMERCIO LTDA\nCONTATO: INDIARA.CONTABILIDADE@POLIERG.COM.BR",
     "resolucao": "O erro não se refere à Carta de Serviços, e sim ao serviço prestado.\r\nO erro relatado foi devido à falhas momentâneas ocorridas no sistema, que já foi normalizado.",
     "atendido": true,
-    "diasAberto": 66,
+    "diasAberto": 67,
     "createdAt": "2026-05-11T15:40:39.305970-04:00",
     "updatedAt": "2026-05-21T11:25:02.606821-04:00"
   },
@@ -8073,7 +8073,7 @@
     "conteudo": "tem ladrão na internet do detran. deve ter alguem repassando dados",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 50,
+    "diasAberto": 51,
     "createdAt": "2026-05-27T15:09:53.123138-04:00",
     "updatedAt": "2026-05-27T15:09:53.123149-04:00"
   },
@@ -8143,7 +8143,7 @@
     "conteudo": "Erro de sistema ao tentar agendar.",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 76,
+    "diasAberto": 77,
     "createdAt": "2026-05-01T13:49:17.615068-04:00",
     "updatedAt": "2026-05-01T13:49:17.615080-04:00"
   },
@@ -8185,7 +8185,7 @@
     "conteudo": "FAVOR RETIRAR A RESOLUÇÃO SEMADE Nº 15, DE 14 DE JULHO DE 2015.JÁ FOI REVOGADA.",
     "resolucao": "Quanto à Res. Semade n. 15/2015, nao consta revogação expressa. No caput cita a Lei de pesca que é válida, o decreto 11.724 , já foi revogado mas a Lei é maior.",
     "atendido": true,
-    "diasAberto": 73,
+    "diasAberto": 74,
     "createdAt": "2026-05-04T13:43:09.017132-04:00",
     "updatedAt": "2026-05-14T14:25:23.446344-04:00"
   },
@@ -8213,7 +8213,7 @@
     "conteudo": "A nova diagramação desta site ficou muito ruim, a anterior era muito melhor.",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 49,
+    "diasAberto": 50,
     "createdAt": "2026-05-28T14:13:10.526771-04:00",
     "updatedAt": "2026-05-28T14:13:10.526784-04:00"
   },
@@ -8255,7 +8255,7 @@
     "conteudo": "Não consigo recuperar minha senha, do cuida de quem cuida como faço?",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 45,
+    "diasAberto": 46,
     "createdAt": "2026-06-01T10:31:49.155330-04:00",
     "updatedAt": "2026-06-01T10:31:49.155343-04:00"
   },
@@ -8269,7 +8269,7 @@
     "conteudo": "Não consigo redefinir senha de acesso.",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 44,
+    "diasAberto": 45,
     "createdAt": "2026-06-02T15:00:05.169474-04:00",
     "updatedAt": "2026-06-02T15:00:05.169486-04:00"
   },
@@ -8325,7 +8325,7 @@
     "conteudo": "precidso regatar meu certificado de curso modelo 19",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 37,
+    "diasAberto": 38,
     "createdAt": "2026-06-09T15:04:55.435361-04:00",
     "updatedAt": "2026-06-09T15:04:55.435372-04:00"
   },
@@ -8353,7 +8353,7 @@
     "conteudo": "Site confuso...quando entra o site e vai na area de vagas abre uma aba, onde o leigo fica procurando o que deseja, não esta claro pra ele acessar a parte de vagas de forma facil...\nFavor corrigir\n\nEmerson\nConsultor de TI",
     "resolucao": "Prezado senhor, você pode acessar as vagasao acessar este link https://www.funtrab.ms.gov.br/informativo/vagas-de-emprego-e-estagio/",
     "atendido": true,
-    "diasAberto": 74,
+    "diasAberto": 75,
     "createdAt": "2026-05-03T15:23:06.456288-04:00",
     "updatedAt": "2026-06-11T15:33:10.351801-04:00"
   },
@@ -8367,7 +8367,7 @@
     "conteudo": "Não consegui fazer cadastro, muito ruim o acesso, encaminha para lugar nenhum",
     "resolucao": "Prezado Alisson, neste link https://www.funtrab.ms.gov.br/informativo/vagas-de-emprego-e-estagio/, você pode visualizar as vagas disponíveis . Recomendamos que você se cadastre conosco com RG, CPF e Carteira de Trabalho aqui na Funtrab, na Rua 13 de maio, 2.773, de segunda a sexta, das 7h30 às 17 horas.",
     "atendido": true,
-    "diasAberto": 37,
+    "diasAberto": 38,
     "createdAt": "2026-06-09T13:29:42.224212-04:00",
     "updatedAt": "2026-06-11T15:37:58.052772-04:00"
   },
@@ -8381,7 +8381,7 @@
     "conteudo": "Todos os dados referem-se ao estado de Mato Grosso do Sul- lugar onde nunca tive nenhum acesso , nunca fui e nem conheço ninguém. Gostaria de maiores esclarecimentos com relação a esses dados por favor",
     "resolucao": "O usuário não deixou claro qual a sua dúvida.",
     "atendido": true,
-    "diasAberto": 35,
+    "diasAberto": 36,
     "createdAt": "2026-06-11T12:15:21.902398-04:00",
     "updatedAt": "2026-06-11T16:56:08.174408-04:00"
   },
@@ -8395,7 +8395,7 @@
     "conteudo": "não estou conseguindo marcar um atendimento online, porfavor resolver isso.",
     "resolucao": "As formas de contato estão disponíveis na carta, são diversas formas para contato: Telefone 3902-2369 ou 3902-2374, e-mail institucional imprensa@uems.br e atendimento presencial na sala da DCS",
     "atendido": true,
-    "diasAberto": 191,
+    "diasAberto": 192,
     "createdAt": "2026-01-06T10:39:49.349256-05:00",
     "updatedAt": "2026-06-12T08:54:15.822849-04:00"
   },
@@ -8423,7 +8423,7 @@
     "conteudo": "Jéssica Camargo dos Santos-SP Ana Larissa Mickey 57",
     "resolucao": "A(o) Solicitante não especificou qual foi o erro que encontrou!",
     "atendido": true,
-    "diasAberto": 291,
+    "diasAberto": 292,
     "createdAt": "2025-09-28T12:41:52.857881-04:00",
     "updatedAt": "2026-06-16T15:27:27.166969-04:00"
   },
@@ -8507,7 +8507,7 @@
     "conteudo": "não consigo adicionar data de nascimento e cpf",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 2,
+    "diasAberto": 3,
     "createdAt": "2026-07-14T12:48:55.195465-04:00",
     "updatedAt": "2026-07-14T12:48:55.195477-04:00"
   },
@@ -8549,7 +8549,7 @@
     "conteudo": "meu agendamento estava marcado para hoje, 24 de março de 2026 às 10h. Cheguei às 9h30, mas não levei a certidão de nascimento. Fui em casa buscar, mas como moro do outro lado da cidade demorou e iria chegar com 20 minutos de atraso. Retornei e estou tentando novo agendamento, mas não estou conseguindo porque informa que tenho que cancelar o agendamento anterior. informa que devo entrar no iigp@cgp.sejusp.ms.gov.br - mas não estou achando como devo cancelar \n\ncomo o agendamento era pra hoje será que é possível eu voltar no mesmo lugar no período da tarde? ou me dê instruções pra prosseguir com o novo agendamento - encontrei uma data próxima e local mais próximo",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 114,
+    "diasAberto": 115,
     "createdAt": "2026-03-24T12:13:30.972023-04:00",
     "updatedAt": "2026-03-24T12:13:30.972034-04:00"
   },
@@ -8563,7 +8563,7 @@
     "conteudo": "Quero registrar um B.O> de ameça e não aparece essa opção",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 1,
+    "diasAberto": 2,
     "createdAt": "2026-07-15T14:01:35.124232-04:00",
     "updatedAt": "2026-07-15T14:01:35.124244-04:00"
   },
@@ -8591,7 +8591,7 @@
     "conteudo": "Não abre o link das empresas estampadoras cadastradas.",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 112,
+    "diasAberto": 113,
     "createdAt": "2026-03-26T11:17:37.274225-04:00",
     "updatedAt": "2026-03-26T11:17:37.274240-04:00"
   },
@@ -8605,7 +8605,7 @@
     "conteudo": "Estado, que não estar aparecendo Sergipe  como opção",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 112,
+    "diasAberto": 113,
     "createdAt": "2026-03-26T12:54:27.893598-04:00",
     "updatedAt": "2026-03-26T12:54:27.893621-04:00"
   },
@@ -8633,7 +8633,7 @@
     "conteudo": "Queria ver minha nota",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 59,
+    "diasAberto": 60,
     "createdAt": "2026-05-18T10:54:36.856379-04:00",
     "updatedAt": "2026-05-18T10:54:36.856392-04:00"
   },
@@ -8647,7 +8647,7 @@
     "conteudo": "Me tirou e tou desempregada meu filho e especial nao posso trabalhar",
     "resolucao": "Não foi preenchido com as informações necessárias para a análise da solicitação; dessa forma, não é possível dar andamento ao atendimento.",
     "atendido": true,
-    "diasAberto": 115,
+    "diasAberto": 116,
     "createdAt": "2026-03-23T15:13:15.159076-04:00",
     "updatedAt": "2026-03-30T15:42:44.834579-04:00"
   },
@@ -8661,7 +8661,7 @@
     "conteudo": "Preciso entrar no mais social mais não consigo me ajuda por favor sou mãe solo não recebo pensão e nada por favor me ajuda",
     "resolucao": "Não foi preenchido com as informações necessárias para a análise da solicitação; dessa forma, não é possível dar andamento ao atendimento.",
     "atendido": true,
-    "diasAberto": 115,
+    "diasAberto": 116,
     "createdAt": "2026-03-23T15:14:37.582840-04:00",
     "updatedAt": "2026-03-30T15:43:26.377990-04:00"
   },
@@ -8703,7 +8703,7 @@
     "conteudo": "FAVOR INSERIR A RESOLUÇÃO SEMAC Nº 3, DE 28 DE FEVEREIRO DE 2011, COM AS ALTERAÇÕES DA RESOLUÇÃO SEMAC nº 022, DE 25 DE AGOSTO DE 2011.",
     "resolucao": "Foi inserida na Carta de Serviços a Resolução Semac nº 3, de 28 de fevereiro de 2011 e Resolução Semac nº 22, de 25 de agosto de 2011, bem como também foi gerado link que leva até o conteúdo de cada normativo citado.",
     "atendido": true,
-    "diasAberto": 73,
+    "diasAberto": 74,
     "createdAt": "2026-05-04T13:47:13.648669-04:00",
     "updatedAt": "2026-05-18T14:21:22.881544-04:00"
   },
@@ -8731,7 +8731,7 @@
     "conteudo": "Não consigo fazer um agendamento da,para fazer a identidade do meu filho",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 57,
+    "diasAberto": 58,
     "createdAt": "2026-05-20T15:12:35.275866-04:00",
     "updatedAt": "2026-05-20T15:12:35.275877-04:00"
   },
@@ -8745,7 +8745,7 @@
     "conteudo": "Quero gerar o documento on-line",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 57,
+    "diasAberto": 58,
     "createdAt": "2026-05-20T15:40:05.317992-04:00",
     "updatedAt": "2026-05-20T15:40:05.318004-04:00"
   },
@@ -8815,7 +8815,7 @@
     "conteudo": "preciso cancelar uma escricao de rg para fazer outra e nao estou conseguindo onde fazer",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 0,
+    "diasAberto": 1,
     "createdAt": "2026-07-16T14:20:43.082500-04:00",
     "updatedAt": "2026-07-16T14:20:43.082512-04:00"
   },
@@ -8829,7 +8829,7 @@
     "conteudo": "não consegui acessar outros locais para tirar a carteiro",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 105,
+    "diasAberto": 106,
     "createdAt": "2026-04-02T11:00:43.656060-04:00",
     "updatedAt": "2026-04-02T11:00:43.656074-04:00"
   },
@@ -8871,7 +8871,7 @@
     "conteudo": "Quero ver o rastreamento de uma encomenda internacional",
     "resolucao": "O erro relatado não se relaciona à Carta de Serviços.",
     "atendido": true,
-    "diasAberto": 101,
+    "diasAberto": 102,
     "createdAt": "2026-04-06T11:02:30.815514-04:00",
     "updatedAt": "2026-04-10T10:17:46.998383-04:00"
   },
@@ -8885,7 +8885,7 @@
     "conteudo": "Bug ao selecionar a parcela UPVA q pretendo pagar o sistema gera um link com a guia/darf SEMPRE da primeira parcela q já está paga.",
     "resolucao": "O erro relatado não se relaciona à Carta de Serviços e sim a problemas técnicos no sistema.\r\nPara atendimento à problemas relacionados aos sistemas informatizados o usuário deve abrir um chamado de suporte técnico através dos números 3318-3600 (telefone) ou 3318-3700 (WhatsApp).",
     "atendido": true,
-    "diasAberto": 101,
+    "diasAberto": 102,
     "createdAt": "2026-04-06T13:01:13.895667-04:00",
     "updatedAt": "2026-04-10T10:20:10.523376-04:00"
   },
@@ -8913,7 +8913,7 @@
     "conteudo": "não está gerando a opção para o recurso online.",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 97,
+    "diasAberto": 98,
     "createdAt": "2026-04-10T14:25:04.650742-04:00",
     "updatedAt": "2026-04-10T14:25:04.650753-04:00"
   },
@@ -8927,7 +8927,7 @@
     "conteudo": "Não consigo fazer inscrição",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 95,
+    "diasAberto": 96,
     "createdAt": "2026-04-12T14:14:42.532551-04:00",
     "updatedAt": "2026-04-12T14:14:42.532562-04:00"
   },
@@ -8997,7 +8997,7 @@
     "conteudo": "Não consigo acessar a carteira em lugar nenhum. Esta pronta e nao consigo acessar.\nEstou a dias tentando. \nEm nenhum lugar esta a informação de emissão de carteira tea pronta ciptea.\n\nComo faço para emitir a carteira aprovada se não consigo visualizar?",
     "resolucao": "Não foi preenchido com as informações necessárias para a análise da solicitação; dessa forma, não é possível dar andamento ao atendimento.",
     "atendido": true,
-    "diasAberto": 106,
+    "diasAberto": 107,
     "createdAt": "2026-04-01T11:13:23.576241-04:00",
     "updatedAt": "2026-04-14T14:54:33.215108-04:00"
   },
@@ -9011,7 +9011,7 @@
     "conteudo": "Bom dia !\nPor favor, pq ao criar conta, no final aparece a seguinte msgm:\n\"Ocoreu um erro de negocio ao processar a requisição\".\n\n\nAtt.\n\n\nArnaldo.",
     "resolucao": "Não foi preenchido com as informações necessárias para a análise da solicitação; dessa forma, não é possível dar andamento ao atendimento.",
     "atendido": true,
-    "diasAberto": 98,
+    "diasAberto": 99,
     "createdAt": "2026-04-09T11:33:59.119530-04:00",
     "updatedAt": "2026-04-14T14:56:08.207354-04:00"
   },
@@ -9025,7 +9025,7 @@
     "conteudo": "O telefone informado não completa a ligação.",
     "resolucao": "Não foi preenchido com as informações necessárias para a análise da solicitação; dessa forma, não é possível dar andamento ao atendimento.",
     "atendido": true,
-    "diasAberto": 108,
+    "diasAberto": 109,
     "createdAt": "2026-03-30T14:40:28.362122-04:00",
     "updatedAt": "2026-04-14T14:56:33.090742-04:00"
   },
@@ -9053,7 +9053,7 @@
     "conteudo": "Boa tarde. Não consigo concluir a emissão da carteirinha de pesca amadora. Na última etapa após “li e concordo com as informações “, não me da opção de continuar",
     "resolucao": "Foi acrescentado na Carta de Serviços o contato do suporte do sistema para casos de problema na hora de logar",
     "atendido": true,
-    "diasAberto": 108,
+    "diasAberto": 109,
     "createdAt": "2026-03-30T12:18:43.066113-04:00",
     "updatedAt": "2026-04-15T13:59:29.190183-04:00"
   },
@@ -9081,7 +9081,7 @@
     "conteudo": "BOM DIA ..NO PREENCHIMENTO PARA NOVA AUTORIZAÇÃO PESCA AMADORA , AO ACEITAR O NORMATIVO 15.375 DE 28/02/2020, SISTEMA NÃO AVANÇA P CONCLUIR , FICANDO ASSIM SEM EMISSÃO DA REF. AUTORIZAÇÃO DE PESCA .....JOSE VITALINO DOS SANTOS NETO CPF 707.136.348-04 TEL 14 99785-6007 MARILIA SP",
     "resolucao": "Consta no sistema, a emissão de carteira de pesca amadora para o CPF informado.",
     "atendido": true,
-    "diasAberto": 449,
+    "diasAberto": 450,
     "createdAt": "2025-04-23T10:49:59.732288-04:00",
     "updatedAt": "2026-04-15T14:09:16.204723-04:00"
   },
@@ -9109,7 +9109,7 @@
     "conteudo": "NÃO TEM LISTAGEM, NÃO TEM COMO EMITIR O CERTIFICADO",
     "resolucao": "Link atualizado.",
     "atendido": false,
-    "diasAberto": 178,
+    "diasAberto": 179,
     "createdAt": "2026-01-19T12:58:40.620577-05:00",
     "updatedAt": "2026-04-15T14:19:10.833953-04:00"
   },
@@ -9137,7 +9137,7 @@
     "conteudo": "Não achei documentos bimestrais disponíveis",
     "resolucao": "Erro não identificado.",
     "atendido": false,
-    "diasAberto": 218,
+    "diasAberto": 219,
     "createdAt": "2025-12-10T10:11:03.716146-05:00",
     "updatedAt": "2026-04-15T14:24:14.936162-04:00"
   },
@@ -9165,7 +9165,7 @@
     "conteudo": "Site da Sed não existe",
     "resolucao": "O link foi excluído, até atualização da informação.",
     "atendido": false,
-    "diasAberto": 107,
+    "diasAberto": 108,
     "createdAt": "2026-03-31T11:41:04.125377-04:00",
     "updatedAt": "2026-04-15T14:35:27.205091-04:00"
   },
@@ -9207,7 +9207,7 @@
     "conteudo": "Não consigo acessar o site para solicitação do certificado",
     "resolucao": "O link foi excluído, até atualização da informação.",
     "atendido": false,
-    "diasAberto": 168,
+    "diasAberto": 169,
     "createdAt": "2026-01-29T09:36:24.365347-05:00",
     "updatedAt": "2026-04-15T14:37:25.425189-04:00"
   },
@@ -9263,7 +9263,7 @@
     "conteudo": "NÃO TEM CAMPO DE BOLETIM DE AMEAÇA",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 90,
+    "diasAberto": 91,
     "createdAt": "2026-04-17T10:31:21.012935-04:00",
     "updatedAt": "2026-04-17T10:31:21.012948-04:00"
   },
@@ -9347,7 +9347,7 @@
     "conteudo": "Cai em golpe quero cancelar",
     "resolucao": "Erro não relacionado à Carta de Serviços.\r\nUsuário não deixa claro o que deseja cancelar.\r\nCaso deseje cancela uma e-procuração concedida, o processo deve ser realizado no próprio módulo \"e-Procuração\" utilizado para conceder a procuração;",
     "atendido": true,
-    "diasAberto": 85,
+    "diasAberto": 86,
     "createdAt": "2026-04-22T12:13:42.675799-04:00",
     "updatedAt": "2026-04-27T11:27:14.768747-04:00"
   },
@@ -9431,7 +9431,7 @@
     "conteudo": "Olá, não consigo acessar o agendamento.\nPreciso do certificado de ensino médio.",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 34,
+    "diasAberto": 35,
     "createdAt": "2026-06-12T10:46:55.045888-04:00",
     "updatedAt": "2026-06-12T10:46:55.045905-04:00"
   },
@@ -9459,7 +9459,7 @@
     "conteudo": "Quando clica em atendimento online, não dá para selecionar a unidade de atendimento. Ao clicar na seta para baixo, apresenta menu sem opções, impossibilitando o prosseguimento. Erro apresentou em navegadores diversos (Microsoft Edge e Google Chrome).",
     "resolucao": "Após verificar o chamado, identificamos que o link informado direciona corretamente ao serviço “Pagar ou Parcelar Débito Inscrito em Dívida Ativa”.",
     "atendido": true,
-    "diasAberto": 56,
+    "diasAberto": 57,
     "createdAt": "2026-05-21T15:12:23.786968-04:00",
     "updatedAt": "2026-06-15T09:50:34.415042-04:00"
   },
@@ -9515,7 +9515,7 @@
     "conteudo": "impossível contato e abrir pelo site, não consigo concluir .",
     "resolucao": "Em análise ao chamado referente ao serviço “IPVA ou Licenciamento – Emitir Boleto”, informamos que realizamos a verificação e o serviço encontra-se regular no momento.\r\n\r\nNão foi identificado erro ou impedimento para acesso ao serviço durante o teste realizado.",
     "atendido": true,
-    "diasAberto": 216,
+    "diasAberto": 217,
     "createdAt": "2025-12-12T10:21:29.362676-05:00",
     "updatedAt": "2026-06-15T10:34:10.383137-04:00"
   },
@@ -9557,7 +9557,7 @@
     "conteudo": "Como emitir uma segunda via para pagamento da parcela de divida ativa, não consegue contato via telefone nem whatsapp",
     "resolucao": "Em análise ao chamado referente ao serviço “IPVA ou Licenciamento – Emitir Boleto”, esclarecemos que não disponibilizamos atendimento por WhatsApp para esse serviço.\r\n\r\nPor isso, a observação registrada no chamado parte de uma premissa equivocada, pois não há oferta de canal de WhatsApp na página do serviço. Os canais oficialmente disponibilizados são: o próprio site, o e-mail contribuinte@pge.ms.gov.br, o atendimento presencial e os telefones indicados.\r\n\r\nQuanto aos telefones, registramos que houve relatos de instabilidade, situação reportada aos responsáveis para acompanhamento. Após avaliação, decidimos não retirar o contato telefônico da página, pois ele permanece como canal oficial de atendimento até decisão do Gabinete.\r\n\r\nAlém disso, inserimos um pop-up informativo no site, com orientações sobre os canais disponíveis, a fim de facilitar o acesso à informação pela população.",
     "atendido": true,
-    "diasAberto": 122,
+    "diasAberto": 123,
     "createdAt": "2026-03-16T11:38:35.082602-04:00",
     "updatedAt": "2026-06-15T10:16:26.734012-04:00"
   },
@@ -9571,7 +9571,7 @@
     "conteudo": "Telefones fornecidos não atendem, e não retornam o email.",
     "resolucao": "Em análise ao chamado referente ao serviço “Pagar ou Parcelar Débito Inscrito em Dívida Ativa”, informamos que a situação relatada foi reportada aos responsáveis para acompanhamento.\r\n\r\nRegistramos que, em razão do alto fluxo de demandas, podem ocorrer instabilidades pontuais nos canais de atendimento. Ainda assim, estamos empenhados em aprimorar o atendimento e garantir ao cidadão o acesso às informações necessárias.\r\n\r\nQuanto aos telefones, registramos que houve relatos de instabilidade, situação reportada aos responsáveis para acompanhamento. Após avaliação, decidimos não retirar o contato telefônico da página, pois ele permanece como canal oficial de atendimento até decisão final do Gabinete.\r\n\r\nPara facilitar o acesso aos serviços e orientar melhor a população, também disponibilizamos um pop-up informativo no site, com os canais e orientações disponíveis ao contribuinte.",
     "atendido": true,
-    "diasAberto": 134,
+    "diasAberto": 135,
     "createdAt": "2026-03-04T13:52:52.812078-05:00",
     "updatedAt": "2026-06-15T10:23:21.334072-04:00"
   },
@@ -9599,7 +9599,7 @@
     "conteudo": "Considero interessante constar que cada ente público regulamentou a Lei 13.019/2026.",
     "resolucao": "Resposta do setor à Ascom:\r\n\r\nApós análise da solicitação, identificou-se que a legislação que regulamenta a Lei Federal nº 13.019/2014 não consta disponível no sítio eletrônico da SEAD.\r\nDessa forma, sugere-se, se possível, a inclusão do link de acesso ao Decreto Estadual nº 14.494/2016 e suas respectivas alterações, a fim de garantir maior transparência, facilitar a consulta e assegurar a correta orientação quanto às normas aplicáveis ao regime jurídico das parcerias com organizações da sociedade civil.\r\n\r\nTodas as Leis referentes ao terceiro setor, foram incluídas na pagina de Legislação",
     "atendido": true,
-    "diasAberto": 77,
+    "diasAberto": 78,
     "createdAt": "2026-04-30T15:19:57.844059-04:00",
     "updatedAt": "2026-07-02T15:58:52.479721-04:00"
   },
@@ -9613,7 +9613,7 @@
     "conteudo": "O telefone só dá desligado",
     "resolucao": "Informamos que foi realizada a verificação do telefone informado e, no momento, a linha encontra-se ativa e em pleno funcionamento.\r\n\r\nNão foi possível identificar o motivo pelo qual as ligações estavam sendo direcionadas como \"telefone desligado\". De toda forma, a situação foi verificada e, até o presente momento, o telefone está operando normalmente.\r\n\r\nCaso a dificuldade persista, pedimos a gentileza de nos informar o dia, horário e o número utilizado para a ligação, para que possamos realizar uma nova verificação.",
     "atendido": true,
-    "diasAberto": 3,
+    "diasAberto": 4,
     "createdAt": "2026-07-13T11:56:46.081767-04:00",
     "updatedAt": "2026-07-14T09:07:34.744011-04:00"
   },
@@ -9627,7 +9627,7 @@
     "conteudo": "nao emite boletos",
     "resolucao": "EM ANÁLISE AO CHAMADO REFERENTE AO SERVIÇO “IPVA OU LICENCIAMENTO - emitir boleto”, REALIZAMOS A VERIFICAÇÃO E O SERVIÇO ENCONTRA-SE ATIVO E DISPONÍVEL NO MOMENTO. NÃO FOI IDENTIFICADO ERRO OU IMPEDIMENTO DE ACESSO DURANTE O TESTE REALIZADO.",
     "atendido": true,
-    "diasAberto": 13,
+    "diasAberto": 14,
     "createdAt": "2026-07-03T14:50:33.313462-04:00",
     "updatedAt": "2026-07-15T13:31:09.759902-04:00"
   },
@@ -9644,6 +9644,20 @@
     "diasAberto": 0,
     "createdAt": "2026-07-17T09:00:22.961608-04:00",
     "updatedAt": "2026-07-17T09:00:22.961620-04:00"
+  },
+  {
+    "id": "94b3b07d-f293-43f4-870e-7e13fae0a30c",
+    "servico": "IPVA - consulta de débito",
+    "slugServico": "ipva-consulta-de-debito54",
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "categoria": "financas-e-impostos",
+    "conteudo": "LIXOOOOOO DE SERVIÇO, COMO TODOS DE ORGÃO PUBLICO",
+    "resolucao": null,
+    "atendido": false,
+    "diasAberto": 0,
+    "createdAt": "2026-07-17T13:20:00.359083-04:00",
+    "updatedAt": "2026-07-17T13:20:00.359118-04:00"
   },
   {
     "id": "4f0d9e3a-fa3f-4251-ae56-e3de1eabe923",
@@ -9669,7 +9683,7 @@
     "conteudo": "Não acessa..",
     "resolucao": "Em análise ao chamado referente ao serviço “Pagar ou Parcelar Débito Inscrito em Dívida Ativa”, realizamos a verificação e o atendimento encontra-se normal no momento.\r\n\r\nNão foi identificado erro ou impedimento de acesso durante o teste realizado.",
     "atendido": true,
-    "diasAberto": 252,
+    "diasAberto": 253,
     "createdAt": "2025-11-06T11:24:24.318706-05:00",
     "updatedAt": "2026-06-15T10:40:22.272228-04:00"
   },
@@ -9725,7 +9739,7 @@
     "conteudo": "NÃO ACESSA NADA NO ATENDIMENTO PRESENCIAL OU DIGITAL, FICA RODANDO O TEMPO SOÓ",
     "resolucao": "Os manifestantes que entram em contato com a Ouvidoria são orientados a enviar a solicitação de atestado de conduta carcerária para o e-mail da Unidade Prisional onde está  a pessoa privada de liberdade.",
     "atendido": true,
-    "diasAberto": 167,
+    "diasAberto": 168,
     "createdAt": "2026-01-30T12:52:04.943148-05:00",
     "updatedAt": "2026-06-15T13:43:21.223916-04:00"
   },
@@ -9767,7 +9781,7 @@
     "conteudo": "A área de bloqueio de chamada telemarketing não consigo colocar o número DDD do meu estado seguido do meu número de telefone",
     "resolucao": "Prezado(a),\r\n\r\nAgradecemos pelo seu contato.\r\n\r\nInformamos que o serviço de Bloqueio de Telemarketing disponibilizado pelo PROCON/MS atende exclusivamente às linhas telefônicas com DDD 67, pertencentes ao Estado de Mato Grosso do Sul.\r\n\r\nPor esse motivo, o sistema não permite a alteração ou seleção de outros códigos de área (DDD), impossibilitando o cadastro de números que não pertençam ao DDD 67.\r\n\r\nPermanecemos à disposição para quaisquer esclarecimentos adicionais.",
     "atendido": true,
-    "diasAberto": 23,
+    "diasAberto": 24,
     "createdAt": "2026-06-23T15:09:37.342575-04:00",
     "updatedAt": "2026-07-14T09:13:50.850250-04:00"
   },
@@ -9781,7 +9795,7 @@
     "conteudo": "Não aparece identificação do Estado e o sistema me lança no MS. Sou da Bahia!!!",
     "resolucao": "Constatou-se que a manifestação foi registrada de forma equivocada, uma vez que o usuário buscava informações relacionadas a outro ente federativo (Bahia), enquanto os serviços divulgados na Carta de Serviços referem-se ao âmbito de atuação da Ageprev (RPPS-MS). Trata-se, portanto, de erro de direcionamento da manifestação.",
     "atendido": true,
-    "diasAberto": 79,
+    "diasAberto": 80,
     "createdAt": "2026-04-28T10:36:14.709726-04:00",
     "updatedAt": "2026-06-16T10:03:12.588955-04:00"
   },
@@ -9795,7 +9809,7 @@
     "conteudo": "PRAZO PARA ENVIO DE CERTIDÃO/DECLARAÇÃO DE TEMPO DE CONTRIBUIÇÃO SÃO DE 30 DIAS ÚTEIS E NÃO 30 DIAS CORRIDOS.",
     "resolucao": "A gerência responsável (Gcerc) ratificou, via mensagem de e-mail, o prazo de 30 dias corridos divulgado na Carta de Serviços, não sendo identificada necessidade de alteração da informação publicada.",
     "atendido": true,
-    "diasAberto": 97,
+    "diasAberto": 98,
     "createdAt": "2026-04-10T14:20:43.988955-04:00",
     "updatedAt": "2026-06-16T15:42:23.893202-04:00"
   },
@@ -9837,7 +9851,7 @@
     "conteudo": "Impossível emitir certidão de antecedentes criminais",
     "resolucao": null,
     "atendido": false,
-    "diasAberto": 27,
+    "diasAberto": 28,
     "createdAt": "2026-06-19T14:04:19.984558-04:00",
     "updatedAt": "2026-06-19T14:04:19.984570-04:00"
   },
@@ -9851,7 +9865,7 @@
     "conteudo": "Não conseguimos acessar o campo Consulta de processos.",
     "resolucao": "o link de consulta foi atualizado para o https://e-ms.ms.gov.br/#/UIVII/public/consultar-solicitacao",
     "atendido": true,
-    "diasAberto": 29,
+    "diasAberto": 30,
     "createdAt": "2026-06-17T12:08:15.886346-04:00",
     "updatedAt": "2026-07-01T10:10:16.420245-04:00"
   },

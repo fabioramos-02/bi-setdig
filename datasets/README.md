@@ -39,5 +39,5 @@ datasets/
 Atualizados **automaticamente** todo dia pelo cron [`.github/workflows/refresh-datasets.yml`](../.github/workflows/refresh-datasets.yml) (roda o pipeline + commita) — antes disso os JSONs ficavam presos no último `python run.py` manual. Pra rodar sob demanda: aba Actions → "Refresh datasets" → Run workflow, ou local:
 
 ```bash
-python ../data-platform/run.py
+python data-platform/run.py
 ```

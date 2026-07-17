@@ -2,41 +2,41 @@
   "dia": [
     {
       "operatingSystem": "Android",
-      "activeUsers": 80
+      "activeUsers": 344
     },
     {
       "operatingSystem": "iOS",
-      "activeUsers": 33
+      "activeUsers": 120
     }
   ],
   "semana": [
     {
       "operatingSystem": "Android",
-      "activeUsers": 9870
+      "activeUsers": 9828
     },
     {
       "operatingSystem": "iOS",
-      "activeUsers": 4370
+      "activeUsers": 4343
     }
   ],
   "mes": [
     {
       "operatingSystem": "Android",
-      "activeUsers": 27699
+      "activeUsers": 27600
     },
     {
       "operatingSystem": "iOS",
-      "activeUsers": 11814
+      "activeUsers": 11758
     }
   ],
   "ano": [
     {
       "operatingSystem": "Android",
-      "activeUsers": 129755
+      "activeUsers": 129674
     },
     {
       "operatingSystem": "iOS",
-      "activeUsers": 54589
+      "activeUsers": 54500
     }
   ]
 }

@@ -2,14 +2,14 @@
   {
     "csatMedia": 2.9,
     "csatDistribuicao": {
-      "1": 987,
+      "1": 988,
       "2": 348,
-      "3": 505,
+      "3": 506,
       "4": 482,
       "5": 759
     },
-    "totalVotos": 3081,
-    "clarezaPositivaPct": 57.5,
-    "totalAvaliacoesClareza": 10902
+    "totalVotos": 3083,
+    "clarezaPositivaPct": 57.4,
+    "totalAvaliacoesClareza": 10914
   }
 ]

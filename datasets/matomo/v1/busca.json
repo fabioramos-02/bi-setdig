@@ -2,30 +2,74 @@
   "dia": [
     {
       "termo": "ipva",
-      "buscas": 44
+      "buscas": 106
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 16
+      "buscas": 47
     },
     {
       "termo": "procon",
-      "buscas": 9
+      "buscas": 20
     },
     {
       "termo": "substituição tributária",
-      "buscas": 4
+      "buscas": 13
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 2
+      "buscas": 4
     },
     {
       "termo": "cidadão",
+      "buscas": 4
+    },
+    {
+      "termo": "empresa",
+      "buscas": 4
+    },
+    {
+      "termo": "itcd",
+      "buscas": 4
+    },
+    {
+      "termo": "certidão negativa de débitos",
       "buscas": 2
     },
     {
+      "termo": "guia licenciamento",
+      "buscas": 2
+    },
+    {
+      "termo": "01338655725",
+      "buscas": 1
+    },
+    {
+      "termo": "06140969000144",
+      "buscas": 1
+    },
+    {
+      "termo": "50137395191",
+      "buscas": 1
+    },
+    {
       "termo": "bora de produtor",
+      "buscas": 1
+    },
+    {
+      "termo": "cadastrar área com produção de citros",
+      "buscas": 1
+    },
+    {
+      "termo": "cartaz antitabagiscmo",
+      "buscas": 1
+    },
+    {
+      "termo": "carteira de identidade ssp",
+      "buscas": 1
+    },
+    {
+      "termo": "caseiro",
       "buscas": 1
     },
     {
@@ -33,86 +77,42 @@
       "buscas": 1
     },
     {
-      "termo": "certidão negativa de débitos",
-      "buscas": 1
-    },
-    {
       "termo": "concurso para professor",
-      "buscas": 1
-    },
-    {
-      "termo": "empresa",
-      "buscas": 1
-    },
-    {
-      "termo": "guia licenciamento",
-      "buscas": 1
-    },
-    {
-      "termo": "identificar real infrator",
-      "buscas": 1
-    },
-    {
-      "termo": "ipava",
-      "buscas": 1
-    },
-    {
-      "termo": "itcd",
-      "buscas": 1
-    },
-    {
-      "termo": "licenciamento",
-      "buscas": 1
-    },
-    {
-      "termo": "mais social",
-      "buscas": 1
-    },
-    {
-      "termo": "nota fiscal",
-      "buscas": 1
-    },
-    {
-      "termo": "pesca",
-      "buscas": 1
-    },
-    {
-      "termo": "plataforma enanx inc",
       "buscas": 1
     }
   ],
   "semana": [
     {
       "termo": "ipva",
-      "buscas": 624
+      "buscas": 686
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 253
+      "buscas": 284
     },
     {
       "termo": "procon",
-      "buscas": 133
+      "buscas": 144
     },
     {
       "termo": "substituição tributária",
-      "buscas": 89
+      "buscas": 98
     },
     {
       "termo": "itcd",
-      "buscas": 49
+      "buscas": 52
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 37
+      "buscas": 39
     },
     {
       "termo": "empresa",
-      "buscas": 27
+      "buscas": 30
     },
     {
       "termo": "cidadão",
-      "buscas": 26
+      "buscas": 28
     },
     {
       "termo": "servidor",
@@ -124,22 +124,22 @@
     },
     {
       "termo": "efd",
-      "buscas": 8
+      "buscas": 9
     },
     {
       "termo": "cnh",
       "buscas": 8
     },
     {
-      "termo": "cancelamento de comunicação de venda",
-      "buscas": 6
-    },
-    {
       "termo": "defesa civil",
-      "buscas": 6
+      "buscas": 7
     },
     {
       "termo": "mulher",
+      "buscas": 7
+    },
+    {
+      "termo": "cancelamento de comunicação de venda",
       "buscas": 6
     },
     {
@@ -166,35 +166,35 @@
   "mes": [
     {
       "termo": "ipva",
-      "buscas": 1126
+      "buscas": 1188
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 786
+      "buscas": 817
     },
     {
       "termo": "procon",
-      "buscas": 379
+      "buscas": 390
     },
     {
       "termo": "substituição tributária",
-      "buscas": 325
+      "buscas": 334
     },
     {
       "termo": "itcd",
-      "buscas": 130
+      "buscas": 133
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 125
+      "buscas": 127
     },
     {
       "termo": "cidadão",
-      "buscas": 83
+      "buscas": 85
     },
     {
       "termo": "empresa",
-      "buscas": 57
+      "buscas": 60
     },
     {
       "termo": "servidor",
@@ -206,7 +206,7 @@
     },
     {
       "termo": "efd",
-      "buscas": 21
+      "buscas": 22
     },
     {
       "termo": "cnh",
@@ -214,6 +214,10 @@
     },
     {
       "termo": "mulher",
+      "buscas": 16
+    },
+    {
+      "termo": "defesa civil",
       "buscas": 15
     },
     {
@@ -221,19 +225,15 @@
       "buscas": 15
     },
     {
-      "termo": "defesa civil",
-      "buscas": 14
-    },
-    {
       "termo": "rg",
       "buscas": 14
     },
     {
-      "termo": "fundação estadual jornalista luiz chagas de rádio e televisão",
-      "buscas": 10
+      "termo": "gestão pública",
+      "buscas": 11
     },
     {
-      "termo": "gestão pública",
+      "termo": "fundação estadual jornalista luiz chagas de rádio e televisão",
       "buscas": 10
     },
     {
@@ -248,27 +248,27 @@
   "ano": [
     {
       "termo": "ipva",
-      "buscas": 27837
+      "buscas": 27899
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 7891
+      "buscas": 7922
     },
     {
       "termo": "procon",
-      "buscas": 6109
+      "buscas": 6120
     },
     {
       "termo": "substituição tributária",
-      "buscas": 4004
+      "buscas": 4013
     },
     {
       "termo": "itcd",
-      "buscas": 1516
+      "buscas": 1519
     },
     {
       "termo": "cidadão",
-      "buscas": 1322
+      "buscas": 1324
     },
     {
       "termo": "servidor",
@@ -276,11 +276,11 @@
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 1104
+      "buscas": 1106
     },
     {
       "termo": "empresa",
-      "buscas": 622
+      "buscas": 625
     },
     {
       "termo": "nota fiscal",
@@ -292,7 +292,7 @@
     },
     {
       "termo": "mulher",
-      "buscas": 214
+      "buscas": 215
     },
     {
       "termo": "cnh",
@@ -300,11 +300,11 @@
     },
     {
       "termo": "defesa civil",
-      "buscas": 196
+      "buscas": 197
     },
     {
       "termo": "efd",
-      "buscas": 183
+      "buscas": 184
     },
     {
       "termo": "web email",
@@ -320,7 +320,7 @@
     },
     {
       "termo": "gestão pública",
-      "buscas": 125
+      "buscas": 126
     },
     {
       "termo": "processo seletivo",

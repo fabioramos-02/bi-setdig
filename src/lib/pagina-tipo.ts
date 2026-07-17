@@ -114,7 +114,7 @@ export function classificarPagina(url: string, ctx: ContextoSemantico): PaginaCl
   if (p0n === "orgao" && p1) {
     const orgao = orgaoDoSegmento(p1, ctx);
     return orgao
-      ? { tipo: "orgao", nome: `Serviços da ${orgao.sigla}`, orgaoSigla: orgao.sigla }
+      ? { tipo: "orgao", nome: `Serviços do Órgão ${orgao.sigla}`, orgaoSigla: orgao.sigla }
       : { tipo: "orgao", nome: "Serviços de um órgão" };
   }
   if (p0n === "workspace") return { tipo: "meu-painel", nome: "Meu Painel" };
