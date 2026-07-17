@@ -6,7 +6,7 @@ import { DeviceBarChart } from "@/components/charts/DeviceBarChart";
 import { MetricCard } from "@/components/dashboard/MetricCard";
 import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
 import { ChartLoading } from "@/components/dashboard/ChartLoading";
-import type { InsightNavegador, InsightDispositivo } from "@/lib/insights";
+import type { InsightNavegador, InsightDispositivo, InsightGeo, InsightHorarioPortal } from "@/lib/insights";
 import type { Navegacao } from "@/lib/saude-portal";
 import type { Cidade, Navegador, Dispositivo, Horario } from "@/lib/data";
 
@@ -23,7 +23,9 @@ export function PerfilCidadaoTab({
   insightNavegador,
   dispositivosAtual,
   insightDispositivo,
+  insightGeo,
   horariosAtual,
+  insightHorario,
   navegacao,
   status,
 }: {
@@ -33,7 +35,9 @@ export function PerfilCidadaoTab({
   insightNavegador: InsightNavegador | null;
   dispositivosAtual: Dispositivo[];
   insightDispositivo: InsightDispositivo | null;
+  insightGeo: InsightGeo | null;
   horariosAtual: Horario[];
+  insightHorario: InsightHorarioPortal | null;
   navegacao: Navegacao | null;
   status: StatusIntervalo;
 }) {
@@ -60,6 +64,11 @@ export function PerfilCidadaoTab({
           <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold mb-2">
             De onde o cidadão acessa?
           </h3>
+          {insightGeo && (
+            <p style={{ color: "var(--ds-color-text-muted)" }} className="text-xs mb-2">
+              {insightGeo.cidade} concentra {insightGeo.participacaoPct.toFixed(0)}% dos acessos vindos de MS.
+            </p>
+          )}
           <ChartLoading status={status} height={260}>
             {matchRate > 0.5 ? (
               <ChoroplethMap cidades={cidadesAtual} />
@@ -85,6 +94,11 @@ export function PerfilCidadaoTab({
           <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold mb-2 mt-4">
             Em que horário o cidadão procura o portal?
           </h3>
+          {insightHorario && (
+            <p style={{ color: "var(--ds-color-text-muted)" }} className="text-xs mb-2">
+              O maior movimento é por volta das {insightHorario.hora}h.
+            </p>
+          )}
           <ChartLoading status={status} height={220}>
             <BarChart data={horariosAtual} xKey="hora" yKey="visitas" height={220} />
           </ChartLoading>

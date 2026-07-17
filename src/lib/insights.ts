@@ -1,4 +1,4 @@
-import type { TermoBusca, Navegador, Dispositivo, Plataforma, Servico, EventoFunil, HorarioGa4, PaginaEntrada, Pagina } from "./data";
+import type { TermoBusca, Navegador, Dispositivo, Plataforma, Servico, EventoFunil, HorarioGa4, PaginaEntrada, Pagina, Cidade, Horario } from "./data";
 import type { FatiaCategoria } from "@/components/charts/CategoryDonut";
 import type { PeriodoTipo, PontoAgregado } from "./period-filter";
 import type { OrgaoGrupo } from "./servicos";
@@ -84,6 +84,30 @@ export function calcularInsightPagina(paginas: Pagina[]): InsightPagina | null {
   const total = paginas.reduce((acc, p) => acc + p.visitas, 0);
   const top = [...paginas].sort((a, b) => b.visitas - a.visitas)[0];
   return { url: top.url, visitas: top.visitas, participacaoPct: total > 0 ? (top.visitas / total) * 100 : 0 };
+}
+
+export type InsightGeo = { cidade: string; participacaoPct: number };
+
+/** Cidade que concentra mais acessos + sua fatia sobre os acessos vindos de MS
+ * (base = cidades reportadas, não o total de visitas — há acesso sem cidade
+ * identificada). Molde de calcularInsightNavegador. */
+export function calcularInsightConcentracaoGeo(cidades: Cidade[]): InsightGeo | null {
+  if (cidades.length === 0) return null;
+  const total = cidades.reduce((acc, c) => acc + c.visitas, 0);
+  const top = [...cidades].sort((a, b) => b.visitas - a.visitas)[0];
+  return { cidade: top.cidade, participacaoPct: total > 0 ? (top.visitas / total) * 100 : 0 };
+}
+
+export type InsightHorarioPortal = { hora: string; participacaoPct: number };
+
+/** Hora de pico de acesso ao portal + sua fatia do total do dia. Horario do
+ * Matomo é `{hora, visitas}` — distinto de calcularInsightHorario (GA4,
+ * `{hora, sessoes}`), por isso é função e tipo próprios. */
+export function calcularInsightHorarioPortal(horarios: Horario[]): InsightHorarioPortal | null {
+  if (horarios.length === 0) return null;
+  const total = horarios.reduce((acc, h) => acc + h.visitas, 0);
+  const top = [...horarios].sort((a, b) => b.visitas - a.visitas)[0];
+  return { hora: top.hora, participacaoPct: total > 0 ? (top.visitas / total) * 100 : 0 };
 }
 
 export type InsightDispositivo = { dispositivo: string; participacaoPct: number };

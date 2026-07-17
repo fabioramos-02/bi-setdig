@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { calcularInsightBusca } from "./insights.ts";
+import { calcularInsightBusca, calcularInsightConcentracaoGeo, calcularInsightHorarioPortal } from "./insights.ts";
 
 const TERMOS = [
   { termo: "ipva", buscas: 833 },
@@ -28,4 +28,31 @@ test("calcularInsightBusca: lista vazia -> null", () => {
 test("calcularInsightBusca: total zero não divide por zero", () => {
   const r = calcularInsightBusca(TERMOS, 0);
   assert.equal(r?.participacaoPct, 0);
+});
+
+test("calcularInsightConcentracaoGeo: cidade topo e % sobre as reportadas", () => {
+  const r = calcularInsightConcentracaoGeo([
+    { cidade: "Campo Grande", visitas: 40 },
+    { cidade: "Dourados", visitas: 10 },
+  ]);
+  assert.equal(r?.cidade, "Campo Grande");
+  assert.equal(Math.round(r!.participacaoPct), 80); // 40 / 50
+});
+
+test("calcularInsightConcentracaoGeo: lista vazia -> null", () => {
+  assert.equal(calcularInsightConcentracaoGeo([]), null);
+});
+
+test("calcularInsightHorarioPortal: pega a hora de pico e formata o rótulo cru", () => {
+  const r = calcularInsightHorarioPortal([
+    { hora: "08", visitas: 100 },
+    { hora: "09", visitas: 180 },
+    { hora: "10", visitas: 120 },
+  ]);
+  assert.equal(r?.hora, "09");
+  assert.equal(Math.round(r!.participacaoPct), 45); // 180 / 400
+});
+
+test("calcularInsightHorarioPortal: lista vazia -> null", () => {
+  assert.equal(calcularInsightHorarioPortal([]), null);
 });

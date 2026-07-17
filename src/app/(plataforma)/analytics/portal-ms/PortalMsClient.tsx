@@ -19,6 +19,8 @@ import {
   calcularInsightPagina,
   calcularInsightNavegador,
   calcularInsightDispositivo,
+  calcularInsightConcentracaoGeo,
+  calcularInsightHorarioPortal,
 } from "@/lib/insights";
 import { calcularSaude, calcularContextoAnual, calcularNavegacao, gerarRecomendacoes } from "@/lib/saude-portal";
 import { calcularServicoTop, calcularOrgaoTop, recomendacaoConcentracao, pctSemOrgao, fraseNavegacaoPorPerfil } from "@/lib/servicos-portal";
@@ -176,6 +178,8 @@ export function PortalMsClient({
   const insightPagina = calcularInsightPagina(paginasAtual);
   const insightNavegador = calcularInsightNavegador(navegadoresAtual);
   const insightDispositivo = calcularInsightDispositivo(dispositivosAtual);
+  const insightGeo = calcularInsightConcentracaoGeo(cidadesAtual);
+  const insightHorario = calcularInsightHorarioPortal(horariosAtual);
   const rotuloPeriodo = ROTULO_PERIODO[estado.tipo];
   // Breakdowns de categoria só podem usar o rótulo que o usuário escolheu
   // ("no intervalo") quando o dado é mesmo ao vivo pro intervalo (liveData) —
@@ -239,7 +243,9 @@ export function PortalMsClient({
           insightNavegador={insightNavegador}
           dispositivosAtual={dispositivosAtual}
           insightDispositivo={insightDispositivo}
+          insightGeo={insightGeo}
           horariosAtual={horariosAtual}
+          insightHorario={insightHorario}
           navegacao={navegacao}
           status={statusBreakdown}
         />

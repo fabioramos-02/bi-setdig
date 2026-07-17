@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Modal } from "@/components/dashboard/Modal";
-import { idsExcluidos, formatarExtracao, type SecaoExport } from "@/lib/relatorio";
+import { idsExcluidos, formatarExtracao, nomeArquivoRelatorio, type SecaoExport } from "@/lib/relatorio";
 
 export type { SecaoExport };
 
@@ -33,9 +33,17 @@ export function ExportarRelatorioButton({
   const imprimir = (excluidos: string[]) => {
     setGerando(true);
     for (const id of excluidos) document.getElementById(`panel-${id}`)?.classList.add("exportar-excluir");
+    // O navegador usa o document.title como nome padrão do PDF — troca pra
+    // refletir o que entra no relatório e restaura depois. `secoes` mantém a
+    // ordem das abas; filtra pelas que ficaram (não estão em `excluidos`).
+    const tituloOriginal = document.title;
+    const excluidosSet = new Set(excluidos);
+    const incluidas = secoes.filter((s) => !excluidosSet.has(s.id));
+    document.title = nomeArquivoRelatorio(tituloOriginal, incluidas, secoes.length);
     try {
       window.print(); // bloqueante — retorna quando o diálogo de impressão fecha
     } finally {
+      document.title = tituloOriginal;
       for (const id of excluidos) document.getElementById(`panel-${id}`)?.classList.remove("exportar-excluir");
       setGerando(false);
       setAberto(false);

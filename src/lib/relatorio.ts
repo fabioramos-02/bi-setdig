@@ -11,6 +11,24 @@ export function idsExcluidos(secoes: SecaoExport[], selecionadas: Iterable<strin
   return secoes.filter((s) => !marcadas.has(s.id)).map((s) => s.id);
 }
 
+const semPrefixoOrdem = (label: string) => label.replace(/^\d+\.\s*/, "").trim();
+
+/** Nome do arquivo PDF exportado, conforme o que entra no relatório. `base` vem
+ * do título da página ("Portal Único | SETDIG" → "Portal Único"). O sufixo
+ * reflete a seleção:
+ *   - nenhuma seção (páginas sem abas)        → "Portal Único"
+ *   - todas as seções marcadas                → "Portal Único - Relatório completo"
+ *   - uma seção                               → "Portal Único - Intenção de Busca"
+ *   - algumas                                 → "Portal Único - Visão Geral, Intenção de Busca"
+ * (rótulos sem o prefixo de ordem "3. "). O navegador usa o `document.title`
+ * como nome padrão do PDF no diálogo de impressão. */
+export function nomeArquivoRelatorio(tituloPagina: string, selecionadas: SecaoExport[], totalSecoes: number): string {
+  const base = tituloPagina.split("|")[0].trim();
+  if (selecionadas.length === 0) return base;
+  if (totalSecoes > 1 && selecionadas.length === totalSecoes) return `${base} - Relatório completo`;
+  return `${base} - ${selecionadas.map((s) => semPrefixoOrdem(s.label)).join(", ")}`;
+}
+
 const MESES = [
   "janeiro", "fevereiro", "março", "abril", "maio", "junho",
   "julho", "agosto", "setembro", "outubro", "novembro", "dezembro",
