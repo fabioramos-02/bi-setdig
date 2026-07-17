@@ -89,6 +89,31 @@ test("host e caixa alta no path não quebram o match", () => {
   assert.equal(r.porCarta[0].visitas, 10);
 });
 
+test("casa pelo slug mesmo com categoria divergente da do inventário (a mesma carta é alcançável por mais de uma categoria no site real)", () => {
+  const r = joinVisitas([{ url: "/administracao-publica/emitir-crlv13", nb_visits: 42 }], inventario);
+  assert.equal(r.porCarta.length, 1);
+  assert.equal(r.porCarta[0].titulo, "Emitir CRLV");
+  assert.equal(r.porCarta[0].visitas, 42);
+});
+
+test("naoIdentificado: página que parece serviço mas não casa nenhuma carta entra no não identificado, home/notícia não contam", () => {
+  const raw = [
+    { url: "/transito-e-transportes/emitir-crlv13", nb_visits: 100 }, // casa
+    { url: "/categoria-nova/slug-desconhecido1", nb_visits: 30 }, // não casa, parece serviço
+    { url: "/", nb_visits: 999 }, // home, não é miss
+    { url: "/noticias/algo", nb_visits: 999 }, // notícia, não é miss
+  ];
+  const r = joinVisitas(raw, inventario);
+  assert.equal(r.naoIdentificado.visitas, 30);
+  assert.equal(r.naoIdentificado.pct, 23.08); // 30 / (100 + 30)
+});
+
+test("naoIdentificado.pct é 0 quando não há nenhuma página que pareça serviço", () => {
+  const r = joinVisitas([{ url: "/", nb_visits: 10 }], inventario);
+  assert.equal(r.naoIdentificado.visitas, 0);
+  assert.equal(r.naoIdentificado.pct, 0);
+});
+
 test("urlDaCarta deriva do portal", () => {
   assert.equal(urlDaCarta({ categoria: "saude-e-cuidado", slug: "x1" }), "https://www.ms.gov.br/saude-e-cuidado/x1");
 });

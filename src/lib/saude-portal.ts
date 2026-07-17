@@ -221,6 +221,8 @@ export function gerarResumoExecutivo(p: {
   navegacao: Navegacao | null;
   municipiosComAcesso: number;
   totalMunicipios: number;
+  /** Serviço mais procurado + órgão que concentra a demanda (ADR-012) — ver lib/servicos-portal.ts. */
+  fraseServicoOrgao?: string | null;
 }): string | null {
   const frases: string[] = [`O portal registrou ${fmt(p.kpis.visitas)} visitas ${p.rotuloPeriodo}.`];
 
@@ -234,6 +236,8 @@ export function gerarResumoExecutivo(p: {
   }
 
   if (p.insightBusca) frases.push(`O assunto mais buscado foi "${p.insightBusca.termo}".`);
+
+  if (p.fraseServicoOrgao) frases.push(p.fraseServicoOrgao);
 
   frases.push(`O portal alcançou cidadãos de ${p.municipiosComAcesso} dos ${p.totalMunicipios} municípios de MS.`);
 
@@ -260,8 +264,11 @@ export function gerarRecomendacoes(p: {
   insightDispositivo: InsightDispositivo | null;
   insightBusca: InsightBusca | null;
   municipiosSemAcesso: string[];
+  /** Órgão com ≥40% da demanda por serviços (ADR-012) — ver lib/servicos-portal.ts. */
+  recomendacaoConcentracao?: Recomendacao | null;
 }): Recomendacao[] {
   const out: Recomendacao[] = [];
+  if (p.recomendacaoConcentracao) out.push(p.recomendacaoConcentracao);
 
   if (p.saude && p.saude.nivel !== "saudavel") {
     out.push({ texto: `Investigar a queda nas visitas antes de planejar novas ações: ${p.saude.frase.toLowerCase()}` });

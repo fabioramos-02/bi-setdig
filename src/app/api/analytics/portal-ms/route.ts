@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import * as matomo from "@/lib/server/matomo-client";
 import * as t from "@/lib/server/matomo-transform";
 import { perfilFiltroLive, topServicosLive } from "@/lib/server/perfil-live";
-import { getMatomoPerfilFiltro } from "@/lib/data";
+import { demandaPorOrgao } from "@/lib/server/cartas-visitas";
+import { getMatomoPerfilFiltro, getCartasInventarioRelacao } from "@/lib/data";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -39,6 +40,7 @@ export async function GET(req: NextRequest) {
     // Catálogo estável de serviços (labels/paths/ícones) vem do snapshot mês;
     // só as visitas são recalculadas pro intervalo a partir do mesmo pageUrlsRaw.
     const template = getMatomoPerfilFiltro().mes;
+    const inventario = getCartasInventarioRelacao();
 
     return NextResponse.json({
       navegadores: t.topNWithOthers(browsersRaw, "navegador", 4),
@@ -51,7 +53,8 @@ export async function GET(req: NextRequest) {
       portasEntrada: t.entryPages(entryRaw, 20),
       fugaHub: t.outlinks(outlinksRaw, 40),
       perfil: perfilFiltroLive(pageUrlsRaw, template),
-      servicosMaisAcessados: topServicosLive(pageUrlsRaw, template, 15),
+      servicosMaisAcessados: topServicosLive(pageUrlsRaw, inventario, 15),
+      demandaPorOrgao: demandaPorOrgao(pageUrlsRaw, inventario),
     });
   } catch (exc) {
     console.error("[api/analytics/portal-ms] falhou:", exc);

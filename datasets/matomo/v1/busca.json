@@ -2,22 +2,34 @@
   "dia": [
     {
       "termo": "ipva",
-      "buscas": 25
+      "buscas": 44
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 6
+      "buscas": 16
     },
     {
       "termo": "procon",
-      "buscas": 3
+      "buscas": 9
     },
     {
       "termo": "substituição tributária",
-      "buscas": 2
+      "buscas": 4
     },
     {
       "termo": "autoparcelamento",
+      "buscas": 2
+    },
+    {
+      "termo": "cidadão",
+      "buscas": 2
+    },
+    {
+      "termo": "bora de produtor",
+      "buscas": 1
+    },
+    {
+      "termo": "certidão estadual",
       "buscas": 1
     },
     {
@@ -25,11 +37,31 @@
       "buscas": 1
     },
     {
-      "termo": "cidadão",
+      "termo": "concurso para professor",
       "buscas": 1
     },
     {
       "termo": "empresa",
+      "buscas": 1
+    },
+    {
+      "termo": "guia licenciamento",
+      "buscas": 1
+    },
+    {
+      "termo": "identificar real infrator",
+      "buscas": 1
+    },
+    {
+      "termo": "ipava",
+      "buscas": 1
+    },
+    {
+      "termo": "itcd",
+      "buscas": 1
+    },
+    {
+      "termo": "licenciamento",
       "buscas": 1
     },
     {
@@ -37,38 +69,42 @@
       "buscas": 1
     },
     {
+      "termo": "nota fiscal",
+      "buscas": 1
+    },
+    {
       "termo": "pesca",
       "buscas": 1
     },
     {
-      "termo": "servidor",
+      "termo": "plataforma enanx inc",
       "buscas": 1
     }
   ],
   "semana": [
     {
       "termo": "ipva",
-      "buscas": 605
+      "buscas": 624
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 243
+      "buscas": 253
     },
     {
       "termo": "procon",
-      "buscas": 127
+      "buscas": 133
     },
     {
       "termo": "substituição tributária",
-      "buscas": 87
+      "buscas": 89
     },
     {
       "termo": "itcd",
-      "buscas": 48
+      "buscas": 49
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 36
+      "buscas": 37
     },
     {
       "termo": "empresa",
@@ -76,7 +112,7 @@
     },
     {
       "termo": "cidadão",
-      "buscas": 25
+      "buscas": 26
     },
     {
       "termo": "servidor",
@@ -115,46 +151,46 @@
       "buscas": 5
     },
     {
+      "termo": "rg",
+      "buscas": 5
+    },
+    {
       "termo": "assinatura digital",
       "buscas": 4
     },
     {
       "termo": "cin",
       "buscas": 4
-    },
-    {
-      "termo": "2 via do rg",
-      "buscas": 3
     }
   ],
   "mes": [
     {
       "termo": "ipva",
-      "buscas": 1107
+      "buscas": 1126
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 776
+      "buscas": 786
     },
     {
       "termo": "procon",
-      "buscas": 373
+      "buscas": 379
     },
     {
       "termo": "substituição tributária",
-      "buscas": 323
+      "buscas": 325
     },
     {
       "termo": "itcd",
-      "buscas": 129
+      "buscas": 130
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 124
+      "buscas": 125
     },
     {
       "termo": "cidadão",
-      "buscas": 82
+      "buscas": 83
     },
     {
       "termo": "empresa",
@@ -181,16 +217,16 @@
       "buscas": 15
     },
     {
+      "termo": "nota fiscal",
+      "buscas": 15
+    },
+    {
       "termo": "defesa civil",
       "buscas": 14
     },
     {
-      "termo": "nota fiscal",
-      "buscas": 13
-    },
-    {
       "termo": "rg",
-      "buscas": 12
+      "buscas": 14
     },
     {
       "termo": "fundação estadual jornalista luiz chagas de rádio e televisão",
@@ -212,27 +248,27 @@
   "ano": [
     {
       "termo": "ipva",
-      "buscas": 27818
+      "buscas": 27837
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 7881
+      "buscas": 7891
     },
     {
       "termo": "procon",
-      "buscas": 6103
+      "buscas": 6109
     },
     {
       "termo": "substituição tributária",
-      "buscas": 4002
+      "buscas": 4004
     },
     {
       "termo": "itcd",
-      "buscas": 1515
+      "buscas": 1516
     },
     {
       "termo": "cidadão",
-      "buscas": 1321
+      "buscas": 1322
     },
     {
       "termo": "servidor",
@@ -240,7 +276,7 @@
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 1103
+      "buscas": 1104
     },
     {
       "termo": "empresa",
@@ -248,7 +284,7 @@
     },
     {
       "termo": "nota fiscal",
-      "buscas": 241
+      "buscas": 243
     },
     {
       "termo": "licenciamento",
@@ -280,7 +316,7 @@
     },
     {
       "termo": "rg",
-      "buscas": 134
+      "buscas": 136
     },
     {
       "termo": "gestão pública",

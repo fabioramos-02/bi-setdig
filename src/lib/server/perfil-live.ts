@@ -11,7 +11,8 @@
  * índice ao vivo de Actions.getPageUrls. Fonte de verdade do catálogo continua
  * única (o pipeline Python); aqui só re-pontuamos.
  */
-import type { PerfilFiltroPeriodo, PerfilServico, ServicoAcessado } from "@/lib/data";
+import type { CartaRelacao, PerfilFiltroPeriodo, PerfilServico, ServicoAcessado } from "../data.ts";
+import { construirContexto, classificarPagina } from "../pagina-tipo.ts";
 
 type MatomoRow = { label?: string; url?: string; nb_visits?: number; nb_hits?: number };
 
@@ -19,17 +20,6 @@ type MatomoRow = { label?: string; url?: string; nb_visits?: number; nb_hits?: n
 // transform/perfil.py::HOME_REFERRAL_FRACTION (amostra pequena de 2025). É a
 // única constante duplicada; ADOPTION_THRESHOLD/limiarPct vem do template.
 const HOME_REFERRAL_FRACTION = 0.015;
-
-// 1º segmento de URL que conta como "página de serviço" — porta de
-// transform/servicos.py::CATEGORIAS_SERVICO (lista estável de categorias do
-// portal). ponytail: 22 strings estáveis; fonte de verdade em servicos.py.
-const CATEGORIAS_SERVICO = new Set([
-  "administracao-publica", "agropecuaria-e-vida-rural", "arte-e-cultura", "assistencia-social",
-  "ciencia-e-tecnologia", "comunicacao-e-transparencia", "direitos-e-cidadania", "educacao-e-pesquisa",
-  "empresa-industria-e-comercio", "energia", "esporte-e-lazer", "financas-e-impostos",
-  "forcas-armadas-e-defesa-civil", "habitacao", "infraestrutura", "justica", "meio-ambiente",
-  "saude-e-cuidado", "seguranca", "trabalho-emprego-e-previdencia", "transito-e-transportes", "turismo",
-]);
 
 /** Caminho limpo e comparável — porta de perfil.py::_normalize. */
 function normalizePath(url: string): string {
@@ -134,29 +124,21 @@ export function perfilFiltroLive(rows: MatomoRow[], template: PerfilFiltroPeriod
   return { resumo, distribuicao, topServicos: topServicos.slice(0, 10), servicosPorPerfil };
 }
 
-const nomeDoSlug = (slug: string) => {
-  const s = slug.replace(/\d+$/, "").replace(/-/g, " ").trim();
-  return s ? s[0].toUpperCase() + s.slice(1) : slug;
-};
-
 /**
  * Top N serviços REAIS do portal por visitas no intervalo — porta de
- * servicos.py::top_servicos_acessados. Nome amigável vem do catálogo do template
- * (path -> serviço) quando conhecido; senão, deriva do slug.
+ * servicos.py::top_servicos_acessados. Nome/órgão vêm do inventário de cartas
+ * via `classificarPagina` (ADR-012) — mesmo dicionário do ranking de páginas,
+ * nada de derivar nome a partir do slug da URL.
  */
-export function topServicosLive(rows: MatomoRow[], template: PerfilFiltroPeriodo, n = 15): ServicoAcessado[] {
+export function topServicosLive(rows: MatomoRow[], inventario: CartaRelacao[], n = 15): ServicoAcessado[] {
   const index = buildIndex(rows);
-  const conhecidos = new Map<string, string>();
-  for (const cards of Object.values(template.servicosPorPerfil))
-    for (const c of cards) conhecidos.set(normalizePath(c.path), c.servico);
+  const ctx = construirContexto(inventario);
 
   const linhas: ServicoAcessado[] = [];
   for (const [path, visitas] of index) {
-    const partes = path.split("/").filter(Boolean);
-    if (partes.length < 2 || !CATEGORIAS_SERVICO.has(partes[0])) continue;
-    const slug = partes[1];
-    if (slug.startsWith("-") || ["", "others"].includes(nomeDoSlug(slug).toLowerCase())) continue;
-    linhas.push({ servico: conhecidos.get(path) ?? nomeDoSlug(slug), path, visitas });
+    const classificado = classificarPagina(path, ctx);
+    if (classificado.tipo !== "servico") continue;
+    linhas.push({ servico: classificado.nome, orgaoSigla: classificado.orgaoSigla ?? null, path, visitas });
   }
   return linhas.sort((a, b) => b.visitas - a.visitas).slice(0, n);
 }

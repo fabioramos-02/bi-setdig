@@ -161,10 +161,20 @@ export function getMatomoPerfilFiltro(): Record<PeriodoFixo, PerfilFiltroPeriodo
 
 // Serviços REAIS mais acessados do portal (todas as páginas de serviço, não só as
 // do filtro de Perfil) — ranqueado por visitas, por período (ADR-007).
-export type ServicoAcessado = { servico: string; path: string; visitas: number };
+// `orgaoSigla` (ADR-012): null quando o path não casou com nenhuma carta do
+// inventário no momento em que o pipeline rodou — campo aditivo, sem quebrar v1.
+export type ServicoAcessado = { servico: string; orgaoSigla?: string | null; path: string; visitas: number };
 
 export function getMatomoServicosMaisAcessados(): BreakdownPorPeriodo<ServicoAcessado> {
   return readDataset<BreakdownPorPeriodo<ServicoAcessado>>("matomo", "v1", "servicos-mais-acessados") ?? BREAKDOWN_VAZIO;
+}
+
+// Demanda real por órgão (visitas às cartas de serviço do inventário) — por
+// período (ADR-007, ADR-012).
+export type DemandaOrgao = { orgaoSigla: string; orgao: string; visitas: number; pct: number };
+
+export function getMatomoDemandaPorOrgao(): BreakdownPorPeriodo<DemandaOrgao> {
+  return readDataset<BreakdownPorPeriodo<DemandaOrgao>>("matomo", "v1", "demanda-por-orgao") ?? BREAKDOWN_VAZIO;
 }
 
 // --- Fluxo de navegação — 2 relatórios leves (não N+1), porta de

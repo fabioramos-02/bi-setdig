@@ -38,10 +38,10 @@
   {
     "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
     "orgaoSigla": "SEFAZ MS",
-    "total": 55,
+    "total": 56,
     "atendidos": 54,
-    "pendentes": 1,
-    "percentAtendido": 98.2,
+    "pendentes": 2,
+    "percentAtendido": 96.4,
     "tempoMedioResolucaoDias": 36.5
   },
   {

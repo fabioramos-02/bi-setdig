@@ -2,12 +2,16 @@ import { MetricCard } from "@/components/dashboard/MetricCard";
 import { ExportCsvButton } from "@/components/dashboard/ExportCsvButton";
 import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
 import { LineChart } from "@/components/charts/LineChart";
-import type { InsightNavegador, InsightDispositivo, InsightBusca } from "@/lib/insights";
+import { RankingBarChart } from "@/components/charts/RankingBarChart";
+import { DashboardSection } from "@/components/dashboard/DashboardSection";
+import type { InsightBusca } from "@/lib/insights";
 import type { ResumoPeriodo, PontoAgregado } from "@/lib/period-filter";
 import type { SaudePortal, ContextoAnual, Recomendacao, Navegacao } from "@/lib/saude-portal";
-import type { Pagina, Cidade } from "@/lib/data";
+import type { ServicoTop, OrgaoTop } from "@/lib/servicos-portal";
+import type { Pagina, Cidade, ServicoAcessado } from "@/lib/data";
 import { municipiosComAcesso, municipiosSemAcesso, MUNICIPIOS_MS } from "@/lib/municipios-ms";
 import { labelPagina } from "@/lib/pagina-label";
+import type { ContextoSemantico } from "@/lib/pagina-tipo";
 
 const COR_NIVEL: Record<SaudePortal["nivel"], string> = {
   saudavel: "var(--ds-color-success)",
@@ -22,9 +26,9 @@ const ROTULO_NIVEL: Record<SaudePortal["nivel"], string> = {
 
 /** Conteúdo da aba "Visão Geral" — pensada pra leitura de gestor, não de
  * analista (ver AGENTS.md "BI de gestão"): resumo executivo → saúde do
- * portal → KPIs → tendência com contexto → destaques → pontos de atenção.
- * Cálculo todo em PortalMsClient/lib; aqui só apresentação. Extraído de
- * PortalMsClient pra não estourar 250 linhas/arquivo. */
+ * portal → KPIs → serviços mais procurados → tendência com contexto →
+ * destaques → pontos de atenção. Cálculo todo em PortalMsClient/lib; aqui só
+ * apresentação. Extraído de PortalMsClient pra não estourar 250 linhas/arquivo. */
 export function VisaoGeralTab({
   kpis,
   rotuloPeriodo,
@@ -36,12 +40,15 @@ export function VisaoGeralTab({
   contextoAnual,
   navegacao,
   recomendacoes,
-  insightNavegador,
-  insightDispositivo,
   paginaTop,
   insightBusca,
   status,
   onIrPara,
+  ctxSemantico,
+  servicosMaisAcessados,
+  servicoTop,
+  orgaoTop,
+  pctServicoSemOrgao,
 }: {
   kpis: ResumoPeriodo;
   rotuloPeriodo: string;
@@ -53,12 +60,15 @@ export function VisaoGeralTab({
   contextoAnual: ContextoAnual | null;
   navegacao: Navegacao | null;
   recomendacoes: Recomendacao[];
-  insightNavegador: InsightNavegador | null;
-  insightDispositivo: InsightDispositivo | null;
   paginaTop: Pagina | null;
   insightBusca: InsightBusca | null;
   status: StatusIntervalo;
   onIrPara: (id: string) => void;
+  ctxSemantico: ContextoSemantico;
+  servicosMaisAcessados: ServicoAcessado[];
+  servicoTop: ServicoTop | null;
+  orgaoTop: OrgaoTop | null;
+  pctServicoSemOrgao: number;
 }) {
   const semAcesso = municipiosSemAcesso(cidadesAtual);
   const comAcesso = municipiosComAcesso(cidadesAtual);
@@ -121,6 +131,24 @@ export function VisaoGeralTab({
         </details>
       )}
 
+      {servicosMaisAcessados.length > 0 && (
+        <DashboardSection title="Quais serviços o cidadão mais procurou?">
+          <RankingBarChart
+            itens={servicosMaisAcessados.slice(0, 5).map((s) => ({
+              label: s.servico,
+              sublabel: s.orgaoSigla ?? undefined,
+              valor: s.visitas,
+              href: s.path ? `https://www.ms.gov.br${s.path}` : undefined,
+            }))}
+          />
+          {pctServicoSemOrgao > 0 && (
+            <p className="text-sm mt-2" style={{ color: "var(--ds-color-text-secondary)" }}>
+              {pctServicoSemOrgao}% desses acessos ainda não puderam ser associados a um órgão responsável.
+            </p>
+          )}
+        </DashboardSection>
+      )}
+
       <div>
         <div className="flex items-center justify-between mb-2">
           <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold">
@@ -141,24 +169,24 @@ export function VisaoGeralTab({
           Destaques
         </h3>
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-          <button type="button" onClick={() => onIrPara("perfil")} className="text-left">
+          <button type="button" onClick={() => onIrPara("servicos")} className="text-left">
             <MetricCard
-              label="Navegador líder"
-              value={insightNavegador?.navegador ?? "—"}
-              sub={insightNavegador ? `${insightNavegador.participacaoPct.toFixed(0)}% dos acessos` : undefined}
+              label="Serviço mais procurado"
+              value={servicoTop?.nome ?? "—"}
+              sub={servicoTop ? `${servicoTop.orgaoSigla ?? "órgão não identificado"} — ${servicoTop.visitas.toLocaleString("pt-BR")} visitas` : undefined}
             />
           </button>
-          <button type="button" onClick={() => onIrPara("perfil")} className="text-left">
+          <button type="button" onClick={() => onIrPara("servicos")} className="text-left">
             <MetricCard
-              label="Dispositivo líder"
-              value={insightDispositivo?.dispositivo ?? "—"}
-              sub={insightDispositivo ? `${insightDispositivo.participacaoPct.toFixed(0)}% dos acessos` : undefined}
+              label="Órgão com mais demanda"
+              value={orgaoTop?.orgaoSigla ?? "—"}
+              sub={orgaoTop ? `${orgaoTop.pct.toFixed(0)}% da demanda por serviços` : undefined}
             />
           </button>
           <button type="button" onClick={() => onIrPara("paginas")} className="text-left">
             <MetricCard
               label={`Página mais acessada ${rotuloSnapshot}`}
-              value={paginaTop ? labelPagina(paginaTop.url).label : "—"}
+              value={paginaTop ? labelPagina(paginaTop.url, ctxSemantico).label : "—"}
               sub={paginaTop ? `${paginaTop.visitas.toLocaleString("pt-BR")} visitas` : undefined}
             />
           </button>

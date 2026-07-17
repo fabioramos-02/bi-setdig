@@ -14,8 +14,10 @@ import {
   getMatomoBuscaTotal,
   getMatomoPerfilFiltro,
   getMatomoServicosMaisAcessados,
+  getMatomoDemandaPorOrgao,
   getMatomoPortasEntrada,
   getMatomoFugaHub,
+  getCartasInventarioRelacao,
 } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -33,8 +35,10 @@ export default function AnalyticsPortalMsPage() {
   const buscaTotal = getMatomoBuscaTotal();
   const perfil = getMatomoPerfilFiltro();
   const servicosMaisAcessados = getMatomoServicosMaisAcessados();
+  const demandaPorOrgao = getMatomoDemandaPorOrgao();
   const portasEntrada = getMatomoPortasEntrada();
   const fugaHub = getMatomoFugaHub();
+  const inventarioCartas = getCartasInventarioRelacao();
 
   if (diarias.length === 0) {
     return (
@@ -69,8 +73,10 @@ export default function AnalyticsPortalMsPage() {
       matchRate={matchRate}
       perfil={perfil}
       servicosMaisAcessados={servicosMaisAcessados}
+      demandaPorOrgao={demandaPorOrgao}
       portasEntrada={portasEntrada}
       fugaHub={fugaHub}
+      inventarioCartas={inventarioCartas}
     />
   );
 }

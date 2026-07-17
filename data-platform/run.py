@@ -9,6 +9,7 @@ Cartas (Postgres) exige VPN da SETDIG — se falhar, o script registra e segue
 """
 from __future__ import annotations
 
+import json
 import sys
 from pathlib import Path
 
@@ -113,6 +114,18 @@ def run_matomo_perfil() -> None:
     print(f"[matomo] visitas-diarias -> {len(diarias)} dias")
 
 
+def _ler_inventario_cartas() -> list[dict]:
+    """Lê o inventário de cartas JÁ PUBLICADO em datasets/ (não o Postgres) —
+    não exige VPN e não acopla esta função ao job de cartas (run_cartas). Sem
+    o arquivo ainda publicado (1ª execução), segue sem inventário: os dois
+    datasets aqui caem no fallback sem nome/órgão resolvido (ADR-012)."""
+    caminho = Path(__file__).resolve().parent.parent / "datasets" / "cartas" / "v1" / "inventario-relacao.json"
+    if not caminho.exists():
+        print("[matomo] aviso: inventario-relacao.json ainda não publicado — servicos-mais-acessados/demanda-por-orgao sem nome/órgão resolvido")
+        return []
+    return json.loads(caminho.read_text(encoding="utf-8"))
+
+
 def run_matomo_perfil_filtro() -> None:
     """Adoção do filtro de Perfil do Portal Único (estudo portado do bench-carta).
 
@@ -123,14 +136,18 @@ def run_matomo_perfil_filtro() -> None:
     from transform import perfil as t_perfil
     from transform import servicos as t_servicos
 
+    inventario = _ler_inventario_cartas()
+
     saida = {}
     mais_acessados = {}
+    demanda_orgao = {}
     for chave, (p, d) in PERIODOS_FIXOS.items():
         raw = matomo.get_page_urls(p, d, limit=-1)
         saida[chave] = t_perfil.build_periodo(raw)
         # Reusa o mesmo snapshot pra ranquear os serviços REAIS mais acessados
-        # do portal (não só os do filtro de Perfil).
-        mais_acessados[chave] = t_servicos.top_servicos_acessados(raw, n=15)
+        # do portal (não só os do filtro de Perfil) e pra medir demanda por órgão.
+        mais_acessados[chave] = t_servicos.top_servicos_acessados(raw, inventario, n=15)
+        demanda_orgao[chave] = t_servicos.demanda_por_orgao(raw, inventario)
 
     t_perfil.validar(saida)
     publish("matomo", "perfil-filtro", saida)
@@ -139,6 +156,10 @@ def run_matomo_perfil_filtro() -> None:
     validate_period_breakdown(mais_acessados, ["servico", "path", "visitas"], ["visitas"])
     publish("matomo", "servicos-mais-acessados", mais_acessados)
     print(f"[matomo] servicos-mais-acessados -> {[(k, len(v)) for k, v in mais_acessados.items()]}")
+
+    validate_period_breakdown(demanda_orgao, ["orgaoSigla", "orgao", "visitas"], ["visitas"])
+    publish("matomo", "demanda-por-orgao", demanda_orgao)
+    print(f"[matomo] demanda-por-orgao -> {[(k, len(v)) for k, v in demanda_orgao.items()]}")
 
 
 def run_matomo_jornada() -> None:

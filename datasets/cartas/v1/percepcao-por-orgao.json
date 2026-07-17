@@ -22,12 +22,12 @@
       "1": 154,
       "2": 37,
       "3": 55,
-      "4": 44,
+      "4": 45,
       "5": 70
     },
-    "totalVotos": 360,
-    "clarezaPositivaPct": 44.1,
-    "totalAvaliacoesClareza": 1221
+    "totalVotos": 361,
+    "clarezaPositivaPct": 44.2,
+    "totalAvaliacoesClareza": 1223
   },
   {
     "orgao": "Secretaria de Estado de Educação de Mato Grosso do Sul",
@@ -41,8 +41,8 @@
       "5": 74
     },
     "totalVotos": 280,
-    "clarezaPositivaPct": 57.3,
-    "totalAvaliacoesClareza": 1137
+    "clarezaPositivaPct": 57.2,
+    "totalAvaliacoesClareza": 1139
   },
   {
     "orgao": "Secretaria de Estado de Assistência Social e Direitos Humanos",
@@ -79,15 +79,15 @@
     "orgaoSigla": "PGE MS",
     "csatMedia": 2.2,
     "csatDistribuicao": {
-      "1": 79,
+      "1": 80,
       "2": 32,
       "3": 29,
       "4": 16,
       "5": 18
     },
-    "totalVotos": 174,
+    "totalVotos": 175,
     "clarezaPositivaPct": 33.5,
-    "totalAvaliacoesClareza": 531
+    "totalAvaliacoesClareza": 532
   },
   {
     "orgao": "Coordenadoria Geral de Perícias de Mato Grosso do Sul",
@@ -221,8 +221,8 @@
       "5": 17
     },
     "totalVotos": 61,
-    "clarezaPositivaPct": 68.5,
-    "totalAvaliacoesClareza": 197
+    "clarezaPositivaPct": 68.2,
+    "totalAvaliacoesClareza": 198
   },
   {
     "orgao": "Fundação de Trabalho de Mato Grosso do Sul",

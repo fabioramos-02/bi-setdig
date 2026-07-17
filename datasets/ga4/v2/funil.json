@@ -2,43 +2,43 @@
   "dia": [
     {
       "evento": "first_open",
-      "usuarios": 4
+      "usuarios": 5
     },
     {
       "evento": "session_start",
-      "usuarios": 102
+      "usuarios": 150
     },
     {
       "evento": "screen_view",
-      "usuarios": 53
+      "usuarios": 75
     },
     {
       "evento": "user_engagement",
-      "usuarios": 68
+      "usuarios": 101
     }
   ],
   "semana": [
     {
       "evento": "first_open",
-      "usuarios": 1805
+      "usuarios": 1806
     },
     {
       "evento": "session_start",
-      "usuarios": 16688
+      "usuarios": 16704
     },
     {
       "evento": "screen_view",
-      "usuarios": 9982
+      "usuarios": 9989
     },
     {
       "evento": "user_engagement",
-      "usuarios": 13587
+      "usuarios": 13604
     }
   ],
   "mes": [
     {
       "evento": "first_open",
-      "usuarios": 7362
+      "usuarios": 7363
     },
     {
       "evento": "session_start",
@@ -56,7 +56,7 @@
   "ano": [
     {
       "evento": "first_open",
-      "usuarios": 100515
+      "usuarios": 100522
     },
     {
       "evento": "session_start",

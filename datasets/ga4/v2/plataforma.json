@@ -2,21 +2,21 @@
   "dia": [
     {
       "operatingSystem": "Android",
-      "activeUsers": 55
+      "activeUsers": 80
     },
     {
       "operatingSystem": "iOS",
-      "activeUsers": 24
+      "activeUsers": 33
     }
   ],
   "semana": [
     {
       "operatingSystem": "Android",
-      "activeUsers": 9854
+      "activeUsers": 9870
     },
     {
       "operatingSystem": "iOS",
-      "activeUsers": 4368
+      "activeUsers": 4370
     }
   ],
   "mes": [

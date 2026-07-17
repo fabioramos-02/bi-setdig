@@ -18,6 +18,7 @@
         "required": ["servico", "path", "visitas"],
         "properties": {
           "servico": { "type": "string" },
+          "orgaoSigla": { "type": ["string", "null"] },
           "path": { "type": "string" },
           "visitas": { "type": "integer", "minimum": 0 }
         }

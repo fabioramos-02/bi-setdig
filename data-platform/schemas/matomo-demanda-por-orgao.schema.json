@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "matomo/demanda-por-orgao",
+  "description": "Demanda real por órgão (visitas às cartas de serviço do inventário), 1 chave por período fixo — ver ADR-007, ADR-012",
+  "type": "object",
+  "required": ["dia", "semana", "mes", "ano"],
+  "properties": {
+    "dia": { "$ref": "#/definitions/linhas" },
+    "semana": { "$ref": "#/definitions/linhas" },
+    "mes": { "$ref": "#/definitions/linhas" },
+    "ano": { "$ref": "#/definitions/linhas" }
+  },
+  "definitions": {
+    "linhas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["orgaoSigla", "orgao", "visitas", "pct"],
+        "properties": {
+          "orgaoSigla": { "type": "string" },
+          "orgao": { "type": "string" },
+          "visitas": { "type": "integer", "minimum": 0 },
+          "pct": { "type": "number", "minimum": 0, "maximum": 100 }
+        }
+      }
+    }
+  }
+}

@@ -22,7 +22,9 @@ import {
   calcularInsightDispositivo,
 } from "@/lib/insights";
 import { calcularSaude, calcularContextoAnual, calcularNavegacao, gerarResumoExecutivo, gerarRecomendacoes } from "@/lib/saude-portal";
+import { calcularServicoTop, calcularOrgaoTop, fraseServicoOrgao, recomendacaoConcentracao, pctSemOrgao } from "@/lib/servicos-portal";
 import { MUNICIPIOS_MS, municipiosComAcesso, municipiosSemAcesso } from "@/lib/municipios-ms";
+import { construirContexto } from "@/lib/pagina-tipo";
 import type {
   VisitaDiaria,
   BreakdownPorPeriodo,
@@ -37,6 +39,8 @@ import type {
   ServicoAcessado,
   PaginaEntrada,
   DominioSaida,
+  DemandaOrgao,
+  CartaRelacao,
 } from "@/lib/data";
 
 const ROTULO_PERIODO = { dia: "no dia", semana: "na semana", mes: "no mês", ano: "no ano", intervalo: "no intervalo" };
@@ -55,6 +59,7 @@ type LiveIntervalo = {
   fugaHub: DominioSaida[];
   perfil: PerfilFiltroPeriodo;
   servicosMaisAcessados: ServicoAcessado[];
+  demandaPorOrgao: DemandaOrgao[];
 };
 
 export function PortalMsClient({
@@ -71,6 +76,8 @@ export function PortalMsClient({
   servicosMaisAcessados,
   portasEntrada,
   fugaHub,
+  inventarioCartas,
+  demandaPorOrgao,
 }: {
   diarias: VisitaDiaria[];
   navegadores: BreakdownPorPeriodo<Navegador>;
@@ -85,7 +92,12 @@ export function PortalMsClient({
   servicosMaisAcessados: BreakdownPorPeriodo<ServicoAcessado>;
   portasEntrada: BreakdownPorPeriodo<PaginaEntrada>;
   fugaHub: BreakdownPorPeriodo<DominioSaida>;
+  inventarioCartas: CartaRelacao[];
+  demandaPorOrgao: BreakdownPorPeriodo<DemandaOrgao>;
 }) {
+  // Contexto do classificador semântico (ADR-012) — montado 1x a partir do
+  // inventário estático, reusado por PaginasTab e VisaoGeralTab.
+  const ctxSemantico = useMemo(() => construirContexto(inventarioCartas), [inventarioCartas]);
   // Estado do filtro vem da sidebar (PeriodoProvider) — mesmo estado, gráficos
   // reagem sem barra de filtro dentro do conteúdo.
   const { estado, min, max } = usePeriodo();
@@ -157,6 +169,7 @@ export function PortalMsClient({
   // visitas são recalculadas na rota (ver lib/server/perfil-live.ts).
   const perfilAtual = precisaLive && liveValido ? liveData!.perfil : perfil[periodoAtual];
   const servicosAcessadosAtual = precisaLive && liveValido ? liveData!.servicosMaisAcessados : servicosMaisAcessados[periodoAtual];
+  const demandaPorOrgaoAtual = precisaLive && liveValido ? liveData!.demandaPorOrgao : demandaPorOrgao[periodoAtual];
 
   const tendencia = useMemo(() => aplicarFiltroPeriodo(diarias, estado), [diarias, estado]);
   const kpis = useMemo(() => resumoDoPeriodo(diarias, estado), [diarias, estado]);
@@ -180,6 +193,11 @@ export function PortalMsClient({
   const contextoAnual = calcularContextoAnual(diarias);
   const navegacao = calcularNavegacao(kpis, diarias, estado, min, max);
   const semAcessoAtual = municipiosSemAcesso(cidadesAtual);
+  // Serviço/órgão em destaque (ADR-012) — nome/órgão já resolvidos pelo
+  // classificador semântico, nunca a URL crua (ver lib/servicos-portal.ts).
+  const servicoTop = calcularServicoTop(servicosAcessadosAtual);
+  const orgaoTop = calcularOrgaoTop(demandaPorOrgaoAtual);
+  const concentracao = recomendacaoConcentracao(orgaoTop);
   const resumo = gerarResumoExecutivo({
     kpis,
     rotuloPeriodo,
@@ -191,12 +209,14 @@ export function PortalMsClient({
     // KPI e com os ausentes — ver municipios-ms.ts.
     municipiosComAcesso: municipiosComAcesso(cidadesAtual).length,
     totalMunicipios: MUNICIPIOS_MS.length,
+    fraseServicoOrgao: fraseServicoOrgao(servicoTop, orgaoTop),
   });
   const recomendacoes = gerarRecomendacoes({
     saude,
     insightDispositivo,
     insightBusca,
     municipiosSemAcesso: semAcessoAtual,
+    recomendacaoConcentracao: concentracao,
   });
 
   const abas: TabItem[] = [
@@ -215,12 +235,15 @@ export function PortalMsClient({
           contextoAnual={contextoAnual}
           navegacao={navegacao}
           recomendacoes={recomendacoes}
-          insightNavegador={insightNavegador}
-          insightDispositivo={insightDispositivo}
           paginaTop={paginaTop}
           insightBusca={insightBusca}
           status={statusBreakdown}
           onIrPara={setAbaAtiva}
+          ctxSemantico={ctxSemantico}
+          servicosMaisAcessados={servicosAcessadosAtual}
+          servicoTop={servicoTop}
+          orgaoTop={orgaoTop}
+          pctServicoSemOrgao={pctSemOrgao(servicosAcessadosAtual)}
         />
       ),
     },
@@ -255,6 +278,7 @@ export function PortalMsClient({
           rotuloPeriodo={rotuloSnapshot}
           insightPagina={insightPagina}
           status={statusBreakdown}
+          ctxSemantico={ctxSemantico}
         />
       ),
     },

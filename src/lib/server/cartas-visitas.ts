@@ -3,42 +3,25 @@
  * (Postgres) com as visitas ao vivo do Matomo (Actions.getPageUrls, ADR-010).
  * Server-only (usado pelo Route Handler de /servicos).
  *
- * Chave do join = 2 primeiros segmentos do path do Matomo `(categoria, slug)`,
- * match exato normalizado — mesmo padrão de
- * matomo/matomo-analytics-dashboard/utils/data_processor.py::identify_service_cards.
- * Só cartas ATIVAS entram; carta sem acesso registrado no período fica de fora
- * do ranking de visitas (não é "0 forçado" — é transparência: "só cartas com
- * acesso no período").
+ * Chave do join = SLUG (2º segmento do path), não `(categoria, slug)`: a
+ * mesma carta é alcançável por mais de uma categoria no site real (ex.
+ * pagamento de IPVA inscrito em dívida ativa aparece tanto em
+ * administracao-publica/ quanto em financas-e-impostos/) — casar por
+ * categoria também perdia visitas silenciosamente (ADR-012). Slug é único
+ * entre as cartas ativas (0 colisões medidas). Classificação de página
+ * (serviço/órgão/notícia/…) delega a `lib/pagina-tipo.ts` — mesmo dicionário
+ * usado no ranking de páginas.
+ *
+ * Só cartas ATIVAS entram; carta sem acesso registrado no período fica de
+ * fora do ranking de visitas (não é "0 forçado" — é transparência: "só
+ * cartas com acesso no período").
  */
-import type { CartaRelacao } from "@/lib/data";
+import type { CartaRelacao, DemandaOrgao } from "../data.ts";
+import { construirContexto, classificarPagina } from "../pagina-tipo.ts";
 
 type MatomoRow = { label?: string; url?: string; nb_visits?: number };
 
 const PORTAL_BASE = "https://www.ms.gov.br";
-
-function normalizar(s: string): string {
-  return s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().trim();
-}
-
-/** `(categoria, slug)` dos 2 primeiros segmentos do path — null se não parece
- * página de serviço (home, /noticias sem 2º segmento, etc.). */
-function chaveDoPath(url: string): string | null {
-  const semQuery = (url || "").split(/[?#]/)[0];
-  const semHost = semQuery.replace(/^https?:\/\/[^/]+/, "");
-  const partes = semHost.split("/").filter(Boolean);
-  if (partes.length < 2) return null;
-  return `${normalizar(partes[0])}/${normalizar(partes[1])}`;
-}
-
-/** Mapa `(categoria/slug normalizado) -> carta ativa`. */
-function mapaDeCartas(inventario: CartaRelacao[]): Map<string, CartaRelacao> {
-  const mapa = new Map<string, CartaRelacao>();
-  for (const c of inventario) {
-    if (!c.ativo || !c.categoria) continue;
-    mapa.set(`${normalizar(c.categoria)}/${normalizar(c.slug)}`, c);
-  }
-  return mapa;
-}
 
 export function urlDaCarta(carta: Pick<CartaRelacao, "categoria" | "slug">): string {
   return `${PORTAL_BASE}/${carta.categoria}/${carta.slug}`;
@@ -54,32 +37,52 @@ export type CartaVisita = {
   url: string;
 };
 export type RankVisita = { rotulo: string; visitas: number };
+/** Acessos a páginas que parecem serviço (2+ segmentos, fora de
+ * órgão/workspace/notícias/busca) e não casaram com nenhuma carta do
+ * inventário. `pct` é sobre o total de páginas que "parecem serviço"
+ * (servico casado + não identificado) — home/notícia/órgão não entram no
+ * denominador, não são "miss". */
+export type NaoIdentificado = { visitas: number; pct: number };
 export type ResultadoVisitas = {
   porCarta: CartaVisita[];
   porOrgao: RankVisita[];
   porCategoria: RankVisita[];
   porSetor: RankVisita[];
+  naoIdentificado: NaoIdentificado;
 };
 
 const ranquear = (m: Map<string, number>): RankVisita[] =>
   [...m.entries()].map(([rotulo, visitas]) => ({ rotulo, visitas })).sort((a, b) => b.visitas - a.visitas);
 
-export function joinVisitas(pageUrlsRaw: MatomoRow[], inventario: CartaRelacao[]): ResultadoVisitas {
-  const cartas = mapaDeCartas(inventario);
+const pct = (parte: number, total: number) => (total > 0 ? Math.round((parte / total) * 10000) / 100 : 0);
 
-  const visitasPorChave = new Map<string, number>();
+export function joinVisitas(pageUrlsRaw: MatomoRow[], inventario: CartaRelacao[]): ResultadoVisitas {
+  const ctx = construirContexto(inventario);
+
+  const visitasPorSlug = new Map<string, number>();
+  let naoIdentificadoVisitas = 0;
+  let pareceServicoTotal = 0;
+
   for (const row of Array.isArray(pageUrlsRaw) ? pageUrlsRaw : []) {
-    const chave = chaveDoPath(row.url || row.label || "");
-    if (!chave || !cartas.has(chave)) continue;
-    visitasPorChave.set(chave, (visitasPorChave.get(chave) ?? 0) + (Number(row.nb_visits) || 0));
+    const url = row.url || row.label || "";
+    const visitas = Number(row.nb_visits) || 0;
+    const classificado = classificarPagina(url, ctx);
+
+    if (classificado.tipo === "servico") {
+      pareceServicoTotal += visitas;
+      visitasPorSlug.set(classificado.slug!, (visitasPorSlug.get(classificado.slug!) ?? 0) + visitas);
+    } else if (classificado.tipo === "outro") {
+      pareceServicoTotal += visitas;
+      naoIdentificadoVisitas += visitas;
+    }
   }
 
   const porCarta: CartaVisita[] = [];
   const orgao = new Map<string, number>();
   const categoria = new Map<string, number>();
   const setor = new Map<string, number>();
-  for (const [chave, visitas] of visitasPorChave) {
-    const c = cartas.get(chave)!;
+  for (const [slug, visitas] of visitasPorSlug) {
+    const c = ctx.cartasPorSlug.get(slug)!;
     porCarta.push({
       titulo: c.titulo,
       orgaoSigla: c.orgaoSigla,
@@ -101,7 +104,37 @@ export function joinVisitas(pageUrlsRaw: MatomoRow[], inventario: CartaRelacao[]
   }
 
   porCarta.sort((a, b) => b.visitas - a.visitas);
-  return { porCarta, porOrgao: ranquear(orgao), porCategoria: ranquear(categoria), porSetor: ranquear(setor) };
+  return {
+    porCarta,
+    porOrgao: ranquear(orgao),
+    porCategoria: ranquear(categoria),
+    porSetor: ranquear(setor),
+    naoIdentificado: { visitas: naoIdentificadoVisitas, pct: pct(naoIdentificadoVisitas, pareceServicoTotal) },
+  };
+}
+
+/**
+ * Recalculo ao vivo de `datasets/matomo/v1/demanda-por-orgao.json` pro
+ * intervalo exato (ADR-010) — mesmo shape do dataset estático, mesma fonte
+ * (inventário de cartas via `classificarPagina`, ADR-012).
+ */
+export function demandaPorOrgao(pageUrlsRaw: MatomoRow[], inventario: CartaRelacao[]): DemandaOrgao[] {
+  const ctx = construirContexto(inventario);
+  const nomePorSigla = new Map(ctx.orgaos.map((o) => [o.sigla, o.nome]));
+
+  const visitasPorSigla = new Map<string, number>();
+  let total = 0;
+  for (const row of Array.isArray(pageUrlsRaw) ? pageUrlsRaw : []) {
+    const classificado = classificarPagina(row.url || row.label || "", ctx);
+    if (classificado.tipo !== "servico" || !classificado.orgaoSigla) continue;
+    const visitas = Number(row.nb_visits) || 0;
+    visitasPorSigla.set(classificado.orgaoSigla, (visitasPorSigla.get(classificado.orgaoSigla) ?? 0) + visitas);
+    total += visitas;
+  }
+
+  return [...visitasPorSigla.entries()]
+    .map(([orgaoSigla, visitas]) => ({ orgaoSigla, orgao: nomePorSigla.get(orgaoSigla) ?? orgaoSigla, visitas, pct: pct(visitas, total) }))
+    .sort((a, b) => b.visitas - a.visitas);
 }
 
 export type PontoSerie = Record<string, number | string>;
@@ -116,7 +149,7 @@ export function serieTemporal(
   inventario: CartaRelacao[],
   nomes: string[],
 ): PontoSerie[] {
-  const cartas = mapaDeCartas(inventario);
+  const ctx = construirContexto(inventario);
   const alvo = new Set(nomes);
   return Object.keys(porPeriodo)
     .sort()
@@ -124,9 +157,10 @@ export function serieTemporal(
       const linha: PontoSerie = { rotulo };
       for (const n of nomes) linha[n] = 0;
       for (const row of porPeriodo[rotulo] || []) {
-        const chave = chaveDoPath(row.url || row.label || "");
-        const c = chave ? cartas.get(chave) : undefined;
-        if (c && alvo.has(c.titulo)) linha[c.titulo] = (linha[c.titulo] as number) + (Number(row.nb_visits) || 0);
+        const classificado = classificarPagina(row.url || row.label || "", ctx);
+        if (classificado.tipo === "servico" && alvo.has(classificado.nome)) {
+          linha[classificado.nome] = (linha[classificado.nome] as number) + (Number(row.nb_visits) || 0);
+        }
       }
       return linha;
     });

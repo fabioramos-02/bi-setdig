@@ -6,6 +6,7 @@ import { RankingBarChart } from "@/components/charts/RankingBarChart";
 import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
 import { ChartLoading } from "@/components/dashboard/ChartLoading";
 import { labelPagina } from "@/lib/pagina-label";
+import type { ContextoSemantico } from "@/lib/pagina-tipo";
 import type { InsightPagina } from "@/lib/insights";
 import type { Pagina } from "@/lib/data";
 
@@ -20,18 +21,20 @@ export function PaginasTab({
   rotuloPeriodo,
   insightPagina,
   status,
+  ctxSemantico,
 }: {
   paginas: Pagina[];
   rotuloPeriodo: string;
   insightPagina: InsightPagina | null;
   status: StatusIntervalo;
+  ctxSemantico: ContextoSemantico;
 }) {
   if (paginas.length === 0) {
     return <EmptyCard message="Sem páginas acessadas no período." />;
   }
 
   const ranking = paginas.map((p) => {
-    const { label, href } = labelPagina(p.url);
+    const { label, href } = labelPagina(p.url, ctxSemantico);
     return { label, valor: p.visitas, href };
   });
 
@@ -40,7 +43,7 @@ export function PaginasTab({
       <AvisoSnapshotAproximado status={status} />
       {insightPagina && (
         <StoryCard
-          anchor={`"${labelPagina(insightPagina.url).label}" é a página mais acessada: ${insightPagina.participacaoPct.toFixed(0)}% das visitas ${rotuloPeriodo} passam por ela.`}
+          anchor={`"${labelPagina(insightPagina.url, ctxSemantico).label}" é a página mais acessada: ${insightPagina.participacaoPct.toFixed(0)}% das visitas ${rotuloPeriodo} passam por ela.`}
           caption={`${insightPagina.visitas.toLocaleString("pt-BR")} visitas registradas nessa página no período.`}
           comoLer="Ranking das 20 páginas com mais visitas no período escolhido no filtro de período — não é um acumulado histórico."
         />

@@ -2,40 +2,40 @@
   "dia": [
     {
       "newVsReturning": "returning",
-      "activeUsers": 71,
-      "sessions": 74,
-      "screenPageViews": 159
+      "activeUsers": 103,
+      "sessions": 107,
+      "screenPageViews": 234
     },
     {
       "newVsReturning": "new",
-      "activeUsers": 8,
-      "sessions": 7,
+      "activeUsers": 11,
+      "sessions": 10,
       "screenPageViews": 13
     },
     {
       "newVsReturning": "",
       "activeUsers": 0,
-      "sessions": 50,
+      "sessions": 69,
       "screenPageViews": 1
     }
   ],
   "semana": [
     {
       "newVsReturning": "returning",
-      "activeUsers": 12655,
-      "sessions": 23447,
-      "screenPageViews": 47340
+      "activeUsers": 12666,
+      "sessions": 23474,
+      "screenPageViews": 47415
     },
     {
       "newVsReturning": "new",
-      "activeUsers": 1926,
-      "sessions": 1879,
+      "activeUsers": 1929,
+      "sessions": 1882,
       "screenPageViews": 4021
     },
     {
       "newVsReturning": "",
       "activeUsers": 0,
-      "sessions": 1083,
+      "sessions": 1104,
       "screenPageViews": 60
     },
     {
@@ -50,18 +50,18 @@
       "newVsReturning": "returning",
       "activeUsers": 34603,
       "sessions": 99544,
-      "screenPageViews": 221047
+      "screenPageViews": 221122
     },
     {
       "newVsReturning": "new",
-      "activeUsers": 7359,
-      "sessions": 7222,
+      "activeUsers": 7363,
+      "sessions": 7231,
       "screenPageViews": 16524
     },
     {
       "newVsReturning": "",
       "activeUsers": 0,
-      "sessions": 1083,
+      "sessions": 1104,
       "screenPageViews": 60
     },
     {
@@ -76,18 +76,18 @@
       "newVsReturning": "returning",
       "activeUsers": 132509,
       "sessions": 1191765,
-      "screenPageViews": 2591664
+      "screenPageViews": 2591739
     },
     {
       "newVsReturning": "new",
-      "activeUsers": 106611,
+      "activeUsers": 106618,
       "sessions": 106183,
       "screenPageViews": 272764
     },
     {
       "newVsReturning": "",
       "activeUsers": 0,
-      "sessions": 1083,
+      "sessions": 1104,
       "screenPageViews": 60
     },
     {
