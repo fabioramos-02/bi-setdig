@@ -3,10 +3,36 @@
  */
 import type { CartaRelacao, InventarioOrgao } from "@/lib/data";
 
-/** "saude-e-cuidado" -> "Saúde e cuidado" — slug de tema não tem coluna de
- * nome confirmada no banco (ver investigação), então formata em runtime. */
+export const CATEGORIAS_PORTAL: Record<string, { nome: string; icon: string }> = {
+  "administracao-publica": { nome: "Administração Pública", icon: "account_balance" },
+  "agropecuaria-e-vida-rural": { nome: "Agropecuária e Vida Rural", icon: "agriculture" },
+  "arte-e-cultura": { nome: "Arte e Cultura", icon: "theater_comedy" },
+  "assistencia-social": { nome: "Assistência Social", icon: "diversity_3" },
+  "ciencia-e-tecnologia": { nome: "Ciência e Tecnologia", icon: "biotech" },
+  "comunicacao-e-transparencia": { nome: "Comunicação e Transparência", icon: "campaign" },
+  "direitos-e-cidadania": { nome: "Direitos e Cidadania", icon: "groups" },
+  "educacao-e-pesquisa": { nome: "Educação e Pesquisa", icon: "auto_stories" },
+  "empresa-industria-e-comercio": { nome: "Empresa, Indústria e Comércio", icon: "apartment" },
+  "energia": { nome: "Energia", icon: "electrical_services" },
+  "esporte-e-lazer": { nome: "Esporte e Lazer", icon: "sports_soccer" },
+  "financas-e-impostos": { nome: "Finanças e Impostos", icon: "currency_exchange" },
+  "forcas-armadas-e-defesa-civil": { nome: "Forças Armadas e Defesa Civil", icon: "local_police" },
+  "habitacao": { nome: "Habitação", icon: "home" },
+  "infraestrutura": { nome: "Infraestrutura", icon: "construction" },
+  "justica": { nome: "Justiça", icon: "balance" },
+  "meio-ambiente": { nome: "Meio Ambiente", icon: "compost" },
+  "saude-e-cuidado": { nome: "Saúde e Cuidado", icon: "medical_services" },
+  "seguranca": { nome: "Segurança", icon: "security" },
+  "trabalho-emprego-e-previdencia": { nome: "Trabalho, Emprego e Previdência", icon: "work" },
+  "transito-e-transportes": { nome: "Trânsito e Transportes", icon: "directions_car" },
+  "turismo": { nome: "Turismo", icon: "follow_the_signs" },
+};
+
+/** "saude-e-cuidado" -> "Saúde e Cuidado" baseando-se no dicionário oficial.
+ * Fallback formata em runtime se não achar no dicionário. */
 export function labelCategoria(slug: string | null): string {
   if (!slug) return "Sem categoria";
+  if (CATEGORIAS_PORTAL[slug]) return CATEGORIAS_PORTAL[slug].nome;
   const texto = slug.replace(/-/g, " ");
   return texto.charAt(0).toUpperCase() + texto.slice(1);
 }

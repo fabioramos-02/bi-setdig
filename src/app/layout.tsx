@@ -20,6 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={`${openSans.variable} h-full`} suppressHydrationWarning>
+      <head>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+      </head>
       <body className="min-h-full flex flex-col">
         <ThemeProvider attribute="data-theme" defaultTheme="light" enableSystem>
           {children}

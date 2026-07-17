@@ -63,11 +63,18 @@ export function PaginasTab({
 
       {servicos.length > 0 && (
         <DashboardSection title="Temas mais demandados">
-          <ul className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+          <ul className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {obterTemasMaisDemandados(servicos, 4).map((t) => (
-              <li key={t.slug} className="flex items-center gap-2 text-sm" style={{ color: "var(--ds-color-text-primary)" }}>
-                <span className="text-xl" aria-hidden="true">{t.icon}</span>
-                <span className="font-semibold">{t.titulo}</span>
+              <li key={t.slug} className="flex flex-col items-center justify-center gap-3 p-4 rounded-xl border bg-white dark:bg-transparent shadow-sm hover:shadow-md transition-shadow" style={{ borderColor: "var(--ds-color-border)", color: "var(--ds-color-text-primary)" }}>
+                <div
+                  className="flex items-center justify-center rounded-full"
+                  style={{ padding: "20px", backgroundColor: "var(--ds-color-primary-light, #EDF5FB)" }}
+                >
+                  <span className="material-icons" style={{ fontSize: "32px", color: "var(--ds-color-primary, rgb(0, 81, 156))" }} aria-hidden="true">
+                    {t.icon}
+                  </span>
+                </div>
+                <span className="text-sm font-semibold text-center leading-tight">{t.titulo}</span>
               </li>
             ))}
           </ul>

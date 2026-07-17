@@ -1,5 +1,5 @@
 import type { PaginaClassificada } from "./pagina-tipo.ts";
-import { labelCategoria } from "./servicos.ts";
+import { labelCategoria, CATEGORIAS_PORTAL } from "./servicos.ts";
 
 /**
  * Leitura executiva das páginas mais acessadas — separa o que é serviço
@@ -76,24 +76,6 @@ export function gerarResumoPaginas(composicao: ComposicaoPaginas, servicosTop: P
 
 export type TemaDemandado = { slug: string; titulo: string; icon: string; visitas: number };
 
-const EMOJIS_CATEGORIA: Record<string, string> = {
-  "transito": "🚗",
-  "documentacao": "🪪",
-  "tributacao": "💰",
-  "habitacao": "🏠",
-  "saude-e-cuidado": "⚕️",
-  "seguranca": "🛡️",
-  "educacao": "📚",
-  "negocios": "💼",
-  "agropecuaria": "🌾",
-  "meio-ambiente": "🌳",
-  "assistencia-social": "🤝",
-  "cultura": "🎭",
-  "esporte-e-lazer": "⚽",
-  "turismo": "🗺️",
-  "trabalho": "👷",
-};
-
 export function obterTemasMaisDemandados(servicosTop: PaginaComVisitas[], limite = 4): TemaDemandado[] {
   const map = new Map<string, number>();
   for (const s of servicosTop) {
@@ -105,10 +87,11 @@ export function obterTemasMaisDemandados(servicosTop: PaginaComVisitas[], limite
     .sort((a, b) => b[1] - a[1])
     .slice(0, limite)
     .map(([slug, visitas]) => {
+      const info = CATEGORIAS_PORTAL[slug];
       return { 
         slug, 
-        titulo: labelCategoria(slug), 
-        icon: EMOJIS_CATEGORIA[slug] ?? "📌", 
+        titulo: info?.nome ?? labelCategoria(slug), 
+        icon: info?.icon ?? "label", // fallback icon
         visitas 
       };
     });

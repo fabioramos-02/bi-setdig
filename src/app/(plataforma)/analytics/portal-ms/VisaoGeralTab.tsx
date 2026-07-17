@@ -180,15 +180,13 @@ export function VisaoGeralTab({
           Quais regiões acessam o portal?
         </p>
 
-        {/* Mapa contido em largura menor (aspect-[4/3] deriva a altura da
-            largura) — versão-resumo pra caber o relatório em 2 páginas; a
-            versão grande fica na aba "Perfil do Cidadão". */}
-        <div className="max-w-xs mx-auto">
-          <ChartLoading status={status} height={200}>
+        {/* Mapa com largura ampliada para melhor visualização das regiões. */}
+        <div className="max-w-lg mx-auto">
+          <ChartLoading status={status} height={400}>
             {matchRate > 0.5 ? (
               <ChoroplethMap cidades={cidadesAtual} />
             ) : (
-              <BarChart data={cidadesAtual.slice(0, 15)} xKey="cidade" yKey="visitas" height={200} />
+              <BarChart data={cidadesAtual.slice(0, 15)} xKey="cidade" yKey="visitas" height={400} />
             )}
           </ChartLoading>
         </div>
