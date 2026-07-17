@@ -1,4 +1,5 @@
 import type { PaginaClassificada } from "./pagina-tipo.ts";
+import { labelCategoria } from "./servicos.ts";
 
 /**
  * Leitura executiva das páginas mais acessadas — separa o que é serviço
@@ -59,14 +60,56 @@ function fmt(n: number): string {
 export function gerarResumoPaginas(composicao: ComposicaoPaginas, servicosTop: PaginaComVisitas[], rotuloPeriodo: string): ResumoPaginas | null {
   if (composicao.homeVisitas === 0 && composicao.acaoVisitas === 0) return null;
 
-  const oQueAconteceu = `A página inicial concentrou ${Math.round(composicao.homePctDoTotal)}% de todo o tráfego do portal ${rotuloPeriodo} (${fmt(composicao.homeVisitas)} visitas).`;
+  const oQueAconteceu = `A página inicial concentrou ${Math.round(composicao.homePctDoTotal)}% dos acessos registrados ${rotuloPeriodo} (${fmt(composicao.homeVisitas)} visitas), mantendo-se como a principal porta de entrada do Portal Único.`;
 
-  const oQueSignifica = `Entre as páginas mais acessadas, ${Math.round(composicao.acaoPct)}% das visitas foram a páginas de serviço — o restante (${Math.round(composicao.apoioPct)}%) foi a conteúdo institucional, notícia ou navegação de apoio.`;
+  const oQueSignifica = `Entre as páginas analisadas, os acessos concentraram-se principalmente em conteúdo institucional, navegação e páginas de apoio (${Math.round(composicao.apoioPct)}%), enquanto as páginas de serviço responderam por ${Math.round(composicao.acaoPct)}% dos acessos.`;
 
-  const [s1, s2] = servicosTop;
-  const oportunidade = s1
-    ? `Serviços como "${s1.nome}" (${fmt(s1.visitas)} visitas)${s2 ? ` e "${s2.nome}" (${fmt(s2.visitas)} visitas)` : ""} ainda exigem navegação a partir da página inicial. Avaliar atalhos diretos na página inicial para os serviços mais procurados pode encurtar o caminho até o cidadão encontrar o que precisa.`
-    : "Ainda não há páginas de serviço identificadas entre as mais acessadas no período — sem oportunidade a apontar.";
+  const topTemas = obterTemasMaisDemandados(servicosTop, 3).map(t => t.titulo.toLowerCase());
+  const temasTexto = topTemas.length > 1 
+    ? `${topTemas.slice(0, -1).join(", ")} e ${topTemas[topTemas.length - 1]}`
+    : topTemas[0] ?? "diversos temas";
+
+  const oportunidade = `Os serviços mais procurados foram relacionados a ${temasTexto}, indicando as principais demandas dos cidadãos no período. Dar maior visibilidade a esses serviços na página inicial pode facilitar sua localização e reduzir o tempo até o atendimento.`;
 
   return { oQueAconteceu, oQueSignifica, oportunidade };
+}
+
+export type TemaDemandado = { slug: string; titulo: string; icon: string; visitas: number };
+
+const EMOJIS_CATEGORIA: Record<string, string> = {
+  "transito": "🚗",
+  "documentacao": "🪪",
+  "tributacao": "💰",
+  "habitacao": "🏠",
+  "saude-e-cuidado": "⚕️",
+  "seguranca": "🛡️",
+  "educacao": "📚",
+  "negocios": "💼",
+  "agropecuaria": "🌾",
+  "meio-ambiente": "🌳",
+  "assistencia-social": "🤝",
+  "cultura": "🎭",
+  "esporte-e-lazer": "⚽",
+  "turismo": "🗺️",
+  "trabalho": "👷",
+};
+
+export function obterTemasMaisDemandados(servicosTop: PaginaComVisitas[], limite = 4): TemaDemandado[] {
+  const map = new Map<string, number>();
+  for (const s of servicosTop) {
+    if (s.categoria) {
+      map.set(s.categoria, (map.get(s.categoria) ?? 0) + s.visitas);
+    }
+  }
+  return [...map.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, limite)
+    .map(([slug, visitas]) => {
+      return { 
+        slug, 
+        titulo: labelCategoria(slug), 
+        icon: EMOJIS_CATEGORIA[slug] ?? "📌", 
+        visitas 
+      };
+    });
 }

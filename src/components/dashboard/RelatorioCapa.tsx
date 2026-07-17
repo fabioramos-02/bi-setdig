@@ -22,7 +22,7 @@ export function RelatorioCapa({ titulo, filtro }: { titulo: string; filtro: stri
         </div>
       </div>
 
-      <h1 className="text-2xl font-bold mt-4" style={{ color: "var(--ds-color-text-primary)" }}>
+      <h1 className="text-2xl font-bold mt-6" style={{ color: "var(--ds-color-text-primary)" }}>
         {titulo}
       </h1>
       <p className="text-sm mt-1" style={{ color: "var(--ds-color-text-secondary)" }}>

@@ -114,12 +114,12 @@ export function classificarPagina(url: string, ctx: ContextoSemantico): PaginaCl
   if (p0n === "orgao" && p1) {
     const orgao = orgaoDoSegmento(p1, ctx);
     return orgao
-      ? { tipo: "orgao", nome: `Serviços do Órgão ${orgao.sigla}`, orgaoSigla: orgao.sigla }
-      : { tipo: "orgao", nome: "Serviços de um órgão" };
+      ? { tipo: "orgao", nome: `Serviços do Órgão ${orgao.sigla}`, orgaoSigla: orgao.sigla, href: `${PORTAL_BASE}/orgao/${p1}` }
+      : { tipo: "orgao", nome: "Serviços de um órgão", href: `${PORTAL_BASE}/orgao/${p1}` };
   }
-  if (p0n === "workspace") return { tipo: "meu-painel", nome: "Meu Painel" };
-  if (p0n === "noticias") return { tipo: "noticia", nome: "Notícia" };
-  if (p0n === "buscar") return { tipo: "busca", nome: "Busca no portal" };
+  if (p0n === "workspace") return { tipo: "meu-painel", nome: "Meu Painel", href: `${PORTAL_BASE}/workspace` };
+  if (p0n === "noticias") return { tipo: "noticia", nome: "Notícia", href: `${PORTAL_BASE}/noticias` };
+  if (p0n === "buscar") return { tipo: "busca", nome: "Busca no portal", href: `${PORTAL_BASE}/buscar` };
 
   // Bucket de agregação do Matomo (`/{categoria}/ - Others`): páginas de
   // serviço que o Matomo não desagregou — não é 1 página específica, é
@@ -130,12 +130,12 @@ export function classificarPagina(url: string, ctx: ContextoSemantico): PaginaCl
   // `/categoria/{slug}` — página real do portal que lista os serviços de um
   // tema (distinta de `/{slug}` sozinho, tratado abaixo).
   if (p0n === "categoria" && p1) {
-    return { tipo: "lista-categoria", nome: `Lista de serviços de ${labelCategoria(p1)}`, categoria: p1 };
+    return { tipo: "lista-categoria", nome: `Lista de serviços de ${labelCategoria(p1)}`, categoria: p1, href: `${PORTAL_BASE}/categoria/${p1}` };
   }
 
-  if (!p1) return { tipo: "lista-categoria", nome: `Lista de serviços de ${labelCategoria(p0)}`, categoria: p0 };
+  if (!p1) return { tipo: "lista-categoria", nome: `Lista de serviços de ${labelCategoria(p0)}`, categoria: p0, href: `${PORTAL_BASE}/${p0}` };
 
-  return { tipo: "outro", nome: "/" + partes.join("/") };
+  return { tipo: "outro", nome: "/" + partes.join("/"), href: `${PORTAL_BASE}/${partes.join("/")}` };
 }
 
 /**

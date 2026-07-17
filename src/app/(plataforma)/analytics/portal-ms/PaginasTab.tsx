@@ -7,7 +7,7 @@ import { RankingBarChart } from "@/components/charts/RankingBarChart";
 import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
 import { ChartLoading } from "@/components/dashboard/ChartLoading";
 import { agruparPaginasClassificadas, type ContextoSemantico } from "@/lib/pagina-tipo";
-import { calcularComposicaoPaginas, gerarResumoPaginas } from "@/lib/paginas-portal";
+import { calcularComposicaoPaginas, gerarResumoPaginas, obterTemasMaisDemandados } from "@/lib/paginas-portal";
 import type { Pagina } from "@/lib/data";
 
 const TOP_N = 5;
@@ -61,8 +61,21 @@ export function PaginasTab({
         </StoryCard>
       )}
 
+      {servicos.length > 0 && (
+        <DashboardSection title="Temas mais demandados">
+          <ul className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+            {obterTemasMaisDemandados(servicos, 4).map((t) => (
+              <li key={t.slug} className="flex items-center gap-2 text-sm" style={{ color: "var(--ds-color-text-primary)" }}>
+                <span className="text-xl" aria-hidden="true">{t.icon}</span>
+                <span className="font-semibold">{t.titulo}</span>
+              </li>
+            ))}
+          </ul>
+        </DashboardSection>
+      )}
+
       <DashboardSection
-        title="O cidadão veio resolver algo ou só se informar?"
+        title="Como os cidadãos utilizaram o portal?"
         action={<ExportCsvButton rows={paginas} filename="paginas-mais-acessadas" />}
       >
         <div className="grid gap-6 grid-cols-1 lg:grid-cols-2">
