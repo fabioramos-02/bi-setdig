@@ -4,15 +4,15 @@
     "orgaoSigla": "DETRAN",
     "csatMedia": 2.6,
     "csatDistribuicao": {
-      "1": 191,
+      "1": 193,
       "2": 46,
       "3": 84,
       "4": 62,
       "5": 87
     },
-    "totalVotos": 470,
+    "totalVotos": 472,
     "clarezaPositivaPct": 46.1,
-    "totalAvaliacoesClareza": 1778
+    "totalAvaliacoesClareza": 1782
   },
   {
     "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
@@ -42,7 +42,7 @@
     },
     "totalVotos": 280,
     "clarezaPositivaPct": 57.3,
-    "totalAvaliacoesClareza": 1135
+    "totalAvaliacoesClareza": 1137
   },
   {
     "orgao": "Secretaria de Estado de Assistência Social e Direitos Humanos",
@@ -51,13 +51,13 @@
     "csatDistribuicao": {
       "1": 63,
       "2": 33,
-      "3": 51,
+      "3": 52,
       "4": 38,
-      "5": 72
+      "5": 73
     },
-    "totalVotos": 257,
-    "clarezaPositivaPct": 69.2,
-    "totalAvaliacoesClareza": 855
+    "totalVotos": 259,
+    "clarezaPositivaPct": 69.3,
+    "totalAvaliacoesClareza": 856
   },
   {
     "orgao": "Polícia Civil de Mato Grosso do Sul",
@@ -65,29 +65,29 @@
     "csatMedia": 2.8,
     "csatDistribuicao": {
       "1": 83,
-      "2": 32,
+      "2": 33,
       "3": 45,
       "4": 37,
       "5": 58
     },
-    "totalVotos": 255,
-    "clarezaPositivaPct": 76.6,
-    "totalAvaliacoesClareza": 1426
+    "totalVotos": 256,
+    "clarezaPositivaPct": 76.5,
+    "totalAvaliacoesClareza": 1429
   },
   {
     "orgao": "Procuradoria Geral do Estado de Mato Grosso do Sul",
     "orgaoSigla": "PGE MS",
     "csatMedia": 2.2,
     "csatDistribuicao": {
-      "1": 78,
-      "2": 31,
+      "1": 79,
+      "2": 32,
       "3": 29,
       "4": 16,
       "5": 18
     },
-    "totalVotos": 172,
-    "clarezaPositivaPct": 33.6,
-    "totalAvaliacoesClareza": 527
+    "totalVotos": 174,
+    "clarezaPositivaPct": 33.5,
+    "totalAvaliacoesClareza": 531
   },
   {
     "orgao": "Coordenadoria Geral de Perícias de Mato Grosso do Sul",
@@ -101,23 +101,23 @@
       "5": 30
     },
     "totalVotos": 164,
-    "clarezaPositivaPct": 53.6,
-    "totalAvaliacoesClareza": 522
+    "clarezaPositivaPct": 53.7,
+    "totalAvaliacoesClareza": 525
   },
   {
     "orgao": "Junta Comercial do Estado de Mato Grosso do Sul",
     "orgaoSigla": "JUCEMS",
-    "csatMedia": 3.6,
+    "csatMedia": 3.7,
     "csatDistribuicao": {
       "1": 26,
       "2": 7,
       "3": 10,
       "4": 13,
-      "5": 61
+      "5": 62
     },
-    "totalVotos": 117,
-    "clarezaPositivaPct": 70.3,
-    "totalAvaliacoesClareza": 310
+    "totalVotos": 118,
+    "clarezaPositivaPct": 70.2,
+    "totalAvaliacoesClareza": 312
   },
   {
     "orgao": "Secretaria de Estado de Saúde de Mato Grosso do Sul",
@@ -161,8 +161,8 @@
       "5": 26
     },
     "totalVotos": 86,
-    "clarezaPositivaPct": 71.0,
-    "totalAvaliacoesClareza": 283
+    "clarezaPositivaPct": 70.8,
+    "totalAvaliacoesClareza": 284
   },
   {
     "orgao": "Secretaria de Estado de Governo e Gestão Estratégica de Mato Grosso do Sul",
@@ -206,8 +206,8 @@
       "5": 8
     },
     "totalVotos": 69,
-    "clarezaPositivaPct": 53.2,
-    "totalAvaliacoesClareza": 139
+    "clarezaPositivaPct": 53.6,
+    "totalAvaliacoesClareza": 140
   },
   {
     "orgao": "Agência Estadual de Administração do Sistema Penitenciário",
@@ -251,8 +251,8 @@
       "5": 14
     },
     "totalVotos": 42,
-    "clarezaPositivaPct": 64.2,
-    "totalAvaliacoesClareza": 187
+    "clarezaPositivaPct": 64.4,
+    "totalAvaliacoesClareza": 188
   },
   {
     "orgao": "Empresa de Saneamento de Mato Grosso do Sul",
@@ -296,8 +296,8 @@
       "5": 9
     },
     "totalVotos": 38,
-    "clarezaPositivaPct": 65.0,
-    "totalAvaliacoesClareza": 123
+    "clarezaPositivaPct": 65.3,
+    "totalAvaliacoesClareza": 124
   },
   {
     "orgao": "Secretaria de Estado da Cidadania",
@@ -386,8 +386,8 @@
       "5": 11
     },
     "totalVotos": 14,
-    "clarezaPositivaPct": 75.0,
-    "totalAvaliacoesClareza": 32
+    "clarezaPositivaPct": 75.8,
+    "totalAvaliacoesClareza": 33
   },
   {
     "orgao": "Companhia de Gás do Estado de Mato Grosso do Sul",
@@ -446,8 +446,8 @@
       "5": 4
     },
     "totalVotos": 13,
-    "clarezaPositivaPct": 55.9,
-    "totalAvaliacoesClareza": 34
+    "clarezaPositivaPct": 57.1,
+    "totalAvaliacoesClareza": 35
   },
   {
     "orgao": "Agência Estadual de Gestão de Empreendimentos de Mato Grosso do Sul",

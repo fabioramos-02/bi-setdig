@@ -11,6 +11,7 @@ import {
   getMatomoHorarios,
   getMatomoPaginas,
   getMatomoBusca,
+  getMatomoBuscaTotal,
   getMatomoPerfilFiltro,
   getMatomoServicosMaisAcessados,
   getMatomoPortasEntrada,
@@ -29,6 +30,7 @@ export default function AnalyticsPortalMsPage() {
   const horarios = getMatomoHorarios();
   const paginas = getMatomoPaginas();
   const busca = getMatomoBusca();
+  const buscaTotal = getMatomoBuscaTotal();
   const perfil = getMatomoPerfilFiltro();
   const servicosMaisAcessados = getMatomoServicosMaisAcessados();
   const portasEntrada = getMatomoPortasEntrada();
@@ -63,6 +65,7 @@ export default function AnalyticsPortalMsPage() {
       cidades={cidades}
       paginas={paginas}
       busca={busca}
+      buscaTotal={buscaTotal}
       matchRate={matchRate}
       perfil={perfil}
       servicosMaisAcessados={servicosMaisAcessados}

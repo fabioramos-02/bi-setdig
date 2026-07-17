@@ -57,7 +57,7 @@ def run_matomo() -> None:
 
 def run_matomo_perfil() -> None:
     navegadores, dispositivos, horarios, cidades = {}, {}, {}, {}
-    paginas, buscas = {}, {}
+    paginas, buscas, buscas_total = {}, {}, {}
     for chave, (p, d) in PERIODOS_FIXOS.items():
         navegadores[chave] = t_matomo.top_n_with_others(matomo.get_browsers(p, d), "navegador", 4)
         dispositivos[chave] = t_matomo.top_n_with_others(matomo.get_device_type(p, d), "dispositivo", 2)
@@ -69,9 +69,11 @@ def run_matomo_perfil() -> None:
         # radio da sidebar). page_urls_raw é reusado por ambas, 1 chamada.
         page_urls_raw = matomo.get_page_urls(p, d, limit=-1)
         paginas[chave] = t_matomo.top_pages(page_urls_raw, n=20)
-        busca_nativa = t_matomo.search_keywords(matomo.get_site_search_keywords(p, d, limit=50))
+        # limit=-1 (não 50): o total de buscas só é real se a extração não
+        # truncar na origem — senão buscas_total ainda sairia subestimado.
+        busca_nativa = t_matomo.search_keywords(matomo.get_site_search_keywords(p, d, limit=-1))
         busca_urls = t_matomo.search_from_urls(page_urls_raw)
-        buscas[chave] = t_matomo.merge_search(busca_nativa, busca_urls, n=20)
+        buscas[chave], buscas_total[chave] = t_matomo.merge_search(busca_nativa, busca_urls, n=20)
 
     validate_period_breakdown(navegadores, ["navegador", "visitas"], ["visitas"])
     publish("matomo", "navegadores", navegadores)
@@ -96,6 +98,12 @@ def run_matomo_perfil() -> None:
     validate_period_breakdown(buscas, ["termo", "buscas"], ["buscas"])
     publish("matomo", "busca", buscas)
     print(f"[matomo] busca -> {[(k, len(v)) for k, v in buscas.items()]}")
+
+    # Total de buscas ANTES do corte pro top-20 (aditivo — busca.json não
+    # muda de shape) — sem ele, participacaoPct do termo líder era calculado
+    # só sobre os 20 mais buscados (ver AGENTS.md "BI de gestão").
+    publish("matomo", "busca-total", buscas_total)
+    print(f"[matomo] busca-total -> {buscas_total}")
 
     # 920 dias cobre desde 01/01/2024 até hoje — usuário precisa comparar
     # "Ano" com o ano anterior completo, 370 dias só ia até jul/2025.

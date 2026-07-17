@@ -28,13 +28,14 @@ export async function GET(req: NextRequest) {
       matomo.getVisitTime(inicio, fim),
       matomo.getCity(inicio, fim, 200),
       matomo.getPageUrls(inicio, fim, -1),
-      matomo.getSiteSearchKeywords(inicio, fim, 50),
+      matomo.getSiteSearchKeywords(inicio, fim, -1),
       matomo.getEntryPages(inicio, fim, 20),
       matomo.getOutlinks(inicio, fim, 50),
     ]);
 
     const buscaNativa = t.searchKeywords(searchRaw);
     const buscaUrls = t.searchFromUrls(pageUrlsRaw);
+    const { termos: busca, total: buscaTotal } = t.mergeSearch(buscaNativa, buscaUrls, 20);
     // Catálogo estável de serviços (labels/paths/ícones) vem do snapshot mês;
     // só as visitas são recalculadas pro intervalo a partir do mesmo pageUrlsRaw.
     const template = getMatomoPerfilFiltro().mes;
@@ -45,7 +46,8 @@ export async function GET(req: NextRequest) {
       horarios: t.visitTime(visitTimeRaw),
       geografia: t.citiesMs(cityRaw),
       paginas: t.topPages(pageUrlsRaw, 20),
-      busca: t.mergeSearch(buscaNativa, buscaUrls, 20),
+      busca,
+      buscaTotal,
       portasEntrada: t.entryPages(entryRaw, 20),
       fugaHub: t.outlinks(outlinksRaw, 40),
       perfil: perfilFiltroLive(pageUrlsRaw, template),

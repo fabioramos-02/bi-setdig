@@ -12,9 +12,10 @@ export function labelPagina(url: string): { label: string; href?: string } {
   if (/^https?:\/\//.test(url)) {
     const semSufixo = url.replace(/ - Others$/, "");
     const path = semSufixo.replace(/^https?:\/\/(www\.)?ms\.gov\.br/, "");
-    return { label: path === "" || path === "/" ? "Home" : path, href: semSufixo };
+    return { label: path === "" || path === "/" ? "Página inicial" : path, href: semSufixo };
   }
 
   const semSufixo = url.replace(/ - Others$/, "");
+  if (semSufixo === "/") return { label: "Página inicial", href: PORTAL_BASE_URL };
   return { label: semSufixo, href: `${PORTAL_BASE_URL}${semSufixo}` };
 }

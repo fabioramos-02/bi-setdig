@@ -2,124 +2,92 @@
   "dia": [
     {
       "termo": "ipva",
-      "buscas": 115
+      "buscas": 25
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 43
-    },
-    {
-      "termo": "procon",
-      "buscas": 20
-    },
-    {
-      "termo": "substituição tributária",
-      "buscas": 17
-    },
-    {
-      "termo": "itcd",
-      "buscas": 9
-    },
-    {
-      "termo": "autoparcelamento",
-      "buscas": 8
-    },
-    {
-      "termo": "cidadão",
       "buscas": 6
     },
     {
-      "termo": "cancelamento de comunicação de venda",
+      "termo": "procon",
       "buscas": 3
     },
     {
-      "termo": "licenciamento",
-      "buscas": 3
+      "termo": "substituição tributária",
+      "buscas": 2
+    },
+    {
+      "termo": "autoparcelamento",
+      "buscas": 1
+    },
+    {
+      "termo": "certidão negativa de débitos",
+      "buscas": 1
+    },
+    {
+      "termo": "cidadão",
+      "buscas": 1
     },
     {
       "termo": "empresa",
-      "buscas": 2
+      "buscas": 1
+    },
+    {
+      "termo": "mais social",
+      "buscas": 1
+    },
+    {
+      "termo": "pesca",
+      "buscas": 1
     },
     {
       "termo": "servidor",
-      "buscas": 2
-    },
-    {
-      "termo": "63958910149",
-      "buscas": 1
-    },
-    {
-      "termo": "agendamento carteira identidade uai viçosa mg",
-      "buscas": 1
-    },
-    {
-      "termo": "boletim pra seguro veicular",
-      "buscas": 1
-    },
-    {
-      "termo": "cartão inter municipal",
-      "buscas": 1
-    },
-    {
-      "termo": "certidão antecedentes criminais",
-      "buscas": 1
-    },
-    {
-      "termo": "certidão positiva",
-      "buscas": 1
-    },
-    {
-      "termo": "certificado do ensino médio",
-      "buscas": 1
-    },
-    {
-      "termo": "cin",
-      "buscas": 1
-    },
-    {
-      "termo": "ciptea",
       "buscas": 1
     }
   ],
   "semana": [
     {
       "termo": "ipva",
-      "buscas": 331
+      "buscas": 605
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 169
+      "buscas": 243
     },
     {
       "termo": "procon",
-      "buscas": 73
+      "buscas": 127
     },
     {
       "termo": "substituição tributária",
-      "buscas": 60
+      "buscas": 87
     },
     {
       "termo": "itcd",
-      "buscas": 30
+      "buscas": 48
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 20
+      "buscas": 36
     },
     {
       "termo": "empresa",
-      "buscas": 17
+      "buscas": 27
     },
     {
       "termo": "cidadão",
-      "buscas": 16
+      "buscas": 25
     },
     {
       "termo": "servidor",
-      "buscas": 9
+      "buscas": 17
     },
     {
       "termo": "licenciamento",
+      "buscas": 13
+    },
+    {
+      "termo": "efd",
       "buscas": 8
     },
     {
@@ -131,102 +99,98 @@
       "buscas": 6
     },
     {
+      "termo": "defesa civil",
+      "buscas": 6
+    },
+    {
+      "termo": "mulher",
+      "buscas": 6
+    },
+    {
+      "termo": "itdc",
+      "buscas": 5
+    },
+    {
+      "termo": "sao paulo",
+      "buscas": 5
+    },
+    {
       "termo": "assinatura digital",
       "buscas": 4
     },
     {
-      "termo": "defesa civil",
+      "termo": "cin",
       "buscas": 4
-    },
-    {
-      "termo": "mulher",
-      "buscas": 4
-    },
-    {
-      "termo": "efd",
-      "buscas": 3
-    },
-    {
-      "termo": "fundação estadual jornalista luiz chagas de rádio e televisão",
-      "buscas": 3
-    },
-    {
-      "termo": "itdc",
-      "buscas": 3
     },
     {
       "termo": "2 via do rg",
-      "buscas": 2
-    },
-    {
-      "termo": "boletim escolar",
-      "buscas": 2
+      "buscas": 3
     }
   ],
   "mes": [
     {
       "termo": "ipva",
-      "buscas": 833
+      "buscas": 1107
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 702
+      "buscas": 776
     },
     {
       "termo": "procon",
-      "buscas": 319
+      "buscas": 373
     },
     {
       "termo": "substituição tributária",
-      "buscas": 296
+      "buscas": 323
     },
     {
       "termo": "itcd",
-      "buscas": 111
+      "buscas": 129
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 108
+      "buscas": 124
     },
     {
       "termo": "cidadão",
-      "buscas": 73
+      "buscas": 82
     },
     {
       "termo": "empresa",
-      "buscas": 47
+      "buscas": 57
     },
     {
       "termo": "servidor",
-      "buscas": 45
+      "buscas": 53
     },
     {
       "termo": "licenciamento",
-      "buscas": 38
+      "buscas": 43
+    },
+    {
+      "termo": "efd",
+      "buscas": 21
     },
     {
       "termo": "cnh",
       "buscas": 21
     },
     {
-      "termo": "efd",
-      "buscas": 16
+      "termo": "mulher",
+      "buscas": 15
     },
     {
-      "termo": "mulher",
-      "buscas": 13
+      "termo": "defesa civil",
+      "buscas": 14
     },
     {
       "termo": "nota fiscal",
       "buscas": 13
     },
     {
-      "termo": "defesa civil",
-      "buscas": 12
-    },
-    {
       "termo": "rg",
-      "buscas": 11
+      "buscas": 12
     },
     {
       "termo": "fundação estadual jornalista luiz chagas de rádio e televisão",
@@ -234,7 +198,7 @@
     },
     {
       "termo": "gestão pública",
-      "buscas": 8
+      "buscas": 10
     },
     {
       "termo": "cancelamento de comunicação de venda",
@@ -248,39 +212,39 @@
   "ano": [
     {
       "termo": "ipva",
-      "buscas": 27544
+      "buscas": 27818
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 7807
+      "buscas": 7881
     },
     {
       "termo": "procon",
-      "buscas": 6049
+      "buscas": 6103
     },
     {
       "termo": "substituição tributária",
-      "buscas": 3975
+      "buscas": 4002
     },
     {
       "termo": "itcd",
-      "buscas": 1497
+      "buscas": 1515
     },
     {
       "termo": "cidadão",
-      "buscas": 1312
+      "buscas": 1321
     },
     {
       "termo": "servidor",
-      "buscas": 1129
+      "buscas": 1137
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 1087
+      "buscas": 1103
     },
     {
       "termo": "empresa",
-      "buscas": 612
+      "buscas": 622
     },
     {
       "termo": "nota fiscal",
@@ -288,11 +252,11 @@
     },
     {
       "termo": "licenciamento",
-      "buscas": 236
+      "buscas": 241
     },
     {
       "termo": "mulher",
-      "buscas": 212
+      "buscas": 214
     },
     {
       "termo": "cnh",
@@ -300,11 +264,11 @@
     },
     {
       "termo": "defesa civil",
-      "buscas": 194
+      "buscas": 196
     },
     {
       "termo": "efd",
-      "buscas": 178
+      "buscas": 183
     },
     {
       "termo": "web email",
@@ -316,11 +280,11 @@
     },
     {
       "termo": "rg",
-      "buscas": 133
+      "buscas": 134
     },
     {
       "termo": "gestão pública",
-      "buscas": 123
+      "buscas": 125
     },
     {
       "termo": "processo seletivo",

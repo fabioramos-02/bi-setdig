@@ -21,6 +21,8 @@ import {
   calcularInsightNavegador,
   calcularInsightDispositivo,
 } from "@/lib/insights";
+import { calcularSaude, calcularContextoAnual, calcularNavegacao, gerarResumoExecutivo, gerarRecomendacoes } from "@/lib/saude-portal";
+import { MUNICIPIOS_MS, municipiosComAcesso, municipiosSemAcesso } from "@/lib/municipios-ms";
 import type {
   VisitaDiaria,
   BreakdownPorPeriodo,
@@ -48,6 +50,7 @@ type LiveIntervalo = {
   geografia: Cidade[];
   paginas: Pagina[];
   busca: TermoBusca[];
+  buscaTotal: number;
   portasEntrada: PaginaEntrada[];
   fugaHub: DominioSaida[];
   perfil: PerfilFiltroPeriodo;
@@ -62,6 +65,7 @@ export function PortalMsClient({
   cidades,
   paginas,
   busca,
+  buscaTotal,
   matchRate,
   perfil,
   servicosMaisAcessados,
@@ -75,6 +79,7 @@ export function PortalMsClient({
   cidades: BreakdownPorPeriodo<Cidade>;
   paginas: BreakdownPorPeriodo<Pagina>;
   busca: BreakdownPorPeriodo<TermoBusca>;
+  buscaTotal: Record<PeriodoFixo, number> | null;
   matchRate: number;
   perfil: Record<PeriodoFixo, PerfilFiltroPeriodo>;
   servicosMaisAcessados: BreakdownPorPeriodo<ServicoAcessado>;
@@ -145,6 +150,7 @@ export function PortalMsClient({
   const cidadesAtual = precisaLive && liveValido ? liveData!.geografia : cidades[periodoAtual];
   const paginasAtual = precisaLive && liveValido ? liveData!.paginas : paginas[periodoAtual];
   const buscaAtual = precisaLive && liveValido ? liveData!.busca : busca[periodoAtual];
+  const buscaTotalAtual = precisaLive && liveValido ? liveData!.buscaTotal : buscaTotal?.[periodoAtual];
   const portasEntradaAtual = precisaLive && liveValido ? liveData!.portasEntrada : portasEntrada[periodoAtual];
   const fugaHubAtual = precisaLive && liveValido ? liveData!.fugaHub : fugaHub[periodoAtual];
   // Perfil/serviços também ao vivo: catálogo estável vem do snapshot mês, só as
@@ -154,7 +160,7 @@ export function PortalMsClient({
 
   const tendencia = useMemo(() => aplicarFiltroPeriodo(diarias, estado), [diarias, estado]);
   const kpis = useMemo(() => resumoDoPeriodo(diarias, estado), [diarias, estado]);
-  const insightBusca = calcularInsightBusca(buscaAtual);
+  const insightBusca = calcularInsightBusca(buscaAtual, buscaTotalAtual);
   const insightPagina = calcularInsightPagina(paginasAtual);
   const insightVisitas = calcularInsightVisitas(tendencia, estado.tipo);
   const insightNavegador = calcularInsightNavegador(navegadoresAtual);
@@ -167,6 +173,32 @@ export function PortalMsClient({
   // (periodoAtual), nunca o que foi selecionado (ver AGENTS.md/ADR-007).
   const rotuloSnapshot = tipoIntervalo && liveValido ? rotuloPeriodo : ROTULO_PERIODO[periodoAtual];
 
+  // Composição pra leitura de gestor (AGENTS.md "BI de gestão") — saúde e
+  // contexto anual usam a série diária inteira (independem do live), resumo
+  // e recomendações compõem os insights já calculados acima.
+  const saude = calcularSaude(diarias, estado, min, max);
+  const contextoAnual = calcularContextoAnual(diarias);
+  const navegacao = calcularNavegacao(kpis, diarias, estado, min, max);
+  const semAcessoAtual = municipiosSemAcesso(cidadesAtual);
+  const resumo = gerarResumoExecutivo({
+    kpis,
+    rotuloPeriodo,
+    saude,
+    insightVisitas,
+    insightBusca: statusBreakdown === "ok" ? insightBusca : null,
+    navegacao,
+    // Conta sobre a lista oficial (não `cidadesAtual.length`) pra bater com o
+    // KPI e com os ausentes — ver municipios-ms.ts.
+    municipiosComAcesso: municipiosComAcesso(cidadesAtual).length,
+    totalMunicipios: MUNICIPIOS_MS.length,
+  });
+  const recomendacoes = gerarRecomendacoes({
+    saude,
+    insightDispositivo,
+    insightBusca,
+    municipiosSemAcesso: semAcessoAtual,
+  });
+
   const abas: TabItem[] = [
     {
       id: "visao-geral",
@@ -176,9 +208,13 @@ export function PortalMsClient({
           kpis={kpis}
           rotuloPeriodo={rotuloPeriodo}
           rotuloSnapshot={rotuloSnapshot}
-          cidadesCount={cidadesAtual.length}
+          cidadesAtual={cidadesAtual}
           tendencia={tendencia}
-          insightVisitas={insightVisitas}
+          saude={saude}
+          resumo={resumo}
+          contextoAnual={contextoAnual}
+          navegacao={navegacao}
+          recomendacoes={recomendacoes}
           insightNavegador={insightNavegador}
           insightDispositivo={insightDispositivo}
           paginaTop={paginaTop}

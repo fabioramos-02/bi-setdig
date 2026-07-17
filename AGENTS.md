@@ -134,6 +134,42 @@ problema — o objetivo não é mostrar todo dado disponível, é responder perg
   O componente explica o próprio significado (ver Data Storytelling acima);
   o usuário nunca "descobre" como ler.
 
+## BI de gestão, não de métrica
+
+O leitor-alvo da aba Visão Geral é o gestor, não o analista. Antes de dar por
+pronta, checar se ela responde às 4 perguntas dele: está bom ou ruim? preciso
+agir agora? onde investir? qual o risco? (Origem: revisão de 2026-07 da Visão
+Geral do Portal Único por gestor real — nota 6,5/10, "muito orientada para
+métrica, pouco para gestão".)
+
+- **Ordem de leitura padrão de toda Visão Geral:** resumo executivo em texto
+  (3-4 frases geradas em `lib/`) → saúde (semáforo verde/amarelo/vermelho com
+  frase justificando contra o histórico — nunca cor sem palavra) → KPIs →
+  tendência com contexto (comparação com o ano anterior/sazonalidade, sem
+  repetir o que o texto já disse) → destaques/insights → pontos de atenção
+  (bullets acionáveis; sem recomendação aplicável, a seção some — nunca bullet
+  de enchimento). Domínio sem histórico comparável degrada honestamente:
+  omite a saúde e diz numa linha por quê (ver `lib/saude-portal.ts`).
+- **Número nunca anda sozinho.** Todo KPI carrega referência: total ("47 de 79
+  municípios"), histórico ou meta. Número absoluto sem base de comparação não
+  responde "está bom ou ruim?".
+- **Métrica de ferramenta não é KPI de gestão.** Contador cru que só existe
+  porque a ferramenta expõe (ex.: `nb_actions` do Matomo virando um card
+  "Ações no mês: 683.352") não responde pergunta nenhuma — o próprio autor do
+  painel não soube dizer o que significava. Quando o dado bruto não tem
+  leitura, ou vira **razão/taxa** que responde algo ("2,1 páginas por visita"
+  = o cidadão navega ou entra e sai?), ou sai do painel. Volume só é KPI
+  quando o tamanho em si é a resposta (visitas, visitantes).
+- **Nunca URL ou identificador técnico em destaque.** Rota de sistema (ex.
+  retorno de login) sai no transform via lista de exclusão espelhada
+  py↔ts (`EXCLUIR_URLS` em `transform/matomo.py` e
+  `lib/server/matomo-transform.ts`); caminho em destaque vira nome legível
+  ("Página inicial", não "/").
+- **Percentual sempre sobre o total real.** Dado truncado (top-N): ou o
+  pipeline publica o total junto (ex. `busca-total.json`), ou o rótulo declara
+  a base ("entre os 20 termos mais procurados") — nunca % sobre lista
+  truncada sem aviso.
+
 ## Testes
 
 Unitário: `node --test` nativo (zero dependência), arquivo `Componente.test.ts`

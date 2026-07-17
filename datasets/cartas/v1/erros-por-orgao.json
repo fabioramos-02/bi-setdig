@@ -20,10 +20,10 @@
   {
     "orgao": "Coordenadoria Geral de Perícias de Mato Grosso do Sul",
     "orgaoSigla": "CGP",
-    "total": 66,
+    "total": 67,
     "atendidos": 35,
-    "pendentes": 31,
-    "percentAtendido": 53.0,
+    "pendentes": 32,
+    "percentAtendido": 52.2,
     "tempoMedioResolucaoDias": 88.5
   },
   {
@@ -144,6 +144,15 @@
     "tempoMedioResolucaoDias": 164.6
   },
   {
+    "orgao": "Secretaria de Estado de Turismo, Esporte e Cultura",
+    "orgaoSigla": "SETESC",
+    "total": 8,
+    "atendidos": 0,
+    "pendentes": 8,
+    "percentAtendido": 0.0,
+    "tempoMedioResolucaoDias": 0.0
+  },
+  {
     "orgao": "Agência de Habitação Popular de Mato Grosso do Sul",
     "orgaoSigla": "AGEHAB",
     "total": 8,
@@ -160,15 +169,6 @@
     "pendentes": 1,
     "percentAtendido": 85.7,
     "tempoMedioResolucaoDias": 245.0
-  },
-  {
-    "orgao": "Secretaria de Estado de Turismo, Esporte e Cultura",
-    "orgaoSigla": "SETESC",
-    "total": 7,
-    "atendidos": 0,
-    "pendentes": 7,
-    "percentAtendido": 0.0,
-    "tempoMedioResolucaoDias": 0.0
   },
   {
     "orgao": "Agência Estadual de Defesa Sanitária Animal Vegetal  Mato Grosso do Sul",

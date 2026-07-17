@@ -29,15 +29,20 @@ def _save_catalog(entries: list[dict]) -> None:
 def publish(
     source: str,
     dataset: str,
-    rows: list[dict] | dict[str, list[dict]],
+    rows: list[dict] | dict[str, list[dict]] | dict[str, int],
     version: str = "v1",
     frequency: str = "daily",
     owner: str = "SETDIG",
 ) -> Path:
-    """`rows` aceita lista simples ou dict com 1 chave por período fixo
-    (dia/semana/mes/ano) — ver ADR-007. Contagem de linhas no catálogo soma
-    as 4 chaves nesse segundo caso."""
-    n_rows = sum(len(v) for v in rows.values()) if isinstance(rows, dict) else len(rows)
+    """`rows` aceita lista simples, dict com 1 chave por período fixo
+    (dia/semana/mes/ano, valor lista — ver ADR-007), ou dict período->escalar
+    (ex. busca-total.json). Contagem de linhas no catálogo soma as 4 chaves
+    no caso de lista; no caso escalar, conta 1 "linha" por período."""
+    if isinstance(rows, dict):
+        primeiro = next(iter(rows.values()), None)
+        n_rows = sum(len(v) for v in rows.values()) if isinstance(primeiro, list) else len(rows)
+    else:
+        n_rows = len(rows)
     now = datetime.now(timezone.utc).isoformat()
 
     out_dir = DATASETS_DIR / source / version

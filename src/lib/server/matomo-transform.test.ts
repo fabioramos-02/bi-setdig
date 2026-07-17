@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { visitsDaily } from "./matomo-transform.ts";
+import { visitsDaily, topPages, entryPages, mergeSearch, searchKeywords } from "./matomo-transform.ts";
 
 test("visitsDaily: dict vazio vira array vazio", () => {
   assert.deepEqual(visitsDaily({}), []);
@@ -27,4 +27,48 @@ test("visitsDaily: ignora entrada cujo valor não é objeto sem quebrar", () => 
   });
   assert.equal(r.length, 1);
   assert.equal(r[0].data, "2026-01-01");
+});
+
+// Regras espelhadas em data-platform/transform/matomo.py (EXCLUIR_URLS) —
+// o Python não tem harness de teste próprio; estes testes cobrem o contrato.
+
+test("topPages: exclui retorno técnico do login e nomeia a home", () => {
+  const r = topPages([
+    { url: "/login/callback/ - Others", nb_visits: 3426 },
+    { url: "/", nb_visits: 100 },
+    { url: "/financas-e-impostos/ipva", nb_visits: 50 },
+  ]);
+  assert.equal(r.length, 2);
+  assert.ok(!r.some((p) => p.url.includes("/login/callback")));
+  assert.equal(r[0].url, "Página inicial");
+});
+
+test("entryPages: mesma exclusão do login, mesmo rótulo de home", () => {
+  const r = entryPages([
+    { label: "/login/callback/ - Others", nb_visits: 999 },
+    { label: "/", nb_visits: 10 },
+  ]);
+  assert.deepEqual(r, [{ pagina: "Página inicial", entradas: 10 }]);
+});
+
+test("searchKeywords: não trunca (o corte é do mergeSearch) e ignora URL como termo", () => {
+  const rows = Array.from({ length: 25 }, (_, i) => ({ label: `termo${i}`, nb_visits: 25 - i }));
+  rows.push({ label: "/pagina/qualquer", nb_visits: 999 });
+  const r = searchKeywords(rows);
+  assert.equal(r.length, 25);
+  assert.ok(!r.some((t) => t.termo.startsWith("/")));
+});
+
+test("mergeSearch: total é anterior ao corte do top-N", () => {
+  const nativo = [
+    { termo: "ipva", buscas: 800 },
+    { termo: "detran", buscas: 100 },
+  ];
+  const deUrls = [
+    { termo: "ipva", buscas: 33 }, // soma com o nativo
+    { termo: "cnh", buscas: 67 },
+  ];
+  const { termos, total } = mergeSearch(nativo, deUrls, 1);
+  assert.deepEqual(termos, [{ termo: "ipva", buscas: 833 }]); // top-1
+  assert.equal(total, 1000); // 833 + 100 + 67 — não só o que sobrou no corte
 });

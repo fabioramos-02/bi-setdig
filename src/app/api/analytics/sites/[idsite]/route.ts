@@ -24,7 +24,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ idsi
       matomo.getDeviceType(inicio, fim, idsite),
       matomo.getVisitTime(inicio, fim, idsite),
       matomo.getCity(inicio, fim, 200, idsite),
-      matomo.getSiteSearchKeywords(inicio, fim, 50, idsite),
+      matomo.getSiteSearchKeywords(inicio, fim, -1, idsite),
     ]);
 
     const geografia = t.citiesMs(cityRaw);
@@ -39,7 +39,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ idsi
       horarios: t.visitTime(visitTimeRaw),
       geografia,
       matchRateMapa: calcularMatchRateMapa(geografia),
-      busca: t.mergeSearch(buscaNativa, buscaUrls, 20),
+      busca: t.mergeSearch(buscaNativa, buscaUrls, 20).termos,
     });
   } catch (exc) {
     console.error(`[api/analytics/sites/${idsite}] falhou:`, exc);

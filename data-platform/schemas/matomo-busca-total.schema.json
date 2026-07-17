@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "matomo/busca-total",
+  "description": "Total de buscas por período fixo (dia/semana/mes/ano) ANTES do corte pro top-20 de busca.json — aditivo, permite calcular participação real de um termo (ver AGENTS.md \"BI de gestão\").",
+  "type": "object",
+  "required": ["dia", "semana", "mes", "ano"],
+  "properties": {
+    "dia": { "type": "integer", "minimum": 0 },
+    "semana": { "type": "integer", "minimum": 0 },
+    "mes": { "type": "integer", "minimum": 0 },
+    "ano": { "type": "integer", "minimum": 0 }
+  }
+}

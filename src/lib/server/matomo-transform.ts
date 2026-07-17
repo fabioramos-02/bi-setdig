@@ -10,6 +10,11 @@ import type { Cidade, Horario, Pagina, TermoBusca, PaginaEntrada, DominioSaida, 
 type MatomoRow = { label?: string; nb_visits?: number; url?: string };
 type MatomoDailyRaw = Record<string, { nb_visits?: number; nb_uniq_visitors?: number; nb_actions?: number }>;
 
+/** Espelhado em data-platform/transform/matomo.py (EXCLUIR_URLS) — manter em
+ * sincronia. "/login/callback" é o retorno técnico do SSO (OAuth), não página
+ * real acessada pelo cidadão — mesma classe de ruído filtrada de outlinks(). */
+const EXCLUIR_URLS = ["/login/callback"];
+
 /** VisitsSummary.get com period=day&date="inicio,fim" retorna {data: {...}} por dia. */
 export function visitsDaily(raw: MatomoDailyRaw): VisitaDiaria[] {
   const out: VisitaDiaria[] = [];
@@ -48,11 +53,19 @@ export function visitTime(rows: MatomoRow[]): Horario[] {
 }
 
 export function topPages(rows: MatomoRow[], n = 20): Pagina[] {
-  const flat = (rows ?? []).map((r) => ({ url: r.url ?? r.label ?? "", visitas: r.nb_visits ?? 0 }));
+  const flat = (rows ?? [])
+    .filter((r) => !EXCLUIR_URLS.some((p) => (r.url ?? r.label ?? "").includes(p)))
+    .map((r) => {
+      const url = r.url ?? r.label ?? "";
+      return { url: url === "/" ? "Página inicial" : url, visitas: r.nb_visits ?? 0 };
+    });
   flat.sort((a, b) => b.visitas - a.visitas);
   return flat.slice(0, n);
 }
 
+/** Não trunca aqui: o corte pro top-20 é feito em mergeSearch, depois de
+ * somar com os termos extraídos de URL — truncar antes subestimaria o
+ * total real de buscas (ver AGENTS.md "BI de gestão"). */
 export function searchKeywords(rows: MatomoRow[]): TermoBusca[] {
   const out: TermoBusca[] = [];
   for (const r of rows ?? []) {
@@ -61,7 +74,7 @@ export function searchKeywords(rows: MatomoRow[]): TermoBusca[] {
     out.push({ termo, buscas: r.nb_visits ?? 0 });
   }
   out.sort((a, b) => b.buscas - a.buscas);
-  return out.slice(0, 20);
+  return out;
 }
 
 const Q_RE = /[?/]q=([^&/]+)/;
@@ -78,16 +91,21 @@ export function searchFromUrls(pageUrlsRaw: MatomoRow[]): TermoBusca[] {
   return [...somas.entries()].map(([termo, buscas]) => ({ termo, buscas })).sort((a, b) => b.buscas - a.buscas);
 }
 
-export function mergeSearch(nativo: TermoBusca[], deUrls: TermoBusca[], n = 20): TermoBusca[] {
+/** Combina SiteSearch nativo + termos extraídos de URL, somando por termo.
+ * Devolve top-N e o total de buscas ANTES do corte — permite calcular
+ * participação real de um termo, não só sobre a lista truncada. */
+export function mergeSearch(nativo: TermoBusca[], deUrls: TermoBusca[], n = 20): { termos: TermoBusca[]; total: number } {
   const somas = new Map<string, number>();
   for (const r of [...nativo, ...deUrls]) somas.set(r.termo, (somas.get(r.termo) ?? 0) + r.buscas);
-  return [...somas.entries()].map(([termo, buscas]) => ({ termo, buscas })).sort((a, b) => b.buscas - a.buscas).slice(0, n);
+  const ordenado = [...somas.entries()].map(([termo, buscas]) => ({ termo, buscas })).sort((a, b) => b.buscas - a.buscas);
+  const total = ordenado.reduce((acc, r) => acc + r.buscas, 0);
+  return { termos: ordenado.slice(0, n), total };
 }
 
 export function entryPages(rows: MatomoRow[], n = 10): PaginaEntrada[] {
   const out = (rows ?? [])
-    .filter((r) => !(r.label ?? "").includes("/login/callback"))
-    .map((r) => ({ pagina: r.label === "/" ? "Home (Index)" : (r.label ?? ""), entradas: r.nb_visits ?? 0 }));
+    .filter((r) => !EXCLUIR_URLS.some((p) => (r.label ?? "").includes(p)))
+    .map((r) => ({ pagina: r.label === "/" ? "Página inicial" : (r.label ?? ""), entradas: r.nb_visits ?? 0 }));
   out.sort((a, b) => b.entradas - a.entradas);
   return out.slice(0, n);
 }

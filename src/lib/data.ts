@@ -94,6 +94,13 @@ export function getMatomoBusca(): BreakdownPorPeriodo<TermoBusca> {
   return readDataset<BreakdownPorPeriodo<TermoBusca>>("matomo", "v1", "busca") ?? BREAKDOWN_VAZIO;
 }
 
+/** Total de buscas por período ANTES do corte pro top-20 de busca.json —
+ * aditivo (ADR-004), `null` até o pipeline publicar (build não quebra: o
+ * chamador cai no % calculado sobre a lista truncada, com rótulo honesto). */
+export function getMatomoBuscaTotal(): Record<PeriodoFixo, number> | null {
+  return readDataset<Record<PeriodoFixo, number>>("matomo", "v1", "busca-total");
+}
+
 // --- Censo Digital:  ---
 export type PerfilResumo = {
   homeVisitors: number;

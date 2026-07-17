@@ -50,7 +50,7 @@ export function aplicarFiltroPeriodo(dados: VisitaDiaria[], estado: PeriodoState
   return agregarPor(base, granularidade);
 }
 
-function agregarPor(dados: VisitaDiaria[], granularidade: "semana" | "mes" | "ano"): PontoAgregado[] {
+export function agregarPor(dados: VisitaDiaria[], granularidade: "semana" | "mes" | "ano"): PontoAgregado[] {
   const grupos = new Map<string, PontoAgregado>();
   for (const d of dados) {
     const chave =

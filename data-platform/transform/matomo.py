@@ -5,6 +5,11 @@ from __future__ import annotations
 import re
 from urllib.parse import unquote
 
+# Espelhado em src/lib/server/matomo-transform.ts (EXCLUIR_URLS) — manter em
+# sincronia. "/login/callback" é o retorno técnico do SSO (OAuth), não página
+# real acessada pelo cidadão — mesma classe de ruído filtrada de outlinks().
+EXCLUIR_URLS = ("/login/callback",)
+
 
 def top_n_with_others(rows: list[dict], label_field: str, n: int) -> list[dict]:
     """Mantém os N maiores por nb_visits e soma o resto em 'Outros' (mesma regra
@@ -41,8 +46,13 @@ def visit_time(rows: list) -> list[dict]:
 
 
 def top_pages(rows: list, n: int = 20) -> list[dict]:
-    """rows já vem flat=1 (get_page_urls) — 1 linha por URL, sem hierarquia."""
-    flat = [{"url": r.get("url", r.get("label", "")), "visitas": r.get("nb_visits", 0)} for r in (rows or [])]
+    """rows já vem flat=1 (get_page_urls) — 1 linha por URL, sem hierarquia.
+    Exclui URLs técnicas (EXCLUIR_URLS) e nomeia a home de forma legível."""
+    flat = [
+        {"url": "Página inicial" if r.get("url", r.get("label", "")) == "/" else r.get("url", r.get("label", "")), "visitas": r.get("nb_visits", 0)}
+        for r in (rows or [])
+        if not any(p in r.get("url", r.get("label", "")) for p in EXCLUIR_URLS)
+    ]
     flat.sort(key=lambda r: -r["visitas"])
     return flat[:n]
 
@@ -50,7 +60,9 @@ def top_pages(rows: list, n: int = 20) -> list[dict]:
 def search_keywords(rows: list) -> list[dict]:
     """Termos de busca interna (SiteSearch nativo) — filtra ruído de URL
     vazando como termo (mesma regra de
-    utils/data_processor.py::process_search_keywords)."""
+    utils/data_processor.py::process_search_keywords). Não trunca aqui: o
+    corte pro top-20 é feito em merge_search, depois de somar com os termos
+    extraídos de URL — truncar antes subestimaria o total real de buscas."""
     out = []
     for r in rows or []:
         termo = (r.get("label") or "").strip()
@@ -58,7 +70,7 @@ def search_keywords(rows: list) -> list[dict]:
             continue
         out.append({"termo": termo, "buscas": r.get("nb_visits", 0)})
     out.sort(key=lambda r: -r["buscas"])
-    return out[:20]
+    return out
 
 
 _Q_RE = re.compile(r"[?/]q=([^&/]+)")
@@ -83,27 +95,30 @@ def search_from_urls(page_urls_raw: list) -> list[dict]:
     return out
 
 
-def merge_search(nativo: list[dict], de_urls: list[dict], n: int = 20) -> list[dict]:
-    """Combina SiteSearch nativo + termos extraídos de URL, somando por termo."""
+def merge_search(nativo: list[dict], de_urls: list[dict], n: int = 20) -> tuple[list[dict], int]:
+    """Combina SiteSearch nativo + termos extraídos de URL, somando por termo.
+    Devolve (top-N, total de buscas ANTES do corte) — o total é o que permite
+    calcular participação real de um termo, não só sobre a lista truncada
+    (ver AGENTS.md "BI de gestão": percentual precisa da base real)."""
     somas: dict[str, int] = {}
     for r in [*nativo, *de_urls]:
         somas[r["termo"]] = somas.get(r["termo"], 0) + r["buscas"]
     out = [{"termo": t, "buscas": v} for t, v in somas.items()]
     out.sort(key=lambda r: -r["buscas"])
-    return out[:n]
+    total = sum(somas.values())
+    return out[:n], total
 
 
 def entry_pages(rows: list, n: int = 10) -> list[dict]:
     """Porta de matomo-analytics-dashboard/views/portal/tab4_jornada.py:90-104 —
     Actions.getEntryPageUrls já devolve label/nb_visits prontos, sem processamento.
-    Filtra /login/callback — validado contra o portal real (ms.gov.br): é o
-    retorno técnico do SSO (OAuth), soma de milhares de callbacks com querystring
-    distinta (sufixo "- Others" do Matomo), não Home nem página real acessada
-    pelo cidadão. Mesma classe de ruído que outlinks() já filtra do lado saída."""
+    Filtra EXCLUIR_URLS — validado contra o portal real (ms.gov.br): soma de
+    milhares de callbacks OAuth com querystring distinta (sufixo "- Others" do
+    Matomo), não Home nem página real acessada pelo cidadão."""
     out = [
-        {"pagina": "Home (Index)" if r.get("label") == "/" else r.get("label", ""), "entradas": r.get("nb_visits", 0)}
+        {"pagina": "Página inicial" if r.get("label") == "/" else r.get("label", ""), "entradas": r.get("nb_visits", 0)}
         for r in (rows or [])
-        if "/login/callback" not in r.get("label", "")
+        if not any(p in r.get("label", "") for p in EXCLUIR_URLS)
     ]
     out.sort(key=lambda r: -r["entradas"])
     return out[:n]

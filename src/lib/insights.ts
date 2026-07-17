@@ -9,13 +9,22 @@ import type { ErroResumo, ErroOrgao, PercepcaoResumo } from "./data";
  * bench-carta/src/ui/sections.py::story() (frase-âncora + números). Sem
  * lógica de UI aqui, só números; o componente decide como apresentar.
  */
-export type InsightBusca = { termo: string; buscas: number; participacaoPct: number };
+export type InsightBusca = { termo: string; buscas: number; participacaoPct: number; baseTotalReal: boolean };
 
-export function calcularInsightBusca(termos: TermoBusca[]): InsightBusca | null {
+/** `totalReal`, quando informado, é o total de buscas do período ANTES do
+ * corte para os 20 termos mais procurados — sem ele, `participacaoPct` é
+ * calculado sobre a lista truncada (viés conhecido; ver AGENTS.md "BI de
+ * gestão" — percentual precisa declarar a base quando é aproximado). */
+export function calcularInsightBusca(termos: TermoBusca[], totalReal?: number): InsightBusca | null {
   if (termos.length === 0) return null;
-  const total = termos.reduce((acc, t) => acc + t.buscas, 0);
+  const total = totalReal ?? termos.reduce((acc, t) => acc + t.buscas, 0);
   const top = termos[0];
-  return { termo: top.termo, buscas: top.buscas, participacaoPct: total > 0 ? (top.buscas / total) * 100 : 0 };
+  return {
+    termo: top.termo,
+    buscas: top.buscas,
+    participacaoPct: total > 0 ? (top.buscas / total) * 100 : 0,
+    baseTotalReal: totalReal !== undefined,
+  };
 }
 
 /** Rótulos em português pro período atual/anterior, conforme o tipo de
