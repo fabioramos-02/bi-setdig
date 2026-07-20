@@ -284,7 +284,14 @@ export function PortalMsClient({
       id: "jornada",
       label: "6. Fluxo de Navegação",
       content: (
-        <FluxoNavegacaoTab portasEntrada={portasEntradaAtual} fugaHub={fugaHubAtual} status={statusBreakdown} />
+        <FluxoNavegacaoTab
+          portasEntrada={portasEntradaAtual}
+          fugaHub={fugaHubAtual}
+          rotuloPeriodo={rotuloSnapshot}
+          totalVisitas={kpis.visitas}
+          status={statusBreakdown}
+          ctxSemantico={ctxSemantico}
+        />
       ),
     },
   ];

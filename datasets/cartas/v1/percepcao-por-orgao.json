@@ -11,8 +11,8 @@
       "5": 87
     },
     "totalVotos": 473,
-    "clarezaPositivaPct": 46.0,
-    "totalAvaliacoesClareza": 1783
+    "clarezaPositivaPct": 46.1,
+    "totalAvaliacoesClareza": 1784
   },
   {
     "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
@@ -26,38 +26,38 @@
       "5": 70
     },
     "totalVotos": 362,
-    "clarezaPositivaPct": 44.1,
-    "totalAvaliacoesClareza": 1225
+    "clarezaPositivaPct": 44.2,
+    "totalAvaliacoesClareza": 1227
   },
   {
     "orgao": "Secretaria de Estado de Educação de Mato Grosso do Sul",
     "orgaoSigla": "SED MS",
     "csatMedia": 3.1,
     "csatDistribuicao": {
-      "1": 65,
+      "1": 67,
       "2": 36,
-      "3": 47,
+      "3": 49,
       "4": 58,
       "5": 74
     },
-    "totalVotos": 280,
-    "clarezaPositivaPct": 57.1,
-    "totalAvaliacoesClareza": 1143
+    "totalVotos": 284,
+    "clarezaPositivaPct": 56.8,
+    "totalAvaliacoesClareza": 1154
   },
   {
     "orgao": "Secretaria de Estado de Assistência Social e Direitos Humanos",
     "orgaoSigla": "SEAD",
     "csatMedia": 3.1,
     "csatDistribuicao": {
-      "1": 63,
+      "1": 64,
       "2": 33,
       "3": 52,
       "4": 38,
       "5": 73
     },
-    "totalVotos": 259,
-    "clarezaPositivaPct": 69.3,
-    "totalAvaliacoesClareza": 856
+    "totalVotos": 260,
+    "clarezaPositivaPct": 69.2,
+    "totalAvaliacoesClareza": 858
   },
   {
     "orgao": "Polícia Civil de Mato Grosso do Sul",
@@ -71,8 +71,8 @@
       "5": 58
     },
     "totalVotos": 256,
-    "clarezaPositivaPct": 76.5,
-    "totalAvaliacoesClareza": 1430
+    "clarezaPositivaPct": 76.6,
+    "totalAvaliacoesClareza": 1433
   },
   {
     "orgao": "Procuradoria Geral do Estado de Mato Grosso do Sul",
@@ -81,13 +81,13 @@
     "csatDistribuicao": {
       "1": 80,
       "2": 32,
-      "3": 29,
+      "3": 30,
       "4": 16,
       "5": 18
     },
-    "totalVotos": 175,
-    "clarezaPositivaPct": 33.5,
-    "totalAvaliacoesClareza": 532
+    "totalVotos": 176,
+    "clarezaPositivaPct": 33.3,
+    "totalAvaliacoesClareza": 534
   },
   {
     "orgao": "Coordenadoria Geral de Perícias de Mato Grosso do Sul",
@@ -102,7 +102,7 @@
     },
     "totalVotos": 164,
     "clarezaPositivaPct": 53.7,
-    "totalAvaliacoesClareza": 525
+    "totalAvaliacoesClareza": 527
   },
   {
     "orgao": "Junta Comercial do Estado de Mato Grosso do Sul",
@@ -116,8 +116,8 @@
       "5": 62
     },
     "totalVotos": 118,
-    "clarezaPositivaPct": 69.6,
-    "totalAvaliacoesClareza": 316
+    "clarezaPositivaPct": 69.7,
+    "totalAvaliacoesClareza": 320
   },
   {
     "orgao": "Secretaria de Estado de Saúde de Mato Grosso do Sul",
@@ -126,13 +126,13 @@
     "csatDistribuicao": {
       "1": 31,
       "2": 9,
-      "3": 14,
-      "4": 20,
+      "3": 15,
+      "4": 21,
       "5": 29
     },
-    "totalVotos": 103,
-    "clarezaPositivaPct": 56.2,
-    "totalAvaliacoesClareza": 324
+    "totalVotos": 105,
+    "clarezaPositivaPct": 56.1,
+    "totalAvaliacoesClareza": 326
   },
   {
     "orgao": "Universidade Estadual de Mato Grosso do Sul",
@@ -161,8 +161,8 @@
       "5": 26
     },
     "totalVotos": 86,
-    "clarezaPositivaPct": 70.8,
-    "totalAvaliacoesClareza": 284
+    "clarezaPositivaPct": 70.6,
+    "totalAvaliacoesClareza": 286
   },
   {
     "orgao": "Secretaria de Estado de Governo e Gestão Estratégica de Mato Grosso do Sul",
@@ -221,8 +221,8 @@
       "5": 17
     },
     "totalVotos": 61,
-    "clarezaPositivaPct": 68.2,
-    "totalAvaliacoesClareza": 198
+    "clarezaPositivaPct": 67.8,
+    "totalAvaliacoesClareza": 199
   },
   {
     "orgao": "Fundação de Trabalho de Mato Grosso do Sul",
@@ -296,8 +296,8 @@
       "5": 9
     },
     "totalVotos": 38,
-    "clarezaPositivaPct": 65.3,
-    "totalAvaliacoesClareza": 124
+    "clarezaPositivaPct": 65.6,
+    "totalAvaliacoesClareza": 125
   },
   {
     "orgao": "Secretaria de Estado da Cidadania",

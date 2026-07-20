@@ -3,944 +3,872 @@
     {
       "orgaoSigla": "SEFAZ MS",
       "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
-      "visitas": 1641,
-      "pct": 26.7569
+      "visitas": 223,
+      "pct": 21.7349
     },
     {
       "orgaoSigla": "DETRAN",
       "orgao": "Departamento Estadual de Trânsito de Mato Grosso do Sul",
-      "visitas": 1226,
-      "pct": 19.9902
+      "visitas": 222,
+      "pct": 21.6374
     },
     {
       "orgaoSigla": "JUCEMS",
       "orgao": "Junta Comercial do Estado de Mato Grosso do Sul",
-      "visitas": 920,
-      "pct": 15.0008
+      "visitas": 144,
+      "pct": 14.0351
     },
     {
       "orgaoSigla": "CGP",
       "orgao": "Coordenadoria Geral de Perícias de Mato Grosso do Sul",
-      "visitas": 498,
-      "pct": 8.12
-    },
-    {
-      "orgaoSigla": "PCMS",
-      "orgao": "Polícia Civil de Mato Grosso do Sul",
-      "visitas": 280,
-      "pct": 4.5655
-    },
-    {
-      "orgaoSigla": "AGEHAB",
-      "orgao": "Agência de Habitação Popular de Mato Grosso do Sul",
-      "visitas": 193,
-      "pct": 3.1469
-    },
-    {
-      "orgaoSigla": "SED MS",
-      "orgao": "Secretaria de Estado de Educação de Mato Grosso do Sul",
-      "visitas": 184,
-      "pct": 3.0002
-    },
-    {
-      "orgaoSigla": "SEAD",
-      "orgao": "Secretaria de Estado de Assistência Social e Direitos Humanos",
-      "visitas": 167,
-      "pct": 2.723
-    },
-    {
-      "orgaoSigla": "PGE MS",
-      "orgao": "Procuradoria Geral do Estado de Mato Grosso do Sul",
-      "visitas": 163,
-      "pct": 2.6578
-    },
-    {
-      "orgaoSigla": "AGEPEN",
-      "orgao": "Agência Estadual de Administração do Sistema Penitenciário",
-      "visitas": 142,
-      "pct": 2.3153
-    },
-    {
-      "orgaoSigla": "IMASUL",
-      "orgao": "Instituto de Meio Ambiente de Mato Grosso do Sul",
-      "visitas": 129,
-      "pct": 2.1034
+      "visitas": 73,
+      "pct": 7.115
     },
     {
       "orgaoSigla": "FUNTRAB",
       "orgao": "Fundação de Trabalho de Mato Grosso do Sul",
-      "visitas": 126,
-      "pct": 2.0545
+      "visitas": 67,
+      "pct": 6.5302
     },
     {
-      "orgaoSigla": "IAGRO",
-      "orgao": "Agência Estadual de Defesa Sanitária Animal Vegetal  Mato Grosso do Sul",
-      "visitas": 87,
-      "pct": 1.4186
+      "orgaoSigla": "AGEHAB",
+      "orgao": "Agência de Habitação Popular de Mato Grosso do Sul",
+      "visitas": 50,
+      "pct": 4.8733
+    },
+    {
+      "orgaoSigla": "PCMS",
+      "orgao": "Polícia Civil de Mato Grosso do Sul",
+      "visitas": 43,
+      "pct": 4.191
+    },
+    {
+      "orgaoSigla": "SEAD",
+      "orgao": "Secretaria de Estado de Assistência Social e Direitos Humanos",
+      "visitas": 28,
+      "pct": 2.729
+    },
+    {
+      "orgaoSigla": "PGE MS",
+      "orgao": "Procuradoria Geral do Estado de Mato Grosso do Sul",
+      "visitas": 26,
+      "pct": 2.5341
+    },
+    {
+      "orgaoSigla": "IMASUL",
+      "orgao": "Instituto de Meio Ambiente de Mato Grosso do Sul",
+      "visitas": 24,
+      "pct": 2.3392
+    },
+    {
+      "orgaoSigla": "SED MS",
+      "orgao": "Secretaria de Estado de Educação de Mato Grosso do Sul",
+      "visitas": 23,
+      "pct": 2.2417
     },
     {
       "orgaoSigla": "PMMS",
       "orgao": "Polícia Militar de Mato Grosso do Sul",
-      "visitas": 73,
-      "pct": 1.1903
+      "visitas": 22,
+      "pct": 2.1442
     },
     {
-      "orgaoSigla": "AGRAER",
-      "orgao": "Agência de Desenvolvimento Agrário e Extensão Rural de Mato Grosso do Sul",
-      "visitas": 51,
-      "pct": 0.8316
+      "orgaoSigla": "AGEPEN",
+      "orgao": "Agência Estadual de Administração do Sistema Penitenciário",
+      "visitas": 21,
+      "pct": 2.0468
+    },
+    {
+      "orgaoSigla": "IAGRO",
+      "orgao": "Agência Estadual de Defesa Sanitária Animal Vegetal  Mato Grosso do Sul",
+      "visitas": 12,
+      "pct": 1.1696
     },
     {
       "orgaoSigla": "SAD",
       "orgao": "Secretaria de Estado de Administração de Mato Grosso do Sul",
-      "visitas": 42,
-      "pct": 0.6848
+      "visitas": 11,
+      "pct": 1.0721
     },
     {
-      "orgaoSigla": "UEMS",
-      "orgao": "Universidade Estadual de Mato Grosso do Sul",
-      "visitas": 31,
-      "pct": 0.5055
+      "orgaoSigla": "AGRAER",
+      "orgao": "Agência de Desenvolvimento Agrário e Extensão Rural de Mato Grosso do Sul",
+      "visitas": 6,
+      "pct": 0.5848
     },
     {
       "orgaoSigla": "SES",
       "orgao": "Secretaria de Estado de Saúde de Mato Grosso do Sul",
-      "visitas": 25,
-      "pct": 0.4076
-    },
-    {
-      "orgaoSigla": "AGEMS",
-      "orgao": "Agência Estadual de Regulação de Serviços Públicos de Mato Grosso do Sul",
-      "visitas": 24,
-      "pct": 0.3913
-    },
-    {
-      "orgaoSigla": "SEC",
-      "orgao": "Secretaria de Estado da Cidadania",
-      "visitas": 21,
-      "pct": 0.3424
-    },
-    {
-      "orgaoSigla": "AGEPREV",
-      "orgao": "Agência de Previdência Social de Mato Grosso do Sul",
-      "visitas": 19,
-      "pct": 0.3098
-    },
-    {
-      "orgaoSigla": "CGE MS",
-      "orgao": "Controladoria Geral do Estado de Mato Grosso do Sul",
-      "visitas": 14,
-      "pct": 0.2283
-    },
-    {
-      "orgaoSigla": "SEJUSP",
-      "orgao": "Secretaria de Estado de Justiça e Segurança Pública de Mato Grosso do Sul",
-      "visitas": 14,
-      "pct": 0.2283
-    },
-    {
-      "orgaoSigla": "SETESC",
-      "orgao": "Secretaria de Estado de Turismo, Esporte e Cultura",
-      "visitas": 13,
-      "pct": 0.212
-    },
-    {
-      "orgaoSigla": "SEGOV MS",
-      "orgao": "Secretaria de Estado de Governo e Gestão Estratégica de Mato Grosso do Sul",
-      "visitas": 8,
-      "pct": 0.1304
-    },
-    {
-      "orgaoSigla": "SANESUL",
-      "orgao": "Empresa de Saneamento de Mato Grosso do Sul",
-      "visitas": 7,
-      "pct": 0.1141
-    },
-    {
-      "orgaoSigla": "SEMADESC",
-      "orgao": "Secretaria de Estado de Meio Ambiente, Desenvolvimento, Ciência, Tecnologia e Inovação de Mato Grosso do Sul",
-      "visitas": 7,
-      "pct": 0.1141
-    },
-    {
-      "orgaoSigla": "FUNSAU",
-      "orgao": "Fundação Serviços de Saúde de MS",
-      "visitas": 6,
-      "pct": 0.0978
+      "visitas": 4,
+      "pct": 0.3899
     },
     {
       "orgaoSigla": "ESCOLAGOV",
       "orgao": "Fundação Escola de Governo",
-      "visitas": 5,
-      "pct": 0.0815
-    },
-    {
-      "orgaoSigla": "FUNDESPORTE",
-      "orgao": "Fundação de Desporto e Lazer de Mato Grosso do Sul",
-      "visitas": 4,
-      "pct": 0.0652
-    },
-    {
-      "orgaoSigla": "FUNDECT",
-      "orgao": "Fundação de Apoio ao Desenvolvimento do Ensino, Ciência e Tecnologia de Mato Grosso do Sul",
       "visitas": 3,
-      "pct": 0.0489
+      "pct": 0.2924
     },
     {
-      "orgaoSigla": "AEM",
-      "orgao": "Agência Estadual de Metrologia de Mato Grosso do Sul",
-      "visitas": 2,
-      "pct": 0.0326
+      "orgaoSigla": "AGEPREV",
+      "orgao": "Agência de Previdência Social de Mato Grosso do Sul",
+      "visitas": 3,
+      "pct": 0.2924
+    },
+    {
+      "orgaoSigla": "SEMADESC",
+      "orgao": "Secretaria de Estado de Meio Ambiente, Desenvolvimento, Ciência, Tecnologia e Inovação de Mato Grosso do Sul",
+      "visitas": 3,
+      "pct": 0.2924
+    },
+    {
+      "orgaoSigla": "UEMS",
+      "orgao": "Universidade Estadual de Mato Grosso do Sul",
+      "visitas": 3,
+      "pct": 0.2924
     },
     {
       "orgaoSigla": "FCMS",
       "orgao": "Fundação de Cultura de Mato Grosso do Sul",
       "visitas": 2,
-      "pct": 0.0326
+      "pct": 0.1949
     },
     {
-      "orgaoSigla": "SEILOG",
-      "orgao": "Secretaria de Estado de Infraestrutura e Logística de Mato Grosso do Sul",
+      "orgaoSigla": "SEGOV MS",
+      "orgao": "Secretaria de Estado de Governo e Gestão Estratégica de Mato Grosso do Sul",
       "visitas": 2,
-      "pct": 0.0326
+      "pct": 0.1949
     },
     {
-      "orgaoSigla": "AGESUL",
-      "orgao": "Agência Estadual de Gestão de Empreendimentos de Mato Grosso do Sul",
+      "orgaoSigla": "SEC",
+      "orgao": "Secretaria de Estado da Cidadania",
       "visitas": 2,
-      "pct": 0.0326
+      "pct": 0.1949
     },
     {
-      "orgaoSigla": "CBMMS",
-      "orgao": "Corpo de Bombeiros Militar",
+      "orgaoSigla": "SANESUL",
+      "orgao": "Empresa de Saneamento de Mato Grosso do Sul",
       "visitas": 2,
-      "pct": 0.0326
+      "pct": 0.1949
+    },
+    {
+      "orgaoSigla": "AEM",
+      "orgao": "Agência Estadual de Metrologia de Mato Grosso do Sul",
+      "visitas": 1,
+      "pct": 0.0975
+    },
+    {
+      "orgaoSigla": "SEJUSP",
+      "orgao": "Secretaria de Estado de Justiça e Segurança Pública de Mato Grosso do Sul",
+      "visitas": 1,
+      "pct": 0.0975
+    },
+    {
+      "orgaoSigla": "CGE MS",
+      "orgao": "Controladoria Geral do Estado de Mato Grosso do Sul",
+      "visitas": 1,
+      "pct": 0.0975
+    },
+    {
+      "orgaoSigla": "SETESC",
+      "orgao": "Secretaria de Estado de Turismo, Esporte e Cultura",
+      "visitas": 1,
+      "pct": 0.0975
+    },
+    {
+      "orgaoSigla": "FUNDESPORTE",
+      "orgao": "Fundação de Desporto e Lazer de Mato Grosso do Sul",
+      "visitas": 1,
+      "pct": 0.0975
+    },
+    {
+      "orgaoSigla": "FUNSAU",
+      "orgao": "Fundação Serviços de Saúde de MS",
+      "visitas": 1,
+      "pct": 0.0975
+    },
+    {
+      "orgaoSigla": "AGEMS",
+      "orgao": "Agência Estadual de Regulação de Serviços Públicos de Mato Grosso do Sul",
+      "visitas": 1,
+      "pct": 0.0975
     }
   ],
   "semana": [
     {
       "orgaoSigla": "SEFAZ MS",
       "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
-      "visitas": 11182,
-      "pct": 23.7905
+      "visitas": 223,
+      "pct": 21.7349
     },
     {
       "orgaoSigla": "DETRAN",
       "orgao": "Departamento Estadual de Trânsito de Mato Grosso do Sul",
-      "visitas": 9971,
-      "pct": 21.214
+      "visitas": 222,
+      "pct": 21.6374
     },
     {
       "orgaoSigla": "JUCEMS",
       "orgao": "Junta Comercial do Estado de Mato Grosso do Sul",
-      "visitas": 6470,
-      "pct": 13.7654
+      "visitas": 144,
+      "pct": 14.0351
     },
     {
       "orgaoSigla": "CGP",
       "orgao": "Coordenadoria Geral de Perícias de Mato Grosso do Sul",
-      "visitas": 4613,
-      "pct": 9.8145
-    },
-    {
-      "orgaoSigla": "PCMS",
-      "orgao": "Polícia Civil de Mato Grosso do Sul",
-      "visitas": 2326,
-      "pct": 4.9487
-    },
-    {
-      "orgaoSigla": "AGEHAB",
-      "orgao": "Agência de Habitação Popular de Mato Grosso do Sul",
-      "visitas": 1505,
-      "pct": 3.202
-    },
-    {
-      "orgaoSigla": "SEAD",
-      "orgao": "Secretaria de Estado de Assistência Social e Direitos Humanos",
-      "visitas": 1484,
-      "pct": 3.1573
-    },
-    {
-      "orgaoSigla": "AGEPEN",
-      "orgao": "Agência Estadual de Administração do Sistema Penitenciário",
-      "visitas": 1342,
-      "pct": 2.8552
-    },
-    {
-      "orgaoSigla": "PGE MS",
-      "orgao": "Procuradoria Geral do Estado de Mato Grosso do Sul",
-      "visitas": 1313,
-      "pct": 2.7935
-    },
-    {
-      "orgaoSigla": "SED MS",
-      "orgao": "Secretaria de Estado de Educação de Mato Grosso do Sul",
-      "visitas": 1207,
-      "pct": 2.568
+      "visitas": 73,
+      "pct": 7.115
     },
     {
       "orgaoSigla": "FUNTRAB",
       "orgao": "Fundação de Trabalho de Mato Grosso do Sul",
-      "visitas": 1121,
-      "pct": 2.385
+      "visitas": 67,
+      "pct": 6.5302
+    },
+    {
+      "orgaoSigla": "AGEHAB",
+      "orgao": "Agência de Habitação Popular de Mato Grosso do Sul",
+      "visitas": 50,
+      "pct": 4.8733
+    },
+    {
+      "orgaoSigla": "PCMS",
+      "orgao": "Polícia Civil de Mato Grosso do Sul",
+      "visitas": 43,
+      "pct": 4.191
+    },
+    {
+      "orgaoSigla": "SEAD",
+      "orgao": "Secretaria de Estado de Assistência Social e Direitos Humanos",
+      "visitas": 28,
+      "pct": 2.729
+    },
+    {
+      "orgaoSigla": "PGE MS",
+      "orgao": "Procuradoria Geral do Estado de Mato Grosso do Sul",
+      "visitas": 26,
+      "pct": 2.5341
     },
     {
       "orgaoSigla": "IMASUL",
       "orgao": "Instituto de Meio Ambiente de Mato Grosso do Sul",
-      "visitas": 947,
-      "pct": 2.0148
+      "visitas": 24,
+      "pct": 2.3392
+    },
+    {
+      "orgaoSigla": "SED MS",
+      "orgao": "Secretaria de Estado de Educação de Mato Grosso do Sul",
+      "visitas": 23,
+      "pct": 2.2417
     },
     {
       "orgaoSigla": "PMMS",
       "orgao": "Polícia Militar de Mato Grosso do Sul",
-      "visitas": 549,
-      "pct": 1.168
+      "visitas": 22,
+      "pct": 2.1442
+    },
+    {
+      "orgaoSigla": "AGEPEN",
+      "orgao": "Agência Estadual de Administração do Sistema Penitenciário",
+      "visitas": 21,
+      "pct": 2.0468
     },
     {
       "orgaoSigla": "IAGRO",
       "orgao": "Agência Estadual de Defesa Sanitária Animal Vegetal  Mato Grosso do Sul",
-      "visitas": 493,
-      "pct": 1.0489
-    },
-    {
-      "orgaoSigla": "AGRAER",
-      "orgao": "Agência de Desenvolvimento Agrário e Extensão Rural de Mato Grosso do Sul",
-      "visitas": 362,
-      "pct": 0.7702
+      "visitas": 12,
+      "pct": 1.1696
     },
     {
       "orgaoSigla": "SAD",
       "orgao": "Secretaria de Estado de Administração de Mato Grosso do Sul",
-      "visitas": 346,
-      "pct": 0.7361
+      "visitas": 11,
+      "pct": 1.0721
     },
     {
-      "orgaoSigla": "UEMS",
-      "orgao": "Universidade Estadual de Mato Grosso do Sul",
-      "visitas": 225,
-      "pct": 0.4787
-    },
-    {
-      "orgaoSigla": "SANESUL",
-      "orgao": "Empresa de Saneamento de Mato Grosso do Sul",
-      "visitas": 214,
-      "pct": 0.4553
+      "orgaoSigla": "AGRAER",
+      "orgao": "Agência de Desenvolvimento Agrário e Extensão Rural de Mato Grosso do Sul",
+      "visitas": 6,
+      "pct": 0.5848
     },
     {
       "orgaoSigla": "SES",
       "orgao": "Secretaria de Estado de Saúde de Mato Grosso do Sul",
-      "visitas": 180,
-      "pct": 0.383
-    },
-    {
-      "orgaoSigla": "AGEPREV",
-      "orgao": "Agência de Previdência Social de Mato Grosso do Sul",
-      "visitas": 170,
-      "pct": 0.3617
-    },
-    {
-      "orgaoSigla": "SEJUSP",
-      "orgao": "Secretaria de Estado de Justiça e Segurança Pública de Mato Grosso do Sul",
-      "visitas": 130,
-      "pct": 0.2766
-    },
-    {
-      "orgaoSigla": "SETESC",
-      "orgao": "Secretaria de Estado de Turismo, Esporte e Cultura",
-      "visitas": 130,
-      "pct": 0.2766
-    },
-    {
-      "orgaoSigla": "SEC",
-      "orgao": "Secretaria de Estado da Cidadania",
-      "visitas": 116,
-      "pct": 0.2468
-    },
-    {
-      "orgaoSigla": "CGE MS",
-      "orgao": "Controladoria Geral do Estado de Mato Grosso do Sul",
-      "visitas": 108,
-      "pct": 0.2298
-    },
-    {
-      "orgaoSigla": "AGEMS",
-      "orgao": "Agência Estadual de Regulação de Serviços Públicos de Mato Grosso do Sul",
-      "visitas": 101,
-      "pct": 0.2149
-    },
-    {
-      "orgaoSigla": "SEGOV MS",
-      "orgao": "Secretaria de Estado de Governo e Gestão Estratégica de Mato Grosso do Sul",
-      "visitas": 66,
-      "pct": 0.1404
-    },
-    {
-      "orgaoSigla": "FUNSAU",
-      "orgao": "Fundação Serviços de Saúde de MS",
-      "visitas": 58,
-      "pct": 0.1234
-    },
-    {
-      "orgaoSigla": "FUNDECT",
-      "orgao": "Fundação de Apoio ao Desenvolvimento do Ensino, Ciência e Tecnologia de Mato Grosso do Sul",
-      "visitas": 54,
-      "pct": 0.1149
-    },
-    {
-      "orgaoSigla": "FUNDESPORTE",
-      "orgao": "Fundação de Desporto e Lazer de Mato Grosso do Sul",
-      "visitas": 39,
-      "pct": 0.083
-    },
-    {
-      "orgaoSigla": "SEMADESC",
-      "orgao": "Secretaria de Estado de Meio Ambiente, Desenvolvimento, Ciência, Tecnologia e Inovação de Mato Grosso do Sul",
-      "visitas": 33,
-      "pct": 0.0702
-    },
-    {
-      "orgaoSigla": "FCMS",
-      "orgao": "Fundação de Cultura de Mato Grosso do Sul",
-      "visitas": 29,
-      "pct": 0.0617
-    },
-    {
-      "orgaoSigla": "AGESUL",
-      "orgao": "Agência Estadual de Gestão de Empreendimentos de Mato Grosso do Sul",
-      "visitas": 26,
-      "pct": 0.0553
-    },
-    {
-      "orgaoSigla": "AEM",
-      "orgao": "Agência Estadual de Metrologia de Mato Grosso do Sul",
-      "visitas": 26,
-      "pct": 0.0553
+      "visitas": 4,
+      "pct": 0.3899
     },
     {
       "orgaoSigla": "ESCOLAGOV",
       "orgao": "Fundação Escola de Governo",
-      "visitas": 24,
-      "pct": 0.0511
-    },
-    {
-      "orgaoSigla": "CBMMS",
-      "orgao": "Corpo de Bombeiros Militar",
-      "visitas": 15,
-      "pct": 0.0319
-    },
-    {
-      "orgaoSigla": "SEILOG",
-      "orgao": "Secretaria de Estado de Infraestrutura e Logística de Mato Grosso do Sul",
-      "visitas": 9,
-      "pct": 0.0191
-    },
-    {
-      "orgaoSigla": "MSGÁS",
-      "orgao": "Companhia de Gás do Estado de Mato Grosso do Sul",
-      "visitas": 9,
-      "pct": 0.0191
-    },
-    {
-      "orgaoSigla": "FUNDTUR",
-      "orgao": "Fundação de Turismo de Mato Grosso do Sul",
-      "visitas": 5,
-      "pct": 0.0106
-    },
-    {
-      "orgaoSigla": "FADEB",
-      "orgao": "Fundação da Apoio e Desenvolvimento à Educação Básica",
       "visitas": 3,
-      "pct": 0.0064
+      "pct": 0.2924
     },
     {
-      "orgaoSigla": "FERTEL - Educativa MS",
-      "orgao": "Fundação Estadual Jornalista Luiz Chagas de Rádio e Televisão",
+      "orgaoSigla": "AGEPREV",
+      "orgao": "Agência de Previdência Social de Mato Grosso do Sul",
+      "visitas": 3,
+      "pct": 0.2924
+    },
+    {
+      "orgaoSigla": "SEMADESC",
+      "orgao": "Secretaria de Estado de Meio Ambiente, Desenvolvimento, Ciência, Tecnologia e Inovação de Mato Grosso do Sul",
+      "visitas": 3,
+      "pct": 0.2924
+    },
+    {
+      "orgaoSigla": "UEMS",
+      "orgao": "Universidade Estadual de Mato Grosso do Sul",
+      "visitas": 3,
+      "pct": 0.2924
+    },
+    {
+      "orgaoSigla": "FCMS",
+      "orgao": "Fundação de Cultura de Mato Grosso do Sul",
+      "visitas": 2,
+      "pct": 0.1949
+    },
+    {
+      "orgaoSigla": "SEGOV MS",
+      "orgao": "Secretaria de Estado de Governo e Gestão Estratégica de Mato Grosso do Sul",
+      "visitas": 2,
+      "pct": 0.1949
+    },
+    {
+      "orgaoSigla": "SEC",
+      "orgao": "Secretaria de Estado da Cidadania",
+      "visitas": 2,
+      "pct": 0.1949
+    },
+    {
+      "orgaoSigla": "SANESUL",
+      "orgao": "Empresa de Saneamento de Mato Grosso do Sul",
+      "visitas": 2,
+      "pct": 0.1949
+    },
+    {
+      "orgaoSigla": "AEM",
+      "orgao": "Agência Estadual de Metrologia de Mato Grosso do Sul",
       "visitas": 1,
-      "pct": 0.0021
+      "pct": 0.0975
+    },
+    {
+      "orgaoSigla": "SEJUSP",
+      "orgao": "Secretaria de Estado de Justiça e Segurança Pública de Mato Grosso do Sul",
+      "visitas": 1,
+      "pct": 0.0975
+    },
+    {
+      "orgaoSigla": "CGE MS",
+      "orgao": "Controladoria Geral do Estado de Mato Grosso do Sul",
+      "visitas": 1,
+      "pct": 0.0975
+    },
+    {
+      "orgaoSigla": "SETESC",
+      "orgao": "Secretaria de Estado de Turismo, Esporte e Cultura",
+      "visitas": 1,
+      "pct": 0.0975
+    },
+    {
+      "orgaoSigla": "FUNDESPORTE",
+      "orgao": "Fundação de Desporto e Lazer de Mato Grosso do Sul",
+      "visitas": 1,
+      "pct": 0.0975
+    },
+    {
+      "orgaoSigla": "FUNSAU",
+      "orgao": "Fundação Serviços de Saúde de MS",
+      "visitas": 1,
+      "pct": 0.0975
+    },
+    {
+      "orgaoSigla": "AGEMS",
+      "orgao": "Agência Estadual de Regulação de Serviços Públicos de Mato Grosso do Sul",
+      "visitas": 1,
+      "pct": 0.0975
     }
   ],
   "mes": [
     {
       "orgaoSigla": "SEFAZ MS",
       "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
-      "visitas": 29290,
-      "pct": 25.2365
+      "visitas": 30912,
+      "pct": 24.5022
     },
     {
       "orgaoSigla": "DETRAN",
       "orgao": "Departamento Estadual de Trânsito de Mato Grosso do Sul",
-      "visitas": 24331,
-      "pct": 20.9638
+      "visitas": 26773,
+      "pct": 21.2215
     },
     {
       "orgaoSigla": "CGP",
       "orgao": "Coordenadoria Geral de Perícias de Mato Grosso do Sul",
-      "visitas": 11205,
-      "pct": 9.6543
+      "visitas": 12228,
+      "pct": 9.6925
     },
     {
       "orgaoSigla": "JUCEMS",
       "orgao": "Junta Comercial do Estado de Mato Grosso do Sul",
-      "visitas": 8657,
-      "pct": 7.4589
+      "visitas": 9174,
+      "pct": 7.2717
     },
     {
       "orgaoSigla": "PCMS",
       "orgao": "Polícia Civil de Mato Grosso do Sul",
-      "visitas": 6625,
-      "pct": 5.7082
+      "visitas": 7141,
+      "pct": 5.6603
     },
     {
       "orgaoSigla": "AGEHAB",
       "orgao": "Agência de Habitação Popular de Mato Grosso do Sul",
-      "visitas": 4612,
-      "pct": 3.9737
+      "visitas": 5286,
+      "pct": 4.1899
     },
     {
       "orgaoSigla": "SEAD",
       "orgao": "Secretaria de Estado de Assistência Social e Direitos Humanos",
-      "visitas": 4212,
-      "pct": 3.6291
+      "visitas": 4605,
+      "pct": 3.6501
     },
     {
       "orgaoSigla": "AGEPEN",
       "orgao": "Agência Estadual de Administração do Sistema Penitenciário",
-      "visitas": 3736,
-      "pct": 3.219
+      "visitas": 4085,
+      "pct": 3.238
     },
     {
       "orgaoSigla": "PGE MS",
       "orgao": "Procuradoria Geral do Estado de Mato Grosso do Sul",
-      "visitas": 3648,
-      "pct": 3.1431
+      "visitas": 3911,
+      "pct": 3.1
     },
     {
       "orgaoSigla": "FUNTRAB",
       "orgao": "Fundação de Trabalho de Mato Grosso do Sul",
-      "visitas": 3377,
-      "pct": 2.9097
+      "visitas": 3660,
+      "pct": 2.9011
     },
     {
       "orgaoSigla": "SED MS",
       "orgao": "Secretaria de Estado de Educação de Mato Grosso do Sul",
-      "visitas": 3071,
-      "pct": 2.646
+      "visitas": 3516,
+      "pct": 2.7869
     },
     {
       "orgaoSigla": "IMASUL",
       "orgao": "Instituto de Meio Ambiente de Mato Grosso do Sul",
-      "visitas": 2634,
-      "pct": 2.2695
+      "visitas": 2822,
+      "pct": 2.2368
     },
     {
       "orgaoSigla": "AGRAER",
       "orgao": "Agência de Desenvolvimento Agrário e Extensão Rural de Mato Grosso do Sul",
-      "visitas": 1819,
-      "pct": 1.5673
+      "visitas": 1934,
+      "pct": 1.533
     },
     {
       "orgaoSigla": "IAGRO",
       "orgao": "Agência Estadual de Defesa Sanitária Animal Vegetal  Mato Grosso do Sul",
-      "visitas": 1238,
-      "pct": 1.0667
+      "visitas": 1364,
+      "pct": 1.0812
     },
     {
       "orgaoSigla": "PMMS",
       "orgao": "Polícia Militar de Mato Grosso do Sul",
-      "visitas": 1131,
-      "pct": 0.9745
+      "visitas": 1328,
+      "pct": 1.0526
     },
     {
       "orgaoSigla": "SAD",
       "orgao": "Secretaria de Estado de Administração de Mato Grosso do Sul",
-      "visitas": 983,
-      "pct": 0.847
+      "visitas": 1045,
+      "pct": 0.8283
     },
     {
       "orgaoSigla": "SANESUL",
       "orgao": "Empresa de Saneamento de Mato Grosso do Sul",
-      "visitas": 904,
-      "pct": 0.7789
+      "visitas": 925,
+      "pct": 0.7332
     },
     {
       "orgaoSigla": "UEMS",
       "orgao": "Universidade Estadual de Mato Grosso do Sul",
-      "visitas": 569,
-      "pct": 0.4903
+      "visitas": 701,
+      "pct": 0.5556
     },
     {
       "orgaoSigla": "AGEPREV",
       "orgao": "Agência de Previdência Social de Mato Grosso do Sul",
-      "visitas": 546,
-      "pct": 0.4704
+      "visitas": 666,
+      "pct": 0.5279
     },
     {
       "orgaoSigla": "SES",
       "orgao": "Secretaria de Estado de Saúde de Mato Grosso do Sul",
-      "visitas": 504,
-      "pct": 0.4343
+      "visitas": 608,
+      "pct": 0.4819
     },
     {
       "orgaoSigla": "SEJUSP",
       "orgao": "Secretaria de Estado de Justiça e Segurança Pública de Mato Grosso do Sul",
-      "visitas": 403,
-      "pct": 0.3472
-    },
-    {
-      "orgaoSigla": "CGE MS",
-      "orgao": "Controladoria Geral do Estado de Mato Grosso do Sul",
-      "visitas": 386,
-      "pct": 0.3326
+      "visitas": 454,
+      "pct": 0.3599
     },
     {
       "orgaoSigla": "SETESC",
       "orgao": "Secretaria de Estado de Turismo, Esporte e Cultura",
-      "visitas": 382,
-      "pct": 0.3291
+      "visitas": 428,
+      "pct": 0.3393
+    },
+    {
+      "orgaoSigla": "CGE MS",
+      "orgao": "Controladoria Geral do Estado de Mato Grosso do Sul",
+      "visitas": 415,
+      "pct": 0.3289
     },
     {
       "orgaoSigla": "SEC",
       "orgao": "Secretaria de Estado da Cidadania",
-      "visitas": 343,
-      "pct": 0.2955
+      "visitas": 388,
+      "pct": 0.3075
     },
     {
       "orgaoSigla": "AGEMS",
       "orgao": "Agência Estadual de Regulação de Serviços Públicos de Mato Grosso do Sul",
-      "visitas": 294,
-      "pct": 0.2533
-    },
-    {
-      "orgaoSigla": "FUNDECT",
-      "orgao": "Fundação de Apoio ao Desenvolvimento do Ensino, Ciência e Tecnologia de Mato Grosso do Sul",
-      "visitas": 212,
-      "pct": 0.1827
+      "visitas": 328,
+      "pct": 0.26
     },
     {
       "orgaoSigla": "SEGOV MS",
       "orgao": "Secretaria de Estado de Governo e Gestão Estratégica de Mato Grosso do Sul",
-      "visitas": 189,
-      "pct": 0.1628
+      "visitas": 250,
+      "pct": 0.1982
+    },
+    {
+      "orgaoSigla": "FUNDECT",
+      "orgao": "Fundação de Apoio ao Desenvolvimento do Ensino, Ciência e Tecnologia de Mato Grosso do Sul",
+      "visitas": 235,
+      "pct": 0.1863
     },
     {
       "orgaoSigla": "FCMS",
       "orgao": "Fundação de Cultura de Mato Grosso do Sul",
-      "visitas": 143,
-      "pct": 0.1232
+      "visitas": 162,
+      "pct": 0.1284
     },
     {
       "orgaoSigla": "FUNSAU",
       "orgao": "Fundação Serviços de Saúde de MS",
-      "visitas": 115,
-      "pct": 0.0991
+      "visitas": 147,
+      "pct": 0.1165
     },
     {
       "orgaoSigla": "FUNDESPORTE",
       "orgao": "Fundação de Desporto e Lazer de Mato Grosso do Sul",
-      "visitas": 112,
-      "pct": 0.0965
+      "visitas": 138,
+      "pct": 0.1094
     },
     {
       "orgaoSigla": "SEMADESC",
       "orgao": "Secretaria de Estado de Meio Ambiente, Desenvolvimento, Ciência, Tecnologia e Inovação de Mato Grosso do Sul",
-      "visitas": 109,
-      "pct": 0.0939
+      "visitas": 127,
+      "pct": 0.1007
     },
     {
       "orgaoSigla": "ESCOLAGOV",
       "orgao": "Fundação Escola de Governo",
-      "visitas": 73,
-      "pct": 0.0629
-    },
-    {
-      "orgaoSigla": "AGESUL",
-      "orgao": "Agência Estadual de Gestão de Empreendimentos de Mato Grosso do Sul",
-      "visitas": 58,
-      "pct": 0.05
+      "visitas": 106,
+      "pct": 0.084
     },
     {
       "orgaoSigla": "AEM",
       "orgao": "Agência Estadual de Metrologia de Mato Grosso do Sul",
-      "visitas": 58,
-      "pct": 0.05
+      "visitas": 77,
+      "pct": 0.061
+    },
+    {
+      "orgaoSigla": "AGESUL",
+      "orgao": "Agência Estadual de Gestão de Empreendimentos de Mato Grosso do Sul",
+      "visitas": 70,
+      "pct": 0.0555
     },
     {
       "orgaoSigla": "CBMMS",
       "orgao": "Corpo de Bombeiros Militar",
-      "visitas": 22,
-      "pct": 0.019
+      "visitas": 42,
+      "pct": 0.0333
     },
     {
       "orgaoSigla": "FUNDTUR",
       "orgao": "Fundação de Turismo de Mato Grosso do Sul",
-      "visitas": 21,
-      "pct": 0.0181
+      "visitas": 37,
+      "pct": 0.0293
     },
     {
       "orgaoSigla": "MSGÁS",
       "orgao": "Companhia de Gás do Estado de Mato Grosso do Sul",
-      "visitas": 17,
-      "pct": 0.0146
+      "visitas": 21,
+      "pct": 0.0166
     },
     {
       "orgaoSigla": "SEILOG",
       "orgao": "Secretaria de Estado de Infraestrutura e Logística de Mato Grosso do Sul",
-      "visitas": 15,
-      "pct": 0.0129
+      "visitas": 19,
+      "pct": 0.0151
     },
     {
       "orgaoSigla": "FADEB",
       "orgao": "Fundação da Apoio e Desenvolvimento à Educação Básica",
-      "visitas": 15,
-      "pct": 0.0129
+      "visitas": 18,
+      "pct": 0.0143
     },
     {
       "orgaoSigla": "FERTEL - Educativa MS",
       "orgao": "Fundação Estadual Jornalista Luiz Chagas de Rádio e Televisão",
-      "visitas": 3,
-      "pct": 0.0026
+      "visitas": 14,
+      "pct": 0.0111
     }
   ],
   "ano": [
     {
       "orgaoSigla": "DETRAN",
       "orgao": "Departamento Estadual de Trânsito de Mato Grosso do Sul",
-      "visitas": 309387,
-      "pct": 25.4261
+      "visitas": 311808,
+      "pct": 25.4195
     },
     {
       "orgaoSigla": "SEFAZ MS",
       "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
-      "visitas": 298185,
-      "pct": 24.5055
+      "visitas": 299749,
+      "pct": 24.4364
     },
     {
       "orgaoSigla": "CGP",
       "orgao": "Coordenadoria Geral de Perícias de Mato Grosso do Sul",
-      "visitas": 125015,
-      "pct": 10.274
+      "visitas": 126040,
+      "pct": 10.2751
     },
     {
       "orgaoSigla": "SED MS",
       "orgao": "Secretaria de Estado de Educação de Mato Grosso do Sul",
-      "visitas": 60875,
-      "pct": 5.0028
+      "visitas": 61307,
+      "pct": 4.9979
     },
     {
       "orgaoSigla": "SEAD",
       "orgao": "Secretaria de Estado de Assistência Social e Direitos Humanos",
-      "visitas": 54773,
-      "pct": 4.5014
+      "visitas": 55166,
+      "pct": 4.4973
     },
     {
       "orgaoSigla": "PGE MS",
       "orgao": "Procuradoria Geral do Estado de Mato Grosso do Sul",
-      "visitas": 49751,
-      "pct": 4.0887
+      "visitas": 49985,
+      "pct": 4.0749
     },
     {
       "orgaoSigla": "JUCEMS",
       "orgao": "Junta Comercial do Estado de Mato Grosso do Sul",
-      "visitas": 44752,
-      "pct": 3.6778
+      "visitas": 45268,
+      "pct": 3.6904
     },
     {
       "orgaoSigla": "AGEPEN",
       "orgao": "Agência Estadual de Administração do Sistema Penitenciário",
-      "visitas": 41517,
-      "pct": 3.412
+      "visitas": 41862,
+      "pct": 3.4127
     },
     {
       "orgaoSigla": "AGEHAB",
       "orgao": "Agência de Habitação Popular de Mato Grosso do Sul",
-      "visitas": 37484,
-      "pct": 3.0805
+      "visitas": 38146,
+      "pct": 3.1098
     },
     {
       "orgaoSigla": "PCMS",
       "orgao": "Polícia Civil de Mato Grosso do Sul",
-      "visitas": 29933,
-      "pct": 2.46
+      "visitas": 30449,
+      "pct": 2.4823
     },
     {
       "orgaoSigla": "FUNTRAB",
       "orgao": "Fundação de Trabalho de Mato Grosso do Sul",
-      "visitas": 21282,
-      "pct": 1.749
+      "visitas": 21565,
+      "pct": 1.758
     },
     {
       "orgaoSigla": "IMASUL",
       "orgao": "Instituto de Meio Ambiente de Mato Grosso do Sul",
-      "visitas": 16446,
-      "pct": 1.3516
+      "visitas": 16680,
+      "pct": 1.3598
     },
     {
       "orgaoSigla": "UEMS",
       "orgao": "Universidade Estadual de Mato Grosso do Sul",
-      "visitas": 15914,
-      "pct": 1.3078
+      "visitas": 16022,
+      "pct": 1.3062
     },
     {
       "orgaoSigla": "IAGRO",
       "orgao": "Agência Estadual de Defesa Sanitária Animal Vegetal  Mato Grosso do Sul",
-      "visitas": 15746,
-      "pct": 1.294
+      "visitas": 15844,
+      "pct": 1.2916
     },
     {
       "orgaoSigla": "AGRAER",
       "orgao": "Agência de Desenvolvimento Agrário e Extensão Rural de Mato Grosso do Sul",
-      "visitas": 13177,
-      "pct": 1.0829
+      "visitas": 13232,
+      "pct": 1.0787
     },
     {
       "orgaoSigla": "SEC",
       "orgao": "Secretaria de Estado da Cidadania",
-      "visitas": 12626,
-      "pct": 1.0376
+      "visitas": 12675,
+      "pct": 1.0333
     },
     {
       "orgaoSigla": "PMMS",
       "orgao": "Polícia Militar de Mato Grosso do Sul",
-      "visitas": 11168,
-      "pct": 0.9178
+      "visitas": 11365,
+      "pct": 0.9265
     },
     {
       "orgaoSigla": "AGEPREV",
       "orgao": "Agência de Previdência Social de Mato Grosso do Sul",
-      "visitas": 8426,
-      "pct": 0.6925
+      "visitas": 8557,
+      "pct": 0.6976
     },
     {
       "orgaoSigla": "SES",
       "orgao": "Secretaria de Estado de Saúde de Mato Grosso do Sul",
-      "visitas": 7911,
-      "pct": 0.6501
+      "visitas": 8016,
+      "pct": 0.6535
     },
     {
       "orgaoSigla": "SAD",
       "orgao": "Secretaria de Estado de Administração de Mato Grosso do Sul",
-      "visitas": 5901,
-      "pct": 0.485
+      "visitas": 5963,
+      "pct": 0.4861
     },
     {
       "orgaoSigla": "SEJUSP",
       "orgao": "Secretaria de Estado de Justiça e Segurança Pública de Mato Grosso do Sul",
-      "visitas": 5514,
-      "pct": 0.4532
+      "visitas": 5567,
+      "pct": 0.4538
     },
     {
       "orgaoSigla": "SETESC",
       "orgao": "Secretaria de Estado de Turismo, Esporte e Cultura",
-      "visitas": 5097,
-      "pct": 0.4189
+      "visitas": 5141,
+      "pct": 0.4191
     },
     {
       "orgaoSigla": "SANESUL",
       "orgao": "Empresa de Saneamento de Mato Grosso do Sul",
-      "visitas": 4752,
-      "pct": 0.3905
+      "visitas": 4765,
+      "pct": 0.3885
     },
     {
       "orgaoSigla": "CGE MS",
       "orgao": "Controladoria Geral do Estado de Mato Grosso do Sul",
       "visitas": 4734,
-      "pct": 0.3891
+      "pct": 0.3859
     },
     {
       "orgaoSigla": "SEGOV MS",
       "orgao": "Secretaria de Estado de Governo e Gestão Estratégica de Mato Grosso do Sul",
-      "visitas": 3782,
-      "pct": 0.3108
+      "visitas": 3843,
+      "pct": 0.3133
     },
     {
       "orgaoSigla": "AGEMS",
       "orgao": "Agência Estadual de Regulação de Serviços Públicos de Mato Grosso do Sul",
-      "visitas": 3169,
-      "pct": 0.2604
+      "visitas": 3199,
+      "pct": 0.2608
     },
     {
       "orgaoSigla": "FCMS",
       "orgao": "Fundação de Cultura de Mato Grosso do Sul",
-      "visitas": 2284,
-      "pct": 0.1877
+      "visitas": 2287,
+      "pct": 0.1864
     },
     {
       "orgaoSigla": "FUNSAU",
       "orgao": "Fundação Serviços de Saúde de MS",
-      "visitas": 1866,
-      "pct": 0.1534
+      "visitas": 1896,
+      "pct": 0.1546
     },
     {
       "orgaoSigla": "SEMADESC",
       "orgao": "Secretaria de Estado de Meio Ambiente, Desenvolvimento, Ciência, Tecnologia e Inovação de Mato Grosso do Sul",
-      "visitas": 1255,
-      "pct": 0.1031
+      "visitas": 1280,
+      "pct": 0.1043
     },
     {
       "orgaoSigla": "AEM",
       "orgao": "Agência Estadual de Metrologia de Mato Grosso do Sul",
-      "visitas": 801,
-      "pct": 0.0658
+      "visitas": 813,
+      "pct": 0.0663
     },
     {
       "orgaoSigla": "FUNDECT",
       "orgao": "Fundação de Apoio ao Desenvolvimento do Ensino, Ciência e Tecnologia de Mato Grosso do Sul",
-      "visitas": 684,
-      "pct": 0.0562
+      "visitas": 701,
+      "pct": 0.0571
     },
     {
       "orgaoSigla": "FUNDESPORTE",
       "orgao": "Fundação de Desporto e Lazer de Mato Grosso do Sul",
-      "visitas": 602,
-      "pct": 0.0495
+      "visitas": 627,
+      "pct": 0.0511
     },
     {
       "orgaoSigla": "CBMMS",
       "orgao": "Corpo de Bombeiros Militar",
-      "visitas": 436,
-      "pct": 0.0358
+      "visitas": 456,
+      "pct": 0.0372
     },
     {
       "orgaoSigla": "ESCOLAGOV",
       "orgao": "Fundação Escola de Governo",
-      "visitas": 417,
-      "pct": 0.0343
+      "visitas": 445,
+      "pct": 0.0363
     },
     {
       "orgaoSigla": "FADEB",
       "orgao": "Fundação da Apoio e Desenvolvimento à Educação Básica",
-      "visitas": 255,
+      "visitas": 258,
       "pct": 0.021
     },
     {
       "orgaoSigla": "AGESUL",
       "orgao": "Agência Estadual de Gestão de Empreendimentos de Mato Grosso do Sul",
-      "visitas": 241,
-      "pct": 0.0198
+      "visitas": 246,
+      "pct": 0.0201
     },
     {
       "orgaoSigla": "MSGÁS",
       "orgao": "Companhia de Gás do Estado de Mato Grosso do Sul",
-      "visitas": 195,
-      "pct": 0.016
+      "visitas": 199,
+      "pct": 0.0162
     },
     {
       "orgaoSigla": "FUNDTUR",
       "orgao": "Fundação de Turismo de Mato Grosso do Sul",
-      "visitas": 179,
-      "pct": 0.0147
+      "visitas": 195,
+      "pct": 0.0159
     },
     {
       "orgaoSigla": "SEILOG",
       "orgao": "Secretaria de Estado de Infraestrutura e Logística de Mato Grosso do Sul",
-      "visitas": 158,
-      "pct": 0.013
+      "visitas": 162,
+      "pct": 0.0132
     },
     {
       "orgaoSigla": "FERTEL - Educativa MS",
       "orgao": "Fundação Estadual Jornalista Luiz Chagas de Rádio e Televisão",
-      "visitas": 117,
-      "pct": 0.0096
+      "visitas": 138,
+      "pct": 0.0113
     }
   ]
 }

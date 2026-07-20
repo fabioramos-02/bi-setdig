@@ -1,170 +1,170 @@
 {
   "dia": [
     {
-      "pagina": "Página inicial",
-      "entradas": 1912
+      "pagina": "/",
+      "entradas": 511
     },
     {
       "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
-      "entradas": 830
+      "entradas": 162
     },
     {
       "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
-      "entradas": 802
+      "entradas": 129
     },
     {
       "pagina": "/orgao/jucemsjunta-comercial-do-estado-de-mato-grosso-do-sul118/servicos",
-      "entradas": 611
+      "entradas": 118
     },
     {
       "pagina": "/financas-e-impostos/ipva-consulta-de-debito54/",
-      "entradas": 555
-    },
-    {
-      "pagina": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
-      "entradas": 387
-    },
-    {
-      "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
-      "entradas": 286
-    },
-    {
-      "pagina": "/workspace",
-      "entradas": 255
-    },
-    {
-      "pagina": "/empresa-industria-e-comercio/emitir-certidao-simplificada-digital84/",
-      "entradas": 250
+      "entradas": 75
     },
     {
       "pagina": "/empresa-industria-e-comercio/pesquisar-viabilidade198/",
-      "entradas": 244
+      "entradas": 54
+    },
+    {
+      "pagina": "/trabalho-emprego-e-previdencia/anunciar-vagas-de-emprego-no-sine-sistema-nacional-de-emprego71/",
+      "entradas": 49
+    },
+    {
+      "pagina": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
+      "entradas": 45
+    },
+    {
+      "pagina": "/workspace",
+      "entradas": 45
+    },
+    {
+      "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
+      "entradas": 44
     }
   ],
   "semana": [
     {
-      "pagina": "Página inicial",
-      "entradas": 14189
+      "pagina": "/",
+      "entradas": 511
     },
     {
       "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
-      "entradas": 6722
+      "entradas": 162
     },
     {
       "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
-      "entradas": 6278
+      "entradas": 129
     },
     {
       "pagina": "/orgao/jucemsjunta-comercial-do-estado-de-mato-grosso-do-sul118/servicos",
-      "entradas": 5675
+      "entradas": 118
     },
     {
       "pagina": "/financas-e-impostos/ipva-consulta-de-debito54/",
-      "entradas": 3608
-    },
-    {
-      "pagina": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
-      "entradas": 3558
-    },
-    {
-      "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
-      "entradas": 2004
-    },
-    {
-      "pagina": "/workspace",
-      "entradas": 1722
-    },
-    {
-      "pagina": "/financas-e-impostos/portal-e-fazenda-cadastro135/",
-      "entradas": 1586
+      "entradas": 75
     },
     {
       "pagina": "/empresa-industria-e-comercio/pesquisar-viabilidade198/",
-      "entradas": 1573
+      "entradas": 54
+    },
+    {
+      "pagina": "/trabalho-emprego-e-previdencia/anunciar-vagas-de-emprego-no-sine-sistema-nacional-de-emprego71/",
+      "entradas": 49
+    },
+    {
+      "pagina": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
+      "entradas": 45
+    },
+    {
+      "pagina": "/workspace",
+      "entradas": 45
+    },
+    {
+      "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
+      "entradas": 44
     }
   ],
   "mes": [
     {
-      "pagina": "Página inicial",
-      "entradas": 41566
+      "pagina": "/",
+      "entradas": 44090
     },
     {
       "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
-      "entradas": 16112
+      "entradas": 17574
     },
     {
       "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
-      "entradas": 14602
+      "entradas": 16021
     },
     {
       "pagina": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
-      "entradas": 7926
+      "entradas": 8719
     },
     {
       "pagina": "/financas-e-impostos/ipva-consulta-de-debito54/",
-      "entradas": 7041
+      "entradas": 7796
     },
     {
       "pagina": "/noticias/ - Others",
-      "entradas": 6331
+      "entradas": 6756
     },
     {
       "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
-      "entradas": 5991
+      "entradas": 6237
     },
     {
       "pagina": "/orgao/jucemsjunta-comercial-do-estado-de-mato-grosso-do-sul118/servicos",
-      "entradas": 5863
+      "entradas": 6216
     },
     {
       "pagina": "/workspace",
-      "entradas": 4642
+      "entradas": 4839
     },
     {
       "pagina": "/financas-e-impostos/portal-e-fazenda-cadastro135/",
-      "entradas": 4393
+      "entradas": 4540
     }
   ],
   "ano": [
     {
-      "pagina": "Página inicial",
-      "entradas": 944507
+      "pagina": "/",
+      "entradas": 947031
     },
     {
       "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
-      "entradas": 212157
+      "entradas": 213619
     },
     {
       "pagina": "/workspace/minha-area/meus-sistemas",
-      "entradas": 125608
+      "entradas": 125688
     },
     {
       "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
-      "entradas": 105666
+      "entradas": 107085
     },
     {
       "pagina": "/noticias/ - Others",
-      "entradas": 105059
+      "entradas": 105715
     },
     {
       "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
-      "entradas": 80103
+      "entradas": 80349
     },
     {
       "pagina": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
-      "entradas": 71335
+      "entradas": 72128
     },
     {
       "pagina": "/financas-e-impostos/portal-e-fazenda-cadastro135/",
-      "entradas": 55060
+      "entradas": 55207
     },
     {
       "pagina": "/workspace",
-      "entradas": 52913
+      "entradas": 53110
     },
     {
       "pagina": "/orgao/sed-mssecretaria-de-estado-de-educacao-de-mato-grosso-do-sul83/servicos",
-      "entradas": 49434
+      "entradas": 49598
     }
   ]
 }

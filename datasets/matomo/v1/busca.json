@@ -2,231 +2,159 @@
   "dia": [
     {
       "termo": "ipva",
-      "buscas": 106
+      "buscas": 10
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 47
+      "buscas": 8
     },
     {
       "termo": "procon",
-      "buscas": 20
-    },
-    {
-      "termo": "substituição tributária",
-      "buscas": 13
-    },
-    {
-      "termo": "autoparcelamento",
       "buscas": 4
     },
     {
       "termo": "cidadão",
-      "buscas": 4
+      "buscas": 2
+    },
+    {
+      "termo": "substituição tributária",
+      "buscas": 2
+    },
+    {
+      "termo": "autoparcelamento",
+      "buscas": 1
+    },
+    {
+      "termo": "efd",
+      "buscas": 1
     },
     {
       "termo": "empresa",
-      "buscas": 4
+      "buscas": 1
+    },
+    {
+      "termo": "endereço de um veículo",
+      "buscas": 1
     },
     {
       "termo": "itcd",
-      "buscas": 4
-    },
-    {
-      "termo": "certidão negativa de débitos",
-      "buscas": 2
-    },
-    {
-      "termo": "guia licenciamento",
-      "buscas": 2
-    },
-    {
-      "termo": "01338655725",
       "buscas": 1
     },
     {
-      "termo": "06140969000144",
-      "buscas": 1
-    },
-    {
-      "termo": "50137395191",
-      "buscas": 1
-    },
-    {
-      "termo": "bora de produtor",
-      "buscas": 1
-    },
-    {
-      "termo": "cadastrar área com produção de citros",
-      "buscas": 1
-    },
-    {
-      "termo": "cartaz antitabagiscmo",
-      "buscas": 1
-    },
-    {
-      "termo": "carteira de identidade ssp",
-      "buscas": 1
-    },
-    {
-      "termo": "caseiro",
-      "buscas": 1
-    },
-    {
-      "termo": "certidão estadual",
-      "buscas": 1
-    },
-    {
-      "termo": "concurso para professor",
+      "termo": "licenciamento",
       "buscas": 1
     }
   ],
   "semana": [
     {
       "termo": "ipva",
-      "buscas": 686
+      "buscas": 10
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 284
-    },
-    {
-      "termo": "procon",
-      "buscas": 144
-    },
-    {
-      "termo": "substituição tributária",
-      "buscas": 98
-    },
-    {
-      "termo": "itcd",
-      "buscas": 52
-    },
-    {
-      "termo": "autoparcelamento",
-      "buscas": 39
-    },
-    {
-      "termo": "empresa",
-      "buscas": 30
-    },
-    {
-      "termo": "cidadão",
-      "buscas": 28
-    },
-    {
-      "termo": "servidor",
-      "buscas": 17
-    },
-    {
-      "termo": "licenciamento",
-      "buscas": 13
-    },
-    {
-      "termo": "efd",
-      "buscas": 9
-    },
-    {
-      "termo": "cnh",
       "buscas": 8
     },
     {
-      "termo": "defesa civil",
-      "buscas": 7
-    },
-    {
-      "termo": "mulher",
-      "buscas": 7
-    },
-    {
-      "termo": "cancelamento de comunicação de venda",
-      "buscas": 6
-    },
-    {
-      "termo": "itdc",
-      "buscas": 5
-    },
-    {
-      "termo": "sao paulo",
-      "buscas": 5
-    },
-    {
-      "termo": "rg",
-      "buscas": 5
-    },
-    {
-      "termo": "assinatura digital",
+      "termo": "procon",
       "buscas": 4
     },
     {
-      "termo": "cin",
-      "buscas": 4
+      "termo": "cidadão",
+      "buscas": 2
+    },
+    {
+      "termo": "substituição tributária",
+      "buscas": 2
+    },
+    {
+      "termo": "autoparcelamento",
+      "buscas": 1
+    },
+    {
+      "termo": "efd",
+      "buscas": 1
+    },
+    {
+      "termo": "empresa",
+      "buscas": 1
+    },
+    {
+      "termo": "endereço de um veículo",
+      "buscas": 1
+    },
+    {
+      "termo": "itcd",
+      "buscas": 1
+    },
+    {
+      "termo": "licenciamento",
+      "buscas": 1
     }
   ],
   "mes": [
     {
       "termo": "ipva",
-      "buscas": 1188
+      "buscas": 1337
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 817
+      "buscas": 847
     },
     {
       "termo": "procon",
-      "buscas": 390
+      "buscas": 420
     },
     {
       "termo": "substituição tributária",
-      "buscas": 334
+      "buscas": 344
     },
     {
       "termo": "itcd",
-      "buscas": 133
+      "buscas": 139
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 127
+      "buscas": 136
     },
     {
       "termo": "cidadão",
-      "buscas": 85
+      "buscas": 91
     },
     {
       "termo": "empresa",
-      "buscas": 60
+      "buscas": 63
     },
     {
       "termo": "servidor",
-      "buscas": 53
+      "buscas": 55
     },
     {
       "termo": "licenciamento",
-      "buscas": 43
+      "buscas": 49
     },
     {
       "termo": "efd",
-      "buscas": 22
+      "buscas": 24
     },
     {
       "termo": "cnh",
-      "buscas": 21
+      "buscas": 22
+    },
+    {
+      "termo": "defesa civil",
+      "buscas": 16
     },
     {
       "termo": "mulher",
       "buscas": 16
     },
     {
-      "termo": "defesa civil",
-      "buscas": 15
-    },
-    {
       "termo": "nota fiscal",
-      "buscas": 15
+      "buscas": 16
     },
     {
       "termo": "rg",
-      "buscas": 14
+      "buscas": 15
     },
     {
       "termo": "gestão pública",
@@ -248,47 +176,47 @@
   "ano": [
     {
       "termo": "ipva",
-      "buscas": 27899
+      "buscas": 28048
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 7922
+      "buscas": 7952
     },
     {
       "termo": "procon",
-      "buscas": 6120
+      "buscas": 6150
     },
     {
       "termo": "substituição tributária",
-      "buscas": 4013
+      "buscas": 4023
     },
     {
       "termo": "itcd",
-      "buscas": 1519
+      "buscas": 1525
     },
     {
       "termo": "cidadão",
-      "buscas": 1324
+      "buscas": 1330
     },
     {
       "termo": "servidor",
-      "buscas": 1137
+      "buscas": 1139
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 1106
+      "buscas": 1115
     },
     {
       "termo": "empresa",
-      "buscas": 625
-    },
-    {
-      "termo": "nota fiscal",
-      "buscas": 243
+      "buscas": 628
     },
     {
       "termo": "licenciamento",
-      "buscas": 241
+      "buscas": 247
+    },
+    {
+      "termo": "nota fiscal",
+      "buscas": 244
     },
     {
       "termo": "mulher",
@@ -296,15 +224,15 @@
     },
     {
       "termo": "cnh",
-      "buscas": 199
+      "buscas": 200
     },
     {
       "termo": "defesa civil",
-      "buscas": 197
+      "buscas": 198
     },
     {
       "termo": "efd",
-      "buscas": 184
+      "buscas": 186
     },
     {
       "termo": "web email",
@@ -316,7 +244,7 @@
     },
     {
       "termo": "rg",
-      "buscas": 136
+      "buscas": 137
     },
     {
       "termo": "gestão pública",

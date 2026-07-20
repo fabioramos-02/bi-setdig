@@ -20,10 +20,10 @@
   {
     "orgao": "Coordenadoria Geral de Perícias de Mato Grosso do Sul",
     "orgaoSigla": "CGP",
-    "total": 67,
+    "total": 68,
     "atendidos": 35,
-    "pendentes": 32,
-    "percentAtendido": 52.2,
+    "pendentes": 33,
+    "percentAtendido": 51.5,
     "tempoMedioResolucaoDias": 88.5
   },
   {
@@ -101,10 +101,10 @@
   {
     "orgao": "Junta Comercial do Estado de Mato Grosso do Sul",
     "orgaoSigla": "JUCEMS",
-    "total": 13,
+    "total": 14,
     "atendidos": 13,
-    "pendentes": 0,
-    "percentAtendido": 100.0,
+    "pendentes": 1,
+    "percentAtendido": 92.9,
     "tempoMedioResolucaoDias": 62.8
   },
   {

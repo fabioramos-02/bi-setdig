@@ -2,89 +2,89 @@
   "dia": [
     {
       "navegador": "Chrome",
-      "visitas": 4917
+      "visitas": 965
     },
     {
       "navegador": "Chrome Mobile",
-      "visitas": 2086
+      "visitas": 464
     },
     {
       "navegador": "Microsoft Edge",
-      "visitas": 993
+      "visitas": 172
     },
     {
       "navegador": "Mobile Safari",
-      "visitas": 654
+      "visitas": 117
     },
     {
       "navegador": "Outros",
-      "visitas": 939
+      "visitas": 174
     }
   ],
   "semana": [
     {
       "navegador": "Chrome",
-      "visitas": 35629
+      "visitas": 965
     },
     {
       "navegador": "Chrome Mobile",
-      "visitas": 17590
+      "visitas": 464
     },
     {
       "navegador": "Microsoft Edge",
-      "visitas": 7120
+      "visitas": 172
     },
     {
       "navegador": "Mobile Safari",
-      "visitas": 5573
+      "visitas": 117
     },
     {
       "navegador": "Outros",
-      "visitas": 7358
+      "visitas": 174
     }
   ],
   "mes": [
     {
       "navegador": "Chrome",
-      "visitas": 88076
+      "visitas": 93825
     },
     {
       "navegador": "Chrome Mobile",
-      "visitas": 53548
-    },
-    {
-      "navegador": "Microsoft Edge",
-      "visitas": 17151
+      "visitas": 59180
     },
     {
       "navegador": "Mobile Safari",
-      "visitas": 16857
+      "visitas": 18558
+    },
+    {
+      "navegador": "Microsoft Edge",
+      "visitas": 17896
     },
     {
       "navegador": "Outros",
-      "visitas": 22096
+      "visitas": 24126
     }
   ],
   "ano": [
     {
       "navegador": "Chrome",
-      "visitas": 1363931
+      "visitas": 1369680
     },
     {
       "navegador": "Chrome Mobile",
-      "visitas": 686636
+      "visitas": 692268
     },
     {
       "navegador": "Microsoft Edge",
-      "visitas": 238197
+      "visitas": 238942
     },
     {
       "navegador": "Mobile Safari",
-      "visitas": 226663
+      "visitas": 228364
     },
     {
       "navegador": "Outros",
-      "visitas": 302954
+      "visitas": 304981
     }
   ]
 }

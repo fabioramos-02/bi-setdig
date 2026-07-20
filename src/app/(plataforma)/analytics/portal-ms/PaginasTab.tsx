@@ -74,7 +74,12 @@ export function PaginasTab({
                     {t.icon}
                   </span>
                 </div>
-                <span className="text-sm font-semibold text-center leading-tight">{t.titulo}</span>
+                <div className="flex flex-col items-center gap-0.5">
+                  <span className="text-sm font-semibold text-center leading-tight">{t.titulo}</span>
+                  <span className="text-xs" style={{ color: "var(--ds-color-text-secondary)" }}>
+                    {t.visitas.toLocaleString("pt-BR")} acessos
+                  </span>
+                </div>
               </li>
             ))}
           </ul>

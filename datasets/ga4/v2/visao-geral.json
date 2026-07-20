@@ -2,99 +2,99 @@
   "dia": [
     {
       "newVsReturning": "returning",
-      "activeUsers": 429,
-      "sessions": 462,
-      "screenPageViews": 952
+      "activeUsers": 58,
+      "sessions": 62,
+      "screenPageViews": 164
     },
     {
       "newVsReturning": "new",
-      "activeUsers": 37,
-      "sessions": 36,
-      "screenPageViews": 88
+      "activeUsers": 18,
+      "sessions": 15,
+      "screenPageViews": 9
     },
     {
       "newVsReturning": "",
       "activeUsers": 0,
-      "sessions": 147,
-      "screenPageViews": 8
+      "sessions": 35,
+      "screenPageViews": 0
     }
   ],
   "semana": [
     {
       "newVsReturning": "returning",
-      "activeUsers": 12745,
-      "sessions": 23540,
-      "screenPageViews": 48183
+      "activeUsers": 12929,
+      "sessions": 22932,
+      "screenPageViews": 48117
     },
     {
       "newVsReturning": "new",
-      "activeUsers": 1758,
-      "sessions": 1704,
-      "screenPageViews": 4093
+      "activeUsers": 1793,
+      "sessions": 1733,
+      "screenPageViews": 4140
     },
     {
       "newVsReturning": "",
       "activeUsers": 0,
-      "sessions": 159,
-      "screenPageViews": 8
+      "sessions": 754,
+      "screenPageViews": 21
     },
     {
       "newVsReturning": "(not set)",
       "activeUsers": 0,
-      "sessions": 5134,
-      "screenPageViews": 84
+      "sessions": 4436,
+      "screenPageViews": 73
     }
   ],
   "mes": [
     {
       "newVsReturning": "returning",
-      "activeUsers": 34645,
-      "sessions": 99485,
-      "screenPageViews": 221890
+      "activeUsers": 34189,
+      "sessions": 95669,
+      "screenPageViews": 215330
     },
     {
       "newVsReturning": "new",
-      "activeUsers": 7187,
-      "sessions": 6995,
-      "screenPageViews": 16596
+      "activeUsers": 6964,
+      "sessions": 6708,
+      "screenPageViews": 15847
     },
     {
       "newVsReturning": "",
       "activeUsers": 0,
-      "sessions": 159,
-      "screenPageViews": 8
+      "sessions": 754,
+      "screenPageViews": 21
     },
     {
       "newVsReturning": "(not set)",
       "activeUsers": 0,
-      "sessions": 21658,
-      "screenPageViews": 358
+      "sessions": 21076,
+      "screenPageViews": 333
     }
   ],
   "ano": [
     {
       "newVsReturning": "returning",
-      "activeUsers": 132506,
-      "sessions": 1190213,
-      "screenPageViews": 2592507
+      "activeUsers": 132082,
+      "sessions": 1186327,
+      "screenPageViews": 2586797
     },
     {
       "newVsReturning": "new",
-      "activeUsers": 106424,
-      "sessions": 105586,
-      "screenPageViews": 272836
+      "activeUsers": 106103,
+      "sessions": 105315,
+      "screenPageViews": 271278
     },
     {
       "newVsReturning": "",
       "activeUsers": 0,
-      "sessions": 159,
-      "screenPageViews": 8
+      "sessions": 754,
+      "screenPageViews": 21
     },
     {
       "newVsReturning": "(not set)",
       "activeUsers": 0,
-      "sessions": 282082,
-      "screenPageViews": 4725
+      "sessions": 280038,
+      "screenPageViews": 4701
     }
   ]
 }

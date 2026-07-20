@@ -102,10 +102,14 @@ export function mergeSearch(nativo: TermoBusca[], deUrls: TermoBusca[], n = 20):
   return { termos: ordenado.slice(0, n), total };
 }
 
+/** Path fica cru (sem traduzir "/" pra "Página inicial" aqui) — quem consome
+ * (FluxoNavegacaoTab) classifica com classificarPagina/ADR-012, que já
+ * resolve o rótulo cidadão E o tipo (serviço/órgão/página inicial);
+ * traduzir cedo demais quebrava esse classificador. */
 export function entryPages(rows: MatomoRow[], n = 10): PaginaEntrada[] {
   const out = (rows ?? [])
     .filter((r) => !EXCLUIR_URLS.some((p) => (r.label ?? "").includes(p)))
-    .map((r) => ({ pagina: r.label === "/" ? "Página inicial" : (r.label ?? ""), entradas: r.nb_visits ?? 0 }));
+    .map((r) => ({ pagina: r.label ?? "", entradas: r.nb_visits ?? 0 }));
   out.sort((a, b) => b.entradas - a.entradas);
   return out.slice(0, n);
 }

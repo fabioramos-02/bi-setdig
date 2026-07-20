@@ -43,12 +43,14 @@ test("topPages: exclui retorno técnico do login e nomeia a home", () => {
   assert.equal(r[0].url, "Página inicial");
 });
 
-test("entryPages: mesma exclusão do login, mesmo rótulo de home", () => {
+test("entryPages: mesma exclusão do login, path cru pro classificador resolver (ADR-012)", () => {
   const r = entryPages([
     { label: "/login/callback/ - Others", nb_visits: 999 },
     { label: "/", nb_visits: 10 },
   ]);
-  assert.deepEqual(r, [{ pagina: "Página inicial", entradas: 10 }]);
+  // "/" fica cru — classificarPagina, não entryPages, decide que isso é
+  // "Página inicial" (traduzir aqui quebrava a classificação, ver ADR-012).
+  assert.deepEqual(r, [{ pagina: "/", entradas: 10 }]);
 });
 
 test("searchKeywords: não trunca (o corte é do mergeSearch) e ignora URL como termo", () => {

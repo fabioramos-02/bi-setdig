@@ -114,9 +114,13 @@ def entry_pages(rows: list, n: int = 10) -> list[dict]:
     Actions.getEntryPageUrls já devolve label/nb_visits prontos, sem processamento.
     Filtra EXCLUIR_URLS — validado contra o portal real (ms.gov.br): soma de
     milhares de callbacks OAuth com querystring distinta (sufixo "- Others" do
-    Matomo), não Home nem página real acessada pelo cidadão."""
+    Matomo), não Home nem página real acessada pelo cidadão. Path fica cru
+    (sem traduzir "/" pra "Página inicial" aqui) — quem consome (FluxoNavegacaoTab)
+    classifica com classificarPagina/ADR-012, que já resolve o rótulo cidadão
+    E o tipo (serviço/órgão/página inicial); traduzir cedo demais quebrava
+    esse classificador."""
     out = [
-        {"pagina": "Página inicial" if r.get("label") == "/" else r.get("label", ""), "entradas": r.get("nb_visits", 0)}
+        {"pagina": r.get("label", ""), "entradas": r.get("nb_visits", 0)}
         for r in (rows or [])
         if not any(p in r.get("label", "") for p in EXCLUIR_URLS)
     ]
