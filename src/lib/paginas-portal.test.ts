@@ -4,8 +4,8 @@ import { calcularComposicaoPaginas, gerarResumoPaginas } from "./paginas-portal.
 
 const CLASSIFICADAS = [
   { tipo: "pagina-inicial" as const, nome: "Página inicial", visitas: 300 },
-  { tipo: "servico" as const, nome: "Emitir guia de licenciamento anual", orgaoSigla: "DETRAN", visitas: 140 },
-  { tipo: "servico" as const, nome: "Solicitar carteira de identidade", orgaoSigla: "CGP", visitas: 60 },
+  { tipo: "servico" as const, nome: "Emitir guia de licenciamento anual", orgaoSigla: "DETRAN", categoria: "transito-e-transportes", visitas: 140 },
+  { tipo: "servico" as const, nome: "Solicitar carteira de identidade", orgaoSigla: "CGP", categoria: "direitos-e-cidadania", visitas: 60 },
   { tipo: "noticia" as const, nome: "Notícia", visitas: 90 },
   { tipo: "meu-painel" as const, nome: "Meu Painel", visitas: 10 },
 ];
@@ -37,18 +37,22 @@ test("gerarResumoPaginas: 3 partes com nomes/numeros reais, nunca 'funil'/'conve
   const r = gerarResumoPaginas(c, servicos, "no mês");
   assert.ok(r);
   assert.match(r!.oQueAconteceu, /30%.*300 visitas/);
-  assert.match(r!.oQueSignifica, /33%.*67%/);
-  assert.match(r!.oportunidade, /Emitir guia de licenciamento anual/);
-  assert.match(r!.oportunidade, /Solicitar carteira de identidade/);
+  // Apoio (67%) vem antes de serviço (33%) no fraseado atual.
+  assert.match(r!.oQueSignifica, /67%.*33%/);
+  // Oportunidade cita o TEMA (categoria) dos serviços em destaque, não o nome cru.
+  assert.match(r!.oportunidade, /tr[aâ]nsito e transportes/i);
+  assert.match(r!.oportunidade, /direitos e cidadania/i);
   const textoCompleto = `${r!.oQueAconteceu} ${r!.oQueSignifica} ${r!.oportunidade}`;
   assert.doesNotMatch(textoCompleto, /funil|convers[aã]o|convertid/i);
 });
 
-test("gerarResumoPaginas: sem servico identificado, oportunidade degrada honesto (nao inventa nome)", () => {
+test("gerarResumoPaginas: sem servico identificado, oportunidade degrada pro fallback genérico (sem tema pra citar)", () => {
   const semServico = CLASSIFICADAS.filter((p) => p.tipo !== "servico");
   const c = calcularComposicaoPaginas(semServico, 1000)!;
   const r = gerarResumoPaginas(c, [], "no mês");
-  assert.match(r!.oportunidade, /sem oportunidade a apontar/i);
+  // Sem serviço identificado não há categoria pra citar — cai no fallback
+  // "diversos temas" em vez de inventar um tema específico.
+  assert.match(r!.oportunidade, /diversos temas/i);
 });
 
 test("gerarResumoPaginas: sem home nem acao -> null", () => {

@@ -66,7 +66,7 @@ test("página de órgão -> sigla via prefixo normalizado (espaço na sigla, hí
     ctx,
   );
   assert.equal(c.tipo, "orgao");
-  assert.equal(c.nome, "Serviços da SEFAZ MS");
+  assert.equal(c.nome, "Serviços do Órgão SEFAZ MS");
 });
 
 test("órgão desconhecido -> tipo orgao sem sigla, não quebra", () => {
@@ -95,7 +95,7 @@ test("categoria só (1 segmento) -> lista de categoria em linguagem cidadã", ()
   const ctx = construirContexto(inventario);
   const c = classificarPagina("https://www.ms.gov.br/transito-e-transportes", ctx);
   assert.equal(c.tipo, "lista-categoria");
-  assert.match(c.nome, /Transito e transportes/);
+  assert.match(c.nome, /Trânsito e Transportes/);
 });
 
 test("url desconhecida (2+ segmentos, não casa nada) -> outro, sem quebrar", () => {
@@ -115,20 +115,20 @@ test("/categoria/{slug} -> lista de serviços do tema (não confundir com /{slug
   const ctx = construirContexto(inventario);
   const c = classificarPagina("https://www.ms.gov.br/categoria/financas-e-impostos", ctx);
   assert.equal(c.tipo, "lista-categoria");
-  assert.equal(c.nome, "Lista de serviços de Financas e impostos");
+  assert.equal(c.nome, "Lista de serviços de Finanças e Impostos");
 });
 
-test("/categoria/administracao-publica -> Administracao publica", () => {
+test("/categoria/administracao-publica -> Administração Pública", () => {
   const ctx = construirContexto(inventario);
   const c = classificarPagina("https://www.ms.gov.br/categoria/administracao-publica", ctx);
-  assert.equal(c.nome, "Lista de serviços de Administracao publica");
+  assert.equal(c.nome, "Lista de serviços de Administração Pública");
 });
 
 test("bucket de agregação do Matomo ' - Others' -> honesto, sem path cru", () => {
   const ctx = construirContexto(inventario);
   const c1 = classificarPagina("/financas-e-impostos/ - Others", ctx);
   assert.equal(c1.tipo, "lista-categoria");
-  assert.equal(c1.nome, "Outras páginas de Financas e impostos");
+  assert.equal(c1.nome, "Outras páginas de Finanças e Impostos");
   const c2 = classificarPagina("/noticias/ - Others", ctx);
   // "noticias" já tem regra própria (prioridade sobre o bucket Others).
   assert.equal(c2.tipo, "noticia");
@@ -136,9 +136,9 @@ test("bucket de agregação do Matomo ' - Others' -> honesto, sem path cru", () 
 
 test("variações do sufixo Others (case, hífen, espaço) casam", () => {
   const ctx = construirContexto(inventario);
-  assert.equal(classificarPagina("/financas-e-impostos/Others", ctx).nome, "Outras páginas de Financas e impostos");
-  assert.equal(classificarPagina("/financas-e-impostos/-Others", ctx).nome, "Outras páginas de Financas e impostos");
-  assert.equal(classificarPagina("/financas-e-impostos/ - others", ctx).nome, "Outras páginas de Financas e impostos");
+  assert.equal(classificarPagina("/financas-e-impostos/Others", ctx).nome, "Outras páginas de Finanças e Impostos");
+  assert.equal(classificarPagina("/financas-e-impostos/-Others", ctx).nome, "Outras páginas de Finanças e Impostos");
+  assert.equal(classificarPagina("/financas-e-impostos/ - others", ctx).nome, "Outras páginas de Finanças e Impostos");
 });
 
 test("agruparPaginasClassificadas: 2 URLs cruas da MESMA carta (categorias diferentes) viram 1 linha só, visitas somadas", () => {

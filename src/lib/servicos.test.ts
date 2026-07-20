@@ -35,8 +35,12 @@ test("prazoServico antepõe número só em unidade temporal", () => {
   assert.equal(prazoServico(null, null), "—");
 });
 
-test("labelCategoria formata slug", () => {
-  assert.equal(labelCategoria("saude-e-cuidado"), "Saude e cuidado");
+test("labelCategoria: slug conhecido usa o nome oficial do dicionário", () => {
+  assert.equal(labelCategoria("saude-e-cuidado"), "Saúde e Cuidado");
+});
+
+test("labelCategoria: slug fora do dicionário cai no fallback formatado em runtime", () => {
+  assert.equal(labelCategoria("categoria-nova-sem-cadastro"), "Categoria nova sem cadastro");
   assert.equal(labelCategoria(null), "Sem categoria");
 });
 
