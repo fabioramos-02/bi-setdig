@@ -2,7 +2,7 @@ import type { NivelContagem } from "@/lib/censo";
 
 /** Espectro de maturidade: uma barra empilhada presencial→digital (5 faixas
  * coloridas, proporção por quantidade) + a lista dos níveis com quanto e %.
- * Responde "como os serviços se distribuem entre balcão e 100% online?". */
+ * Responde "Serviços distribuídos por categorias". */
 export function EspectroMaturidade({ distribuicao, total }: { distribuicao: NivelContagem[]; total: number }) {
   return (
     <div className="flex flex-col gap-4">

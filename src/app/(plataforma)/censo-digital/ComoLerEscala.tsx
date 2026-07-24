@@ -53,11 +53,11 @@ export function ComoLerEscala({ distribuicao }: { distribuicao?: NivelContagem[]
         </table>
 
         <p className="mt-4 rounded-md p-3 text-sm" style={{ background: "var(--ds-color-background-muted)", color: "var(--ds-color-text-secondary)" }}>
-          <strong style={{ color: "var(--ds-color-text-primary)" }}>Serviços a um passo (níveis 2–3):</strong>{" "}
-          serviços prestes a ficarem 100% pela internet — onde o esforço para digitalizar é menor e o ganho, mais rápido. São o ponto de partida do plano.
+          <strong style={{ color: "var(--ds-color-text-primary)" }}>Serviços que podem ser digitalizados (níveis 1–2):</strong>{" "}
+          serviços que após análise crítica, podem ser transformados. Esse é o foco para a ampliação da entrega de serviços digitais.
         </p>
         <p className="mt-2 text-xs" style={{ color: "var(--ds-color-text-muted)" }}>
-          A classificação é feita com apoio de inteligência artificial e revisada por pessoas — pode conter aproximações.
+          A classificação é feita com apoio de inteligência artificial e revisada por pessoas, por isso, para maior aproximação da realidade estamos realizando o levantamento junto aos órgãos.
         </p>
       </div>
     </details>

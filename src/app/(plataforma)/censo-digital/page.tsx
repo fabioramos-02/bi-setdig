@@ -56,11 +56,11 @@ export default function CensoDigitalPage() {
           <KpiCenso label="Serviços avaliados" value={p.total} />
           <KpiCenso label="Já resolvem online" value={`${p.pctDigital.toLocaleString("pt-BR")}%`} sub={`${p.nDigital.toLocaleString("pt-BR")} serviços`} tom="digital" />
           <KpiCenso label="100% pela internet" value={p.n4} tom="digital" />
-          <KpiCenso label="A um passo" value={p.aUmPasso} sub="começam online, terminam no balcão" tom="win" />
+          <KpiCenso label="Podem ser trasnfromados" value={p.aUmPasso} tom="win" />
         </div>
 
         <div className="grid gap-6 lg:grid-cols-[1.6fr_1fr]">
-          <DashboardSection title="Como os serviços se distribuem entre o balcão e a internet">
+          <DashboardSection title="Serviços distribuídos por categorias">
             <PizzaDistribuicao distribuicao={p.distribuicao} total={p.total} />
           </DashboardSection>
           <DashboardSection title="Quanto já dá para resolver pela internet">
@@ -68,7 +68,7 @@ export default function CensoDigitalPage() {
           </DashboardSection>
         </div>
 
-        <DashboardSection title="Quais órgãos estão mais avançados na digitalização?">
+        <DashboardSection title="Quais órgãos estão mais avançados na oferta de serviços digitais?">
           <RankingBarChart
             itens={p.orgaos.map((o) => ({ label: o.sigla, valor: o.pctDigital, sublabel: `${o.total} serviços` }))}
             formatarValor={(v) => `${v.toLocaleString("pt-BR")}%`}
@@ -81,7 +81,7 @@ export default function CensoDigitalPage() {
           )}
         </DashboardSection>
 
-        <DashboardSection title="Abra o retrato de cada órgão">
+        <DashboardSection title="Análise por órgão">
           <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {p.orgaos.map((o) => (
               <Link
@@ -95,7 +95,7 @@ export default function CensoDigitalPage() {
                 <div className="flex gap-4 text-sm">
                   <Stat valor={o.total.toLocaleString("pt-BR")} rotulo="serviços" />
                   <Stat valor={`${o.pctDigital.toLocaleString("pt-BR")}%`} rotulo="online" />
-                  <Stat valor={o.aUmPasso.toLocaleString("pt-BR")} rotulo="a um passo" />
+                  <Stat valor={o.aUmPasso.toLocaleString("pt-BR")} rotulo="" />
                 </div>
               </Link>
             ))}
