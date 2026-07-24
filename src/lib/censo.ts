@@ -43,19 +43,19 @@ export const NIVEIS = [
 
   {
     nivel: 1, rotulo: "Informação online", ehDigital: "Não", cor: "#ff6200",
-    descricao: "Dá para se informar online, mas o processo corre todo no balcão."
+    descricao: "Apenas a informação sobre o serviço é online, todo o processo segue presencial."
   },
   {
-    nivel: 2, rotulo: "Começa online, termina no balcão", ehDigital: "Em parte", cor: "var(--ds-color-tertiary-600)",
-    descricao: "Começa pela internet (formulário, agendamento) e termina presencial."
+    nivel: 2, rotulo: "Etapas digitais e presenciais", ehDigital: "Em parte", cor: "var(--ds-color-tertiary-600)",
+    descricao: "Alguma etapa digital e presencial, mas pode ser transformado em serviço digital."
   },
   {
-    nivel: 3, rotulo: "Quase tudo online", ehDigital: "Quase", cor: "var(--ds-color-info)",
-    descricao: "Quase tudo pela internet — trava só numa etapa física (uma vistoria ou assinatura)."
+    nivel: 3, rotulo: "Etapa presencial por questões legais", ehDigital: "Em parte", cor: "var(--ds-color-info)",
+    descricao: "Quase digital: 1 etapa presencial por questão legal."
   },
   {
-    nivel: 4, rotulo: "100% pela internet", ehDigital: "Sim", cor: "var(--ds-color-success)",
-    descricao: "Resolve do começo ao fim sem sair de casa."
+    nivel: 4, rotulo: "100% digital, mas com back-office", ehDigital: "Sim", cor: "var(--ds-color-success)",
+    descricao: "Resolve do começo ao fim sem sair de casa, mas passa por análise humana."
   },
 ] as const;
 

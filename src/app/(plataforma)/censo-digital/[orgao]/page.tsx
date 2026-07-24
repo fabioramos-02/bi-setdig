@@ -43,7 +43,6 @@ export default async function CensoOrgaoPage({ params }: { params: Promise<{ org
 
         <StoryCard
           anchor={`Das ${r.total.toLocaleString("pt-BR")} cartas de serviço do ${dados.orgaoSigla}, ${r.pctDigital.toLocaleString("pt-BR")}% já podem ser resolvidas 100% pela internet.`}
-          caption={`${r.aUmPasso.toLocaleString("pt-BR")} serviços estão a um passo disso — começam online, mas ainda terminam no balcão.`}
           comoLer="Cada carta é medida numa régua de 0 (só no balcão) a 4 (100% pela internet). A tabela abaixo mostra onde cada serviço está e o que ainda trava. A classificação usa inteligência artificial com revisão humana."
         />
 
@@ -52,7 +51,7 @@ export default async function CensoOrgaoPage({ params }: { params: Promise<{ org
         <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
           <KpiCenso label="Serviços avaliados" value={r.total} />
           <KpiCenso label="Já resolvem online" value={`${r.pctDigital.toLocaleString("pt-BR")}%`} sub={`${r.nDigital.toLocaleString("pt-BR")} serviços`} tom="digital" />
-          <KpiCenso label="A um passo" value={r.aUmPasso} sub="começam online, terminam no balcão" tom="win" />
+          <KpiCenso label="Podem ser transformados" value={r.aUmPasso} sub="começam online, terminam no balcão" tom="win" />
           <KpiCenso label="Usam algum sistema" value={r.nFalaSistema} tom="info" />
         </div>
 

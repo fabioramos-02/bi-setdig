@@ -1,7 +1,7 @@
 import { NIVEIS, type NivelContagem } from "@/lib/censo";
 import { NivelBadge } from "./NivelBadge";
 
-/** "Como ler a escala de maturidade (0–4)" — a régua explicada em linguagem
+/** "Como ler as categorias" — a régua explicada em linguagem
  * simples, recolhida por padrão. Réplica da rubrica do site original: badge
  * colorido por nível, o que significa, se resolve online e quantos serviços há
  * em cada faixa. `distribuicao` (governo ou órgão) alimenta a coluna de contagem;
@@ -18,7 +18,7 @@ export function ComoLerEscala({ distribuicao }: { distribuicao?: NivelContagem[]
         className="cursor-pointer select-none px-4 py-3 text-base font-bold"
         style={{ color: "var(--ds-color-primary-600)" }}
       >
-        Como ler a escala de digitalização (0–4)
+        Como ler as categorias
       </summary>
       <div className="border-t px-4 pb-4 overflow-x-auto" style={{ borderColor: "var(--ds-color-border)" }}>
         <table className="w-full text-sm border-collapse">
