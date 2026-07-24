@@ -40,16 +40,23 @@ export const SIGLAS_CENSO = ["iagro", "detran", "sead"] as const;
  * intermediárias são extensões locais documentadas (mesma decisão do censo
  * original). O resto vem de token do Design System. */
 export const NIVEIS = [
-  { nivel: 0, rotulo: "Apenas presencial", ehDigital: "Não", cor: "var(--ds-color-danger)",
-    descricao: "Só dá para resolver no balcão — nada pela internet." },
-  { nivel: 1, rotulo: "Informação online", ehDigital: "Não", cor: "#ff6200",
-    descricao: "Dá para se informar online, mas o processo corre todo no balcão." },
-  { nivel: 2, rotulo: "Começa online, termina no balcão", ehDigital: "Em parte", cor: "var(--ds-color-tertiary-600)",
-    descricao: "Começa pela internet (formulário, agendamento) e termina presencial." },
-  { nivel: 3, rotulo: "Quase tudo online", ehDigital: "Quase", cor: "var(--ds-color-info)",
-    descricao: "Quase tudo pela internet — trava só numa etapa física (uma vistoria ou assinatura)." },
-  { nivel: 4, rotulo: "100% pela internet", ehDigital: "Sim", cor: "var(--ds-color-success)",
-    descricao: "Resolve do começo ao fim sem sair de casa." },
+
+  {
+    nivel: 1, rotulo: "Informação online", ehDigital: "Não", cor: "#ff6200",
+    descricao: "Dá para se informar online, mas o processo corre todo no balcão."
+  },
+  {
+    nivel: 2, rotulo: "Começa online, termina no balcão", ehDigital: "Em parte", cor: "var(--ds-color-tertiary-600)",
+    descricao: "Começa pela internet (formulário, agendamento) e termina presencial."
+  },
+  {
+    nivel: 3, rotulo: "Quase tudo online", ehDigital: "Quase", cor: "var(--ds-color-info)",
+    descricao: "Quase tudo pela internet — trava só numa etapa física (uma vistoria ou assinatura)."
+  },
+  {
+    nivel: 4, rotulo: "100% pela internet", ehDigital: "Sim", cor: "var(--ds-color-success)",
+    descricao: "Resolve do começo ao fim sem sair de casa."
+  },
 ] as const;
 
 /** Níveis contados como "resolve pela internet" no indicador de % digital. */

@@ -18,7 +18,7 @@ export function ComoLerEscala({ distribuicao }: { distribuicao?: NivelContagem[]
         className="cursor-pointer select-none px-4 py-3 text-base font-bold"
         style={{ color: "var(--ds-color-primary-600)" }}
       >
-        Como ler a escala de maturidade (0–4)
+        Como ler a escala de digitalização (0–4)
       </summary>
       <div className="border-t px-4 pb-4 overflow-x-auto" style={{ borderColor: "var(--ds-color-border)" }}>
         <table className="w-full text-sm border-collapse">

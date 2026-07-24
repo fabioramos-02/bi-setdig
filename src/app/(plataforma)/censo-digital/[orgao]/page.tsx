@@ -20,7 +20,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ orgao: string }> }): Promise<Metadata> {
   const { orgao } = await params;
-  return { title: `Censo Digital — ${orgao.toUpperCase()} | SETDIG` };
+  return { title: `Levantamento inicial de Serviços Digitais — ${orgao.toUpperCase()} | SETDIG` };
 }
 
 export default async function CensoOrgaoPage({ params }: { params: Promise<{ orgao: string }> }) {
@@ -32,11 +32,11 @@ export default async function CensoOrgaoPage({ params }: { params: Promise<{ org
 
   return (
     <div className="flex flex-col flex-1">
-      <ContentTopBar title={`Censo Digital — ${dados.orgaoSigla}`}>
+      <ContentTopBar title={`Levantamento inicial de Serviços Digitais — ${dados.orgaoSigla}`}>
         <ExportarRelatorioButton filtro={`Órgão: ${dados.orgaoSigla}`} />
       </ContentTopBar>
       <main className="flex-1 p-6 flex flex-col gap-6">
-        <RelatorioCapa titulo={`Censo Digital — ${dados.orgaoSigla}`} filtro={`Órgão: ${dados.orgaoSigla}`} />
+        <RelatorioCapa titulo={`Levantamento inicial de Serviços Digitais — ${dados.orgaoSigla}`} filtro={`Órgão: ${dados.orgaoSigla}`} />
         <Link href="/censo-digital" className="text-sm font-medium hover:underline self-start" style={{ color: "var(--ds-color-primary-600)" }}>
           ← Todos os órgãos
         </Link>

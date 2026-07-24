@@ -77,7 +77,7 @@ const DOMINIOS: Dominio[] = [
     nome: "Governança Estratégica",
     paineis: [
       {
-        nome: "Censo Digital",
+        nome: "Levantamento inicial de Serviços Digitais",
         rota: "/censo-digital",
         icone: "account_balance",
         descricao: "Indicadores de transformação digital",

@@ -15,7 +15,7 @@ import { DonutProgresso } from "./DonutProgresso";
 import { PizzaDistribuicao } from "./PizzaDistribuicao";
 
 export const metadata: Metadata = {
-  title: "Censo Digital | SETDIG",
+  title: "Levantamento inicial de Serviços Digitais | SETDIG",
 };
 
 export default function CensoDigitalPage() {
@@ -24,7 +24,7 @@ export default function CensoDigitalPage() {
   if (orgaos.length === 0) {
     return (
       <div className="flex flex-col flex-1">
-        <ContentTopBar title="Censo Digital" />
+        <ContentTopBar title="Levantamento inicial de Serviços Digitais" />
         <main className="flex-1 p-6">
           <EmptyCard message="Ainda não há órgãos avaliados aqui." />
         </main>
@@ -38,15 +38,15 @@ export default function CensoDigitalPage() {
 
   return (
     <div className="flex flex-col flex-1">
-      <ContentTopBar title="Censo Digital">
-        <ExportarRelatorioButton filtro="Retrato atual da maturidade" />
+      <ContentTopBar title="Levantamento inicial de Serviços Digitais">
+        <ExportarRelatorioButton filtro="Retrato atual dos serviços digitais" />
       </ContentTopBar>
       <main className="flex-1 p-6 flex flex-col gap-6">
-        <RelatorioCapa titulo="Censo Digital — Maturidade dos serviços" filtro="Retrato atual da maturidade" />
+        <RelatorioCapa titulo="Levantamento inicial de Serviços Digitais" filtro="Retrato atual dos serviços digitais" />
         <StoryCard
-          anchor={`O Governo de MS tem ${p.total.toLocaleString("pt-BR")} serviços mapeados em ${p.nOrgaos} ${p.nOrgaos === 1 ? "órgão" : "órgãos"}. Hoje, ${p.pctDigital.toLocaleString("pt-BR")}% já podem ser resolvidos sem sair de casa.`}
+          anchor={`Foram mapeados ${p.nOrgaos.toLocaleString("pt-BR")} ${p.nOrgaos === 1 ? "órgão" : "órgãos"}, com ${p.total.toLocaleString("pt-BR")} ${p.total === 1 ? "carta de serviço" : "cartas de serviço"}. Atualmente, ${p.nDigital.toLocaleString("pt-BR")} são serviços digitais, ou seja, podem ser resolvidos sem interação presencial com a repartição pública.`}
           caption={`${p.aUmPasso.toLocaleString("pt-BR")} serviços estão a um passo disso — começam online, mas ainda terminam no balcão.`}
-          comoLer="Cada serviço é medido numa régua de 0 (só no balcão) a 4 (100% pela internet). Chamamos de digital quem chega aos níveis 3 e 4. A classificação usa inteligência artificial com revisão humana — pode conter aproximações."
+          comoLer="Cada serviço é medido numa régua de 0 (só no balcão) a 4 (100% pela internet). Chamamos de digital quem chega aos níveis 3 e 4. A classificação usa inteligência artificial com revisão humana — pode conter aproximações. Neste momento, estamos passando por revisão junto aos órgãos para que esses números sejam o mais próximo do real."
         />
 
         <ComoLerEscala distribuicao={p.distribuicao} />
