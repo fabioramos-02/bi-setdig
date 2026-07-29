@@ -2,6 +2,11 @@
 # Conteúdo público de interesse cidadão: liberar indexação ampla (buscadores + LLMs).
 # Rotas /api/* são fontes de dados internas — sem valor pra buscador.
 
+Sitemap: https://bi-setdig.vercel.app/sitemap.xml
+
+# Content-Signal (contentsignals.org): dado público gov, libera uso amplo.
+Content-Signal: search=yes, ai-train=yes, ai-input=yes
+
 User-agent: *
 Allow: /
 Disallow: /api/
