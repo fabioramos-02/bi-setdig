@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import { PostHogProvider } from "@/components/PostHogProvider";
 import "./globals.css";
 
 const openSans = Open_Sans({
@@ -25,7 +26,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col">
         <ThemeProvider attribute="data-theme" defaultTheme="light" enableSystem>
-          {children}
+          <PostHogProvider>{children}</PostHogProvider>
         </ThemeProvider>
       </body>
     </html>
