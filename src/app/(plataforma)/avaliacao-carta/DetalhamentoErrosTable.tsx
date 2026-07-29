@@ -31,57 +31,71 @@ export function DetalhamentoErrosTable({ relacao, orgaoFiltro, servicoToLinkInfo
   const [selecionado, setSelecionado] = useState<ErroRelacao | null>(null);
 
   const colunas = useMemo<Coluna<ErroRelacao>[]>(() => [
-    { key: "orgao", label: "Órgão", sortable: true, sortValue: (e) => e.orgaoSigla, render: (e) => (
-      <span className="font-medium" style={{ color: "var(--ds-color-text-primary)" }}>{e.orgaoSigla}</span>
-    ) },
-    { key: "servico", label: "Serviço", sortable: true, sortValue: (e) => e.servico, render: (e) => (
-      <span style={{ color: "var(--ds-color-text-secondary)" }}>{e.servico}</span>
-    ) },
-    { key: "conteudo", label: "Erro relatado", render: (e) => (
-      <span
-        className="line-clamp-2"
-        title={e.conteudo ?? ""}
-        style={{ color: "var(--ds-color-text-secondary)" }}
-      >
-        {e.conteudo ?? "—"}
-      </span>
-    ) },
-    { key: "status", label: "Status", align: "center", sortable: true, sortValue: (e) => (e.atendido ? 1 : 0), render: (e) => (
-      <span
-        className="text-xs font-semibold px-2 py-0.5 rounded"
-        style={{
-          color: e.atendido ? "var(--ds-color-success)" : "var(--ds-color-danger)",
-          background: e.atendido ? "color-mix(in srgb, var(--ds-color-success) 12%, transparent)" : "color-mix(in srgb, var(--ds-color-danger) 12%, transparent)",
-        }}
-      >
-        {e.atendido ? "Atendido" : "Pendente"}
-      </span>
-    ) },
-    { key: "diasAberto", label: "Dias em aberto", align: "right", sortable: true, sortValue: (e) => e.diasAberto, render: (e) => (
-      <span style={{ color: "var(--ds-color-text-secondary)" }}>{e.diasAberto} dias</span>
-    ) },
-    { key: "resolucao", label: "Resolução", render: (e) => (
-      <span
-        className="line-clamp-2"
-        title={e.atendido ? (e.resolucao ?? "") : ""}
-        style={{ color: "var(--ds-color-text-secondary)" }}
-      >
-        {e.atendido ? (e.resolucao ?? "—") : "—"}
-      </span>
-    ) },
-    { key: "portal", label: "Portal", align: "center", render: (e) => (
-      <a
-        href={linkPortal(e, servicoToLinkInfo)}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={(ev) => ev.stopPropagation()}
-        className="text-[var(--ds-color-primary-600)] hover:underline flex items-center justify-center"
-        title="Abrir serviço no portal ↗"
-        aria-label="Abrir serviço no portal ↗"
-      >
-        <span className="material-icons text-lg" aria-hidden>open_in_new</span>
-      </a>
-    ) },
+    {
+      key: "orgao", label: "Órgão", sortable: true, sortValue: (e) => e.orgaoSigla, render: (e) => (
+        <span className="font-medium" style={{ color: "var(--ds-color-text-primary)" }}>{e.orgaoSigla}</span>
+      )
+    },
+    {
+      key: "servico", label: "Serviço", sortable: true, sortValue: (e) => e.servico, render: (e) => (
+        <span style={{ color: "var(--ds-color-text-secondary)" }}>{e.servico}</span>
+      )
+    },
+    {
+      key: "conteudo", label: "Erro relatado", render: (e) => (
+        <span
+          className="line-clamp-2"
+          title={e.conteudo ?? ""}
+          style={{ color: "var(--ds-color-text-secondary)" }}
+        >
+          {e.conteudo ?? "—"}
+        </span>
+      )
+    },
+    {
+      key: "status", label: "Status", align: "center", sortable: true, sortValue: (e) => (e.atendido ? 1 : 0), render: (e) => (
+        <span
+          className="text-xs font-semibold px-2 py-0.5 rounded"
+          style={{
+            color: e.atendido ? "var(--ds-color-success)" : "var(--ds-color-danger)",
+            background: e.atendido ? "color-mix(in srgb, var(--ds-color-success) 12%, transparent)" : "color-mix(in srgb, var(--ds-color-danger) 12%, transparent)",
+          }}
+        >
+          {e.atendido ? "Atendido" : "Pendente"}
+        </span>
+      )
+    },
+    {
+      key: "diasAberto", label: "Dias em aberto", align: "right", sortable: true, sortValue: (e) => e.diasAberto, render: (e) => (
+        <span style={{ color: "var(--ds-color-text-secondary)" }}>{e.diasAberto} dias</span>
+      )
+    },
+    {
+      key: "resolucao", label: "Resolução", render: (e) => (
+        <span
+          className="line-clamp-2"
+          title={e.atendido ? (e.resolucao ?? "") : ""}
+          style={{ color: "var(--ds-color-text-secondary)" }}
+        >
+          {e.atendido ? (e.resolucao ?? "—") : "—"}
+        </span>
+      )
+    },
+    {
+      key: "portal", label: "Portal", align: "center", render: (e) => (
+        <a
+          href={linkPortal(e, servicoToLinkInfo)}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(ev) => ev.stopPropagation()}
+          className="text-[var(--ds-color-primary-600)] hover:underline flex items-center justify-center"
+          title="Abrir serviço no portal ↗"
+          aria-label="Abrir serviço no portal ↗"
+        >
+          <span className="material-icons text-lg" aria-hidden>open_in_new</span>
+        </a>
+      )
+    },
   ], [servicoToLinkInfo]);
 
   useEffect(() => {
@@ -99,7 +113,7 @@ export function DetalhamentoErrosTable({ relacao, orgaoFiltro, servicoToLinkInfo
   // O detalhe caso a caso só faz sentido depois de estreitar para um órgão.
   if (!orgaoFiltro) {
     return (
-      <DashboardSection title="📄 Detalhamento de Erros">
+      <DashboardSection title="Detalhamento de Erros">
         <div className="flex flex-col items-center text-center gap-2 py-8" style={{ color: "var(--ds-color-text-secondary)" }}>
           <span className="material-icons text-3xl" style={{ color: "var(--ds-color-text-muted)" }} aria-hidden>filter_list</span>
           <p className="text-sm max-w-md">

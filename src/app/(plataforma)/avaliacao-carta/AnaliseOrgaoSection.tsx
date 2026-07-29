@@ -47,7 +47,7 @@ const colunas: Coluna<ErroOrgao>[] = [
   },
 ];
 
-/** "🏛️ Análise por Órgão" — reage ao filtro lateral. Sem órgão selecionado:
+/** "Análise por Órgão" — reage ao filtro lateral. Sem órgão selecionado:
  * ranking sortável de todos. Com órgão selecionado: números daquele órgão +
  * comparação com a média geral (não a média das médias — usa o resumo geral,
  * que já é ponderado pelo total real de erros). */
@@ -66,7 +66,7 @@ export function AnaliseOrgaoSection({
     const comparacao = calcularComparacaoOrgao(orgaoSelecionado, resumo);
     const maisLento = comparacao.diferencaDias > 0;
     return (
-      <DashboardSection title="🏛️ Análise por Órgão">
+      <DashboardSection title="Análise por Órgão">
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mb-6">
           <MetricCard label="Erros reportados" value={orgaoSelecionado.total} />
           <MetricCard label="Corrigidos" value={orgaoSelecionado.atendidos} sub={`${orgaoSelecionado.percentAtendido.toFixed(0)}% do total`} />
