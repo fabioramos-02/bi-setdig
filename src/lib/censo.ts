@@ -40,7 +40,10 @@ export const SIGLAS_CENSO = ["iagro", "detran", "sead"] as const;
  * intermediárias são extensões locais documentadas (mesma decisão do censo
  * original). O resto vem de token do Design System. */
 export const NIVEIS = [
-
+  {
+    nivel: 0, rotulo: "100% presencial", ehDigital: "Não", cor: "var(--ds-color-error)",
+    descricao: "Nenhuma etapa online — para resolver, é preciso ir presencialmente."
+  },
   {
     nivel: 1, rotulo: "Informação online", ehDigital: "Não", cor: "#ff6200",
     descricao: "Apenas a informação sobre o serviço é online, todo o processo segue presencial."
