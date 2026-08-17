@@ -7,9 +7,19 @@ from __future__ import annotations
 
 import os
 
+from datetime import date, timedelta
+
 from dotenv import load_dotenv
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
-from google.analytics.data_v1beta.types import DateRange, Dimension, Metric, RunReportRequest
+from google.analytics.data_v1beta.types import (
+    Cohort,
+    CohortSpec,
+    CohortsRange,
+    DateRange,
+    Dimension,
+    Metric,
+    RunReportRequest,
+)
 from google.oauth2.credentials import Credentials
 
 load_dotenv()
@@ -135,6 +145,99 @@ def get_funnel(start_date: str, end_date: str) -> list[dict]:
     response = client.run_report(request)
     por_evento = {row.dimension_values[0].value: int(row.metric_values[0].value) for row in response.rows}
     return [{"evento": e, "usuarios": por_evento[e]} for e in _ORDEM_FUNIL if e in por_evento]
+
+
+def get_ativos_janela() -> dict:
+    """DAU/WAU/MAU + sessões dos últimos 28 dias. Uma chamada, janelas fixas.
+
+    GA4 calcula cada janela sticky sobre o range da consulta (28 dias) — sem
+    dimensões, retorna 1 linha só. Alimenta a métrica de cadência de retorno
+    no bloco "De quanto em quanto tempo os usuários voltam" (JornadaTab).
+    """
+    client = _client()
+    property_id = os.getenv("GOOGLE_PROPERTY_ID", "")
+    request = RunReportRequest(
+        property=f"properties/{property_id}",
+        metrics=[
+            Metric(name="active1DayUsers"),
+            Metric(name="active7DayUsers"),
+            Metric(name="active28DayUsers"),
+            Metric(name="sessions"),
+            Metric(name="totalUsers"),
+        ],
+        date_ranges=[DateRange(start_date="28daysAgo", end_date="today")],
+    )
+    response = client.run_report(request)
+    if not response.rows:
+        return {"dau": 0, "wau": 0, "mau": 0, "sessoes28d": 0, "totalUsuarios28d": 0}
+    row = response.rows[0]
+    return {
+        "dau": int(row.metric_values[0].value),
+        "wau": int(row.metric_values[1].value),
+        "mau": int(row.metric_values[2].value),
+        "sessoes28d": int(row.metric_values[3].value),
+        "totalUsuarios28d": int(row.metric_values[4].value),
+    }
+
+
+def get_cohort_semanal_retencao() -> dict:
+    """Retenção D1/D7/D30 dos novos usuários da semana passada (cohortSpec).
+
+    Cohort de referência: 7 dias completos anteriores a hoje. Métrica:
+    cohortActiveUsers por cohortNthDay. Ver
+    https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/runReport#CohortSpec
+    """
+    client = _client()
+    property_id = os.getenv("GOOGLE_PROPERTY_ID", "")
+    hoje = date.today()
+    fim = hoje - timedelta(days=1)
+    inicio = fim - timedelta(days=6)
+    semana_referencia = f"{inicio.isoformat()} a {fim.isoformat()}"
+    request = RunReportRequest(
+        property=f"properties/{property_id}",
+        dimensions=[
+            Dimension(name="cohort"),
+            Dimension(name="cohortNthDay"),
+        ],
+        metrics=[Metric(name="cohortActiveUsers")],
+        cohort_spec=CohortSpec(
+            cohorts=[
+                Cohort(
+                    name="semana_passada",
+                    dimension="firstSessionDate",
+                    date_range=DateRange(start_date=inicio.isoformat(), end_date=fim.isoformat()),
+                )
+            ],
+            cohorts_range=CohortsRange(
+                granularity="DAILY",
+                start_offset=0,
+                end_offset=30,
+            ),
+        ),
+    )
+    response = client.run_report(request)
+    por_dia: dict[int, int] = {}
+    tamanho = 0
+    for row in response.rows:
+        try:
+            nth = int(row.dimension_values[1].value)
+        except (ValueError, IndexError):
+            continue
+        ativos = int(row.metric_values[0].value)
+        por_dia[nth] = ativos
+        if nth == 0:
+            tamanho = ativos
+    def _pct(dia: int) -> float:
+        if not tamanho:
+            return 0.0
+        return round(100 * por_dia.get(dia, 0) / tamanho, 1)
+    return {
+        "semanaReferencia": semana_referencia,
+        "tamanho": tamanho,
+        "d1Pct": _pct(1),
+        "d7Pct": _pct(7),
+        "d30Pct": _pct(30),
+    }
 
 
 def get_visit_time(start_date: str, end_date: str) -> list[dict]:

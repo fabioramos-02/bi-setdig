@@ -1,6 +1,6 @@
 "use client";
 
-import { Bar, BarChart as RBarChart, CartesianGrid, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Bar, BarChart as RBarChart, CartesianGrid, Cell, LabelList, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
 export function BarChart({
   data,
@@ -8,6 +8,7 @@ export function BarChart({
   yKey,
   height = 260,
   corPorIndice,
+  mostrarValorNaBarra = false,
 }: {
   data: Record<string, string | number>[];
   xKey: string;
@@ -15,6 +16,8 @@ export function BarChart({
   height?: number;
   /** Cor por barra (índice) — se omitido, usa a cor única padrão (comportamento anterior). */
   corPorIndice?: (index: number) => string;
+  /** Exibe o valor numérico dentro/em cima da barra (formatado pt-BR). */
+  mostrarValorNaBarra?: boolean;
 }) {
   return (
     <ResponsiveContainer width="100%" height={height}>
@@ -37,6 +40,17 @@ export function BarChart({
         />
         <Bar dataKey={yKey} fill="var(--ds-color-primary-600)" radius={[4, 4, 0, 0]}>
           {corPorIndice && data.map((_, i) => <Cell key={i} fill={corPorIndice(i)} />)}
+          {mostrarValorNaBarra && (
+            <LabelList
+              dataKey={yKey}
+              position="insideTop"
+              offset={10}
+              fill="#fff"
+              fontSize={12}
+              fontWeight={600}
+              formatter={(v) => (typeof v === "number" ? v.toLocaleString("pt-BR") : String(v))}
+            />
+          )}
         </Bar>
       </RBarChart>
     </ResponsiveContainer>

@@ -385,21 +385,32 @@
     "bytes": 12585
   },
   {
+    "dataset": "uso-retencao",
+    "source": "msdigital-db",
+    "owner": "SETDIG",
+    "updatedAt": "2026-08-17T19:43:16.232221+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/msdigital-db-uso-retencao.schema.json",
+    "rows": 1,
+    "bytes": 125
+  },
+  {
     "dataset": "contas-criadas-por-dia",
     "source": "msdigital-db",
     "owner": "SETDIG",
-    "updatedAt": "2026-08-17T19:43:15.973497+00:00",
+    "updatedAt": "2026-08-17T20:10:57.002648+00:00",
     "frequency": "daily",
     "version": "v1",
     "schema": "data-platform/schemas/msdigital-db-contas-criadas-por-dia.schema.json",
     "rows": 2328,
-    "bytes": 168356
+    "bytes": 168357
   },
   {
     "dataset": "contas-resumo",
     "source": "msdigital-db",
     "owner": "SETDIG",
-    "updatedAt": "2026-08-17T19:43:15.994455+00:00",
+    "updatedAt": "2026-08-17T20:10:57.022787+00:00",
     "frequency": "daily",
     "version": "v1",
     "schema": "data-platform/schemas/msdigital-db-contas-resumo.schema.json",
@@ -410,7 +421,7 @@
     "dataset": "contas-por-ano",
     "source": "msdigital-db",
     "owner": "SETDIG",
-    "updatedAt": "2026-08-17T19:43:16.093880+00:00",
+    "updatedAt": "2026-08-17T20:10:57.119978+00:00",
     "frequency": "daily",
     "version": "v1",
     "schema": "data-platform/schemas/msdigital-db-contas-por-ano.schema.json",
@@ -421,7 +432,7 @@
     "dataset": "contas-por-faixa-etaria",
     "source": "msdigital-db",
     "owner": "SETDIG",
-    "updatedAt": "2026-08-17T19:43:16.168811+00:00",
+    "updatedAt": "2026-08-17T20:10:57.187377+00:00",
     "frequency": "daily",
     "version": "v1",
     "schema": "data-platform/schemas/msdigital-db-contas-por-faixa-etaria.schema.json",
@@ -432,7 +443,7 @@
     "dataset": "contas-por-cidade",
     "source": "msdigital-db",
     "owner": "SETDIG",
-    "updatedAt": "2026-08-17T19:43:16.195691+00:00",
+    "updatedAt": "2026-08-17T20:10:57.217593+00:00",
     "frequency": "daily",
     "version": "v1",
     "schema": "data-platform/schemas/msdigital-db-contas-por-cidade.schema.json",
@@ -440,14 +451,25 @@
     "bytes": 6541
   },
   {
-    "dataset": "uso-retencao",
+    "dataset": "faixas-de-acesso",
     "source": "msdigital-db",
     "owner": "SETDIG",
-    "updatedAt": "2026-08-17T19:43:16.232221+00:00",
+    "updatedAt": "2026-08-17T20:10:57.363998+00:00",
     "frequency": "daily",
     "version": "v1",
-    "schema": "data-platform/schemas/msdigital-db-uso-retencao.schema.json",
+    "schema": "data-platform/schemas/msdigital-db-faixas-de-acesso.schema.json",
+    "rows": 5,
+    "bytes": 458
+  },
+  {
+    "dataset": "frequencia-acesso",
+    "source": "ga4",
+    "owner": "SETDIG",
+    "updatedAt": "2026-08-17T20:23:47.314995+00:00",
+    "frequency": "daily",
+    "version": "v2",
+    "schema": "data-platform/schemas/ga4-frequencia-acesso.schema.json",
     "rows": 1,
-    "bytes": 125
+    "bytes": 420
   }
 ]

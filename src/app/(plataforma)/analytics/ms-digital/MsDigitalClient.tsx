@@ -39,8 +39,9 @@ import type {
   ContaPorAno,
   ContaPorFaixaEtaria,
   ContaPorCidade,
-  UsoRetencao,
+  FaixaAcesso,
   ContaCriadaDia,
+  FrequenciaAcesso,
 } from "@/lib/data";
 import type { ResumoCatalogo, CategoriaResumo } from "@/lib/catalogo-app";
 
@@ -76,8 +77,11 @@ export function MsDigitalClient({
   contasPorAno,
   contasPorFaixaEtaria,
   contasPorCidade,
-  usoRetencao,
+  faixasDeAcesso,
+  snapshotAtualizadoEm,
   contasCriadasPorDia,
+  frequenciaAcesso,
+  snapshotFrequenciaEm,
 }: {
   visaoGeral: BreakdownPorPeriodo<GA4Overview>;
   plataforma: BreakdownPorPeriodo<Plataforma>;
@@ -94,8 +98,11 @@ export function MsDigitalClient({
   contasPorAno: ContaPorAno[];
   contasPorFaixaEtaria: ContaPorFaixaEtaria[];
   contasPorCidade: ContaPorCidade[];
-  usoRetencao: UsoRetencao | null;
+  faixasDeAcesso: FaixaAcesso[];
+  snapshotAtualizadoEm: string | null;
   contasCriadasPorDia: ContaCriadaDia[];
+  frequenciaAcesso: FrequenciaAcesso | null;
+  snapshotFrequenciaEm: string | null;
 }) {
   const [abaAtiva, setAbaAtiva] = useState("visao-geral");
   const { estado, min, max } = usePeriodo();
@@ -242,7 +249,18 @@ export function MsDigitalClient({
     {
       id: "jornada",
       label: "4. Jornada do Usuário",
-      content: <JornadaTab funil={fun} insightFunil={insightFunil} status={statusGa4} />,
+      content: (
+        <JornadaTab
+          funil={fun}
+          insightFunil={insightFunil}
+          status={statusGa4}
+          frequenciaAcesso={frequenciaAcesso}
+          snapshotFrequenciaEm={snapshotFrequenciaEm}
+          faixasDeAcesso={faixasDeAcesso}
+          snapshotFaixasEm={snapshotAtualizadoEm}
+          totalContas={contasResumo?.contasTotal ?? 0}
+        />
+      ),
     },
     {
       id: "app-portal",
@@ -277,7 +295,7 @@ export function MsDigitalClient({
           porAno={contasPorAno}
           faixaEtaria={contasPorFaixaEtaria}
           porCidade={contasPorCidade}
-          retencao={usoRetencao}
+          faixasDeAcesso={faixasDeAcesso}
           criadasPorDia={contasCriadasPorDia}
           estadoPeriodo={estado}
           rotuloPeriodo={rotuloPeriodo}

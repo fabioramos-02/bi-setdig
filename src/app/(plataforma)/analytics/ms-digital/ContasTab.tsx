@@ -11,7 +11,7 @@ import type {
   ContaPorAno,
   ContaPorFaixaEtaria,
   ContaPorCidade,
-  UsoRetencao,
+  FaixaAcesso,
   ContaCriadaDia,
 } from "@/lib/data";
 import type { PeriodoState } from "@/lib/period-filter";
@@ -37,7 +37,7 @@ export function ContasTab({
   porAno,
   faixaEtaria,
   porCidade,
-  retencao,
+  faixasDeAcesso,
   criadasPorDia,
   estadoPeriodo,
   rotuloPeriodo,
@@ -46,14 +46,14 @@ export function ContasTab({
   porAno: ContaPorAno[];
   faixaEtaria: ContaPorFaixaEtaria[];
   porCidade: ContaPorCidade[];
-  retencao: UsoRetencao | null;
+  faixasDeAcesso: FaixaAcesso[];
   criadasPorDia: ContaCriadaDia[];
   estadoPeriodo: PeriodoState;
   rotuloPeriodo: string;
 }) {
   const saude = saudeAtivacao(resumo.taxaAtivacaoPct);
-  const situacao = situacaoGeral(resumo, retencao);
-  const alertas = pontosAtencao(resumo, retencao, faixaEtaria);
+  const situacao = situacaoGeral(resumo, faixasDeAcesso);
+  const alertas = pontosAtencao(resumo, faixasDeAcesso, faixaEtaria);
   const pctSemNascimento = pctSemInformacaoNascimento(faixaEtaria);
 
   const anoAtual = new Date().getFullYear();
@@ -114,27 +114,7 @@ export function ContasTab({
         />
       </div>
 
-      {/* KPI reage ao filtro */}
-      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
-        <MetricCard
-          label={`Contas criadas ${rotuloPeriodo}`}
-          value={noPeriodo.criadas}
-          sub={
-            noPeriodo.criadas > 0
-              ? `${noPeriodo.ativas.toLocaleString("pt-BR")} seguem ativas`
-              : "sem novas contas nesse recorte"
-          }
-        />
-        <MetricCard
-          label={`Contas ativadas ${rotuloPeriodo}`}
-          value={noPeriodo.ativas}
-          sub={
-            noPeriodo.criadas > 0
-              ? `${((100 * noPeriodo.ativas) / noPeriodo.criadas).toFixed(1)}% das criadas no recorte`
-              : "—"
-          }
-        />
-      </div>
+
 
       {/* Contas criadas por ano — vertical, título igual Qlik */}
       <DashboardSection title="Contas criadas por ano">
@@ -167,32 +147,9 @@ export function ContasTab({
         </div>
       </StoryCard>
 
-      {/* Uso do app */}
-      {retencao && (
-        <StoryCard
-          anchor={`${retencao.recorrentes6Meses.toLocaleString("pt-BR")} pessoas voltaram ao app nos últimos 6 meses.`}
-          caption={`${retencao.nuncaAcessou.toLocaleString("pt-BR")} contas foram criadas mas nunca abriram o app; ${retencao.inativos2Anos.toLocaleString("pt-BR")} estão sem acesso há mais de 2 anos.`}
-          comoLer='"Recorrente" aqui significa "acessou nos últimos 6 meses" — o banco registra apenas a data do último acesso, não a quantidade de vezes que a pessoa entrou.'
-        >
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-3">
-            <MetricCard
-              label="Nunca acessaram"
-              value={retencao.nuncaAcessou}
-              sub={`${((100 * retencao.nuncaAcessou) / retencao.totalContas).toFixed(1)}% das contas`}
-            />
-            <MetricCard
-              label="Sem acesso há 2+ anos"
-              value={retencao.inativos2Anos}
-              sub={`${((100 * retencao.inativos2Anos) / retencao.totalContas).toFixed(1)}% das contas`}
-            />
-            <MetricCard
-              label="Acesso nos últimos 6 meses"
-              value={retencao.recorrentes6Meses}
-              sub={`${((100 * retencao.recorrentes6Meses) / retencao.totalContas).toFixed(1)}% das contas`}
-            />
-          </div>
-        </StoryCard>
-      )}
+      {/* Bloco de faixas de retorno migrou pra aba Jornada do Usuário —
+          retorno é comportamento, não cadastro. Situação Geral e Pontos de
+          Atenção continuam citando as faixas como contexto de resumo. */}
 
       {/* Distribuição geográfica */}
       <StoryCard
@@ -227,8 +184,8 @@ export function ContasTab({
                       p.severidade === "alerta"
                         ? "var(--ds-color-danger)"
                         : p.severidade === "atencao"
-                        ? "var(--ds-color-warning)"
-                        : "var(--ds-color-primary-600)",
+                          ? "var(--ds-color-warning)"
+                          : "var(--ds-color-primary-600)",
                   }}
                   className="w-1.5 h-1.5 rounded-full mt-2 shrink-0"
                 />

@@ -5,13 +5,14 @@ from datetime import date, datetime, timezone
 
 from msdigital import (
     FAIXA_SEM_INFO,
+    FAIXAS_ACESSO_ORDEM,
     _faixa,
     _idade,
     contas_ativas_por_cidade,
     contas_por_ano,
     contas_por_faixa_etaria,
+    faixas_de_acesso,
     resumo,
-    uso_retencao,
 )
 
 HOJE = date(2026, 8, 17)
@@ -83,18 +84,47 @@ def test_cidade_ignora_inativos_e_agrupa_fora_ms():
     assert fora["ativas"] == 1
 
 
-def test_uso_retencao_categoriza_ultimo_login():
+def test_faixas_de_acesso_soma_igual_total():
+    from datetime import timedelta as td
     hoje = datetime.now(timezone.utc)
     contas = [
-        {"ultimoLogin": None},                                             # nunca
-        {"ultimoLogin": hoje.replace(year=hoje.year - 3)},                 # inativo 2a+
-        {"ultimoLogin": hoje.replace(day=1, month=max(1, hoje.month - 1))},  # recorrente
+        {"ultimoLogin": None, "conta_criada_em": None},                              # uma vez apenas (nunca logou)
+        {"ultimoLogin": hoje, "conta_criada_em": hoje},                              # uma vez apenas (mesmo dia)
+        {"ultimoLogin": hoje - td(days=30), "conta_criada_em": hoje - td(days=90)}, # 6m
+        {"ultimoLogin": hoje - td(days=365), "conta_criada_em": hoje - td(days=800)},# 6m-2a
+        {"ultimoLogin": hoje - td(days=1000), "conta_criada_em": hoje - td(days=1200)},# 2-4a
+        {"ultimoLogin": hoje - td(days=1800), "conta_criada_em": hoje - td(days=1900)},# 4a+
     ]
-    out = uso_retencao(contas)
-    assert out["nuncaAcessou"] == 1
-    assert out["inativos2Anos"] == 1
-    assert out["recorrentes6Meses"] == 1
-    assert out["totalContas"] == 3
+    out = faixas_de_acesso(contas)
+    assert sum(r["quantidade"] for r in out) == len(contas)
+    assert [r["faixa"] for r in out] == FAIXAS_ACESSO_ORDEM
+
+
+def test_faixas_de_acesso_uma_vez_apenas_pega_null_e_mesmo_dia():
+    from datetime import timedelta as td
+    hoje = datetime.now(timezone.utc)
+    contas = [
+        {"ultimoLogin": None, "conta_criada_em": hoje},
+        {"ultimoLogin": hoje, "conta_criada_em": hoje},
+    ]
+    out = faixas_de_acesso(contas)
+    uma_vez = next(r for r in out if r["faixa"] == "Uma vez apenas")
+    assert uma_vez["quantidade"] == 2
+
+
+def test_faixas_de_acesso_percent_soma_100():
+    from datetime import timedelta as td
+    hoje = datetime.now(timezone.utc)
+    contas = [{"ultimoLogin": hoje - td(days=i * 30), "conta_criada_em": hoje - td(days=i * 30 + 500)} for i in range(20)]
+    out = faixas_de_acesso(contas)
+    soma = sum(r["percentPct"] for r in out)
+    assert 99.5 <= soma <= 100.5, f"soma percent {soma}"
+
+
+def test_faixas_de_acesso_vazio():
+    out = faixas_de_acesso([])
+    assert all(r["quantidade"] == 0 and r["percentPct"] == 0.0 for r in out)
+    assert len(out) == 5
 
 
 if __name__ == "__main__":

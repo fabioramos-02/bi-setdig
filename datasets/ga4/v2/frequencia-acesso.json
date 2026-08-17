@@ -1,0 +1,18 @@
+[
+  {
+    "ativosHoje": 89804,
+    "ativosSemana": 455719,
+    "ativosMes": 1155776,
+    "totalUsuariosMes": 110450,
+    "sessoesMes": 132312,
+    "stickinessPct": 7.8,
+    "fidelidadeSemanaPct": 39.4,
+    "sessoesPorUsuario": 1.2,
+    "diasEntreAcessos": 23.3,
+    "cohortSemana": "2026-08-10 a 2026-08-16",
+    "cohortTamanho": 1905,
+    "retencaoD1Pct": 14.8,
+    "retencaoD7Pct": 0.2,
+    "retencaoD30Pct": 0.0
+  }
+]

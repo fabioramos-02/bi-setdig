@@ -222,6 +222,20 @@ def run_ga4_perfil() -> None:
     publish("ga4", "horarios", horarios, version="v2")
     print(f"[ga4] horarios -> {[(k, len(v)) for k, v in horarios.items()]}")
 
+    # Cadência de retorno: DAU/WAU/MAU + retenção cohort D1/D7/D30 (ver plano
+    # ~/.claude/plans/feature-levantamento-e-sequential-pie.md § Extensão 1).
+    from transform import frequencia as t_freq
+    sticky = ga4.get_ativos_janela()
+    cohort = ga4.get_cohort_semanal_retencao()
+    freq = t_freq.calcular_cadencia(sticky, cohort)
+    validate_rows([freq], required=["ativosMes"], non_negative=[
+        "ativosHoje", "ativosSemana", "ativosMes", "totalUsuariosMes", "sessoesMes",
+        "stickinessPct", "fidelidadeSemanaPct", "sessoesPorUsuario",
+        "cohortTamanho", "retencaoD1Pct", "retencaoD7Pct", "retencaoD30Pct",
+    ])
+    publish("ga4", "frequencia-acesso", [freq], version="v2")
+    print(f"[ga4] frequencia-acesso -> {freq}")
+
 
 def run_sites() -> None:
     """Relação de sites monitorados no Matomo (SitesManager) — alimenta o menu
@@ -301,11 +315,11 @@ def run_msdigital_db() -> None:
     publish("msdigital-db", "contas-por-cidade", cidades)
     print(f"[msdigital-db] cidades -> {len(cidades)} municípios")
 
-    uso = t_ms.uso_retencao(contas)
-    validate_rows([uso], required=["nuncaAcessou", "inativos2Anos", "recorrentes6Meses", "totalContas"],
-                  non_negative=["nuncaAcessou", "inativos2Anos", "recorrentes6Meses", "totalContas"])
-    publish("msdigital-db", "uso-retencao", [uso])
-    print(f"[msdigital-db] uso-retencao -> {uso}")
+    faixas = t_ms.faixas_de_acesso(contas)
+    validate_rows(faixas, required=["faixa", "quantidade", "percentPct"],
+                  non_negative=["quantidade", "percentPct"])
+    publish("msdigital-db", "faixas-de-acesso", faixas)
+    print(f"[msdigital-db] faixas-de-acesso -> {[(r['faixa'], r['quantidade']) for r in faixas]}")
 
 
 def run_qualidade() -> None:

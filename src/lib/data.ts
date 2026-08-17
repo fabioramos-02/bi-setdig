@@ -56,6 +56,29 @@ export function getGa4Horarios(): BreakdownPorPeriodo<HorarioGa4> {
   return readDataset<BreakdownPorPeriodo<HorarioGa4>>("ga4", "v2", "horarios") ?? BREAKDOWN_VAZIO;
 }
 
+/** Cadência de retorno ao app — DAU/WAU/MAU + cohort D1/D7/D30.
+ *  Snapshot (janelas fixas 1/7/28 dias — não reage ao filtro de período). */
+export type FrequenciaAcesso = {
+  ativosHoje: number;
+  ativosSemana: number;
+  ativosMes: number;
+  totalUsuariosMes: number;
+  sessoesMes: number;
+  stickinessPct: number;
+  fidelidadeSemanaPct: number;
+  sessoesPorUsuario: number;
+  diasEntreAcessos: number | null;
+  cohortSemana: string;
+  cohortTamanho: number;
+  retencaoD1Pct: number;
+  retencaoD7Pct: number;
+  retencaoD30Pct: number;
+};
+export function getGa4FrequenciaAcesso(): FrequenciaAcesso | null {
+  const rows = readDataset<FrequenciaAcesso[]>("ga4", "v2", "frequencia-acesso");
+  return rows?.[0] ?? null;
+}
+
 export type Cidade = { cidade: string; visitas: number };
 export type Navegador = { navegador: string; visitas: number };
 export type Dispositivo = { dispositivo: string; visitas: number };
@@ -217,12 +240,7 @@ export type ContasResumo = {
 export type ContaPorAno = { ano: number; criadas: number; ativas: number };
 export type ContaPorFaixaEtaria = { faixa: string; quantidade: number };
 export type ContaPorCidade = { cidade: string; codigoIbge: string; ativas: number };
-export type UsoRetencao = {
-  nuncaAcessou: number;
-  inativos2Anos: number;
-  recorrentes6Meses: number;
-  totalContas: number;
-};
+export type FaixaAcesso = { faixa: string; quantidade: number; percentPct: number };
 export type ContaCriadaDia = { data: string; criadas: number; ativas: number };
 
 export function getMsdigitalContasResumo(): ContasResumo | null {
@@ -238,12 +256,25 @@ export function getMsdigitalContasPorFaixaEtaria(): ContaPorFaixaEtaria[] {
 export function getMsdigitalContasPorCidade(): ContaPorCidade[] {
   return readDataset<ContaPorCidade[]>("msdigital-db", "v1", "contas-por-cidade") ?? [];
 }
-export function getMsdigitalUsoRetencao(): UsoRetencao | null {
-  const rows = readDataset<UsoRetencao[]>("msdigital-db", "v1", "uso-retencao");
-  return rows?.[0] ?? null;
+export function getMsdigitalFaixasDeAcesso(): FaixaAcesso[] {
+  return readDataset<FaixaAcesso[]>("msdigital-db", "v1", "faixas-de-acesso") ?? [];
 }
 export function getMsdigitalContasCriadasPorDia(): ContaCriadaDia[] {
   return readDataset<ContaCriadaDia[]>("msdigital-db", "v1", "contas-criadas-por-dia") ?? [];
+}
+
+/** Timestamp ISO da última publicação de um dataset (datasets/catalog.json).
+ *  ponytail: catalog.json vive na raiz de datasets/, não em source/version/ */
+export function getDatasetUpdatedAt(source: string, dataset: string): string | null {
+  const filePath = path.join(process.cwd(), "datasets", "catalog.json");
+  if (!fs.existsSync(filePath)) return null;
+  const catalog = JSON.parse(fs.readFileSync(filePath, "utf-8")) as {
+    source: string;
+    dataset: string;
+    updatedAt: string;
+  }[];
+  const entry = catalog.find((e) => e.source === source && e.dataset === dataset);
+  return entry?.updatedAt ?? null;
 }
 
 // Relação de sites monitorados no Matomo (SitesManager). Estático — a lista

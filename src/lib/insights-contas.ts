@@ -1,5 +1,9 @@
-import type { ContasResumo, ContaPorFaixaEtaria, UsoRetencao, ContaCriadaDia } from "./data";
+import type { ContasResumo, ContaPorFaixaEtaria, FaixaAcesso, ContaCriadaDia } from "./data";
 import type { PeriodoState } from "./period-filter";
+
+function achaFaixa(faixas: FaixaAcesso[], nome: string): FaixaAcesso | undefined {
+  return faixas.find((f) => f.faixa === nome);
+}
 
 /** Cálculos e frases-âncora pra aba "Contas" (SQL Server MS_digital).
  *  Ver docs/msdigital/spec-contas.md — texto voltado ao gestor, não à métrica.
@@ -60,13 +64,14 @@ export function pctSemInformacaoNascimento(faixas: ContaPorFaixaEtaria[]): numbe
   return (100 * semInfo) / total;
 }
 
-export function situacaoGeral(resumo: ContasResumo, retencao: UsoRetencao | null): string {
+export function situacaoGeral(resumo: ContasResumo, faixas: FaixaAcesso[]): string {
   const partes = [
     `O app já reúne ${resumo.contasTotal.toLocaleString("pt-BR")} contas criadas desde 2020; ${resumo.taxaAtivacaoPct.toFixed(1)}% delas seguem ativas.`,
   ];
-  if (retencao && retencao.recorrentes6Meses > 0) {
+  const recentes = achaFaixa(faixas, "Nos últimos 6 meses");
+  if (recentes && recentes.quantidade > 0) {
     partes.push(
-      `Nos últimos 6 meses, ${retencao.recorrentes6Meses.toLocaleString("pt-BR")} pessoas voltaram ao app.`,
+      `Nos últimos 6 meses, ${recentes.quantidade.toLocaleString("pt-BR")} pessoas voltaram ao app.`,
     );
   }
   if (resumo.matriculas > 0) {
@@ -77,31 +82,55 @@ export function situacaoGeral(resumo: ContasResumo, retencao: UsoRetencao | null
   return partes.join(" ");
 }
 
+/** Frase-âncora da distribuição de acesso. Foca no maior segmento ou no
+ *  "Uma vez apenas" quando ele é dominante (>30% = fricção crítica). */
+export function fraseFaixaMaior(faixas: FaixaAcesso[]): string {
+  const total = faixas.reduce((a, f) => a + f.quantidade, 0);
+  if (total === 0) return "Sem contas cadastradas para analisar.";
+  const uma = achaFaixa(faixas, "Uma vez apenas");
+  if (uma && uma.percentPct >= 30) {
+    return `${uma.percentPct.toFixed(1)}% das contas foram criadas e nunca voltaram — ${uma.quantidade.toLocaleString("pt-BR")} pessoas abriram o app apenas uma vez.`;
+  }
+  const recentes = achaFaixa(faixas, "Nos últimos 6 meses");
+  if (recentes && recentes.percentPct >= 40) {
+    return `${recentes.percentPct.toFixed(1)}% das contas voltaram ao app nos últimos 6 meses.`;
+  }
+  const maior = [...faixas].sort((a, b) => b.quantidade - a.quantidade)[0];
+  return `A maior parte das contas (${maior.percentPct.toFixed(1)}%) se encaixa em "${maior.faixa}".`;
+}
+
 export type PontoAtencao = { severidade: "alerta" | "atencao" | "info"; texto: string };
 
 export function pontosAtencao(
   resumo: ContasResumo,
-  retencao: UsoRetencao | null,
-  faixas: ContaPorFaixaEtaria[],
+  faixasAcesso: FaixaAcesso[],
+  faixasIdade: ContaPorFaixaEtaria[],
 ): PontoAtencao[] {
   const out: PontoAtencao[] = [];
-  if (retencao && retencao.totalContas > 0) {
-    const pctNunca = (100 * retencao.nuncaAcessou) / retencao.totalContas;
-    if (pctNunca > 5) {
-      out.push({
-        severidade: "atencao",
-        texto: `${pctNunca.toFixed(1)}% das contas foram criadas mas nunca abriram o app — investigar fricção no primeiro acesso.`,
-      });
-    }
-    const pctInativos = (100 * retencao.inativos2Anos) / retencao.totalContas;
-    if (pctInativos > 30) {
-      out.push({
-        severidade: "alerta",
-        texto: `${pctInativos.toFixed(1)}% das contas estão sem acesso há mais de 2 anos — considerar campanhas de reengajamento.`,
-      });
-    }
+  const uma = achaFaixa(faixasAcesso, "Uma vez apenas");
+  if (uma && uma.percentPct > 10) {
+    out.push({
+      severidade: uma.percentPct > 30 ? "alerta" : "atencao",
+      texto: `${uma.percentPct.toFixed(1)}% das contas foram criadas e nunca voltaram — investigar fricção no primeiro acesso.`,
+    });
   }
-  const pctSemInfo = pctSemInformacaoNascimento(faixas);
+  const antigas = achaFaixa(faixasAcesso, "Mais de 4 anos");
+  const doisQuatro = achaFaixa(faixasAcesso, "Entre 2 e 4 anos");
+  const abandono = (antigas?.percentPct ?? 0) + (doisQuatro?.percentPct ?? 0);
+  if (abandono > 30) {
+    out.push({
+      severidade: "alerta",
+      texto: `${abandono.toFixed(1)}% das contas estão sem acesso há mais de 2 anos — considerar campanhas de reengajamento.`,
+    });
+  }
+  const recentes = achaFaixa(faixasAcesso, "Nos últimos 6 meses");
+  if (recentes && recentes.percentPct >= 25) {
+    out.push({
+      severidade: "info",
+      texto: `${recentes.percentPct.toFixed(1)}% das contas voltaram ao app nos últimos 6 meses — base engajada saudável.`,
+    });
+  }
+  const pctSemInfo = pctSemInformacaoNascimento(faixasIdade);
   if (pctSemInfo > 50) {
     out.push({
       severidade: "info",

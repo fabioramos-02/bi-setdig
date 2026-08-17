@@ -142,28 +142,56 @@ def contas_por_dia(raw: list[dict]) -> list[dict]:
     return saida
 
 
-def uso_retencao(contas: list[dict]) -> dict:
-    """Ver docs/msdigital/indicadores-inatividade.md — sem loginCount, os
-    3 recortes usam ultimoLogin como proxy."""
+FAIXAS_ACESSO_ORDEM = [
+    "Nos últimos 6 meses",
+    "Entre 6 meses e 2 anos",
+    "Entre 2 e 4 anos",
+    "Mais de 4 anos",
+    "Uma vez apenas",
+]
+
+
+def faixas_de_acesso(contas: list[dict]) -> list[dict]:
+    """5 faixas mutuamente exclusivas por ultimoLogin. Soma = len(contas).
+
+    'Uma vez apenas' é proxy — banco não tem loginCount. Captura contas que
+    nunca logaram (ultimoLogin NULL) OU logaram apenas no mesmo dia do
+    cadastro. Ver docs/msdigital/indicadores-inatividade.md.
+
+    Ordem visual (retornada): recente → antigo → 'uma vez apenas' (categoria
+    à parte, exibida por último no gráfico).
+    """
     hoje = datetime.now(timezone.utc)
-    dois_anos = hoje - timedelta(days=730)  # ponytail: ano bissexto ±1 dia irrelevante
-    seis_meses_atras = hoje - timedelta(days=182)
-    nunca = 0
-    inativos_2a = 0
-    recorrentes = 0
+    seis_meses = hoje - timedelta(days=182)
+    dois_anos = hoje - timedelta(days=730)
+    quatro_anos = hoje - timedelta(days=1461)
+    contagem = {r: 0 for r in FAIXAS_ACESSO_ORDEM}
     for c in contas:
         ul = c.get("ultimoLogin")
-        if ul is None:
-            nunca += 1
-            continue
-        # pymssql devolve datetime aware (datetimeoffset)
-        if ul < dois_anos:
-            inativos_2a += 1
-        if ul > seis_meses_atras:
-            recorrentes += 1
-    return {
-        "nuncaAcessou": nunca,
-        "inativos2Anos": inativos_2a,
-        "recorrentes6Meses": recorrentes,
-        "totalContas": len(contas),
-    }
+        criada = c.get("conta_criada_em")
+        mesmo_dia = (
+            ul is not None
+            and criada is not None
+            and hasattr(ul, "date")
+            and hasattr(criada, "date")
+            and ul.date() == criada.date()
+        )
+        if ul is None or mesmo_dia:
+            contagem["Uma vez apenas"] += 1
+        elif ul > seis_meses:
+            contagem["Nos últimos 6 meses"] += 1
+        elif ul > dois_anos:
+            contagem["Entre 6 meses e 2 anos"] += 1
+        elif ul > quatro_anos:
+            contagem["Entre 2 e 4 anos"] += 1
+        else:
+            contagem["Mais de 4 anos"] += 1
+    total = len(contas)
+    return [
+        {
+            "faixa": r,
+            "quantidade": contagem[r],
+            "percentPct": round(100 * contagem[r] / total, 1) if total else 0.0,
+        }
+        for r in FAIXAS_ACESSO_ORDEM
+    ]

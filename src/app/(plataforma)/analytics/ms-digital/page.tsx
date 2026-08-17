@@ -16,8 +16,10 @@ import {
   getMsdigitalContasPorAno,
   getMsdigitalContasPorFaixaEtaria,
   getMsdigitalContasPorCidade,
-  getMsdigitalUsoRetencao,
+  getMsdigitalFaixasDeAcesso,
   getMsdigitalContasCriadasPorDia,
+  getDatasetUpdatedAt,
+  getGa4FrequenciaAcesso,
 } from "@/lib/data";
 import { resumoCatalogo, porCategoria } from "@/lib/catalogo-app";
 
@@ -42,8 +44,11 @@ export default function AnalyticsMsDigitalPage() {
   const contasPorAno = getMsdigitalContasPorAno();
   const contasPorFaixaEtaria = getMsdigitalContasPorFaixaEtaria();
   const contasPorCidade = getMsdigitalContasPorCidade();
-  const usoRetencao = getMsdigitalUsoRetencao();
+  const faixasDeAcesso = getMsdigitalFaixasDeAcesso();
+  const snapshotAtualizadoEm = getDatasetUpdatedAt("msdigital-db", "faixas-de-acesso");
   const contasCriadasPorDia = getMsdigitalContasCriadasPorDia();
+  const frequenciaAcesso = getGa4FrequenciaAcesso();
+  const snapshotFrequenciaEm = getDatasetUpdatedAt("ga4", "frequencia-acesso");
 
   if (visaoGeral.mes.length === 0) {
     return (
@@ -73,8 +78,11 @@ export default function AnalyticsMsDigitalPage() {
       contasPorAno={contasPorAno}
       contasPorFaixaEtaria={contasPorFaixaEtaria}
       contasPorCidade={contasPorCidade}
-      usoRetencao={usoRetencao}
+      faixasDeAcesso={faixasDeAcesso}
+      snapshotAtualizadoEm={snapshotAtualizadoEm}
       contasCriadasPorDia={contasCriadasPorDia}
+      frequenciaAcesso={frequenciaAcesso}
+      snapshotFrequenciaEm={snapshotFrequenciaEm}
     />
   );
 }

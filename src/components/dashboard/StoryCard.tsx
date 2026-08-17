@@ -8,19 +8,29 @@ export function StoryCard({
   caption,
   children,
   comoLer,
+  snapshot = false,
 }: {
   anchor: React.ReactNode;
   caption?: string;
   children?: React.ReactNode;
   comoLer: string;
+  /** Marca visual pra dados estáticos (snapshot) — fundo tint + borda tracejada,
+   *  reforça a semântica do SnapshotBadge. */
+  snapshot?: boolean;
 }) {
+  const background = snapshot
+    ? "var(--ds-color-warning-50, #fff8e1)"
+    : "var(--ds-color-background)";
+  const border = snapshot
+    ? "1px dashed var(--ds-color-warning, #d97706)"
+    : "1px solid var(--ds-color-border)";
   return (
     <div
       style={{
-        border: "1px solid var(--ds-color-border)",
+        border,
         borderRadius: "var(--ds-radius-md)",
         padding: "var(--ds-spacing-20)",
-        background: "var(--ds-color-background)",
+        background,
       }}
       className="break-inside-avoid"
     >
