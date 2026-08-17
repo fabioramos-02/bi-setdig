@@ -273,6 +273,12 @@ def run_msdigital_db() -> None:
     contas = msdigital_db.get_contas()
     matriculas = msdigital_db.get_matriculas_count()
 
+    diarias = t_ms.contas_por_dia(msdigital_db.get_contas_por_dia())
+    validate_rows(diarias, required=["data", "criadas", "ativas"],
+                  non_negative=["criadas", "ativas"])
+    publish("msdigital-db", "contas-criadas-por-dia", diarias)
+    print(f"[msdigital-db] diarias -> {len(diarias)} dias")
+
     r = t_ms.resumo(contas, matriculas)
     validate_rows([r], required=["contasTotal", "contasAtivas", "matriculas"],
                   non_negative=["contasTotal", "contasAtivas", "matriculas", "taxaAtivacaoPct"])

@@ -223,6 +223,7 @@ export type UsoRetencao = {
   recorrentes6Meses: number;
   totalContas: number;
 };
+export type ContaCriadaDia = { data: string; criadas: number; ativas: number };
 
 export function getMsdigitalContasResumo(): ContasResumo | null {
   const rows = readDataset<ContasResumo[]>("msdigital-db", "v1", "contas-resumo");
@@ -240,6 +241,9 @@ export function getMsdigitalContasPorCidade(): ContaPorCidade[] {
 export function getMsdigitalUsoRetencao(): UsoRetencao | null {
   const rows = readDataset<UsoRetencao[]>("msdigital-db", "v1", "uso-retencao");
   return rows?.[0] ?? null;
+}
+export function getMsdigitalContasCriadasPorDia(): ContaCriadaDia[] {
+  return readDataset<ContaCriadaDia[]>("msdigital-db", "v1", "contas-criadas-por-dia") ?? [];
 }
 
 // Relação de sites monitorados no Matomo (SitesManager). Estático — a lista

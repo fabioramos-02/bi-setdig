@@ -17,6 +17,7 @@ import {
   getMsdigitalContasPorFaixaEtaria,
   getMsdigitalContasPorCidade,
   getMsdigitalUsoRetencao,
+  getMsdigitalContasCriadasPorDia,
 } from "@/lib/data";
 import { resumoCatalogo, porCategoria } from "@/lib/catalogo-app";
 
@@ -42,6 +43,7 @@ export default function AnalyticsMsDigitalPage() {
   const contasPorFaixaEtaria = getMsdigitalContasPorFaixaEtaria();
   const contasPorCidade = getMsdigitalContasPorCidade();
   const usoRetencao = getMsdigitalUsoRetencao();
+  const contasCriadasPorDia = getMsdigitalContasCriadasPorDia();
 
   if (visaoGeral.mes.length === 0) {
     return (
@@ -72,6 +74,7 @@ export default function AnalyticsMsDigitalPage() {
       contasPorFaixaEtaria={contasPorFaixaEtaria}
       contasPorCidade={contasPorCidade}
       usoRetencao={usoRetencao}
+      contasCriadasPorDia={contasCriadasPorDia}
     />
   );
 }

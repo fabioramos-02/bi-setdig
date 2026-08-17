@@ -3,17 +3,20 @@
 import { MetricCard } from "@/components/dashboard/MetricCard";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
-import { StackedBarChart } from "@/components/charts/StackedBarChart";
 import { AgeHistogram } from "@/components/charts/AgeHistogram";
 import { ChoroplethMap } from "@/components/charts/ChoroplethMap";
+import { ContasPorAnoChart } from "@/components/charts/ContasPorAnoChart";
 import type {
   ContasResumo,
   ContaPorAno,
   ContaPorFaixaEtaria,
   ContaPorCidade,
   UsoRetencao,
+  ContaCriadaDia,
 } from "@/lib/data";
+import type { PeriodoState } from "@/lib/period-filter";
 import {
+  contasNoPeriodo,
   pctSemInformacaoNascimento,
   pontosAtencao,
   saudeAtivacao,
@@ -27,48 +30,52 @@ const CORES_SAUDE = {
 } as const;
 
 /** Aba "Contas" — cadastro do app MS Digital (SQL Server MS_digital).
- * Snapshot único, ignora o filtro de período (cadastro é estado, não série).
- * Ver docs/msdigital/spec-contas.md. */
+ * KPI de "criadas no período" reage ao filtro (série diária + agregação
+ * cliente-side); demais painéis são snapshot atual do cadastro. */
 export function ContasTab({
   resumo,
   porAno,
   faixaEtaria,
   porCidade,
   retencao,
+  criadasPorDia,
+  estadoPeriodo,
+  rotuloPeriodo,
 }: {
   resumo: ContasResumo;
   porAno: ContaPorAno[];
   faixaEtaria: ContaPorFaixaEtaria[];
   porCidade: ContaPorCidade[];
   retencao: UsoRetencao | null;
+  criadasPorDia: ContaCriadaDia[];
+  estadoPeriodo: PeriodoState;
+  rotuloPeriodo: string;
 }) {
   const saude = saudeAtivacao(resumo.taxaAtivacaoPct);
   const situacao = situacaoGeral(resumo, retencao);
   const alertas = pontosAtencao(resumo, retencao, faixaEtaria);
   const pctSemNascimento = pctSemInformacaoNascimento(faixaEtaria);
 
-  const canceladas = resumo.contasTotal - resumo.contasAtivas;
   const anoAtual = new Date().getFullYear();
+  const semInfo = faixaEtaria.find((f) => f.faixa === "Não informado")?.quantidade ?? 0;
+  const comInfo = faixaEtaria.filter((f) => f.faixa !== "Não informado");
+  const totalComInfo = comInfo.reduce((a, f) => a + f.quantidade, 0);
 
-  const itensPorAno = porAno.map((r) => ({
-    label: r.ano === anoAtual ? `${r.ano} (parcial)` : String(r.ano),
-    atendidos: r.ativas,
-    pendentes: Math.max(0, r.criadas - r.ativas),
-  }));
+  // Reage ao filtro de período (dia/semana/mês/ano/intervalo).
+  const noPeriodo = contasNoPeriodo(criadasPorDia, estadoPeriodo);
 
-  // ChoroplethMap espera {cidade, visitas} — reusar sem tocar no componente.
   const cidadesParaMapa = porCidade
     .filter((c) => c.codigoIbge)
     .map((c) => ({ cidade: c.cidade, visitas: c.ativas }));
 
   const topCidades = porCidade.slice(0, 5);
-  const percentComEndereco = resumo.contasTotal > 0
+  const percentComEndereco = resumo.contasAtivas > 0
     ? (100 * porCidade.reduce((acc, c) => acc + c.ativas, 0)) / resumo.contasAtivas
     : 0;
 
   return (
     <div className="flex flex-col gap-6">
-      {/* 1. Situação Geral */}
+      {/* Situação geral */}
       <DashboardSection title="Situação geral">
         <div className="flex flex-col sm:flex-row gap-4 items-start">
           <div
@@ -87,14 +94,14 @@ export function ContasTab({
         </div>
       </DashboardSection>
 
-      {/* 2. KPIs */}
+      {/* KPIs de cadastro (snapshot atual) */}
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         <MetricCard
           label="Contas ativas"
           value={resumo.contasAtivas}
           sub={`${resumo.taxaAtivacaoPct.toFixed(1)}% do total`}
         />
-        <MetricCard label="Contas criadas" value={resumo.contasTotal} sub="desde 2020" />
+        <MetricCard label="Contas criadas" value={resumo.contasTotal} sub="total acumulado" />
         <MetricCard
           label="Servidores com matrícula"
           value={resumo.matriculas}
@@ -107,29 +114,60 @@ export function ContasTab({
         />
       </div>
 
-      {/* 3. Contas criadas por ano */}
-      <StoryCard
-        anchor={`O app cresceu de ${porAno[0]?.criadas.toLocaleString("pt-BR") ?? "—"} contas em ${porAno[0]?.ano ?? "—"} para ${resumo.contasTotal.toLocaleString("pt-BR")} contas hoje.`}
-        caption={`${resumo.contasAtivas.toLocaleString("pt-BR")} ativas, ${canceladas.toLocaleString("pt-BR")} canceladas.`}
-        comoLer="Cada barra mostra as contas criadas naquele ano — verde são as que seguem ativas, vermelho as que foram canceladas ou desativadas. O ano corrente é parcial (fecha em 31/12)."
-      >
-        <StackedBarChart itens={itensPorAno} />
-      </StoryCard>
+      {/* KPI reage ao filtro */}
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
+        <MetricCard
+          label={`Contas criadas ${rotuloPeriodo}`}
+          value={noPeriodo.criadas}
+          sub={
+            noPeriodo.criadas > 0
+              ? `${noPeriodo.ativas.toLocaleString("pt-BR")} seguem ativas`
+              : "sem novas contas nesse recorte"
+          }
+        />
+        <MetricCard
+          label={`Contas ativadas ${rotuloPeriodo}`}
+          value={noPeriodo.ativas}
+          sub={
+            noPeriodo.criadas > 0
+              ? `${((100 * noPeriodo.ativas) / noPeriodo.criadas).toFixed(1)}% das criadas no recorte`
+              : "—"
+          }
+        />
+      </div>
 
-      {/* 4. Perfil etário */}
+      {/* Contas criadas por ano — vertical, título igual Qlik */}
+      <DashboardSection title="Contas criadas por ano">
+        <ContasPorAnoChart dados={porAno} />
+        <p style={{ color: "var(--ds-color-text-muted)" }} className="text-xs mt-3">
+          Cinza: total de contas criadas naquele ano. Azul: as que seguem ativas hoje. Ano {anoAtual} é parcial.
+        </p>
+      </DashboardSection>
+
+      {/* Faixa etária — sem "Não informado" no gráfico */}
       <StoryCard
         anchor="Qual faixa etária mais usa o app?"
-        caption={
-          pctSemNascimento > 50
-            ? `Apenas ${(100 - pctSemNascimento).toFixed(0)}% dos usuários informaram a data de nascimento — o gráfico mostra o perfil dessa parcela.`
-            : "Distribuição das contas por faixa etária."
-        }
-        comoLer='A barra "Não informado" reúne os cadastros sem data de nascimento no banco — não significa que essas contas não existem, só que o perfil etário delas é desconhecido.'
+        caption={`Distribuição das ${totalComInfo.toLocaleString("pt-BR")} contas que informaram data de nascimento no cadastro.`}
+        comoLer="A faixa etária é auto-declarada pelo usuário no cadastro. Cadastros sem essa informação estão contabilizados fora do gráfico, no card ao lado."
       >
-        <AgeHistogram faixas={faixaEtaria} />
+        <div className="grid gap-4 grid-cols-1 lg:grid-cols-4">
+          <div className="lg:col-span-3">
+            <AgeHistogram faixas={faixaEtaria} />
+          </div>
+          <div className="flex flex-col gap-3">
+            <MetricCard
+              label="Sem data de nascimento"
+              value={semInfo}
+              sub={`${pctSemNascimento.toFixed(1)}% dos cadastros`}
+            />
+            <p style={{ color: "var(--ds-color-text-muted)" }} className="text-xs">
+              Essas contas existem, só não têm o campo preenchido — o perfil etário mostra apenas quem informou.
+            </p>
+          </div>
+        </div>
       </StoryCard>
 
-      {/* 5. Uso do app */}
+      {/* Uso do app */}
       {retencao && (
         <StoryCard
           anchor={`${retencao.recorrentes6Meses.toLocaleString("pt-BR")} pessoas voltaram ao app nos últimos 6 meses.`}
@@ -156,7 +194,7 @@ export function ContasTab({
         </StoryCard>
       )}
 
-      {/* 6. Distribuição geográfica */}
+      {/* Distribuição geográfica */}
       <StoryCard
         anchor={`${topCidades[0]?.cidade ?? "—"} concentra a maior parte dos cadastros com endereço em MS.`}
         caption={`Apenas ${percentComEndereco.toFixed(1)}% das contas ativas têm endereço cadastrado — o mapa mostra a distribuição dessa parcela.`}
@@ -172,7 +210,7 @@ export function ContasTab({
         )}
       </StoryCard>
 
-      {/* 7. Pontos de atenção */}
+      {/* Pontos de atenção */}
       {alertas.length > 0 && (
         <DashboardSection title="Pontos de atenção">
           <ul className="flex flex-col gap-2">

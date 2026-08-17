@@ -61,6 +61,24 @@ def get_contas() -> list[dict]:
     return _fetch(_CONTAS_SQL)
 
 
+_CONTAS_POR_DIA_SQL = """
+    SELECT
+        CAST(createdAt AS DATE) AS data,
+        COUNT(*) AS criadas,
+        SUM(CASE WHEN ativo = 1 THEN 1 ELSE 0 END) AS ativas
+    FROM dbo.Conta
+    WHERE createdAt IS NOT NULL
+    GROUP BY CAST(createdAt AS DATE)
+    ORDER BY CAST(createdAt AS DATE)
+"""
+
+
+def get_contas_por_dia() -> list[dict]:
+    """Série diária de contas criadas — alimenta o filtro reativo (dia/semana/
+    mês/ano) na aba Contas. ~2300 pontos, ~70KB publicado."""
+    return _fetch(_CONTAS_POR_DIA_SQL)
+
+
 def get_matriculas_count() -> int:
     conn = _conn()
     try:

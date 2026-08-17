@@ -128,6 +128,20 @@ def contas_ativas_por_cidade(contas: list[dict]) -> list[dict]:
     return linhas
 
 
+def contas_por_dia(raw: list[dict]) -> list[dict]:
+    """Normaliza pra {data: 'YYYY-MM-DD', criadas, ativas} — cliente agrega em
+    semana/mês/ano via lib/period-filter.ts."""
+    saida = []
+    for r in raw:
+        d = r.get("data")
+        if d is None:
+            continue
+        iso = d.isoformat() if hasattr(d, "isoformat") else str(d)
+        saida.append({"data": iso[:10], "criadas": int(r.get("criadas") or 0),
+                      "ativas": int(r.get("ativas") or 0)})
+    return saida
+
+
 def uso_retencao(contas: list[dict]) -> dict:
     """Ver docs/msdigital/indicadores-inatividade.md — sem loginCount, os
     3 recortes usam ultimoLogin como proxy."""

@@ -40,6 +40,7 @@ import type {
   ContaPorFaixaEtaria,
   ContaPorCidade,
   UsoRetencao,
+  ContaCriadaDia,
 } from "@/lib/data";
 import type { ResumoCatalogo, CategoriaResumo } from "@/lib/catalogo-app";
 
@@ -76,6 +77,7 @@ export function MsDigitalClient({
   contasPorFaixaEtaria,
   contasPorCidade,
   usoRetencao,
+  contasCriadasPorDia,
 }: {
   visaoGeral: BreakdownPorPeriodo<GA4Overview>;
   plataforma: BreakdownPorPeriodo<Plataforma>;
@@ -93,6 +95,7 @@ export function MsDigitalClient({
   contasPorFaixaEtaria: ContaPorFaixaEtaria[];
   contasPorCidade: ContaPorCidade[];
   usoRetencao: UsoRetencao | null;
+  contasCriadasPorDia: ContaCriadaDia[];
 }) {
   const [abaAtiva, setAbaAtiva] = useState("visao-geral");
   const { estado, min, max } = usePeriodo();
@@ -275,6 +278,9 @@ export function MsDigitalClient({
           faixaEtaria={contasPorFaixaEtaria}
           porCidade={contasPorCidade}
           retencao={usoRetencao}
+          criadasPorDia={contasCriadasPorDia}
+          estadoPeriodo={estado}
+          rotuloPeriodo={rotuloPeriodo}
         />
       ),
     });

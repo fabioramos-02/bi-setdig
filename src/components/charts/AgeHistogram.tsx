@@ -3,20 +3,17 @@
 import { BarChart } from "./BarChart";
 import type { ContaPorFaixaEtaria } from "@/lib/data";
 
-/** Histograma de faixa etária — thin wrapper de BarChart com destaque visual
- * pra barra "Não informado" (cor neutra) e ordenação fixa das faixas. */
+/** Histograma de faixa etária — só as faixas com data informada. A parcela
+ * "Não informado" sai do gráfico (a barra dominava a escala e escondia o
+ * perfil real de quem informou) e vira nota/KPI fora, no chamador. */
 export function AgeHistogram({ faixas, height = 260 }: { faixas: ContaPorFaixaEtaria[]; height?: number }) {
+  const comInfo = faixas.filter((f) => f.faixa !== "Não informado");
   return (
     <BarChart
-      data={faixas as unknown as Record<string, string | number>[]}
+      data={comInfo as unknown as Record<string, string | number>[]}
       xKey="faixa"
       yKey="quantidade"
       height={height}
-      corPorIndice={(i) =>
-        faixas[i]?.faixa === "Não informado"
-          ? "var(--ds-color-neutral-400)"
-          : "var(--ds-color-primary-600)"
-      }
     />
   );
 }
