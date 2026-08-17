@@ -3,3 +3,4 @@ python-dotenv
 google-analytics-data
 google-auth
 psycopg2-binary
+pymssql

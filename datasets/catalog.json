@@ -383,5 +383,60 @@
     "schema": "data-platform/schemas/cartas-percepcao-por-orgao.schema.json",
     "rows": 39,
     "bytes": 12585
+  },
+  {
+    "dataset": "contas-resumo",
+    "source": "msdigital-db",
+    "owner": "SETDIG",
+    "updatedAt": "2026-08-17T19:26:14.893941+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/msdigital-db-contas-resumo.schema.json",
+    "rows": 1,
+    "bytes": 120
+  },
+  {
+    "dataset": "contas-por-ano",
+    "source": "msdigital-db",
+    "owner": "SETDIG",
+    "updatedAt": "2026-08-17T19:26:15.021053+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/msdigital-db-contas-por-ano.schema.json",
+    "rows": 7,
+    "bytes": 478
+  },
+  {
+    "dataset": "contas-por-faixa-etaria",
+    "source": "msdigital-db",
+    "owner": "SETDIG",
+    "updatedAt": "2026-08-17T19:26:15.086426+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/msdigital-db-contas-por-faixa-etaria.schema.json",
+    "rows": 8,
+    "bytes": 441
+  },
+  {
+    "dataset": "contas-por-cidade",
+    "source": "msdigital-db",
+    "owner": "SETDIG",
+    "updatedAt": "2026-08-17T19:26:15.111674+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/msdigital-db-contas-por-cidade.schema.json",
+    "rows": 78,
+    "bytes": 6541
+  },
+  {
+    "dataset": "uso-retencao",
+    "source": "msdigital-db",
+    "owner": "SETDIG",
+    "updatedAt": "2026-08-17T19:26:15.155708+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/msdigital-db-uso-retencao.schema.json",
+    "rows": 1,
+    "bytes": 125
   }
 ]

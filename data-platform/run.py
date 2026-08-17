@@ -259,6 +259,49 @@ def run_cartas() -> None:
     print(f"[cartas] relacao -> {out4} ({len(relacao)} cartas)")
 
 
+def run_msdigital_db() -> None:
+    """Cadastro do app MS Digital (SQL Server) — exige VPN.
+
+    Alimenta a aba "Contas" em analytics/ms-digital/. Snapshot único (não
+    reage ao filtro de período — ver decisão no plano
+    ~/.claude/plans/feature-levantamento-e-sequential-pie.md e
+    docs/msdigital/spec-contas.md).
+    """
+    from extract import msdigital_db
+    from transform import msdigital as t_ms
+
+    contas = msdigital_db.get_contas()
+    matriculas = msdigital_db.get_matriculas_count()
+
+    r = t_ms.resumo(contas, matriculas)
+    validate_rows([r], required=["contasTotal", "contasAtivas", "matriculas"],
+                  non_negative=["contasTotal", "contasAtivas", "matriculas", "taxaAtivacaoPct"])
+    publish("msdigital-db", "contas-resumo", [r])
+    print(f"[msdigital-db] resumo -> {r}")
+
+    por_ano = t_ms.contas_por_ano(contas)
+    validate_rows(por_ano, required=["ano", "criadas", "ativas"],
+                  non_negative=["criadas", "ativas"])
+    publish("msdigital-db", "contas-por-ano", por_ano)
+    print(f"[msdigital-db] por-ano -> {len(por_ano)} anos")
+
+    faixa = t_ms.contas_por_faixa_etaria(contas)
+    validate_rows(faixa, required=["faixa", "quantidade"], non_negative=["quantidade"])
+    publish("msdigital-db", "contas-por-faixa-etaria", faixa)
+    print(f"[msdigital-db] faixa-etaria -> {len(faixa)} buckets")
+
+    cidades = t_ms.contas_ativas_por_cidade(contas)
+    validate_rows(cidades, required=["cidade", "ativas"], non_negative=["ativas"])
+    publish("msdigital-db", "contas-por-cidade", cidades)
+    print(f"[msdigital-db] cidades -> {len(cidades)} municípios")
+
+    uso = t_ms.uso_retencao(contas)
+    validate_rows([uso], required=["nuncaAcessou", "inativos2Anos", "recorrentes6Meses", "totalContas"],
+                  non_negative=["nuncaAcessou", "inativos2Anos", "recorrentes6Meses", "totalContas"])
+    publish("msdigital-db", "uso-retencao", [uso])
+    print(f"[msdigital-db] uso-retencao -> {uso}")
+
+
 def run_qualidade() -> None:
     from extract import qualidade
     from transform import qualidade as t_qualidade
@@ -309,6 +352,7 @@ if __name__ == "__main__":
         ("sites", run_sites),
         ("cartas", run_cartas),
         ("qualidade", run_qualidade),
+        ("msdigital_db", run_msdigital_db),
     ]:
         try:
             fn()

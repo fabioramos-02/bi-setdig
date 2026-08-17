@@ -203,6 +203,45 @@ export function getAppCatalogoServicos(): ServicoCatalogo[] {
   return readDataset<ServicoCatalogo[]>("app", "v1", "catalogo-servicos") ?? [];
 }
 
+// --- Cadastro do app MS Digital (SQL Server MS_digital) ---
+// Fonte: data-platform/extract/msdigital_db.py. Snapshot (não varia por
+// período fixo) — cadastro é estado atual, não série. ponytail: os getters
+// abaixo ignoram BreakdownPorPeriodo pelo mesmo motivo de catalogo-servicos.
+// Ver docs/msdigital/spec-contas.md e indicadores-inatividade.md.
+export type ContasResumo = {
+  contasTotal: number;
+  contasAtivas: number;
+  matriculas: number;
+  taxaAtivacaoPct: number;
+};
+export type ContaPorAno = { ano: number; criadas: number; ativas: number };
+export type ContaPorFaixaEtaria = { faixa: string; quantidade: number };
+export type ContaPorCidade = { cidade: string; codigoIbge: string; ativas: number };
+export type UsoRetencao = {
+  nuncaAcessou: number;
+  inativos2Anos: number;
+  recorrentes6Meses: number;
+  totalContas: number;
+};
+
+export function getMsdigitalContasResumo(): ContasResumo | null {
+  const rows = readDataset<ContasResumo[]>("msdigital-db", "v1", "contas-resumo");
+  return rows?.[0] ?? null;
+}
+export function getMsdigitalContasPorAno(): ContaPorAno[] {
+  return readDataset<ContaPorAno[]>("msdigital-db", "v1", "contas-por-ano") ?? [];
+}
+export function getMsdigitalContasPorFaixaEtaria(): ContaPorFaixaEtaria[] {
+  return readDataset<ContaPorFaixaEtaria[]>("msdigital-db", "v1", "contas-por-faixa-etaria") ?? [];
+}
+export function getMsdigitalContasPorCidade(): ContaPorCidade[] {
+  return readDataset<ContaPorCidade[]>("msdigital-db", "v1", "contas-por-cidade") ?? [];
+}
+export function getMsdigitalUsoRetencao(): UsoRetencao | null {
+  const rows = readDataset<UsoRetencao[]>("msdigital-db", "v1", "uso-retencao");
+  return rows?.[0] ?? null;
+}
+
 // Relação de sites monitorados no Matomo (SitesManager). Estático — a lista
 // muda pouco; sem recorte por período (não é métrica). Alimenta o menu "Sites".
 export type Site = { idsite: number; nome: string; url: string };

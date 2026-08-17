@@ -1,0 +1,392 @@
+[
+  {
+    "cidade": "Campo Grande",
+    "codigoIbge": "5002704",
+    "ativas": 3158
+  },
+  {
+    "cidade": "Dourados",
+    "codigoIbge": "5003702",
+    "ativas": 687
+  },
+  {
+    "cidade": "Três Lagoas",
+    "codigoIbge": "5008305",
+    "ativas": 312
+  },
+  {
+    "cidade": "Corumbá",
+    "codigoIbge": "5003207",
+    "ativas": 178
+  },
+  {
+    "cidade": "Ponta Porã",
+    "codigoIbge": "5006606",
+    "ativas": 151
+  },
+  {
+    "cidade": "Nova Andradina",
+    "codigoIbge": "5006200",
+    "ativas": 110
+  },
+  {
+    "cidade": "Aquidauana",
+    "codigoIbge": "5001102",
+    "ativas": 89
+  },
+  {
+    "cidade": "Chapadão do Sul",
+    "codigoIbge": "5002951",
+    "ativas": 86
+  },
+  {
+    "cidade": "Paranaíba",
+    "codigoIbge": "5006309",
+    "ativas": 70
+  },
+  {
+    "cidade": "Maracaju",
+    "codigoIbge": "5005400",
+    "ativas": 70
+  },
+  {
+    "cidade": "Naviraí",
+    "codigoIbge": "5005707",
+    "ativas": 63
+  },
+  {
+    "cidade": "São Gabriel do Oeste",
+    "codigoIbge": "5007695",
+    "ativas": 57
+  },
+  {
+    "cidade": "Coxim",
+    "codigoIbge": "5003306",
+    "ativas": 55
+  },
+  {
+    "cidade": "Cassilândia",
+    "codigoIbge": "5002902",
+    "ativas": 47
+  },
+  {
+    "cidade": "Caarapó",
+    "codigoIbge": "5002407",
+    "ativas": 45
+  },
+  {
+    "cidade": "Rio Brilhante",
+    "codigoIbge": "5007208",
+    "ativas": 40
+  },
+  {
+    "cidade": "Jardim",
+    "codigoIbge": "5005004",
+    "ativas": 40
+  },
+  {
+    "cidade": "Amambai",
+    "codigoIbge": "5000609",
+    "ativas": 39
+  },
+  {
+    "cidade": "Sidrolândia",
+    "codigoIbge": "5007901",
+    "ativas": 38
+  },
+  {
+    "cidade": "Bataguassu",
+    "codigoIbge": "5001904",
+    "ativas": 34
+  },
+  {
+    "cidade": "Anastácio",
+    "codigoIbge": "5000708",
+    "ativas": 33
+  },
+  {
+    "cidade": "Fátima do Sul",
+    "codigoIbge": "5003801",
+    "ativas": 33
+  },
+  {
+    "cidade": "Ribas do Rio Pardo",
+    "codigoIbge": "5007109",
+    "ativas": 32
+  },
+  {
+    "cidade": "Costa Rica",
+    "codigoIbge": "5003256",
+    "ativas": 31
+  },
+  {
+    "cidade": "Itaporã",
+    "codigoIbge": "5004502",
+    "ativas": 27
+  },
+  {
+    "cidade": "Ivinhema",
+    "codigoIbge": "5004700",
+    "ativas": 27
+  },
+  {
+    "cidade": "Bonito",
+    "codigoIbge": "5002209",
+    "ativas": 24
+  },
+  {
+    "cidade": "Miranda",
+    "codigoIbge": "5005608",
+    "ativas": 24
+  },
+  {
+    "cidade": "Terenos",
+    "codigoIbge": "5008008",
+    "ativas": 22
+  },
+  {
+    "cidade": "Bela Vista",
+    "codigoIbge": "5002100",
+    "ativas": 20
+  },
+  {
+    "cidade": "Camapuã",
+    "codigoIbge": "5002605",
+    "ativas": 20
+  },
+  {
+    "cidade": "Ladário",
+    "codigoIbge": "5005202",
+    "ativas": 19
+  },
+  {
+    "cidade": "Nova Alvorada do Sul",
+    "codigoIbge": "5006002",
+    "ativas": 19
+  },
+  {
+    "cidade": "Aparecida do Taboado",
+    "codigoIbge": "5001003",
+    "ativas": 18
+  },
+  {
+    "cidade": "Mundo Novo",
+    "codigoIbge": "5005681",
+    "ativas": 16
+  },
+  {
+    "cidade": "Nioaque",
+    "codigoIbge": "5005806",
+    "ativas": 15
+  },
+  {
+    "cidade": "Batayporã",
+    "codigoIbge": "5002001",
+    "ativas": 14
+  },
+  {
+    "cidade": "Glória de Dourados",
+    "codigoIbge": "5004007",
+    "ativas": 14
+  },
+  {
+    "cidade": "Iguatemi",
+    "codigoIbge": "5004304",
+    "ativas": 14
+  },
+  {
+    "cidade": "Água Clara",
+    "codigoIbge": "5000203",
+    "ativas": 14
+  },
+  {
+    "cidade": "Itaquiraí",
+    "codigoIbge": "5004601",
+    "ativas": 13
+  },
+  {
+    "cidade": "Anaurilândia",
+    "codigoIbge": "5000807",
+    "ativas": 13
+  },
+  {
+    "cidade": "Sonora",
+    "codigoIbge": "5007935",
+    "ativas": 12
+  },
+  {
+    "cidade": "Antônio João",
+    "codigoIbge": "5000906",
+    "ativas": 12
+  },
+  {
+    "cidade": "Porto Murtinho",
+    "codigoIbge": "5006903",
+    "ativas": 11
+  },
+  {
+    "cidade": "Deodápolis",
+    "codigoIbge": "5003454",
+    "ativas": 11
+  },
+  {
+    "cidade": "Guia Lopes da Laguna",
+    "codigoIbge": "5004106",
+    "ativas": 11
+  },
+  {
+    "cidade": "Laguna Carapã",
+    "codigoIbge": "5005251",
+    "ativas": 10
+  },
+  {
+    "cidade": "Rio Verde de Mato Grosso",
+    "codigoIbge": "5007406",
+    "ativas": 10
+  },
+  {
+    "cidade": "Eldorado",
+    "codigoIbge": "5003751",
+    "ativas": 10
+  },
+  {
+    "cidade": "Brasilândia",
+    "codigoIbge": "5002308",
+    "ativas": 9
+  },
+  {
+    "cidade": "Vicentina",
+    "codigoIbge": "5008404",
+    "ativas": 9
+  },
+  {
+    "cidade": "Selvíria",
+    "codigoIbge": "5007802",
+    "ativas": 8
+  },
+  {
+    "cidade": "Juti",
+    "codigoIbge": "5005152",
+    "ativas": 8
+  },
+  {
+    "cidade": "Dois Irmãos do Buriti",
+    "codigoIbge": "5003488",
+    "ativas": 8
+  },
+  {
+    "cidade": "Jaraguari",
+    "codigoIbge": "5004908",
+    "ativas": 7
+  },
+  {
+    "cidade": "Douradina",
+    "codigoIbge": "5003504",
+    "ativas": 7
+  },
+  {
+    "cidade": "Coronel Sapucaia",
+    "codigoIbge": "5003157",
+    "ativas": 7
+  },
+  {
+    "cidade": "Bandeirantes",
+    "codigoIbge": "5001508",
+    "ativas": 7
+  },
+  {
+    "cidade": "Sete Quedas",
+    "codigoIbge": "5007703",
+    "ativas": 7
+  },
+  {
+    "cidade": "Alcinópolis",
+    "codigoIbge": "5000252",
+    "ativas": 6
+  },
+  {
+    "cidade": "Inocência",
+    "codigoIbge": "5004403",
+    "ativas": 6
+  },
+  {
+    "cidade": "Angélica",
+    "codigoIbge": "5000856",
+    "ativas": 5
+  },
+  {
+    "cidade": "Rio Negro",
+    "codigoIbge": "5007307",
+    "ativas": 5
+  },
+  {
+    "cidade": "Bodoquena",
+    "codigoIbge": "5002159",
+    "ativas": 5
+  },
+  {
+    "cidade": "Corguinho",
+    "codigoIbge": "5003108",
+    "ativas": 5
+  },
+  {
+    "cidade": "Rochedo",
+    "codigoIbge": "5007505",
+    "ativas": 5
+  },
+  {
+    "cidade": "Aral Moreira",
+    "codigoIbge": "5001243",
+    "ativas": 4
+  },
+  {
+    "cidade": "Taquarussu",
+    "codigoIbge": "5007976",
+    "ativas": 4
+  },
+  {
+    "cidade": "Caracol",
+    "codigoIbge": "5002803",
+    "ativas": 3
+  },
+  {
+    "cidade": "Figueirão",
+    "codigoIbge": "5003900",
+    "ativas": 3
+  },
+  {
+    "cidade": "Pedro Gomes",
+    "codigoIbge": "5006408",
+    "ativas": 3
+  },
+  {
+    "cidade": "Tacuru",
+    "codigoIbge": "5007950",
+    "ativas": 2
+  },
+  {
+    "cidade": "Paranhos",
+    "codigoIbge": "5006358",
+    "ativas": 2
+  },
+  {
+    "cidade": "Novo Horizonte do Sul",
+    "codigoIbge": "5006259",
+    "ativas": 2
+  },
+  {
+    "cidade": "Japorã",
+    "codigoIbge": "5004809",
+    "ativas": 1
+  },
+  {
+    "cidade": "Jateí",
+    "codigoIbge": "5005103",
+    "ativas": 1
+  },
+  {
+    "cidade": "Outros municípios / fora de MS",
+    "codigoIbge": "",
+    "ativas": 652
+  }
+]

@@ -27,7 +27,7 @@ type Hover = { x: number; y: number; nome: string; visitas: number };
  * (SVG puro, ~30-50KB) sobre o mesmo geojson. Tooltip e legenda customizados
  * (não o `<title>` nativo do SVG, que não estiliza).
  */
-export function ChoroplethMap({ cidades }: { cidades: Cidade[] }) {
+export function ChoroplethMap({ cidades, unidade = "visitas" }: { cidades: Cidade[]; unidade?: string }) {
   // `resolvedTheme` só é lido pra forçar recálculo quando o tema muda —
   // resolveCssVar é barato, recomputar a cada render evita setState-em-effect
   // (react-hooks/set-state-in-effect) sem precisar de estado extra.
@@ -91,7 +91,7 @@ export function ChoroplethMap({ cidades }: { cidades: Cidade[] }) {
       <MapLegend min={0} max={max} corMin={cores.corMin} corMax={cores.corMax} />
       {hover && (
         <ChartTooltip x={hover.x} y={hover.y}>
-          {hover.nome}: {hover.visitas.toLocaleString("pt-BR")} visitas
+          {hover.nome}: {hover.visitas.toLocaleString("pt-BR")} {unidade}
         </ChartTooltip>
       )}
     </div>

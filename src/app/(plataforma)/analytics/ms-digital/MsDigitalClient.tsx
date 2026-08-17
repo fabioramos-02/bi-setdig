@@ -12,6 +12,7 @@ import { PerfilTab } from "./PerfilTab";
 import { JornadaTab } from "./JornadaTab";
 import { CrossCanalTab } from "./CrossCanalTab";
 import { CategoriasTab } from "./CategoriasTab";
+import { ContasTab } from "./ContasTab";
 import {
   calcularInsightPlataforma,
   calcularInsightServico,
@@ -34,6 +35,11 @@ import type {
   Dispositivo,
   ServicoAcessado,
   ServicoCatalogo,
+  ContasResumo,
+  ContaPorAno,
+  ContaPorFaixaEtaria,
+  ContaPorCidade,
+  UsoRetencao,
 } from "@/lib/data";
 import type { ResumoCatalogo, CategoriaResumo } from "@/lib/catalogo-app";
 
@@ -65,6 +71,11 @@ export function MsDigitalClient({
   catalogo,
   catalogoResumo,
   catalogoCategorias,
+  contasResumo,
+  contasPorAno,
+  contasPorFaixaEtaria,
+  contasPorCidade,
+  usoRetencao,
 }: {
   visaoGeral: BreakdownPorPeriodo<GA4Overview>;
   plataforma: BreakdownPorPeriodo<Plataforma>;
@@ -77,6 +88,11 @@ export function MsDigitalClient({
   catalogo: ServicoCatalogo[];
   catalogoResumo: ResumoCatalogo;
   catalogoCategorias: CategoriaResumo[];
+  contasResumo: ContasResumo | null;
+  contasPorAno: ContaPorAno[];
+  contasPorFaixaEtaria: ContaPorFaixaEtaria[];
+  contasPorCidade: ContaPorCidade[];
+  usoRetencao: UsoRetencao | null;
 }) {
   const [abaAtiva, setAbaAtiva] = useState("visao-geral");
   const { estado, min, max } = usePeriodo();
@@ -245,6 +261,24 @@ export function MsDigitalClient({
       ),
     },
   ];
+
+  // 7ª aba — cadastro (SQL Server). Ignora filtro de período (cadastro é
+  // snapshot). Só aparece se o pipeline msdigital_db publicou dados.
+  if (contasResumo) {
+    abas.push({
+      id: "contas",
+      label: "7. Contas",
+      content: (
+        <ContasTab
+          resumo={contasResumo}
+          porAno={contasPorAno}
+          faixaEtaria={contasPorFaixaEtaria}
+          porCidade={contasPorCidade}
+          retencao={usoRetencao}
+        />
+      ),
+    });
+  }
 
   return (
     <div className="flex flex-col flex-1">
