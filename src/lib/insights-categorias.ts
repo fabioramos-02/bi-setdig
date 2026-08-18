@@ -12,6 +12,10 @@ export type RankingCategoria = {
   totalServicos: number;
   acessos: number;
   sharePct: number;
+  /** 100% dos serviços é `tipo: "web"` e catálogo tem no máx 2 — abre navegador
+   *  direto sem gerar screen_view no app. "0 acessos" nesses casos é design,
+   *  não bug. Usado pra UI mostrar badge "atalho web" em vez de "0". */
+  soAtalhoWeb: boolean;
 };
 
 export type PontoAtencaoCategoria = {
@@ -35,6 +39,10 @@ export function ranking(
       totalServicos: c.total,
       acessos: usos,
       sharePct: total > 0 ? (100 * usos) / total : 0,
+      // Atalho web: 100% dos serviços web E até 2 serviços na categoria.
+      // Ex.: MS.gov (1 web), Diário Oficial (1 web), Notícias (1 web),
+      // Nota Premiada (1 web). Clicar abre navegador — sem screen_view.
+      soAtalhoWeb: c.total > 0 && c.nativo === 0 && c.total <= 2,
     };
   });
   // Categorias sem match no catálogo (raro) vão pro fim como referência.
@@ -46,6 +54,7 @@ export function ranking(
         totalServicos: 0,
         acessos: a.valor,
         sharePct: total > 0 ? (100 * a.valor) / total : 0,
+        soAtalhoWeb: false,
       });
     }
   }
@@ -67,12 +76,13 @@ export function cauda(r: RankingCategoria[]): { qtd: number; sharePct: number } 
   };
 }
 
-/** Cobertura = % das categorias do catálogo com pelo menos 1 acesso. */
+/** Cobertura = % das categorias do catálogo MEDÍVEIS (exclui atalhos web,
+ *  que não geram screen_view por design) com pelo menos 1 acesso. */
 export function cobertura(r: RankingCategoria[]): number {
-  const doCatalogo = r.filter((c) => c.totalServicos > 0);
-  if (doCatalogo.length === 0) return 0;
-  const comUso = doCatalogo.filter((c) => c.acessos > 0).length;
-  return (100 * comUso) / doCatalogo.length;
+  const mediveis = r.filter((c) => c.totalServicos > 0 && !c.soAtalhoWeb);
+  if (mediveis.length === 0) return 0;
+  const comUso = mediveis.filter((c) => c.acessos > 0).length;
+  return (100 * comUso) / mediveis.length;
 }
 
 /** Soma dos acessos identificados no período. */
@@ -117,12 +127,22 @@ export function pontosAtencaoCategorias(r: RankingCategoria[]): PontoAtencaoCate
     });
   }
 
-  // Silenciosas: categorias do catálogo sem nenhum acesso
-  const silenciosas = r.filter((c) => c.totalServicos > 0 && c.acessos === 0);
+  // Silenciosas: categorias medíveis (não atalho web) sem nenhum acesso
+  const silenciosas = r.filter((c) => c.totalServicos > 0 && !c.soAtalhoWeb && c.acessos === 0);
   if (silenciosas.length > 0) {
     out.push({
       severidade: silenciosas.length > 5 ? "alerta" : "info",
       texto: `${silenciosas.length} categoria${silenciosas.length > 1 ? "s não tiveram" : " não teve"} nenhum acesso no período selecionado.`,
+    });
+  }
+
+  // Atalhos web: informativo, não é bug — só pra chefe saber que existem.
+  const atalhos = r.filter((c) => c.soAtalhoWeb);
+  if (atalhos.length > 0) {
+    const nomes = atalhos.map((a) => a.categoria).join(", ");
+    out.push({
+      severidade: "info",
+      texto: `${atalhos.length} categoria${atalhos.length > 1 ? "s são" : " é"} atalho externo (${nomes}) — abre navegador direto, sem passar por tela do app, então não gera medição no GA4.`,
     });
   }
 

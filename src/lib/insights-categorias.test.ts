@@ -20,6 +20,8 @@ const CATALOGO: CategoriaResumo[] = [
   { categoria: "Trânsito", icone: "directions_car", total: 12, nativo: 3, web: 9, ativo: 12 },
   { categoria: "Agronegócio", icone: "agriculture", total: 18, nativo: 0, web: 18, ativo: 18 },
   { categoria: "Mulher MS", icone: "woman", total: 8, nativo: 5, web: 3, ativo: 8 },
+  { categoria: "MS.gov", icone: "public", total: 1, nativo: 0, web: 1, ativo: 1 },
+  { categoria: "Nota Premiada", icone: "confirmation_number", total: 1, nativo: 0, web: 1, ativo: 1 },
 ];
 
 const ACESSOS: FatiaCategoria[] = [
@@ -31,9 +33,8 @@ const ACESSOS: FatiaCategoria[] = [
 
 test("ranking ordena por acessos e inclui categorias sem uso", () => {
   const r = ranking(CATALOGO, ACESSOS);
-  assert.equal(r.length, 5);
+  assert.equal(r.length, CATALOGO.length);
   assert.equal(r[0].categoria, "Servidor Público");
-  assert.equal(r[r.length - 1].categoria, "Agronegócio");
   assert.equal(r[r.length - 1].acessos, 0);
 });
 
@@ -45,7 +46,7 @@ test("ranking calcula share sobre total de acessos", () => {
 
 test("ranking com lista de acessos vazia devolve todos com share 0", () => {
   const r = ranking(CATALOGO, []);
-  assert.equal(r.length, 5);
+  assert.equal(r.length, CATALOGO.length);
   assert.ok(r.every((c) => c.acessos === 0 && c.sharePct === 0));
 });
 
@@ -62,10 +63,26 @@ test("cauda soma categorias com <5% e >0", () => {
   assert.ok(c.sharePct >= 0 && c.sharePct < 5 * c.qtd + 0.1);
 });
 
-test("cobertura = % de categorias do catálogo com acesso", () => {
+test("cobertura = % de categorias medíveis com acesso (exclui atalhos web)", () => {
   const r = ranking(CATALOGO, ACESSOS);
   const pct = cobertura(r);
-  assert.equal(pct, 80); // 4 de 5 têm uso
+  // 5 medíveis (Servidor, Saúde, Trânsito, Agronegócio, Mulher MS), 4 com uso.
+  // MS.gov e Nota Premiada são atalhos → excluídos.
+  assert.equal(pct, 80);
+});
+
+test("soAtalhoWeb identifica categorias com só web e <= 2 serviços", () => {
+  const r = ranking(CATALOGO, ACESSOS);
+  assert.equal(r.find((c) => c.categoria === "MS.gov")?.soAtalhoWeb, true);
+  assert.equal(r.find((c) => c.categoria === "Nota Premiada")?.soAtalhoWeb, true);
+  assert.equal(r.find((c) => c.categoria === "Agronegócio")?.soAtalhoWeb, false); // 18 servicos > 2
+  assert.equal(r.find((c) => c.categoria === "Saúde")?.soAtalhoWeb, false); // tem nativo
+});
+
+test("pontosAtencao inclui aviso sobre atalhos web", () => {
+  const r = ranking(CATALOGO, ACESSOS);
+  const pts = pontosAtencaoCategorias(r);
+  assert.ok(pts.some((p) => p.texto.includes("atalho externo")));
 });
 
 test("topNSharePct soma os N maiores", () => {

@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { BarChart } from "@/components/charts/BarChart";
 import { RankingHorizontal } from "@/components/charts/RankingHorizontal";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { MetricCard } from "@/components/dashboard/MetricCard";
@@ -142,7 +143,9 @@ export function CategoriasTab({
               label: r.categoria,
               valor: r.acessos,
               sharePct: r.sharePct,
-              sub: `${r.totalServicos} serviço${r.totalServicos === 1 ? "" : "s"}`,
+              sub: r.soAtalhoWeb
+                ? "atalho externo · sem medição"
+                : `${r.totalServicos} serviço${r.totalServicos === 1 ? "" : "s"}`,
               icone: r.icone,
             }))}
           />
@@ -186,10 +189,24 @@ export function CategoriasTab({
                   {c.categoria}
                 </span>
                 <span className="text-xs mt-1" style={{ color: "var(--ds-color-text-muted)" }}>
-                  {c.total} serviços · {acessos.toLocaleString("pt-BR")} acessos
-                  {share > 0 && ` · ${share.toFixed(1)}%`}
+                  {linhaRanking?.soAtalhoWeb ? (
+                    <span
+                      className="inline-block px-2 py-0.5 rounded"
+                      style={{
+                        background: "var(--ds-color-background-muted)",
+                        color: "var(--ds-color-text-secondary)",
+                      }}
+                    >
+                      atalho externo
+                    </span>
+                  ) : (
+                    <>
+                      {c.total} serviços · {acessos.toLocaleString("pt-BR")} acessos
+                      {share > 0 && ` · ${share.toFixed(1)}%`}
+                    </>
+                  )}
                 </span>
-                {total > 0 && (
+                {total > 0 && !linhaRanking?.soAtalhoWeb && (
                   <div
                     className="w-full h-1 mt-3 rounded overflow-hidden"
                     style={{ background: "var(--ds-color-background-muted)" }}
@@ -241,21 +258,19 @@ export function CategoriasTab({
         )}
       </DashboardSection>
 
-      {/* 5. Nativos × Web (ranking horizontal com quantitativos visíveis) */}
+      {/* 5. Nativos × Web (colunas verticais com valores dentro) */}
       <DashboardSection title="Nativos × web">
-        <RankingHorizontal
-          itens={[
-            {
-              label: "Nativos (tela no app)",
-              valor: resumo.nativo,
-              sharePct: resumo.total > 0 ? (100 * resumo.nativo) / resumo.total : 0,
-            },
-            {
-              label: "Web (abre site externo)",
-              valor: resumo.web,
-              sharePct: resumo.total > 0 ? (100 * resumo.web) / resumo.total : 0,
-            },
+        <BarChart
+          data={[
+            { tipo: "Nativos (tela no app)", quantidade: resumo.nativo },
+            { tipo: "Web (abre site externo)", quantidade: resumo.web },
           ]}
+          xKey="tipo"
+          yKey="quantidade"
+          height={280}
+          mostrarValorNaBarra
+          mostrarTodosTicks
+          corPorIndice={(i) => (i === 0 ? "var(--ds-color-primary-600)" : "var(--ds-color-text-muted)")}
         />
         <p className="mt-3 text-xs" style={{ color: "var(--ds-color-text-muted)" }}>
           Nativo = tela dentro do app. Web = manda o cidadão para um site externo. Quanto mais nativo, mais o serviço

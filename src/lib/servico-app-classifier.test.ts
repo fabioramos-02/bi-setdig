@@ -84,3 +84,23 @@ test("contagemPorCategoria: lookup por nome exato de categoria", () => {
   assert.equal(mapa.get("Saúde"), 50);
   assert.equal(mapa.get("saude"), undefined); // chave é exata, não normalizada
 });
+
+test("normalizador casa 'Procon - MS' com 'Procon-MS' (espaço vs hífen colado)", () => {
+  const cat: ServicoCatalogo[] = [
+    { categoria: "Procon-MS", servico: "Reclamação On-line", tipo: "nativo", ativo: true, url: null },
+  ];
+  const r = classificarAcessosApp([{ servico: "Procon - MS", acessos: 100 }], cat);
+  assert.equal(r.categorias.length, 1);
+  assert.equal(r.categorias[0].categoria, "Procon - MS");
+  assert.equal(r.categorias[0].valor, 100);
+});
+
+test("normalizador casa 'LeiaMS' com 'Leia MS' (junto vs separado)", () => {
+  const cat: ServicoCatalogo[] = [
+    { categoria: "Cultura e Esporte", servico: "Leia MS", tipo: "nativo", ativo: true, url: null },
+  ];
+  const r = classificarAcessosApp([{ servico: "LeiaMS", acessos: 50 }], cat);
+  assert.equal(r.servicosFolha.length, 1);
+  assert.equal(r.servicosFolha[0].acessos, 50);
+  assert.equal(r.categorias.find((c) => c.categoria === "Cultura e Esporte")?.valor, 50);
+});

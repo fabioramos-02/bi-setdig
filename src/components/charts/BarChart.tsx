@@ -40,6 +40,7 @@ export function BarChart({
   corPorIndice,
   mostrarValorNaBarra = false,
   quebrarLabelX = false,
+  mostrarTodosTicks = false,
 }: {
   data: Record<string, string | number>[];
   xKey: string;
@@ -51,7 +52,11 @@ export function BarChart({
   mostrarValorNaBarra?: boolean;
   /** Quebra rótulos longos do eixo X em até 2 linhas (ideal pra nomes de serviço). */
   quebrarLabelX?: boolean;
+  /** Força mostrar todos os ticks (`interval={0}`) — necessário quando N pequeno
+   *  onde `preserveStartEnd` pode esconder o último rótulo em containers estreitos. */
+  mostrarTodosTicks?: boolean;
 }) {
+  const intervalX = quebrarLabelX || mostrarTodosTicks ? 0 : "preserveStartEnd";
   return (
     <ResponsiveContainer width="100%" height={height}>
       <RBarChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: quebrarLabelX ? 20 : 8 }}>
@@ -60,7 +65,7 @@ export function BarChart({
           dataKey={xKey}
           tick={quebrarLabelX ? <TickQuebrado /> : { fill: "var(--ds-color-text-secondary)", fontSize: 12 }}
           height={quebrarLabelX ? 46 : undefined}
-          interval={quebrarLabelX ? 0 : "preserveStartEnd"}
+          interval={intervalX}
           minTickGap={quebrarLabelX ? undefined : 8}
           tickMargin={6}
         />

@@ -19,7 +19,14 @@ import type { FatiaCategoria } from "@/components/charts/CategoryDonut";
  */
 
 export function normalizar(s: string): string {
-  return s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().trim();
+  // Remove acento, pontuação E espaço — chave de match agressiva ("Procon - MS"
+  // == "Procon-MS", "LeiaMS" == "Leia MS"). Nome exibido preserva o original.
+  return s
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .toLowerCase()
+    .replace(/[\s\-–—.,;:/\\()[\]{}"']/g, "")
+    .trim();
 }
 
 /** Nome de tela do catálogo: pega o serviço-folha real. Entradas no formato
