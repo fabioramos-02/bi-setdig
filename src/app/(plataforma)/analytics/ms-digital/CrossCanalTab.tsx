@@ -53,6 +53,7 @@ export function CrossCanalTab({
                 xKey="servico"
                 yKey="valor"
                 height={260}
+                quebrarLabelX
                 corPorIndice={(i) => (i === 0 ? "var(--ds-color-primary-600)" : "var(--ds-color-text-muted)")}
               />
             </ChartLoading>
@@ -66,6 +67,7 @@ export function CrossCanalTab({
               xKey="servico"
               yKey="valor"
               height={260}
+              quebrarLabelX
               corPorIndice={(i) => (i === 0 ? "var(--ds-color-primary-600)" : "var(--ds-color-text-muted)")}
             />
           </div>

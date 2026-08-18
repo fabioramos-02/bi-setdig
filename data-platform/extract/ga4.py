@@ -117,7 +117,7 @@ def _detectar_dimensao_servico(client, property_id: str, start_date: str, end_da
     return []
 
 
-def get_services(start_date: str, end_date: str, limit: int = 15) -> list[dict]:
+def get_services(start_date: str, end_date: str, limit: int = 100) -> list[dict]:
     """Ranking de funcionalidades mais usadas (top N) — porta de
     views/ms_digital/tab2_funcionalidades.py."""
     client = _client()
@@ -238,6 +238,34 @@ def get_cohort_semanal_retencao() -> dict:
         "d7Pct": _pct(7),
         "d30Pct": _pct(30),
     }
+
+
+def get_city(start_date: str, end_date: str, limit: int = 200) -> list[dict]:
+    """De onde o app foi aberto (GA4 dimension `city`). Complementar ao mapa
+    de cadastros da aba Contas — aqui é o LOCAL DE ACESSO no período, não o
+    endereço declarado. Filtra "(not set)" e cidades vazias."""
+    client = _client()
+    property_id = os.getenv("GOOGLE_PROPERTY_ID", "")
+    request = RunReportRequest(
+        property=f"properties/{property_id}",
+        dimensions=[Dimension(name="city")],
+        metrics=[Metric(name="activeUsers")],
+        date_ranges=[DateRange(start_date=start_date, end_date=end_date)],
+        limit=limit,
+    )
+    response = client.run_report(request)
+    saida: list[dict] = []
+    for row in response.rows:
+        cidade = row.dimension_values[0].value.strip()
+        if not cidade or cidade in {"(not set)", "(other)"}:
+            continue
+        usuarios = int(row.metric_values[0].value)
+        if usuarios <= 0:
+            continue
+        # Reusa formato Cidade (cidade/visitas) do ChoroplethMap — "visitas" aqui
+        # é usuários ativos GA4, semântica documentada no comoLer do StoryCard.
+        saida.append({"cidade": cidade, "visitas": usuarios})
+    return saida
 
 
 def get_visit_time(start_date: str, end_date: str) -> list[dict]:

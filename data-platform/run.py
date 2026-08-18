@@ -222,6 +222,15 @@ def run_ga4_perfil() -> None:
     publish("ga4", "horarios", horarios, version="v2")
     print(f"[ga4] horarios -> {[(k, len(v)) for k, v in horarios.items()]}")
 
+    # Geografia GA4 — cidades onde o app foi aberto (dimension `city`). Aparece
+    # em PerfilTab, separado do mapa BD (aba Contas). Ver Ext5 no plano.
+    geografia_ga4 = {}
+    for chave, (start, end) in GA4_PERIODOS.items():
+        geografia_ga4[chave] = ga4.get_city(start, end)
+    validate_period_breakdown(geografia_ga4, ["cidade", "visitas"], ["visitas"])
+    publish("ga4", "geografia", geografia_ga4, version="v2")
+    print(f"[ga4] geografia -> {[(k, len(v)) for k, v in geografia_ga4.items()]}")
+
     # Cadência de retorno: DAU/WAU/MAU + retenção cohort D1/D7/D30 (ver plano
     # ~/.claude/plans/feature-levantamento-e-sequential-pie.md § Extensão 1).
     from transform import frequencia as t_freq

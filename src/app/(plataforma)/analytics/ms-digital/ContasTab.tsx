@@ -151,11 +151,11 @@ export function ContasTab({
           retorno é comportamento, não cadastro. Situação Geral e Pontos de
           Atenção continuam citando as faixas como contexto de resumo. */}
 
-      {/* Distribuição geográfica */}
+      {/* Distribuição geográfica — endereço declarado no cadastro (não é local de acesso) */}
       <StoryCard
-        anchor={`${topCidades[0]?.cidade ?? "—"} concentra a maior parte dos cadastros com endereço em MS.`}
-        caption={`Apenas ${percentComEndereco.toFixed(1)}% das contas ativas têm endereço cadastrado — o mapa mostra a distribuição dessa parcela.`}
-        comoLer="Cores mais escuras indicam mais contas ativas com endereço naquele município. A maioria das contas não tem endereço no cadastro, então o mapa mostra concentração, não uso real do app por região."
+        anchor={`${topCidades[0]?.cidade ?? "—"} é a cidade onde mais cidadãos criaram conta no app com endereço declarado.`}
+        caption={`Apenas ${percentComEndereco.toFixed(1)}% das contas ativas informaram endereço no cadastro. Para ver de onde os cidadãos ABREM o app, veja a aba "Perfil Técnico".`}
+        comoLer='Este mapa mostra a MORADIA declarada no cadastro do app, não de onde a pessoa acessa. Uma pessoa cadastrada em Campo Grande pode abrir o app em qualquer lugar — esse dado fica na aba "Perfil Técnico". Cores mais escuras indicam mais contas ativas com endereço naquele município.'
       >
         <ChoroplethMap cidades={cidadesParaMapa} unidade="contas ativas" />
         {topCidades.length > 0 && (

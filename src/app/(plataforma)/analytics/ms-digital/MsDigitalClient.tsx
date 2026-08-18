@@ -35,6 +35,7 @@ import type {
   Dispositivo,
   ServicoAcessado,
   ServicoCatalogo,
+  Cidade,
   ContasResumo,
   ContaPorAno,
   ContaPorFaixaEtaria,
@@ -82,12 +83,14 @@ export function MsDigitalClient({
   contasCriadasPorDia,
   frequenciaAcesso,
   snapshotFrequenciaEm,
+  geografiaGa4,
 }: {
   visaoGeral: BreakdownPorPeriodo<GA4Overview>;
   plataforma: BreakdownPorPeriodo<Plataforma>;
   servicos: BreakdownPorPeriodo<Servico>;
   funil: BreakdownPorPeriodo<EventoFunil>;
   horarios: BreakdownPorPeriodo<HorarioGa4>;
+  geografiaGa4: BreakdownPorPeriodo<Cidade>;
   portalDiarias: VisitaDiaria[];
   portalDispositivos: BreakdownPorPeriodo<Dispositivo>;
   portalServicosMaisAcessados: BreakdownPorPeriodo<ServicoAcessado>;
@@ -165,6 +168,9 @@ export function MsDigitalClient({
   const serv = precisaLive && liveValido ? liveData!.servicos : servicos[periodo];
   const fun = precisaLive && liveValido ? liveData!.funil : funil[periodo];
   const hor = precisaLive && liveValido ? liveData!.horarios : horarios[periodo];
+  // ponytail: geografia GA4 não vai ao live fetch (ADR-010 pode estender depois);
+  // por ora usa sempre o snapshot do período fixo.
+  const geoGa4 = geografiaGa4[periodo];
 
   const totalUsers = vg.reduce((acc, r) => acc + r.activeUsers, 0);
   const totalSessions = vg.reduce((acc, r) => acc + r.sessions, 0);
@@ -240,6 +246,7 @@ export function MsDigitalClient({
         <PerfilTab
           plataforma={plat}
           horarios={hor}
+          cidadesAcesso={geoGa4}
           insightPlataforma={insightPlataforma}
           insightHorario={insightHorario}
           status={statusGa4}

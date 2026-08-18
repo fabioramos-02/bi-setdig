@@ -56,6 +56,13 @@ export function getGa4Horarios(): BreakdownPorPeriodo<HorarioGa4> {
   return readDataset<BreakdownPorPeriodo<HorarioGa4>>("ga4", "v2", "horarios") ?? BREAKDOWN_VAZIO;
 }
 
+/** Cidades onde o app foi aberto (dimension `city` do GA4). Reusa tipo Cidade
+ *  ({cidade, visitas}) do ChoroplethMap — "visitas" aqui é usuários ativos.
+ *  Complementar ao mapa de cadastros da aba Contas (BD). */
+export function getGa4Geografia(): BreakdownPorPeriodo<Cidade> {
+  return readDataset<BreakdownPorPeriodo<Cidade>>("ga4", "v2", "geografia") ?? BREAKDOWN_VAZIO;
+}
+
 /** Cadência de retorno ao app — DAU/WAU/MAU + cohort D1/D7/D30.
  *  Snapshot (janelas fixas 1/7/28 dias — não reage ao filtro de período). */
 export type FrequenciaAcesso = {

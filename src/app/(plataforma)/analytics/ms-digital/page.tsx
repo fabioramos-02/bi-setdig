@@ -20,6 +20,7 @@ import {
   getMsdigitalContasCriadasPorDia,
   getDatasetUpdatedAt,
   getGa4FrequenciaAcesso,
+  getGa4Geografia,
 } from "@/lib/data";
 import { resumoCatalogo, porCategoria } from "@/lib/catalogo-app";
 
@@ -49,6 +50,7 @@ export default function AnalyticsMsDigitalPage() {
   const contasCriadasPorDia = getMsdigitalContasCriadasPorDia();
   const frequenciaAcesso = getGa4FrequenciaAcesso();
   const snapshotFrequenciaEm = getDatasetUpdatedAt("ga4", "frequencia-acesso");
+  const geografiaGa4 = getGa4Geografia();
 
   if (visaoGeral.mes.length === 0) {
     return (
@@ -83,6 +85,7 @@ export default function AnalyticsMsDigitalPage() {
       contasCriadasPorDia={contasCriadasPorDia}
       frequenciaAcesso={frequenciaAcesso}
       snapshotFrequenciaEm={snapshotFrequenciaEm}
+      geografiaGa4={geografiaGa4}
     />
   );
 }
