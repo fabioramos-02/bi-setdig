@@ -2,8 +2,8 @@
   {
     "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
     "orgaoSigla": "SEFAZ MS",
-    "total": 304,
-    "ativos": 276,
+    "total": 305,
+    "ativos": 278,
     "digitais": 3,
     "percentDigital": 1.1
   },
@@ -18,10 +18,10 @@
   {
     "orgao": "Agência Estadual de Defesa Sanitária Animal Vegetal  Mato Grosso do Sul",
     "orgaoSigla": "IAGRO",
-    "total": 133,
+    "total": 134,
     "ativos": 119,
-    "digitais": 10,
-    "percentDigital": 8.4
+    "digitais": 11,
+    "percentDigital": 9.2
   },
   {
     "orgao": "Departamento Estadual de Trânsito de Mato Grosso do Sul",
@@ -60,8 +60,8 @@
     "orgaoSigla": "SEAD",
     "total": 42,
     "ativos": 27,
-    "digitais": 11,
-    "percentDigital": 40.7
+    "digitais": 12,
+    "percentDigital": 44.4
   },
   {
     "orgao": "Secretaria de Estado de Saúde de Mato Grosso do Sul",
@@ -115,9 +115,9 @@
     "orgao": "Procuradoria Geral do Estado de Mato Grosso do Sul",
     "orgaoSigla": "PGE MS",
     "total": 28,
-    "ativos": 23,
-    "digitais": 20,
-    "percentDigital": 87.0
+    "ativos": 22,
+    "digitais": 19,
+    "percentDigital": 86.4
   },
   {
     "orgao": "Agência Estadual de Regulação de Serviços Públicos de Mato Grosso do Sul",
@@ -139,9 +139,9 @@
     "orgao": "Junta Comercial do Estado de Mato Grosso do Sul",
     "orgaoSigla": "JUCEMS",
     "total": 22,
-    "ativos": 19,
-    "digitais": 12,
-    "percentDigital": 63.2
+    "ativos": 20,
+    "digitais": 14,
+    "percentDigital": 70.0
   },
   {
     "orgao": "Fundação Escola de Governo",

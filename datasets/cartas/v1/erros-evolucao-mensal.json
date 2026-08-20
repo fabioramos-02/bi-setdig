@@ -112,7 +112,7 @@
   {
     "mes": "2025-09",
     "abertos": 30,
-    "resolvidos": 39
+    "resolvidos": 38
   },
   {
     "mes": "2025-10",
@@ -161,7 +161,12 @@
   },
   {
     "mes": "2026-07",
-    "abertos": 18,
-    "resolvidos": 12
+    "abertos": 37,
+    "resolvidos": 15
+  },
+  {
+    "mes": "2026-08",
+    "abertos": 28,
+    "resolvidos": 56
   }
 ]

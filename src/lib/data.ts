@@ -250,6 +250,12 @@ export type ContaPorCidade = { cidade: string; codigoIbge: string; ativas: numbe
 export type FaixaAcesso = { faixa: string; quantidade: number; percentPct: number };
 export type ContaCriadaDia = { data: string; criadas: number; ativas: number };
 export type TipoLogin = { tipo: string; quantidade: number };
+export type FaixaAcessoPorTipo = {
+  faixa: string;
+  govbr: number;
+  proprio: number;
+  total: number;
+};
 
 export function getMsdigitalContasResumo(): ContasResumo | null {
   const rows = readDataset<ContasResumo[]>("msdigital-db", "v1", "contas-resumo");
@@ -272,6 +278,9 @@ export function getMsdigitalContasCriadasPorDia(): ContaCriadaDia[] {
 }
 export function getMsdigitalTipoLogin(): TipoLogin[] {
   return readDataset<TipoLogin[]>("msdigital-db", "v1", "tipo-login") ?? [];
+}
+export function getMsdigitalFaixasDeAcessoPorTipo(): FaixaAcessoPorTipo[] {
+  return readDataset<FaixaAcessoPorTipo[]>("msdigital-db", "v1", "faixas-de-acesso-por-tipo") ?? [];
 }
 
 /** Timestamp ISO da última publicação de um dataset (datasets/catalog.json).

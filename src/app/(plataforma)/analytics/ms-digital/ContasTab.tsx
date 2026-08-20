@@ -126,10 +126,10 @@ export function ContasTab({
               Math.max(1, tipoLogin.reduce((acc, t) => acc + t.quantidade, 0))
             ).toFixed(1)
           }% dos usuários.`}
-          caption="Distribuição do tipo de autenticação escolhida no momento do cadastro."
+          caption="Distribuição do tipo de autenticação escolhida no momento do cadastro. Contas antigas sem essa marcação registrada foram contadas como Login Próprio, conforme confirmação técnica do time do app."
           comoLer="Mostra a proporção de cidadãos que optaram por integrar sua conta ao Gov.BR em vez de criar um login próprio do aplicativo."
         >
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-3">
+          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
             {tipoLogin.map((t) => (
               <MetricCard
                 key={t.tipo}

@@ -3,13 +3,14 @@ import { CadenciaAcessoFunil } from "@/components/charts/CadenciaAcessoFunil";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { SnapshotBadge } from "@/components/dashboard/SnapshotBadge";
 import { FaixasDeAcessoCard } from "@/components/dashboard/FaixasDeAcessoCard";
+import { FaixasDeAcessoPorTipoCard } from "@/components/dashboard/FaixasDeAcessoPorTipoCard";
 import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
 import { ChartLoading } from "@/components/dashboard/ChartLoading";
 import { rotuloEstagioFunil } from "@/lib/insights";
 import type { InsightFunil } from "@/lib/insights";
-import type { EventoFunil, FrequenciaAcesso, FaixaAcesso } from "@/lib/data";
+import type { EventoFunil, FrequenciaAcesso, FaixaAcesso, FaixaAcessoPorTipo } from "@/lib/data";
 import { fraseCadencia, interpretaStickiness } from "@/lib/insights-jornada";
-import { fraseFaixaMaior } from "@/lib/insights-contas";
+import { fraseFaixaMaior, fraseAdocaoGovBrPorFaixa } from "@/lib/insights-contas";
 
 /** Peça central de storytelling do domínio — funil de aquisição -> ativação
  * -> navegação -> retenção, com a maior queda entre estágios explicada (ver
@@ -23,6 +24,7 @@ export function JornadaTab({
   faixasDeAcesso,
   snapshotFaixasEm,
   totalContas,
+  faixasDeAcessoPorTipo,
 }: {
   funil: EventoFunil[];
   insightFunil: InsightFunil | null;
@@ -32,6 +34,7 @@ export function JornadaTab({
   faixasDeAcesso: FaixaAcesso[];
   snapshotFaixasEm: string | null;
   totalContas: number;
+  faixasDeAcessoPorTipo: FaixaAcessoPorTipo[];
 }) {
   const dadosFunil = funil.map((f) => ({ estagio: rotuloEstagioFunil(f.evento), usuarios: f.usuarios }));
 
@@ -80,6 +83,18 @@ export function JornadaTab({
         >
           <SnapshotBadge updatedAt={snapshotFaixasEm} />
           <FaixasDeAcessoCard faixas={faixasDeAcesso} />
+        </StoryCard>
+      )}
+
+      {faixasDeAcessoPorTipo.length > 0 && (
+        <StoryCard
+          snapshot
+          anchor={fraseAdocaoGovBrPorFaixa(faixasDeAcessoPorTipo)}
+          caption="Cruza o meio de entrada escolhido no cadastro (Gov.BR ou login próprio do app) com a data do último acesso."
+          comoLer="Cada conta aparece em uma faixa só, definida pelo último acesso. A barra mostra a proporção de quem entra pelo Gov.BR dentro daquela faixa. Contas antigas sem essa marcação registrada foram contadas como Login Próprio, conforme confirmação técnica do time do app."
+        >
+          <SnapshotBadge updatedAt={snapshotFaixasEm} />
+          <FaixasDeAcessoPorTipoCard faixas={faixasDeAcessoPorTipo} />
         </StoryCard>
       )}
     </div>

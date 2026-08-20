@@ -1,5 +1,12 @@
 [
   {
+    "categoria": "financas-e-impostos",
+    "total": 245,
+    "ativos": 229,
+    "digitais": 9,
+    "percentDigital": 3.9
+  },
+  {
     "categoria": "educacao-e-pesquisa",
     "total": 244,
     "ativos": 166,
@@ -7,25 +14,18 @@
     "percentDigital": 33.1
   },
   {
-    "categoria": "financas-e-impostos",
-    "total": 244,
-    "ativos": 227,
-    "digitais": 9,
-    "percentDigital": 4.0
-  },
-  {
     "categoria": "agropecuaria-e-vida-rural",
-    "total": 175,
+    "total": 176,
     "ativos": 157,
-    "digitais": 8,
-    "percentDigital": 5.1
+    "digitais": 9,
+    "percentDigital": 5.7
   },
   {
     "categoria": "comunicacao-e-transparencia",
     "total": 142,
-    "ativos": 134,
-    "digitais": 123,
-    "percentDigital": 91.8
+    "ativos": 133,
+    "digitais": 122,
+    "percentDigital": 91.7
   },
   {
     "categoria": "administracao-publica",
@@ -37,9 +37,9 @@
   {
     "categoria": "empresa-industria-e-comercio",
     "total": 122,
-    "ativos": 110,
-    "digitais": 12,
-    "percentDigital": 10.9
+    "ativos": 111,
+    "digitais": 14,
+    "percentDigital": 12.6
   },
   {
     "categoria": "transito-e-transportes",
@@ -59,8 +59,8 @@
     "categoria": "direitos-e-cidadania",
     "total": 61,
     "ativos": 37,
-    "digitais": 10,
-    "percentDigital": 27.0
+    "digitais": 11,
+    "percentDigital": 29.7
   },
   {
     "categoria": "trabalho-emprego-e-previdencia",

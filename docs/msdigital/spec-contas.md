@@ -77,3 +77,36 @@ Bullets condicionais em `lib/insights-contas.ts`:
   nascimento cadastrada — perfil etário é aproximado."
 - Se `taxaAtivacao < 90%`: "Taxa de ativação abaixo de 90% — investigar
   motivos de exclusão em `Auditoria_Exclusao_De_Conta`."
+
+## 8. Tipo de autenticação
+
+**Pergunta (aba Contas):** Como o cidadão prefere entrar no app?
+**Pergunta (aba Jornada):** Quem volta hoje é mais Gov.BR ou login próprio?
+
+**Fonte:** `dbo.Conta.contaGovBr` (smallint no MS_digital SQL Server).
+
+**Regra de reclassificação** (aplicada em `data-platform/transform/msdigital.py`
+nas funções `contas_por_tipo_login` e `faixas_de_acesso_por_tipo`):
+
+| Valor no banco | Bucket exibido |
+|---|---|
+| `1` | Gov.BR |
+| `0` OU `NULL` | Login Próprio |
+
+**Por que NULL vira Login Próprio:** contas antigas foram criadas antes de o
+campo `contaGovBr` existir; o dev do MS Digital confirmou que na prática
+usam login próprio do app. Reclassificamos na raiz (pipeline) para que o
+painel não exponha ruído de esquema como se fosse uma terceira categoria
+real de comportamento — ver AGENTS.md § "honestidade sobre limitação do
+dado": esta é uma reclassificação técnica documentada, não omissão. A
+ressalva aparece no `caption` visível dos dois cards que consomem o dado
+(`ContasTab` e `JornadaTab`).
+
+**Datasets publicados:**
+- `datasets/msdigital-db/v1/tipo-login.json` — 2 buckets absolutos
+  (`{tipo, quantidade}`). Consumido pela aba **Contas** (card "Tipo de
+  autenticação").
+- `datasets/msdigital-db/v1/faixas-de-acesso-por-tipo.json` — cruzamento
+  faixa × tipo (`{faixa, govbr, proprio, total}` × 5 faixas). Consumido
+  pela aba **Jornada** (novo StoryCard após "Faixas de acesso"), respondendo
+  se a adoção do Gov.BR é maior entre quem volta ou entre quem parou.

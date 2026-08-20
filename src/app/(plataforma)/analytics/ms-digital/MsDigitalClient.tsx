@@ -41,6 +41,7 @@ import type {
   ContaPorFaixaEtaria,
   ContaPorCidade,
   FaixaAcesso,
+  FaixaAcessoPorTipo,
   ContaCriadaDia,
   FrequenciaAcesso,
   TipoLogin,
@@ -83,6 +84,7 @@ export function MsDigitalClient({
   snapshotAtualizadoEm,
   contasCriadasPorDia,
   tipoLogin,
+  faixasDeAcessoPorTipo,
   frequenciaAcesso,
   snapshotFrequenciaEm,
   geografiaGa4,
@@ -107,6 +109,7 @@ export function MsDigitalClient({
   snapshotAtualizadoEm: string | null;
   contasCriadasPorDia: ContaCriadaDia[];
   tipoLogin: TipoLogin[];
+  faixasDeAcessoPorTipo: FaixaAcessoPorTipo[];
   frequenciaAcesso: FrequenciaAcesso | null;
   snapshotFrequenciaEm: string | null;
 }) {
@@ -269,6 +272,7 @@ export function MsDigitalClient({
           faixasDeAcesso={faixasDeAcesso}
           snapshotFaixasEm={snapshotAtualizadoEm}
           totalContas={contasResumo?.contasTotal ?? 0}
+          faixasDeAcessoPorTipo={faixasDeAcessoPorTipo}
         />
       ),
     },

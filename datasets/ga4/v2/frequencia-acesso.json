@@ -1,17 +1,17 @@
 [
   {
-    "ativosHoje": 88750,
-    "ativosSemana": 455069,
-    "ativosMes": 1159167,
-    "totalUsuariosMes": 109199,
-    "sessoesMes": 130923,
-    "stickinessPct": 7.7,
-    "fidelidadeSemanaPct": 39.3,
+    "ativosHoje": 88268,
+    "ativosSemana": 453144,
+    "ativosMes": 1164083,
+    "totalUsuariosMes": 108733,
+    "sessoesMes": 130292,
+    "stickinessPct": 7.6,
+    "fidelidadeSemanaPct": 38.9,
     "sessoesPorUsuario": 1.2,
     "diasEntreAcessos": 23.3,
-    "cohortSemana": "2026-08-11 a 2026-08-17",
-    "cohortTamanho": 1831,
-    "retencaoD1Pct": 12.5,
+    "cohortSemana": "2026-08-13 a 2026-08-19",
+    "cohortTamanho": 1750,
+    "retencaoD1Pct": 12.4,
     "retencaoD7Pct": 0.0,
     "retencaoD30Pct": 0.0
   }

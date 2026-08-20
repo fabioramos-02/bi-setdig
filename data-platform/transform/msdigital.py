@@ -167,25 +167,7 @@ def faixas_de_acesso(contas: list[dict]) -> list[dict]:
     quatro_anos = hoje - timedelta(days=1461)
     contagem = {r: 0 for r in FAIXAS_ACESSO_ORDEM}
     for c in contas:
-        ul = c.get("ultimoLogin")
-        criada = c.get("conta_criada_em")
-        mesmo_dia = (
-            ul is not None
-            and criada is not None
-            and hasattr(ul, "date")
-            and hasattr(criada, "date")
-            and ul.date() == criada.date()
-        )
-        if ul is None or mesmo_dia:
-            contagem["Uma vez apenas"] += 1
-        elif ul > seis_meses:
-            contagem["Nos últimos 6 meses"] += 1
-        elif ul > dois_anos:
-            contagem["Entre 6 meses e 2 anos"] += 1
-        elif ul > quatro_anos:
-            contagem["Entre 2 e 4 anos"] += 1
-        else:
-            contagem["Mais de 4 anos"] += 1
+        contagem[_faixa_da_conta(c, hoje, seis_meses, dois_anos, quatro_anos)] += 1
     total = len(contas)
     return [
         {
@@ -198,20 +180,76 @@ def faixas_de_acesso(contas: list[dict]) -> list[dict]:
 
 
 def contas_por_tipo_login(contas: list[dict]) -> list[dict]:
-    """Conta quantidade de acessos por tipo (Gov.BR vs Próprio vs Não informado)."""
+    """2 buckets: Gov.BR vs Login Próprio.
+
+    contaGovBr NULL = conta nativa antiga (a flag não existia no cadastro
+    original); dev do MS Digital confirmou que essas contas usam login
+    próprio. Reclassificadas aqui, na raiz do pipeline, para o painel não
+    expor ruído de esquema como se fosse uma terceira categoria real.
+    Ver docs/msdigital/spec-contas.md § 8.
+    """
     govbr = 0
     proprio = 0
-    nulo = 0
     for c in contas:
-        valor = c.get("contaGovBr")
-        if valor is None:
-            nulo += 1
-        elif valor:
+        if c.get("contaGovBr"):
             govbr += 1
-        else:
+        else:  # False OU None (NULL antigo)
             proprio += 1
     return [
         {"tipo": "Gov.BR", "quantidade": govbr},
         {"tipo": "Login Próprio", "quantidade": proprio},
-        {"tipo": "Não informado", "quantidade": nulo}
+    ]
+
+
+def _faixa_da_conta(c: dict, hoje: datetime,
+                    seis_meses: datetime, dois_anos: datetime,
+                    quatro_anos: datetime) -> str:
+    """Mesma regra de faixas_de_acesso — extraída para reuso no cruzamento."""
+    ul = c.get("ultimoLogin")
+    criada = c.get("conta_criada_em")
+    mesmo_dia = (
+        ul is not None
+        and criada is not None
+        and hasattr(ul, "date")
+        and hasattr(criada, "date")
+        and ul.date() == criada.date()
+    )
+    if ul is None or mesmo_dia:
+        return "Uma vez apenas"
+    if ul > seis_meses:
+        return "Nos últimos 6 meses"
+    if ul > dois_anos:
+        return "Entre 6 meses e 2 anos"
+    if ul > quatro_anos:
+        return "Entre 2 e 4 anos"
+    return "Mais de 4 anos"
+
+
+def faixas_de_acesso_por_tipo(contas: list[dict]) -> list[dict]:
+    """5 faixas x tipo de autenticação. Mesma reclassificação NULL→proprio
+    aplicada em contas_por_tipo_login (consistência).
+
+    Cruza retenção (última data de acesso) com meio de entrada — responde na
+    aba Jornada: "quem volta ao app é mais Gov.BR ou login próprio?".
+    Retorno mantém a ordem visual de FAIXAS_ACESSO_ORDEM.
+    """
+    hoje = datetime.now(timezone.utc)
+    seis_meses = hoje - timedelta(days=182)
+    dois_anos = hoje - timedelta(days=730)
+    quatro_anos = hoje - timedelta(days=1461)
+    contagem = {r: {"govbr": 0, "proprio": 0} for r in FAIXAS_ACESSO_ORDEM}
+    for c in contas:
+        faixa = _faixa_da_conta(c, hoje, seis_meses, dois_anos, quatro_anos)
+        if c.get("contaGovBr"):
+            contagem[faixa]["govbr"] += 1
+        else:
+            contagem[faixa]["proprio"] += 1
+    return [
+        {
+            "faixa": r,
+            "govbr": contagem[r]["govbr"],
+            "proprio": contagem[r]["proprio"],
+            "total": contagem[r]["govbr"] + contagem[r]["proprio"],
+        }
+        for r in FAIXAS_ACESSO_ORDEM
     ]

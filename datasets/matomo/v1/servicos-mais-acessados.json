@@ -1,186 +1,186 @@
 {
   "dia": [
     {
-      "servico": "Emitir guia de licenciamento anual",
-      "orgaoSigla": "DETRAN",
-      "path": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100",
-      "visitas": 133
-    },
-    {
-      "servico": "IPVA - consulta de débito",
-      "orgaoSigla": "SEFAZ MS",
-      "path": "/financas-e-impostos/ipva-consulta-de-debito54",
-      "visitas": 75
-    },
-    {
-      "servico": "Pesquisar viabilidade",
-      "orgaoSigla": "JUCEMS",
-      "path": "/empresa-industria-e-comercio/pesquisar-viabilidade198",
-      "visitas": 67
-    },
-    {
-      "servico": "Consultar vagas de emprego",
-      "orgaoSigla": "FUNTRAB",
-      "path": "/trabalho-emprego-e-previdencia/anunciar-vagas-de-emprego-no-sine-sistema-nacional-de-emprego71",
-      "visitas": 49
-    },
-    {
       "servico": "Solicitar carteira de identidade",
       "orgaoSigla": "CGP",
       "path": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
-      "visitas": 48
+      "visitas": 188
     },
     {
-      "servico": "Solicitar inscrição para participação nos programas habitacionais",
-      "orgaoSigla": "AGEHAB",
-      "path": "/habitacao/inscricaocadastro67",
-      "visitas": 36
-    },
-    {
-      "servico": "Emitir certidão simplificada digital",
-      "orgaoSigla": "JUCEMS",
-      "path": "/empresa-industria-e-comercio/emitir-certidao-simplificada-digital84",
-      "visitas": 36
-    },
-    {
-      "servico": "Registrar boletim de ocorrências on-line",
-      "orgaoSigla": "PCMS",
-      "path": "/seguranca/delegacia-virtual-devir105",
-      "visitas": 33
-    },
-    {
-      "servico": "Certidão tributária estadual - emissão (certidão negativa de débitos estaduais)",
-      "orgaoSigla": "SEFAZ MS",
-      "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao152",
-      "visitas": 30
+      "servico": "Emitir guia de licenciamento anual",
+      "orgaoSigla": "DETRAN",
+      "path": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100",
+      "visitas": 127
     },
     {
       "servico": "e-Fazenda - cadastro",
       "orgaoSigla": "SEFAZ MS",
       "path": "/financas-e-impostos/portal-e-fazenda-cadastro135",
-      "visitas": 29
+      "visitas": 62
     },
     {
-      "servico": "Emitir certidão de antecedentes criminais",
-      "orgaoSigla": "CGP",
-      "path": "/seguranca/expedicao-de-certidao-de-antecedentes-criminais35",
-      "visitas": 23
+      "servico": "Pesquisar viabilidade",
+      "orgaoSigla": "JUCEMS",
+      "path": "/empresa-industria-e-comercio/pesquisar-viabilidade198",
+      "visitas": 52
     },
     {
-      "servico": "Realizar boletim on-line de acidente de trânsito – atendimento sem vítimas",
-      "orgaoSigla": "PMMS",
-      "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170/imprimir",
-      "visitas": 20
+      "servico": "Registrar boletim de ocorrências on-line",
+      "orgaoSigla": "PCMS",
+      "path": "/seguranca/delegacia-virtual-devir105",
+      "visitas": 51
+    },
+    {
+      "servico": "IPVA - consulta de débito",
+      "orgaoSigla": "SEFAZ MS",
+      "path": "/financas-e-impostos/ipva-consulta-de-debito54",
+      "visitas": 47
     },
     {
       "servico": "Contestar multa, autuação ou penalidades",
       "orgaoSigla": "DETRAN",
       "path": "/transito-e-transportes/contestacao-administrativa-de-multa-autuacao-e-penalidades159",
-      "visitas": 18
+      "visitas": 42
     },
     {
-      "servico": "Emitir certidão de inteiro teor digital",
+      "servico": "Emitir certidão simplificada digital",
       "orgaoSigla": "JUCEMS",
-      "path": "/empresa-industria-e-comercio/certidao-de-inteiro-teor-digital19",
-      "visitas": 17
+      "path": "/empresa-industria-e-comercio/emitir-certidao-simplificada-digital84",
+      "visitas": 39
+    },
+    {
+      "servico": "IPVA ou LICENCIAMENTO - emitir boleto",
+      "orgaoSigla": "PGE MS",
+      "path": "/financas-e-impostos/pagamento-de-ipva-inscrito-em-divida-ativa134",
+      "visitas": 38
+    },
+    {
+      "servico": "Documento de arrecadação do estado de Mato Grosso do Sul (DAEMS) - emissão",
+      "orgaoSigla": "SEFAZ MS",
+      "path": "/financas-e-impostos/documento-de-arrecadacao-do-estado-de-mato-grosso-do-sul-daems-emissao5",
+      "visitas": 35
+    },
+    {
+      "servico": "Certidão tributária estadual - emissão (certidão negativa de débitos estaduais)",
+      "orgaoSigla": "SEFAZ MS",
+      "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao152",
+      "visitas": 34
     },
     {
       "servico": "Pedir Renovação da Carteira Nacional de Habilitação - CNH",
       "orgaoSigla": "DETRAN",
       "path": "/transito-e-transportes/emissao-da-carteira-nacional-de-habilitacao174",
-      "visitas": 17
+      "visitas": 25
+    },
+    {
+      "servico": "Emitir certidão de inteiro teor digital",
+      "orgaoSigla": "JUCEMS",
+      "path": "/empresa-industria-e-comercio/certidao-de-inteiro-teor-digital19",
+      "visitas": 22
+    },
+    {
+      "servico": "Solicitar Carteira de Visitante do Sistema Prisional",
+      "orgaoSigla": "AGEPEN",
+      "path": "/direitos-e-cidadania/patronato138",
+      "visitas": 21
+    },
+    {
+      "servico": "Falar com a Glória",
+      "orgaoSigla": "DETRAN",
+      "path": "/comunicacao-e-transparencia/falar-com-a-gloria167",
+      "visitas": 18
     }
   ],
   "semana": [
     {
+      "servico": "Solicitar carteira de identidade",
+      "orgaoSigla": "CGP",
+      "path": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
+      "visitas": 3527
+    },
+    {
       "servico": "Emitir guia de licenciamento anual",
       "orgaoSigla": "DETRAN",
       "path": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100",
-      "visitas": 133
+      "visitas": 3406
     },
     {
       "servico": "IPVA - consulta de débito",
       "orgaoSigla": "SEFAZ MS",
       "path": "/financas-e-impostos/ipva-consulta-de-debito54",
-      "visitas": 75
+      "visitas": 2035
     },
     {
       "servico": "Pesquisar viabilidade",
       "orgaoSigla": "JUCEMS",
       "path": "/empresa-industria-e-comercio/pesquisar-viabilidade198",
-      "visitas": 67
-    },
-    {
-      "servico": "Consultar vagas de emprego",
-      "orgaoSigla": "FUNTRAB",
-      "path": "/trabalho-emprego-e-previdencia/anunciar-vagas-de-emprego-no-sine-sistema-nacional-de-emprego71",
-      "visitas": 49
-    },
-    {
-      "servico": "Solicitar carteira de identidade",
-      "orgaoSigla": "CGP",
-      "path": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
-      "visitas": 48
-    },
-    {
-      "servico": "Solicitar inscrição para participação nos programas habitacionais",
-      "orgaoSigla": "AGEHAB",
-      "path": "/habitacao/inscricaocadastro67",
-      "visitas": 36
-    },
-    {
-      "servico": "Emitir certidão simplificada digital",
-      "orgaoSigla": "JUCEMS",
-      "path": "/empresa-industria-e-comercio/emitir-certidao-simplificada-digital84",
-      "visitas": 36
-    },
-    {
-      "servico": "Registrar boletim de ocorrências on-line",
-      "orgaoSigla": "PCMS",
-      "path": "/seguranca/delegacia-virtual-devir105",
-      "visitas": 33
-    },
-    {
-      "servico": "Certidão tributária estadual - emissão (certidão negativa de débitos estaduais)",
-      "orgaoSigla": "SEFAZ MS",
-      "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao152",
-      "visitas": 30
+      "visitas": 1573
     },
     {
       "servico": "e-Fazenda - cadastro",
       "orgaoSigla": "SEFAZ MS",
       "path": "/financas-e-impostos/portal-e-fazenda-cadastro135",
-      "visitas": 29
+      "visitas": 1498
     },
     {
       "servico": "Emitir certidão de antecedentes criminais",
       "orgaoSigla": "CGP",
       "path": "/seguranca/expedicao-de-certidao-de-antecedentes-criminais35",
-      "visitas": 23
+      "visitas": 1215
     },
     {
-      "servico": "Realizar boletim on-line de acidente de trânsito – atendimento sem vítimas",
-      "orgaoSigla": "PMMS",
-      "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170/imprimir",
-      "visitas": 20
+      "servico": "Registrar boletim de ocorrências on-line",
+      "orgaoSigla": "PCMS",
+      "path": "/seguranca/delegacia-virtual-devir105",
+      "visitas": 1195
     },
     {
-      "servico": "Contestar multa, autuação ou penalidades",
-      "orgaoSigla": "DETRAN",
-      "path": "/transito-e-transportes/contestacao-administrativa-de-multa-autuacao-e-penalidades159",
-      "visitas": 18
+      "servico": "Emitir certidão simplificada digital",
+      "orgaoSigla": "JUCEMS",
+      "path": "/empresa-industria-e-comercio/emitir-certidao-simplificada-digital84",
+      "visitas": 1074
+    },
+    {
+      "servico": "Certidão tributária estadual - emissão (certidão negativa de débitos estaduais)",
+      "orgaoSigla": "SEFAZ MS",
+      "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao152",
+      "visitas": 981
+    },
+    {
+      "servico": "IPVA ou LICENCIAMENTO - emitir boleto",
+      "orgaoSigla": "PGE MS",
+      "path": "/financas-e-impostos/pagamento-de-ipva-inscrito-em-divida-ativa134",
+      "visitas": 709
+    },
+    {
+      "servico": "Solicitar Carteira de Visitante do Sistema Prisional",
+      "orgaoSigla": "AGEPEN",
+      "path": "/direitos-e-cidadania/patronato138",
+      "visitas": 662
     },
     {
       "servico": "Emitir certidão de inteiro teor digital",
       "orgaoSigla": "JUCEMS",
       "path": "/empresa-industria-e-comercio/certidao-de-inteiro-teor-digital19",
-      "visitas": 17
+      "visitas": 605
     },
     {
-      "servico": "Pedir Renovação da Carteira Nacional de Habilitação - CNH",
-      "orgaoSigla": "DETRAN",
-      "path": "/transito-e-transportes/emissao-da-carteira-nacional-de-habilitacao174",
-      "visitas": 17
+      "servico": "Documento de arrecadação do estado de Mato Grosso do Sul (DAEMS) - emissão",
+      "orgaoSigla": "SEFAZ MS",
+      "path": "/financas-e-impostos/documento-de-arrecadacao-do-estado-de-mato-grosso-do-sul-daems-emissao5",
+      "visitas": 537
+    },
+    {
+      "servico": "Consultar vagas de emprego",
+      "orgaoSigla": "FUNTRAB",
+      "path": "/trabalho-emprego-e-previdencia/anunciar-vagas-de-emprego-no-sine-sistema-nacional-de-emprego71",
+      "visitas": 527
+    },
+    {
+      "servico": "Solicitar inscrição para participação nos programas habitacionais",
+      "orgaoSigla": "AGEHAB",
+      "path": "/habitacao/inscricaocadastro67",
+      "visitas": 512
     }
   ],
   "mes": [
@@ -188,91 +188,91 @@
       "servico": "Emitir guia de licenciamento anual",
       "orgaoSigla": "DETRAN",
       "path": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100",
-      "visitas": 16246
+      "visitas": 22422
     },
     {
       "servico": "Solicitar carteira de identidade",
       "orgaoSigla": "CGP",
       "path": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
-      "visitas": 8828
+      "visitas": 16874
     },
     {
       "servico": "IPVA - consulta de débito",
       "orgaoSigla": "SEFAZ MS",
       "path": "/financas-e-impostos/ipva-consulta-de-debito54",
-      "visitas": 8331
-    },
-    {
-      "servico": "Registrar boletim de ocorrências on-line",
-      "orgaoSigla": "PCMS",
-      "path": "/seguranca/delegacia-virtual-devir105",
-      "visitas": 4908
-    },
-    {
-      "servico": "e-Fazenda - cadastro",
-      "orgaoSigla": "SEFAZ MS",
-      "path": "/financas-e-impostos/portal-e-fazenda-cadastro135",
-      "visitas": 4542
-    },
-    {
-      "servico": "Solicitar inscrição para participação nos programas habitacionais",
-      "orgaoSigla": "AGEHAB",
-      "path": "/habitacao/inscricaocadastro67",
-      "visitas": 3942
-    },
-    {
-      "servico": "Certidão tributária estadual - emissão (certidão negativa de débitos estaduais)",
-      "orgaoSigla": "SEFAZ MS",
-      "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao152",
-      "visitas": 3507
-    },
-    {
-      "servico": "Emitir certidão de antecedentes criminais",
-      "orgaoSigla": "CGP",
-      "path": "/seguranca/expedicao-de-certidao-de-antecedentes-criminais35",
-      "visitas": 3190
-    },
-    {
-      "servico": "Emitir certidão simplificada digital",
-      "orgaoSigla": "JUCEMS",
-      "path": "/empresa-industria-e-comercio/emitir-certidao-simplificada-digital84",
-      "visitas": 2861
-    },
-    {
-      "servico": "Solicitar Carteira de Visitante do Sistema Prisional",
-      "orgaoSigla": "AGEPEN",
-      "path": "/direitos-e-cidadania/patronato138",
-      "visitas": 2511
+      "visitas": 10215
     },
     {
       "servico": "Pesquisar viabilidade",
       "orgaoSigla": "JUCEMS",
       "path": "/empresa-industria-e-comercio/pesquisar-viabilidade198",
-      "visitas": 2492
+      "visitas": 6145
+    },
+    {
+      "servico": "Emitir certidão de antecedentes criminais",
+      "orgaoSigla": "CGP",
+      "path": "/seguranca/expedicao-de-certidao-de-antecedentes-criminais35",
+      "visitas": 5726
+    },
+    {
+      "servico": "Registrar boletim de ocorrências on-line",
+      "orgaoSigla": "PCMS",
+      "path": "/seguranca/delegacia-virtual-devir105",
+      "visitas": 5469
+    },
+    {
+      "servico": "e-Fazenda - cadastro",
+      "orgaoSigla": "SEFAZ MS",
+      "path": "/financas-e-impostos/portal-e-fazenda-cadastro135",
+      "visitas": 5298
+    },
+    {
+      "servico": "Emitir certidão simplificada digital",
+      "orgaoSigla": "JUCEMS",
+      "path": "/empresa-industria-e-comercio/emitir-certidao-simplificada-digital84",
+      "visitas": 4486
+    },
+    {
+      "servico": "Certidão tributária estadual - emissão (certidão negativa de débitos estaduais)",
+      "orgaoSigla": "SEFAZ MS",
+      "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao152",
+      "visitas": 3671
+    },
+    {
+      "servico": "IPVA ou LICENCIAMENTO - emitir boleto",
+      "orgaoSigla": "PGE MS",
+      "path": "/financas-e-impostos/pagamento-de-ipva-inscrito-em-divida-ativa134",
+      "visitas": 3097
+    },
+    {
+      "servico": "Solicitar Carteira de Visitante do Sistema Prisional",
+      "orgaoSigla": "AGEPEN",
+      "path": "/direitos-e-cidadania/patronato138",
+      "visitas": 2754
+    },
+    {
+      "servico": "IPVA - troca de veículo - redução para pessoa com deficiência (PCD)",
+      "orgaoSigla": "SEFAZ MS",
+      "path": "/financas-e-impostos/ipva-troca-de-veiculo-reducao-p-pessoa-com-deficiencia-pcd39",
+      "visitas": 2623
+    },
+    {
+      "servico": "Contestar multa, autuação ou penalidades",
+      "orgaoSigla": "DETRAN",
+      "path": "/transito-e-transportes/contestacao-administrativa-de-multa-autuacao-e-penalidades159",
+      "visitas": 2614
     },
     {
       "servico": "Consultar vagas de emprego",
       "orgaoSigla": "FUNTRAB",
       "path": "/trabalho-emprego-e-previdencia/anunciar-vagas-de-emprego-no-sine-sistema-nacional-de-emprego71",
-      "visitas": 2368
+      "visitas": 2587
     },
     {
-      "servico": "Documento de arrecadação do estado de Mato Grosso do Sul (DAEMS) - emissão",
-      "orgaoSigla": "SEFAZ MS",
-      "path": "/financas-e-impostos/documento-de-arrecadacao-do-estado-de-mato-grosso-do-sul-daems-emissao5",
-      "visitas": 2347
-    },
-    {
-      "servico": "Solicitar atendimento técnico para acesso a recursos financeiros disponibilizados por instituições do sistema nacional de crédito rural",
-      "orgaoSigla": "AGRAER",
-      "path": "/agropecuaria-e-vida-rural/credito-rural132",
-      "visitas": 1789
-    },
-    {
-      "servico": "IPVA ou LICENCIAMENTO - emitir boleto",
-      "orgaoSigla": "PGE MS",
-      "path": "/administracao-publica/pagamento-de-ipva-inscrito-em-divida-ativa134",
-      "visitas": 1787
+      "servico": "Solicitar inscrição para participação nos programas habitacionais",
+      "orgaoSigla": "AGEHAB",
+      "path": "/habitacao/inscricaocadastro67",
+      "visitas": 2545
     }
   ],
   "ano": [
@@ -280,91 +280,91 @@
       "servico": "Emitir guia de licenciamento anual",
       "orgaoSigla": "DETRAN",
       "path": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100",
-      "visitas": 108520
+      "visitas": 147805
     },
     {
       "servico": "Solicitar carteira de identidade",
       "orgaoSigla": "CGP",
       "path": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
-      "visitas": 73131
+      "visitas": 100780
     },
     {
       "servico": "IPVA - consulta de débito",
       "orgaoSigla": "SEFAZ MS",
       "path": "/financas-e-impostos/ipva-consulta-de-debito54",
-      "visitas": 56540
+      "visitas": 75854
     },
     {
       "servico": "e-Fazenda - cadastro",
       "orgaoSigla": "SEFAZ MS",
       "path": "/financas-e-impostos/portal-e-fazenda-cadastro135",
-      "visitas": 55264
+      "visitas": 64182
     },
     {
       "servico": "Emitir certidão de antecedentes criminais",
       "orgaoSigla": "CGP",
       "path": "/seguranca/expedicao-de-certidao-de-antecedentes-criminais35",
-      "visitas": 50267
+      "visitas": 58488
     },
     {
       "servico": "Certidão tributária estadual - emissão (certidão negativa de débitos estaduais)",
       "orgaoSigla": "SEFAZ MS",
       "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao152",
-      "visitas": 35382
-    },
-    {
-      "servico": "Emitir documento anual do veículo (CRLV-e)",
-      "orgaoSigla": "DETRAN",
-      "path": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
-      "visitas": 31564
+      "visitas": 41755
     },
     {
       "servico": "Solicitar inscrição para participação nos programas habitacionais",
       "orgaoSigla": "AGEHAB",
       "path": "/habitacao/inscricaocadastro67",
-      "visitas": 30550
+      "visitas": 34642
     },
     {
       "servico": "IPVA ou LICENCIAMENTO - emitir boleto",
       "orgaoSigla": "PGE MS",
       "path": "/administracao-publica/pagamento-de-ipva-inscrito-em-divida-ativa134",
-      "visitas": 29194
+      "visitas": 33744
+    },
+    {
+      "servico": "Emitir documento anual do veículo (CRLV-e)",
+      "orgaoSigla": "DETRAN",
+      "path": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
+      "visitas": 33365
     },
     {
       "servico": "Pedir Renovação da Carteira Nacional de Habilitação - CNH",
       "orgaoSigla": "DETRAN",
       "path": "/transito-e-transportes/emissao-da-carteira-nacional-de-habilitacao174",
-      "visitas": 28536
-    },
-    {
-      "servico": "Solicitar Carteira de Visitante do Sistema Prisional",
-      "orgaoSigla": "AGEPEN",
-      "path": "/direitos-e-cidadania/patronato138",
-      "visitas": 25139
+      "visitas": 32038
     },
     {
       "servico": "Registrar boletim de ocorrências on-line",
       "orgaoSigla": "PCMS",
       "path": "/seguranca/delegacia-virtual-devir105",
-      "visitas": 22411
+      "visitas": 30723
+    },
+    {
+      "servico": "Solicitar Carteira de Visitante do Sistema Prisional",
+      "orgaoSigla": "AGEPEN",
+      "path": "/direitos-e-cidadania/patronato138",
+      "visitas": 29908
     },
     {
       "servico": "Emitir certidão simplificada digital",
       "orgaoSigla": "JUCEMS",
       "path": "/empresa-industria-e-comercio/emitir-certidao-simplificada-digital84",
-      "visitas": 22096
+      "visitas": 29894
     },
     {
       "servico": "Emitir certificado do ensino médio",
       "orgaoSigla": "SED MS",
       "path": "/educacao-e-pesquisa/emitir-certificado-de-conclusao-do-ensino-medio111",
-      "visitas": 21984
+      "visitas": 24333
     },
     {
       "servico": "Documento de arrecadação do estado de Mato Grosso do Sul (DAEMS) - emissão",
       "orgaoSigla": "SEFAZ MS",
       "path": "/financas-e-impostos/documento-de-arrecadacao-do-estado-de-mato-grosso-do-sul-daems-emissao5",
-      "visitas": 19221
+      "visitas": 23213
     }
   ]
 }

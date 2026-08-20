@@ -1,4 +1,4 @@
-import type { ContasResumo, ContaPorFaixaEtaria, FaixaAcesso, ContaCriadaDia } from "./data";
+import type { ContasResumo, ContaPorFaixaEtaria, FaixaAcesso, FaixaAcessoPorTipo, ContaCriadaDia } from "./data";
 import type { PeriodoState } from "./period-filter";
 
 function achaFaixa(faixas: FaixaAcesso[], nome: string): FaixaAcesso | undefined {
@@ -97,6 +97,34 @@ export function fraseFaixaMaior(faixas: FaixaAcesso[]): string {
   }
   const maior = [...faixas].sort((a, b) => b.quantidade - a.quantidade)[0];
   return `A maior parte das contas (${maior.percentPct.toFixed(1)}%) se encaixa em "${maior.faixa}".`;
+}
+
+/** Frase-âncora do cruzamento faixa de acesso × tipo de autenticação.
+ *  Compara % Gov.BR entre a faixa mais recente e a mais antiga (proxy de
+ *  adoção do Gov.BR entre quem volta vs quem parou). Se todas as faixas
+ *  tiverem taxas parecidas ou faltar dado, degrada para o total geral. */
+export function fraseAdocaoGovBrPorFaixa(faixas: FaixaAcessoPorTipo[]): string {
+  const comDado = faixas.filter((f) => f.total > 0);
+  if (comDado.length === 0) return "Sem contas cadastradas para analisar.";
+
+  const totalGeral = comDado.reduce((a, f) => a + f.total, 0);
+  const govbrGeral = comDado.reduce((a, f) => a + f.govbr, 0);
+  const pctGeral = (100 * govbrGeral) / totalGeral;
+
+  const recentes = comDado.find((f) => f.faixa === "Nos últimos 6 meses");
+  const antigas = comDado.find((f) => f.faixa === "Mais de 4 anos");
+
+  if (recentes && antigas && recentes.total > 0 && antigas.total > 0) {
+    const pctRecentes = (100 * recentes.govbr) / recentes.total;
+    const pctAntigas = (100 * antigas.govbr) / antigas.total;
+    const diferenca = pctRecentes - pctAntigas;
+    if (Math.abs(diferenca) >= 5) {
+      const verbo = diferenca > 0 ? "sobe" : "cai";
+      return `Entre quem voltou nos últimos 6 meses, ${pctRecentes.toFixed(1)}% entra pelo Gov.BR; entre contas paradas há mais de 4 anos, essa taxa ${verbo} para ${pctAntigas.toFixed(1)}%.`;
+    }
+  }
+
+  return `${pctGeral.toFixed(1)}% das contas usam o Gov.BR para entrar no app, sem grande diferença entre quem volta e quem parou.`;
 }
 
 export type PontoAtencao = { severidade: "alerta" | "atencao" | "info"; texto: string };
