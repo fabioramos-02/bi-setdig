@@ -1,4 +1,8 @@
 {
+  "MS.gov": ["SETDIG"],
+  "Procon-MS": ["PROCON"],
+  "AGEMS": ["AGEMS"],
+  "Habitação": ["AGEHAB"],
   "Educação": ["SED"],
   "Segurança": ["SEJUSP", "Corpo de Bombeiros", "Polícia Civil"],
   "Agronegócio": ["IAGRO", "SEMADESC"],
