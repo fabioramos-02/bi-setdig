@@ -13,6 +13,7 @@ import type {
   ContaPorCidade,
   FaixaAcesso,
   ContaCriadaDia,
+  TipoLogin,
 } from "@/lib/data";
 import type { PeriodoState } from "@/lib/period-filter";
 import {
@@ -39,6 +40,7 @@ export function ContasTab({
   porCidade,
   faixasDeAcesso,
   criadasPorDia,
+  tipoLogin,
   estadoPeriodo,
   rotuloPeriodo,
 }: {
@@ -48,6 +50,7 @@ export function ContasTab({
   porCidade: ContaPorCidade[];
   faixasDeAcesso: FaixaAcesso[];
   criadasPorDia: ContaCriadaDia[];
+  tipoLogin: TipoLogin[];
   estadoPeriodo: PeriodoState;
   rotuloPeriodo: string;
 }) {
@@ -114,7 +117,33 @@ export function ContasTab({
         />
       </div>
 
-
+      {/* Tipo de Login */}
+      {tipoLogin.length > 0 && (
+        <StoryCard
+          anchor={`O login com Gov.BR é utilizado por ${
+            (
+              (100 * (tipoLogin.find((t) => t.tipo === "Gov.BR")?.quantidade ?? 0)) /
+              Math.max(1, tipoLogin.reduce((acc, t) => acc + t.quantidade, 0))
+            ).toFixed(1)
+          }% dos usuários.`}
+          caption="Distribuição do tipo de autenticação escolhida no momento do cadastro."
+          comoLer="Mostra a proporção de cidadãos que optaram por integrar sua conta ao Gov.BR em vez de criar um login próprio do aplicativo."
+        >
+          <div className="grid gap-4 grid-cols-1 sm:grid-cols-3">
+            {tipoLogin.map((t) => (
+              <MetricCard
+                key={t.tipo}
+                label={t.tipo}
+                value={t.quantidade}
+                sub={`${(
+                  (100 * t.quantidade) /
+                  Math.max(1, tipoLogin.reduce((acc, current) => acc + current.quantidade, 0))
+                ).toFixed(1)}% do total`}
+              />
+            ))}
+          </div>
+        </StoryCard>
+      )}
 
       {/* Contas criadas por ano — vertical, título igual Qlik */}
       <DashboardSection title="Contas criadas por ano">

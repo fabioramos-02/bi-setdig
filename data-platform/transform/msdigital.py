@@ -195,3 +195,23 @@ def faixas_de_acesso(contas: list[dict]) -> list[dict]:
         }
         for r in FAIXAS_ACESSO_ORDEM
     ]
+
+
+def contas_por_tipo_login(contas: list[dict]) -> list[dict]:
+    """Conta quantidade de acessos por tipo (Gov.BR vs Próprio vs Não informado)."""
+    govbr = 0
+    proprio = 0
+    nulo = 0
+    for c in contas:
+        valor = c.get("contaGovBr")
+        if valor is None:
+            nulo += 1
+        elif valor:
+            govbr += 1
+        else:
+            proprio += 1
+    return [
+        {"tipo": "Gov.BR", "quantidade": govbr},
+        {"tipo": "Login Próprio", "quantidade": proprio},
+        {"tipo": "Não informado", "quantidade": nulo}
+    ]

@@ -330,6 +330,11 @@ def run_msdigital_db() -> None:
     publish("msdigital-db", "faixas-de-acesso", faixas)
     print(f"[msdigital-db] faixas-de-acesso -> {[(r['faixa'], r['quantidade']) for r in faixas]}")
 
+    tipo_login = t_ms.contas_por_tipo_login(contas)
+    validate_rows(tipo_login, required=["tipo", "quantidade"], non_negative=["quantidade"])
+    publish("msdigital-db", "tipo-login", tipo_login)
+    print(f"[msdigital-db] tipo-login -> {tipo_login}")
+
 
 def run_qualidade() -> None:
     from extract import qualidade
