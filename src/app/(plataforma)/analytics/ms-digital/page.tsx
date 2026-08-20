@@ -12,6 +12,7 @@ import {
   getMatomoDispositivos,
   getMatomoServicosMaisAcessados,
   getAppCatalogoServicos,
+  getAppCategoriaOrgaos,
   getMsdigitalContasResumo,
   getMsdigitalContasPorAno,
   getMsdigitalContasPorFaixaEtaria,
@@ -42,6 +43,7 @@ export default function AnalyticsMsDigitalPage() {
   const portalServicosMaisAcessados = getMatomoServicosMaisAcessados();
   // Catálogo de serviços do app (nativo × web) — estático, da planilha.
   const catalogo = getAppCatalogoServicos();
+  const categoriaOrgaos = getAppCategoriaOrgaos();
   // Cadastro (SQL Server MS_digital) — alimenta a 7ª aba "Contas".
   const contasResumo = getMsdigitalContasResumo();
   const contasPorAno = getMsdigitalContasPorAno();
@@ -80,6 +82,7 @@ export default function AnalyticsMsDigitalPage() {
       catalogo={catalogo}
       catalogoResumo={resumoCatalogo(catalogo)}
       catalogoCategorias={porCategoria(catalogo)}
+      categoriaOrgaos={categoriaOrgaos}
       contasResumo={contasResumo}
       contasPorAno={contasPorAno}
       contasPorFaixaEtaria={contasPorFaixaEtaria}

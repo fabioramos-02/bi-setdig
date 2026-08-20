@@ -1,5 +1,6 @@
 import type { CategoriaResumo } from "./catalogo-app.ts";
 import type { FatiaCategoria } from "../components/charts/CategoryDonut.tsx";
+import type { CategoriaOrgaos } from "./data.ts";
 import { iconeCategoria } from "./catalogo-app.ts";
 
 /** Storytelling da aba "Categorias do app" — combina catálogo estático
@@ -93,6 +94,20 @@ export function totalAcessos(r: RankingCategoria[]): number {
 /** Share concentrado nas top-N categorias. */
 export function topNSharePct(r: RankingCategoria[], n: number): number {
   return r.slice(0, n).reduce((a, c) => a + c.sharePct, 0);
+}
+
+/** Órgãos únicos envolvidos nas categorias do catálogo — soma o conjunto
+ *  de siglas do mapa, ignorando categorias sem responsável mapeado. */
+export function contagemOrgaosUnicos(
+  mapa: CategoriaOrgaos,
+  categorias: RankingCategoria[],
+): { total: number; distintos: string[] } {
+  const set = new Set<string>();
+  for (const c of categorias) {
+    for (const sigla of mapa[c.categoria] ?? []) set.add(sigla);
+  }
+  const distintos = [...set];
+  return { total: distintos.length, distintos };
 }
 
 export function fraseAncoraCategoria(r: RankingCategoria[]): string {

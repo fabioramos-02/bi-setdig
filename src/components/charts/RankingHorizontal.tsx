@@ -1,3 +1,5 @@
+import { OrgaosChips } from "@/components/dashboard/OrgaosChips";
+
 /** Barras horizontais escaladas ao maior valor da lista — leitura executiva
  *  de ranking + share. CSS puro, sem lib. Mesma família visual do
  *  StackedBarChart e CadenciaAcessoFunil. */
@@ -15,10 +17,13 @@ export function RankingHorizontal({
   itens,
   cor = "var(--ds-color-primary-600)",
   fundo = "var(--ds-color-background-muted)",
+  chipsPorItem,
 }: {
   itens: ItemRanking[];
   cor?: string;
   fundo?: string;
+  /** Se retornar array não-vazio pra um label, renderiza <OrgaosChips> abaixo. */
+  chipsPorItem?: (label: string) => string[];
 }) {
   const max = Math.max(1, ...itens.map((i) => i.valor));
   return (
@@ -65,6 +70,11 @@ export function RankingHorizontal({
             <div className="h-2 rounded overflow-hidden" style={{ background: fundo }}>
               <div style={{ width: `${pctBarra}%`, height: "100%", background: cor, transition: "width 300ms ease" }} />
             </div>
+            {chipsPorItem && (
+              <div className="mt-1">
+                <OrgaosChips orgaos={chipsPorItem(it.label)} tamanho="xs" align="start" />
+              </div>
+            )}
           </li>
         );
       })}

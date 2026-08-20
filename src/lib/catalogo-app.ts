@@ -1,4 +1,4 @@
-import type { ServicoCatalogo } from "./data";
+import type { CategoriaOrgaos, ServicoCatalogo } from "./data";
 
 /**
  * Agregações do catálogo de serviços do app (nativo × web) — cálculo fora do
@@ -66,6 +66,12 @@ export type CategoriaResumo = {
   web: number;
   ativo: number;
 };
+
+/** Órgãos responsáveis por uma categoria. Devolve `[]` quando a categoria
+ *  não está mapeada (mapa é seletivo). */
+export function orgaosDe(categoria: string, mapa: CategoriaOrgaos): string[] {
+  return mapa[categoria] ?? [];
+}
 
 /** Uma linha por categoria, ordenada por nº de serviços (desc). */
 export function porCategoria(servicos: ServicoCatalogo[]): CategoriaResumo[] {

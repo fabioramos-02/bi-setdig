@@ -1,0 +1,14 @@
+{
+  "Educação": ["SED"],
+  "Segurança": ["SEJUSP", "Corpo de Bombeiros", "Polícia Civil"],
+  "Agronegócio": ["IAGRO", "SEMADESC"],
+  "Servidor Público": ["SAD"],
+  "Assistência Social": ["SEAD"],
+  "Saúde": ["SES"],
+  "Trânsito": ["DETRAN"],
+  "Transparência": ["CGE"],
+  "Meio Ambiente": ["SEILOG", "CEMTEC", "SEMADESC", "IMASUL"],
+  "Turismo": ["SETESC"],
+  "Cultura e Esporte": ["SETESC"],
+  "Mulher MS": ["Polícia Civil", "SEC"]
+}

@@ -10,13 +10,15 @@ import { ExportCsvButton } from "@/components/dashboard/ExportCsvButton";
 import { ChartLoading } from "@/components/dashboard/ChartLoading";
 import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
 import { normalizar, folhaDe, contagemPorServico } from "@/lib/servico-app-classifier";
-import type { ServicoCatalogo, Servico } from "@/lib/data";
-import type { ResumoCatalogo, CategoriaResumo } from "@/lib/catalogo-app";
+import type { ServicoCatalogo, Servico, CategoriaOrgaos } from "@/lib/data";
+import { orgaosDe, type ResumoCatalogo, type CategoriaResumo } from "@/lib/catalogo-app";
 import type { FatiaCategoria } from "@/components/charts/CategoryDonut";
+import { OrgaosChips } from "@/components/dashboard/OrgaosChips";
 import {
   cauda,
   categoriaLider,
   cobertura,
+  contagemOrgaosUnicos,
   fraseAncoraCategoria,
   pontosAtencaoCategorias,
   ranking,
@@ -40,6 +42,7 @@ export function CategoriasTab({
   categorias,
   acessosServico,
   acessosCategoria,
+  categoriaOrgaos,
   status,
 }: {
   servicos: ServicoCatalogo[];
@@ -47,11 +50,13 @@ export function CategoriasTab({
   categorias: CategoriaResumo[];
   acessosServico: Servico[];
   acessosCategoria: FatiaCategoria[];
+  categoriaOrgaos: CategoriaOrgaos;
   status: StatusIntervalo;
 }) {
   const [sel, setSel] = useState<string | null>(null);
 
   const rankings = useMemo(() => ranking(categorias, acessosCategoria), [categorias, acessosCategoria]);
+  const orgaosUnicos = useMemo(() => contagemOrgaosUnicos(categoriaOrgaos, rankings), [categoriaOrgaos, rankings]);
   const lider = categoriaLider(rankings);
   const semaforo = saudeConcentracao(rankings);
   const total = totalAcessos(rankings);
@@ -100,7 +105,11 @@ export function CategoriasTab({
               {semaforo.texto}
             </p>
             <p style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm mt-2">
-              {fraseAncoraCategoria(rankings)} O app reúne {resumo.total} serviços em {resumo.categorias} categorias.{" "}
+              {fraseAncoraCategoria(rankings)} O app reúne {resumo.total} serviços em {resumo.categorias} categorias
+              {orgaosUnicos.total > 0 && (
+                <>, sustentadas por <strong>{orgaosUnicos.total}</strong> órgãos do Estado</>
+              )}
+              .{" "}
               {total > 0 && (
                 <>
                   Total de acessos identificados no período: <strong>{total.toLocaleString("pt-BR")}</strong>.
@@ -148,6 +157,7 @@ export function CategoriasTab({
                 : `${r.totalServicos} serviço${r.totalServicos === 1 ? "" : "s"}`,
               icone: r.icone,
             }))}
+            chipsPorItem={(cat) => orgaosDe(cat, categoriaOrgaos)}
           />
         </ChartLoading>
       </StoryCard>
@@ -206,6 +216,9 @@ export function CategoriasTab({
                     </>
                   )}
                 </span>
+                <div className="mt-2">
+                  <OrgaosChips orgaos={orgaosDe(c.categoria, categoriaOrgaos)} tamanho="xs" align="center" />
+                </div>
                 {total > 0 && !linhaRanking?.soAtalhoWeb && (
                   <div
                     className="w-full h-1 mt-3 rounded overflow-hidden"
@@ -228,9 +241,12 @@ export function CategoriasTab({
 
         {sel && (
           <div className="mt-6">
-            <h3 className="text-sm font-semibold mb-3" style={{ color: "var(--ds-color-text-secondary)" }}>
-              {sel} — {servicosSel.length} serviços · {rankingSel.reduce((a, l) => a + l.acessos, 0).toLocaleString("pt-BR")} acessos no período
-            </h3>
+            <div className="mb-3 flex flex-col gap-1">
+              <h3 className="text-sm font-semibold" style={{ color: "var(--ds-color-text-secondary)" }}>
+                {sel} — {servicosSel.length} serviços · {rankingSel.reduce((a, l) => a + l.acessos, 0).toLocaleString("pt-BR")} acessos no período
+              </h3>
+              <OrgaosChips orgaos={orgaosDe(sel, categoriaOrgaos)} tamanho="sm" align="start" />
+            </div>
             <ChartLoading status={status} height={Math.max(120, servicosSel.length * 44)}>
               {rankingSel.reduce((a, l) => a + l.acessos, 0) > 0 ? (
                 <RankingHorizontal

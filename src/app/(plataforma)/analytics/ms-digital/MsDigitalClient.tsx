@@ -35,6 +35,7 @@ import type {
   Dispositivo,
   ServicoAcessado,
   ServicoCatalogo,
+  CategoriaOrgaos,
   Cidade,
   ContasResumo,
   ContaPorAno,
@@ -76,6 +77,7 @@ export function MsDigitalClient({
   catalogo,
   catalogoResumo,
   catalogoCategorias,
+  categoriaOrgaos,
   contasResumo,
   contasPorAno,
   contasPorFaixaEtaria,
@@ -101,6 +103,7 @@ export function MsDigitalClient({
   catalogo: ServicoCatalogo[];
   catalogoResumo: ResumoCatalogo;
   catalogoCategorias: CategoriaResumo[];
+  categoriaOrgaos: CategoriaOrgaos;
   contasResumo: ContasResumo | null;
   contasPorAno: ContaPorAno[];
   contasPorFaixaEtaria: ContaPorFaixaEtaria[];
@@ -294,6 +297,7 @@ export function MsDigitalClient({
           categorias={catalogoCategorias}
           acessosServico={classificado.servicosFolha}
           acessosCategoria={classificado.categorias}
+          categoriaOrgaos={categoriaOrgaos}
           status={statusGa4}
         />
       ),

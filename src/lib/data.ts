@@ -233,6 +233,15 @@ export function getAppCatalogoServicos(): ServicoCatalogo[] {
   return readDataset<ServicoCatalogo[]>("app", "v1", "catalogo-servicos") ?? [];
 }
 
+// Mapa curado categoria → siglas de órgãos responsáveis. Chave = nome exato
+// da categoria em catalogo-servicos.json. Categoria ausente = sem chip na UI
+// (não é bug — o mapa é seletivo por natureza, cobre só o que tem dono claro).
+export type CategoriaOrgaos = Record<string, string[]>;
+
+export function getAppCategoriaOrgaos(): CategoriaOrgaos {
+  return readDataset<CategoriaOrgaos>("app", "v1", "categoria-orgaos") ?? {};
+}
+
 // --- Cadastro do app MS Digital (SQL Server MS_digital) ---
 // Fonte: data-platform/extract/msdigital_db.py. Snapshot (não varia por
 // período fixo) — cadastro é estado atual, não série. ponytail: os getters
