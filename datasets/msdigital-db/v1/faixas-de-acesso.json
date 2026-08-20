@@ -1,27 +1,27 @@
 [
   {
     "faixa": "Nos últimos 6 meses",
-    "quantidade": 69353,
+    "quantidade": 69582,
     "percentPct": 18.9
   },
   {
     "faixa": "Entre 6 meses e 2 anos",
-    "quantidade": 69219,
+    "quantidade": 68985,
     "percentPct": 18.8
   },
   {
     "faixa": "Entre 2 e 4 anos",
-    "quantidade": 51764,
+    "quantidade": 51894,
     "percentPct": 14.1
   },
   {
     "faixa": "Mais de 4 anos",
-    "quantidade": 25187,
+    "quantidade": 25300,
     "percentPct": 6.9
   },
   {
     "faixa": "Uma vez apenas",
-    "quantidade": 152000,
+    "quantidade": 152140,
     "percentPct": 41.4
   }
 ]

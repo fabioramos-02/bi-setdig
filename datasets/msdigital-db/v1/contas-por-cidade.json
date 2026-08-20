@@ -2,7 +2,7 @@
   {
     "cidade": "Campo Grande",
     "codigoIbge": "5002704",
-    "ativas": 3158
+    "ativas": 3161
   },
   {
     "cidade": "Dourados",
@@ -27,7 +27,7 @@
   {
     "cidade": "Nova Andradina",
     "codigoIbge": "5006200",
-    "ativas": 110
+    "ativas": 111
   },
   {
     "cidade": "Aquidauana",
@@ -57,7 +57,7 @@
   {
     "cidade": "São Gabriel do Oeste",
     "codigoIbge": "5007695",
-    "ativas": 57
+    "ativas": 58
   },
   {
     "cidade": "Coxim",
@@ -145,13 +145,13 @@
     "ativas": 22
   },
   {
-    "cidade": "Bela Vista",
-    "codigoIbge": "5002100",
-    "ativas": 20
-  },
-  {
     "cidade": "Camapuã",
     "codigoIbge": "5002605",
+    "ativas": 21
+  },
+  {
+    "cidade": "Bela Vista",
+    "codigoIbge": "5002100",
     "ativas": 20
   },
   {
@@ -255,14 +255,14 @@
     "ativas": 9
   },
   {
-    "cidade": "Vicentina",
-    "codigoIbge": "5008404",
+    "cidade": "Selvíria",
+    "codigoIbge": "5007802",
     "ativas": 9
   },
   {
-    "cidade": "Selvíria",
-    "codigoIbge": "5007802",
-    "ativas": 8
+    "cidade": "Vicentina",
+    "codigoIbge": "5008404",
+    "ativas": 9
   },
   {
     "cidade": "Juti",
@@ -387,6 +387,6 @@
   {
     "cidade": "Outros municípios / fora de MS",
     "codigoIbge": "",
-    "ativas": 652
+    "ativas": 653
   }
 ]

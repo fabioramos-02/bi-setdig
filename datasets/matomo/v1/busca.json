@@ -2,22 +2,30 @@
   "dia": [
     {
       "termo": "inscrição estadual",
-      "buscas": 15
+      "buscas": 60
     },
     {
       "termo": "ipva",
-      "buscas": 8
+      "buscas": 23
+    },
+    {
+      "termo": "procon",
+      "buscas": 6
     },
     {
       "termo": "substituição tributária",
-      "buscas": 3
+      "buscas": 6
     },
     {
       "termo": "cnh",
       "buscas": 2
     },
     {
-      "termo": "procon",
+      "termo": "itcd",
+      "buscas": 2
+    },
+    {
+      "termo": "mulher",
       "buscas": 2
     },
     {
@@ -25,7 +33,23 @@
       "buscas": 1
     },
     {
+      "termo": "09021993047",
+      "buscas": 1
+    },
+    {
       "termo": "283007419",
+      "buscas": 1
+    },
+    {
+      "termo": "autoparcelamento",
+      "buscas": 1
+    },
+    {
+      "termo": "bombeiro mirim",
+      "buscas": 1
+    },
+    {
+      "termo": "cidadão",
       "buscas": 1
     },
     {
@@ -33,7 +57,15 @@
       "buscas": 1
     },
     {
+      "termo": "cpf",
+      "buscas": 1
+    },
+    {
       "termo": "dados vazados",
+      "buscas": 1
+    },
+    {
+      "termo": "defesa civil",
       "buscas": 1
     },
     {
@@ -41,54 +73,42 @@
       "buscas": 1
     },
     {
-      "termo": "mulher",
+      "termo": "inscrição estadual produtor rural consulta",
       "buscas": 1
     },
     {
-      "termo": "multa",
-      "buscas": 1
-    },
-    {
-      "termo": "resultado de provas",
-      "buscas": 1
-    },
-    {
-      "termo": "servidor",
-      "buscas": 1
-    },
-    {
-      "termo": "ver resultado de exame",
+      "termo": "instrutores credenciado",
       "buscas": 1
     }
   ],
   "semana": [
     {
       "termo": "inscrição estadual",
-      "buscas": 625
+      "buscas": 669
     },
     {
       "termo": "ipva",
-      "buscas": 446
+      "buscas": 461
     },
     {
       "termo": "substituição tributária",
-      "buscas": 84
+      "buscas": 87
     },
     {
       "termo": "procon",
-      "buscas": 73
+      "buscas": 77
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 33
+      "buscas": 34
     },
     {
       "termo": "itcd",
-      "buscas": 23
+      "buscas": 25
     },
     {
       "termo": "cidadão",
-      "buscas": 18
+      "buscas": 19
     },
     {
       "termo": "empresa",
@@ -96,7 +116,7 @@
     },
     {
       "termo": "mulher",
-      "buscas": 12
+      "buscas": 13
     },
     {
       "termo": "licenciamento",
@@ -131,46 +151,46 @@
       "buscas": 3
     },
     {
+      "termo": "defesa civil",
+      "buscas": 3
+    },
+    {
       "termo": "rg",
       "buscas": 3
     },
     {
       "termo": "toxicologico",
       "buscas": 3
-    },
-    {
-      "termo": "veterinário",
-      "buscas": 3
     }
   ],
   "mes": [
     {
       "termo": "ipva",
-      "buscas": 2211
+      "buscas": 2226
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 1542
+      "buscas": 1586
     },
     {
       "termo": "procon",
-      "buscas": 369
+      "buscas": 373
     },
     {
       "termo": "substituição tributária",
-      "buscas": 340
+      "buscas": 343
     },
     {
       "termo": "itcd",
-      "buscas": 151
+      "buscas": 153
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 148
+      "buscas": 149
     },
     {
       "termo": "cidadão",
-      "buscas": 115
+      "buscas": 116
     },
     {
       "termo": "empresa",
@@ -190,11 +210,11 @@
     },
     {
       "termo": "mulher",
-      "buscas": 28
+      "buscas": 29
     },
     {
       "termo": "defesa civil",
-      "buscas": 20
+      "buscas": 21
     },
     {
       "termo": "efd",
@@ -228,31 +248,31 @@
   "ano": [
     {
       "termo": "ipva",
-      "buscas": 31974
+      "buscas": 31989
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 10415
+      "buscas": 10459
     },
     {
       "termo": "procon",
-      "buscas": 6797
+      "buscas": 6801
     },
     {
       "termo": "substituição tributária",
-      "buscas": 4608
+      "buscas": 4611
     },
     {
       "termo": "itcd",
-      "buscas": 1782
+      "buscas": 1784
     },
     {
       "termo": "cidadão",
-      "buscas": 1512
+      "buscas": 1513
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 1373
+      "buscas": 1374
     },
     {
       "termo": "servidor",
@@ -268,7 +288,7 @@
     },
     {
       "termo": "mulher",
-      "buscas": 256
+      "buscas": 257
     },
     {
       "termo": "nota fiscal",
@@ -276,7 +296,7 @@
     },
     {
       "termo": "defesa civil",
-      "buscas": 236
+      "buscas": 237
     },
     {
       "termo": "cnh",

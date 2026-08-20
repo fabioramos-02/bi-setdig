@@ -2,18 +2,42 @@
   "dia": [
     {
       "cidade": "Campo Grande",
-      "visitas": 46
+      "visitas": 62
     },
     {
       "cidade": "Dourados",
-      "visitas": 8
+      "visitas": 9
     },
     {
       "cidade": "Sao Paulo",
-      "visitas": 7
+      "visitas": 8
+    },
+    {
+      "cidade": "Joao Pessoa",
+      "visitas": 5
+    },
+    {
+      "cidade": "Tres Lagoas",
+      "visitas": 5
+    },
+    {
+      "cidade": "Recife",
+      "visitas": 4
+    },
+    {
+      "cidade": "Ananindeua",
+      "visitas": 3
     },
     {
       "cidade": "Aquidauana",
+      "visitas": 3
+    },
+    {
+      "cidade": "Belem",
+      "visitas": 3
+    },
+    {
+      "cidade": "Brasilia",
       "visitas": 3
     },
     {
@@ -21,8 +45,8 @@
       "visitas": 3
     },
     {
-      "cidade": "Tres Lagoas",
-      "visitas": 3
+      "cidade": "Bataguassu",
+      "visitas": 2
     },
     {
       "cidade": "Pirassununga",
@@ -33,19 +57,19 @@
       "visitas": 2
     },
     {
-      "cidade": "Ananindeua",
+      "cidade": "Artur Nogueira",
       "visitas": 1
     },
     {
-      "cidade": "Belem",
-      "visitas": 1
-    },
-    {
-      "cidade": "Brasilia",
+      "cidade": "Barueri",
       "visitas": 1
     },
     {
       "cidade": "Caraguatatuba",
+      "visitas": 1
+    },
+    {
+      "cidade": "Cascavel",
       "visitas": 1
     },
     {
@@ -65,7 +89,7 @@
       "visitas": 1
     },
     {
-      "cidade": "Joao Pessoa",
+      "cidade": "Juazeiro do Norte",
       "visitas": 1
     },
     {
@@ -77,22 +101,38 @@
       "visitas": 1
     },
     {
+      "cidade": "Paranaiba",
+      "visitas": 1
+    },
+    {
       "cidade": "Piedade",
       "visitas": 1
     },
     {
+      "cidade": "Rio Verde",
+      "visitas": 1
+    },
+    {
       "cidade": "Rio de Janeiro",
+      "visitas": 1
+    },
+    {
+      "cidade": "Santo Antonio do Descoberto",
+      "visitas": 1
+    },
+    {
+      "cidade": "Suzano",
       "visitas": 1
     }
   ],
   "semana": [
     {
       "cidade": "Campo Grande",
-      "visitas": 7483
+      "visitas": 7491
     },
     {
       "cidade": "Sao Paulo",
-      "visitas": 1052
+      "visitas": 1053
     },
     {
       "cidade": "Dourados",
@@ -100,23 +140,23 @@
     },
     {
       "cidade": "Belem",
-      "visitas": 520
+      "visitas": 521
     },
     {
       "cidade": "Joao Pessoa",
-      "visitas": 502
+      "visitas": 504
     },
     {
       "cidade": "Tres Lagoas",
-      "visitas": 459
+      "visitas": 460
     },
     {
       "cidade": "Brasilia",
-      "visitas": 348
+      "visitas": 350
     },
     {
       "cidade": "Ananindeua",
-      "visitas": 335
+      "visitas": 336
     },
     {
       "cidade": "Ponta Pora",
@@ -152,7 +192,7 @@
     },
     {
       "cidade": "Paranaiba",
-      "visitas": 114
+      "visitas": 115
     },
     {
       "cidade": "Amambai",
@@ -331,6 +371,14 @@
       "visitas": 11
     },
     {
+      "cidade": "Barueri",
+      "visitas": 10
+    },
+    {
+      "cidade": "Cascavel",
+      "visitas": 10
+    },
+    {
       "cidade": "Florianopolis",
       "visitas": 10
     },
@@ -343,15 +391,7 @@
       "visitas": 10
     },
     {
-      "cidade": "Barueri",
-      "visitas": 9
-    },
-    {
       "cidade": "Bastos",
-      "visitas": 9
-    },
-    {
-      "cidade": "Cascavel",
       "visitas": 9
     },
     {
@@ -463,6 +503,10 @@
       "visitas": 5
     },
     {
+      "cidade": "Suzano",
+      "visitas": 5
+    },
+    {
       "cidade": "Tucurui",
       "visitas": 5
     },
@@ -536,10 +580,6 @@
     },
     {
       "cidade": "Sobral",
-      "visitas": 4
-    },
-    {
-      "cidade": "Suzano",
       "visitas": 4
     },
     {
@@ -660,6 +700,10 @@
     },
     {
       "cidade": "Rio Claro",
+      "visitas": 3
+    },
+    {
+      "cidade": "Rio Verde",
       "visitas": 3
     },
     {
@@ -873,16 +917,12 @@
     {
       "cidade": "Palhoca",
       "visitas": 2
-    },
-    {
-      "cidade": "Paragominas",
-      "visitas": 2
     }
   ],
   "mes": [
     {
       "cidade": "Campo Grande",
-      "visitas": 25467
+      "visitas": 25470
     },
     {
       "cidade": "Sao Paulo",
@@ -894,7 +934,7 @@
     },
     {
       "cidade": "Brasilia",
-      "visitas": 1698
+      "visitas": 1700
     },
     {
       "cidade": "Tres Lagoas",
@@ -906,7 +946,7 @@
     },
     {
       "cidade": "Joao Pessoa",
-      "visitas": 1098
+      "visitas": 1100
     },
     {
       "cidade": "Ponta Pora",
@@ -922,7 +962,7 @@
     },
     {
       "cidade": "Ananindeua",
-      "visitas": 715
+      "visitas": 716
     },
     {
       "cidade": "Rio de Janeiro",
@@ -946,7 +986,7 @@
     },
     {
       "cidade": "Paranaiba",
-      "visitas": 369
+      "visitas": 370
     },
     {
       "cidade": "Amambai",
@@ -1158,7 +1198,7 @@
     },
     {
       "cidade": "Barueri",
-      "visitas": 28
+      "visitas": 29
     },
     {
       "cidade": "Osasco",
@@ -1181,11 +1221,11 @@
       "visitas": 25
     },
     {
-      "cidade": "Manaus",
-      "visitas": 24
+      "cidade": "Suzano",
+      "visitas": 25
     },
     {
-      "cidade": "Suzano",
+      "cidade": "Manaus",
       "visitas": 24
     },
     {
@@ -1209,6 +1249,10 @@
       "visitas": 21
     },
     {
+      "cidade": "Cascavel",
+      "visitas": 21
+    },
+    {
       "cidade": "Castanhal",
       "visitas": 21
     },
@@ -1227,10 +1271,6 @@
     {
       "cidade": "Paranhos",
       "visitas": 21
-    },
-    {
-      "cidade": "Cascavel",
-      "visitas": 20
     },
     {
       "cidade": "Ilha Solteira",
@@ -1680,7 +1720,7 @@
     },
     {
       "cidade": "Brasilia",
-      "visitas": 30650
+      "visitas": 30651
     },
     {
       "cidade": "Sao Paulo",
@@ -1716,7 +1756,7 @@
     },
     {
       "cidade": "Joao Pessoa",
-      "visitas": 4046
+      "visitas": 4048
     },
     {
       "cidade": "Belem",
@@ -1976,7 +2016,7 @@
     },
     {
       "cidade": "Barueri",
-      "visitas": 186
+      "visitas": 187
     },
     {
       "cidade": "Osasco",
@@ -2028,7 +2068,7 @@
     },
     {
       "cidade": "Cascavel",
-      "visitas": 145
+      "visitas": 146
     },
     {
       "cidade": "Aracatuba",
@@ -2107,11 +2147,11 @@
       "visitas": 114
     },
     {
-      "cidade": "Santarem",
-      "visitas": 113
+      "cidade": "Suzano",
+      "visitas": 114
     },
     {
-      "cidade": "Suzano",
+      "cidade": "Santarem",
       "visitas": 113
     },
     {

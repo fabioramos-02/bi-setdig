@@ -1,34 +1,34 @@
 [
   {
     "faixa": "0-17",
-    "quantidade": 2692
+    "quantidade": 2685
   },
   {
     "faixa": "18-24",
-    "quantidade": 7872
+    "quantidade": 7879
   },
   {
     "faixa": "25-34",
-    "quantidade": 6586
+    "quantidade": 6593
   },
   {
     "faixa": "35-44",
-    "quantidade": 4853
+    "quantidade": 4861
   },
   {
     "faixa": "45-54",
-    "quantidade": 2931
+    "quantidade": 2932
   },
   {
     "faixa": "55-64",
-    "quantidade": 1188
+    "quantidade": 1191
   },
   {
     "faixa": "65+",
-    "quantidade": 506
+    "quantidade": 508
   },
   {
     "faixa": "Não informado",
-    "quantidade": 340895
+    "quantidade": 341252
   }
 ]

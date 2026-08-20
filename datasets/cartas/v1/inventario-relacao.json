@@ -18995,30 +18995,6 @@
     "updatedAt": "2025-10-31T14:09:55.237142-04:00"
   },
   {
-    "titulo": "Consulta tributária",
-    "nomePopular": null,
-    "slug": "consulta-tributaria121",
-    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
-    "orgaoSigla": "SEFAZ MS",
-    "setor": "Unidade de Consultas e Julgamento",
-    "categoria": "financas-e-impostos",
-    "publico": "<ul>\r\n\t<li style=\"text-align:justify\"><span style=\"font-size:16px\">O sujeito passivo, incluso o substituto tribut&aacute;rio, no caso de normas reguladoras do tributo, no regime de substitui&ccedil;&atilde;o tribut&aacute;ria;</span></li>\r\n\t<li style=\"text-align:justify\"><span style=\"font-size:16px\">Os &oacute;rg&atilde;os das Administra&ccedil;&otilde;es P&uacute;blicas federal, estaduais, distrital e municipais;</span></li>\r\n\t<li style=\"text-align:justify\"><span style=\"font-size:16px\">As entidades representativas de categorias econ&ocirc;micas ou profissionais e as cooperativas, no interesse de seus associados, filiados ou cooperados, quando por estes autorizadas nos termos de seus atos constitutivos;</span></li>\r\n\t<li style=\"text-align:justify\"><span style=\"font-size:16px\">As pessoas f&iacute;sicas ou jur&iacute;dicas sujeitas ao cumprimento de deveres jur&iacute;dicos de natureza instrumental.</span></li>\r\n</ul>",
-    "publicoEspecifico": [
-      "Cidadão",
-      "Empresa",
-      "Gestão Pública"
-    ],
-    "ativo": true,
-    "digital": false,
-    "online": false,
-    "destaque": false,
-    "custo": "Cinco Uferms",
-    "tempoTotal": 30,
-    "tipoTempo": "Dias corridos",
-    "createdAt": "2023-05-16T13:35:42.238617-04:00",
-    "updatedAt": "2025-11-05T09:37:30.765104-05:00"
-  },
-  {
     "titulo": "Declaração de compras para aquisições interestaduais de materiais de construção por consumidor final não contribuinte do ICMS ou por empresas do ramo da construção civil",
     "nomePopular": null,
     "slug": "declaracao-de-compras-para-aquisicoes-interestaduais-de-materiais-de-construcao-por-consumidor-final-nao-contribuinte-do-icms-ou-por-empresas-do-ramo-da-construcao-civil12",
@@ -19064,6 +19040,30 @@
     "tipoTempo": "Dias úteis",
     "createdAt": "2023-05-10T14:43:38.408511-04:00",
     "updatedAt": "2026-04-17T15:43:50.851278-04:00"
+  },
+  {
+    "titulo": "Consulta tributária",
+    "nomePopular": "Solicitar orientação oficial por meio de Consulta Tributária",
+    "slug": "consulta-tributaria121",
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "setor": "Unidade de Consultas e Julgamento",
+    "categoria": "financas-e-impostos",
+    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">O sujeito passivo, incluso o substituto tribut&aacute;rio, no caso de normas reguladoras do tributo, no regime de substitui&ccedil;&atilde;o tribut&aacute;ria.</span></p>\r\n\r\n<p style=\"text-align:justify\"><span style=\"font-size:16px\">Os &oacute;rg&atilde;os das Administra&ccedil;&otilde;es P&uacute;blicas federal, estaduais, distrital e municipais.</span></p>\r\n\r\n<p style=\"text-align:justify\"><span style=\"font-size:16px\">As entidades representativas de categorias econ&ocirc;micas ou profissionais e as cooperativas, no interesse de seus associados, filiados ou cooperados, quando por estes autorizadas nos termos de seus atos constitutivos.</span></p>\r\n\r\n<p style=\"text-align:justify\"><span style=\"font-size:16px\">As pessoas f&iacute;sicas ou jur&iacute;dicas sujeitas ao cumprimento de deveres jur&iacute;dicos de natureza instrumental.</span></p>",
+    "publicoEspecifico": [
+      "Cidadão",
+      "Empresa",
+      "Gestão Pública"
+    ],
+    "ativo": true,
+    "digital": false,
+    "online": false,
+    "destaque": false,
+    "custo": "Cinco Uferms.",
+    "tempoTotal": 30,
+    "tipoTempo": "Dias corridos",
+    "createdAt": "2023-05-16T13:35:42.238617-04:00",
+    "updatedAt": "2026-08-20T10:33:19.718924-04:00"
   },
   {
     "titulo": "Solicitar peticionamento em processo administrativo",

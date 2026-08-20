@@ -7227,7 +7227,7 @@
   {
     "data": "2024-03-16",
     "criadas": 152,
-    "ativas": 144
+    "ativas": 145
   },
   {
     "data": "2024-03-17",
@@ -11452,7 +11452,7 @@
   {
     "data": "2026-07-11",
     "criadas": 83,
-    "ativas": 76
+    "ativas": 77
   },
   {
     "data": "2026-07-12",
@@ -11632,11 +11632,26 @@
   {
     "data": "2026-08-16",
     "criadas": 56,
-    "ativas": 52
+    "ativas": 53
   },
   {
     "data": "2026-08-17",
-    "criadas": 101,
-    "ativas": 97
+    "criadas": 143,
+    "ativas": 137
+  },
+  {
+    "data": "2026-08-18",
+    "criadas": 151,
+    "ativas": 141
+  },
+  {
+    "data": "2026-08-19",
+    "criadas": 132,
+    "ativas": 125
+  },
+  {
+    "data": "2026-08-20",
+    "criadas": 53,
+    "ativas": 51
   }
 ]
