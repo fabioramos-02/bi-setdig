@@ -2,19 +2,48 @@ import { BarChart } from "@/components/charts/BarChart";
 import { CadenciaAcessoFunil } from "@/components/charts/CadenciaAcessoFunil";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { SnapshotBadge } from "@/components/dashboard/SnapshotBadge";
-import { FaixasDeAcessoCard } from "@/components/dashboard/FaixasDeAcessoCard";
+import { MetricCard } from "@/components/dashboard/MetricCard";
+import { DashboardSection } from "@/components/dashboard/DashboardSection";
+import { BannerPeriodo } from "@/components/dashboard/BannerPeriodo";
+import { RecenciaContasCard } from "@/components/dashboard/RecenciaContasCard";
 import { FaixasDeAcessoPorTipoCard } from "@/components/dashboard/FaixasDeAcessoPorTipoCard";
-import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
+import {
+  AvisoSnapshotAproximado,
+  type StatusIntervalo,
+} from "@/components/dashboard/AvisoSnapshotAproximado";
 import { ChartLoading } from "@/components/dashboard/ChartLoading";
 import { rotuloEstagioFunil } from "@/lib/insights";
 import type { InsightFunil } from "@/lib/insights";
-import type { EventoFunil, FrequenciaAcesso, FaixaAcesso, FaixaAcessoPorTipo } from "@/lib/data";
-import { fraseCadencia, interpretaStickiness } from "@/lib/insights-jornada";
-import { fraseFaixaMaior, fraseAdocaoGovBrPorFaixa } from "@/lib/insights-contas";
+import type {
+  EventoFunil,
+  FrequenciaAcesso,
+  FaixaAcesso,
+  FaixaAcessoPorTipo,
+} from "@/lib/data";
+import {
+  fraseCadencia,
+  interpretaStickiness,
+  saudeJornada,
+  situacaoJornada,
+  pontosAtencaoJornada,
+  kpisJornada,
+} from "@/lib/insights-jornada";
+import {
+  fraseAdocaoGovBrPorFaixa,
+  tituloAdocaoGovBrPorFaixa,
+} from "@/lib/insights-contas";
 
-/** Peça central de storytelling do domínio — funil de aquisição -> ativação
- * -> navegação -> retenção, com a maior queda entre estágios explicada (ver
- * calcularInsightFunil em lib/insights.ts, porta de tab4_jornada.py). */
+const CORES_SAUDE = {
+  verde: "var(--ds-color-success)",
+  amarelo: "var(--ds-color-warning)",
+  vermelho: "var(--ds-color-danger)",
+} as const;
+
+/** Aba "Jornada do Usuário" em formato Executive Briefing.
+ *  Ordem: banner período → situação geral + semáforo → KPIs → funil (dinâmico)
+ *  → cadência (snapshot) → recência (snapshot) → adoção Gov.BR (snapshot) →
+ *  pontos de atenção. Cada bloco snapshot exibe sua data de extração;
+ *  o banner só cobre blocos dinâmicos. */
 export function JornadaTab({
   funil,
   insightFunil,
@@ -23,8 +52,11 @@ export function JornadaTab({
   snapshotFrequenciaEm,
   faixasDeAcesso,
   snapshotFaixasEm,
-  totalContas,
   faixasDeAcessoPorTipo,
+  novos,
+  recorrentes,
+  rotuloPeriodo,
+  rotuloPeriodoResolvido,
 }: {
   funil: EventoFunil[];
   insightFunil: InsightFunil | null;
@@ -33,35 +65,112 @@ export function JornadaTab({
   snapshotFrequenciaEm: string | null;
   faixasDeAcesso: FaixaAcesso[];
   snapshotFaixasEm: string | null;
-  totalContas: number;
   faixasDeAcessoPorTipo: FaixaAcessoPorTipo[];
+  novos: number;
+  recorrentes: number;
+  rotuloPeriodo: string;
+  rotuloPeriodoResolvido: string;
 }) {
-  const dadosFunil = funil.map((f) => ({ estagio: rotuloEstagioFunil(f.evento), usuarios: f.usuarios }));
+  const saude = saudeJornada(frequenciaAcesso, faixasDeAcesso);
+  const situacao = situacaoJornada(insightFunil, frequenciaAcesso, faixasDeAcesso);
+  const alertas = pontosAtencaoJornada(insightFunil, frequenciaAcesso, faixasDeAcesso);
+  const kpis = kpisJornada(novos, recorrentes, rotuloPeriodo, insightFunil, frequenciaAcesso);
+
+  const dadosFunil = funil.map((f) => ({
+    estagio: rotuloEstagioFunil(f.evento),
+    usuarios: f.usuarios,
+  }));
 
   return (
     <div className="flex flex-col gap-6">
+      <BannerPeriodo rotulo={rotuloPeriodoResolvido || "período atual"} />
       <AvisoSnapshotAproximado status={status} />
-      <div>
-        <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold mb-2">
-          Jornada do usuário no app: download → primeiro uso → uso do app → uso recorrente
-        </h3>
-        <ChartLoading status={status} height={280}>
-          <BarChart data={dadosFunil} xKey="estagio" yKey="usuarios" height={280} mostrarValorNaBarra />
-        </ChartLoading>
+
+      {/* 1. Situação geral + semáforo (visão do gestor em 5 segundos) */}
+      <DashboardSection title="Situação geral">
+        <div className="flex flex-col sm:flex-row gap-4 items-start">
+          <div
+            aria-hidden
+            style={{ background: CORES_SAUDE[saude.nivel] }}
+            className="w-3 h-3 rounded-full mt-2 shrink-0"
+          />
+          <div>
+            <p
+              style={{ color: "var(--ds-color-text-primary)" }}
+              className="text-base font-semibold"
+            >
+              {saude.texto}
+            </p>
+            <p style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm mt-2">
+              {situacao}
+            </p>
+          </div>
+        </div>
+      </DashboardSection>
+
+      {/* 2. KPIs do topo — 4 cartões que respondem "quem usa e como estão voltando" */}
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+        <MetricCard
+          label={`Usuários ativos ${kpis.rotuloUsuarios}`}
+          value={kpis.usuariosAtivos}
+          sub="novos + recorrentes no período"
+        />
+        <MetricCard
+          label="Recorrentes"
+          value={kpis.recorrentesPct !== null ? `${kpis.recorrentesPct.toFixed(0)}%` : "—"}
+          sub={
+            kpis.recorrentesPct !== null
+              ? `${kpis.recorrentes.toLocaleString("pt-BR")} de ${kpis.usuariosAtivos.toLocaleString("pt-BR")}`
+              : "sem dados no período"
+          }
+        />
+        <MetricCard
+          label="Maior abandono"
+          value={
+            kpis.maiorAbandonoPct !== null && kpis.maiorAbandonoEstagio
+              ? `${kpis.maiorAbandonoPct.toFixed(0)}%`
+              : "—"
+          }
+          sub={kpis.maiorAbandonoEstagio ? `até "${kpis.maiorAbandonoEstagio}"` : "sem dados"}
+        />
+        <MetricCard
+          label="Intervalo médio entre acessos"
+          value={kpis.diasEntreAcessos !== null ? `${Math.round(kpis.diasEntreAcessos)} dias` : "—"}
+          sub="janela fixa GA4 · não reage ao filtro"
+        />
       </div>
 
-      {insightFunil && (
-        <StoryCard
-          anchor={`O maior ponto de abandono é entre "${rotuloEstagioFunil(insightFunil.estagioAtual)}" e "${rotuloEstagioFunil(
-            insightFunil.estagioProximo
-          )}", onde ${Math.abs(insightFunil.usuariosPerdidos).toLocaleString("pt-BR")} usuários ${
-            insightFunil.usuariosPerdidos >= 0 ? "somem" : "aparecem a mais"
-          } (${insightFunil.quedaPct.toFixed(0)}%).`}
-          caption={insightFunil.interpretacao}
-          comoLer="Cada etapa conta usuários únicos que realizaram aquela ação no período — não é uma jornada estritamente sequencial por pessoa, mas revela onde o volume de gente cai mais entre uma etapa e a próxima."
-        />
-      )}
+      {/* 3. Onde abandonam? — funil dinâmico do período */}
+      <div>
+        <h3
+          style={{ color: "var(--ds-color-text-secondary)" }}
+          className="text-sm font-semibold mb-2"
+        >
+          Onde perdemos usuários? Download → primeiro uso → uso do app → uso recorrente
+        </h3>
+        <ChartLoading status={status} height={280}>
+          <BarChart
+            data={dadosFunil}
+            xKey="estagio"
+            yKey="usuarios"
+            height={280}
+            mostrarValorNaBarra
+          />
+        </ChartLoading>
+        {insightFunil && (
+          <p
+            style={{ color: "var(--ds-color-text-secondary)" }}
+            className="text-sm mt-2"
+          >
+            Maior queda: <strong>{insightFunil.quedaPct.toFixed(0)}%</strong> entre &quot;
+            {rotuloEstagioFunil(insightFunil.estagioAtual)}&quot; e &quot;
+            {rotuloEstagioFunil(insightFunil.estagioProximo)}&quot; —{" "}
+            {Math.abs(insightFunil.usuariosPerdidos).toLocaleString("pt-BR")} pessoas a menos.
+          </p>
+        )}
+      </div>
 
+      {/* 4. Estão voltando? — recorrência em destaque + cadência 3 janelas */}
       {frequenciaAcesso && (
         <StoryCard
           snapshot
@@ -74,28 +183,58 @@ export function JornadaTab({
         </StoryCard>
       )}
 
+      {/* 5. Quantos usam uma vez só? — donut + KPI grande */}
       {faixasDeAcesso.length > 0 && (
         <StoryCard
           snapshot
-          anchor={fraseFaixaMaior(faixasDeAcesso)}
-          caption={`Base analisada: ${totalContas.toLocaleString("pt-BR")} contas cadastradas no app.`}
-          comoLer='Cada conta aparece em uma única faixa, definida pela data do último acesso registrado no cadastro. "Uma vez apenas" inclui quem criou a conta e não voltou depois do dia do cadastro — o banco guarda apenas o último acesso, não a contagem.'
+          anchor="Como estão distribuídas as contas por tempo desde o último acesso?"
+          caption={`Distribuição das ${faixasDeAcesso.reduce((a, f) => a + f.quantidade, 0).toLocaleString("pt-BR")} contas cadastradas no MS Digital.`}
+          comoLer='Cada conta aparece em uma faixa só, definida pela data do último acesso registrado no cadastro. "Uma vez apenas" inclui quem criou a conta e não voltou depois do dia do cadastro — o banco guarda apenas o último acesso, não a contagem.'
         >
           <SnapshotBadge updatedAt={snapshotFaixasEm} />
-          <FaixasDeAcessoCard faixas={faixasDeAcesso} />
+          <RecenciaContasCard faixas={faixasDeAcesso} />
         </StoryCard>
       )}
 
+      {/* 6. Como estão entrando? — barras 100% Gov.BR × Próprio por faixa */}
       {faixasDeAcessoPorTipo.length > 0 && (
         <StoryCard
-          snapshot
-          anchor={fraseAdocaoGovBrPorFaixa(faixasDeAcessoPorTipo)}
-          caption="Cruza o meio de entrada escolhido no cadastro (Gov.BR ou login próprio do app) com a data do último acesso."
+          anchor={tituloAdocaoGovBrPorFaixa(faixasDeAcessoPorTipo)}
+          caption={`Adoção do Gov.BR por tempo desde o último acesso. ${fraseAdocaoGovBrPorFaixa(faixasDeAcessoPorTipo)}`}
           comoLer="Cada conta aparece em uma faixa só, definida pelo último acesso. A barra mostra a proporção de quem entra pelo Gov.BR dentro daquela faixa. Contas antigas sem essa marcação registrada foram contadas como Login Próprio, conforme confirmação técnica do time do app."
         >
           <SnapshotBadge updatedAt={snapshotFaixasEm} />
           <FaixasDeAcessoPorTipoCard faixas={faixasDeAcessoPorTipo} />
         </StoryCard>
+      )}
+
+      {/* 7. Pontos de atenção */}
+      {alertas.length > 0 && (
+        <DashboardSection title="Pontos de atenção">
+          <ul className="flex flex-col gap-2">
+            {alertas.map((p, i) => (
+              <li
+                key={i}
+                style={{ color: "var(--ds-color-text-primary)" }}
+                className="text-sm flex gap-2 items-start"
+              >
+                <span
+                  aria-hidden
+                  style={{
+                    background:
+                      p.severidade === "alerta"
+                        ? "var(--ds-color-danger)"
+                        : p.severidade === "atencao"
+                          ? "var(--ds-color-warning)"
+                          : "var(--ds-color-primary-600)",
+                  }}
+                  className="w-1.5 h-1.5 rounded-full mt-2 shrink-0"
+                />
+                <span>{p.texto}</span>
+              </li>
+            ))}
+          </ul>
+        </DashboardSection>
       )}
     </div>
   );

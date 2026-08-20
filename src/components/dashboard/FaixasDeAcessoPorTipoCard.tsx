@@ -1,65 +1,101 @@
 import type { FaixaAcessoPorTipo } from "@/lib/data";
 
 const COR_GOVBR = "var(--ds-color-primary-600)";
-const COR_PROPRIO = "var(--ds-color-neutral-500)";
+const COR_PROPRIO = "var(--ds-color-neutral-300, #d4d4d4)";
+const LIMIAR_PCT_INLINE = 5;
+
+function fmtPct(pct: number): string {
+  return `${pct.toFixed(1).replace(".", ",")}%`;
+}
 
 /** Composição Gov.BR × Login Próprio dentro de cada faixa de último acesso.
- *  Uma linha por faixa: barra empilhada 100% + números absolutos.
- *  Complementa FaixasDeAcessoCard (distribuição por tempo) com a leitura
- *  cruzada de meio de entrada — usada na aba Jornada. */
+ *  Barras 100% empilhadas com % dentro do próprio segmento (leitura executiva
+ *  — 1 olhada resolve). Segmento <12% joga o rótulo à direita, fora da barra. */
 export function FaixasDeAcessoPorTipoCard({ faixas }: { faixas: FaixaAcessoPorTipo[] }) {
   const comDado = faixas.filter((f) => f.total > 0);
   if (comDado.length === 0) return null;
 
   return (
-    <div className="flex flex-col gap-4">
-      <div className="flex items-center gap-4 text-xs" style={{ color: "var(--ds-color-text-secondary)" }}>
+    <div className="flex flex-col gap-5">
+      <div
+        className="flex items-center gap-5 text-sm"
+        style={{ color: "var(--ds-color-text-secondary)" }}
+      >
         <span className="flex items-center gap-2">
-          <span aria-hidden style={{ background: COR_GOVBR }} className="w-3 h-3 rounded shrink-0" />
+          <span aria-hidden style={{ background: COR_GOVBR }} className="w-3 h-3 rounded-sm shrink-0" />
           Gov.BR
         </span>
         <span className="flex items-center gap-2">
-          <span aria-hidden style={{ background: COR_PROPRIO }} className="w-3 h-3 rounded shrink-0" />
+          <span aria-hidden style={{ background: COR_PROPRIO }} className="w-3 h-3 rounded-sm shrink-0" />
           Login Próprio
         </span>
       </div>
 
-      <ul className="flex flex-col gap-3">
+      <ul className="flex flex-col gap-4">
         {comDado.map((f) => {
           const pctGovbr = (100 * f.govbr) / f.total;
           const pctProprio = 100 - pctGovbr;
+          const govbrInline = pctGovbr >= LIMIAR_PCT_INLINE;
+          const proprioInline = pctProprio >= LIMIAR_PCT_INLINE;
           return (
-            <li key={f.faixa} className="flex flex-col gap-1">
-              <div className="flex items-baseline gap-3 text-sm">
-                <span style={{ color: "var(--ds-color-text-primary)" }} className="flex-1 min-w-0 truncate">
-                  {f.faixa}
+            <li key={f.faixa} className="flex flex-col gap-2">
+              <p className="text-base leading-tight" style={{ color: "var(--ds-color-text-primary)" }}>
+                <span className="font-medium">{f.faixa}</span>
+                <span
+                  className="ml-2 text-xs tabular-nums"
+                  style={{ color: "var(--ds-color-text-muted)" }}
+                >
+                  · {f.total.toLocaleString("pt-BR")} contas
                 </span>
-                <span style={{ color: "var(--ds-color-text-secondary)" }} className="tabular-nums text-xs">
-                  {f.total.toLocaleString("pt-BR")} contas
-                </span>
-              </div>
-              <div
-                className="flex h-3 rounded overflow-hidden"
-                style={{ background: "var(--ds-color-background-muted)" }}
-                role="img"
-                aria-label={`${f.faixa}: ${pctGovbr.toFixed(0)}% Gov.BR, ${pctProprio.toFixed(0)}% Login Próprio`}
-              >
-                {pctGovbr > 0 && (
-                  <div
-                    style={{ width: `${pctGovbr}%`, background: COR_GOVBR }}
-                    title={`Gov.BR: ${f.govbr.toLocaleString("pt-BR")} (${pctGovbr.toFixed(1)}%)`}
-                  />
+              </p>
+
+              <div className="flex items-center gap-2 min-w-0">
+                <div
+                  className="flex h-6 flex-1 rounded overflow-hidden min-w-0"
+                  style={{ background: COR_PROPRIO }}
+                  role="img"
+                  aria-label={`${f.faixa}: ${pctGovbr.toFixed(0)}% Gov.BR, ${pctProprio.toFixed(0)}% Login Próprio`}
+                >
+                  {pctGovbr > 0 && (
+                    <div
+                      className="flex items-center justify-center px-1"
+                      style={{ width: `${pctGovbr}%`, background: COR_GOVBR, minWidth: 0 }}
+                    >
+                      {govbrInline && (
+                        <span
+                          className="text-sm font-semibold tabular-nums whitespace-nowrap"
+                          style={{ color: "#fff" }}
+                        >
+                          {fmtPct(pctGovbr)}
+                        </span>
+                      )}
+                    </div>
+                  )}
+                  {proprioInline && (
+                    <div
+                      className="flex items-center justify-center px-1"
+                      style={{ width: `${pctProprio}%`, minWidth: 0 }}
+                    >
+                      <span
+                        className="text-sm font-semibold tabular-nums whitespace-nowrap"
+                        style={{ color: "var(--ds-color-text-primary)" }}
+                      >
+                        {fmtPct(pctProprio)}
+                      </span>
+                    </div>
+                  )}
+                </div>
+
+                {(!govbrInline || !proprioInline) && (
+                  <span
+                    className="text-xs tabular-nums whitespace-nowrap"
+                    style={{ color: "var(--ds-color-text-secondary)" }}
+                  >
+                    {!govbrInline && pctGovbr > 0 && `Gov.BR ${fmtPct(pctGovbr)}`}
+                    {!govbrInline && pctGovbr > 0 && !proprioInline && " · "}
+                    {!proprioInline && `Próprio ${fmtPct(pctProprio)}`}
+                  </span>
                 )}
-                {pctProprio > 0 && (
-                  <div
-                    style={{ width: `${pctProprio}%`, background: COR_PROPRIO }}
-                    title={`Login Próprio: ${f.proprio.toLocaleString("pt-BR")} (${pctProprio.toFixed(1)}%)`}
-                  />
-                )}
-              </div>
-              <div className="flex justify-between text-xs tabular-nums" style={{ color: "var(--ds-color-text-muted)" }}>
-                <span>Gov.BR {pctGovbr.toFixed(1)}%</span>
-                <span>Login Próprio {pctProprio.toFixed(1)}%</span>
               </div>
             </li>
           );

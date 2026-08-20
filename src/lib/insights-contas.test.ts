@@ -6,8 +6,14 @@ import {
   pontosAtencao,
   saudeAtivacao,
   situacaoGeral,
+  tituloAdocaoGovBrPorFaixa,
 } from "./insights-contas.ts";
-import type { ContaPorFaixaEtaria, ContasResumo, FaixaAcesso } from "./data.ts";
+import type {
+  ContaPorFaixaEtaria,
+  ContasResumo,
+  FaixaAcesso,
+  FaixaAcessoPorTipo,
+} from "./data.ts";
 
 const RESUMO_OK: ContasResumo = {
   contasTotal: 100000,
@@ -93,6 +99,30 @@ test("pontosAtencao dispara alerta com 'Uma vez apenas' > 30%", () => {
 test("pontosAtencao positivo quando >=25% nos últimos 6 meses", () => {
   const pts = pontosAtencao(RESUMO_OK, FAIXAS_ACESSO_ENGAJADO, []);
   assert.ok(pts.some((p) => p.texto.includes("base engajada")));
+});
+
+test("tituloAdocaoGovBrPorFaixa destaca recentes quando Gov.BR cai com o tempo", () => {
+  const porTipo: FaixaAcessoPorTipo[] = [
+    { faixa: "Nos últimos 6 meses", govbr: 27, proprio: 73, total: 100 },
+    { faixa: "Mais de 4 anos", govbr: 0, proprio: 100, total: 100 },
+  ];
+  assert.match(tituloAdocaoGovBrPorFaixa(porTipo), /mais recente/);
+});
+
+test("tituloAdocaoGovBrPorFaixa destaca antigas quando Gov.BR sobe com o tempo", () => {
+  const porTipo: FaixaAcessoPorTipo[] = [
+    { faixa: "Nos últimos 6 meses", govbr: 5, proprio: 95, total: 100 },
+    { faixa: "Mais de 4 anos", govbr: 40, proprio: 60, total: 100 },
+  ];
+  assert.match(tituloAdocaoGovBrPorFaixa(porTipo), /não acessam há mais tempo/);
+});
+
+test("tituloAdocaoGovBrPorFaixa cai no fallback quando diferença < 5 p.p.", () => {
+  const porTipo: FaixaAcessoPorTipo[] = [
+    { faixa: "Nos últimos 6 meses", govbr: 20, proprio: 80, total: 100 },
+    { faixa: "Mais de 4 anos", govbr: 18, proprio: 82, total: 100 },
+  ];
+  assert.match(tituloAdocaoGovBrPorFaixa(porTipo), /parecida/);
 });
 
 test("pontosAtencao acumula abandono (2-4a + 4a+)", () => {

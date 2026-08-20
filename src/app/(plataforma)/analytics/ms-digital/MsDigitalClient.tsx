@@ -271,8 +271,11 @@ export function MsDigitalClient({
           snapshotFrequenciaEm={snapshotFrequenciaEm}
           faixasDeAcesso={faixasDeAcesso}
           snapshotFaixasEm={snapshotAtualizadoEm}
-          totalContas={contasResumo?.contasTotal ?? 0}
           faixasDeAcessoPorTipo={faixasDeAcessoPorTipo}
+          novos={novos}
+          recorrentes={recorrentes}
+          rotuloPeriodo={rotuloPeriodo}
+          rotuloPeriodoResolvido={rotuloPeriodoResolvido(estado) || ""}
         />
       ),
     },

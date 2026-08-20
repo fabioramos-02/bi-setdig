@@ -99,6 +99,22 @@ export function fraseFaixaMaior(faixas: FaixaAcesso[]): string {
   return `A maior parte das contas (${maior.percentPct.toFixed(1)}%) se encaixa em "${maior.faixa}".`;
 }
 
+/** Frase composta usada quando o card de faixas exibe ambas as leituras
+ *  (peso no total + composição Gov.BR/Próprio). Encaixa 1 ou 2 frases:
+ *  a segunda só aparece se a diferença de adoção Gov.BR entre recentes e
+ *  antigas for material (mesma regra de fraseAdocaoGovBrPorFaixa). */
+export function fraseFaixaEAdocao(
+  faixas: FaixaAcesso[],
+  porTipo: FaixaAcessoPorTipo[],
+): string {
+  const principal = fraseFaixaMaior(faixas);
+  if (porTipo.length === 0) return principal;
+  const complemento = fraseAdocaoGovBrPorFaixa(porTipo);
+  const genericaFallback = "Sem contas cadastradas para analisar.";
+  if (complemento === genericaFallback) return principal;
+  return `${principal} ${complemento}`;
+}
+
 /** Frase-âncora do cruzamento faixa de acesso × tipo de autenticação.
  *  Compara % Gov.BR entre a faixa mais recente e a mais antiga (proxy de
  *  adoção do Gov.BR entre quem volta vs quem parou). Se todas as faixas
@@ -125,6 +141,21 @@ export function fraseAdocaoGovBrPorFaixa(faixas: FaixaAcessoPorTipo[]): string {
   }
 
   return `${pctGeral.toFixed(1)}% das contas usam o Gov.BR para entrar no app, sem grande diferença entre quem volta e quem parou.`;
+}
+
+/** Frase curta qualitativa (sem números) pro anchor do StoryCard.
+ *  Espelha o critério de fraseAdocaoGovBrPorFaixa (mesmas âncoras
+ *  "Nos últimos 6 meses" × "Mais de 4 anos", mesmo limiar de 5 p.p.). */
+export function tituloAdocaoGovBrPorFaixa(faixas: FaixaAcessoPorTipo[]): string {
+  const comDado = faixas.filter((f) => f.total > 0);
+  const recentes = comDado.find((f) => f.faixa === "Nos últimos 6 meses");
+  const antigas = comDado.find((f) => f.faixa === "Mais de 4 anos");
+  if (recentes && antigas && recentes.total > 0 && antigas.total > 0) {
+    const diferenca = (100 * recentes.govbr) / recentes.total - (100 * antigas.govbr) / antigas.total;
+    if (diferenca >= 5) return "A adoção do Gov.BR é maior entre as contas com acesso mais recente.";
+    if (diferenca <= -5) return "A adoção do Gov.BR é maior entre contas que não acessam há mais tempo.";
+  }
+  return "A adoção do Gov.BR é parecida em todas as faixas de recência.";
 }
 
 export type PontoAtencao = { severidade: "alerta" | "atencao" | "info"; texto: string };
