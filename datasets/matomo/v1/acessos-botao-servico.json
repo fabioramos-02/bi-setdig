@@ -1,0 +1,902 @@
+{
+  "dia": [],
+  "semana": [],
+  "mes": [
+    {
+      "slug": "expedicao-de-carteira-de-identidade127",
+      "titulo": "Solicitar carteira de identidade",
+      "orgaoSigla": "CGP",
+      "categoria": "direitos-e-cidadania",
+      "urlCarta": "https://www.ms.gov.br/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
+      "views": 22569,
+      "cliquesTotais": 5164,
+      "taxaConversaoPct": 22.88,
+      "destinos": [
+        {
+          "url": "http://servicos.sejusp.ms.gov.br/",
+          "cliques": 4749,
+          "pct": 91.96
+        },
+        {
+          "url": "https://servicos.efazenda.ms.gov.br/daemsabertopublico/EmissaoTaxas",
+          "cliques": 332,
+          "pct": 6.43
+        },
+        {
+          "url": "http://ms.gov.br/",
+          "cliques": 44,
+          "pct": 0.85
+        },
+        {
+          "url": "https://maps.app.goo.gl/SARZdG9Hw3NoxGUUA",
+          "cliques": 19,
+          "pct": 0.37
+        },
+        {
+          "url": "Others",
+          "cliques": 16,
+          "pct": 0.31
+        },
+        {
+          "url": "Outros destinos",
+          "cliques": 4,
+          "pct": 0.08
+        }
+      ]
+    },
+    {
+      "slug": "patronato138",
+      "titulo": "Solicitar Carteira de Visitante do Sistema Prisional",
+      "orgaoSigla": "AGEPEN",
+      "categoria": "direitos-e-cidadania",
+      "urlCarta": "https://www.ms.gov.br/direitos-e-cidadania/patronato138",
+      "views": 3483,
+      "cliquesTotais": 1482,
+      "taxaConversaoPct": 42.55,
+      "destinos": [
+        {
+          "url": "http://www.siapen.ms.gov.br/visitante",
+          "cliques": 907,
+          "pct": 61.2
+        },
+        {
+          "url": "https://certidao-unificada.cjf.jus.br/#/solicitacao-certidao",
+          "cliques": 211,
+          "pct": 14.24
+        },
+        {
+          "url": "https://www5.tjms.jus.br/servicos/certidoes/",
+          "cliques": 193,
+          "pct": 13.02
+        },
+        {
+          "url": "https://www.siapen.ms.gov.br/visitante/",
+          "cliques": 151,
+          "pct": 10.19
+        },
+        {
+          "url": "http://www.agepen.ms.gov.br/",
+          "cliques": 10,
+          "pct": 0.67
+        },
+        {
+          "url": "Outros destinos",
+          "cliques": 10,
+          "pct": 0.67
+        }
+      ]
+    },
+    {
+      "slug": "expedicao-de-certidao-de-antecedentes-criminais35",
+      "titulo": "Emitir certidão de antecedentes criminais",
+      "orgaoSigla": "CGP",
+      "categoria": "seguranca",
+      "urlCarta": "https://www.ms.gov.br/seguranca/expedicao-de-certidao-de-antecedentes-criminais35",
+      "views": 3176,
+      "cliquesTotais": 1324,
+      "taxaConversaoPct": 41.69,
+      "destinos": [
+        {
+          "url": "http://antecedentes.sejusp.ms.gov.br/",
+          "cliques": 698,
+          "pct": 52.72
+        },
+        {
+          "url": "http://www.cgp.sejusp.ms.gov.br/",
+          "cliques": 565,
+          "pct": 42.67
+        },
+        {
+          "url": "http://www.cgp.sejusp.ms.gov.br/postos-de-identificacao/",
+          "cliques": 33,
+          "pct": 2.49
+        },
+        {
+          "url": "http://ms.gov.br/",
+          "cliques": 20,
+          "pct": 1.51
+        },
+        {
+          "url": "https://maps.app.goo.gl/SARZdG9Hw3NoxGUUA",
+          "cliques": 4,
+          "pct": 0.3
+        },
+        {
+          "url": "Outros destinos",
+          "cliques": 4,
+          "pct": 0.3
+        }
+      ]
+    },
+    {
+      "slug": "pagamento-de-ipva-inscrito-em-divida-ativa134",
+      "titulo": "IPVA ou LICENCIAMENTO - emitir boleto",
+      "orgaoSigla": "PGE MS",
+      "categoria": "financas-e-impostos",
+      "urlCarta": "https://www.ms.gov.br/financas-e-impostos/pagamento-de-ipva-inscrito-em-divida-ativa134",
+      "views": 2733,
+      "cliquesTotais": 1068,
+      "taxaConversaoPct": 39.08,
+      "destinos": [
+        {
+          "url": "https://servicos.efazenda.ms.gov.br/dia/DividaAtiva/PortalContribuinte",
+          "cliques": 798,
+          "pct": 74.72
+        },
+        {
+          "url": "https://servicos.efazenda.ms.gov.br/crd/CreditoTributario/IndicadoresSefaz/UFERMS",
+          "cliques": 226,
+          "pct": 21.16
+        },
+        {
+          "url": "https://www.pge.ms.gov.br/fale-conosco/unidades/unidades-regionais/",
+          "cliques": 17,
+          "pct": 1.59
+        },
+        {
+          "url": "https://www.meudetran.ms.gov.br/",
+          "cliques": 10,
+          "pct": 0.94
+        },
+        {
+          "url": "Others",
+          "cliques": 9,
+          "pct": 0.84
+        },
+        {
+          "url": "Outros destinos",
+          "cliques": 8,
+          "pct": 0.75
+        }
+      ]
+    },
+    {
+      "slug": "emitir-boleto-para-pagamento-de-ipva-ou-licenciamento-de-veiculos-em-divida-ativa158",
+      "titulo": "Emitir boleto para pagamento de IPVA ou licenciamento de veículos em Dívida Ativa",
+      "orgaoSigla": "PGE MS",
+      "categoria": "financas-e-impostos",
+      "urlCarta": "https://www.ms.gov.br/financas-e-impostos/emitir-boleto-para-pagamento-de-ipva-ou-licenciamento-de-veiculos-em-divida-ativa158",
+      "views": 2302,
+      "cliquesTotais": 1049,
+      "taxaConversaoPct": 45.57,
+      "destinos": [
+        {
+          "url": "https://servicos.efazenda.ms.gov.br/dia/DividaAtiva/PortalContribuinte",
+          "cliques": 533,
+          "pct": 50.81
+        },
+        {
+          "url": "https://servicos.efazenda.ms.gov.br/crd/CreditoTributario/IndicadoresSefaz/UFERMS",
+          "cliques": 404,
+          "pct": 38.51
+        },
+        {
+          "url": "https://www.pge.ms.gov.br/fale-conosco/unidades/unidades-regionais/",
+          "cliques": 46,
+          "pct": 4.39
+        },
+        {
+          "url": "Others",
+          "cliques": 31,
+          "pct": 2.96
+        },
+        {
+          "url": "http://ms.gov.br/",
+          "cliques": 23,
+          "pct": 2.19
+        },
+        {
+          "url": "Outros destinos",
+          "cliques": 12,
+          "pct": 1.14
+        }
+      ]
+    },
+    {
+      "slug": "consultar-notas-e-frequencia-de-estudantes143",
+      "titulo": "Consultar notas e frequência de estudantes",
+      "orgaoSigla": "SED MS",
+      "categoria": "educacao-e-pesquisa",
+      "urlCarta": "https://www.ms.gov.br/educacao-e-pesquisa/consultar-notas-e-frequencia-de-estudantes143",
+      "views": 926,
+      "cliquesTotais": 238,
+      "taxaConversaoPct": 25.7,
+      "destinos": [
+        {
+          "url": "http://www.matriculadigital.ms.gov.br/",
+          "cliques": 232,
+          "pct": 97.48
+        },
+        {
+          "url": "https://maps.app.goo.gl/SARZdG9Hw3NoxGUUA",
+          "cliques": 3,
+          "pct": 1.26
+        },
+        {
+          "url": "https://www.concursos.ms.gov.br/",
+          "cliques": 3,
+          "pct": 1.26
+        }
+      ]
+    },
+    {
+      "slug": "delegacia-virtual-devir105",
+      "titulo": "Registrar boletim de ocorrências on-line",
+      "orgaoSigla": "PCMS",
+      "categoria": "seguranca",
+      "urlCarta": "https://www.ms.gov.br/seguranca/delegacia-virtual-devir105",
+      "views": 953,
+      "cliquesTotais": 169,
+      "taxaConversaoPct": 17.73,
+      "destinos": [
+        {
+          "url": "http://devir.pc.ms.gov.br/#/",
+          "cliques": 162,
+          "pct": 95.86
+        },
+        {
+          "url": "http://ms.gov.br/",
+          "cliques": 4,
+          "pct": 2.37
+        },
+        {
+          "url": "http:// https//www.pc.ms.gov.br",
+          "cliques": 1,
+          "pct": 0.59
+        },
+        {
+          "url": "https://maps.app.goo.gl/SARZdG9Hw3NoxGUUA",
+          "cliques": 1,
+          "pct": 0.59
+        },
+        {
+          "url": "https://www.pc.ms.gov.br/busca-unidades",
+          "cliques": 1,
+          "pct": 0.59
+        }
+      ]
+    },
+    {
+      "slug": "emissao-de-autorizacoes-ambientais-para-a-pesca-amadora116",
+      "titulo": "Solicitar autorização ambiental para a pesca amadora e/ou desportiva",
+      "orgaoSigla": "IMASUL",
+      "categoria": "meio-ambiente",
+      "urlCarta": "https://www.ms.gov.br/meio-ambiente/emissao-de-autorizacoes-ambientais-para-a-pesca-amadora116",
+      "views": 574,
+      "cliquesTotais": 166,
+      "taxaConversaoPct": 28.92,
+      "destinos": [
+        {
+          "url": "http://www.pescaamadora.imasul.ms.gov.br/#/login",
+          "cliques": 74,
+          "pct": 44.58
+        },
+        {
+          "url": "https://www.pescaamadora.imasul.ms.gov.br/#/onboard",
+          "cliques": 48,
+          "pct": 28.92
+        },
+        {
+          "url": "https://www.imasul.ms.gov.br/",
+          "cliques": 33,
+          "pct": 19.88
+        },
+        {
+          "url": "http://www.pescaamadora.imasul.ms.gov.br/",
+          "cliques": 10,
+          "pct": 6.02
+        },
+        {
+          "url": "https://maps.app.goo.gl/SARZdG9Hw3NoxGUUA",
+          "cliques": 1,
+          "pct": 0.6
+        }
+      ]
+    },
+    {
+      "slug": "ipva-troca-de-veiculo-reducao-p-pessoa-com-deficiencia-pcd39",
+      "titulo": "IPVA - troca de veículo - redução para pessoa com deficiência (PcD)",
+      "orgaoSigla": "SEFAZ MS",
+      "categoria": "financas-e-impostos",
+      "urlCarta": "https://www.ms.gov.br/financas-e-impostos/ipva-troca-de-veiculo-reducao-p-pessoa-com-deficiencia-pcd39",
+      "views": 2924,
+      "cliquesTotais": 147,
+      "taxaConversaoPct": 5.03,
+      "destinos": [
+        {
+          "url": "https://eservicos.sefaz.ms.gov.br/",
+          "cliques": 47,
+          "pct": 31.97
+        },
+        {
+          "url": "Others",
+          "cliques": 31,
+          "pct": 21.09
+        },
+        {
+          "url": "https://servicos.efazenda.ms.gov.br/crd/CreditoTributario/IndicadoresSefaz/UFERMS",
+          "cliques": 21,
+          "pct": 14.29
+        },
+        {
+          "url": "http://ms.gov.br/",
+          "cliques": 18,
+          "pct": 12.24
+        },
+        {
+          "url": "https://www.sefaz.ms.gov.br/ouvidoria",
+          "cliques": 16,
+          "pct": 10.88
+        },
+        {
+          "url": "Outros destinos",
+          "cliques": 14,
+          "pct": 9.52
+        }
+      ]
+    },
+    {
+      "slug": "ipva-consulta-de-debito54",
+      "titulo": "IPVA - consulta de débito",
+      "orgaoSigla": "SEFAZ MS",
+      "categoria": "financas-e-impostos",
+      "urlCarta": "https://www.ms.gov.br/financas-e-impostos/ipva-consulta-de-debito54",
+      "views": 364,
+      "cliquesTotais": 143,
+      "taxaConversaoPct": 39.29,
+      "destinos": [
+        {
+          "url": "https://eservicos.sefaz.ms.gov.br/",
+          "cliques": 50,
+          "pct": 34.97
+        },
+        {
+          "url": "https://www.sefaz.ms.gov.br/",
+          "cliques": 40,
+          "pct": 27.97
+        },
+        {
+          "url": "http://www.sefaz.ms.gov.br/",
+          "cliques": 34,
+          "pct": 23.78
+        },
+        {
+          "url": "Others",
+          "cliques": 9,
+          "pct": 6.29
+        },
+        {
+          "url": "https://www.sefaz.ms.gov.br/ipva",
+          "cliques": 6,
+          "pct": 4.2
+        },
+        {
+          "url": "Outros destinos",
+          "cliques": 4,
+          "pct": 2.8
+        }
+      ]
+    },
+    {
+      "slug": "emitir-guia-de-licenciamento-anual100",
+      "titulo": "Emitir guia de licenciamento anual",
+      "orgaoSigla": "DETRAN",
+      "categoria": "transito-e-transportes",
+      "urlCarta": "https://www.ms.gov.br/transito-e-transportes/emitir-guia-de-licenciamento-anual100",
+      "views": 374,
+      "cliquesTotais": 92,
+      "taxaConversaoPct": 24.6,
+      "destinos": [
+        {
+          "url": "https://www.meudetran.ms.gov.br/",
+          "cliques": 82,
+          "pct": 89.13
+        },
+        {
+          "url": "http://ms.gov.br/",
+          "cliques": 7,
+          "pct": 7.61
+        },
+        {
+          "url": "https://servicos.efazenda.ms.gov.br/crd/CreditoTributario/IndicadoresSefaz/UFERMS",
+          "cliques": 2,
+          "pct": 2.17
+        },
+        {
+          "url": "https://www.meudetran.ms.gov.br/index.php",
+          "cliques": 1,
+          "pct": 1.09
+        }
+      ]
+    },
+    {
+      "slug": "credito-rural132",
+      "titulo": "Solicitar atendimento técnico para acesso a recursos financeiros disponibilizados por instituições do sistema nacional de crédito rural",
+      "orgaoSigla": "AGRAER",
+      "categoria": "agropecuaria-e-vida-rural",
+      "urlCarta": "https://www.ms.gov.br/agropecuaria-e-vida-rural/credito-rural132",
+      "views": 1365,
+      "cliquesTotais": 79,
+      "taxaConversaoPct": 5.79,
+      "destinos": [
+        {
+          "url": "http://www.bcb.gov.br/",
+          "cliques": 41,
+          "pct": 51.9
+        },
+        {
+          "url": "https://www3.bcb.gov.br/mcr",
+          "cliques": 12,
+          "pct": 15.19
+        },
+        {
+          "url": "https://www.gov.br/mda/pt-br",
+          "cliques": 9,
+          "pct": 11.39
+        },
+        {
+          "url": "http://ms.gov.br/",
+          "cliques": 7,
+          "pct": 8.86
+        },
+        {
+          "url": "https://www.bcb.gov.br/",
+          "cliques": 6,
+          "pct": 7.59
+        },
+        {
+          "url": "Outros destinos",
+          "cliques": 4,
+          "pct": 5.06
+        }
+      ]
+    },
+    {
+      "slug": "certidao-tributaria-estadual-emissao152",
+      "titulo": "Certidão tributária estadual - emissão (certidão negativa de débitos estaduais)",
+      "orgaoSigla": "SEFAZ MS",
+      "categoria": "financas-e-impostos",
+      "urlCarta": "https://www.ms.gov.br/financas-e-impostos/certidao-tributaria-estadual-emissao152",
+      "views": 78,
+      "cliquesTotais": 71,
+      "taxaConversaoPct": 91.03,
+      "destinos": [
+        {
+          "url": "https://servicos.efazenda.ms.gov.br/pndfis/Home/Emissao",
+          "cliques": 43,
+          "pct": 60.56
+        },
+        {
+          "url": "https://servicos.efazenda.ms.gov.br/pndfis/Home/Autenticacao",
+          "cliques": 28,
+          "pct": 39.44
+        }
+      ]
+    },
+    {
+      "slug": "termo-de-verificacao-fiscal-tvf-ou-termo-de-apreensao-ta-baixa-ou-alteracao99",
+      "titulo": "Termo de Verificação Fiscal (TVF) ou Termo de Apreensão (TA) - baixa ou alteração",
+      "orgaoSigla": "SEFAZ MS",
+      "categoria": "financas-e-impostos",
+      "urlCarta": "https://www.ms.gov.br/financas-e-impostos/termo-de-verificacao-fiscal-tvf-ou-termo-de-apreensao-ta-baixa-ou-alteracao99",
+      "views": 341,
+      "cliquesTotais": 36,
+      "taxaConversaoPct": 10.56,
+      "destinos": [
+        {
+          "url": "https://www.autoatendimento.ms.gov.br/tvf/",
+          "cliques": 32,
+          "pct": 88.89
+        },
+        {
+          "url": "http://aacpdappls.net.ms.gov.br/appls/legislacao/serc/legato.nsf/7a2675fdf26e910204256b1f005348a7/d3cc39d3a6aeeda803256cc20066f1fb?OpenDocument",
+          "cliques": 2,
+          "pct": 5.56
+        },
+        {
+          "url": "https://www.sefaz.ms.gov.br/ouvidoria/",
+          "cliques": 2,
+          "pct": 5.56
+        }
+      ]
+    },
+    {
+      "slug": "certidao-de-inteiro-teor-digital19",
+      "titulo": "Emitir certidão de inteiro teor digital",
+      "orgaoSigla": "JUCEMS",
+      "categoria": "empresa-industria-e-comercio",
+      "urlCarta": "https://www.ms.gov.br/empresa-industria-e-comercio/certidao-de-inteiro-teor-digital19",
+      "views": 106,
+      "cliquesTotais": 23,
+      "taxaConversaoPct": 21.7,
+      "destinos": [
+        {
+          "url": "https://portalservicos.jucems.ms.gov.br/Portal",
+          "cliques": 23,
+          "pct": 100.0
+        }
+      ]
+    },
+    {
+      "slug": "emitir-certidao-simplificada-digital84",
+      "titulo": "Emitir certidão simplificada digital",
+      "orgaoSigla": "JUCEMS",
+      "categoria": "empresa-industria-e-comercio",
+      "urlCarta": "https://www.ms.gov.br/empresa-industria-e-comercio/emitir-certidao-simplificada-digital84",
+      "views": 112,
+      "cliquesTotais": 18,
+      "taxaConversaoPct": 16.07,
+      "destinos": [
+        {
+          "url": "https://portalservicos.jucems.ms.gov.br/Portal",
+          "cliques": 17,
+          "pct": 94.44
+        },
+        {
+          "url": "https://portalservicos.jucems.ms.gov.br/Portal/pages/consultaProcesso.jsf",
+          "cliques": 1,
+          "pct": 5.56
+        }
+      ]
+    },
+    {
+      "slug": "solicitar-emissao-de-certidao-de-nascimento-e-documentos-basicos152",
+      "titulo": "Solicitar emissão de certidão de nascimento e documentos básicos",
+      "orgaoSigla": "SEAD",
+      "categoria": "direitos-e-cidadania",
+      "urlCarta": "https://www.ms.gov.br/direitos-e-cidadania/solicitar-emissao-de-certidao-de-nascimento-e-documentos-basicos152",
+      "views": 2119,
+      "cliquesTotais": 16,
+      "taxaConversaoPct": 0.76,
+      "destinos": [
+        {
+          "url": "http://ms.gov.br/",
+          "cliques": 6,
+          "pct": 37.5
+        },
+        {
+          "url": "https://maps.app.goo.gl/SARZdG9Hw3NoxGUUA",
+          "cliques": 4,
+          "pct": 25.0
+        },
+        {
+          "url": "https://www.onetrust.com/solutions/consent-and-preferences/",
+          "cliques": 3,
+          "pct": 18.75
+        },
+        {
+          "url": "https://www.concursos.ms.gov.br/",
+          "cliques": 2,
+          "pct": 12.5
+        },
+        {
+          "url": "https://www.compras.ms.gov.br/",
+          "cliques": 1,
+          "pct": 6.25
+        }
+      ]
+    },
+    {
+      "slug": "portal-e-fazenda-cadastro135",
+      "titulo": "e-Fazenda - cadastro",
+      "orgaoSigla": "SEFAZ MS",
+      "categoria": "financas-e-impostos",
+      "urlCarta": "https://www.ms.gov.br/financas-e-impostos/portal-e-fazenda-cadastro135",
+      "views": 48,
+      "cliquesTotais": 10,
+      "taxaConversaoPct": 20.83,
+      "destinos": [
+        {
+          "url": "https://eservicos.sefaz.ms.gov.br/",
+          "cliques": 6,
+          "pct": 60.0
+        },
+        {
+          "url": "https://servicos.efazenda.ms.gov.br/dia/DividaAtiva/PortalContribuinte",
+          "cliques": 2,
+          "pct": 20.0
+        },
+        {
+          "url": "http://www.sefaz.ms.gov.br/",
+          "cliques": 1,
+          "pct": 10.0
+        },
+        {
+          "url": "https://servicos.efazenda.ms.gov.br/crd/CreditoTributario/IndicadoresSefaz/UFERMS",
+          "cliques": 1,
+          "pct": 10.0
+        }
+      ]
+    },
+    {
+      "slug": "anunciar-vagas-de-emprego-no-sine-sistema-nacional-de-emprego71",
+      "titulo": "Consultar vagas de emprego",
+      "orgaoSigla": "FUNTRAB",
+      "categoria": "trabalho-emprego-e-previdencia",
+      "urlCarta": "https://www.ms.gov.br/trabalho-emprego-e-previdencia/anunciar-vagas-de-emprego-no-sine-sistema-nacional-de-emprego71",
+      "views": 54,
+      "cliquesTotais": 10,
+      "taxaConversaoPct": 18.52,
+      "destinos": [
+        {
+          "url": "https://www.funtrab.ms.gov.br/informativo/vagas-de-emprego-e-estagio/",
+          "cliques": 8,
+          "pct": 80.0
+        },
+        {
+          "url": "https://www.funtrab.ms.gov.br/fale-conosco/unidades/unidades-regionais/",
+          "cliques": 2,
+          "pct": 20.0
+        }
+      ]
+    },
+    {
+      "slug": "registro-de-boletins-de-ocorrencia-depac126",
+      "titulo": "Registrar boletins de ocorrência - B.O.",
+      "orgaoSigla": "PCMS",
+      "categoria": "seguranca",
+      "urlCarta": "https://www.ms.gov.br/seguranca/registro-de-boletins-de-ocorrencia-depac126",
+      "views": 126,
+      "cliquesTotais": 10,
+      "taxaConversaoPct": 7.94,
+      "destinos": [
+        {
+          "url": "https://www.pc.ms.gov.br/busca-unidades",
+          "cliques": 6,
+          "pct": 60.0
+        },
+        {
+          "url": "http:// https//www.pc.ms.gov.br",
+          "cliques": 4,
+          "pct": 40.0
+        }
+      ]
+    },
+    {
+      "slug": "participar-do-programa-cnh-ms-social138",
+      "titulo": "Participar do Programa CNH MS Social",
+      "orgaoSigla": "DETRAN",
+      "categoria": "transito-e-transportes",
+      "urlCarta": "https://www.ms.gov.br/transito-e-transportes/participar-do-programa-cnh-ms-social138",
+      "views": 1621,
+      "cliquesTotais": 8,
+      "taxaConversaoPct": 0.49,
+      "destinos": [
+        {
+          "url": "https://maps.app.goo.gl/SARZdG9Hw3NoxGUUA",
+          "cliques": 4,
+          "pct": 50.0
+        },
+        {
+          "url": "http://ms.gov.br/",
+          "cliques": 2,
+          "pct": 25.0
+        },
+        {
+          "url": "http://www.transparencia.ms.gov.br/",
+          "cliques": 1,
+          "pct": 12.5
+        },
+        {
+          "url": "https://www.concursos.ms.gov.br/",
+          "cliques": 1,
+          "pct": 12.5
+        }
+      ]
+    },
+    {
+      "slug": "solicitacao-de-inclusao-no-programa-mais-social118",
+      "titulo": "Solicitar inclusão no Programa Mais Social",
+      "orgaoSigla": "SEAD",
+      "categoria": "assistencia-social",
+      "urlCarta": "https://www.ms.gov.br/assistencia-social/solicitacao-de-inclusao-no-programa-mais-social118",
+      "views": 1106,
+      "cliquesTotais": 7,
+      "taxaConversaoPct": 0.63,
+      "destinos": [
+        {
+          "url": "https://www.concursos.ms.gov.br/",
+          "cliques": 3,
+          "pct": 42.86
+        },
+        {
+          "url": "http://ms.gov.br/",
+          "cliques": 2,
+          "pct": 28.57
+        },
+        {
+          "url": "https://falabr.cgu.gov.br/web/home",
+          "cliques": 1,
+          "pct": 14.29
+        },
+        {
+          "url": "https://www.uems.br/diretoria/dra/Setor-de-Registro-e-Expedicao-de-Diplomas/Graduacao",
+          "cliques": 1,
+          "pct": 14.29
+        }
+      ]
+    },
+    {
+      "slug": "pesquisar-viabilidade198",
+      "titulo": "Pesquisar viabilidade",
+      "orgaoSigla": "JUCEMS",
+      "categoria": "empresa-industria-e-comercio",
+      "urlCarta": "https://www.ms.gov.br/empresa-industria-e-comercio/pesquisar-viabilidade198",
+      "views": 193,
+      "cliquesTotais": 6,
+      "taxaConversaoPct": 3.11,
+      "destinos": [
+        {
+          "url": "https://portalservicos.jucems.ms.gov.br/Portal",
+          "cliques": 6,
+          "pct": 100.0
+        }
+      ]
+    },
+    {
+      "slug": "documento-de-arrecadacao-do-estado-de-mato-grosso-do-sul-daems-emissao5",
+      "titulo": "Documento de arrecadação do estado de Mato Grosso do Sul (DAEMS) - emissão",
+      "orgaoSigla": "SEFAZ MS",
+      "categoria": "financas-e-impostos",
+      "urlCarta": "https://www.ms.gov.br/financas-e-impostos/documento-de-arrecadacao-do-estado-de-mato-grosso-do-sul-daems-emissao5",
+      "views": 14,
+      "cliquesTotais": 6,
+      "taxaConversaoPct": 42.86,
+      "destinos": [
+        {
+          "url": "https://www.sefaz.ms.gov.br/daems/",
+          "cliques": 3,
+          "pct": 50.0
+        },
+        {
+          "url": "https://eservicos.sefaz.ms.gov.br/",
+          "cliques": 2,
+          "pct": 33.33
+        },
+        {
+          "url": "https://www.sefaz.ms.gov.br/ouvidoria/",
+          "cliques": 1,
+          "pct": 16.67
+        }
+      ]
+    },
+    {
+      "slug": "contestacao-administrativa-de-multa-autuacao-e-penalidades159",
+      "titulo": "Contestar multa, autuação ou penalidades",
+      "orgaoSigla": "DETRAN",
+      "categoria": "transito-e-transportes",
+      "urlCarta": "https://www.ms.gov.br/transito-e-transportes/contestacao-administrativa-de-multa-autuacao-e-penalidades159",
+      "views": 156,
+      "cliquesTotais": 4,
+      "taxaConversaoPct": 2.56,
+      "destinos": [
+        {
+          "url": "http://ms.gov.br/",
+          "cliques": 3,
+          "pct": 75.0
+        },
+        {
+          "url": "https://servicos.efazenda.ms.gov.br/crd/CreditoTributario/IndicadoresSefaz/UFERMS",
+          "cliques": 1,
+          "pct": 25.0
+        }
+      ]
+    },
+    {
+      "slug": "emitir-certificado-de-conclusao-do-ensino-medio111",
+      "titulo": "Emitir certificado do ensino médio",
+      "orgaoSigla": "SED MS",
+      "categoria": "educacao-e-pesquisa",
+      "urlCarta": "https://www.ms.gov.br/educacao-e-pesquisa/emitir-certificado-de-conclusao-do-ensino-medio111",
+      "views": 63,
+      "cliquesTotais": 3,
+      "taxaConversaoPct": 4.76,
+      "destinos": [
+        {
+          "url": "http://ms.gov.br/",
+          "cliques": 2,
+          "pct": 66.67
+        },
+        {
+          "url": "https://drive.google.com/file/d/1L1hNF6oSV1xL15IX-i0jQtzSL0dsJ_8S/view?usp=sharing",
+          "cliques": 1,
+          "pct": 33.33
+        }
+      ]
+    },
+    {
+      "slug": "falar-com-a-gloria167",
+      "titulo": "Falar com a Glória",
+      "orgaoSigla": "DETRAN",
+      "categoria": "comunicacao-e-transparencia",
+      "urlCarta": "https://www.ms.gov.br/comunicacao-e-transparencia/falar-com-a-gloria167",
+      "views": 83,
+      "cliquesTotais": 2,
+      "taxaConversaoPct": 2.41,
+      "destinos": [
+        {
+          "url": "http://ms.gov.br/",
+          "cliques": 1,
+          "pct": 50.0
+        },
+        {
+          "url": "https://servicos.efazenda.ms.gov.br/crd/CreditoTributario/IndicadoresSefaz/UFERMS",
+          "cliques": 1,
+          "pct": 50.0
+        }
+      ]
+    },
+    {
+      "slug": "inscricaocadastro67",
+      "titulo": "Solicitar inscrição para participação nos programas habitacionais",
+      "orgaoSigla": "AGEHAB",
+      "categoria": "habitacao",
+      "urlCarta": "https://www.ms.gov.br/habitacao/inscricaocadastro67",
+      "views": 69,
+      "cliquesTotais": 1,
+      "taxaConversaoPct": 1.45,
+      "destinos": [
+        {
+          "url": "https://falabr.cgu.gov.br/web/home",
+          "cliques": 1,
+          "pct": 100.0
+        }
+      ]
+    },
+    {
+      "slug": "emissao-da-carteira-nacional-de-habilitacao174",
+      "titulo": "Pedir Renovação da Carteira Nacional de Habilitação - CNH",
+      "orgaoSigla": "DETRAN",
+      "categoria": "transito-e-transportes",
+      "urlCarta": "https://www.ms.gov.br/transito-e-transportes/emissao-da-carteira-nacional-de-habilitacao174",
+      "views": 181,
+      "cliquesTotais": 1,
+      "taxaConversaoPct": 0.55,
+      "destinos": [
+        {
+          "url": "http://ms.gov.br/",
+          "cliques": 1,
+          "pct": 100.0
+        }
+      ]
+    },
+    {
+      "slug": "validar-documentos163",
+      "titulo": "Validar documentos",
+      "orgaoSigla": "JUCEMS",
+      "categoria": "empresa-industria-e-comercio",
+      "urlCarta": "https://www.ms.gov.br/empresa-industria-e-comercio/validar-documentos163",
+      "views": 111,
+      "cliquesTotais": 1,
+      "taxaConversaoPct": 0.9,
+      "destinos": [
+        {
+          "url": "https://acesso.gov.br/",
+          "cliques": 1,
+          "pct": 100.0
+        }
+      ]
+    }
+  ],
+  "ano": []
+}

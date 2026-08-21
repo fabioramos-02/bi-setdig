@@ -504,5 +504,16 @@
     "schema": "data-platform/schemas/matomo-fuga-hub.schema.json",
     "rows": 40,
     "bytes": 3133
+  },
+  {
+    "dataset": "acessos-botao-servico",
+    "source": "matomo",
+    "owner": "SETDIG",
+    "updatedAt": "2026-08-21T13:25:07.734439+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/matomo-acessos-botao-servico.schema.json",
+    "rows": 30,
+    "bytes": 26666
   }
 ]
