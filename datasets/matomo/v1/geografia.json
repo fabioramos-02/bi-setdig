@@ -2,309 +2,329 @@
   "dia": [
     {
       "cidade": "Campo Grande",
-      "visitas": 294
+      "visitas": 1325
     },
     {
       "cidade": "Dourados",
-      "visitas": 66
+      "visitas": 283
     },
     {
       "cidade": "Três Lagoas",
-      "visitas": 28
-    },
-    {
-      "cidade": "Ponta Porã",
-      "visitas": 21
+      "visitas": 105
     },
     {
       "cidade": "Rio Brilhante",
-      "visitas": 19
+      "visitas": 88
     },
     {
-      "cidade": "Bataiporã",
-      "visitas": 15
-    },
-    {
-      "cidade": "Sidrolândia",
-      "visitas": 14
-    },
-    {
-      "cidade": "Jardim",
-      "visitas": 13
+      "cidade": "Ponta Porã",
+      "visitas": 75
     },
     {
       "cidade": "Terenos",
-      "visitas": 13
-    },
-    {
-      "cidade": "Coxim",
-      "visitas": 12
-    },
-    {
-      "cidade": "Ribas do Rio Pardo",
-      "visitas": 12
-    },
-    {
-      "cidade": "Rio Verde de Mato Grosso",
-      "visitas": 12
-    },
-    {
-      "cidade": "Cassilândia",
-      "visitas": 11
-    },
-    {
-      "cidade": "Paranaíba",
-      "visitas": 11
-    },
-    {
-      "cidade": "Caarapó",
-      "visitas": 10
-    },
-    {
-      "cidade": "Coronel Sapucaia",
-      "visitas": 10
-    },
-    {
-      "cidade": "Naviraí",
-      "visitas": 9
-    },
-    {
-      "cidade": "Aquidauana",
-      "visitas": 8
-    },
-    {
-      "cidade": "Bonito",
-      "visitas": 8
-    },
-    {
-      "cidade": "Guia Lopes da Laguna",
-      "visitas": 8
+      "visitas": 67
     },
     {
       "cidade": "Ladário",
-      "visitas": 8
+      "visitas": 63
     },
     {
-      "cidade": "Paraíso das Águas",
-      "visitas": 8
+      "cidade": "Bataiporã",
+      "visitas": 55
     },
     {
-      "cidade": "Maracaju",
-      "visitas": 6
+      "cidade": "Rio Verde de Mato Grosso",
+      "visitas": 55
     },
     {
-      "cidade": "Angélica",
-      "visitas": 5
+      "cidade": "Sidrolândia",
+      "visitas": 52
     },
     {
-      "cidade": "Corumbá",
-      "visitas": 5
+      "cidade": "Aquidauana",
+      "visitas": 47
     },
     {
-      "cidade": "Amambai",
-      "visitas": 4
+      "cidade": "Caarapó",
+      "visitas": 46
     },
     {
-      "cidade": "Costa Rica",
-      "visitas": 4
-    },
-    {
-      "cidade": "Eldorado",
-      "visitas": 4
+      "cidade": "Bonito",
+      "visitas": 45
     },
     {
       "cidade": "Ivinhema",
-      "visitas": 4
+      "visitas": 44
     },
     {
-      "cidade": "Paranhos",
-      "visitas": 4
+      "cidade": "Cassilândia",
+      "visitas": 39
     },
     {
-      "cidade": "Santa Rita do Pardo",
-      "visitas": 4
+      "cidade": "Maracaju",
+      "visitas": 39
     },
     {
-      "cidade": "Aparecida do Taboado",
-      "visitas": 3
+      "cidade": "Paranaíba",
+      "visitas": 39
     },
     {
-      "cidade": "Chapadão do Sul",
-      "visitas": 3
+      "cidade": "Jardim",
+      "visitas": 38
+    },
+    {
+      "cidade": "Ribas do Rio Pardo",
+      "visitas": 37
+    },
+    {
+      "cidade": "Naviraí",
+      "visitas": 33
+    },
+    {
+      "cidade": "Guia Lopes da Laguna",
+      "visitas": 32
+    },
+    {
+      "cidade": "Amambai",
+      "visitas": 30
+    },
+    {
+      "cidade": "Coronel Sapucaia",
+      "visitas": 29
+    },
+    {
+      "cidade": "Coxim",
+      "visitas": 29
     },
     {
       "cidade": "Glória de Dourados",
-      "visitas": 3
+      "visitas": 29
+    },
+    {
+      "cidade": "Paraíso das Águas",
+      "visitas": 26
+    },
+    {
+      "cidade": "Santa Rita do Pardo",
+      "visitas": 26
+    },
+    {
+      "cidade": "Aparecida do Taboado",
+      "visitas": 15
+    },
+    {
+      "cidade": "Paranhos",
+      "visitas": 14
+    },
+    {
+      "cidade": "Costa Rica",
+      "visitas": 13
+    },
+    {
+      "cidade": "Corumbá",
+      "visitas": 11
+    },
+    {
+      "cidade": "Chapadão do Sul",
+      "visitas": 10
+    },
+    {
+      "cidade": "Porto Murtinho",
+      "visitas": 10
+    },
+    {
+      "cidade": "Camapuã",
+      "visitas": 9
+    },
+    {
+      "cidade": "Angélica",
+      "visitas": 8
+    },
+    {
+      "cidade": "Bela Vista",
+      "visitas": 8
+    },
+    {
+      "cidade": "Eldorado",
+      "visitas": 8
+    },
+    {
+      "cidade": "Nova Andradina",
+      "visitas": 7
+    },
+    {
+      "cidade": "Pôrto Barra do Ivinheima",
+      "visitas": 7
     },
     {
       "cidade": "Santo Antônio",
-      "visitas": 3
+      "visitas": 7
+    },
+    {
+      "cidade": "Sete Quedas",
+      "visitas": 6
     },
     {
       "cidade": "Anastácio",
-      "visitas": 2
-    },
-    {
-      "cidade": "Parque dos Poderes",
-      "visitas": 2
+      "visitas": 4
     }
   ],
   "semana": [
     {
       "cidade": "Campo Grande",
-      "visitas": 13608
+      "visitas": 14633
     },
     {
       "cidade": "Dourados",
-      "visitas": 2970
+      "visitas": 3187
     },
     {
       "cidade": "Três Lagoas",
-      "visitas": 1114
+      "visitas": 1191
     },
     {
       "cidade": "Rio Brilhante",
-      "visitas": 817
+      "visitas": 886
     },
     {
       "cidade": "Ponta Porã",
-      "visitas": 641
+      "visitas": 695
     },
     {
       "cidade": "Rio Verde de Mato Grosso",
-      "visitas": 598
+      "visitas": 641
     },
     {
       "cidade": "Bataiporã",
-      "visitas": 554
+      "visitas": 594
     },
     {
       "cidade": "Terenos",
-      "visitas": 512
+      "visitas": 566
     },
     {
       "cidade": "Sidrolândia",
-      "visitas": 504
-    },
-    {
-      "cidade": "Ribas do Rio Pardo",
-      "visitas": 487
+      "visitas": 542
     },
     {
       "cidade": "Maracaju",
-      "visitas": 482
+      "visitas": 515
     },
     {
-      "cidade": "Paranaíba",
-      "visitas": 463
+      "cidade": "Ribas do Rio Pardo",
+      "visitas": 512
     },
     {
       "cidade": "Aquidauana",
-      "visitas": 459
+      "visitas": 498
+    },
+    {
+      "cidade": "Paranaíba",
+      "visitas": 491
     },
     {
       "cidade": "Ladário",
-      "visitas": 435
+      "visitas": 490
     },
     {
       "cidade": "Cassilândia",
-      "visitas": 424
+      "visitas": 452
     },
     {
       "cidade": "Guia Lopes da Laguna",
-      "visitas": 419
+      "visitas": 443
     },
     {
       "cidade": "Naviraí",
-      "visitas": 405
+      "visitas": 429
     },
     {
       "cidade": "Ivinhema",
-      "visitas": 309
+      "visitas": 349
     },
     {
       "cidade": "Paraíso das Águas",
-      "visitas": 304
+      "visitas": 325
     },
     {
       "cidade": "Caarapó",
-      "visitas": 288
-    },
-    {
-      "cidade": "Amambai",
-      "visitas": 284
-    },
-    {
-      "cidade": "Coxim",
-      "visitas": 283
-    },
-    {
-      "cidade": "Santa Rita do Pardo",
-      "visitas": 275
+      "visitas": 324
     },
     {
       "cidade": "Bonito",
-      "visitas": 274
+      "visitas": 311
+    },
+    {
+      "cidade": "Amambai",
+      "visitas": 310
+    },
+    {
+      "cidade": "Coxim",
+      "visitas": 300
+    },
+    {
+      "cidade": "Santa Rita do Pardo",
+      "visitas": 297
     },
     {
       "cidade": "Glória de Dourados",
-      "visitas": 267
+      "visitas": 293
     },
     {
       "cidade": "Jardim",
-      "visitas": 249
+      "visitas": 274
     },
     {
       "cidade": "Aparecida do Taboado",
-      "visitas": 222
-    },
-    {
-      "cidade": "Costa Rica",
-      "visitas": 181
+      "visitas": 234
     },
     {
       "cidade": "Paranhos",
-      "visitas": 181
+      "visitas": 191
+    },
+    {
+      "cidade": "Costa Rica",
+      "visitas": 190
     },
     {
       "cidade": "Coronel Sapucaia",
-      "visitas": 164
+      "visitas": 183
     },
     {
       "cidade": "Corumbá",
-      "visitas": 141
+      "visitas": 147
     },
     {
       "cidade": "Eldorado",
-      "visitas": 113
+      "visitas": 117
     },
     {
       "cidade": "Camapuã",
-      "visitas": 107
+      "visitas": 116
     },
     {
       "cidade": "Angélica",
-      "visitas": 99
+      "visitas": 102
     },
     {
       "cidade": "Chapadão do Sul",
-      "visitas": 86
+      "visitas": 93
     },
     {
       "cidade": "Bela Vista",
-      "visitas": 71
-    },
-    {
-      "cidade": "Nova Andradina",
-      "visitas": 68
+      "visitas": 78
     },
     {
       "cidade": "Porto Murtinho",
-      "visitas": 67
+      "visitas": 76
+    },
+    {
+      "cidade": "Nova Andradina",
+      "visitas": 74
     },
     {
       "cidade": "Iguatemi",
-      "visitas": 58
+      "visitas": 59
     },
     {
       "cidade": "Alcinópolis",
@@ -312,169 +332,173 @@
     },
     {
       "cidade": "Pôrto Barra do Ivinheima",
-      "visitas": 49
+      "visitas": 55
     },
     {
       "cidade": "Anastácio",
-      "visitas": 45
+      "visitas": 47
     },
     {
       "cidade": "Santo Antônio",
-      "visitas": 35
+      "visitas": 39
+    },
+    {
+      "cidade": "Sete Quedas",
+      "visitas": 36
     }
   ],
   "mes": [
     {
       "cidade": "Campo Grande",
-      "visitas": 55168
+      "visitas": 56193
     },
     {
       "cidade": "Dourados",
-      "visitas": 12606
+      "visitas": 12823
     },
     {
       "cidade": "Três Lagoas",
-      "visitas": 4693
+      "visitas": 4770
     },
     {
       "cidade": "Rio Brilhante",
-      "visitas": 3307
+      "visitas": 3376
     },
     {
       "cidade": "Ponta Porã",
-      "visitas": 2686
+      "visitas": 2740
     },
     {
       "cidade": "Rio Verde de Mato Grosso",
-      "visitas": 2441
+      "visitas": 2484
     },
     {
       "cidade": "Terenos",
-      "visitas": 2336
+      "visitas": 2390
     },
     {
       "cidade": "Sidrolândia",
-      "visitas": 2134
-    },
-    {
-      "cidade": "Ribas do Rio Pardo",
-      "visitas": 2074
+      "visitas": 2172
     },
     {
       "cidade": "Bataiporã",
-      "visitas": 2068
+      "visitas": 2108
     },
     {
-      "cidade": "Maracaju",
-      "visitas": 2017
+      "cidade": "Ribas do Rio Pardo",
+      "visitas": 2099
     },
     {
       "cidade": "Ladário",
-      "visitas": 2010
+      "visitas": 2065
+    },
+    {
+      "cidade": "Maracaju",
+      "visitas": 2050
     },
     {
       "cidade": "Aquidauana",
-      "visitas": 1939
+      "visitas": 1978
     },
     {
       "cidade": "Naviraí",
-      "visitas": 1865
+      "visitas": 1889
     },
     {
       "cidade": "Paranaíba",
-      "visitas": 1784
+      "visitas": 1812
     },
     {
       "cidade": "Cassilândia",
-      "visitas": 1727
+      "visitas": 1755
     },
     {
       "cidade": "Ivinhema",
-      "visitas": 1632
+      "visitas": 1672
     },
     {
       "cidade": "Guia Lopes da Laguna",
-      "visitas": 1575
+      "visitas": 1599
     },
     {
       "cidade": "Amambai",
-      "visitas": 1277
+      "visitas": 1303
     },
     {
       "cidade": "Bonito",
-      "visitas": 1227
+      "visitas": 1264
     },
     {
       "cidade": "Santa Rita do Pardo",
-      "visitas": 1212
+      "visitas": 1234
     },
     {
       "cidade": "Glória de Dourados",
-      "visitas": 1187
+      "visitas": 1213
     },
     {
       "cidade": "Paraíso das Águas",
-      "visitas": 1165
+      "visitas": 1183
     },
     {
       "cidade": "Caarapó",
-      "visitas": 1142
+      "visitas": 1178
     },
     {
       "cidade": "Jardim",
-      "visitas": 1129
+      "visitas": 1154
     },
     {
       "cidade": "Coxim",
-      "visitas": 1059
+      "visitas": 1076
     },
     {
       "cidade": "Aparecida do Taboado",
-      "visitas": 879
+      "visitas": 891
     },
     {
       "cidade": "Coronel Sapucaia",
-      "visitas": 800
+      "visitas": 819
     },
     {
       "cidade": "Paranhos",
-      "visitas": 657
+      "visitas": 667
     },
     {
       "cidade": "Costa Rica",
-      "visitas": 655
+      "visitas": 664
     },
     {
       "cidade": "Corumbá",
-      "visitas": 576
+      "visitas": 582
     },
     {
       "cidade": "Camapuã",
-      "visitas": 518
+      "visitas": 527
     },
     {
       "cidade": "Eldorado",
-      "visitas": 445
-    },
-    {
-      "cidade": "Angélica",
-      "visitas": 403
+      "visitas": 449
     },
     {
       "cidade": "Bela Vista",
-      "visitas": 403
+      "visitas": 410
+    },
+    {
+      "cidade": "Angélica",
+      "visitas": 406
     },
     {
       "cidade": "Nova Andradina",
-      "visitas": 379
+      "visitas": 385
     },
     {
       "cidade": "Chapadão do Sul",
-      "visitas": 338
+      "visitas": 345
     },
     {
       "cidade": "Porto Murtinho",
-      "visitas": 281
+      "visitas": 290
     },
     {
       "cidade": "Alcinópolis",
@@ -482,185 +506,185 @@
     },
     {
       "cidade": "Anastácio",
-      "visitas": 220
+      "visitas": 222
     },
     {
       "cidade": "Pôrto Barra do Ivinheima",
-      "visitas": 178
+      "visitas": 184
     },
     {
       "cidade": "Iguatemi",
-      "visitas": 156
+      "visitas": 157
     }
   ],
   "ano": [
     {
       "cidade": "Campo Grande",
-      "visitas": 644977
+      "visitas": 646002
     },
     {
       "cidade": "Dourados",
-      "visitas": 152960
+      "visitas": 153177
     },
     {
       "cidade": "Três Lagoas",
-      "visitas": 43765
+      "visitas": 43842
     },
     {
       "cidade": "Rio Brilhante",
-      "visitas": 34861
+      "visitas": 34930
     },
     {
       "cidade": "Bataiporã",
-      "visitas": 29493
+      "visitas": 29533
     },
     {
       "cidade": "Ponta Porã",
-      "visitas": 28582
+      "visitas": 28636
     },
     {
       "cidade": "Rio Verde de Mato Grosso",
-      "visitas": 27448
+      "visitas": 27491
     },
     {
       "cidade": "Terenos",
-      "visitas": 26194
+      "visitas": 26248
     },
     {
       "cidade": "Naviraí",
-      "visitas": 23519
+      "visitas": 23543
     },
     {
       "cidade": "Aquidauana",
-      "visitas": 23223
+      "visitas": 23262
     },
     {
       "cidade": "Ladário",
-      "visitas": 21597
+      "visitas": 21652
     },
     {
       "cidade": "Ribas do Rio Pardo",
-      "visitas": 20406
+      "visitas": 20431
     },
     {
       "cidade": "Maracaju",
-      "visitas": 19915
+      "visitas": 19948
     },
     {
       "cidade": "Cassilândia",
-      "visitas": 19424
+      "visitas": 19452
     },
     {
       "cidade": "Ivinhema",
-      "visitas": 19164
+      "visitas": 19204
     },
     {
       "cidade": "Sidrolândia",
-      "visitas": 19127
+      "visitas": 19165
     },
     {
       "cidade": "Guia Lopes da Laguna",
-      "visitas": 18919
+      "visitas": 18943
     },
     {
       "cidade": "Paranaíba",
-      "visitas": 18505
+      "visitas": 18533
     },
     {
       "cidade": "Caarapó",
-      "visitas": 18385
+      "visitas": 18421
     },
     {
       "cidade": "Glória de Dourados",
-      "visitas": 16954
+      "visitas": 16980
     },
     {
       "cidade": "Jardim",
-      "visitas": 16587
+      "visitas": 16612
     },
     {
       "cidade": "Coxim",
-      "visitas": 14911
+      "visitas": 14928
     },
     {
       "cidade": "Bonito",
-      "visitas": 13154
+      "visitas": 13191
     },
     {
       "cidade": "Amambai",
-      "visitas": 13046
+      "visitas": 13072
     },
     {
       "cidade": "Santa Rita do Pardo",
-      "visitas": 12974
+      "visitas": 12996
     },
     {
       "cidade": "Paraíso das Águas",
-      "visitas": 12180
+      "visitas": 12201
     },
     {
       "cidade": "Coronel Sapucaia",
-      "visitas": 9475
+      "visitas": 9494
     },
     {
       "cidade": "Aparecida do Taboado",
-      "visitas": 8875
+      "visitas": 8887
     },
     {
       "cidade": "Corumbá",
-      "visitas": 8395
+      "visitas": 8401
     },
     {
       "cidade": "Paranhos",
-      "visitas": 6383
+      "visitas": 6393
     },
     {
       "cidade": "Eldorado",
-      "visitas": 5923
+      "visitas": 5927
     },
     {
       "cidade": "Porto Murtinho",
-      "visitas": 5543
+      "visitas": 5552
     },
     {
       "cidade": "Camapuã",
-      "visitas": 5509
+      "visitas": 5518
     },
     {
       "cidade": "Bela Vista",
-      "visitas": 5121
+      "visitas": 5128
     },
     {
       "cidade": "Nova Andradina",
-      "visitas": 4346
+      "visitas": 4352
     },
     {
       "cidade": "Angélica",
-      "visitas": 4049
+      "visitas": 4052
     },
     {
       "cidade": "Chapadão do Sul",
-      "visitas": 3270
+      "visitas": 3277
     },
     {
       "cidade": "Costa Rica",
-      "visitas": 2956
+      "visitas": 2965
     },
     {
       "cidade": "Anastácio",
-      "visitas": 2486
+      "visitas": 2488
     },
     {
       "cidade": "Figueirão",
-      "visitas": 2336
+      "visitas": 2337
     },
     {
       "cidade": "Santo Antônio",
-      "visitas": 2245
+      "visitas": 2249
     },
     {
       "cidade": "Sete Quedas",
-      "visitas": 1944
+      "visitas": 1950
     },
     {
       "cidade": "Alcinópolis",
@@ -668,23 +692,23 @@
     },
     {
       "cidade": "Douradina",
-      "visitas": 1624
+      "visitas": 1625
     },
     {
       "cidade": "Miranda",
-      "visitas": 1519
+      "visitas": 1521
     },
     {
       "cidade": "Iguatemi",
-      "visitas": 1459
+      "visitas": 1460
     },
     {
       "cidade": "Pôrto Barra do Ivinheima",
-      "visitas": 1402
+      "visitas": 1408
     },
     {
       "cidade": "Parque dos Poderes",
-      "visitas": 1116
+      "visitas": 1118
     }
   ]
 }

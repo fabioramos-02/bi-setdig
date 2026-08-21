@@ -2,26 +2,42 @@
   "dia": [
     {
       "termo": "inscrição estadual",
-      "buscas": 21
+      "buscas": 95
     },
     {
       "termo": "ipva",
-      "buscas": 12
-    },
-    {
-      "termo": "cidadão",
-      "buscas": 2
+      "buscas": 51
     },
     {
       "termo": "procon",
-      "buscas": 2
+      "buscas": 16
     },
     {
       "termo": "substituição tributária",
+      "buscas": 11
+    },
+    {
+      "termo": "cidadão",
+      "buscas": 7
+    },
+    {
+      "termo": "itcd",
+      "buscas": 4
+    },
+    {
+      "termo": "efd",
+      "buscas": 3
+    },
+    {
+      "termo": "licenciamento guia",
       "buscas": 2
     },
     {
       "termo": "283007419",
+      "buscas": 1
+    },
+    {
+      "termo": "autoparcelamento",
       "buscas": 1
     },
     {
@@ -33,7 +49,11 @@
       "buscas": 1
     },
     {
-      "termo": "efd",
+      "termo": "ctc",
+      "buscas": 1
+    },
+    {
+      "termo": "defesa civil",
       "buscas": 1
     },
     {
@@ -41,54 +61,54 @@
       "buscas": 1
     },
     {
-      "termo": "itcd",
+      "termo": "informativos",
       "buscas": 1
     },
     {
-      "termo": "notas",
+      "termo": "inscrição",
       "buscas": 1
     },
     {
-      "termo": "programa do artesanato brasileiro",
+      "termo": "janaína aparecida farias da silva nascimento",
       "buscas": 1
     },
     {
-      "termo": "pscologo",
+      "termo": "licenciameto",
       "buscas": 1
     },
     {
-      "termo": "wa-0859-3970-0884-pusat-kitchen-set-bawah-sink-terdekat-karangtengah-wonogiri",
+      "termo": "mulher",
       "buscas": 1
     }
   ],
   "semana": [
     {
       "termo": "inscrição estadual",
-      "buscas": 805
+      "buscas": 879
     },
     {
       "termo": "ipva",
-      "buscas": 545
+      "buscas": 584
     },
     {
       "termo": "substituição tributária",
-      "buscas": 104
+      "buscas": 113
     },
     {
       "termo": "procon",
-      "buscas": 94
+      "buscas": 108
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 39
+      "buscas": 40
     },
     {
       "termo": "itcd",
-      "buscas": 32
+      "buscas": 35
     },
     {
       "termo": "cidadão",
-      "buscas": 29
+      "buscas": 34
     },
     {
       "termo": "empresa",
@@ -96,7 +116,7 @@
     },
     {
       "termo": "mulher",
-      "buscas": 15
+      "buscas": 16
     },
     {
       "termo": "licenciamento",
@@ -104,7 +124,7 @@
     },
     {
       "termo": "efd",
-      "buscas": 9
+      "buscas": 11
     },
     {
       "termo": "debito",
@@ -112,6 +132,10 @@
     },
     {
       "termo": "multa",
+      "buscas": 6
+    },
+    {
+      "termo": "servidor",
       "buscas": 6
     },
     {
@@ -123,8 +147,12 @@
       "buscas": 5
     },
     {
-      "termo": "servidor",
-      "buscas": 5
+      "termo": "defesa civil",
+      "buscas": 4
+    },
+    {
+      "termo": "licenciamento guia",
+      "buscas": 4
     },
     {
       "termo": "nota fiscal",
@@ -133,44 +161,36 @@
     {
       "termo": "283007419",
       "buscas": 3
-    },
-    {
-      "termo": "cnh",
-      "buscas": 3
-    },
-    {
-      "termo": "defesa civil",
-      "buscas": 3
     }
   ],
   "mes": [
     {
       "termo": "ipva",
-      "buscas": 2310
+      "buscas": 2349
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 1722
+      "buscas": 1796
     },
     {
       "termo": "procon",
-      "buscas": 390
+      "buscas": 404
     },
     {
       "termo": "substituição tributária",
-      "buscas": 360
+      "buscas": 369
     },
     {
       "termo": "itcd",
-      "buscas": 160
+      "buscas": 163
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 154
+      "buscas": 155
     },
     {
       "termo": "cidadão",
-      "buscas": 126
+      "buscas": 131
     },
     {
       "termo": "empresa",
@@ -182,7 +202,7 @@
     },
     {
       "termo": "servidor",
-      "buscas": 41
+      "buscas": 42
     },
     {
       "termo": "rg",
@@ -190,15 +210,15 @@
     },
     {
       "termo": "mulher",
-      "buscas": 31
+      "buscas": 32
     },
     {
       "termo": "efd",
-      "buscas": 24
+      "buscas": 26
     },
     {
       "termo": "defesa civil",
-      "buscas": 21
+      "buscas": 22
     },
     {
       "termo": "cnh",
@@ -228,35 +248,35 @@
   "ano": [
     {
       "termo": "ipva",
-      "buscas": 32073
+      "buscas": 32112
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 10595
+      "buscas": 10669
     },
     {
       "termo": "procon",
-      "buscas": 6818
+      "buscas": 6832
     },
     {
       "termo": "substituição tributária",
-      "buscas": 4628
+      "buscas": 4637
     },
     {
       "termo": "itcd",
-      "buscas": 1791
+      "buscas": 1794
     },
     {
       "termo": "cidadão",
-      "buscas": 1523
+      "buscas": 1528
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 1379
+      "buscas": 1380
     },
     {
       "termo": "servidor",
-      "buscas": 1212
+      "buscas": 1213
     },
     {
       "termo": "empresa",
@@ -268,7 +288,7 @@
     },
     {
       "termo": "mulher",
-      "buscas": 259
+      "buscas": 260
     },
     {
       "termo": "nota fiscal",
@@ -276,11 +296,11 @@
     },
     {
       "termo": "defesa civil",
-      "buscas": 237
+      "buscas": 238
     },
     {
       "termo": "efd",
-      "buscas": 226
+      "buscas": 228
     },
     {
       "termo": "cnh",

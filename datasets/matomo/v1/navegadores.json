@@ -2,89 +2,89 @@
   "dia": [
     {
       "navegador": "Chrome",
-      "visitas": 962
+      "visitas": 3586
     },
     {
       "navegador": "Chrome Mobile",
-      "visitas": 444
-    },
-    {
-      "navegador": "Mobile Safari",
-      "visitas": 222
+      "visitas": 1555
     },
     {
       "navegador": "Microsoft Edge",
-      "visitas": 170
+      "visitas": 798
+    },
+    {
+      "navegador": "Mobile Safari",
+      "visitas": 673
     },
     {
       "navegador": "Outros",
-      "visitas": 227
+      "visitas": 962
     }
   ],
   "semana": [
     {
       "navegador": "Chrome",
-      "visitas": 31986
+      "visitas": 34610
     },
     {
       "navegador": "Chrome Mobile",
-      "visitas": 15986
+      "visitas": 17097
     },
     {
       "navegador": "Mobile Safari",
-      "visitas": 6968
+      "visitas": 7419
     },
     {
       "navegador": "Microsoft Edge",
-      "visitas": 6503
+      "visitas": 7131
     },
     {
       "navegador": "Outros",
-      "visitas": 10340
+      "visitas": 11072
     }
   ],
   "mes": [
     {
       "navegador": "Chrome",
-      "visitas": 110956
+      "visitas": 113580
     },
     {
       "navegador": "Chrome Mobile",
-      "visitas": 69578
+      "visitas": 70689
     },
     {
       "navegador": "Mobile Safari",
-      "visitas": 28690
+      "visitas": 29141
     },
     {
       "navegador": "Microsoft Edge",
-      "visitas": 22723
+      "visitas": 23351
     },
     {
       "navegador": "Outros",
-      "visitas": 46016
+      "visitas": 46751
     }
   ],
   "ano": [
     {
       "navegador": "Chrome",
-      "visitas": 1551816
+      "visitas": 1554440
     },
     {
       "navegador": "Chrome Mobile",
-      "visitas": 806428
+      "visitas": 807539
     },
     {
       "navegador": "Microsoft Edge",
-      "visitas": 276503
+      "visitas": 277131
     },
     {
       "navegador": "Mobile Safari",
-      "visitas": 273785
+      "visitas": 274236
     },
     {
       "navegador": "Outros",
-      "visitas": 372908
+      "visitas": 373643
     }
   ]
 }

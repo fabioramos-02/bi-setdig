@@ -1,5 +1,5 @@
 import { BarChart } from "@/components/charts/BarChart";
-import { CadenciaAcessoFunil } from "@/components/charts/CadenciaAcessoFunil";
+import { CadenciaAcessoSegmentos } from "@/components/charts/CadenciaAcessoSegmentos";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { SnapshotBadge } from "@/components/dashboard/SnapshotBadge";
 import { MetricCard } from "@/components/dashboard/MetricCard";
@@ -21,7 +21,6 @@ import type {
   FaixaAcessoPorTipo,
 } from "@/lib/data";
 import {
-  fraseCadencia,
   interpretaStickiness,
   saudeJornada,
   situacaoJornada,
@@ -174,12 +173,12 @@ export function JornadaTab({
       {frequenciaAcesso && (
         <StoryCard
           snapshot
-          anchor={fraseCadencia(frequenciaAcesso)}
+          anchor="Como o cidadão volta ao app"
           caption={interpretaStickiness(frequenciaAcesso)}
-          comoLer="Cada acesso conta um dispositivo, não uma pessoa — quem usa o app em celular e tablet aparece duas vezes. As janelas de 1, 7 e 28 dias são fixas por definição (não reagem ao filtro de período). O intervalo médio é uma média entre todos os usuários — pode esconder grupos muito engajados junto de grupos que quase não voltam."
+          comoLer="Cada acesso conta um dispositivo, não uma pessoa — quem usa o app em celular e tablet aparece duas vezes. As janelas de 1, 7 e 28 dias são fixas por definição (não reagem ao filtro de período). Os três grupos (diários, semanais, só no mês) não se sobrepõem — cada pessoa aparece em um só."
         >
           <SnapshotBadge updatedAt={snapshotFrequenciaEm} texto="Cadência apurada em" />
-          <CadenciaAcessoFunil freq={frequenciaAcesso} />
+          <CadenciaAcessoSegmentos freq={frequenciaAcesso} />
         </StoryCard>
       )}
 

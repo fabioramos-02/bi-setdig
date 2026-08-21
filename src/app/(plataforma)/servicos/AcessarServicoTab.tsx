@@ -1,7 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
+import { useEffect, useMemo, useState } from "react";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { DataTable, type Coluna } from "@/components/dashboard/DataTable";
 import { EmptyCard } from "@/components/ds/EmptyCard";
@@ -34,30 +33,28 @@ function hostDe(url: string): string {
 export function AcessarServicoTab({
   cartasSnapshot,
   visitasPorSlug,
-  status,
   rotuloPeriodo,
   range,
-  isPeriodoCorrente,
   totalCartasAtivas,
   totalOrgaos,
 }: {
   cartasSnapshot: AcessoBotaoCarta[];
   visitasPorSlug: Map<string, number>;
-  status: StatusIntervalo;
   rotuloPeriodo: string;
   range: { inicio: string; fim: string };
-  isPeriodoCorrente: boolean;
   totalCartasAtivas: number;
   totalOrgaos: number;
 }) {
   const [estado, setEstado] = useState<EstadoFetch>("idle");
   const [live, setLive] = useState<AcessoBotaoCarta[] | null>(null);
   const [liveRange, setLiveRange] = useState<{ inicio: string; fim: string } | null>(null);
+  const [liveCobertura, setLiveCobertura] = useState<{ comUrlExterno: number; comCliques: number } | null>(null);
   const [erroMsg, setErroMsg] = useState<string | null>(null);
 
   const liveEhDoRangeAtual = live !== null && liveRange?.inicio === range.inicio && liveRange?.fim === range.fim;
   const cartasFonte = liveEhDoRangeAtual ? live! : cartasSnapshot;
   const dadoLive = liveEhDoRangeAtual;
+  const snapshotVazio = cartasSnapshot.length === 0;
 
   const [orgaoAtivo, setOrgaoAtivo] = useState<string>("");
   const [busca, setBusca] = useState<string>("");
@@ -77,15 +74,23 @@ export function AcessarServicoTab({
   }, [cartasFonte, orgaoAtivo, busca]);
   const modoOrgao = orgaoAtivo && cartas.length > 0 ? orgaoAtivo : null;
 
-  async function buscar() {
+  async function buscar(alvo = range) {
     setEstado("carregando");
     setErroMsg(null);
     try {
-      const r = await fetch(`/api/analytics/cartas/acessos?inicio=${range.inicio}&fim=${range.fim}`);
+      const r = await fetch(`/api/analytics/cartas/acessos?inicio=${alvo.inicio}&fim=${alvo.fim}`);
       if (!r.ok) throw new Error(`HTTP ${r.status}`);
-      const data = (await r.json()) as { cartas: AcessoBotaoCarta[] };
+      const data = (await r.json()) as {
+        cartas: AcessoBotaoCarta[];
+        totalCartasComUrlExterno?: number;
+        totalCartasComCliques?: number;
+      };
       setLive(data.cartas ?? []);
-      setLiveRange({ inicio: range.inicio, fim: range.fim });
+      setLiveRange({ inicio: alvo.inicio, fim: alvo.fim });
+      setLiveCobertura({
+        comUrlExterno: data.totalCartasComUrlExterno ?? 0,
+        comCliques: data.totalCartasComCliques ?? (data.cartas ?? []).length,
+      });
       setEstado("sucesso");
     } catch (exc) {
       console.error("[AcessarServicoTab] fetch falhou:", exc);
@@ -94,24 +99,70 @@ export function AcessarServicoTab({
     }
   }
 
+  // Fetch automático: snapshot está vazio há tempos (guarda do pipeline
+  // preservou vazio → BI mostrava tabela em branco). Busca ao vivo sempre
+  // que o range muda; usuário mantém botão "Atualizar" pra rebuscar.
+  useEffect(() => {
+    let cancelado = false;
+    (async () => {
+      const alvo = { inicio: range.inicio, fim: range.fim };
+      setEstado("carregando");
+      setErroMsg(null);
+      try {
+        const r = await fetch(`/api/analytics/cartas/acessos?inicio=${alvo.inicio}&fim=${alvo.fim}`);
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        const data = (await r.json()) as {
+          cartas: AcessoBotaoCarta[];
+          totalCartasComUrlExterno?: number;
+          totalCartasComCliques?: number;
+        };
+        if (cancelado) return;
+        setLive(data.cartas ?? []);
+        setLiveRange(alvo);
+        setLiveCobertura({
+          comUrlExterno: data.totalCartasComUrlExterno ?? 0,
+          comCliques: data.totalCartasComCliques ?? (data.cartas ?? []).length,
+        });
+        setEstado("sucesso");
+      } catch (exc) {
+        if (cancelado) return;
+        console.error("[AcessarServicoTab] auto-fetch falhou:", exc);
+        setErroMsg("Não foi possível carregar os dados ao vivo agora. Mostrando último snapshot publicado.");
+        setEstado("erro");
+      }
+    })();
+    return () => {
+      cancelado = true;
+    };
+  }, [range.inicio, range.fim]);
+
   const total = useMemo(() => totalCliques(cartas), [cartas]);
   const destinos = useMemo(() => destinosPorHost(cartas, 5), [cartas]);
   const resumoOrgaos = useMemo(() => (orgaoAtivo ? [] : agregarPorOrgao(cartasFonte)), [cartasFonte, orgaoAtivo]);
-  const top20 = useMemo(() => cartas.slice(0, 20), [cartas]);
+  const [verTodas, setVerTodas] = useState(false);
+  const LIMITE_VISIVEL = 20;
+  const cartasVisiveis = useMemo(
+    () => (verTodas ? cartas : cartas.slice(0, LIMITE_VISIVEL)),
+    [cartas, verTodas],
+  );
   const semDado = cartas.length === 0;
 
   return (
     <div className="flex flex-col gap-6 min-w-0">
-      {status === "fallback" && !dadoLive && (
-        <AvisoSnapshotAproximado
-          status={status}
-          mensagemFallback={
-            <>
-              Período diferente do publicado. Números abaixo são do último snapshot — clique em{" "}
-              <strong>Buscar dados do período</strong> pra atualizar ao vivo.
-            </>
-          }
-        />
+      {estado === "erro" && !dadoLive && snapshotVazio && (
+        <div
+          role="alert"
+          className="text-base rounded"
+          style={{
+            background: "var(--ds-color-warning-50, #fef3c7)",
+            color: "var(--ds-color-warning, #92400e)",
+            padding: "var(--ds-spacing-12)",
+            border: "1px solid var(--ds-color-warning, #f59e0b)",
+          }}
+        >
+          Não foi possível carregar do Matomo e o último snapshot publicado está vazio — não há dado
+          pra mostrar neste período. Clique em <strong>Atualizar</strong> pra tentar de novo.
+        </div>
       )}
 
       <BarraDeAcao
@@ -119,8 +170,8 @@ export function AcessarServicoTab({
         range={range}
         estado={estado}
         dadoLive={dadoLive}
-        isPeriodoCorrente={isPeriodoCorrente}
-        onBuscar={buscar}
+        cobertura={liveCobertura}
+        onBuscar={() => buscar()}
       />
 
       {orgaos.length > 0 && (
@@ -224,10 +275,17 @@ export function AcessarServicoTab({
             </DashboardSection>
           )}
 
-          {top20.length > 0 && (
+          {cartasVisiveis.length > 0 && (
             <DashboardSection title="Cartas com mais cliques no botão Acessar Serviço">
               <p className="mb-3 text-base font-medium" style={{ color: "var(--ds-color-text-secondary)" }}>
                 Quantas vezes o cidadão clicou em Acessar serviço em cada carta no período. Clique nos cabeçalhos pra reordenar.
+                {cartas.length > LIMITE_VISIVEL && (
+                  <>
+                    {" "}
+                    Mostrando as {verTodas ? cartas.length : LIMITE_VISIVEL} com mais cliques
+                    {!verTodas && ` de ${cartas.length} cartas com pelo menos 1 clique`}.
+                  </>
+                )}
               </p>
               <div className="mb-3 flex flex-wrap items-center gap-2">
                 <label htmlFor="busca-carta" className="text-base font-semibold" style={{ color: "var(--ds-color-text-primary)" }}>
@@ -260,7 +318,21 @@ export function AcessarServicoTab({
                   </button>
                 )}
               </div>
-              <TabelaVolume cartas={top20} visitasPorSlug={visitasPorSlug} />
+              <TabelaVolume cartas={cartasVisiveis} visitasPorSlug={visitasPorSlug} />
+              {cartas.length > LIMITE_VISIVEL && (
+                <div className="mt-3 flex justify-center">
+                  <button
+                    type="button"
+                    onClick={() => setVerTodas((v) => !v)}
+                    className="text-sm underline"
+                    style={{ color: "var(--ds-color-primary-600)", background: "transparent", border: 0, cursor: "pointer" }}
+                  >
+                    {verTodas
+                      ? `mostrar só as ${LIMITE_VISIVEL} com mais cliques`
+                      : `ver todas as ${cartas.length} cartas com cliques`}
+                  </button>
+                </div>
+              )}
             </DashboardSection>
           )}
 
@@ -287,27 +359,25 @@ function BarraDeAcao({
   range,
   estado,
   dadoLive,
-  isPeriodoCorrente,
+  cobertura,
   onBuscar,
 }: {
   rotuloPeriodo: string;
   range: { inicio: string; fim: string };
   estado: EstadoFetch;
   dadoLive: boolean;
-  isPeriodoCorrente: boolean;
+  cobertura: { comUrlExterno: number; comCliques: number } | null;
   onBuscar: () => void;
 }) {
   const carregando = estado === "carregando";
-  const rotulo = dadoLive
-    ? "Atualizar dados do período"
-    : isPeriodoCorrente
-    ? "Rebuscar do período atual"
-    : "Buscar dados do período";
-  const contexto = dadoLive
-    ? `Mostrando dados ao vivo do período ${rotuloPeriodo} (${brDia(range.inicio)} a ${brDia(range.fim)}).`
-    : isPeriodoCorrente
-    ? `Mostrando o último snapshot publicado (${rotuloPeriodo}).`
-    : `Snapshot desatualizado — o período selecionado (${rotuloPeriodo}) precisa de busca ao vivo.`;
+  const rotulo = "Atualizar";
+  const contexto = carregando
+    ? `Consultando o Matomo pra o período ${rotuloPeriodo} (${brDia(range.inicio)} a ${brDia(range.fim)})…`
+    : dadoLive
+    ? cobertura
+      ? `Dados ao vivo ${rotuloPeriodo} (${brDia(range.inicio)} a ${brDia(range.fim)}) · ${cobertura.comCliques.toLocaleString("pt-BR")} de ${cobertura.comUrlExterno.toLocaleString("pt-BR")} cartas com link externo tiveram pelo menos 1 clique.`
+      : `Dados ao vivo do período ${rotuloPeriodo} (${brDia(range.inicio)} a ${brDia(range.fim)}).`
+    : `Mostrando o último snapshot publicado (${rotuloPeriodo}). Atualização ao vivo falhou.`;
   return (
     <div
       className="flex flex-wrap items-center justify-between gap-3 rounded"

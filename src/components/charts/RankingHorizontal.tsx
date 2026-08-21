@@ -2,7 +2,7 @@ import { OrgaosChips } from "@/components/dashboard/OrgaosChips";
 
 /** Barras horizontais escaladas ao maior valor da lista — leitura executiva
  *  de ranking + share. CSS puro, sem lib. Mesma família visual do
- *  StackedBarChart e CadenciaAcessoFunil. */
+ *  StackedBarChart e CadenciaAcessoSegmentos. */
 export type ItemRanking = {
   label: string;
   valor: number;

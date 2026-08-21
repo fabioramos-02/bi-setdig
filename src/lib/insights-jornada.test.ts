@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { fraseCadencia, interpretaStickiness } from "./insights-jornada.ts";
+import { interpretaStickiness } from "./insights-jornada.ts";
 import type { FrequenciaAcesso } from "./data.ts";
 
 const BASE: FrequenciaAcesso = {
@@ -19,21 +19,6 @@ const BASE: FrequenciaAcesso = {
   retencaoD7Pct: 0.2,
   retencaoD30Pct: 0.0,
 };
-
-test("fraseCadencia formata intervalo em dias", () => {
-  const f = fraseCadencia(BASE);
-  assert.match(f, /23 dias/);
-});
-
-test("fraseCadencia degrada sem dado", () => {
-  const f = fraseCadencia({ ...BASE, diasEntreAcessos: null });
-  assert.match(f, /não há dados suficientes/);
-});
-
-test("fraseCadencia lida com <2 dias", () => {
-  const f = fraseCadencia({ ...BASE, diasEntreAcessos: 1.4 });
-  assert.match(f, /menos de 2 dias/);
-});
 
 test("interpretaStickiness classifica engajamento", () => {
   assert.match(interpretaStickiness({ ...BASE, stickinessPct: 25 }), /engajada/);

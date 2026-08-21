@@ -45,6 +45,13 @@ fontes (Matomo/GA4/Postgres)
 
 Decisões de projeto em `docs/architecture/` (ADRs) e convenções em [AGENTS.md](AGENTS.md).
 
+## Comando extração
+
+```bash
+python data-platform/run.py
+```
+
+
 ## Padrões
 
 - Sem fetch/cálculo em componente `.tsx` → mora em `src/lib/`.
