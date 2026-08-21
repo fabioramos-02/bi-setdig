@@ -221,20 +221,19 @@ export function getMatomoFugaHub(): BreakdownPorPeriodo<DominioSaida> {
   return readDataset<BreakdownPorPeriodo<DominioSaida>>("matomo", "v1", "fuga-hub") ?? BREAKDOWN_VAZIO;
 }
 
-// Cliques no botão "Acessar serviço" por carta — Transitions.getTransitionsForAction
-// no pipeline (top-100 cartas por visitas × 4 períodos). Cauda-longa vai live
-// via /api/analytics/cartas/[slug]/acessos (ADR-010).
-export type AcessoBotaoDestino = { url: string; cliques: number; pct: number };
+// Cliques no botão "Acessar serviço" por carta — método Actions.getOutlinks
+// site-wide (flat=1) cruzado com `urlExterno` do inventário. 1 chamada Matomo
+// por período em vez de N chamadas Transitions (~100× mais rápido).
+// Trade-off: sem pageviews → sem taxa de conversão. Gestora pediu volume, não
+// conversão; Transitions fica de fora até pedirem taxa (ver ADR).
 export type AcessoBotaoCarta = {
   slug: string;
   titulo: string;
   orgaoSigla: string | null;
   categoria: string | null;
   urlCarta: string;
-  views: number;
-  cliquesTotais: number;
-  taxaConversaoPct: number;
-  destinos: AcessoBotaoDestino[];
+  urlExterno: string;
+  cliques: number;
 };
 export function getMatomoAcessosBotaoServico(): BreakdownPorPeriodo<AcessoBotaoCarta> {
   return readDataset<BreakdownPorPeriodo<AcessoBotaoCarta>>("matomo", "v1", "acessos-botao-servico") ?? BREAKDOWN_VAZIO;
@@ -379,6 +378,11 @@ export type CartaRelacao = {
   custo: string | null;
   tempoTotal: number | null;
   tipoTempo: string | null;
+  /** URL do sistema externo que executa o serviço (ex. meudetran.ms.gov.br/...).
+   * Vem do banco admin (`gerenciamento_servicos.url_externo`). Base do relatório
+   * "Botão Acessar Serviço": cruza com Actions.getOutlinks do Matomo. `null`
+   * quando a carta não tem sistema externo cadastrado. */
+  urlExterno?: string | null;
   /** Data de cadastro — alimenta "Novos Serviços". Ausente no dataset antigo. */
   createdAt?: string | null;
   updatedAt: string | null;

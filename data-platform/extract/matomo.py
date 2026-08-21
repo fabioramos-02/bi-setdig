@@ -76,11 +76,15 @@ def get_device_type(period: str, date: str, site_id: str | None = None) -> list:
     return _call("DevicesDetection.getType", period, date, site_id=site_id)
 
 
-def get_page_urls(period: str, date: str, site_id: str | None = None, limit: int = 500) -> list:
+def get_page_urls(period: str, date: str, site_id: str | None = None, limit: int = 500, timeout: int = 30) -> list:
     """flat=1 devolve a URL completa em cada linha, sem hierarquia de pastas
     (sem isso o Matomo só retorna label/nb_visits por nó, sem o campo 'url' —
-    mesmo padrão de matomo/api/matomo_client.py::get_page_urls_trend)."""
-    return _call("Actions.getPageUrls", period, date, {"filter_limit": limit, "flat": 1, "expanded": 0}, site_id)
+    mesmo padrão de matomo/api/matomo_client.py::get_page_urls_trend).
+
+    `timeout` opcional pra callers que pedem `limit=-1` (retorno enorme).
+    Default 30s serve pras chamadas leves; runs pesados (acessos-botao,
+    period=ano) devem passar 120s+."""
+    return _call("Actions.getPageUrls", period, date, {"filter_limit": limit, "flat": 1, "expanded": 0}, site_id, timeout=timeout)
 
 
 def get_site_search_keywords(period: str, date: str, site_id: str | None = None, limit: int = 50) -> list:
@@ -98,6 +102,21 @@ def get_outlinks(period: str, date: str, site_id: str | None = None, limit: int 
     relatório hierárquico nativo do Matomo já agrupa outlinks por domínio no
     primeiro nível (ver transform/matomo.py::outlinks)."""
     return _call("Actions.getOutlinks", period, date, {"filter_limit": limit}, site_id)
+
+
+def get_outlinks_flat(period: str, date: str, site_id: str | None = None, limit: int = 5000, timeout: int = 60) -> list:
+    """`Actions.getOutlinks` com `flat=1` — URL COMPLETA por linha (não
+    domínio). Usado pra cruzar com `urlExterno` das cartas (relatório "Botão
+    Acessar Serviço"). Uma chamada só devolve TODOS outlinks do site — em
+    vez de Transitions por página (que exigia 100+ chamadas seriais)."""
+    return _call(
+        "Actions.getOutlinks",
+        period,
+        date,
+        {"filter_limit": limit, "flat": 1},
+        site_id,
+        timeout=timeout,
+    )
 
 
 def get_transitions_for_action(period: str, date: str, action_url: str, site_id: str | None = None) -> dict:

@@ -94,6 +94,7 @@ def relacao(rows: list[dict]) -> list[dict]:
             "custo": r["custo"],
             "tempoTotal": r["tempo_total"],
             "tipoTempo": r["tipo_tempo"],
+            "urlExterno": r.get("url_externo"),
             "createdAt": _iso(r.get("created_at")),
             "updatedAt": _iso(r["updated_at"]),
         }

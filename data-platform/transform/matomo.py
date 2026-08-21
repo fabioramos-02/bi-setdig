@@ -142,6 +142,58 @@ def outlinks(rows: list, n: int = 10) -> list[dict]:
     return out[:n]
 
 
+def acessos_botao_servico_por_url(outlinks_flat: list[dict], inventario: list[dict]) -> list[dict]:
+    """Cliques em "Acessar serviço" por carta — método `Actions.getOutlinks?flat=1`.
+
+    1 chamada Matomo devolve `[{label, url, nb_visits}]` de TODOS outlinks do
+    site (ex. www.meudetran.ms.gov.br/veiculo/consulta-debitos: 118 cliques).
+    Cruza com `urlExterno` cadastrado no inventário → cliques por carta.
+
+    Trade-off vs Transitions (método anterior): sem pageviews da carta →
+    sem taxa de conversão. Ganho: 1 chamada em vez de N (100-400×). Cobre
+    todas cartas com `urlExterno` cadastrado no banco, não só top-N."""
+    # Mapa {url_normalizada: cliques} — dedup entre variantes trailing slash,
+    # protocolo. Matomo já traz URL crua em `url` (não em `label`, que às vezes
+    # perde o esquema — ver acessos-botao real: label="www.meudetran..." mas
+    # url="https://www.meudetran...").
+    def _norm(u: str | None) -> str:
+        if not u:
+            return ""
+        return u.strip().lower().rstrip("/")
+
+    cliques_por_url: dict[str, int] = {}
+    for row in outlinks_flat or []:
+        url = _norm(row.get("url") or row.get("label"))
+        if not url:
+            continue
+        cliques_por_url[url] = cliques_por_url.get(url, 0) + int(row.get("nb_visits", 0))
+
+    linhas: list[dict] = []
+    for c in inventario:
+        if not c.get("ativo") or not c.get("slug"):
+            continue
+        url_ext = c.get("urlExterno") or c.get("url_externo")
+        if not url_ext:
+            continue
+        url_norm = _norm(url_ext)
+        cliques = cliques_por_url.get(url_norm, 0)
+        if cliques == 0:
+            continue
+        linhas.append(
+            {
+                "slug": c["slug"],
+                "titulo": c.get("titulo") or c.get("nomePopular") or c["slug"],
+                "orgaoSigla": c.get("orgaoSigla") or c.get("orgao_sigla"),
+                "categoria": c.get("categoria") or c.get("categoria_slug"),
+                "urlCarta": f"https://www.ms.gov.br/{c.get('categoria') or c.get('categoria_slug', '')}/{c['slug']}",
+                "urlExterno": url_ext,
+                "cliques": cliques,
+            }
+        )
+    linhas.sort(key=lambda r: -r["cliques"])
+    return linhas
+
+
 def acessos_botao_servico(por_carta: dict[str, dict], inventario: list[dict], n_destinos: int = 5) -> list[dict]:
     """Cliques em links externos ("Acessar serviço") originados de cada carta.
 

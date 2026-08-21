@@ -100,6 +100,13 @@ export function getOutlinks(inicio: string, fim: string, limit = 50, siteId?: st
   return call<MatomoRow[]>("Actions.getOutlinks", inicio, fim, { filter_limit: limit }, siteId);
 }
 
+/** `Actions.getOutlinks` com `flat=1` — URL COMPLETA por linha. Cruza com
+ * `urlExterno` do inventário pra volume de cliques por carta. Espelha
+ * data-platform/extract/matomo.py::get_outlinks_flat. */
+export function getOutlinksFlat(inicio: string, fim: string, limit = 5000, siteId?: string) {
+  return call<MatomoRow[]>("Actions.getOutlinks", inicio, fim, { filter_limit: limit, flat: 1 }, siteId);
+}
+
 export function getVisitsSummaryDaily(inicio: string, fim: string, siteId?: string) {
   return callDaily<MatomoDailyRaw>("VisitsSummary.get", inicio, fim, siteId);
 }

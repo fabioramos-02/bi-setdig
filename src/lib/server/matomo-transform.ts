@@ -6,7 +6,36 @@
  * Tabs que já existem não precisam saber se o dado veio do JSON ou daqui.
  */
 import type { Cidade, Horario, Pagina, TermoBusca, PaginaEntrada, DominioSaida, VisitaDiaria, AcessoBotaoCarta, CartaRelacao } from "@/lib/data";
-import type { TransitionsRaw } from "@/lib/server/matomo-client";
+
+const _normUrl = (u?: string | null): string => (u ?? "").trim().toLowerCase().replace(/\/+$/, "");
+
+/** Espelho TS de data-platform/transform/matomo.py::acessos_botao_servico_por_url.
+ * Cruza outlinks (Actions.getOutlinks?flat=1, 1 chamada site-wide) com
+ * `urlExterno` do inventário. Ordena por cliques desc. */
+export function acessosBotaoServicoPorUrl(outlinksFlat: MatomoRow[], inventario: CartaRelacao[]): AcessoBotaoCarta[] {
+  const cliquesPorUrl = new Map<string, number>();
+  for (const row of outlinksFlat ?? []) {
+    const url = _normUrl(row.url ?? row.label);
+    if (!url) continue;
+    cliquesPorUrl.set(url, (cliquesPorUrl.get(url) ?? 0) + (row.nb_visits ?? 0));
+  }
+  const linhas: AcessoBotaoCarta[] = [];
+  for (const c of inventario) {
+    if (!c.ativo || !c.slug || !c.urlExterno) continue;
+    const cliques = cliquesPorUrl.get(_normUrl(c.urlExterno)) ?? 0;
+    if (cliques === 0) continue;
+    linhas.push({
+      slug: c.slug,
+      titulo: c.titulo,
+      orgaoSigla: c.orgaoSigla ?? null,
+      categoria: c.categoria ?? null,
+      urlCarta: `https://www.ms.gov.br/${c.categoria ?? ""}/${c.slug}`,
+      urlExterno: c.urlExterno,
+      cliques,
+    });
+  }
+  return linhas.sort((a, b) => b.cliques - a.cliques);
+}
 
 type MatomoRow = { label?: string; nb_visits?: number; url?: string };
 type MatomoDailyRaw = Record<string, { nb_visits?: number; nb_uniq_visitors?: number; nb_actions?: number }>;
@@ -113,48 +142,6 @@ export function entryPages(rows: MatomoRow[], n = 10): PaginaEntrada[] {
     .map((r) => ({ pagina: r.label ?? "", entradas: r.nb_visits ?? 0 }));
   out.sort((a, b) => b.entradas - a.entradas);
   return out.slice(0, n);
-}
-
-/** Porta TS de data-platform/transform/matomo.py::acessos_botao_servico —
- * usada só pela rota /api/analytics/cartas/[slug]/acessos (drill-down live
- * de 1 carta). Mesma regra: filtra ms.gov.br/login, ordena por cliques,
- * agrupa cauda em "Outros destinos". Views=0 ou sem outlinks vira null
- * (nada a mostrar — quem consome trata como "sem dado neste período"). */
-export function acessosBotaoServico(raw: TransitionsRaw, carta: CartaRelacao, nDestinos = 5): AcessoBotaoCarta | null {
-  const views = raw?.pageMetrics?.pageviews ?? 0;
-  const outlinksRaw = raw?.outlinks ?? [];
-  if (views === 0 || outlinksRaw.length === 0) return null;
-  const destinosOrdenados = outlinksRaw
-    .filter((r) => r.label && !r.label.includes("ms.gov.br/login"))
-    .map((r) => ({ url: (r.label ?? "").trim(), cliques: Number(r.referrals ?? 0) }))
-    .sort((a, b) => b.cliques - a.cliques);
-  if (destinosOrdenados.length === 0) return null;
-  const cliquesTotais = destinosOrdenados.reduce((acc, d) => acc + d.cliques, 0);
-  let destinos: { url: string; cliques: number; pct: number }[];
-  if (destinosOrdenados.length > nDestinos) {
-    const top = destinosOrdenados.slice(0, nDestinos);
-    const outros = destinosOrdenados.slice(nDestinos).reduce((acc, d) => acc + d.cliques, 0);
-    destinos = [...top, { url: "Outros destinos", cliques: outros }].map((d) => ({
-      ...d,
-      pct: cliquesTotais ? Math.round((d.cliques / cliquesTotais) * 10_000) / 100 : 0,
-    }));
-  } else {
-    destinos = destinosOrdenados.map((d) => ({
-      ...d,
-      pct: cliquesTotais ? Math.round((d.cliques / cliquesTotais) * 10_000) / 100 : 0,
-    }));
-  }
-  return {
-    slug: carta.slug,
-    titulo: carta.titulo,
-    orgaoSigla: carta.orgaoSigla ?? null,
-    categoria: carta.categoria ?? null,
-    urlCarta: `https://www.ms.gov.br/${carta.categoria ?? ""}/${carta.slug}`,
-    views,
-    cliquesTotais,
-    taxaConversaoPct: views ? Math.round((cliquesTotais / views) * 10_000) / 100 : 0,
-    destinos,
-  };
 }
 
 export function outlinks(rows: MatomoRow[], n = 10): DominioSaida[] {

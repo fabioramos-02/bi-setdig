@@ -132,6 +132,8 @@ export function ServicosClient({
           rotuloPeriodo={rotuloPeriodo}
           range={range}
           isPeriodoCorrente={isPeriodoCorrente}
+          totalCartasAtivas={resumo.ativos}
+          totalOrgaos={orgaos.length}
         />
       ),
     },

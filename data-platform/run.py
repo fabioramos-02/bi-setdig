@@ -162,61 +162,50 @@ def run_matomo_perfil_filtro() -> None:
     print(f"[matomo] demanda-por-orgao -> {[(k, len(v)) for k, v in demanda_orgao.items()]}")
 
 
-def run_matomo_acessos_botao() -> None:
-    """Cliques em "Acessar serviço" por carta — top-100 cartas mais visitadas
-    × 4 períodos fixos. Cauda-longa fica pra rota live /api/analytics/cartas/[slug]/acessos.
+def run_matomo_acessos_botao(_legacy_kwarg: int | None = None) -> None:
+    """Cliques em "Acessar serviço" por carta — via `Actions.getOutlinks?flat=1`
+    (site-wide) cruzado com `urlExterno` do inventário. 1 chamada Matomo por
+    período em vez de N chamadas Transitions (~100× mais rápido, sem timeout).
 
-    2 chamadas Matomo por período fixo:
-    - Actions.getPageUrls (já feito em run_matomo_perfil, mas aqui replicado
-      pra desacoplar — filtro específico das cartas).
-    - Transitions.getTransitionsForAction: 1 por carta (top-100). Falha
-      isolada (Matomo instável em period=year às vezes) é logada e a carta é
-      pulada — a chave do período fica com as cartas que responderam."""
-    from urllib.parse import quote
+    Cobertura: TODAS cartas ativas com `urlExterno` cadastrado no banco admin
+    que tiverem pelo menos 1 clique registrado no Matomo. Sem top-N arbitrário.
 
+    Trade-off vs versão Transitions (ver git): sem pageviews da carta → sem
+    taxa de conversão na UI. Gestora pediu VOLUME de acessos, não conversão.
+
+    `_legacy_kwarg`: aceita mas ignora o antigo `min_views` — não faz mais
+    sentido no fluxo novo (getOutlinks já traz só quem tem cliques)."""
     inventario = _ler_inventario_cartas()
     if not inventario:
         print("[matomo] acessos-botao: pulando (inventário ausente)")
         return
 
-    # Mapeia URL da carta -> slug pra casar contra Actions.getPageUrls (que
-    # devolve URL relativa tipo "/transito-e-transportes/emitir-guia-de-licenciamento-anual100").
-    cartas_ativas = [c for c in inventario if c.get("ativo") and c.get("slug") and c.get("categoria")]
-    path_por_slug = {c["slug"]: f"/{c['categoria']}/{c['slug']}" for c in cartas_ativas}
-    slug_por_path = {p: s for s, p in path_por_slug.items()}
+    com_url_externo = [c for c in inventario if c.get("ativo") and c.get("slug") and c.get("urlExterno")]
+    if not com_url_externo:
+        print("[matomo] acessos-botao: nenhuma carta ativa tem `urlExterno` — rode `run_cartas` primeiro (dataset novo).")
+        return
+    print(f"[matomo] acessos-botao: {len(com_url_externo)} cartas ativas com urlExterno cadastrado")
 
-    acessos = {}
+    acessos = {"dia": [], "semana": [], "mes": [], "ano": []}
     for chave, (p, d) in PERIODOS_FIXOS.items():
-        # 1) Rankear cartas por visitas neste período pra escolher top-100.
-        page_urls = matomo.get_page_urls(p, d, limit=-1)
-        visitas_por_slug: dict[str, int] = {}
-        for row in page_urls or []:
-            url = row.get("url", "") or row.get("label", "")
-            # URL vem como "https://www.ms.gov.br/<cat>/<slug>" ou path — casa por sufixo.
-            for path, slug in slug_por_path.items():
-                if url.endswith(path) or url.endswith(f"{path}/"):
-                    visitas_por_slug[slug] = visitas_por_slug.get(slug, 0) + int(row.get("nb_visits", 0))
-                    break
-        top_slugs = sorted(visitas_por_slug.items(), key=lambda kv: -kv[1])[:100]
-
-        # 2) Transitions por carta. Falha por carta = log + pula (não derruba
-        # a chave inteira nem o dataset). Um único try/except externo captura
-        # 500 do Matomo em period=year se ele fizer surto no relatório inteiro.
-        por_carta: dict[str, dict] = {}
-        for slug, _visitas in top_slugs:
-            action_url = f"https://www.ms.gov.br{path_por_slug[slug]}"
-            try:
-                por_carta[slug] = matomo.get_transitions_for_action(p, d, action_url)
-            except Exception as exc:  # noqa: BLE001
-                print(f"[matomo] acessos-botao: carta {slug!r} em {chave} falhou -> {exc}")
-
-        acessos[chave] = t_matomo.acessos_botao_servico(por_carta, cartas_ativas, n_destinos=5)
+        try:
+            outlinks = matomo.get_outlinks_flat(p, d, limit=5000, timeout=60)
+        except Exception as exc:  # noqa: BLE001
+            print(f"[matomo] acessos-botao {chave}: getOutlinks falhou -> {exc} (pulando)")
+            continue
+        acessos[chave] = t_matomo.acessos_botao_servico_por_url(outlinks, com_url_externo)
         print(f"[matomo] acessos-botao {chave} -> {len(acessos[chave])} cartas com cliques")
+
+    # Guarda: run vazio (todas chaves 0) = Matomo caiu. Não sobrescrever
+    # snapshot bom com nada — melhor dado velho do que dado vazio no BI.
+    if all(len(v) == 0 for v in acessos.values()):
+        print("[matomo] acessos-botao-servico: abortando publish (todas chaves vazias — Matomo indisponível). Dataset anterior preservado.")
+        return
 
     validate_period_breakdown(
         acessos,
-        ["slug", "titulo", "views", "cliquesTotais", "taxaConversaoPct", "destinos"],
-        ["views", "cliquesTotais", "taxaConversaoPct"],
+        ["slug", "titulo", "urlExterno", "cliques"],
+        ["cliques"],
     )
     publish("matomo", "acessos-botao-servico", acessos)
     print(f"[matomo] acessos-botao-servico -> {[(k, len(v)) for k, v in acessos.items()]}")
