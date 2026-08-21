@@ -51,11 +51,21 @@ export function AcessarServicoTab({
   const dadoLive = liveEhDoRangeAtual;
 
   const [orgaoAtivo, setOrgaoAtivo] = useState<string>("");
+  const [busca, setBusca] = useState<string>("");
   const orgaos = useMemo(() => orgaosDisponiveis(cartasFonte), [cartasFonte]);
-  const cartas = useMemo(
-    () => (orgaoAtivo ? cartasFonte.filter((c) => c.orgaoSigla === orgaoAtivo) : cartasFonte),
-    [cartasFonte, orgaoAtivo],
-  );
+  const cartas = useMemo(() => {
+    let base = orgaoAtivo ? cartasFonte.filter((c) => c.orgaoSigla === orgaoAtivo) : cartasFonte;
+    const termo = busca.trim().toLowerCase();
+    if (termo) {
+      base = base.filter(
+        (c) =>
+          c.titulo.toLowerCase().includes(termo) ||
+          (c.orgaoSigla ?? "").toLowerCase().includes(termo) ||
+          c.urlExterno.toLowerCase().includes(termo),
+      );
+    }
+    return base;
+  }, [cartasFonte, orgaoAtivo, busca]);
   const modoOrgao = orgaoAtivo && cartas.length > 0 ? orgaoAtivo : null;
 
   async function buscar() {
@@ -113,6 +123,8 @@ export function AcessarServicoTab({
           cartasFiltradas={cartas.length}
           totalCartasAtivas={totalCartasAtivas}
           totalOrgaos={totalOrgaos}
+          busca={busca}
+          onBuscaChange={setBusca}
         />
       )}
 
@@ -335,6 +347,8 @@ function SeletorOrgao({
   cartasFiltradas,
   totalCartasAtivas,
   totalOrgaos,
+  busca,
+  onBuscaChange,
 }: {
   orgaos: string[];
   ativo: string;
@@ -343,9 +357,12 @@ function SeletorOrgao({
   cartasFiltradas: number;
   totalCartasAtivas: number;
   totalOrgaos: number;
+  busca: string;
+  onBuscaChange: (v: string) => void;
 }) {
   const fmt = (n: number) => n.toLocaleString("pt-BR");
-  const infoCobertura = ativo
+  const filtrado = ativo || busca.trim().length > 0;
+  const infoCobertura = filtrado
     ? `Mostrando ${fmt(cartasFiltradas)} de ${fmt(totalCartas)} cartas com cliques`
     : `${fmt(totalCartas)} cartas com cliques (de ${fmt(totalCartasAtivas)} ativas) · ${orgaos.length} de ${totalOrgaos} órgãos`;
   return (
@@ -354,7 +371,7 @@ function SeletorOrgao({
       style={{ padding: "var(--ds-spacing-12) var(--ds-spacing-16)", background: "var(--ds-color-background)", border: "1px solid var(--ds-color-border)", borderRadius: "var(--ds-radius-md)" }}
     >
       <label htmlFor="filtro-orgao" className="text-sm font-semibold" style={{ color: "var(--ds-color-text-primary)" }}>
-        Órgão responsável:
+        Órgão:
       </label>
       <select
         id="filtro-orgao"
@@ -375,17 +392,39 @@ function SeletorOrgao({
           </option>
         ))}
       </select>
+      <label htmlFor="busca-carta" className="text-sm font-semibold" style={{ color: "var(--ds-color-text-primary)" }}>
+        Buscar carta:
+      </label>
+      <input
+        id="busca-carta"
+        type="search"
+        value={busca}
+        onChange={(e) => onBuscaChange(e.target.value)}
+        placeholder="nome, sigla ou destino…"
+        className="text-sm rounded"
+        style={{
+          padding: "var(--ds-spacing-8) var(--ds-spacing-12)",
+          border: "1px solid var(--ds-color-border)",
+          background: "var(--ds-color-background)",
+          color: "var(--ds-color-text-primary)",
+          minWidth: 200,
+          flex: "1 1 200px",
+        }}
+      />
       <span className="text-xs" style={{ color: "var(--ds-color-text-secondary)" }}>
         {infoCobertura}
       </span>
-      {ativo && (
+      {filtrado && (
         <button
           type="button"
-          onClick={() => onChange("")}
+          onClick={() => {
+            onChange("");
+            onBuscaChange("");
+          }}
           className="text-xs underline"
           style={{ color: "var(--ds-color-primary-600)", background: "transparent", border: 0, cursor: "pointer" }}
         >
-          limpar filtro
+          limpar filtros
         </button>
       )}
     </div>
