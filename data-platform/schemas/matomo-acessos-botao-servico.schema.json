@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "matomo/acessos-botao-servico",
+  "description": "Cliques em links externos (\"Acessar serviço\") originados de cada carta — Transitions.getTransitionsForAction por carta, top-100 por visitas. 1 chave por período fixo — ver ADR-007.",
+  "type": "object",
+  "required": ["dia", "semana", "mes", "ano"],
+  "properties": {
+    "dia": { "$ref": "#/definitions/lista" },
+    "semana": { "$ref": "#/definitions/lista" },
+    "mes": { "$ref": "#/definitions/lista" },
+    "ano": { "$ref": "#/definitions/lista" }
+  },
+  "definitions": {
+    "lista": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "required": ["slug", "titulo", "views", "cliquesTotais", "taxaConversaoPct", "destinos"],
+        "properties": {
+          "slug": { "type": "string" },
+          "titulo": { "type": "string" },
+          "orgaoSigla": { "type": ["string", "null"] },
+          "categoria": { "type": ["string", "null"] },
+          "urlCarta": { "type": "string" },
+          "views": { "type": "integer", "minimum": 0 },
+          "cliquesTotais": { "type": "integer", "minimum": 0 },
+          "taxaConversaoPct": { "type": "number", "minimum": 0 },
+          "destinos": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["url", "cliques", "pct"],
+              "properties": {
+                "url": { "type": "string" },
+                "cliques": { "type": "integer", "minimum": 0 },
+                "pct": { "type": "number", "minimum": 0 }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

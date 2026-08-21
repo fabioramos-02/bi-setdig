@@ -162,6 +162,66 @@ def run_matomo_perfil_filtro() -> None:
     print(f"[matomo] demanda-por-orgao -> {[(k, len(v)) for k, v in demanda_orgao.items()]}")
 
 
+def run_matomo_acessos_botao() -> None:
+    """Cliques em "Acessar serviço" por carta — top-100 cartas mais visitadas
+    × 4 períodos fixos. Cauda-longa fica pra rota live /api/analytics/cartas/[slug]/acessos.
+
+    2 chamadas Matomo por período fixo:
+    - Actions.getPageUrls (já feito em run_matomo_perfil, mas aqui replicado
+      pra desacoplar — filtro específico das cartas).
+    - Transitions.getTransitionsForAction: 1 por carta (top-100). Falha
+      isolada (Matomo instável em period=year às vezes) é logada e a carta é
+      pulada — a chave do período fica com as cartas que responderam."""
+    from urllib.parse import quote
+
+    inventario = _ler_inventario_cartas()
+    if not inventario:
+        print("[matomo] acessos-botao: pulando (inventário ausente)")
+        return
+
+    # Mapeia URL da carta -> slug pra casar contra Actions.getPageUrls (que
+    # devolve URL relativa tipo "/transito-e-transportes/emitir-guia-de-licenciamento-anual100").
+    cartas_ativas = [c for c in inventario if c.get("ativo") and c.get("slug") and c.get("categoria")]
+    path_por_slug = {c["slug"]: f"/{c['categoria']}/{c['slug']}" for c in cartas_ativas}
+    slug_por_path = {p: s for s, p in path_por_slug.items()}
+
+    acessos = {}
+    for chave, (p, d) in PERIODOS_FIXOS.items():
+        # 1) Rankear cartas por visitas neste período pra escolher top-100.
+        page_urls = matomo.get_page_urls(p, d, limit=-1)
+        visitas_por_slug: dict[str, int] = {}
+        for row in page_urls or []:
+            url = row.get("url", "") or row.get("label", "")
+            # URL vem como "https://www.ms.gov.br/<cat>/<slug>" ou path — casa por sufixo.
+            for path, slug in slug_por_path.items():
+                if url.endswith(path) or url.endswith(f"{path}/"):
+                    visitas_por_slug[slug] = visitas_por_slug.get(slug, 0) + int(row.get("nb_visits", 0))
+                    break
+        top_slugs = sorted(visitas_por_slug.items(), key=lambda kv: -kv[1])[:100]
+
+        # 2) Transitions por carta. Falha por carta = log + pula (não derruba
+        # a chave inteira nem o dataset). Um único try/except externo captura
+        # 500 do Matomo em period=year se ele fizer surto no relatório inteiro.
+        por_carta: dict[str, dict] = {}
+        for slug, _visitas in top_slugs:
+            action_url = f"https://www.ms.gov.br{path_por_slug[slug]}"
+            try:
+                por_carta[slug] = matomo.get_transitions_for_action(p, d, action_url)
+            except Exception as exc:  # noqa: BLE001
+                print(f"[matomo] acessos-botao: carta {slug!r} em {chave} falhou -> {exc}")
+
+        acessos[chave] = t_matomo.acessos_botao_servico(por_carta, cartas_ativas, n_destinos=5)
+        print(f"[matomo] acessos-botao {chave} -> {len(acessos[chave])} cartas com cliques")
+
+    validate_period_breakdown(
+        acessos,
+        ["slug", "titulo", "views", "cliquesTotais", "taxaConversaoPct", "destinos"],
+        ["views", "cliquesTotais", "taxaConversaoPct"],
+    )
+    publish("matomo", "acessos-botao-servico", acessos)
+    print(f"[matomo] acessos-botao-servico -> {[(k, len(v)) for k, v in acessos.items()]}")
+
+
 def run_matomo_jornada() -> None:
     """Fluxo de navegação — 2 relatórios leves (não N+1), porta de
     matomo-analytics-dashboard/views/portal/tab4_jornada.py:
@@ -387,6 +447,7 @@ if __name__ == "__main__":
         ("matomo_perfil", run_matomo_perfil),
         ("matomo_perfil_filtro", run_matomo_perfil_filtro),
         ("matomo_jornada", run_matomo_jornada),
+        ("matomo_acessos_botao", run_matomo_acessos_botao),
         ("ga4", run_ga4),
         ("ga4_perfil", run_ga4_perfil),
         ("sites", run_sites),

@@ -142,6 +142,65 @@ def outlinks(rows: list, n: int = 10) -> list[dict]:
     return out[:n]
 
 
+def acessos_botao_servico(por_carta: dict[str, dict], inventario: list[dict], n_destinos: int = 5) -> list[dict]:
+    """Cliques em links externos ("Acessar serviço") originados de cada carta.
+
+    `por_carta`: {slug: transitions_raw} — 1 chamada Transitions.getTransitionsForAction
+    por carta. `transitions_raw.pageMetrics.pageviews` é o denominador (views
+    reais da carta); `transitions_raw.outlinks` são os destinos externos com
+    `referrals`. `taxaConversaoPct` = cliques/views (regra "número nunca anda
+    sozinho" do AGENTS.md — sem denominador, % não diz nada).
+
+    Cartas com view 0 OU sem outlinks caem fora (nada a mostrar). Destinos
+    truncados no top-N — resto vira "Outros" (mesmo padrão de top_n_with_others).
+    Filtra outlink espúrio pro próprio SSO (ms.gov.br/login) — mesma regra de
+    outlinks()."""
+    por_slug = {c["slug"]: c for c in inventario if c.get("ativo")}
+    linhas: list[dict] = []
+    for slug, raw in por_carta.items():
+        carta = por_slug.get(slug)
+        if not carta or not isinstance(raw, dict):
+            continue
+        views = int((raw.get("pageMetrics") or {}).get("pageviews", 0))
+        outlinks_raw = raw.get("outlinks") or []
+        if views == 0 or not outlinks_raw:
+            continue
+        destinos_ordenados = sorted(
+            (
+                {"url": (r.get("label") or "").strip(), "cliques": int(r.get("referrals", 0))}
+                for r in outlinks_raw
+                if r.get("label") and "ms.gov.br/login" not in r.get("label", "")
+            ),
+            key=lambda r: -r["cliques"],
+        )
+        if not destinos_ordenados:
+            continue
+        cliques_totais = sum(d["cliques"] for d in destinos_ordenados)
+        if len(destinos_ordenados) > n_destinos:
+            top = destinos_ordenados[:n_destinos]
+            outros = sum(d["cliques"] for d in destinos_ordenados[n_destinos:])
+            destinos = [*top, {"url": "Outros destinos", "cliques": outros}]
+        else:
+            destinos = destinos_ordenados
+        for d in destinos:
+            d["pct"] = round(d["cliques"] / cliques_totais * 100, 2) if cliques_totais else 0.0
+        linhas.append(
+            {
+                "slug": slug,
+                "titulo": carta.get("titulo") or carta.get("nomePopular") or slug,
+                "orgaoSigla": carta.get("orgaoSigla"),
+                "categoria": carta.get("categoria"),
+                "urlCarta": f"https://www.ms.gov.br/{carta.get('categoria', '')}/{slug}",
+                "views": views,
+                "cliquesTotais": cliques_totais,
+                "taxaConversaoPct": round(cliques_totais / views * 100, 2) if views else 0.0,
+                "destinos": destinos,
+            }
+        )
+    linhas.sort(key=lambda r: -r["cliquesTotais"])
+    return linhas
+
+
 def sites(raw: list) -> list[dict]:
     """SitesManager.getSitesWithMinimumAccess -> [{idsite, nome, url}] ordenado
     por nome. Pula site sem main_url (não dá pra linkar). `idsite` vem string

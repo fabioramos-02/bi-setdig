@@ -2,136 +2,124 @@
   "dia": [
     {
       "termo": "inscrição estadual",
-      "buscas": 60
+      "buscas": 21
     },
     {
       "termo": "ipva",
-      "buscas": 23
+      "buscas": 12
+    },
+    {
+      "termo": "cidadão",
+      "buscas": 2
     },
     {
       "termo": "procon",
-      "buscas": 6
+      "buscas": 2
     },
     {
       "termo": "substituição tributária",
-      "buscas": 6
-    },
-    {
-      "termo": "cnh",
       "buscas": 2
-    },
-    {
-      "termo": "itcd",
-      "buscas": 2
-    },
-    {
-      "termo": "mulher",
-      "buscas": 2
-    },
-    {
-      "termo": "00750950170",
-      "buscas": 1
-    },
-    {
-      "termo": "09021993047",
-      "buscas": 1
     },
     {
       "termo": "283007419",
       "buscas": 1
     },
     {
-      "termo": "autoparcelamento",
+      "termo": "credenciamento remarcação",
       "buscas": 1
     },
     {
-      "termo": "bombeiro mirim",
+      "termo": "crlv",
       "buscas": 1
     },
     {
-      "termo": "cidadão",
+      "termo": "efd",
       "buscas": 1
     },
     {
-      "termo": "consultar guia de licenciamento anual",
+      "termo": "empresa",
       "buscas": 1
     },
     {
-      "termo": "cpf",
+      "termo": "itcd",
       "buscas": 1
     },
     {
-      "termo": "dados vazados",
+      "termo": "notas",
       "buscas": 1
     },
     {
-      "termo": "defesa civil",
+      "termo": "programa do artesanato brasileiro",
       "buscas": 1
     },
     {
-      "termo": "dívida ativa lenceciameto",
+      "termo": "pscologo",
       "buscas": 1
     },
     {
-      "termo": "inscrição estadual produtor rural consulta",
-      "buscas": 1
-    },
-    {
-      "termo": "instrutores credenciado",
+      "termo": "wa-0859-3970-0884-pusat-kitchen-set-bawah-sink-terdekat-karangtengah-wonogiri",
       "buscas": 1
     }
   ],
   "semana": [
     {
       "termo": "inscrição estadual",
-      "buscas": 669
+      "buscas": 805
     },
     {
       "termo": "ipva",
-      "buscas": 461
+      "buscas": 545
     },
     {
       "termo": "substituição tributária",
-      "buscas": 87
+      "buscas": 104
     },
     {
       "termo": "procon",
-      "buscas": 77
+      "buscas": 94
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 34
+      "buscas": 39
     },
     {
       "termo": "itcd",
-      "buscas": 25
+      "buscas": 32
     },
     {
       "termo": "cidadão",
-      "buscas": 19
+      "buscas": 29
     },
     {
       "termo": "empresa",
-      "buscas": 15
+      "buscas": 18
     },
     {
       "termo": "mulher",
-      "buscas": 13
+      "buscas": 15
     },
     {
       "termo": "licenciamento",
-      "buscas": 10
+      "buscas": 13
+    },
+    {
+      "termo": "efd",
+      "buscas": 9
     },
     {
       "termo": "debito",
       "buscas": 7
     },
     {
-      "termo": "efd",
+      "termo": "multa",
+      "buscas": 6
+    },
+    {
+      "termo": "boletim",
       "buscas": 5
     },
     {
-      "termo": "multa",
+      "termo": "rg",
       "buscas": 5
     },
     {
@@ -139,12 +127,12 @@
       "buscas": 5
     },
     {
-      "termo": "boletim",
+      "termo": "nota fiscal",
       "buscas": 4
     },
     {
-      "termo": "nota fiscal",
-      "buscas": 4
+      "termo": "283007419",
+      "buscas": 3
     },
     {
       "termo": "cnh",
@@ -153,52 +141,44 @@
     {
       "termo": "defesa civil",
       "buscas": 3
-    },
-    {
-      "termo": "rg",
-      "buscas": 3
-    },
-    {
-      "termo": "toxicologico",
-      "buscas": 3
     }
   ],
   "mes": [
     {
       "termo": "ipva",
-      "buscas": 2226
+      "buscas": 2310
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 1586
+      "buscas": 1722
     },
     {
       "termo": "procon",
-      "buscas": 373
+      "buscas": 390
     },
     {
       "termo": "substituição tributária",
-      "buscas": 343
+      "buscas": 360
     },
     {
       "termo": "itcd",
-      "buscas": 153
+      "buscas": 160
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 149
+      "buscas": 154
     },
     {
       "termo": "cidadão",
-      "buscas": 116
+      "buscas": 126
     },
     {
       "termo": "empresa",
-      "buscas": 57
+      "buscas": 60
     },
     {
       "termo": "licenciamento",
-      "buscas": 51
+      "buscas": 54
     },
     {
       "termo": "servidor",
@@ -206,19 +186,19 @@
     },
     {
       "termo": "rg",
-      "buscas": 38
+      "buscas": 40
     },
     {
       "termo": "mulher",
-      "buscas": 29
+      "buscas": 31
+    },
+    {
+      "termo": "efd",
+      "buscas": 24
     },
     {
       "termo": "defesa civil",
       "buscas": 21
-    },
-    {
-      "termo": "efd",
-      "buscas": 20
     },
     {
       "termo": "cnh",
@@ -226,7 +206,11 @@
     },
     {
       "termo": "multa",
-      "buscas": 13
+      "buscas": 14
+    },
+    {
+      "termo": "boletim",
+      "buscas": 8
     },
     {
       "termo": "detran ms",
@@ -237,10 +221,6 @@
       "buscas": 8
     },
     {
-      "termo": "boletim",
-      "buscas": 7
-    },
-    {
       "termo": "debito",
       "buscas": 7
     }
@@ -248,31 +228,31 @@
   "ano": [
     {
       "termo": "ipva",
-      "buscas": 31989
+      "buscas": 32073
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 10459
+      "buscas": 10595
     },
     {
       "termo": "procon",
-      "buscas": 6801
+      "buscas": 6818
     },
     {
       "termo": "substituição tributária",
-      "buscas": 4611
+      "buscas": 4628
     },
     {
       "termo": "itcd",
-      "buscas": 1784
+      "buscas": 1791
     },
     {
       "termo": "cidadão",
-      "buscas": 1513
+      "buscas": 1523
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 1374
+      "buscas": 1379
     },
     {
       "termo": "servidor",
@@ -280,15 +260,15 @@
     },
     {
       "termo": "empresa",
-      "buscas": 733
+      "buscas": 736
     },
     {
       "termo": "licenciamento",
-      "buscas": 328
+      "buscas": 331
     },
     {
       "termo": "mulher",
-      "buscas": 257
+      "buscas": 259
     },
     {
       "termo": "nota fiscal",
@@ -299,16 +279,16 @@
       "buscas": 237
     },
     {
+      "termo": "efd",
+      "buscas": 226
+    },
+    {
       "termo": "cnh",
       "buscas": 225
     },
     {
-      "termo": "efd",
-      "buscas": 222
-    },
-    {
       "termo": "rg",
-      "buscas": 185
+      "buscas": 187
     },
     {
       "termo": "fundação estadual jornalista luiz chagas de rádio e televisão",

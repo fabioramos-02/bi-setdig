@@ -104,6 +104,27 @@ export function getVisitsSummaryDaily(inicio: string, fim: string, siteId?: stri
   return callDaily<MatomoDailyRaw>("VisitsSummary.get", inicio, fim, siteId);
 }
 
+export type TransitionsRaw = {
+  pageMetrics?: { pageviews?: number; entries?: number; exits?: number };
+  outlinks?: { label?: string; referrals?: number }[];
+  followingPages?: { label?: string; referrals?: number }[];
+  previousPages?: { label?: string; referrals?: number }[];
+};
+
+/** Transições entrando/saindo de UMA página específica. Rota live só chama
+ * pra 1 carta por request, então instabilidade agregada de Transitions
+ * (documentada em run.py::run_matomo_jornada) não se aplica aqui — 1 call,
+ * period=range, mesmo padrão testado no pipeline. */
+export function getTransitionsForAction(inicio: string, fim: string, actionUrl: string, siteId?: string) {
+  return call<TransitionsRaw>(
+    "Transitions.getTransitionsForAction",
+    inicio,
+    fim,
+    { actionType: "url", actionName: actionUrl },
+    siteId,
+  );
+}
+
 /** getPageUrls quebrado por bucket de tempo (period=week/month, date=range) —
  * Matomo devolve dict keyed by data. Base da evolução temporal por serviço. */
 export function getPageUrlsPorPeriodo(inicio: string, fim: string, period: "week" | "month", limit = 200, siteId?: string) {

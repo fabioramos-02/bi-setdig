@@ -100,6 +100,26 @@ def get_outlinks(period: str, date: str, site_id: str | None = None, limit: int 
     return _call("Actions.getOutlinks", period, date, {"filter_limit": limit}, site_id)
 
 
+def get_transitions_for_action(period: str, date: str, action_url: str, site_id: str | None = None) -> dict:
+    """Transições entrando/saindo de UMA página específica (não da sessão que
+    passou por ela — `Actions.getOutlinks + segment=pageUrl==X` mede sessão,
+    superestima atribuição). Devolve dict com `pageMetrics.pageviews`,
+    `outlinks`, `followingPages`, `previousPages`, `referrers` — matéria-prima
+    da aba "Botão Acessar Serviço" em /servicos.
+
+    Instabilidade: `Transitions.getTransitionsForPageUrl` (variante agregada)
+    já foi removido do pipeline por 500 em period=year (ver run.py::run_matomo_jornada).
+    Esta variante (`ForAction`, 1 carta por chamada) é mais leve — testada OK
+    em period=month; o orquestrador captura falha por carta e segue."""
+    return _call(
+        "Transitions.getTransitionsForAction",
+        period,
+        date,
+        {"actionType": "url", "actionName": action_url},
+        site_id,
+    )
+
+
 def get_sites(limit: int = 200) -> list:
     """Relação de sites monitorados no Matomo (SitesManager). `period`/`date`/
     `idSite` são ignorados por este método (lista sites, não métricas de um

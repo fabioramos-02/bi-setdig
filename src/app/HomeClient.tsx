@@ -108,11 +108,13 @@ export function HomeClient() {
     <div className="min-h-screen md:h-screen md:overflow-hidden flex flex-col" style={{ background: "var(--ds-color-background)" }}>
       <header
         style={{ background: "var(--ds-color-primary-600)" }}
-        className="flex items-center justify-between px-4 sm:px-8 h-[88px] shrink-0 z-10"
+        className="relative flex items-center justify-center px-4 sm:px-8 h-20 shrink-0 z-10"
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/logo-ms-horizontal.svg" alt="Governo de Mato Grosso do Sul" className="h-7 w-auto" />
-        <ThemeToggle />
+        <img src="/images/logo-ms-horizontal.svg" alt="Governo de Mato Grosso do Sul" className="h-12 w-auto" />
+        <div className="absolute right-4 sm:right-8">
+          <ThemeToggle />
+        </div>
       </header>
 
       <main className="flex-1 md:overflow-hidden relative flex flex-col justify-center px-4 sm:px-8 py-8 md:py-0">
@@ -237,7 +239,10 @@ function LinkItem({ painel }: { painel: Painel }) {
         </span>
       </div>
       <div className="flex-1 min-w-0 pr-2">
-        <h3 style={{ color: "var(--ds-color-text-primary)" }} className="text-base font-semibold group-hover:underline">
+        <h3
+          style={{ color: "var(--ds-color-text-primary)", fontSize: "0.875rem", lineHeight: "1.25rem" }}
+          className="font-semibold group-hover:underline"
+        >
           {painel.nome}
         </h3>
         <p style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm truncate">

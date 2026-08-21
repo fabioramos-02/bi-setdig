@@ -10,9 +10,10 @@ import { VisaoGeralTab } from "./VisaoGeralTab";
 import { ExplorarTab } from "./ExplorarTab";
 import { OrgaosSetoresTab } from "./OrgaosSetoresTab";
 import { NovosServicosTab } from "./NovosServicosTab";
+import { AcessarServicoTab } from "./AcessarServicoTab";
 import { usePeriodo } from "@/lib/periodo-context";
-import { intervaloDoBucket, rotuloPeriodoResolvido } from "@/lib/period-filter";
-import type { InventarioResumo, InventarioOrgao, CartaRelacao } from "@/lib/data";
+import { chavePeriodoFixo, ehPeriodoCorrente, intervaloDoBucket, rotuloPeriodoResolvido } from "@/lib/period-filter";
+import type { InventarioResumo, InventarioOrgao, CartaRelacao, AcessoBotaoCarta, BreakdownPorPeriodo } from "@/lib/data";
 
 const ROTULO_PERIODO = { dia: "no dia", semana: "na semana", mes: "no mês", ano: "no ano", intervalo: "no intervalo" };
 
@@ -33,14 +34,22 @@ export function ServicosClient({
   resumo,
   orgaos,
   relacao,
+  acessosBotao,
 }: {
   resumo: InventarioResumo;
   orgaos: InventarioOrgao[];
   relacao: CartaRelacao[];
+  acessosBotao: BreakdownPorPeriodo<AcessoBotaoCarta>;
 }) {
   const { estado, min, max } = usePeriodo();
   const [abaAtiva, setAbaAtiva] = useState("visao-geral");
   const range = intervaloDoBucket(estado, min, max);
+  // Aba "Botão Acessar Serviço" usa snapshot estático nos 4 períodos fixos;
+  // "Intervalo" cai no snapshot do período fixo mais próximo (aviso já vem
+  // via AvisoSnapshotAproximado com status "fallback" — o dado é aproximado).
+  const chaveFixa = chavePeriodoFixo(estado);
+  const acessosBotaoDoPeriodo = acessosBotao[chaveFixa] ?? [];
+  const acessosStatus: StatusIntervalo = ehPeriodoCorrente(estado, min, max) ? "ok" : "fallback";
 
   // /servicos não tem snapshot de visitas — busca ao vivo sempre (inclusive no
   // período corrente). Só o inventário (resumo/relacao/orgaos) é estático.
@@ -111,6 +120,13 @@ export function ServicosClient({
       id: "novos",
       label: "4. Novos Serviços",
       content: <NovosServicosTab cartas={cartasAtivas} />,
+    },
+    {
+      id: "acessar-servico",
+      label: "5. Botão Acessar Serviço",
+      content: (
+        <AcessarServicoTab cartas={acessosBotaoDoPeriodo} status={acessosStatus} rotuloPeriodo={rotuloPeriodo} />
+      ),
     },
   ];
 
