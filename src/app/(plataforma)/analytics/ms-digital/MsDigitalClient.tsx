@@ -46,6 +46,7 @@ import type {
   ContaCriadaDia,
   FrequenciaAcesso,
   TipoLogin,
+  ResumoPeriodo,
 } from "@/lib/data";
 import type { ResumoCatalogo, CategoriaResumo } from "@/lib/catalogo-app";
 
@@ -87,6 +88,7 @@ export function MsDigitalClient({
   contasCriadasPorDia,
   tipoLogin,
   faixasDeAcessoPorTipo,
+  resumoPeriodoMs,
   frequenciaAcesso,
   snapshotFrequenciaEm,
   geografiaGa4,
@@ -106,13 +108,14 @@ export function MsDigitalClient({
   categoriaOrgaos: CategoriaOrgaos;
   contasResumo: ContasResumo | null;
   contasPorAno: ContaPorAno[];
-  contasPorFaixaEtaria: ContaPorFaixaEtaria[];
+  contasPorFaixaEtaria: BreakdownPorPeriodo<ContaPorFaixaEtaria>;
   contasPorCidade: ContaPorCidade[];
-  faixasDeAcesso: FaixaAcesso[];
+  faixasDeAcesso: BreakdownPorPeriodo<FaixaAcesso>;
   snapshotAtualizadoEm: string | null;
   contasCriadasPorDia: ContaCriadaDia[];
-  tipoLogin: TipoLogin[];
-  faixasDeAcessoPorTipo: FaixaAcessoPorTipo[];
+  tipoLogin: BreakdownPorPeriodo<TipoLogin>;
+  faixasDeAcessoPorTipo: BreakdownPorPeriodo<FaixaAcessoPorTipo>;
+  resumoPeriodoMs: BreakdownPorPeriodo<ResumoPeriodo>;
   frequenciaAcesso: FrequenciaAcesso | null;
   snapshotFrequenciaEm: string | null;
 }) {
@@ -180,6 +183,15 @@ export function MsDigitalClient({
   // ponytail: geografia GA4 não vai ao live fetch (ADR-010 pode estender depois);
   // por ora usa sempre o snapshot do período fixo.
   const geoGa4 = geografiaGa4[periodo];
+
+  // Cadastro MS_digital (SQL Server) — breakdown v2 nas métricas dependentes
+  // de ultimoLogin. "Ativos no período" = com ultimoLogin no bucket (não é MAU
+  // GA4). Vercel sem VPN → nunca live, sempre snapshot fixo do bucket.
+  const faixaEtariaPeriodo = contasPorFaixaEtaria[periodo];
+  const faixasAcessoPeriodo = faixasDeAcesso[periodo];
+  const tipoLoginPeriodo = tipoLogin[periodo];
+  const faixasPorTipoPeriodo = faixasDeAcessoPorTipo[periodo];
+  const resumoMsPeriodo = resumoPeriodoMs[periodo]?.[0] ?? null;
 
   const totalUsers = vg.reduce((acc, r) => acc + r.activeUsers, 0);
   const totalSessions = vg.reduce((acc, r) => acc + r.sessions, 0);
@@ -272,9 +284,8 @@ export function MsDigitalClient({
           status={statusGa4}
           frequenciaAcesso={frequenciaAcesso}
           snapshotFrequenciaEm={snapshotFrequenciaEm}
-          faixasDeAcesso={faixasDeAcesso}
-          snapshotFaixasEm={snapshotAtualizadoEm}
-          faixasDeAcessoPorTipo={faixasDeAcessoPorTipo}
+          faixasDeAcesso={faixasAcessoPeriodo}
+          faixasDeAcessoPorTipo={faixasPorTipoPeriodo}
           novos={novos}
           recorrentes={recorrentes}
           rotuloPeriodo={rotuloPeriodo}
@@ -313,12 +324,13 @@ export function MsDigitalClient({
       content: (
         <ContasTab
           resumo={contasResumo}
+          resumoPeriodo={resumoMsPeriodo}
           porAno={contasPorAno}
-          faixaEtaria={contasPorFaixaEtaria}
+          faixaEtaria={faixaEtariaPeriodo}
           porCidade={contasPorCidade}
-          faixasDeAcesso={faixasDeAcesso}
+          faixasDeAcesso={faixasAcessoPeriodo}
           criadasPorDia={contasCriadasPorDia}
-          tipoLogin={tipoLogin}
+          tipoLogin={tipoLoginPeriodo}
           estadoPeriodo={estado}
           rotuloPeriodo={rotuloPeriodo}
         />

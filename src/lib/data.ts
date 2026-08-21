@@ -291,23 +291,35 @@ export function getMsdigitalContasResumo(): ContasResumo | null {
 export function getMsdigitalContasPorAno(): ContaPorAno[] {
   return readDataset<ContaPorAno[]>("msdigital-db", "v1", "contas-por-ano") ?? [];
 }
-export function getMsdigitalContasPorFaixaEtaria(): ContaPorFaixaEtaria[] {
-  return readDataset<ContaPorFaixaEtaria[]>("msdigital-db", "v1", "contas-por-faixa-etaria") ?? [];
-}
 export function getMsdigitalContasPorCidade(): ContaPorCidade[] {
   return readDataset<ContaPorCidade[]>("msdigital-db", "v1", "contas-por-cidade") ?? [];
-}
-export function getMsdigitalFaixasDeAcesso(): FaixaAcesso[] {
-  return readDataset<FaixaAcesso[]>("msdigital-db", "v1", "faixas-de-acesso") ?? [];
 }
 export function getMsdigitalContasCriadasPorDia(): ContaCriadaDia[] {
   return readDataset<ContaCriadaDia[]>("msdigital-db", "v1", "contas-criadas-por-dia") ?? [];
 }
-export function getMsdigitalTipoLogin(): TipoLogin[] {
-  return readDataset<TipoLogin[]>("msdigital-db", "v1", "tipo-login") ?? [];
+
+// --- v2: breakdowns por período (reagem ao filtro dia/semana/mês/ano) ---
+// Fonte: pipeline recorta contas por ultimoLogin no bucket corrente.
+// "Ativos no período" ≠ MAU GA4 (que trava janelas 1/7/28 dias).
+export type ResumoPeriodo = {
+  ativosNoPeriodo: number;
+  totalCadastro: number;
+  participacaoPct: number;
+};
+export function getMsdigitalResumoPeriodo(): BreakdownPorPeriodo<ResumoPeriodo> {
+  return readDataset<BreakdownPorPeriodo<ResumoPeriodo>>("msdigital-db", "v2", "resumo-periodo") ?? BREAKDOWN_VAZIO;
 }
-export function getMsdigitalFaixasDeAcessoPorTipo(): FaixaAcessoPorTipo[] {
-  return readDataset<FaixaAcessoPorTipo[]>("msdigital-db", "v1", "faixas-de-acesso-por-tipo") ?? [];
+export function getMsdigitalContasPorFaixaEtaria(): BreakdownPorPeriodo<ContaPorFaixaEtaria> {
+  return readDataset<BreakdownPorPeriodo<ContaPorFaixaEtaria>>("msdigital-db", "v2", "contas-por-faixa-etaria") ?? BREAKDOWN_VAZIO;
+}
+export function getMsdigitalFaixasDeAcesso(): BreakdownPorPeriodo<FaixaAcesso> {
+  return readDataset<BreakdownPorPeriodo<FaixaAcesso>>("msdigital-db", "v2", "faixas-de-acesso") ?? BREAKDOWN_VAZIO;
+}
+export function getMsdigitalTipoLogin(): BreakdownPorPeriodo<TipoLogin> {
+  return readDataset<BreakdownPorPeriodo<TipoLogin>>("msdigital-db", "v2", "tipo-login") ?? BREAKDOWN_VAZIO;
+}
+export function getMsdigitalFaixasDeAcessoPorTipo(): BreakdownPorPeriodo<FaixaAcessoPorTipo> {
+  return readDataset<BreakdownPorPeriodo<FaixaAcessoPorTipo>>("msdigital-db", "v2", "faixas-de-acesso-por-tipo") ?? BREAKDOWN_VAZIO;
 }
 
 /** Timestamp ISO da última publicação de um dataset (datasets/catalog.json).

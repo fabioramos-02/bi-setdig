@@ -38,11 +38,11 @@
   {
     "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
     "orgaoSigla": "SEFAZ MS",
-    "total": 60,
-    "atendidos": 60,
+    "total": 61,
+    "atendidos": 61,
     "pendentes": 0,
     "percentAtendido": 100.0,
-    "tempoMedioResolucaoDias": 35.7
+    "tempoMedioResolucaoDias": 35.1
   },
   {
     "orgao": "Secretaria de Estado de Educação de Mato Grosso do Sul",
@@ -81,6 +81,15 @@
     "tempoMedioResolucaoDias": 187.8
   },
   {
+    "orgao": "Secretaria de Estado de Saúde de Mato Grosso do Sul",
+    "orgaoSigla": "SES",
+    "total": 19,
+    "atendidos": 4,
+    "pendentes": 15,
+    "percentAtendido": 21.1,
+    "tempoMedioResolucaoDias": 238.6
+  },
+  {
     "orgao": "Agência de Previdência Social de Mato Grosso do Sul",
     "orgaoSigla": "AGEPREV",
     "total": 19,
@@ -88,15 +97,6 @@
     "pendentes": 0,
     "percentAtendido": 100.0,
     "tempoMedioResolucaoDias": 183.1
-  },
-  {
-    "orgao": "Secretaria de Estado de Saúde de Mato Grosso do Sul",
-    "orgaoSigla": "SES",
-    "total": 18,
-    "atendidos": 4,
-    "pendentes": 14,
-    "percentAtendido": 22.2,
-    "tempoMedioResolucaoDias": 238.6
   },
   {
     "orgao": "Junta Comercial do Estado de Mato Grosso do Sul",

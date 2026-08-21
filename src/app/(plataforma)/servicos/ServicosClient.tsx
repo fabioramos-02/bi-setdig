@@ -156,10 +156,8 @@ export function ServicosClient({
         <AcessarServicoTab
           cartasSnapshot={acessosBotaoDoPeriodo}
           visitasPorSlug={visitasPorSlug}
-          status={acessosStatus}
           rotuloPeriodo={rotuloPeriodo}
           range={range}
-          isPeriodoCorrente={isPeriodoCorrente}
           totalCartasAtivas={resumo.ativos}
           totalOrgaos={orgaos.length}
         />

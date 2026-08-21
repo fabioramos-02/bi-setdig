@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import json
 import sys
+from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -331,20 +332,35 @@ def run_cartas() -> None:
     print(f"[cartas] relacao -> {out4} ({len(relacao)} cartas)")
 
 
+def _msdigital_ranges(hoje: date | None = None) -> dict[str, tuple[date, date]]:
+    """4 buckets fixos (dia/semana/mês/ano) recortando pelo período corrente
+    da data em que o cron rodou. Semântica idêntica a PERIODOS_FIXOS do
+    Matomo/GA4: 'ativo no mês' = com ultimoLogin dentro do mês atual."""
+    hoje = hoje or date.today()
+    from datetime import timedelta as td
+    return {
+        "dia": (hoje, hoje),
+        "semana": (hoje - td(days=6), hoje),
+        "mes": (hoje.replace(day=1), hoje),
+        "ano": (hoje.replace(month=1, day=1), hoje),
+    }
+
+
 def run_msdigital_db() -> None:
     """Cadastro do app MS Digital (SQL Server) — exige VPN.
 
-    Alimenta a aba "Contas" em analytics/ms-digital/. Snapshot único (não
-    reage ao filtro de período — ver decisão no plano
-    ~/.claude/plans/feature-levantamento-e-sequential-pie.md e
-    docs/msdigital/spec-contas.md).
-    """
+    Alimenta abas Contas + Jornada em analytics/ms-digital/. A partir de v2,
+    métricas que dependem de ultimoLogin viram BreakdownPorPeriodo (reagem
+    ao filtro dia/semana/mês/ano). Total cadastradas + contas por ano são
+    estoque histórico e continuam snapshot puro em v1."""
     from extract import msdigital_db
     from transform import msdigital as t_ms
 
     contas = msdigital_db.get_contas()
     matriculas = msdigital_db.get_matriculas_count()
+    ranges = _msdigital_ranges()
 
+    # ---- Estoque histórico (snapshot puro, não reage ao filtro) --------
     diarias = t_ms.contas_por_dia(msdigital_db.get_contas_por_dia())
     validate_rows(diarias, required=["data", "criadas", "ativas"],
                   non_negative=["criadas", "ativas"])
@@ -363,32 +379,52 @@ def run_msdigital_db() -> None:
     publish("msdigital-db", "contas-por-ano", por_ano)
     print(f"[msdigital-db] por-ano -> {len(por_ano)} anos")
 
-    faixa = t_ms.contas_por_faixa_etaria(contas)
-    validate_rows(faixa, required=["faixa", "quantidade"], non_negative=["quantidade"])
-    publish("msdigital-db", "contas-por-faixa-etaria", faixa)
-    print(f"[msdigital-db] faixa-etaria -> {len(faixa)} buckets")
-
     cidades = t_ms.contas_ativas_por_cidade(contas)
     validate_rows(cidades, required=["cidade", "ativas"], non_negative=["ativas"])
     publish("msdigital-db", "contas-por-cidade", cidades)
     print(f"[msdigital-db] cidades -> {len(cidades)} municípios")
 
-    faixas = t_ms.faixas_de_acesso(contas)
-    validate_rows(faixas, required=["faixa", "quantidade", "percentPct"],
-                  non_negative=["quantidade", "percentPct"])
-    publish("msdigital-db", "faixas-de-acesso", faixas)
-    print(f"[msdigital-db] faixas-de-acesso -> {[(r['faixa'], r['quantidade']) for r in faixas]}")
+    # ---- Breakdown por período (v2, reagem ao filtro) ------------------
+    resumo_bp: dict[str, list[dict]] = {}
+    faixa_etaria_bp: dict[str, list[dict]] = {}
+    faixas_bp: dict[str, list[dict]] = {}
+    tipo_login_bp: dict[str, list[dict]] = {}
+    faixas_por_tipo_bp: dict[str, list[dict]] = {}
 
-    tipo_login = t_ms.contas_por_tipo_login(contas)
-    validate_rows(tipo_login, required=["tipo", "quantidade"], non_negative=["quantidade"])
-    publish("msdigital-db", "tipo-login", tipo_login)
-    print(f"[msdigital-db] tipo-login -> {tipo_login}")
+    for chave, (ini, fim) in ranges.items():
+        resumo_bp[chave] = [t_ms.resumo_periodo(contas, ini, fim)]
+        faixa_etaria_bp[chave] = t_ms.contas_por_faixa_etaria_no_periodo(contas, ini, fim)
+        faixas_bp[chave] = t_ms.faixas_de_acesso_no_periodo(contas, ini, fim)
+        tipo_login_bp[chave] = t_ms.contas_por_tipo_login_no_periodo(contas, ini, fim)
+        faixas_por_tipo_bp[chave] = t_ms.faixas_de_acesso_por_tipo_no_periodo(contas, ini, fim)
 
-    faixas_por_tipo = t_ms.faixas_de_acesso_por_tipo(contas)
-    validate_rows(faixas_por_tipo, required=["faixa", "govbr", "proprio", "total"],
-                  non_negative=["govbr", "proprio", "total"])
-    publish("msdigital-db", "faixas-de-acesso-por-tipo", faixas_por_tipo)
-    print(f"[msdigital-db] faixas-de-acesso-por-tipo -> {[(r['faixa'], r['govbr'], r['proprio']) for r in faixas_por_tipo]}")
+    validate_period_breakdown(resumo_bp,
+        required=["ativosNoPeriodo", "totalCadastro", "participacaoPct"],
+        non_negative=["ativosNoPeriodo", "totalCadastro", "participacaoPct"])
+    publish("msdigital-db", "resumo-periodo", resumo_bp, version="v2")
+    print(f"[msdigital-db v2] resumo-periodo -> {[(k, v[0]['ativosNoPeriodo']) for k, v in resumo_bp.items()]}")
+
+    validate_period_breakdown(faixa_etaria_bp,
+        required=["faixa", "quantidade"], non_negative=["quantidade"])
+    publish("msdigital-db", "contas-por-faixa-etaria", faixa_etaria_bp, version="v2")
+    print(f"[msdigital-db v2] faixa-etaria -> 4 buckets")
+
+    validate_period_breakdown(faixas_bp,
+        required=["faixa", "quantidade", "percentPct"],
+        non_negative=["quantidade", "percentPct"])
+    publish("msdigital-db", "faixas-de-acesso", faixas_bp, version="v2")
+    print(f"[msdigital-db v2] faixas-de-acesso -> 4 buckets")
+
+    validate_period_breakdown(tipo_login_bp,
+        required=["tipo", "quantidade"], non_negative=["quantidade"])
+    publish("msdigital-db", "tipo-login", tipo_login_bp, version="v2")
+    print(f"[msdigital-db v2] tipo-login -> 4 buckets")
+
+    validate_period_breakdown(faixas_por_tipo_bp,
+        required=["faixa", "govbr", "proprio", "total"],
+        non_negative=["govbr", "proprio", "total"])
+    publish("msdigital-db", "faixas-de-acesso-por-tipo", faixas_por_tipo_bp, version="v2")
+    print(f"[msdigital-db v2] faixas-de-acesso-por-tipo -> 4 buckets")
 
 
 def run_qualidade() -> None:
