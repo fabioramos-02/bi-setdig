@@ -11,6 +11,9 @@ export type RankingCategoria = {
   categoria: string;
   icone: string;
   totalServicos: number;
+  ativosServicos: number;
+  /** Todos os serviços da categoria estão marcados como inativos no catálogo. */
+  inativa: boolean;
   acessos: number;
   sharePct: number;
   /** 100% dos serviços é `tipo: "web"` e catálogo tem no máx 2 — abre navegador

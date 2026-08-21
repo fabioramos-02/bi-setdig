@@ -25,11 +25,15 @@ const prazoDe = (c: CartaRelacao) => prazoServico(c.tempoTotal, c.tipoTempo);
 export function ExplorarTab({
   cartas,
   visitasPorSlug,
+  acessosBotaoPorSlug,
+  acessosBotaoStatus,
   status,
   rotuloPeriodo,
 }: {
   cartas: CartaRelacao[];
   visitasPorSlug: Map<string, number>;
+  acessosBotaoPorSlug: Map<string, number>;
+  acessosBotaoStatus: StatusIntervalo;
   status: StatusIntervalo;
   rotuloPeriodo: string;
 }) {

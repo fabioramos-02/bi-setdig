@@ -14,5 +14,8 @@
   "Meio Ambiente": ["SEILOG", "CEMTEC", "SEMADESC", "IMASUL"],
   "Turismo": ["SETESC"],
   "Cultura e Esporte": ["SETESC"],
-  "Mulher MS": ["Polícia Civil", "SEC"]
+  "Mulher MS": ["Polícia Civil", "SEC"],
+  "Diário Oficial": ["SAD"],
+  "Nota Premiada": ["SEFAZ"],
+  "Trabalho e Qualificação": ["FUNTRAB"]
 }

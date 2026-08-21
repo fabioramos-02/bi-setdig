@@ -90,6 +90,12 @@ export function ServicosClient({
     return m;
   }, [live]);
 
+  const acessosBotaoPorSlug = useMemo(() => {
+    const m = new Map<string, number>();
+    for (const c of acessosBotaoDoPeriodo) m.set(c.slug, c.cliques);
+    return m;
+  }, [acessosBotaoDoPeriodo]);
+
   const cartasAtivas = useMemo(() => relacao.filter((c) => c.ativo), [relacao]);
   const filtroRelatorio = rotuloPeriodoResolvido(estado) || "período atual";
 
@@ -102,7 +108,16 @@ export function ServicosClient({
     {
       id: "explorar",
       label: "2. Explorar Cartas",
-      content: <ExplorarTab cartas={cartasAtivas} visitasPorSlug={visitasPorSlug} status={status} rotuloPeriodo={rotuloPeriodo} />,
+      content: (
+        <ExplorarTab
+          cartas={cartasAtivas}
+          visitasPorSlug={visitasPorSlug}
+          acessosBotaoPorSlug={acessosBotaoPorSlug}
+          acessosBotaoStatus={acessosStatus}
+          status={status}
+          rotuloPeriodo={rotuloPeriodo}
+        />
+      ),
     },
     {
       id: "orgaos",
