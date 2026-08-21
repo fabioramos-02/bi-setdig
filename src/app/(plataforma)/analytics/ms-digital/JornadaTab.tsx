@@ -50,6 +50,7 @@ export function JornadaTab({
   frequenciaAcesso,
   snapshotFrequenciaEm,
   faixasDeAcesso,
+  snapshotFaixasEm,
   faixasDeAcessoPorTipo,
   novos,
   recorrentes,
@@ -62,6 +63,7 @@ export function JornadaTab({
   frequenciaAcesso: FrequenciaAcesso | null;
   snapshotFrequenciaEm: string | null;
   faixasDeAcesso: FaixaAcesso[];
+  snapshotFaixasEm: string | null;
   faixasDeAcessoPorTipo: FaixaAcessoPorTipo[];
   novos: number;
   recorrentes: number;
@@ -180,24 +182,27 @@ export function JornadaTab({
         </StoryCard>
       )}
 
-      {/* 5. Quantos usam uma vez só? — donut + KPI grande (dinâmico por período) */}
+      {/* 5. Quantos usam uma vez só? — donut + KPI grande */}
       {faixasDeAcesso.length > 0 && (
         <StoryCard
-          anchor={`Como estão distribuídas as contas ativas ${rotuloPeriodo} por tempo desde o último acesso?`}
-          caption={`Distribuição das ${faixasDeAcesso.reduce((a, f) => a + f.quantidade, 0).toLocaleString("pt-BR")} contas com atividade ${rotuloPeriodo}.`}
-          comoLer='Cada conta aparece em uma faixa só, definida pela data do último acesso registrado no cadastro relativa ao fim do período selecionado. "Uma vez apenas" inclui quem criou a conta e não voltou depois do dia do cadastro — o banco guarda apenas o último acesso, não a contagem.'
+          snapshot
+          anchor="Como estão distribuídas as contas por tempo desde o último acesso?"
+          caption={`Distribuição das ${faixasDeAcesso.reduce((a, f) => a + f.quantidade, 0).toLocaleString("pt-BR")} contas cadastradas no MS Digital.`}
+          comoLer='Cada conta aparece em uma faixa só, definida pela data do último acesso registrado no cadastro. "Uma vez apenas" inclui quem criou a conta e não voltou depois do dia do cadastro — o banco guarda apenas o último acesso, não a contagem.'
         >
+          <SnapshotBadge updatedAt={snapshotFaixasEm} />
           <RecenciaContasCard faixas={faixasDeAcesso} />
         </StoryCard>
       )}
 
-      {/* 6. Como estão entrando? — barras 100% Gov.BR × Próprio por faixa (dinâmico) */}
+      {/* 6. Como estão entrando? — barras 100% Gov.BR × Próprio por faixa */}
       {faixasDeAcessoPorTipo.length > 0 && (
         <StoryCard
           anchor={tituloAdocaoGovBrPorFaixa(faixasDeAcessoPorTipo)}
-          caption={`Adoção do Gov.BR por tempo desde o último acesso, entre as contas ativas ${rotuloPeriodo}. ${fraseAdocaoGovBrPorFaixa(faixasDeAcessoPorTipo)}`}
+          caption={`Adoção do Gov.BR por tempo desde o último acesso. ${fraseAdocaoGovBrPorFaixa(faixasDeAcessoPorTipo)}`}
           comoLer="Cada conta aparece em uma faixa só, definida pelo último acesso. A barra mostra a proporção de quem entra pelo Gov.BR dentro daquela faixa. Contas antigas sem essa marcação registrada foram contadas como Login Próprio, conforme confirmação técnica do time do app."
         >
+          <SnapshotBadge updatedAt={snapshotFaixasEm} />
           <FaixasDeAcessoPorTipoCard faixas={faixasDeAcessoPorTipo} />
         </StoryCard>
       )}

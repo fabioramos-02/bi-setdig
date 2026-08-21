@@ -35,28 +35,6 @@ def _hoje() -> date:
     return datetime.now(timezone.utc).date()
 
 
-# ---------------------------------------------------------------------------
-# Filtro por período (breakdown dia/semana/mês/ano)
-# ---------------------------------------------------------------------------
-# Semântica: "conta ativa no período" = conta com ultimoLogin dentro do
-# intervalo [inicio, fim]. Sem ultimoLogin OU fora do intervalo → não conta
-# como ativa no período. Total cadastradas (estoque histórico) usa outra
-# função (ver resumo_historico abaixo).
-
-def _dentro_do_periodo(dt, inicio: date, fim: date) -> bool:
-    if dt is None:
-        return False
-    if hasattr(dt, "date"):
-        dt = dt.date()
-    if not isinstance(dt, date):
-        return False
-    return inicio <= dt <= fim
-
-
-def _filtrar_por_ultimo_login(contas: list[dict], inicio: date, fim: date) -> list[dict]:
-    return [c for c in contas if _dentro_do_periodo(c.get("ultimoLogin"), inicio, fim)]
-
-
 def _idade(nasc, hoje: date | None = None) -> int | None:
     if nasc is None:
         return None
@@ -81,8 +59,6 @@ def _faixa(idade: int | None) -> str:
 
 
 def resumo(contas: list[dict], matriculas: int) -> dict:
-    """Snapshot histórico: total cadastrado + ativas (flag do banco).
-    Independente de período — reflete estado atual do cadastro."""
     total = len(contas)
     ativas = sum(1 for c in contas if c.get("ativo"))
     taxa = round(100 * ativas / total, 2) if total else 0.0
@@ -91,19 +67,6 @@ def resumo(contas: list[dict], matriculas: int) -> dict:
         "contasAtivas": ativas,
         "matriculas": int(matriculas),
         "taxaAtivacaoPct": taxa,
-    }
-
-
-def resumo_periodo(contas: list[dict], inicio: date, fim: date) -> dict:
-    """Resumo do período: contas com ultimoLogin no intervalo.
-    'ativos no período' = usaram o app no bucket. Não é MAU GA4."""
-    total_cadastro = len(contas)
-    ativos = sum(1 for c in contas if _dentro_do_periodo(c.get("ultimoLogin"), inicio, fim))
-    pct = round(100 * ativos / total_cadastro, 2) if total_cadastro else 0.0
-    return {
-        "ativosNoPeriodo": ativos,
-        "totalCadastro": total_cadastro,
-        "participacaoPct": pct,
     }
 
 
@@ -137,13 +100,6 @@ def contas_por_faixa_etaria(contas: list[dict]) -> list[dict]:
         contagem[_faixa(_idade(c.get("dataNascimento"), hoje))] += 1
     ordem = [nome for nome, _, _ in FAIXAS] + [FAIXA_SEM_INFO]
     return [{"faixa": nome, "quantidade": contagem[nome]} for nome in ordem]
-
-
-def contas_por_faixa_etaria_no_periodo(
-    contas: list[dict], inicio: date, fim: date
-) -> list[dict]:
-    """Faixa etária dos ativos no período (ultimoLogin no bucket)."""
-    return contas_por_faixa_etaria(_filtrar_por_ultimo_login(contas, inicio, fim))
 
 
 def contas_ativas_por_cidade(contas: list[dict]) -> list[dict]:
@@ -195,20 +151,17 @@ FAIXAS_ACESSO_ORDEM = [
 ]
 
 
-def faixas_de_acesso(contas: list[dict], referencia: datetime | None = None) -> list[dict]:
+def faixas_de_acesso(contas: list[dict]) -> list[dict]:
     """5 faixas mutuamente exclusivas por ultimoLogin. Soma = len(contas).
 
     'Uma vez apenas' é proxy — banco não tem loginCount. Captura contas que
     nunca logaram (ultimoLogin NULL) OU logaram apenas no mesmo dia do
     cadastro. Ver docs/msdigital/indicadores-inatividade.md.
 
-    `referencia` = data-fim do bucket (para variantes por período). Default =
-    agora (snapshot histórico).
-
     Ordem visual (retornada): recente → antigo → 'uma vez apenas' (categoria
     à parte, exibida por último no gráfico).
     """
-    hoje = referencia or datetime.now(timezone.utc)
+    hoje = datetime.now(timezone.utc)
     seis_meses = hoje - timedelta(days=182)
     dois_anos = hoje - timedelta(days=730)
     quatro_anos = hoje - timedelta(days=1461)
@@ -224,16 +177,6 @@ def faixas_de_acesso(contas: list[dict], referencia: datetime | None = None) -> 
         }
         for r in FAIXAS_ACESSO_ORDEM
     ]
-
-
-def faixas_de_acesso_no_periodo(
-    contas: list[dict], inicio: date, fim: date
-) -> list[dict]:
-    """Faixas de recência dos ativos no período — referência = fim do bucket
-    (recência calculada relativa ao fim do intervalo, não a hoje)."""
-    ref = datetime.combine(fim, datetime.min.time(), tzinfo=timezone.utc)
-    ativos = _filtrar_por_ultimo_login(contas, inicio, fim)
-    return faixas_de_acesso(ativos, referencia=ref)
 
 
 def contas_por_tipo_login(contas: list[dict]) -> list[dict]:
@@ -256,13 +199,6 @@ def contas_por_tipo_login(contas: list[dict]) -> list[dict]:
         {"tipo": "Gov.BR", "quantidade": govbr},
         {"tipo": "Login Próprio", "quantidade": proprio},
     ]
-
-
-def contas_por_tipo_login_no_periodo(
-    contas: list[dict], inicio: date, fim: date
-) -> list[dict]:
-    """Tipo de login dos ativos no período."""
-    return contas_por_tipo_login(_filtrar_por_ultimo_login(contas, inicio, fim))
 
 
 def _faixa_da_conta(c: dict, hoje: datetime,
@@ -289,18 +225,15 @@ def _faixa_da_conta(c: dict, hoje: datetime,
     return "Mais de 4 anos"
 
 
-def faixas_de_acesso_por_tipo(contas: list[dict], referencia: datetime | None = None) -> list[dict]:
+def faixas_de_acesso_por_tipo(contas: list[dict]) -> list[dict]:
     """5 faixas x tipo de autenticação. Mesma reclassificação NULL→proprio
     aplicada em contas_por_tipo_login (consistência).
 
     Cruza retenção (última data de acesso) com meio de entrada — responde na
     aba Jornada: "quem volta ao app é mais Gov.BR ou login próprio?".
     Retorno mantém a ordem visual de FAIXAS_ACESSO_ORDEM.
-
-    `referencia` = data-fim do bucket (para variantes por período). Default =
-    agora (snapshot histórico).
     """
-    hoje = referencia or datetime.now(timezone.utc)
+    hoje = datetime.now(timezone.utc)
     seis_meses = hoje - timedelta(days=182)
     dois_anos = hoje - timedelta(days=730)
     quatro_anos = hoje - timedelta(days=1461)
@@ -320,12 +253,3 @@ def faixas_de_acesso_por_tipo(contas: list[dict], referencia: datetime | None = 
         }
         for r in FAIXAS_ACESSO_ORDEM
     ]
-
-
-def faixas_de_acesso_por_tipo_no_periodo(
-    contas: list[dict], inicio: date, fim: date
-) -> list[dict]:
-    """Faixas por tipo login filtradas pelos ativos no período."""
-    ref = datetime.combine(fim, datetime.min.time(), tzinfo=timezone.utc)
-    ativos = _filtrar_por_ultimo_login(contas, inicio, fim)
-    return faixas_de_acesso_por_tipo(ativos, referencia=ref)

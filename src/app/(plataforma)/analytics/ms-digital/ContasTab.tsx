@@ -14,7 +14,6 @@ import type {
   FaixaAcesso,
   ContaCriadaDia,
   TipoLogin,
-  ResumoPeriodo,
 } from "@/lib/data";
 import type { PeriodoState } from "@/lib/period-filter";
 import {
@@ -36,7 +35,6 @@ const CORES_SAUDE = {
  * cliente-side); demais painéis são snapshot atual do cadastro. */
 export function ContasTab({
   resumo,
-  resumoPeriodo,
   porAno,
   faixaEtaria,
   porCidade,
@@ -47,7 +45,6 @@ export function ContasTab({
   rotuloPeriodo,
 }: {
   resumo: ContasResumo;
-  resumoPeriodo: ResumoPeriodo | null;
   porAno: ContaPorAno[];
   faixaEtaria: ContaPorFaixaEtaria[];
   porCidade: ContaPorCidade[];
@@ -100,45 +97,37 @@ export function ContasTab({
         </div>
       </DashboardSection>
 
-      {/* KPIs — mistura de dinâmico (reage ao filtro) e snapshot histórico */}
+      {/* KPIs de cadastro (snapshot atual) */}
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         <MetricCard
-          label={`Ativos ${rotuloPeriodo}`}
-          value={resumoPeriodo?.ativosNoPeriodo ?? "—"}
-          sub={
-            resumoPeriodo
-              ? `${resumoPeriodo.participacaoPct.toFixed(1)}% da base cadastrada`
-              : "sem dados no período"
-          }
-        />
-        <MetricCard
-          label="Contas cadastradas (total)"
-          value={resumo.contasTotal}
-          sub="histórico acumulado do cadastro"
-        />
-        <MetricCard
-          label="Contas ativas no cadastro"
+          label="Contas ativas"
           value={resumo.contasAtivas}
-          sub={`${resumo.taxaAtivacaoPct.toFixed(1)}% do total — flag do banco`}
+          sub={`${resumo.taxaAtivacaoPct.toFixed(1)}% do total`}
         />
+        <MetricCard label="Contas criadas" value={resumo.contasTotal} sub="total acumulado" />
         <MetricCard
           label="Servidores com matrícula"
           value={resumo.matriculas}
           sub="carteira funcional cadastrada"
         />
+        <MetricCard
+          label="Taxa de ativação"
+          value={`${resumo.taxaAtivacaoPct.toFixed(1)}%`}
+          sub="contas ativas / criadas"
+        />
       </div>
 
-      {/* Tipo de Login — reage ao filtro (ativos no período) */}
+      {/* Tipo de Login */}
       {tipoLogin.length > 0 && (
         <StoryCard
-          anchor={`Entre os ativos ${rotuloPeriodo}, o login com Gov.BR é utilizado por ${
+          anchor={`O login com Gov.BR é utilizado por ${
             (
               (100 * (tipoLogin.find((t) => t.tipo === "Gov.BR")?.quantidade ?? 0)) /
               Math.max(1, tipoLogin.reduce((acc, t) => acc + t.quantidade, 0))
             ).toFixed(1)
           }% dos usuários.`}
-          caption={`Distribuição do tipo de autenticação entre as contas com atividade ${rotuloPeriodo}. Contas antigas sem essa marcação registrada foram contadas como Login Próprio, conforme confirmação técnica do time do app.`}
-          comoLer="Mostra a proporção de cidadãos que optaram por integrar sua conta ao Gov.BR em vez de criar um login próprio do aplicativo, considerando apenas quem usou o app no período selecionado."
+          caption="Distribuição do tipo de autenticação escolhida no momento do cadastro. Contas antigas sem essa marcação registrada foram contadas como Login Próprio, conforme confirmação técnica do time do app."
+          comoLer="Mostra a proporção de cidadãos que optaram por integrar sua conta ao Gov.BR em vez de criar um login próprio do aplicativo."
         >
           <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
             {tipoLogin.map((t) => (
@@ -164,11 +153,11 @@ export function ContasTab({
         </p>
       </DashboardSection>
 
-      {/* Faixa etária — sem "Não informado" no gráfico. Dinâmico: ativos no período */}
+      {/* Faixa etária — sem "Não informado" no gráfico */}
       <StoryCard
-        anchor={`Qual faixa etária mais usa o app ${rotuloPeriodo}?`}
-        caption={`Distribuição das ${totalComInfo.toLocaleString("pt-BR")} contas ativas ${rotuloPeriodo} que informaram data de nascimento no cadastro.`}
-        comoLer="A faixa etária é auto-declarada pelo usuário no cadastro. Considera apenas contas com atividade no período selecionado. Cadastros sem data de nascimento estão contabilizados fora do gráfico, no card ao lado."
+        anchor="Qual faixa etária mais usa o app?"
+        caption={`Distribuição das ${totalComInfo.toLocaleString("pt-BR")} contas que informaram data de nascimento no cadastro.`}
+        comoLer="A faixa etária é auto-declarada pelo usuário no cadastro. Cadastros sem essa informação estão contabilizados fora do gráfico, no card ao lado."
       >
         <div className="grid gap-4 grid-cols-1 lg:grid-cols-4">
           <div className="lg:col-span-3">
