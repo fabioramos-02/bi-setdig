@@ -9,7 +9,7 @@ import { EmptyCard } from "@/components/ds/EmptyCard";
 import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
 import { ChartLoading } from "@/components/dashboard/ChartLoading";
 import { labelCategoria, prazoServico } from "@/lib/servicos";
-import type { CartaRelacao } from "@/lib/data";
+import type { AcessoBotaoCarta, CartaRelacao } from "@/lib/data";
 
 const PASSO = 50;
 const PORTAL_BASE = "https://www.ms.gov.br";
@@ -22,11 +22,15 @@ const prazoDe = (c: CartaRelacao) => prazoServico(c.tempoTotal, c.tipoTempo);
  * ordenação por coluna disponível. Busca livre + filtro por Órgão/Categoria/
  * Público-alvo (combinam em AND) + paginação (a lista é grande, ~1200 cartas
  * ativas). */
+type EstadoAcesso = "idle" | "carregando" | "sucesso" | "erro";
+
 export function ExplorarTab({
   cartas,
   visitasPorSlug,
   acessosBotaoPorSlug,
   acessosBotaoStatus,
+  range,
+  isPeriodoCorrente,
   status,
   rotuloPeriodo,
 }: {
@@ -34,6 +38,8 @@ export function ExplorarTab({
   visitasPorSlug: Map<string, number>;
   acessosBotaoPorSlug: Map<string, number>;
   acessosBotaoStatus: StatusIntervalo;
+  range: { inicio: string; fim: string };
+  isPeriodoCorrente: boolean;
   status: StatusIntervalo;
   rotuloPeriodo: string;
 }) {
@@ -42,6 +48,37 @@ export function ExplorarTab({
   const [categoriaFiltro, setCategoriaFiltro] = useState(TODOS);
   const [publicoFiltro, setPublicoFiltro] = useState(TODOS);
   const [visiveis, setVisiveis] = useState(PASSO);
+
+  // ponytail: BarraDeAcao duplicada com AcessarServicoTab (2º consumidor).
+  // Extrair pra components/dashboard/ só quando aparecer 3º uso.
+  const [estadoAcesso, setEstadoAcesso] = useState<EstadoAcesso>("idle");
+  const [acessosVivo, setAcessosVivo] = useState<Map<string, number> | null>(null);
+  const [rangeAcessoVivo, setRangeAcessoVivo] = useState<{ inicio: string; fim: string } | null>(null);
+  const [erroAcessoMsg, setErroAcessoMsg] = useState<string | null>(null);
+
+  const acessoVivoValido =
+    acessosVivo !== null && rangeAcessoVivo?.inicio === range.inicio && rangeAcessoVivo?.fim === range.fim;
+  const acessosEffective = acessoVivoValido ? acessosVivo! : acessosBotaoPorSlug;
+  const dadoAcessoLive = acessoVivoValido;
+
+  async function buscarAcessosVivo() {
+    setEstadoAcesso("carregando");
+    setErroAcessoMsg(null);
+    try {
+      const r = await fetch(`/api/analytics/cartas/acessos?inicio=${range.inicio}&fim=${range.fim}`);
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      const data = (await r.json()) as { cartas: AcessoBotaoCarta[] };
+      const mapa = new Map<string, number>();
+      for (const c of data.cartas ?? []) mapa.set(c.slug, c.cliques);
+      setAcessosVivo(mapa);
+      setRangeAcessoVivo({ inicio: range.inicio, fim: range.fim });
+      setEstadoAcesso("sucesso");
+    } catch (exc) {
+      console.error("[ExplorarTab] buscar acessos ao vivo falhou:", exc);
+      setErroAcessoMsg("Não foi possível buscar os cliques ao vivo. Tente de novo em instantes.");
+      setEstadoAcesso("erro");
+    }
+  }
 
   const orgaos = useMemo(() => [...new Set(cartas.map((c) => c.orgaoSigla))].sort(), [cartas]);
   const categorias = useMemo(
@@ -130,12 +167,16 @@ export function ExplorarTab({
     },
     {
       key: "cliques-botao",
-      label: acessosBotaoStatus === "fallback" ? "Acessar Serviço (aprox.)" : "Acessar Serviço",
+      label: dadoAcessoLive
+        ? "Acessar Serviço (ao vivo)"
+        : acessosBotaoStatus === "fallback"
+        ? "Acessar Serviço (aprox.)"
+        : "Acessar Serviço",
       align: "right",
       sortable: true,
-      sortValue: (c) => acessosBotaoPorSlug.get(c.slug) ?? 0,
+      sortValue: (c) => acessosEffective.get(c.slug) ?? 0,
       render: (c) => {
-        const cliques = acessosBotaoPorSlug.get(c.slug) ?? 0;
+        const cliques = acessosEffective.get(c.slug) ?? 0;
         return cliques > 0 ? (
           <span className="font-semibold" style={{ color: "var(--ds-color-primary-600)" }}>
             {cliques.toLocaleString("pt-BR")}
@@ -169,6 +210,32 @@ export function ExplorarTab({
         status={status}
         mensagemFallback="Não foi possível buscar os acessos desse período agora — tenta um período menor ou tenta de novo em instantes."
       />
+
+      <BarraDeAcaoAcesso
+        rotuloPeriodo={rotuloPeriodo}
+        range={range}
+        estado={estadoAcesso}
+        dadoLive={dadoAcessoLive}
+        isPeriodoCorrente={isPeriodoCorrente}
+        acessosBotaoStatus={acessosBotaoStatus}
+        onBuscar={buscarAcessosVivo}
+      />
+
+      {erroAcessoMsg && (
+        <div
+          role="alert"
+          className="text-base rounded"
+          style={{
+            background: "var(--ds-color-danger-50, #fee2e2)",
+            color: "var(--ds-color-danger, #991b1b)",
+            padding: "var(--ds-spacing-12)",
+            border: "1px solid var(--ds-color-danger, #dc2626)",
+          }}
+        >
+          {erroAcessoMsg}
+        </div>
+      )}
+
       <DashboardSection
         title="Explorar cartas de serviço"
         action={
@@ -180,7 +247,7 @@ export function ExplorarTab({
               Prazo: prazoDe(c),
               Custo: c.custo ?? "",
               [`Acessos ${rotuloPeriodo}`]: visitasPorSlug.get(c.slug) ?? 0,
-              [`Cliques Acessar Serviço ${rotuloPeriodo}`]: acessosBotaoPorSlug.get(c.slug) ?? 0,
+              [`Cliques Acessar Serviço ${rotuloPeriodo}`]: acessosEffective.get(c.slug) ?? 0,
               Link: `${PORTAL_BASE}/${c.categoria}/${c.slug}`,
             }))}
             filename="cartas-servico"
@@ -233,7 +300,7 @@ export function ExplorarTab({
             />
           </div>
 
-          <p className="text-xs" style={{ color: "var(--ds-color-text-muted)" }}>
+          <p className="text-sm" style={{ color: "var(--ds-color-text-secondary)" }}>
             {ordenadas.length.toLocaleString("pt-BR")} carta{ordenadas.length === 1 ? "" : "s"} ativa
             {ordenadas.length === 1 ? "" : "s"} · ordenadas pela procura {rotuloPeriodo} · mostrando {mostrando.length.toLocaleString("pt-BR")}
           </p>
@@ -258,4 +325,85 @@ export function ExplorarTab({
       </DashboardSection>
     </div>
   );
+}
+
+function BarraDeAcaoAcesso({
+  rotuloPeriodo,
+  range,
+  estado,
+  dadoLive,
+  isPeriodoCorrente,
+  acessosBotaoStatus,
+  onBuscar,
+}: {
+  rotuloPeriodo: string;
+  range: { inicio: string; fim: string };
+  estado: EstadoAcesso;
+  dadoLive: boolean;
+  isPeriodoCorrente: boolean;
+  acessosBotaoStatus: StatusIntervalo;
+  onBuscar: () => void;
+}) {
+  const carregando = estado === "carregando";
+  const rotulo = dadoLive
+    ? "Atualizar cliques ao vivo"
+    : isPeriodoCorrente
+    ? "Buscar cliques ao vivo"
+    : "Buscar cliques do período";
+  const contexto = dadoLive
+    ? `Coluna "Acessar Serviço" mostra cliques ao vivo do período ${rotuloPeriodo} (${brDia(range.inicio)} a ${brDia(range.fim)}).`
+    : acessosBotaoStatus === "fallback"
+    ? `Coluna "Acessar Serviço" usa snapshot aproximado — clique para buscar os cliques exatos do período selecionado.`
+    : `Coluna "Acessar Serviço" usa o snapshot ${rotuloPeriodo} — clique para buscar os cliques ao vivo.`;
+  return (
+    <div
+      className="flex flex-wrap items-center justify-between gap-3 rounded"
+      style={{
+        background: "var(--ds-color-background-muted)",
+        padding: "var(--ds-spacing-16)",
+        border: "1px solid var(--ds-color-border)",
+      }}
+    >
+      <div
+        className="text-base min-w-0"
+        style={{ color: "var(--ds-color-text-secondary)", flex: "1 1 260px" }}
+      >
+        {contexto}
+      </div>
+      <button
+        type="button"
+        onClick={onBuscar}
+        disabled={carregando}
+        className="text-base font-semibold rounded flex items-center gap-2"
+        style={{
+          background: carregando ? "var(--ds-color-border)" : "var(--ds-color-primary-600)",
+          color: carregando ? "var(--ds-color-text-secondary)" : "var(--ds-color-background)",
+          padding: "var(--ds-spacing-8) var(--ds-spacing-16)",
+          cursor: carregando ? "wait" : "pointer",
+          border: 0,
+        }}
+        aria-live="polite"
+      >
+        {carregando && (
+          <span
+            aria-hidden
+            className="animate-spin rounded-full"
+            style={{
+              width: 14,
+              height: 14,
+              border: "2px solid var(--ds-color-border)",
+              borderTopColor: "var(--ds-color-text-secondary)",
+            }}
+          />
+        )}
+        {carregando ? "Buscando no Matomo…" : rotulo}
+      </button>
+    </div>
+  );
+}
+
+function brDia(d: string): string {
+  return /^\d{4}-\d{2}-\d{2}$/.test(d)
+    ? `${d.slice(8, 10)}/${d.slice(5, 7)}/${d.slice(0, 4)}`
+    : d;
 }

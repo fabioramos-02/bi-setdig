@@ -84,6 +84,7 @@ export type FraseAncoraAcessos = {
   semDado: boolean;
 };
 
+// ponytail: sem consumidor após remoção do StoryCard do topo em AcessarServicoTab. Remover na próxima limpeza se ninguém adotar.
 export function fraseAncoraAcessos(cartas: AcessoBotaoCarta[], orgao?: string | null): FraseAncoraAcessos {
   if (cartas.length === 0) {
     return {

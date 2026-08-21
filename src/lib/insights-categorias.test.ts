@@ -6,11 +6,13 @@ import {
   cobertura,
   fraseAncoraCategoria,
   pontosAtencaoCategorias,
+  porOrgao,
   ranking,
   saudeConcentracao,
   topNSharePct,
   totalAcessos,
 } from "./insights-categorias.ts";
+import type { CategoriaOrgaos } from "./data.ts";
 import type { CategoriaResumo } from "./catalogo-app.ts";
 import type { FatiaCategoria } from "../components/charts/CategoryDonut.tsx";
 
@@ -124,6 +126,40 @@ test("pontosAtencaoCategorias sinaliza silenciosas", () => {
 test("totalAcessos soma todas as linhas", () => {
   const r = ranking(CATALOGO, ACESSOS);
   assert.equal(totalAcessos(r), 66978 + 42082 + 13972 + 100);
+});
+
+test("porOrgao inverte mapa e agrega serviços/acessos por sigla", () => {
+  const mapa: CategoriaOrgaos = {
+    "Servidor Público": ["SAD"],
+    "Diário Oficial": ["SAD"],
+    "Nota Premiada": ["SEFAZ"],
+    "Saúde": ["SES"],
+    "Meio Ambiente": ["IMASUL", "SEMADESC"],
+    "Agronegócio": ["IAGRO", "SEMADESC"],
+  };
+  const cat: CategoriaResumo[] = [
+    { categoria: "Servidor Público", icone: "badge", total: 9, nativo: 5, web: 4, ativo: 9 },
+    { categoria: "Diário Oficial", icone: "newspaper", total: 1, nativo: 0, web: 1, ativo: 1 },
+    { categoria: "Nota Premiada", icone: "confirmation_number", total: 1, nativo: 0, web: 1, ativo: 1 },
+    { categoria: "Saúde", icone: "local_hospital", total: 11, nativo: 6, web: 5, ativo: 11 },
+    { categoria: "Meio Ambiente", icone: "eco", total: 6, nativo: 5, web: 1, ativo: 6 },
+    { categoria: "Agronegócio", icone: "agriculture", total: 18, nativo: 0, web: 18, ativo: 18 },
+  ];
+  const acc: FatiaCategoria[] = [{ categoria: "Servidor Público", valor: 1000, participacao: 0 } as FatiaCategoria];
+  const r = ranking(cat, acc);
+  const o = porOrgao(mapa, r);
+
+  const sad = o.find((x) => x.sigla === "SAD");
+  assert.equal(sad?.categorias.length, 2);
+  assert.equal(sad?.totalServicos, 10);
+  assert.equal(sad?.acessos, 1000);
+  assert.ok((sad?.sharePct ?? 0) === 100);
+
+  const semad = o.find((x) => x.sigla === "SEMADESC");
+  assert.equal(semad?.categorias.length, 2);
+  assert.deepEqual(semad?.categorias, ["Agronegócio", "Meio Ambiente"]);
+
+  assert.equal(o[0].sigla, "SAD"); // Mais acessos vem primeiro
 });
 
 test("inativa marca categoria com todos os serviços inativos", () => {

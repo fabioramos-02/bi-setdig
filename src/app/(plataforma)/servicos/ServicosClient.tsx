@@ -103,7 +103,17 @@ export function ServicosClient({
     {
       id: "visao-geral",
       label: "1. Visão Geral",
-      content: <VisaoGeralTab resumo={resumo} cartas={cartasAtivas} live={valido ? live : null} status={status} rotuloPeriodo={rotuloPeriodo} />,
+      content: (
+        <VisaoGeralTab
+          resumo={resumo}
+          cartas={cartasAtivas}
+          orgaos={orgaos}
+          live={valido ? live : null}
+          acessosBotaoSnapshot={acessosBotaoDoPeriodo}
+          status={status}
+          rotuloPeriodo={rotuloPeriodo}
+        />
+      ),
     },
     {
       id: "explorar",
@@ -114,6 +124,8 @@ export function ServicosClient({
           visitasPorSlug={visitasPorSlug}
           acessosBotaoPorSlug={acessosBotaoPorSlug}
           acessosBotaoStatus={acessosStatus}
+          range={range}
+          isPeriodoCorrente={isPeriodoCorrente}
           status={status}
           rotuloPeriodo={rotuloPeriodo}
         />
@@ -143,6 +155,7 @@ export function ServicosClient({
       content: (
         <AcessarServicoTab
           cartasSnapshot={acessosBotaoDoPeriodo}
+          visitasPorSlug={visitasPorSlug}
           status={acessosStatus}
           rotuloPeriodo={rotuloPeriodo}
           range={range}

@@ -1,7 +1,7 @@
-import type { FrequenciaAcesso, FaixaAcesso } from "./data";
-import type { InsightFunil } from "./insights";
-import type { PontoAtencao } from "./insights-contas";
-import { rotuloEstagioFunil } from "./insights";
+import type { FrequenciaAcesso, FaixaAcesso } from "./data.ts";
+import type { InsightFunil } from "./insights.ts";
+import type { PontoAtencao } from "./insights-contas.ts";
+import { rotuloEstagioFunil } from "./insights.ts";
 
 /** Frase-âncora sobre cadência de retorno. Foca no intervalo médio quando
  *  disponível; degrada graciosamente pra "sem dados suficientes". */

@@ -7,6 +7,8 @@ type Props = {
   acessos: number;
   sharePct: number;
   soAtalhoWeb: boolean;
+  /** Todos os serviços da categoria estão inativos → badge de aviso. */
+  inativa: boolean;
   orgaos: string[];
   ativo: boolean;
   variante: "destaque" | "compacto";
@@ -15,6 +17,19 @@ type Props = {
   shareMax: number;
   totalGeral: number;
 };
+
+function BadgeInativa({ tamanho }: { tamanho: "xs" | "sm" }) {
+  const px = tamanho === "sm" ? "px-2 py-0.5 text-xs" : "px-1.5 py-0.5 text-[10px]";
+  return (
+    <span
+      className={`rounded font-medium uppercase tracking-wide ${px}`}
+      style={{ background: "var(--ds-color-danger-100, #fee2e2)", color: "var(--ds-color-danger, #b91c1c)" }}
+      title="Todos os serviços desta categoria estão desativados"
+    >
+      inativa
+    </span>
+  );
+}
 
 const FMT = new Intl.NumberFormat("pt-BR");
 
@@ -27,6 +42,7 @@ export function CategoriaCard({
   acessos,
   sharePct,
   soAtalhoWeb,
+  inativa,
   orgaos,
   ativo,
   variante,
@@ -38,6 +54,7 @@ export function CategoriaCard({
     ? "2px solid var(--ds-color-primary-600)"
     : "1px solid var(--ds-color-border)";
   const pctBarra = shareMax > 0 ? (100 * sharePct) / shareMax : 0;
+  const opacidade = inativa ? 0.7 : 1;
 
   if (variante === "destaque") {
     return (
@@ -45,7 +62,7 @@ export function CategoriaCard({
         type="button"
         onClick={onClick}
         className="flex flex-col items-center text-center rounded p-4 gap-2 transition-shadow hover:shadow-md"
-        style={{ background: "var(--ds-color-background)", border }}
+        style={{ background: "var(--ds-color-background)", border, opacity: opacidade }}
       >
         <span
           className="material-icons"
@@ -60,6 +77,7 @@ export function CategoriaCard({
         >
           {categoria}
         </span>
+        {inativa && <BadgeInativa tamanho="sm" />}
         {soAtalhoWeb ? (
           <span
             className="text-xs px-2 py-0.5 rounded"
@@ -110,7 +128,7 @@ export function CategoriaCard({
       type="button"
       onClick={onClick}
       className="flex items-center gap-3 text-left rounded p-3 transition-shadow hover:shadow-sm w-full"
-      style={{ background: "var(--ds-color-background)", border }}
+      style={{ background: "var(--ds-color-background)", border, opacity: opacidade }}
     >
       <span
         className="material-icons shrink-0"
@@ -121,11 +139,14 @@ export function CategoriaCard({
       </span>
       <div className="flex flex-col gap-1 min-w-0 flex-1">
         <div className="flex items-baseline justify-between gap-2 min-w-0">
-          <span
-            className="text-sm font-semibold truncate"
-            style={{ color: "var(--ds-color-text-primary)" }}
-          >
-            {categoria}
+          <span className="flex items-center gap-1.5 min-w-0">
+            <span
+              className="text-sm font-semibold truncate"
+              style={{ color: "var(--ds-color-text-primary)" }}
+            >
+              {categoria}
+            </span>
+            {inativa && <BadgeInativa tamanho="xs" />}
           </span>
           {!soAtalhoWeb && (
             <span

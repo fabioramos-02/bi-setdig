@@ -117,6 +117,48 @@ export function contagemOrgaosUnicos(
   return { total: distintos.length, distintos };
 }
 
+export type OrgaoResponsavel = {
+  sigla: string;
+  categorias: string[];
+  totalServicos: number;
+  totalAtivos: number;
+  acessos: number;
+  sharePct: number;
+};
+
+/** Inverte o mapa categoria→[órgãos] em órgão→[categorias]. Agrega
+ *  serviços/acessos por órgão pra ranquear responsabilidade e uso.
+ *  Órgão que aparece em N categorias soma tudo — dupla contagem é
+ *  intencional (mede alcance/carga institucional, não visitantes únicos). */
+export function porOrgao(
+  mapa: CategoriaOrgaos,
+  rankings: RankingCategoria[],
+): OrgaoResponsavel[] {
+  const idx = new Map(rankings.map((r) => [r.categoria, r]));
+  const total = rankings.reduce((a, r) => a + r.acessos, 0);
+  const acc = new Map<string, OrgaoResponsavel>();
+  for (const [categoria, orgaos] of Object.entries(mapa)) {
+    const r = idx.get(categoria);
+    for (const sigla of orgaos) {
+      const cur =
+        acc.get(sigla) ??
+        { sigla, categorias: [], totalServicos: 0, totalAtivos: 0, acessos: 0, sharePct: 0 };
+      cur.categorias.push(categoria);
+      cur.totalServicos += r?.totalServicos ?? 0;
+      cur.totalAtivos += r?.ativosServicos ?? 0;
+      cur.acessos += r?.acessos ?? 0;
+      acc.set(sigla, cur);
+    }
+  }
+  for (const o of acc.values()) {
+    o.sharePct = total > 0 ? (100 * o.acessos) / total : 0;
+    o.categorias.sort();
+  }
+  return [...acc.values()].sort(
+    (a, b) => b.acessos - a.acessos || b.categorias.length - a.categorias.length || a.sigla.localeCompare(b.sigla),
+  );
+}
+
 export function fraseAncoraCategoria(r: RankingCategoria[]): string {
   const lider = categoriaLider(r);
   if (!lider) return "Ainda não há acessos identificados por categoria no período selecionado.";

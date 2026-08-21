@@ -14,6 +14,7 @@ import type { FatiaCategoria } from "@/components/charts/CategoryDonut";
 import { OrgaosChips } from "@/components/dashboard/OrgaosChips";
 import { CategoriaCard } from "@/components/dashboard/CategoriaCard";
 import { NativoWebBar } from "@/components/dashboard/NativoWebBar";
+import { OrgaosPorCategoriaSection } from "@/components/dashboard/OrgaosPorCategoriaSection";
 import {
   cauda,
   categoriaLider,
@@ -21,6 +22,7 @@ import {
   contagemOrgaosUnicos,
   fraseAncoraCategoria,
   pontosAtencaoCategorias,
+  porOrgao,
   ranking,
   saudeConcentracao,
   totalAcessos,
@@ -56,6 +58,7 @@ export function CategoriasTab({
 
   const rankings = useMemo(() => ranking(categorias, acessosCategoria), [categorias, acessosCategoria]);
   const orgaosUnicos = useMemo(() => contagemOrgaosUnicos(categoriaOrgaos, rankings), [categoriaOrgaos, rankings]);
+  const orgaosResponsaveis = useMemo(() => porOrgao(categoriaOrgaos, rankings), [categoriaOrgaos, rankings]);
   const lider = categoriaLider(rankings);
   const semaforo = saudeConcentracao(rankings);
   const total = totalAcessos(rankings);
@@ -163,6 +166,7 @@ export function CategoriasTab({
                 acessos={r.acessos}
                 sharePct={r.sharePct}
                 soAtalhoWeb={r.soAtalhoWeb}
+                inativa={r.inativa}
                 orgaos={orgaosDe(r.categoria, categoriaOrgaos)}
                 ativo={r.categoria === sel}
                 variante={variante}
@@ -220,7 +224,7 @@ export function CategoriasTab({
               {rankingSel.reduce((a, l) => a + l.acessos, 0) > 0 ? (
                 <RankingHorizontal
                   itens={rankingSel.map((l) => ({
-                    label: l.servico,
+                    label: l.ativo ? l.servico : `${l.servico} · inativo`,
                     valor: l.acessos,
                     sharePct: l.sharePct,
                     sub: l.tipo === "nativo" ? "nativo" : "web",
@@ -230,7 +234,7 @@ export function CategoriasTab({
               ) : (
                 <RankingHorizontal
                   itens={servicosSel.map((s) => ({
-                    label: s.servico,
+                    label: s.ativo ? s.servico : `${s.servico} · inativo`,
                     valor: 0,
                     sharePct: 0,
                     sub: s.tipo === "nativo" ? "nativo" : "web",
@@ -241,6 +245,16 @@ export function CategoriasTab({
             </ChartLoading>
           </div>
         )}
+      </DashboardSection>
+
+      {/* 4. Órgãos responsáveis — inversão do mapa: órgão → categorias que sustenta */}
+      <DashboardSection title="Órgãos por trás das categorias">
+        <p className="mb-4 text-sm" style={{ color: "var(--ds-color-text-secondary)" }}>
+          Cada linha mostra um órgão do Estado, quantas categorias do app ele sustenta e
+          quanto do uso passa por essas categorias no período. Órgãos que aparecem em mais
+          de uma categoria somam o alcance de todas.
+        </p>
+        <OrgaosPorCategoriaSection orgaos={orgaosResponsaveis} totalGeral={total} />
       </DashboardSection>
 
       {/* 5. Nativos × Web — barra 100% empilhada horizontal */}
