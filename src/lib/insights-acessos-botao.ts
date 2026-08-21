@@ -69,6 +69,62 @@ export function destinosAgregados(cartas: AcessoBotaoCarta[], n = 5): { url: str
   }));
 }
 
+/** Ranking por órgão — soma visitas/cliques das cartas de cada órgão e
+ *  calcula taxa média ponderada. Serve pra gestor de órgão comparar sua
+ *  performance sem precisar ler carta por carta. */
+export type ResumoOrgao = {
+  orgaoSigla: string;
+  cartas: number;
+  views: number;
+  cliques: number;
+  taxaMediaPct: number;
+  destinoPrincipal: string | null;
+  cliquesDestinoPrincipal: number;
+};
+
+export function agregarPorOrgao(cartas: AcessoBotaoCarta[]): ResumoOrgao[] {
+  const grupos = new Map<string, AcessoBotaoCarta[]>();
+  for (const c of cartas) {
+    const sigla = c.orgaoSigla ?? "Sem órgão";
+    const lista = grupos.get(sigla) ?? [];
+    lista.push(c);
+    grupos.set(sigla, lista);
+  }
+  const resumos: ResumoOrgao[] = [];
+  for (const [sigla, lista] of grupos) {
+    const views = lista.reduce((a, c) => a + c.views, 0);
+    const cliques = lista.reduce((a, c) => a + c.cliquesTotais, 0);
+    // Destino principal do órgão inteiro: soma cliques por URL destino entre
+    // todas as cartas (ignora "Outros destinos", bucket de cauda por carta).
+    const destinos = new Map<string, number>();
+    for (const c of lista) {
+      for (const d of c.destinos) {
+        if (d.url === "Outros destinos") continue;
+        destinos.set(d.url, (destinos.get(d.url) ?? 0) + d.cliques);
+      }
+    }
+    const [destinoTop] = [...destinos.entries()].sort((a, b) => b[1] - a[1]);
+    resumos.push({
+      orgaoSigla: sigla,
+      cartas: lista.length,
+      views,
+      cliques,
+      taxaMediaPct: views > 0 ? Math.round((cliques / views) * 10_000) / 100 : 0,
+      destinoPrincipal: destinoTop?.[0] ?? null,
+      cliquesDestinoPrincipal: destinoTop?.[1] ?? 0,
+    });
+  }
+  return resumos.sort((a, b) => b.cliques - a.cliques);
+}
+
+export function orgaosDisponiveis(cartas: AcessoBotaoCarta[]): string[] {
+  const set = new Set<string>();
+  for (const c of cartas) {
+    if (c.orgaoSigla) set.add(c.orgaoSigla);
+  }
+  return [...set].sort();
+}
+
 export type FraseAncoraAcessos = {
   fraseAncora: string;
   comoLer: string;
@@ -76,11 +132,14 @@ export type FraseAncoraAcessos = {
 };
 
 /** Frase-âncora executiva pra topo da aba. Segue molde AGENTS.md: entrega
- *  a conclusão em 1 frase, o gráfico ilustra a frase. */
-export function fraseAncoraAcessos(cartas: AcessoBotaoCarta[]): FraseAncoraAcessos {
+ *  a conclusão em 1 frase, o gráfico ilustra a frase. `orgao` opcional
+ *  personaliza o texto pro gestor daquele órgão. */
+export function fraseAncoraAcessos(cartas: AcessoBotaoCarta[], orgao?: string | null): FraseAncoraAcessos {
   if (cartas.length === 0) {
     return {
-      fraseAncora: "Ainda não há dado suficiente sobre cliques em Acessar serviço no período selecionado.",
+      fraseAncora: orgao
+        ? `Ainda não há dado de cliques em Acessar serviço nas cartas de ${orgao} no período selecionado.`
+        : "Ainda não há dado suficiente sobre cliques em Acessar serviço no período selecionado.",
       comoLer:
         "Assim que o portal registrar visitas com cliques em links externos das cartas, esta aba mostra quantos cidadãos chegam ao sistema que resolve o serviço.",
       semDado: true,
@@ -90,9 +149,13 @@ export function fraseAncoraAcessos(cartas: AcessoBotaoCarta[]): FraseAncoraAcess
   const lider = cartas[0];
   const totalCliques = cartas.reduce((a, c) => a + c.cliquesTotais, 0);
   const totalViews = cartas.reduce((a, c) => a + c.views, 0);
+  const escopo = orgao ? `${cartas.length} cartas de ${orgao}` : `${cartas.length} cartas mais visitadas`;
+  const enviaFrase = orgao
+    ? `${lider.titulo}, sua carta com mais movimento, envia ${lider.taxaConversaoPct.toFixed(1)}% das visitas pro destino externo`
+    : `${lider.titulo} envia ${lider.taxaConversaoPct.toFixed(1)}% das visitas pro destino externo`;
   return {
-    fraseAncora: `Das ${cartas.length} cartas mais visitadas, ${taxa.toFixed(1)}% dos cidadãos chegam a clicar em Acessar serviço — foram ${totalCliques.toLocaleString("pt-BR")} cliques em ${totalViews.toLocaleString("pt-BR")} visitas.`,
-    comoLer: `A conversão é a proporção entre quem abriu a carta e quem prosseguiu pro sistema que resolve o serviço (por exemplo, ${lider.titulo} envia ${lider.taxaConversaoPct.toFixed(1)}% das visitas pro destino externo). Conversão alta significa que a carta cumpre bem o papel de porta pro serviço; baixa pode indicar que o cidadão desiste, não encontra o botão ou o destino está fora do ar.`,
+    fraseAncora: `Das ${escopo}, ${taxa.toFixed(1)}% dos cidadãos chegam a clicar em Acessar serviço — foram ${totalCliques.toLocaleString("pt-BR")} cliques em ${totalViews.toLocaleString("pt-BR")} visitas.`,
+    comoLer: `A conversão é a proporção entre quem abriu a carta e quem prosseguiu pro sistema que resolve o serviço (por exemplo, ${enviaFrase}). Conversão alta significa que a carta cumpre bem o papel de porta pro serviço; baixa pode indicar que o cidadão desiste, não encontra o botão ou o destino está fora do ar.`,
     semDado: false,
   };
 }

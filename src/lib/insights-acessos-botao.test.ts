@@ -1,11 +1,13 @@
 import { strict as assert } from "node:assert";
 import { test } from "node:test";
 import {
+  agregarPorOrgao,
   cartasComAltaConversao,
   cartasComBaixaConversao,
   destinosAgregados,
   faixaConversao,
   fraseAncoraAcessos,
+  orgaosDisponiveis,
   taxaMediaPonderada,
 } from "./insights-acessos-botao.ts";
 import type { AcessoBotaoCarta } from "./data.ts";
@@ -95,4 +97,47 @@ test("fraseAncoraAcessos — inclui números formatados pt-BR", () => {
   assert.equal(r.semDado, false);
   assert.match(r.fraseAncora, /1\.000 visitas/);
   assert.match(r.fraseAncora, /200 cliques/);
+});
+
+test("fraseAncoraAcessos — modo órgão personaliza texto e escopo", () => {
+  const r = fraseAncoraAcessos([carta({ views: 500, cliquesTotais: 100, taxaConversaoPct: 20 })], "DETRAN");
+  assert.match(r.fraseAncora, /1 cartas de DETRAN/);
+  assert.match(r.comoLer, /sua carta com mais movimento/);
+});
+
+test("agregarPorOrgao — soma cliques/views, calcula taxa e destino principal por sigla", () => {
+  const cartas = [
+    carta({ slug: "a", orgaoSigla: "DETRAN", views: 400, cliquesTotais: 100, destinos: [{ url: "https://meudetran.ms.gov.br/", cliques: 90, pct: 90 }, { url: "https://ms.gov.br/", cliques: 10, pct: 10 }] }),
+    carta({ slug: "b", orgaoSigla: "DETRAN", views: 200, cliquesTotais: 50, destinos: [{ url: "https://meudetran.ms.gov.br/", cliques: 50, pct: 100 }] }),
+    carta({ slug: "c", orgaoSigla: "SEFAZ", views: 1000, cliquesTotais: 500, destinos: [{ url: "https://efazenda.ms.gov.br/", cliques: 500, pct: 100 }] }),
+  ];
+  const r = agregarPorOrgao(cartas);
+  // Ordenado por cliques desc: SEFAZ (500) primeiro, DETRAN (150) depois.
+  assert.equal(r[0].orgaoSigla, "SEFAZ");
+  assert.equal(r[0].cliques, 500);
+  assert.equal(r[0].taxaMediaPct, 50);
+  assert.equal(r[0].destinoPrincipal, "https://efazenda.ms.gov.br/");
+  assert.equal(r[1].orgaoSigla, "DETRAN");
+  assert.equal(r[1].cartas, 2);
+  assert.equal(r[1].cliques, 150);
+  assert.equal(r[1].views, 600);
+  assert.equal(r[1].taxaMediaPct, 25);
+  // Destino principal do DETRAN: meudetran (90+50=140), não ms.gov.br (10).
+  assert.equal(r[1].destinoPrincipal, "https://meudetran.ms.gov.br/");
+  assert.equal(r[1].cliquesDestinoPrincipal, 140);
+});
+
+test("agregarPorOrgao — carta sem órgão vira 'Sem órgão' (não some do ranking)", () => {
+  const r = agregarPorOrgao([carta({ orgaoSigla: null, views: 100, cliquesTotais: 20 })]);
+  assert.equal(r[0].orgaoSigla, "Sem órgão");
+});
+
+test("orgaosDisponiveis — ordena alfabético e ignora null", () => {
+  const cartas = [
+    carta({ orgaoSigla: "SEFAZ" }),
+    carta({ orgaoSigla: "DETRAN" }),
+    carta({ orgaoSigla: null }),
+    carta({ orgaoSigla: "DETRAN" }),
+  ];
+  assert.deepEqual(orgaosDisponiveis(cartas), ["DETRAN", "SEFAZ"]);
 });

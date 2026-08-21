@@ -49,7 +49,8 @@ export function ServicosClient({
   // via AvisoSnapshotAproximado com status "fallback" — o dado é aproximado).
   const chaveFixa = chavePeriodoFixo(estado);
   const acessosBotaoDoPeriodo = acessosBotao[chaveFixa] ?? [];
-  const acessosStatus: StatusIntervalo = ehPeriodoCorrente(estado, min, max) ? "ok" : "fallback";
+  const isPeriodoCorrente = ehPeriodoCorrente(estado, min, max);
+  const acessosStatus: StatusIntervalo = isPeriodoCorrente ? "ok" : "fallback";
 
   // /servicos não tem snapshot de visitas — busca ao vivo sempre (inclusive no
   // período corrente). Só o inventário (resumo/relacao/orgaos) é estático.
@@ -125,7 +126,13 @@ export function ServicosClient({
       id: "acessar-servico",
       label: "5. Botão Acessar Serviço",
       content: (
-        <AcessarServicoTab cartas={acessosBotaoDoPeriodo} status={acessosStatus} rotuloPeriodo={rotuloPeriodo} />
+        <AcessarServicoTab
+          cartasSnapshot={acessosBotaoDoPeriodo}
+          status={acessosStatus}
+          rotuloPeriodo={rotuloPeriodo}
+          range={range}
+          isPeriodoCorrente={isPeriodoCorrente}
+        />
       ),
     },
   ];
