@@ -41,6 +41,8 @@ export function ranking(
       categoria: c.categoria,
       icone: c.icone,
       totalServicos: c.total,
+      ativosServicos: c.ativo,
+      inativa: c.total > 0 && c.ativo === 0,
       acessos: usos,
       sharePct: total > 0 ? (100 * usos) / total : 0,
       // Atalho web: 100% dos serviços web E até 2 serviços na categoria.
@@ -56,6 +58,8 @@ export function ranking(
         categoria: a.categoria,
         icone: iconeCategoria(a.categoria),
         totalServicos: 0,
+        ativosServicos: 0,
+        inativa: false,
         acessos: a.valor,
         sharePct: total > 0 ? (100 * a.valor) / total : 0,
         soAtalhoWeb: false,
