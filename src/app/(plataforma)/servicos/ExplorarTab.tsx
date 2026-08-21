@@ -129,6 +129,23 @@ export function ExplorarTab({
       ),
     },
     {
+      key: "cliques-botao",
+      label: acessosBotaoStatus === "fallback" ? "Acessar Serviço (aprox.)" : "Acessar Serviço",
+      align: "right",
+      sortable: true,
+      sortValue: (c) => acessosBotaoPorSlug.get(c.slug) ?? 0,
+      render: (c) => {
+        const cliques = acessosBotaoPorSlug.get(c.slug) ?? 0;
+        return cliques > 0 ? (
+          <span className="font-semibold" style={{ color: "var(--ds-color-primary-600)" }}>
+            {cliques.toLocaleString("pt-BR")}
+          </span>
+        ) : (
+          <span style={{ color: "var(--ds-color-text-muted)" }}>—</span>
+        );
+      },
+    },
+    {
       key: "portal",
       label: "Portal",
       align: "right",
@@ -163,6 +180,7 @@ export function ExplorarTab({
               Prazo: prazoDe(c),
               Custo: c.custo ?? "",
               [`Acessos ${rotuloPeriodo}`]: visitasPorSlug.get(c.slug) ?? 0,
+              [`Cliques Acessar Serviço ${rotuloPeriodo}`]: acessosBotaoPorSlug.get(c.slug) ?? 0,
               Link: `${PORTAL_BASE}/${c.categoria}/${c.slug}`,
             }))}
             filename="cartas-servico"

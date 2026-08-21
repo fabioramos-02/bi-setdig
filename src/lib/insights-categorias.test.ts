@@ -125,3 +125,15 @@ test("totalAcessos soma todas as linhas", () => {
   const r = ranking(CATALOGO, ACESSOS);
   assert.equal(totalAcessos(r), 66978 + 42082 + 13972 + 100);
 });
+
+test("inativa marca categoria com todos os serviços inativos", () => {
+  const c: CategoriaResumo[] = [
+    { categoria: "Coronavírus", icone: "coronavirus", total: 2, nativo: 1, web: 1, ativo: 0 },
+    { categoria: "Saúde", icone: "local_hospital", total: 3, nativo: 2, web: 1, ativo: 3 },
+  ];
+  const r = ranking(c, []);
+  assert.equal(r.find((x) => x.categoria === "Coronavírus")?.inativa, true);
+  assert.equal(r.find((x) => x.categoria === "Coronavírus")?.ativosServicos, 0);
+  assert.equal(r.find((x) => x.categoria === "Saúde")?.inativa, false);
+  assert.equal(r.find((x) => x.categoria === "Saúde")?.ativosServicos, 3);
+});
