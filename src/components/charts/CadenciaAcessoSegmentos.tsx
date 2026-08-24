@@ -9,6 +9,7 @@ export function CadenciaAcessoSegmentos({ freq }: { freq: FrequenciaAcesso }) {
   const mau = freq.ativosMes;
   const wau = freq.ativosSemana;
   const dau = freq.ativosHoje;
+  const pessoas = freq.totalUsuariosMes;
 
   const wauPct = mau > 0 ? (100 * wau) / mau : 0;
   const dauPct = mau > 0 ? (100 * dau) / mau : 0;
@@ -27,7 +28,7 @@ export function CadenciaAcessoSegmentos({ freq }: { freq: FrequenciaAcesso }) {
   const anchor =
     mau === 0
       ? "Ainda sem dados de retorno no período."
-      : `${wauPct.toFixed(0)}% dos usuários mensais também voltam ao menos uma vez na semana. Núcleo diário: ${dauPct.toFixed(0)}%.`;
+      : `${fmt(pessoas)} pessoas usaram o app no mês (${fmt(mau)} aberturas por dispositivo). ${wauPct.toFixed(0)}% dessas aberturas voltaram ao menos uma vez na semana. Núcleo diário: ${dauPct.toFixed(0)}%.`;
 
   return (
     <div className="flex flex-col gap-6">
@@ -38,10 +39,33 @@ export function CadenciaAcessoSegmentos({ freq }: { freq: FrequenciaAcesso }) {
         {anchor}
       </p>
 
-      {/* 3 KPIs — janelas de retorno (cumulativas, mas SEM linguagem de perda) */}
+      {/* 2 KPIs de destaque — pessoas vs dispositivos. Sem isso, gestor
+       *  compara MAU (dispositivos) com contas cadastradas (pessoas) e
+       *  o número maior parece bug. */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <JanelaCard
+          rotulo="Pessoas que usaram o app no mês"
+          valor={pessoas}
+          pct={100}
+          cor="var(--ds-color-primary-600)"
+          descricao="usuários únicos via GA4 — pode ser menor que a base cadastrada porque nem toda pessoa abre o app todo mês"
+          destaque="Pessoas"
+        />
+        <JanelaCard
+          rotulo="Aberturas por dispositivo no mês"
+          valor={mau}
+          pct={100}
+          cor="var(--ds-color-primary-500, var(--ds-color-primary-600))"
+          descricao="conta cada celular/tablet separadamente e inclui uso anônimo — 1 pessoa com 2 aparelhos vira 2"
+          destaque="Dispositivos"
+        />
+      </div>
+
+      {/* 3 KPIs — janelas de retorno por dispositivo (base do stickiness
+       *  DAU/MAU padrão da indústria). Cumulativas, SEM linguagem de perda. */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         <JanelaCard
-          rotulo="Abriram no mês"
+          rotulo="Abriram no mês (por dispositivo)"
           valor={mau}
           pct={100}
           cor="var(--ds-color-primary-600)"
@@ -49,7 +73,7 @@ export function CadenciaAcessoSegmentos({ freq }: { freq: FrequenciaAcesso }) {
           destaque="Base"
         />
         <JanelaCard
-          rotulo="Também voltaram na semana"
+          rotulo="Também voltaram na semana (por dispositivo)"
           valor={wau}
           pct={wauPct}
           cor="var(--ds-color-primary-500, var(--ds-color-primary-600))"
@@ -57,7 +81,7 @@ export function CadenciaAcessoSegmentos({ freq }: { freq: FrequenciaAcesso }) {
           destaque="Retornaram na semana"
         />
         <JanelaCard
-          rotulo="Também voltaram hoje"
+          rotulo="Também voltaram hoje (por dispositivo)"
           valor={dau}
           pct={dauPct}
           cor="var(--ds-color-success)"
