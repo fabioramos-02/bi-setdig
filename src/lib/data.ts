@@ -56,6 +56,13 @@ export function getGa4Horarios(): BreakdownPorPeriodo<HorarioGa4> {
   return readDataset<BreakdownPorPeriodo<HorarioGa4>>("ga4", "v2", "horarios") ?? BREAKDOWN_VAZIO;
 }
 
+// --- Cadastros do Portal Único (app_id=36) ---
+export type PortalUnicoCadastros = { referencia: string; valor: number; variacaoAbsoluta: number };
+
+export function getPortalUnicoCadastros(): BreakdownPorPeriodo<PortalUnicoCadastros> {
+  return readDataset<BreakdownPorPeriodo<PortalUnicoCadastros>>("portal-unico", "v1", "cadastros") ?? BREAKDOWN_VAZIO;
+}
+
 /** Cidades onde o app foi aberto (dimension `city` do GA4). Reusa tipo Cidade
  *  ({cidade, visitas}) do ChoroplethMap — "visitas" aqui é usuários ativos.
  *  Complementar ao mapa de cadastros da aba Contas (BD). */
@@ -237,6 +244,31 @@ export type AcessoBotaoCarta = {
 };
 export function getMatomoAcessosBotaoServico(): BreakdownPorPeriodo<AcessoBotaoCarta> {
   return readDataset<BreakdownPorPeriodo<AcessoBotaoCarta>>("matomo", "v1", "acessos-botao-servico") ?? BREAKDOWN_VAZIO;
+}
+
+// Pageviews + visitas + cliques + taxa de conversão por carta — dataset novo
+// (2026-08 SGD): extração quebrada por órgão (1 chamada Matomo por órgão) pra
+// não estourar filter_limit=5000 do outlinks site-wide. Pageviews vêm de
+// Actions.getPageUrls com segment=pageUrl=@slug; cliques do getOutlinks
+// segmentado por outlinkUrl=@dominio. `taxaConversaoPct = null` quando
+// pageviews=0 (carta sem pageview no período — taxa é indefinida, nunca 0
+// falso). Órgão que falhou na extração fica ausente do JSON (padrão existente
+// pra dado indisponível — ver datasets/_logs/matomo-cartas-falhas.jsonl).
+export type AcessoCartaCompleto = {
+  slug: string;
+  titulo: string;
+  orgaoSigla: string | null;
+  categoria: string | null;
+  urlCarta: string;
+  urlExterno: string;
+  pageviews: number;
+  visitas: number;
+  visitantesUnicos: number;
+  cliques: number;
+  taxaConversaoPct: number | null;
+};
+export function getMatomoAcessosCartasCompleto(): BreakdownPorPeriodo<AcessoCartaCompleto> {
+  return readDataset<BreakdownPorPeriodo<AcessoCartaCompleto>>("matomo", "v1", "acessos-cartas-completo") ?? BREAKDOWN_VAZIO;
 }
 
 // --- Catálogo de serviços do app MS Digital (nativo × web) ---

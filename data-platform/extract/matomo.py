@@ -108,12 +108,63 @@ def get_outlinks_flat(period: str, date: str, site_id: str | None = None, limit:
     """`Actions.getOutlinks` com `flat=1` — URL COMPLETA por linha (não
     domínio). Usado pra cruzar com `urlExterno` das cartas (relatório "Botão
     Acessar Serviço"). Uma chamada só devolve TODOS outlinks do site — em
-    vez de Transitions por página (que exigia 100+ chamadas seriais)."""
+    vez de Transitions por página (que exigia 100+ chamadas seriais).
+
+    LEGADO: mantido pra script de análise (comparacao-metricas-carta). No
+    pipeline de produção, `run_matomo_acessos_botao` usa
+    `get_outlinks_segmented` — a chamada única com limit=5000 truncava
+    period=ano (mais outlinks distintos que mês → ano < mês, impossível)."""
     return _call(
         "Actions.getOutlinks",
         period,
         date,
         {"filter_limit": limit, "flat": 1},
+        site_id,
+        timeout=timeout,
+    )
+
+
+def get_outlinks_segmented(
+    period: str,
+    date: str,
+    segment: str,
+    site_id: str | None = None,
+    limit: int = -1,
+    timeout: int = 90,
+) -> list:
+    """`Actions.getOutlinks?flat=1` restrito por `segment` (ex.:
+    'outlinkUrl=@dominio1.gov.br,outlinkUrl=@dominio2.gov.br' — vírgula = OR
+    no Matomo). Usado pra quebrar a extração de cliques nas cartas por órgão
+    (1 chamada por órgão), evitando o teto de 5000 rows que corrompia
+    period=ano no `get_outlinks_flat`. `limit=-1` remove filter_limit;
+    timeout 90s pra period=ano seguro."""
+    return _call(
+        "Actions.getOutlinks",
+        period,
+        date,
+        {"filter_limit": limit, "flat": 1, "segment": segment},
+        site_id,
+        timeout=timeout,
+    )
+
+
+def get_page_urls_segmented(
+    period: str,
+    date: str,
+    segment: str,
+    site_id: str | None = None,
+    limit: int = -1,
+    timeout: int = 90,
+) -> list:
+    """`Actions.getPageUrls?flat=1` restrito por `segment`
+    (ex.: 'pageUrl=@servico1,pageUrl=@servico2'). Devolve pageviews +
+    nb_visits + nb_uniq_visitors da carta em portal-ms.gov.br. Usado pra
+    juntar com cliques no botão e calcular taxa de conversão."""
+    return _call(
+        "Actions.getPageUrls",
+        period,
+        date,
+        {"filter_limit": limit, "flat": 1, "expanded": 0, "segment": segment},
         site_id,
         timeout=timeout,
     )

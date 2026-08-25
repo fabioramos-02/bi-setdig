@@ -11,7 +11,9 @@ from __future__ import annotations
 
 import json
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import urlparse
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
@@ -162,53 +164,166 @@ def run_matomo_perfil_filtro() -> None:
     print(f"[matomo] demanda-por-orgao -> {[(k, len(v)) for k, v in demanda_orgao.items()]}")
 
 
+_LOGS_DIR = Path(__file__).resolve().parent.parent / "datasets" / "_logs"
+
+
+def _dominios_por_orgao(cartas: list[dict]) -> dict[str, list[str]]:
+    """Agrupa domínio-base de `urlExterno` por `orgaoSigla` — monta o segment
+    do Matomo (1 chamada por órgão, `outlinkUrl=@dominio` em OR)."""
+    out: dict[str, set[str]] = {}
+    for c in cartas:
+        url = (c.get("urlExterno") or c.get("url_externo") or "").strip()
+        sigla = c.get("orgaoSigla") or c.get("orgao_sigla") or "SEM_ORGAO"
+        if not url:
+            continue
+        try:
+            dom = urlparse(url).netloc.lower().strip()
+        except Exception:  # noqa: BLE001
+            continue
+        if not dom:
+            continue
+        out.setdefault(sigla, set()).add(dom)
+    return {k: sorted(v) for k, v in out.items()}
+
+
+def _cartas_por_orgao(cartas: list[dict]) -> dict[str, list[dict]]:
+    out: dict[str, list[dict]] = {}
+    for c in cartas:
+        sigla = c.get("orgaoSigla") or c.get("orgao_sigla") or "SEM_ORGAO"
+        out.setdefault(sigla, []).append(c)
+    return out
+
+
+def _logar_falha_orgao(orgao: str, periodo: str, contexto: str, erro: Exception) -> None:
+    """Falha de UMA chamada Matomo (órgão × período) — grava JSONL append.
+    Serve pro time saber quais órgãos ficaram sem dado na rodada; painel
+    trata órgão ausente como 'sem dado', padrão existente."""
+    _LOGS_DIR.mkdir(parents=True, exist_ok=True)
+    linha = json.dumps(
+        {
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "contexto": contexto,
+            "orgao": orgao,
+            "periodo": periodo,
+            "erro": f"{type(erro).__name__}: {erro}",
+        },
+        ensure_ascii=False,
+    )
+    with open(_LOGS_DIR / "matomo-cartas-falhas.jsonl", "a", encoding="utf-8") as f:
+        f.write(linha + "\n")
+
+
 def run_matomo_acessos_botao(_legacy_kwarg: int | None = None) -> None:
-    """Cliques em "Acessar serviço" por carta — via `Actions.getOutlinks?flat=1`
-    (site-wide) cruzado com `urlExterno` do inventário. 1 chamada Matomo por
-    período em vez de N chamadas Transitions (~100× mais rápido, sem timeout).
+    """Cliques em "Acessar serviço" + pageviews/visitas da carta, quebrado em
+    1 chamada Matomo por órgão × período. Fix do bug de 2026-08 (ano < mes):
+    `get_outlinks_flat` site-wide com `filter_limit=5000` truncava period=ano
+    (mais outlinks distintos que mês → cartas fora do top-5000 sumiam).
 
-    Cobertura: TODAS cartas ativas com `urlExterno` cadastrado no banco admin
-    que tiverem pelo menos 1 clique registrado no Matomo. Sem top-N arbitrário.
+    Agora: `outlinkUrl=@dominio-do-orgao` em segment, `filter_limit=-1`, 1
+    chamada por órgão. Falha em um órgão grava linha em
+    `datasets/_logs/matomo-cartas-falhas.jsonl` e segue os demais (publish
+    parcial — órgão ausente vira "sem dado" no painel, padrão existente).
 
-    Trade-off vs versão Transitions (ver git): sem pageviews da carta → sem
-    taxa de conversão na UI. Gestora pediu VOLUME de acessos, não conversão.
+    Publica dois datasets:
+      * `acessos-botao-servico.json` (legado, só cliques) — mantido por 1
+        rodada pra transição do frontend.
+      * `acessos-cartas-completo.json` (novo) — pageviews + visitas +
+        visitantes únicos + cliques + taxa de conversão por carta.
 
-    `_legacy_kwarg`: aceita mas ignora o antigo `min_views` — não faz mais
-    sentido no fluxo novo (getOutlinks já traz só quem tem cliques)."""
+    `_legacy_kwarg`: aceita mas ignora o antigo `min_views`.
+    """
     inventario = _ler_inventario_cartas()
     if not inventario:
         print("[matomo] acessos-botao: pulando (inventário ausente)")
         return
 
-    com_url_externo = [c for c in inventario if c.get("ativo") and c.get("slug") and c.get("urlExterno")]
+    com_url_externo = [
+        c for c in inventario
+        if c.get("ativo") and c.get("slug") and (c.get("urlExterno") or c.get("url_externo"))
+    ]
     if not com_url_externo:
-        print("[matomo] acessos-botao: nenhuma carta ativa tem `urlExterno` — rode `run_cartas` primeiro (dataset novo).")
+        print("[matomo] acessos-botao: nenhuma carta ativa tem `urlExterno` — rode `run_cartas` primeiro.")
         return
-    print(f"[matomo] acessos-botao: {len(com_url_externo)} cartas ativas com urlExterno cadastrado")
 
-    acessos = {"dia": [], "semana": [], "mes": [], "ano": []}
+    dominios_orgao = _dominios_por_orgao(com_url_externo)
+    cartas_orgao = _cartas_por_orgao(com_url_externo)
+    print(
+        f"[matomo] acessos-botao: {len(com_url_externo)} cartas ativas, "
+        f"{len(dominios_orgao)} órgãos, {sum(len(v) for v in dominios_orgao.values())} domínios únicos"
+    )
+
+    acessos_legado = {"dia": [], "semana": [], "mes": [], "ano": []}
+    acessos_completo = {"dia": [], "semana": [], "mes": [], "ano": []}
+    total_cliques_orgao: dict[str, dict[str, int]] = {}
+
     for chave, (p, d) in PERIODOS_FIXOS.items():
-        try:
-            outlinks = matomo.get_outlinks_flat(p, d, limit=5000, timeout=60)
-        except Exception as exc:  # noqa: BLE001
-            print(f"[matomo] acessos-botao {chave}: getOutlinks falhou -> {exc} (pulando)")
-            continue
-        acessos[chave] = t_matomo.acessos_botao_servico_por_url(outlinks, com_url_externo)
-        print(f"[matomo] acessos-botao {chave} -> {len(acessos[chave])} cartas com cliques")
+        for sigla, dominios in dominios_orgao.items():
+            segment_out = ",".join(f"outlinkUrl=@{dom}" for dom in dominios)
+            try:
+                outlinks = matomo.get_outlinks_segmented(p, d, segment_out)
+            except Exception as exc:  # noqa: BLE001
+                _logar_falha_orgao(sigla, chave, "outlinks", exc)
+                print(f"[matomo] acessos-botao {chave}/{sigla}: outlinks FALHOU -> {exc}")
+                continue
 
-    # Guarda: run vazio (todas chaves 0) = Matomo caiu. Não sobrescrever
-    # snapshot bom com nada — melhor dado velho do que dado vazio no BI.
-    if all(len(v) == 0 for v in acessos.values()):
+            linhas_cliques = t_matomo.acessos_botao_servico_por_url(outlinks, cartas_orgao[sigla])
+            acessos_legado[chave].extend(linhas_cliques)
+
+            # Pageviews da carta em portal-ms.gov.br: 1 segment por órgão,
+            # slugs das cartas do órgão em OR. Se falhar, publica só cliques
+            # pra esse órgão (pageviews=0, taxaConversao=null).
+            slugs = [c["slug"] for c in cartas_orgao[sigla]]
+            try:
+                segment_page = ",".join(f"pageUrl=@{slug}" for slug in slugs)
+                pageviews_raw = matomo.get_page_urls_segmented(p, d, segment_page)
+            except Exception as exc:  # noqa: BLE001
+                _logar_falha_orgao(sigla, chave, "pageviews", exc)
+                print(f"[matomo] acessos-botao {chave}/{sigla}: pageviews FALHOU -> {exc}")
+                pageviews_raw = []
+
+            linhas_completas = t_matomo.acessos_completos_por_carta(
+                pageviews_raw, linhas_cliques, cartas_orgao[sigla]
+            )
+            acessos_completo[chave].extend(linhas_completas)
+
+            total_cliques_orgao.setdefault(sigla, {})[chave] = sum(l["cliques"] for l in linhas_cliques)
+
+        acessos_legado[chave].sort(key=lambda r: -r["cliques"])
+        acessos_completo[chave].sort(key=lambda r: -r.get("cliques", 0))
+        print(f"[matomo] acessos-botao {chave} -> {len(acessos_legado[chave])} cartas com cliques")
+
+    if all(len(v) == 0 for v in acessos_legado.values()):
         print("[matomo] acessos-botao-servico: abortando publish (todas chaves vazias — Matomo indisponível). Dataset anterior preservado.")
         return
 
+    # Invariante: ano >= mes por órgão (bug reportado). Tolera 5% de drift
+    # (cliques novos podem entrar no Matomo entre a chamada de mes e ano).
+    violacoes = []
+    for sigla, por_periodo in total_cliques_orgao.items():
+        ano = por_periodo.get("ano", 0)
+        mes = por_periodo.get("mes", 0)
+        if ano < mes * 0.95:
+            violacoes.append(f"{sigla}: ano={ano} < mes={mes} (>5% drift)")
+    if violacoes:
+        print("[matomo] acessos-botao: VIOLAÇÃO invariante ano>=mes:\n  " + "\n  ".join(violacoes))
+        for v in violacoes:
+            _logar_falha_orgao(v.split(":")[0], "ano", "invariante", RuntimeError(v))
+
     validate_period_breakdown(
-        acessos,
+        acessos_legado,
         ["slug", "titulo", "urlExterno", "cliques"],
         ["cliques"],
     )
-    publish("matomo", "acessos-botao-servico", acessos)
-    print(f"[matomo] acessos-botao-servico -> {[(k, len(v)) for k, v in acessos.items()]}")
+    publish("matomo", "acessos-botao-servico", acessos_legado)
+    print(f"[matomo] acessos-botao-servico -> {[(k, len(v)) for k, v in acessos_legado.items()]}")
+
+    validate_period_breakdown(
+        acessos_completo,
+        ["slug", "titulo", "urlExterno", "cliques", "pageviews", "visitas", "visitantesUnicos"],
+        ["cliques", "pageviews", "visitas", "visitantesUnicos"],
+    )
+    publish("matomo", "acessos-cartas-completo", acessos_completo)
+    print(f"[matomo] acessos-cartas-completo -> {[(k, len(v)) for k, v in acessos_completo.items()]}")
 
 
 def run_matomo_jornada() -> None:
@@ -430,20 +545,79 @@ def run_qualidade() -> None:
     print(f"[qualidade] percepcao-por-orgao -> {out_po} ({len(percepcao_orgao)} órgãos)")
 
 
+def run_portal_unico() -> None:
+    from extract import portal_unico_db
+    from transform import portal_unico as t_pu
+    from dateutil.relativedelta import relativedelta
+    
+    hoje = datetime.now(timezone.utc).date()
+    
+    # Define as janelas anteriores
+    janelas = {
+        "dia": hoje - relativedelta(days=1),
+        "semana": hoje - relativedelta(weeks=1),
+        "mes": hoje - relativedelta(months=1),
+        "ano": hoje - relativedelta(years=1)
+    }
+    
+    try:
+        total_hoje = portal_unico_db.contar_usuarios_ate(hoje)
+        
+        contagens = {}
+        for chave, data_anterior in janelas.items():
+            total_anterior = portal_unico_db.contar_usuarios_ate(data_anterior)
+            contagens[chave] = {
+                "atual": total_hoje,
+                "anterior": total_anterior
+            }
+    except Exception as exc:
+        print(f"[portal-unico] Falha na conexão com banco (sem VPN?): {exc}")
+        caminho = Path(__file__).resolve().parent.parent / "datasets" / "portal-unico" / "v1" / "cadastros.json"
+        if not caminho.exists():
+            print("[portal-unico] cadastros.json ainda não publicado.")
+        else:
+            print("[portal-unico] usando fallback do JSON existente.")
+        return
+
+    breakdown = t_pu.build_cadastros_breakdown(contagens)
+    
+    for k, v in breakdown.items():
+        validate_rows(v, required=["referencia", "valor"], non_negative=["valor"])
+        
+    out = publish("portal-unico", "cadastros", breakdown)
+    print(f"[portal-unico] cadastros -> {out}")
+
+
 if __name__ == "__main__":
-    for nome, fn in [
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--domain", type=str, help="Domínio específico para rodar")
+    args = parser.parse_args()
+
+    todas_as_funcoes = [
         ("matomo", run_matomo),
         ("matomo_perfil", run_matomo_perfil),
         ("matomo_perfil_filtro", run_matomo_perfil_filtro),
         ("matomo_jornada", run_matomo_jornada),
         ("matomo_acessos_botao", run_matomo_acessos_botao),
+        ("matomo-cartas", run_matomo_acessos_botao), # alias para o plano SGD
         ("ga4", run_ga4),
         ("ga4_perfil", run_ga4_perfil),
         ("sites", run_sites),
         ("cartas", run_cartas),
         ("qualidade", run_qualidade),
         ("msdigital_db", run_msdigital_db),
-    ]:
+        ("portal_unico", run_portal_unico),
+    ]
+    
+    if args.domain:
+        alvo = [item for item in todas_as_funcoes if item[0] == args.domain]
+        if not alvo:
+            print(f"Domínio {args.domain} não encontrado.")
+            sys.exit(1)
+        todas_as_funcoes = alvo
+
+    for nome, fn in todas_as_funcoes:
         try:
             fn()
         except Exception as exc:  # noqa: BLE001 — fonte indisponível não derruba as outras

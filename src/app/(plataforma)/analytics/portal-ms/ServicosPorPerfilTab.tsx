@@ -9,7 +9,7 @@ import { BarChart } from "@/components/charts/BarChart";
 import { FunnelChart } from "@/components/charts/FunnelChart";
 import { RankingBarChart } from "@/components/charts/RankingBarChart";
 import { PORTAL_BASE_URL } from "@/components/dashboard/ServiceCardGrid";
-import type { PerfilFiltroPeriodo, ServicoAcessado } from "@/lib/data";
+import type { PerfilFiltroPeriodo, ServicoAcessado, AcessoCartaCompleto } from "@/lib/data";
 
 /**
  * Adoção do filtro de Perfil do Portal Único (estudo portado do bench-carta).
@@ -19,10 +19,19 @@ import type { PerfilFiltroPeriodo, ServicoAcessado } from "@/lib/data";
 export function ServicosPorPerfilTab({
   dados,
   servicosMaisAcessados,
+  acessosCartas,
+  semDadoLive,
   status,
 }: {
   dados: PerfilFiltroPeriodo;
   servicosMaisAcessados: ServicoAcessado[];
+  acessosCartas: AcessoCartaCompleto[];
+  // ponytail: acessosCartas ainda é snapshot-only (não plumbado no
+  // /api/analytics/portal-ms). Quando o usuário escolhe intervalo/período
+  // passado, escondemos a seção e mostramos aviso — melhor omitir do que
+  // exibir número errado (AGENTS.md proíbe dado estático em domínio com
+  // filtro de período). TODO: adicionar acessosCartas no route pra live.
+  semDadoLive: boolean;
   status: StatusIntervalo;
 }) {
   const { resumo, distribuicao, servicosPorPerfil } = dados;
@@ -113,7 +122,85 @@ export function ServicosPorPerfilTab({
         </p>
       </DashboardSection>
 
-      {/* 5. Serviços mais acessados (reais do portal, não só os do filtro de Perfil) */}
+      {/* 5. Cartas de serviço: chegada × ida ao serviço externo */}
+      {acessosCartas.length > 0 && (
+        <DashboardSection title="Quantas pessoas chegam na carta e seguem para o serviço?">
+          {semDadoLive ? (
+            <p className="text-sm" style={{ color: "var(--ds-color-text-muted)" }}>
+              Este número só está disponível para o período em vigor (dia, semana, mês, ano correntes). Para o intervalo escolhido, ainda não é possível calcular ao vivo.
+            </p>
+          ) : (
+            (() => {
+              const topPorConversao = acessosCartas
+                .filter((c) => c.taxaConversaoPct !== null && c.pageviews >= 50)
+                .sort((a, b) => (b.taxaConversaoPct ?? 0) - (a.taxaConversaoPct ?? 0));
+              const melhor = topPorConversao[0];
+              const pior = topPorConversao[topPorConversao.length - 1];
+              const totalPageviews = acessosCartas.reduce((s, c) => s + c.pageviews, 0);
+              const totalCliques = acessosCartas.reduce((s, c) => s + c.cliques, 0);
+              const taxaGeral = totalPageviews > 0 ? (totalCliques / totalPageviews) * 100 : null;
+
+              return (
+                <>
+                  <StoryCard
+                    anchor={
+                      taxaGeral !== null ? (
+                        <>
+                          A cada <strong>100 cidadãos</strong> que abrem uma carta de serviço, cerca de{" "}
+                          <strong>{taxaGeral.toFixed(0)}</strong> clicam em &quot;Acessar serviço&quot; e vão para o site do
+                          órgão responsável.
+                        </>
+                      ) : (
+                        <>Ainda sem visitas suficientes para medir quantos cidadãos seguem para o serviço.</>
+                      )
+                    }
+                    caption={
+                      melhor && pior && melhor !== pior
+                        ? `A carta com melhor conversão é "${melhor.titulo}" (${melhor.taxaConversaoPct?.toFixed(1)}%); a mais baixa é "${pior.titulo}" (${pior.taxaConversaoPct?.toFixed(1)}%). Considerado apenas cartas com pelo menos 50 visitas no período.`
+                        : undefined
+                    }
+                    comoLer="Para cada carta, comparamos quantas pessoas abriram a página (chegada) com quantas clicaram no botão para ir ao serviço (ida). Uma taxa alta significa que a carta convenceu o cidadão a seguir; uma taxa baixa pode indicar que a carta está confusa, que o link não funciona ou que a pessoa precisou de outro caminho."
+                  />
+
+                  <div className="mt-4 overflow-x-auto">
+                    <table className="w-full text-sm">
+                      <thead>
+                        <tr className="border-b" style={{ borderColor: "var(--ds-color-border)" }}>
+                          <th className="text-left py-2 pr-4" style={{ color: "var(--ds-color-text-secondary)" }}>Carta</th>
+                          <th className="text-left py-2 pr-4" style={{ color: "var(--ds-color-text-secondary)" }}>Órgão</th>
+                          <th className="text-right py-2 pr-4" style={{ color: "var(--ds-color-text-secondary)" }}>Chegaram</th>
+                          <th className="text-right py-2 pr-4" style={{ color: "var(--ds-color-text-secondary)" }}>Seguiram</th>
+                          <th className="text-right py-2" style={{ color: "var(--ds-color-text-secondary)" }}>Conversão</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {acessosCartas.slice(0, 15).map((c) => (
+                          <tr key={c.slug} className="border-b" style={{ borderColor: "var(--ds-color-border)" }}>
+                            <td className="py-2 pr-4">{c.titulo}</td>
+                            <td className="py-2 pr-4" style={{ color: "var(--ds-color-text-muted)" }}>{c.orgaoSigla ?? "—"}</td>
+                            <td className="py-2 pr-4 text-right tabular-nums">{c.pageviews.toLocaleString("pt-BR")}</td>
+                            <td className="py-2 pr-4 text-right tabular-nums">{c.cliques.toLocaleString("pt-BR")}</td>
+                            <td className="py-2 text-right tabular-nums">
+                              {c.taxaConversaoPct !== null ? `${c.taxaConversaoPct.toFixed(1)}%` : "—"}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                    {acessosCartas.length > 15 && (
+                      <p className="mt-2 text-xs" style={{ color: "var(--ds-color-text-muted)" }}>
+                        Mostrando 15 cartas mais acessadas de {acessosCartas.length} no período.
+                      </p>
+                    )}
+                  </div>
+                </>
+              );
+            })()
+          )}
+        </DashboardSection>
+      )}
+
+      {/* 6. Serviços mais acessados (reais do portal, não só os do filtro de Perfil) */}
       <DashboardSection title="Serviços mais acessados">
         {servicoTop ? (
           <>

@@ -41,6 +41,7 @@ import type {
   DominioSaida,
   DemandaOrgao,
   CartaRelacao,
+  AcessoCartaCompleto,
 } from "@/lib/data";
 
 const ROTULO_PERIODO = { dia: "no dia", semana: "na semana", mes: "no mês", ano: "no ano", intervalo: "no intervalo" };
@@ -76,8 +77,10 @@ export function PortalMsClient({
   servicosMaisAcessados,
   portasEntrada,
   fugaHub,
+  acessosCartas,
   inventarioCartas,
   demandaPorOrgao,
+  portalUnicoCadastros,
 }: {
   diarias: VisitaDiaria[];
   navegadores: BreakdownPorPeriodo<Navegador>;
@@ -92,8 +95,10 @@ export function PortalMsClient({
   servicosMaisAcessados: BreakdownPorPeriodo<ServicoAcessado>;
   portasEntrada: BreakdownPorPeriodo<PaginaEntrada>;
   fugaHub: BreakdownPorPeriodo<DominioSaida>;
+  acessosCartas: BreakdownPorPeriodo<AcessoCartaCompleto>;
   inventarioCartas: CartaRelacao[];
   demandaPorOrgao: BreakdownPorPeriodo<DemandaOrgao>;
+  portalUnicoCadastros: BreakdownPorPeriodo<PortalUnicoCadastros>;
 }) {
   // Contexto do classificador semântico (ADR-012) — montado 1x a partir do
   // inventário estático, reusado por PaginasTab e VisaoGeralTab.
@@ -227,6 +232,7 @@ export function PortalMsClient({
           pctServicoSemOrgao={pctSemOrgao(servicosAcessadosAtual)}
           fraseNavegacaoPerfil={fraseNavegacaoPerfil}
           matchRate={matchRate}
+          portalUnicoCadastros={portalUnicoCadastros[periodoAtual]}
         />
       ),
     },
@@ -276,6 +282,8 @@ export function PortalMsClient({
         <ServicosPorPerfilTab
           dados={perfilAtual}
           servicosMaisAcessados={servicosAcessadosAtual}
+          acessosCartas={acessosCartas[periodoAtual]}
+          semDadoLive={precisaLive}
           status={statusBreakdown}
         />
       ),

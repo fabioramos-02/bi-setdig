@@ -3,7 +3,7 @@ simplificado (sem pandas: só o necessário pra virar JSON de dataset)."""
 from __future__ import annotations
 
 import re
-from urllib.parse import unquote
+from urllib.parse import unquote, urlparse
 
 # Espelhado em src/lib/server/matomo-transform.ts (EXCLUIR_URLS) — manter em
 # sincronia. "/login/callback" é o retorno técnico do SSO (OAuth), não página
@@ -188,6 +188,88 @@ def acessos_botao_servico_por_url(outlinks_flat: list[dict], inventario: list[di
                 "urlCarta": f"https://www.ms.gov.br/{c.get('categoria') or c.get('categoria_slug', '')}/{c['slug']}",
                 "urlExterno": url_ext,
                 "cliques": cliques,
+            }
+        )
+    linhas.sort(key=lambda r: -r["cliques"])
+    return linhas
+
+
+def acessos_completos_por_carta(
+    pageviews_raw: list[dict],
+    linhas_cliques: list[dict],
+    cartas_do_orgao: list[dict],
+) -> list[dict]:
+    """Junta pageviews + visitas + visitantes únicos + cliques por carta,
+    dentro de UM órgão. Chamado por run_matomo_acessos_botao, 1 vez por
+    órgão × período.
+
+    `pageviews_raw`: retorno de Actions.getPageUrls?flat=1&segment=pageUrl=@slug
+    (URLs de portal-ms.gov.br que contêm o slug da carta).
+    `linhas_cliques`: já processado por `acessos_botao_servico_por_url` —
+    lista de cliques no botão por carta.
+    `cartas_do_orgao`: cartas do órgão pra recuperar quem NÃO teve clique
+    mas teve pageview (mostrar taxa de conversão 0%).
+
+    Taxa de conversão = cliques / pageviews quando pageviews > 0, senão
+    `null` (nunca 0 falso — carta sem pageview no período não tem base pra
+    dizer que a taxa foi zero; foi indefinida)."""
+
+    def _slug_da_url(url: str) -> str | None:
+        """Extrai slug do path portal-ms.gov.br/<categoria>/<slug>. Path
+        pode vir com querystring ou fragment — ignora."""
+        if not url:
+            return None
+        try:
+            path = urlparse(url).path.strip("/")
+        except Exception:  # noqa: BLE001
+            return None
+        if not path:
+            return None
+        partes = path.split("/")
+        return partes[-1].lower() if partes else None
+
+    slugs_do_orgao = {c["slug"].lower(): c for c in cartas_do_orgao if c.get("slug")}
+
+    pageviews_por_slug: dict[str, dict] = {}
+    for row in pageviews_raw or []:
+        url = row.get("url") or row.get("label") or ""
+        slug = _slug_da_url(url)
+        if not slug or slug not in slugs_do_orgao:
+            continue
+        agregado = pageviews_por_slug.setdefault(
+            slug, {"pageviews": 0, "visitas": 0, "visitantesUnicos": 0}
+        )
+        agregado["pageviews"] += int(row.get("nb_hits", 0) or 0)
+        agregado["visitas"] += int(row.get("nb_visits", 0) or 0)
+        agregado["visitantesUnicos"] += int(row.get("nb_uniq_visitors", 0) or 0)
+
+    cliques_por_slug = {l["slug"].lower(): l for l in (linhas_cliques or [])}
+
+    todos_slugs = set(pageviews_por_slug) | set(cliques_por_slug)
+    linhas: list[dict] = []
+    for slug in todos_slugs:
+        carta = slugs_do_orgao.get(slug)
+        if not carta:
+            continue
+        pv = pageviews_por_slug.get(slug, {"pageviews": 0, "visitas": 0, "visitantesUnicos": 0})
+        cl = cliques_por_slug.get(slug, {})
+        cliques = int(cl.get("cliques", 0))
+        pageviews = pv["pageviews"]
+        taxa = round(cliques / pageviews * 100, 2) if pageviews > 0 else None
+        url_ext = carta.get("urlExterno") or carta.get("url_externo") or ""
+        linhas.append(
+            {
+                "slug": carta["slug"],
+                "titulo": carta.get("titulo") or carta.get("nomePopular") or carta["slug"],
+                "orgaoSigla": carta.get("orgaoSigla") or carta.get("orgao_sigla"),
+                "categoria": carta.get("categoria") or carta.get("categoria_slug"),
+                "urlCarta": f"https://www.ms.gov.br/{carta.get('categoria') or carta.get('categoria_slug', '')}/{carta['slug']}",
+                "urlExterno": url_ext,
+                "pageviews": pageviews,
+                "visitas": pv["visitas"],
+                "visitantesUnicos": pv["visitantesUnicos"],
+                "cliques": cliques,
+                "taxaConversaoPct": taxa,
             }
         )
     linhas.sort(key=lambda r: -r["cliques"])

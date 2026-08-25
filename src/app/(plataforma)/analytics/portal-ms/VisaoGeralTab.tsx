@@ -1,4 +1,4 @@
-import { TrendingUp, TrendingDown, Search, Landmark, MapPin } from "lucide-react";
+import { TrendingUp, TrendingDown, Search, Landmark, MapPin, Users } from "lucide-react";
 import { MetricCard } from "@/components/dashboard/MetricCard";
 import { ExportCsvButton } from "@/components/dashboard/ExportCsvButton";
 import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
@@ -11,7 +11,7 @@ import type { InsightBusca } from "@/lib/insights";
 import type { ResumoPeriodo, PontoAgregado } from "@/lib/period-filter";
 import type { SaudePortal, ContextoAnual, Recomendacao } from "@/lib/saude-portal";
 import type { ServicoTop, OrgaoTop } from "@/lib/servicos-portal";
-import type { Cidade, ServicoAcessado } from "@/lib/data";
+import type { Cidade, ServicoAcessado, PortalUnicoCadastros } from "@/lib/data";
 import { municipiosComAcesso, municipiosSemAcesso, MUNICIPIOS_MS, slugIbge } from "@/lib/municipios-ms";
 
 const COR_NIVEL: Record<SaudePortal["nivel"], string> = {
@@ -48,6 +48,7 @@ export function VisaoGeralTab({
   pctServicoSemOrgao,
   fraseNavegacaoPerfil,
   matchRate,
+  portalUnicoCadastros,
 }: {
   kpis: ResumoPeriodo;
   cidadesAtual: Cidade[];
@@ -64,6 +65,7 @@ export function VisaoGeralTab({
   pctServicoSemOrgao: number;
   fraseNavegacaoPerfil: string | null;
   matchRate: number;
+  portalUnicoCadastros?: PortalUnicoCadastros[];
 }) {
   const semAcesso = municipiosSemAcesso(cidadesAtual);
   const comAcesso = municipiosComAcesso(cidadesAtual);
@@ -76,7 +78,13 @@ export function VisaoGeralTab({
           Situação Geral
         </h3>
 
-        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
+          <MetricCard
+            icon={Users}
+            label="Quantas pessoas já usam o Portal Único?"
+            value={portalUnicoCadastros?.[0]?.valor ?? "—"}
+            sub={portalUnicoCadastros?.[0]?.variacaoAbsoluta ? `+${portalUnicoCadastros[0].variacaoAbsoluta} novos acessos no período` : undefined}
+          />
           <MetricCard
             icon={saude && saude.variacaoPct < 0 ? TrendingDown : TrendingUp}
             label="Desempenho"
