@@ -154,17 +154,6 @@
     "bytes": 420
   },
   {
-    "dataset": "sites",
-    "source": "matomo",
-    "owner": "SETDIG",
-    "updatedAt": "2026-08-21T18:21:20.813151+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/matomo-sites.schema.json",
-    "rows": 144,
-    "bytes": 14877
-  },
-  {
     "dataset": "inventario-resumo",
     "source": "cartas",
     "owner": "SETDIG",
@@ -515,5 +504,16 @@
     "schema": "data-platform/schemas/matomo-fuga-hub.schema.json",
     "rows": 40,
     "bytes": 3150
+  },
+  {
+    "dataset": "sites",
+    "source": "matomo",
+    "owner": "SETDIG",
+    "updatedAt": "2026-08-26T07:32:13.531444+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/matomo-sites.schema.json",
+    "rows": 0,
+    "bytes": 2
   }
 ]
