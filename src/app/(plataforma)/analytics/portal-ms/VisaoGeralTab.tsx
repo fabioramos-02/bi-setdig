@@ -65,7 +65,7 @@ export function VisaoGeralTab({
   pctServicoSemOrgao: number;
   fraseNavegacaoPerfil: string | null;
   matchRate: number;
-  portalUnicoCadastros?: PortalUnicoCadastros[];
+  portalUnicoCadastros: PortalUnicoCadastros | null;
 }) {
   const semAcesso = municipiosSemAcesso(cidadesAtual);
   const comAcesso = municipiosComAcesso(cidadesAtual);
@@ -81,9 +81,9 @@ export function VisaoGeralTab({
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
           <MetricCard
             icon={Users}
-            label="Quantas pessoas já usam o Portal Único?"
-            value={portalUnicoCadastros?.[0]?.valor ?? "—"}
-            sub={portalUnicoCadastros?.[0]?.variacaoAbsoluta ? `+${portalUnicoCadastros[0].variacaoAbsoluta} novos acessos no período` : undefined}
+            label="Cidadãos que já usam o Portal Único"
+            value={portalUnicoCadastros?.total ?? "—"}
+            sub="acesso registrado ao menos uma vez, desde o início"
           />
           <MetricCard
             icon={saude && saude.variacaoPct < 0 ? TrendingDown : TrendingUp}

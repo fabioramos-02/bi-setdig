@@ -47,31 +47,6 @@
     "updatedAt": "2026-03-11T12:01:34.921117-04:00"
   },
   {
-    "titulo": "Termo de verificação fiscal de exportação (TVF-Exportação) - baixa",
-    "nomePopular": null,
-    "slug": "termo-de-verificacao-fiscal-de-exportacao-tvf-exportacao-baixa15",
-    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
-    "orgaoSigla": "SEFAZ MS",
-    "setor": "Unidade de Controle e Monitoramento do Comércio Exterior",
-    "categoria": "financas-e-impostos",
-    "publico": "<p><span style=\"font-size:16px\">Pessoa F&iacute;sica ou Jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os - CCIS do Estado de MS</span></p>\r\n\r\n<p><span style=\"font-size:16px\">Pessoa F&iacute;sica ou Jur&iacute;dica inscrita no Cadastro da Agropecu&aacute;ria - CAP do Estado de MS</span></p>\r\n\r\n<p style=\"text-align:justify\"><span style=\"font-size:16px\">Usu&aacute;rio/Cidad&atilde;o =&gt; Pessoa F&iacute;sica ou Jur&iacute;dica sem Inscri&ccedil;&atilde;o Estadual / &Oacute;rg&atilde;o Governamental </span></p>",
-    "publicoEspecifico": [
-      "Cidadão",
-      "Empresa",
-      "Gestão Pública"
-    ],
-    "ativo": true,
-    "digital": false,
-    "online": false,
-    "destaque": false,
-    "custo": "Uma Uferms",
-    "tempoTotal": 30,
-    "tipoTempo": "Dias corridos",
-    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
-    "createdAt": "2023-05-16T11:58:48.625978-04:00",
-    "updatedAt": "2025-11-11T10:15:45.659679-05:00"
-  },
-  {
     "titulo": "Solicitação de diploma e certificados universitários",
     "nomePopular": null,
     "slug": "077-sreddra-expedicao-de-certificados-e-diplomas68",
@@ -1262,30 +1237,6 @@
     "updatedAt": "2025-11-17T12:31:06.516699-05:00"
   },
   {
-    "titulo": "Credenciamento para recebimento de produtos agrícolas para depósito, remetidos por produtores rurais do estado de Mato Grosso, com suspensão da cobrança do ICMS (Protocolo ICMS 10/05)",
-    "nomePopular": null,
-    "slug": "credenciamento-para-recebimento-de-produtos-agricolas-para-deposito-com-suspensao-da-cobranca-do-icms-remetidos-por-produtores-rurais-do-estado-de-mato-grosso-prot-icms-100516",
-    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
-    "orgaoSigla": "SEFAZ MS",
-    "setor": "Unidade de Regimes Especiais",
-    "categoria": "financas-e-impostos",
-    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS.</span></p>\r\n\r\n<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa f&iacute;sica ou jur&iacute;dica inscrita no Cadastro da Agropecu&aacute;ria (CAP) do Estado de MS.</span></p>",
-    "publicoEspecifico": [
-      "Cidadão",
-      "Empresa"
-    ],
-    "ativo": true,
-    "digital": false,
-    "online": false,
-    "destaque": false,
-    "custo": "Cinco Uferms.",
-    "tempoTotal": 6,
-    "tipoTempo": "Meses",
-    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
-    "createdAt": "2023-05-19T14:37:36.152591-04:00",
-    "updatedAt": "2025-12-09T12:58:43.841568-05:00"
-  },
-  {
     "titulo": "Visita técnica à instituições públicas e privadas",
     "nomePopular": null,
     "slug": "011-reitoria-aai-visita-tecnica-a-instituicoes-publicas-e-privadas86",
@@ -2086,7 +2037,7 @@
     "tipoTempo": "Meses",
     "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
     "createdAt": "2023-05-22T08:30:17.288749-04:00",
-    "updatedAt": "2025-12-08T08:45:38.980638-05:00"
+    "updatedAt": "2026-08-25T08:45:23.410328-04:00"
   },
   {
     "titulo": "Fazer Pedido de acesso a informação",
@@ -2378,29 +2329,6 @@
     "updatedAt": "2024-09-05T16:47:17.065811-04:00"
   },
   {
-    "titulo": "Regime especial - operações de exportação, saídas com o fim específico de exportação e remessas para formação de lote de produtos industrializados ou semielaborados (Decreto nº 11.803/2005) - indústrias de combustíveis e usinas de açúcar e álcool",
-    "nomePopular": null,
-    "slug": "regime-especial-apenas-p-industrias-de-combustiveis-e-usinas-de-acucar-e-alcool-permissao-p-realizar-operacoes-de-exportacao-saidas-com-o-fim-especifico-de-exportacao-e-de-remessas-p-formacao-de-lote-de-produtos-industrializados-ou-semielaborados6",
-    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
-    "orgaoSigla": "SEFAZ MS",
-    "setor": "Unidade de Regimes Especiais",
-    "categoria": "financas-e-impostos",
-    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica Industrial de combust&iacute;veis, derivados ou n&atilde;o de petr&oacute;leo, usinas de a&ccedil;&uacute;car e &aacute;lcool, inscritas no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS.</span></p>",
-    "publicoEspecifico": [
-      "Empresa"
-    ],
-    "ativo": true,
-    "digital": false,
-    "online": false,
-    "destaque": false,
-    "custo": "Cinco Uferms.",
-    "tempoTotal": 6,
-    "tipoTempo": "Meses",
-    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
-    "createdAt": "2023-05-18T08:01:36.049984-04:00",
-    "updatedAt": "2025-12-11T14:45:57.664658-05:00"
-  },
-  {
     "titulo": "Solicitar resultados de exames e cópia de prontuário médico",
     "nomePopular": "SAME",
     "slug": "servico-de-arquivo-medico-same96",
@@ -2447,6 +2375,29 @@
     "urlExterno": null,
     "createdAt": "2025-01-30T15:02:03.957827-05:00",
     "updatedAt": "2026-08-06T15:49:01.492892-04:00"
+  },
+  {
+    "titulo": "Regime especial - operações de exportação, saídas com o fim específico de exportação e remessas para formação de lote de produtos industrializados ou semielaborados (Decreto nº 11.803/2005) - indústrias de combustíveis e usinas de açúcar e álcool",
+    "nomePopular": null,
+    "slug": "regime-especial-apenas-p-industrias-de-combustiveis-e-usinas-de-acucar-e-alcool-permissao-p-realizar-operacoes-de-exportacao-saidas-com-o-fim-especifico-de-exportacao-e-de-remessas-p-formacao-de-lote-de-produtos-industrializados-ou-semielaborados6",
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "setor": "Unidade de Regimes Especiais",
+    "categoria": "financas-e-impostos",
+    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica Industrial de combust&iacute;veis, derivados ou n&atilde;o de petr&oacute;leo, usinas de a&ccedil;&uacute;car e &aacute;lcool, inscritas no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS.</span></p>",
+    "publicoEspecifico": [
+      "Empresa"
+    ],
+    "ativo": true,
+    "digital": false,
+    "online": false,
+    "destaque": false,
+    "custo": "Cinco Uferms.",
+    "tempoTotal": 6,
+    "tipoTempo": "Meses",
+    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
+    "createdAt": "2023-05-18T08:01:36.049984-04:00",
+    "updatedAt": "2026-08-25T11:05:05.708941-04:00"
   },
   {
     "titulo": "Registrar denúncia",
@@ -2639,30 +2590,6 @@
     "updatedAt": "2025-11-11T10:39:08.472596-05:00"
   },
   {
-    "titulo": "Regime especial - PROEXPRP - Ponta Porã (art. 5º-A do Decreto nº 14.426/2016)",
-    "nomePopular": null,
-    "slug": "regime-especial-proexprp-ponta-pora-art-5o-a-do-dec-144262016129",
-    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
-    "orgaoSigla": "SEFAZ MS",
-    "setor": "Unidade de Regimes Especiais",
-    "categoria": "financas-e-impostos",
-    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os - CCIS do Estado de MS.</span></p>\r\n\r\n<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa f&iacute;sica ou jur&iacute;dica inscrita no Cadastro da Agropecu&aacute;ria - CAP do Estado de MS.</span></p>",
-    "publicoEspecifico": [
-      "Cidadão",
-      "Empresa"
-    ],
-    "ativo": true,
-    "digital": false,
-    "online": false,
-    "destaque": false,
-    "custo": "Cinco Uferms.",
-    "tempoTotal": 6,
-    "tipoTempo": "Meses",
-    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
-    "createdAt": "2023-05-18T10:19:29.574452-04:00",
-    "updatedAt": "2025-12-11T14:49:00.886592-05:00"
-  },
-  {
     "titulo": "Licitar e contratar",
     "nomePopular": "LICITAÇÕES E CONTRATAÇÕES DIRETAS",
     "slug": "licitacoes-e-contratacoes-diretas74",
@@ -2732,6 +2659,30 @@
     "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
     "createdAt": "2026-05-09T14:05:55.089671-04:00",
     "updatedAt": "2026-05-11T08:48:04.431612-04:00"
+  },
+  {
+    "titulo": "Regime especial - PROEXPRP - Ponta Porã (art. 5º-A do Decreto nº 14.426/2016)",
+    "nomePopular": null,
+    "slug": "regime-especial-proexprp-ponta-pora-art-5o-a-do-dec-144262016129",
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "setor": "Unidade de Regimes Especiais",
+    "categoria": "financas-e-impostos",
+    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os - CCIS do Estado de MS.</span></p>\r\n\r\n<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa f&iacute;sica ou jur&iacute;dica inscrita no Cadastro da Agropecu&aacute;ria - CAP do Estado de MS.</span></p>",
+    "publicoEspecifico": [
+      "Cidadão",
+      "Empresa"
+    ],
+    "ativo": true,
+    "digital": false,
+    "online": false,
+    "destaque": false,
+    "custo": "Cinco Uferms.",
+    "tempoTotal": 6,
+    "tipoTempo": "Meses",
+    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
+    "createdAt": "2023-05-18T10:19:29.574452-04:00",
+    "updatedAt": "2026-08-25T11:31:17.095782-04:00"
   },
   {
     "titulo": "Permissão para a Utilização e/ou Ocupação das Faixas de Domínio",
@@ -3658,29 +3609,6 @@
     "updatedAt": "2025-12-03T21:32:00.283703-05:00"
   },
   {
-    "titulo": "Regime especial - dilatação de prazo para pagamento, por período mensal, do ICMS devido nas saídas interestaduais de soja e farelo de soja - indústrias de óleo de soja (art. 4º, I, a do Anexo V ao RICMS, c/c art. 74, III do RICMS)",
-    "nomePopular": null,
-    "slug": "regime-especial-dilatacao-do-prazo-para-pagamento-mensal-do-icms-devido-nas-saidas-interestaduais-de-soja-e-farelo-de-soja-apenas-para-industrias-de-oleo-de-soja-art-4o-i-a-do-anexo-v-ao-ricms-combinado-com-art-74-iii-do-regulamento-do-icms-r13",
-    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
-    "orgaoSigla": "SEFAZ MS",
-    "setor": "Unidade de Regimes Especiais",
-    "categoria": "financas-e-impostos",
-    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS, cadastrada como industrial fabricante de &oacute;leo de soja.</span></p>",
-    "publicoEspecifico": [
-      "Empresa"
-    ],
-    "ativo": true,
-    "digital": false,
-    "online": false,
-    "destaque": false,
-    "custo": "Cinco Uferms.",
-    "tempoTotal": 6,
-    "tipoTempo": "Meses",
-    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
-    "createdAt": "2023-05-17T11:08:59.454940-04:00",
-    "updatedAt": "2025-12-12T19:45:50.598007-05:00"
-  },
-  {
     "titulo": "Participar do festival de dança coreografada da melhor idade",
     "nomePopular": "Festival de Dança Coreografada da Melhor Idade",
     "slug": "festival-de-danca-coreografada-da-melhor-idade26",
@@ -3725,29 +3653,6 @@
     "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
     "createdAt": "2025-08-21T14:43:19.417839-04:00",
     "updatedAt": "2025-11-17T15:33:47.666348-05:00"
-  },
-  {
-    "titulo": "Autorização específica - remessa interna para industrialização com diferimento do ICMS incidente sobre o valor do serviço de industrialização, no retorno dos produtos ao estabelecimento de origem (Decreto nº 11.236/2003)",
-    "nomePopular": null,
-    "slug": "autorizacao-especifica-remessa-para-industrializacao-operacao-interna-com-diferimento-do-icms-incidente-sobre-o-valor-do-servico-de-industrializacao-no-retorno-dos-produtos-ao-estabelecimento-de-origem-dec-1123620036",
-    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
-    "orgaoSigla": "SEFAZ MS",
-    "setor": "Unidade de Regimes Especiais",
-    "categoria": "financas-e-impostos",
-    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS, desde que seja industrial e seja detentor de benef&iacute;cio ou incentivo fiscal concedido mediante delibera&ccedil;&atilde;o ou proposta do CDI/MS ou mediante acordo celebrado na forma do disposto no art. 34 da <a href=\"https://aacpdappls.net.ms.gov.br/appls/legislacao/serc/legato.nsf/23b657614c182061042579c80053770d/8c374a7005c9643104256da9006e87c4?OpenDocument\" style=\"color:#0563c1; text-decoration:underline\">Lei Complementar n&ordm; 93 de 2001</a>.</span></p>",
-    "publicoEspecifico": [
-      "Empresa"
-    ],
-    "ativo": true,
-    "digital": false,
-    "online": false,
-    "destaque": false,
-    "custo": "Cinco Uferms.",
-    "tempoTotal": 6,
-    "tipoTempo": "Meses",
-    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
-    "createdAt": "2023-05-22T10:54:26.764321-04:00",
-    "updatedAt": "2025-12-12T19:53:09.519874-05:00"
   },
   {
     "titulo": "Solicitar campanhas e ações educativas de trânsito",
@@ -4437,29 +4342,6 @@
     "updatedAt": "2025-12-09T08:50:50.909268-05:00"
   },
   {
-    "titulo": "Autorização específica - crédito outorgado e redução do percentual de MVA nas operações internas realizadas por estabelecimentos comerciais atacadistas (Decreto nº 15.368/2020) - apenas para atacadistas",
-    "nomePopular": null,
-    "slug": "autorizacao-especifica-utilizacao-de-credito-outorgado-nas-operacoes-internas-realizadas-por-estabelecimentos-comerciais-atacadistas-com-mercadorias-destinadas-a-comercializacao-ou-a-industrializacao-dec-15368202042",
-    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
-    "orgaoSigla": "SEFAZ MS",
-    "setor": "Unidade de Regimes Especiais",
-    "categoria": "financas-e-impostos",
-    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS, cadastrada como atacadista, desde que:</span></p>\r\n\r\n<ol style=\"list-style-type:lower-alpha\">\r\n\t<li style=\"text-align:justify\"><span style=\"font-size:16px\">Esteja inscrita no Cadastro de Contribuintes do Estado sob o C&oacute;digo Nacional de Atividades Econ&ocirc;micas (CNAE) G4639701, G4639702, G4646002, G4691500 e G4693100 como atividade principal;</span></li>\r\n\t<li style=\"text-align:justify\"><span style=\"font-size:16px\">Possua, regularmente, no territ&oacute;rio do Estado, como propriedade ou a qualquer outro t&iacute;tulo, local adequado para o exerc&iacute;cio da respectiva atividade, no porte compat&iacute;vel com o volume de opera&ccedil;&otilde;es realizadas, e que seja utilizado, efetivamente, como log&iacute;stica de armazenamento e distribui&ccedil;&atilde;o;</span></li>\r\n\t<li style=\"text-align:justify\"><span style=\"font-size:16px\">Esteja filiada &agrave; Associa&ccedil;&atilde;o Sul-Mato-Grossense de Atacadistas e Distribuidores (ASMAD);</span></li>\r\n\t<li style=\"text-align:justify\"><span style=\"font-size:16px\">Esteja qualificada como contribuinte substituto, nos termos dos artigos 2&ordm;-A ou 2&ordm;-B do <a href=\"https://aacpdappls.net.ms.gov.br/appls/legislacao/serc/legato.nsf/34248fea4d6a6d2a04256b210079ce20/31511cecb1ac450a04256d6400483d13?OpenDocument\" style=\"color:#0563c1; text-decoration:underline\">Anexo III ao Regulamento do ICMS</a>.</span></li>\r\n</ol>",
-    "publicoEspecifico": [
-      "Empresa"
-    ],
-    "ativo": true,
-    "digital": false,
-    "online": false,
-    "destaque": false,
-    "custo": "Cinco Uferms.",
-    "tempoTotal": 6,
-    "tipoTempo": "Meses",
-    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
-    "createdAt": "2023-05-22T09:51:29.470569-04:00",
-    "updatedAt": "2025-12-12T19:54:59.198905-05:00"
-  },
-  {
     "titulo": "Registrar reclamação, solicitação, sugestão e elogio",
     "nomePopular": "Registros",
     "slug": "registrar-reclamacao-solicitacao-sugestao-e-elogio24",
@@ -4482,6 +4364,29 @@
     "urlExterno": "https://www.semadesc.ms.gov.br/precoce-ms/",
     "createdAt": "2025-04-25T15:05:32.569850-04:00",
     "updatedAt": "2025-04-28T11:15:32.061314-04:00"
+  },
+  {
+    "titulo": "Autorização específica - crédito outorgado e redução do percentual de MVA nas operações internas realizadas por estabelecimentos comerciais atacadistas (Decreto nº 15.368/2020) - apenas para atacadistas",
+    "nomePopular": null,
+    "slug": "autorizacao-especifica-utilizacao-de-credito-outorgado-nas-operacoes-internas-realizadas-por-estabelecimentos-comerciais-atacadistas-com-mercadorias-destinadas-a-comercializacao-ou-a-industrializacao-dec-15368202042",
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "setor": "Unidade de Regimes Especiais",
+    "categoria": "financas-e-impostos",
+    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS, cadastrada como atacadista, desde que:</span></p>\r\n\r\n<ol style=\"list-style-type:lower-alpha\">\r\n\t<li style=\"text-align:justify\"><span style=\"font-size:16px\">Esteja inscrita no Cadastro de Contribuintes do Estado sob o C&oacute;digo Nacional de Atividades Econ&ocirc;micas (CNAE) G4639701, G4639702, G4646002, G4691500 e G4693100 como atividade principal;</span></li>\r\n\t<li style=\"text-align:justify\"><span style=\"font-size:16px\">Possua, regularmente, no territ&oacute;rio do Estado, como propriedade ou a qualquer outro t&iacute;tulo, local adequado para o exerc&iacute;cio da respectiva atividade, no porte compat&iacute;vel com o volume de opera&ccedil;&otilde;es realizadas, e que seja utilizado, efetivamente, como log&iacute;stica de armazenamento e distribui&ccedil;&atilde;o;</span></li>\r\n\t<li style=\"text-align:justify\"><span style=\"font-size:16px\">Esteja filiada &agrave; Associa&ccedil;&atilde;o Sul-Mato-Grossense de Atacadistas e Distribuidores (ASMAD);</span></li>\r\n\t<li style=\"text-align:justify\"><span style=\"font-size:16px\">Esteja qualificada como contribuinte substituto, nos termos dos artigos 2&ordm;-A ou 2&ordm;-B do <a href=\"https://aacpdappls.net.ms.gov.br/appls/legislacao/serc/legato.nsf/34248fea4d6a6d2a04256b210079ce20/31511cecb1ac450a04256d6400483d13?OpenDocument\" style=\"color:#0563c1; text-decoration:underline\">Anexo III ao Regulamento do ICMS</a>.</span></li>\r\n</ol>",
+    "publicoEspecifico": [
+      "Empresa"
+    ],
+    "ativo": true,
+    "digital": false,
+    "online": false,
+    "destaque": false,
+    "custo": "Cinco Uferms.",
+    "tempoTotal": 6,
+    "tipoTempo": "Meses",
+    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
+    "createdAt": "2023-05-22T09:51:29.470569-04:00",
+    "updatedAt": "2026-08-25T11:28:09.904600-04:00"
   },
   {
     "titulo": "Autorização específica mediante Termo de Acordo - concessão e renovação - concessionárias de veículos novos - redução da base de cálculo - tratamento tributário do Decreto nº 11.089/2003",
@@ -4671,7 +4576,7 @@
     "tipoTempo": "Meses",
     "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
     "createdAt": "2023-05-19T15:14:21.634391-04:00",
-    "updatedAt": "2025-12-12T20:03:30.588715-05:00"
+    "updatedAt": "2026-08-25T11:29:36.667050-04:00"
   },
   {
     "titulo": "Acessar site para ouvir a rádio educativa fm 104,7 de forma gratuita (Portal da Educativa)",
@@ -5125,29 +5030,6 @@
     "updatedAt": "2025-11-03T13:45:33.006959-05:00"
   },
   {
-    "titulo": "Autorização - inclusão de franqueadora no regime especial de transportadora conveniada (Anexo XII ao RICMS) - apenas para transportadoras de MS com regime especial de transportadora conveniada",
-    "nomePopular": null,
-    "slug": "autorizacao-inclusao-de-franqueadora-no-regime-especial-de-transportadora-conveniada-anexo-xii-ao-ricms75",
-    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
-    "orgaoSigla": "SEFAZ MS",
-    "setor": "Unidade de Regimes Especiais",
-    "categoria": "financas-e-impostos",
-    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS que possua Regime Especial de Transportadora Conveniada</span></p>",
-    "publicoEspecifico": [
-      "Empresa"
-    ],
-    "ativo": true,
-    "digital": false,
-    "online": false,
-    "destaque": false,
-    "custo": "Uma Uferms.",
-    "tempoTotal": 6,
-    "tipoTempo": "Meses",
-    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
-    "createdAt": "2023-05-19T10:24:42.958648-04:00",
-    "updatedAt": "2025-12-16T14:53:07.477852-05:00"
-  },
-  {
     "titulo": "Falar com a Glória",
     "nomePopular": "Atendente virtual do Detran-MS Glória",
     "slug": "falar-com-a-gloria167",
@@ -5172,6 +5054,29 @@
     "updatedAt": "2026-06-15T17:13:00.832264-04:00"
   },
   {
+    "titulo": "Autorização - inclusão de franqueadora no regime especial de transportadora conveniada (Anexo XII ao RICMS) - apenas para transportadoras de MS com regime especial de transportadora conveniada",
+    "nomePopular": null,
+    "slug": "autorizacao-inclusao-de-franqueadora-no-regime-especial-de-transportadora-conveniada-anexo-xii-ao-ricms75",
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "setor": "Unidade de Regimes Especiais",
+    "categoria": "financas-e-impostos",
+    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS que possua Regime Especial de Transportadora Conveniada</span></p>",
+    "publicoEspecifico": [
+      "Empresa"
+    ],
+    "ativo": true,
+    "digital": false,
+    "online": false,
+    "destaque": false,
+    "custo": "Uma Uferms.",
+    "tempoTotal": 6,
+    "tipoTempo": "Meses",
+    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
+    "createdAt": "2023-05-19T10:24:42.958648-04:00",
+    "updatedAt": "2026-08-25T11:30:56.924029-04:00"
+  },
+  {
     "titulo": "Registrar boletim de ocorrências on-line",
     "nomePopular": "Delegacia Virtual - DEVIR",
     "slug": "delegacia-virtual-devir105",
@@ -5193,29 +5098,6 @@
     "urlExterno": "http://devir.pc.ms.gov.br/#/",
     "createdAt": "2023-05-26T11:02:33.898036-04:00",
     "updatedAt": "2025-10-24T19:20:38.549877-04:00"
-  },
-  {
-    "titulo": "Autorização - controle de empresas interdependentes (art. 57-A da Lei nº 1.810/1997) - apenas para contribuintes de Mato Grosso do Sul",
-    "nomePopular": null,
-    "slug": "autorizacao-controle-de-empresas-interdependentes-art-57-a-da-lei-no-18101997166",
-    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
-    "orgaoSigla": "SEFAZ MS",
-    "setor": "Unidade de Regimes Especiais",
-    "categoria": "financas-e-impostos",
-    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS.</span></p>",
-    "publicoEspecifico": [
-      "Empresa"
-    ],
-    "ativo": true,
-    "digital": false,
-    "online": false,
-    "destaque": false,
-    "custo": "Uma Uferms.",
-    "tempoTotal": 6,
-    "tipoTempo": "Meses",
-    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
-    "createdAt": "2023-05-17T14:45:57.216434-04:00",
-    "updatedAt": "2025-12-16T14:53:59.682350-05:00"
   },
   {
     "titulo": "Registrar reclamação, solicitação, sugestão e elogio",
@@ -5290,6 +5172,29 @@
     "updatedAt": "2025-06-02T10:38:52.639502-04:00"
   },
   {
+    "titulo": "Autorização - controle de empresas interdependentes (art. 57-A da Lei nº 1.810/1997) - apenas para contribuintes de Mato Grosso do Sul",
+    "nomePopular": null,
+    "slug": "autorizacao-controle-de-empresas-interdependentes-art-57-a-da-lei-no-18101997166",
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "setor": "Unidade de Regimes Especiais",
+    "categoria": "financas-e-impostos",
+    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS.</span></p>",
+    "publicoEspecifico": [
+      "Empresa"
+    ],
+    "ativo": true,
+    "digital": false,
+    "online": false,
+    "destaque": false,
+    "custo": "Uma Uferms.",
+    "tempoTotal": 6,
+    "tipoTempo": "Meses",
+    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
+    "createdAt": "2023-05-17T14:45:57.216434-04:00",
+    "updatedAt": "2026-08-25T11:31:58.308144-04:00"
+  },
+  {
     "titulo": "Escrituração fiscal digital (EFD) - baixa de notificação",
     "nomePopular": null,
     "slug": "escrituracao-fiscal-digital-efd-baixa-de-notificacao52",
@@ -5337,30 +5242,6 @@
     "updatedAt": "2025-07-02T09:01:12.702028-04:00"
   },
   {
-    "titulo": "Levantamento ou devolução de garantia oferecida para: obtenção e renovação de regime especial ou autorização específica; cadastro como distribuidora de combustíveis estabelecida em MS ou como contribuinte substituto tributário de MS",
-    "nomePopular": null,
-    "slug": "levantamento-ou-devolucao-de-garantia-oferecida-p-obtencaorenovacao-de-regime-especial-ou-autorizacao-especifica-cadastro-como-distribuidora-de-combustiveis-estabelecida-em-ms-cadastro-como-contribuinte-substituto-tributario-de-ms-estabelecido-em-ou6",
-    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
-    "orgaoSigla": "SEFAZ MS",
-    "setor": "Unidade de Regimes Especiais",
-    "categoria": "financas-e-impostos",
-    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Contribuinte ou seu representante legal que tenha apresentado garantia numa das situa&ccedil;&otilde;es descritas no item &ldquo;O que &eacute; este servi&ccedil;o&rdquo;.</span></p>",
-    "publicoEspecifico": [
-      "Cidadão",
-      "Empresa"
-    ],
-    "ativo": true,
-    "digital": false,
-    "online": false,
-    "destaque": false,
-    "custo": "Sem custo.",
-    "tempoTotal": 6,
-    "tipoTempo": "Meses",
-    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
-    "createdAt": "2023-05-17T14:11:54.324636-04:00",
-    "updatedAt": "2025-12-16T14:54:56.335372-05:00"
-  },
-  {
     "titulo": "IPVA - cancelamento de débito - roubo, furto ou apropriação indébita",
     "nomePopular": "Solicitar o cancelamento de débitos de IPVA de veículos objeto de roubo, furto ou apropriação indébita",
     "slug": "ipva-roubo-furto-ou-apropriacao-indebita-cancelamento-de-debitos-de-ipva-em-virtude-de-roubo-furto-ou-apropriacao-indebita95",
@@ -5406,6 +5287,30 @@
     "urlExterno": null,
     "createdAt": "2024-09-02T08:50:27.457724-04:00",
     "updatedAt": "2025-09-02T14:33:31.464376-04:00"
+  },
+  {
+    "titulo": "Levantamento ou devolução de garantia oferecida para: obtenção e renovação de regime especial ou autorização específica; cadastro como distribuidora de combustíveis estabelecida em MS ou como contribuinte substituto tributário de MS",
+    "nomePopular": null,
+    "slug": "levantamento-ou-devolucao-de-garantia-oferecida-p-obtencaorenovacao-de-regime-especial-ou-autorizacao-especifica-cadastro-como-distribuidora-de-combustiveis-estabelecida-em-ms-cadastro-como-contribuinte-substituto-tributario-de-ms-estabelecido-em-ou6",
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "setor": "Unidade de Regimes Especiais",
+    "categoria": "financas-e-impostos",
+    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Contribuinte ou seu representante legal que tenha apresentado garantia numa das situa&ccedil;&otilde;es descritas no item &ldquo;O que &eacute; este servi&ccedil;o&rdquo;.</span></p>",
+    "publicoEspecifico": [
+      "Cidadão",
+      "Empresa"
+    ],
+    "ativo": true,
+    "digital": false,
+    "online": false,
+    "destaque": false,
+    "custo": "Sem custo.",
+    "tempoTotal": 6,
+    "tipoTempo": "Meses",
+    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
+    "createdAt": "2023-05-17T14:11:54.324636-04:00",
+    "updatedAt": "2026-08-25T11:32:21.582543-04:00"
   },
   {
     "titulo": "Verificar recolhimento do ITCD em processos de inventário e similares",
@@ -5573,29 +5478,6 @@
     "urlExterno": null,
     "createdAt": "2024-02-14T13:43:30.202539-05:00",
     "updatedAt": "2026-03-09T13:40:31.551357-04:00"
-  },
-  {
-    "titulo": "Fusão/Incorporação (art. 13-A e 13-B do Anexo V ao Regulamento do ICMS)",
-    "nomePopular": null,
-    "slug": "fusaoincorporacao-art-13-a-e-13-b-do-anexo-v-ao-regulamento-do-icms-ricms106",
-    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
-    "orgaoSigla": "SEFAZ MS",
-    "setor": "Unidade de Regimes Especiais",
-    "categoria": "financas-e-impostos",
-    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS.</span></p>",
-    "publicoEspecifico": [
-      "Empresa"
-    ],
-    "ativo": true,
-    "digital": false,
-    "online": false,
-    "destaque": false,
-    "custo": "Depende.",
-    "tempoTotal": 6,
-    "tipoTempo": "Meses",
-    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
-    "createdAt": "2023-05-17T13:54:09.308123-04:00",
-    "updatedAt": "2025-12-16T14:55:12.171475-05:00"
   },
   {
     "titulo": "Aderir ao programa de verticalização da produção agropecuária do estado do MS",
@@ -5881,29 +5763,6 @@
     "updatedAt": "2024-09-05T16:47:18.098779-04:00"
   },
   {
-    "titulo": "Autorização específica - diferimento do ICMS na aquisição de embalagens plásticas e latas produzidas em MS para acondicionar os produtos do adquirente (Resolução Interna SEF de 1993) - apenas para indústrias e abatedores de animais",
-    "nomePopular": null,
-    "slug": "autorizacao-especifica-diferimento-do-icms-na-aquisicao-de-embalagens-plasticas-e-latas-produzidas-em-ms-e-utilizadas-no-acondicionamento-dos-produtos-do-adquirente-resolucao-interna-sef-000-de-17081993173",
-    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
-    "orgaoSigla": "SEFAZ MS",
-    "setor": "Unidade de Regimes Especiais",
-    "categoria": "financas-e-impostos",
-    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica estabelecida em Mato Grosso do Sul e inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS, desde que seja ind&uacute;stria ou<strong> </strong>estabelecimento abatedor de aves, bovinos, su&iacute;nos e outros animais. </span></p>",
-    "publicoEspecifico": [
-      "Empresa"
-    ],
-    "ativo": true,
-    "digital": false,
-    "online": false,
-    "destaque": false,
-    "custo": "Cinco Uferms.",
-    "tempoTotal": 6,
-    "tipoTempo": "Meses",
-    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
-    "createdAt": "2023-05-17T10:34:42.930056-04:00",
-    "updatedAt": "2025-12-16T14:56:23.076146-05:00"
-  },
-  {
     "titulo": "Acervo Maria da Glória Sá Rosa - eventos, palestras, oficinas relacionadas a temas científicos",
     "nomePopular": null,
     "slug": "916-unidade-universitaria-de-campo-grande-acervo-maria-da-gloria-sa-rosa-curso-de-letras-uucg-eventos-palestras-oficinas-relacionados-a-temas-culturais-e-cientificos162",
@@ -6155,15 +6014,15 @@
       "Cidadão"
     ],
     "ativo": true,
-    "digital": false,
-    "online": true,
+    "digital": true,
+    "online": false,
     "destaque": false,
     "custo": "Sem custo",
     "tempoTotal": 20,
     "tipoTempo": "Dias corridos",
     "urlExterno": "http://devir.pc.ms.gov.br/#/",
     "createdAt": "2025-04-29T10:15:45.398400-04:00",
-    "updatedAt": "2025-04-29T15:17:12.445490-04:00"
+    "updatedAt": "2026-08-25T16:25:23.895157-04:00"
   },
   {
     "titulo": "Solicitar cadastro de atividades complementares de ensino (ACE)",
@@ -6187,29 +6046,6 @@
     "urlExterno": "https://www.uems.br/pro-reitoria/proe/deppe/ace",
     "createdAt": "2024-09-02T17:17:49.446769-04:00",
     "updatedAt": "2025-09-02T14:44:06.320474-04:00"
-  },
-  {
-    "titulo": "Autorização específica - diferimento do lançamento e do pagamento do ICMS Garantido-Abate (Decreto nº 12.056/2006) - serviço exclusivo para atacadistas de carne (CAE 4.17.00)",
-    "nomePopular": null,
-    "slug": "autorizacao-especifica-diferimento-do-lancamento-e-pagamento-do-icms-incidente-na-aquisicao-de-gado-garantido-abate-decreto-no-120562006-servico-exclusivo-para-atacadistas-de-carne-cae-4170089",
-    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
-    "orgaoSigla": "SEFAZ MS",
-    "setor": "Unidade de Regimes Especiais",
-    "categoria": "financas-e-impostos",
-    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS, cadastrada como atacadista de carnes (CAE 4.17.00) que adquire os animais e promove o seu abate em matadouro p&uacute;blico ou privado, por sua encomenda. </span></p>",
-    "publicoEspecifico": [
-      "Empresa"
-    ],
-    "ativo": true,
-    "digital": false,
-    "online": false,
-    "destaque": false,
-    "custo": "Cinco Uferms.",
-    "tempoTotal": 6,
-    "tipoTempo": "Meses",
-    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
-    "createdAt": "2023-05-17T08:55:03.296745-04:00",
-    "updatedAt": "2025-12-16T15:00:31.005576-05:00"
   },
   {
     "titulo": "Visitar e contemplar obras plásticas de arte contemporânea do acervo do MARCO - Museu de Arte Contemporânea",
@@ -6257,6 +6093,29 @@
     "urlExterno": "O acesso é feito pelo site da MSGÁS: www.msgas.com.br, ou via aplicativo “MSGÁSApp” que está disponível nos sistemas IOS e Android, nas lojas Apple Store e Google Play.",
     "createdAt": "2023-04-24T10:26:46.869924-04:00",
     "updatedAt": "2025-09-03T20:06:46.487030-04:00"
+  },
+  {
+    "titulo": "Autorização específica - diferimento do ICMS Garantido-Abate (Decreto nº 12.056/2006) - serviço exclusivo para atacadistas de carne (CNAE G4634601 ou CAE 41700)",
+    "nomePopular": null,
+    "slug": "autorizacao-especifica-diferimento-do-lancamento-e-pagamento-do-icms-incidente-na-aquisicao-de-gado-garantido-abate-decreto-no-120562006-servico-exclusivo-para-atacadistas-de-carne-cae-4170089",
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "setor": "Unidade de Regimes Especiais",
+    "categoria": "financas-e-impostos",
+    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS, cadastrada como atacadista de carnes (CNAE G4634601 ou CAE 41700) que adquire os animais e promove o seu abate em matadouro p&uacute;blico ou privado, por sua encomenda. </span></p>",
+    "publicoEspecifico": [
+      "Empresa"
+    ],
+    "ativo": true,
+    "digital": false,
+    "online": false,
+    "destaque": false,
+    "custo": "Cinco Uferms.",
+    "tempoTotal": 6,
+    "tipoTempo": "Meses",
+    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
+    "createdAt": "2023-05-17T08:55:03.296745-04:00",
+    "updatedAt": "2026-08-25T11:36:30.025048-04:00"
   },
   {
     "titulo": "ICMS - liberação da entrada de mercadorias procedentes de outras unidades da federação e destinadas à demonstração em feiras e eventos realizados no estado, com suspensão da cobrança do ICMS",
@@ -6588,29 +6447,6 @@
     "updatedAt": "2025-10-28T11:40:52.385212-04:00"
   },
   {
-    "titulo": "Autorização específica - dilatação do prazo para pagamento semanal do ICMS devido nas saídas interestaduais - diferimento do ICMS Garantido-Abate - serviços exclusivos para atacadistas de carne (CAE 4.17.00)",
-    "nomePopular": null,
-    "slug": "autorizacao-especifica-dilatacao-do-prazo-para-pagamento-semanal-do-icms-devido-nas-saidas-interestaduais-e-diferimento-do-icms-nas-operacoes-com-gado-para-abate-servico-exclusivo-para-atacadistas-de-carne-cae-4170056",
-    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
-    "orgaoSigla": "SEFAZ MS",
-    "setor": "Unidade de Regimes Especiais",
-    "categoria": "financas-e-impostos",
-    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS, cadastrada como atacadista de carne (CAE 4.17.00).</span></p>",
-    "publicoEspecifico": [
-      "Empresa"
-    ],
-    "ativo": true,
-    "digital": false,
-    "online": false,
-    "destaque": false,
-    "custo": "Cinco Uferms.",
-    "tempoTotal": 6,
-    "tipoTempo": "Meses",
-    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
-    "createdAt": "2023-05-17T08:41:33.166327-04:00",
-    "updatedAt": "2025-12-16T15:00:56.885367-05:00"
-  },
-  {
     "titulo": "Registrar reclamação, solicitação, sugestão e elogio",
     "nomePopular": "Fazer uma reclamação, solicitação, sugestão e elogio",
     "slug": "registrar-reclamacao-solicitacao-sugestao-e-elogio9",
@@ -6633,6 +6469,29 @@
     "urlExterno": "https://falabr.cgu.gov.br/web/home",
     "createdAt": "2024-07-08T11:41:33.073519-04:00",
     "updatedAt": "2025-12-04T14:56:11.619103-05:00"
+  },
+  {
+    "titulo": "Autorização específica - dilatação de prazo para pagamento semanal em conjunto com diferimento do ICMS Garantido-Abate - serviço exclusivo para atacadistas de carne (CNAE G4634601 ou CAE 41700)",
+    "nomePopular": null,
+    "slug": "autorizacao-especifica-dilatacao-do-prazo-para-pagamento-semanal-do-icms-devido-nas-saidas-interestaduais-e-diferimento-do-icms-nas-operacoes-com-gado-para-abate-servico-exclusivo-para-atacadistas-de-carne-cae-4170056",
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "setor": "Unidade de Regimes Especiais",
+    "categoria": "financas-e-impostos",
+    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS, cadastrada como atacadista de carne (CNAE G4634601 ou CAE 41700).</span></p>",
+    "publicoEspecifico": [
+      "Empresa"
+    ],
+    "ativo": true,
+    "digital": false,
+    "online": false,
+    "destaque": false,
+    "custo": "Cinco Uferms.",
+    "tempoTotal": 6,
+    "tipoTempo": "Meses",
+    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
+    "createdAt": "2023-05-17T08:41:33.166327-04:00",
+    "updatedAt": "2026-08-25T11:36:54.192780-04:00"
   },
   {
     "titulo": "Denunciar violação de direitos humanos pelo Disque 100",
@@ -6941,7 +6800,7 @@
     "tipoTempo": "Meses",
     "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
     "createdAt": "2023-05-22T07:46:25.411637-04:00",
-    "updatedAt": "2025-12-10T12:37:51.494476-05:00"
+    "updatedAt": "2026-08-25T10:56:38.739958-04:00"
   },
   {
     "titulo": "Solicitar suporte em informática aos alunos, técnicos e professores da UEMS Campo Grande",
@@ -7723,29 +7582,6 @@
     "updatedAt": "2025-12-18T13:17:09.409196-05:00"
   },
   {
-    "titulo": "Autorização específica - credenciamento para remessa de alumínio a estabelecimentos de outra UF, assumindo a responsabilidade pelo pagamento do ICMS (art. 47-A, § 5º, II do Anexo III ao RICMS)",
-    "nomePopular": null,
-    "slug": "autorizacao-especifica-credenciamento-para-remessa-de-aluminio-em-outra-uf-clausula-1a-4o-ii-do-convenio-icms-362016-art-47-a-5o-ii-do-anexo-iii-ao-regulamento-do-icms34",
-    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
-    "orgaoSigla": "SEFAZ MS",
-    "setor": "Unidade de Regimes Especiais",
-    "categoria": "financas-e-impostos",
-    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS.</span></p>",
-    "publicoEspecifico": [
-      "Empresa"
-    ],
-    "ativo": true,
-    "digital": false,
-    "online": false,
-    "destaque": false,
-    "custo": "Cinco Uferms.",
-    "tempoTotal": 6,
-    "tipoTempo": "Meses",
-    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
-    "createdAt": "2023-05-17T13:37:15.636354-04:00",
-    "updatedAt": "2025-12-16T14:55:34.294170-05:00"
-  },
-  {
     "titulo": "Protocolar Defesa (1ª instância) e Recurso (2ª instância)",
     "nomePopular": "Requerimento de Defesa",
     "slug": "protocolar-defesa-1a-instancia-e-recurso-2a-instancia154",
@@ -7932,9 +7768,9 @@
     "custo": "Sem custo",
     "tempoTotal": 30,
     "tipoTempo": "Dias corridos",
-    "urlExterno": null,
+    "urlExterno": "https://falabr.cgu.gov.br/v2/",
     "createdAt": "2024-07-02T14:24:46.872983-04:00",
-    "updatedAt": "2025-12-18T14:49:43.977463-05:00"
+    "updatedAt": "2026-08-25T16:23:30.742781-04:00"
   },
   {
     "titulo": "IPVA - restituição de pagamento indevido",
@@ -8007,29 +7843,6 @@
     "updatedAt": "2026-06-15T17:13:11.418746-04:00"
   },
   {
-    "titulo": "Autorização específica - dilatação do prazo para pagamento semanal do ICMS devido nas saídas interestaduais (art. 72, V do Anexo V ao RICMS) - apenas para usinas e industriais de combustíveis, derivados ou não de petróleo",
-    "nomePopular": null,
-    "slug": "autorizacao-especifica-dilatacao-do-prazo-para-pagamento-semanal-do-icms-devido-nas-saidas-interestaduais-art-72-v-do-anexo-v-ao-ricms-servico-exclusivo-para-industriais-de-combustiveis-derivados-ou-nao-de-petroleo36",
-    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
-    "orgaoSigla": "SEFAZ MS",
-    "setor": "Unidade de Regimes Especiais",
-    "categoria": "financas-e-impostos",
-    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS, desde que seja industrial de combust&iacute;veis, derivados ou n&atilde;o de petr&oacute;leo.</span></p>\r\n\r\n<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro da Agropecu&aacute;ria (CAP) do Estado de MS, desde que seja industrial de combust&iacute;veis, derivados ou n&atilde;o de petr&oacute;leo.</span></p>",
-    "publicoEspecifico": [
-      "Empresa"
-    ],
-    "ativo": true,
-    "digital": false,
-    "online": false,
-    "destaque": false,
-    "custo": "Cinco Uferms.",
-    "tempoTotal": 6,
-    "tipoTempo": "Meses",
-    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
-    "createdAt": "2024-06-24T14:36:47.275416-04:00",
-    "updatedAt": "2025-12-18T10:11:53.154286-05:00"
-  },
-  {
     "titulo": "Solicitar a avaliação pericial para comunicação de acidente de trabalho - CAT",
     "nomePopular": "Comunicação de acidente de trabalho - CAT",
     "slug": "avaliacao-pericial-para-comunicacao-de-acidente-de-trabalho-cat-avaliacao-pericial-para-comunicacao-de-acidente-de-trabalho-cat172",
@@ -8051,6 +7864,29 @@
     "urlExterno": null,
     "createdAt": "2023-06-05T15:06:10.378710-04:00",
     "updatedAt": "2025-10-22T11:57:21.513073-04:00"
+  },
+  {
+    "titulo": "Autorização específica - dilatação de prazo para pagamento semanal do ICMS devido nas saídas interestaduais - serviço exclusivo para usinas e industriais de combustíveis, derivados ou não de petróleo",
+    "nomePopular": null,
+    "slug": "autorizacao-especifica-dilatacao-do-prazo-para-pagamento-semanal-do-icms-devido-nas-saidas-interestaduais-art-72-v-do-anexo-v-ao-ricms-servico-exclusivo-para-industriais-de-combustiveis-derivados-ou-nao-de-petroleo36",
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "setor": "Unidade de Regimes Especiais",
+    "categoria": "financas-e-impostos",
+    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS, desde que seja industrial de combust&iacute;veis, derivados ou n&atilde;o de petr&oacute;leo.</span></p>\r\n\r\n<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro da Agropecu&aacute;ria (CAP) do Estado de MS, desde que seja industrial de combust&iacute;veis, derivados ou n&atilde;o de petr&oacute;leo.</span></p>",
+    "publicoEspecifico": [
+      "Empresa"
+    ],
+    "ativo": true,
+    "digital": false,
+    "online": false,
+    "destaque": false,
+    "custo": "Cinco Uferms.",
+    "tempoTotal": 6,
+    "tipoTempo": "Meses",
+    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
+    "createdAt": "2024-06-24T14:36:47.275416-04:00",
+    "updatedAt": "2026-08-25T14:13:53.263851-04:00"
   },
   {
     "titulo": "Nota fiscal eletrônica (NF-e), modelo 55 - credenciamento",
@@ -8675,13 +8511,13 @@
   },
   {
     "titulo": "Autorização específica - aquisição de milho e soja para uso na ração animal, com diferimento do ICMS",
-    "nomePopular": null,
+    "nomePopular": "Solicitar autorização específica para aquisição de milho e soja para uso na ração animal, com diferimento do ICMS",
     "slug": "autorizacao-especifica-aquisicao-de-milho-e-soja-para-uso-na-racao-animal-com-diferimento-do-icms117",
     "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
     "orgaoSigla": "SEFAZ MS",
     "setor": "Coordenadoria de Fiscalização do ICMS Agricultura e Pecuária",
     "categoria": "agropecuaria-e-vida-rural",
-    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa F&iacute;sica ou Jur&iacute;dica inscrita no Cadastro da Agropecu&aacute;ria - CAP do Estado de MS </span></p>",
+    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa f&iacute;sica ou jur&iacute;dica inscrita no Cadastro da Agropecu&aacute;ria - CAP do Estado de MS.</span></p>",
     "publicoEspecifico": [
       "Cidadão",
       "Empresa"
@@ -8690,12 +8526,12 @@
     "digital": false,
     "online": false,
     "destaque": false,
-    "custo": "Cinco Uferms",
+    "custo": "Cinco Uferms.",
     "tempoTotal": 30,
     "tipoTempo": "Dias corridos",
     "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
     "createdAt": "2023-05-15T07:34:39.551724-04:00",
-    "updatedAt": "2025-11-25T09:14:21.797845-05:00"
+    "updatedAt": "2026-08-25T08:48:49.559106-04:00"
   },
   {
     "titulo": "Solicitar o atendimento equoterapêutico.",
@@ -8835,7 +8671,7 @@
     "tipoTempo": "Meses",
     "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
     "createdAt": "2023-05-19T09:43:10.002827-04:00",
-    "updatedAt": "2025-12-18T10:10:38.136152-05:00"
+    "updatedAt": "2026-08-25T11:37:16.979396-04:00"
   },
   {
     "titulo": "Nota fiscal de produtor eletrônica (NFP-e) - cancelamento dentro do prazo de 144h",
@@ -10144,7 +9980,7 @@
     "tipoTempo": "Meses",
     "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
     "createdAt": "2023-05-19T08:30:41.404402-04:00",
-    "updatedAt": "2025-12-10T12:36:27.761901-05:00"
+    "updatedAt": "2026-08-25T09:50:30.120873-04:00"
   },
   {
     "titulo": "Solicitar autorização para prestação de assistência religiosa",
@@ -10592,29 +10428,6 @@
     "urlExterno": null,
     "createdAt": "2023-05-12T15:09:02.941660-04:00",
     "updatedAt": "2026-06-15T17:11:50.401103-04:00"
-  },
-  {
-    "titulo": "Regime especial - substituto tributário do ICMS devido sobre autopeças adquiridas em outra Unidade da Federação - apenas para atacadistas/distribuidoras de autopeças (art. 4º, I, c, 4 do Anexo V ao RICMS e art. 5º do Decreto nº 14.383/2016)",
-    "nomePopular": null,
-    "slug": "regime-especial-substituto-tributario-do-icms-devido-sobre-autopecas-adquiridas-em-outra-unidade-da-federacao-apenas-para-atacadistasdistribuidoras-de-autopecas-art-4o-i-c-4-do-anexo-v-ao-ricms-e-art-5o-do-dec-143832016183",
-    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
-    "orgaoSigla": "SEFAZ MS",
-    "setor": "Unidade de Regimes Especiais",
-    "categoria": "financas-e-impostos",
-    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica estabelecida em Mato Grosso do Sul e inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS, desde que seja atacadista/distribuidora de autope&ccedil;as.</span></p>",
-    "publicoEspecifico": [
-      "Empresa"
-    ],
-    "ativo": true,
-    "digital": false,
-    "online": false,
-    "destaque": false,
-    "custo": "Cinco Uferms.",
-    "tempoTotal": 6,
-    "tipoTempo": "Meses",
-    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
-    "createdAt": "2023-05-19T08:49:52.550886-04:00",
-    "updatedAt": "2025-12-10T12:37:04.540877-05:00"
   },
   {
     "titulo": "Cursar a formação de agente de fiscalização de trânsito",
@@ -14721,14 +14534,14 @@
     "updatedAt": "2025-09-01T22:47:33.392444-04:00"
   },
   {
-    "titulo": "Autorização específica - diferimento do lançamento e do pagamento do ICMS incidente na aquisição de gado bovino e bufalino em pé para abate (Decreto nº 12.056/2006) - serviço exclusivo para frigoríficos (CAE 3.17.03)",
+    "titulo": "Autorização específica - diferimento do ICMS incidente na aquisição de gado bovino e bufalino em pé para abate (Decreto 12.056/2006) - serviço exclusivo para frigoríficos (CNAE C1011201 ou CAE 31703)",
     "nomePopular": null,
     "slug": "autorizacao-especifica-diferimento-do-lancamento-e-pagamento-do-icms-incidente-na-aquisicao-de-gado-em-pe-para-abate-art-2o-1o-e-art-17-d-ii-do-decreto-no-120562006-servico-exclusivo-para-frigorificos-cae-31703179",
     "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
     "orgaoSigla": "SEFAZ MS",
     "setor": "Unidade de Regimes Especiais",
     "categoria": "financas-e-impostos",
-    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS, cadastrada como frigor&iacute;fico (CAE 3.17.03).</span></p>",
+    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS, cadastrada como frigor&iacute;fico (CNAE C1011201 ou CAE 31703).</span></p>",
     "publicoEspecifico": [
       "Empresa"
     ],
@@ -14741,7 +14554,7 @@
     "tipoTempo": "Meses",
     "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
     "createdAt": "2023-05-17T08:29:57.371162-04:00",
-    "updatedAt": "2025-12-10T12:35:48.014935-05:00"
+    "updatedAt": "2026-08-25T09:46:50.466261-04:00"
   },
   {
     "titulo": "Solicitar desvinculação de multas de veículos adquiridos em leilões",
@@ -15095,29 +14908,6 @@
     "updatedAt": "2026-07-03T10:11:21.209460-04:00"
   },
   {
-    "titulo": "Comprovação de destinação de parte do IRPJ ao Fundo Estadual para a Infância e a Adolescência (FEINAD/MS) ou ao Fundo Estadual dos Direitos da Pessoa Idosa (FEDPI/MS)",
-    "nomePopular": "Comprovar a destinação de parte do IRPJ ao FEINAD/MS ou ao FEDPI/MS",
-    "slug": "comprovacao-de-destinacao-de-parte-do-irpj-ao-fundo-estadual-para-a-infancia-e-a-adolescencia-feinadms-ou-ao-fundo-estadual-dos-direitos-da-pessoa-idosa-fedpims-na-forma-da-lei-complementar-n-932001-cidec169",
-    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
-    "orgaoSigla": "SEFAZ MS",
-    "setor": "Coordenadoria de Incentivos Fiscais e Desenvolvimento Econômico",
-    "categoria": "financas-e-impostos",
-    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoas jur&iacute;dicas de direito privado instaladas no Estado que utilizem benef&iacute;cios ou incentivos fiscais previstos na legisla&ccedil;&atilde;o sul-mato-grossense, obrigados a realizar a destina&ccedil;&atilde;o aos fundos especiais de Mato Grosso do Sul na forma do art. 1&ordm; da <a href=\"https://aacpdappls.net.ms.gov.br/appls/legislacao/serc/legato.nsf/23b657614c182061042579c80053770d/5d0a0b8f72327c0804258d32004f532d?OpenDocument\" style=\"color:#0563c1; text-decoration:underline\">Lei Complementar n&ordm; 349/2025</a>.</span></p>\r\n\r\n<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoas jur&iacute;dicas de direito privado instaladas no Estado e signat&aacute;rias de benef&iacute;cios concedidos de forma individualizada, com base na </span><a href=\"http://aacpdappls.net.ms.gov.br/appls/legislacao/secoge/govato.nsf/66ecc3cfb53d53ff04256b140049444b/3a836f159c1b161904256c000058e57a?OpenDocument\" style=\"font-size: 16px; color: rgb(5, 99, 193);\">Lei Complementar n&ordm; 93/2001</a><span style=\"font-size:16px\">, para a comprova&ccedil;&atilde;o da destina&ccedil;&atilde;o de parte do imposto de renda devido ao Fundo Estadual para a Inf&acirc;ncia e a Adolesc&ecirc;ncia (FEINAD/MS) ou ao Fundo Estadual dos Direitos da Pessoa Idosa (FEDPI/MS) na forma da </span><a href=\"http://aacpdappls.net.ms.gov.br/appls/legislacao/secoge/govato.nsf/66ecc3cfb53d53ff04256b140049444b/3a836f159c1b161904256c000058e57a?OpenDocument\" style=\"font-size: 16px; color: rgb(5, 99, 193);\">Lei Complementar n&ordm; 93/2001</a><span style=\"font-size:16px\">.</span></p>",
-    "publicoEspecifico": [
-      "Empresa"
-    ],
-    "ativo": true,
-    "digital": false,
-    "online": false,
-    "destaque": false,
-    "custo": "Sem custo.",
-    "tempoTotal": 180,
-    "tipoTempo": "Dias corridos",
-    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
-    "createdAt": "2024-05-08T13:02:36.556319-04:00",
-    "updatedAt": "2026-07-06T15:27:01.190379-04:00"
-  },
-  {
     "titulo": "Autorização específica - redução de base de cálculo nas saídas de farinha de mandioca promovidas por produtor rural (art. 60-F do Anexo I ao RICMS) - apenas para produtores rurais",
     "nomePopular": null,
     "slug": "autorizacao-especifica-reducao-de-base-de-calculo-nas-saidas-de-farinha-de-mandioca-promovidas-por-produtor-rural91",
@@ -15139,7 +14929,30 @@
     "tipoTempo": "Meses",
     "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
     "createdAt": "2023-05-22T11:47:14.190522-04:00",
-    "updatedAt": "2025-12-12T19:58:44.585903-05:00"
+    "updatedAt": "2026-08-25T11:29:04.911567-04:00"
+  },
+  {
+    "titulo": "Comprovação de destinação de parte do IRPJ ao Fundo Estadual para a Infância e a Adolescência (FEINAD/MS) ou ao Fundo Estadual dos Direitos da Pessoa Idosa (FEDPI/MS)",
+    "nomePopular": "Comprovar a destinação de parte do IRPJ ao FEINAD/MS ou ao FEDPI/MS",
+    "slug": "comprovacao-de-destinacao-de-parte-do-irpj-ao-fundo-estadual-para-a-infancia-e-a-adolescencia-feinadms-ou-ao-fundo-estadual-dos-direitos-da-pessoa-idosa-fedpims-na-forma-da-lei-complementar-n-932001-cidec169",
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "setor": "Coordenadoria de Incentivos Fiscais e Desenvolvimento Econômico",
+    "categoria": "financas-e-impostos",
+    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoas jur&iacute;dicas de direito privado instaladas no Estado que utilizem benef&iacute;cios ou incentivos fiscais previstos na legisla&ccedil;&atilde;o sul-mato-grossense, obrigados a realizar a destina&ccedil;&atilde;o aos fundos especiais de Mato Grosso do Sul na forma do art. 1&ordm; da <a href=\"https://aacpdappls.net.ms.gov.br/appls/legislacao/serc/legato.nsf/23b657614c182061042579c80053770d/5d0a0b8f72327c0804258d32004f532d?OpenDocument\" style=\"color:#0563c1; text-decoration:underline\">Lei Complementar n&ordm; 349/2025</a>.</span></p>\r\n\r\n<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoas jur&iacute;dicas de direito privado instaladas no Estado e signat&aacute;rias de benef&iacute;cios concedidos de forma individualizada, com base na </span><a href=\"http://aacpdappls.net.ms.gov.br/appls/legislacao/secoge/govato.nsf/66ecc3cfb53d53ff04256b140049444b/3a836f159c1b161904256c000058e57a?OpenDocument\" style=\"font-size: 16px; color: rgb(5, 99, 193);\">Lei Complementar n&ordm; 93/2001</a><span style=\"font-size:16px\">, para a comprova&ccedil;&atilde;o da destina&ccedil;&atilde;o de parte do imposto de renda devido ao Fundo Estadual para a Inf&acirc;ncia e a Adolesc&ecirc;ncia (FEINAD/MS) ou ao Fundo Estadual dos Direitos da Pessoa Idosa (FEDPI/MS) na forma da </span><a href=\"http://aacpdappls.net.ms.gov.br/appls/legislacao/secoge/govato.nsf/66ecc3cfb53d53ff04256b140049444b/3a836f159c1b161904256c000058e57a?OpenDocument\" style=\"font-size: 16px; color: rgb(5, 99, 193);\">Lei Complementar n&ordm; 93/2001</a><span style=\"font-size:16px\">.</span></p>",
+    "publicoEspecifico": [
+      "Empresa"
+    ],
+    "ativo": true,
+    "digital": false,
+    "online": false,
+    "destaque": false,
+    "custo": "Sem custo.",
+    "tempoTotal": 180,
+    "tipoTempo": "Dias corridos",
+    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
+    "createdAt": "2024-05-08T13:02:36.556319-04:00",
+    "updatedAt": "2026-08-25T08:46:42.703197-04:00"
   },
   {
     "titulo": "Registrar denúncia",
@@ -15356,7 +15169,7 @@
     "tipoTempo": "Meses",
     "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
     "createdAt": "2023-05-17T14:56:36.994280-04:00",
-    "updatedAt": "2025-12-11T14:48:04.040486-05:00"
+    "updatedAt": "2026-08-25T11:26:28.182122-04:00"
   },
   {
     "titulo": "Fazer pedido de acesso à informação",
@@ -16185,7 +15998,7 @@
     "orgaoSigla": "SEFAZ MS",
     "setor": "Unidade de Regimes Especiais",
     "categoria": "financas-e-impostos",
-    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica com inscri&ccedil;&atilde;o no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS, que exer&ccedil;a a atividade de industrial de carne bovina ou bufalina, em estado natural ou simplesmente resfriada ou congelada, ainda que embalada a v&aacute;cuo:</span></p>\r\n\r\n<ul>\r\n\t<li style=\"text-align:justify\"><span style=\"font-size:16px\">Frigor&iacute;ficos (CAE 3.17.03);</span></li>\r\n\t<li style=\"text-align:justify\"><span style=\"font-size:16px\">Atacadistas de carne que adquiram animais para abate sob sua encomenda (CAE 4.17.00).</span></li>\r\n</ul>",
+    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica com inscri&ccedil;&atilde;o no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS, que exer&ccedil;a a atividade de industrial de carne bovina ou bufalina, em estado natural ou simplesmente resfriada ou congelada, ainda que embalada a v&aacute;cuo:</span></p>\r\n\r\n<ul>\r\n\t<li style=\"text-align:justify\"><span style=\"font-size:16px\">Frigor&iacute;ficos (CNAE C1011201 ou CAE 31703);</span></li>\r\n\t<li style=\"text-align:justify\"><span style=\"font-size:16px\">Atacadistas de carne que adquiram animais para abate sob sua encomenda (CNAE G4634601 ou CAE 41700).</span></li>\r\n</ul>",
     "publicoEspecifico": [
       "Empresa"
     ],
@@ -16198,7 +16011,7 @@
     "tipoTempo": "Meses",
     "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
     "createdAt": "2023-05-18T08:32:05.262768-04:00",
-    "updatedAt": "2025-12-11T14:46:50.409278-05:00"
+    "updatedAt": "2026-08-25T11:06:30.570609-04:00"
   },
   {
     "titulo": "Solicitação de cópia de documentos, processos ou outra relativa a benefícios fiscais",
@@ -16554,14 +16367,14 @@
     "updatedAt": "2026-07-22T13:17:07.155950-04:00"
   },
   {
-    "titulo": "Autorização específica - dilatação do prazo para pagamento semanal do ICMS devido nas saídas interestaduais - diferimento do ICMS nas operações com gado bovino e bufalino para abate ou diferimento do ICMS Garantido-Abate - exclusivo para frigoríficos",
+    "titulo": "Autorização específica - dilatação de prazo para pagamento semanal em conjunto com diferimento do ICMS nas operações com gado ou Garantido-Abate - serviço exclusivo para frigoríficos (CNAE C1011201 ou CAE 31703)",
     "nomePopular": null,
     "slug": "autorizacao-especifica-dilatacao-do-prazo-para-pagamento-semanal-do-icms-devido-nas-saidas-interestaduais-e-diferimento-do-icms-nas-operacoes-com-gado-para-abate-servico-exclusivo-para-frigorificos-cae-31703159",
     "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
     "orgaoSigla": "SEFAZ MS",
     "setor": "Unidade de Regimes Especiais",
     "categoria": "financas-e-impostos",
-    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS, cadastrada como frigor&iacute;fico (CAE 3.17.03).</span></p>",
+    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS, cadastrada como frigor&iacute;fico (CNAE C1011201 ou CAE 31703).</span></p>",
     "publicoEspecifico": [
       "Empresa"
     ],
@@ -16574,30 +16387,7 @@
     "tipoTempo": "Meses",
     "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
     "createdAt": "2023-05-17T09:10:02.219818-04:00",
-    "updatedAt": "2025-12-16T14:57:10.264292-05:00"
-  },
-  {
-    "titulo": "Regime especial - substituto tributário responsável pelo pagamento semanal do ICMS Transporte devido por transportadora desta ou de outra UF ou por transportador autônomo (Decreto nº 14.923/2018)",
-    "nomePopular": null,
-    "slug": "regime-especial-substituto-tributario-responsavel-pelo-pagamento-semanal-do-icms-transporte-devido-por-transportadora-de-outra-uf-ou-por-transportador-autonomo-dec-149232018163",
-    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
-    "orgaoSigla": "SEFAZ MS",
-    "setor": "Unidade de Regimes Especiais",
-    "categoria": "financas-e-impostos",
-    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS.</span></p>",
-    "publicoEspecifico": [
-      "Empresa"
-    ],
-    "ativo": true,
-    "digital": false,
-    "online": false,
-    "destaque": false,
-    "custo": "Cinco Uferms.",
-    "tempoTotal": 6,
-    "tipoTempo": "Meses",
-    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
-    "createdAt": "2023-05-18T11:02:10.054002-04:00",
-    "updatedAt": "2025-12-10T12:35:05.514969-05:00"
+    "updatedAt": "2026-08-25T11:36:01.316775-04:00"
   },
   {
     "titulo": "Autenticar livro digital",
@@ -17303,7 +17093,7 @@
     "tipoTempo": "Dias corridos",
     "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
     "createdAt": "2026-07-27T15:49:01.459199-04:00",
-    "updatedAt": "2026-07-28T09:24:28.785079-04:00"
+    "updatedAt": "2026-08-25T14:14:39.396791-04:00"
   },
   {
     "titulo": "Registrar denúncia",
@@ -20243,7 +20033,7 @@
     "tipoTempo": "Meses",
     "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
     "createdAt": "2023-05-22T13:42:40.910467-04:00",
-    "updatedAt": "2025-12-12T19:57:30.533686-05:00"
+    "updatedAt": "2026-08-25T11:28:43.546118-04:00"
   },
   {
     "titulo": "Solicitar desobstrução de esgoto",
@@ -22187,30 +21977,6 @@
     "urlExterno": "https://falabr.cgu.gov.br/web/home",
     "createdAt": "2024-08-14T16:09:07.135265-04:00",
     "updatedAt": "2025-12-04T14:12:16.098276-05:00"
-  },
-  {
-    "titulo": "Regime especial - operações de exportação, saídas com o fim específico de exportação e remessas para formação de lote de produtos in natura, inclusive algodão em pluma, exceto soja e milho (Decreto nº 11.803/2005)",
-    "nomePopular": null,
-    "slug": "regime-especial-permissao-para-realizar-operacoes-de-exportacao-de-saidas-com-o-fim-especifico-de-exportacao-e-de-remessas-para-formacao-de-lote-de-produtos-in-natura-inclusive-algodao-em-pluma-dec-118032005128",
-    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
-    "orgaoSigla": "SEFAZ MS",
-    "setor": "Unidade de Regimes Especiais",
-    "categoria": "financas-e-impostos",
-    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa f&iacute;sica ou jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS.</span></p>\r\n\r\n<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa f&iacute;sica ou jur&iacute;dica inscrita no Cadastro da Agropecu&aacute;ria (CAP) do Estado de MS.</span></p>",
-    "publicoEspecifico": [
-      "Cidadão",
-      "Empresa"
-    ],
-    "ativo": true,
-    "digital": false,
-    "online": false,
-    "destaque": false,
-    "custo": "Cinco Uferms.",
-    "tempoTotal": 6,
-    "tipoTempo": "Meses",
-    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
-    "createdAt": "2023-05-17T15:05:47.021289-04:00",
-    "updatedAt": "2025-12-11T14:47:27.658248-05:00"
   },
   {
     "titulo": "ICMS Equalização Simples Nacional - revisão na hipótese de o contribuinte não ser o destinatário da mercadoria",
@@ -24478,6 +24244,29 @@
     "updatedAt": "2026-08-19T13:38:13.455626-04:00"
   },
   {
+    "titulo": "Regime especial - transportadora conveniada por meio de Termo de Acordo para atuar como fiel depositária das mercadorias que transporta (Anexo XII ao RICMS)",
+    "nomePopular": null,
+    "slug": "regime-especial-transportadora-conveniada-por-meio-de-termo-de-acordo-para-atuar-como-fiel-depositaria-das-mercadorias-que-transporta-anexo-xii-ao-ricms99",
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "setor": "Unidade de Regimes Especiais",
+    "categoria": "financas-e-impostos",
+    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS que exer&ccedil;a a atividade de transporte de cargas.</span></p>",
+    "publicoEspecifico": [
+      "Empresa"
+    ],
+    "ativo": true,
+    "digital": false,
+    "online": false,
+    "destaque": false,
+    "custo": "Cinco Uferms.",
+    "tempoTotal": 6,
+    "tipoTempo": "Meses",
+    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
+    "createdAt": "2023-05-19T10:07:25.966281-04:00",
+    "updatedAt": "2026-08-25T08:43:27.716952-04:00"
+  },
+  {
     "titulo": "Registrar reclamação, solicitação, sugestão e elogio",
     "nomePopular": null,
     "slug": "registar-reclamacao-solicitacao-sugestao-e-elogio77",
@@ -24597,6 +24386,31 @@
     "updatedAt": "2025-12-04T14:30:48.805074-05:00"
   },
   {
+    "titulo": "Termo de verificação fiscal de exportação (TVF-Exportação) - baixa",
+    "nomePopular": "Solicitar a baixa de TVF lavrado em decorrência de mercadoria destinada à exportação",
+    "slug": "termo-de-verificacao-fiscal-de-exportacao-tvf-exportacao-baixa15",
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "setor": "Unidade de Controle e Monitoramento do Comércio Exterior",
+    "categoria": "financas-e-impostos",
+    "publico": "<p><span style=\"font-size:16px\">Pessoa f&iacute;sica ou jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os - CCIS do Estado de MS.</span></p>\r\n\r\n<p><span style=\"font-size:16px\">Pessoa f&iacute;sica ou jur&iacute;dica inscrita no Cadastro da Agropecu&aacute;ria - CAP do Estado de MS.</span></p>\r\n\r\n<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa f&iacute;sica ou jur&iacute;dica sem Inscri&ccedil;&atilde;o Estadual.</span></p>\r\n\r\n<p style=\"text-align:justify\"><span style=\"font-size:16px\">&Oacute;rg&atilde;o governamental.</span></p>",
+    "publicoEspecifico": [
+      "Cidadão",
+      "Empresa",
+      "Gestão Pública"
+    ],
+    "ativo": true,
+    "digital": false,
+    "online": false,
+    "destaque": false,
+    "custo": "Uma Uferms.",
+    "tempoTotal": 30,
+    "tipoTempo": "Dias corridos",
+    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
+    "createdAt": "2023-05-16T11:58:48.625978-04:00",
+    "updatedAt": "2026-08-25T08:47:41.160743-04:00"
+  },
+  {
     "titulo": "Solicitar liberação de assinatura de documentos eletrônicos Sistema e-MS",
     "nomePopular": "liberação de assinatura de documentos eletrônicos Sistema e-MS",
     "slug": "solicitar-liberacao-de-assinatura-de-documentos-eletronicos-sistema-e-ms154",
@@ -24690,6 +24504,53 @@
     "urlExterno": "https://falabr.cgu.gov.br/web/home",
     "createdAt": "2025-05-07T15:46:38.535767-04:00",
     "updatedAt": "2026-06-15T17:13:37.293509-04:00"
+  },
+  {
+    "titulo": "Regime especial - substituto tributário responsável pelo pagamento semanal do ICMS Transporte devido por transportadora desta ou de outra UF ou por transportador autônomo (Decreto nº 14.923/2018)",
+    "nomePopular": null,
+    "slug": "regime-especial-substituto-tributario-responsavel-pelo-pagamento-semanal-do-icms-transporte-devido-por-transportadora-de-outra-uf-ou-por-transportador-autonomo-dec-149232018163",
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "setor": "Unidade de Regimes Especiais",
+    "categoria": "financas-e-impostos",
+    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS.</span></p>",
+    "publicoEspecifico": [
+      "Empresa"
+    ],
+    "ativo": true,
+    "digital": false,
+    "online": false,
+    "destaque": false,
+    "custo": "Cinco Uferms.",
+    "tempoTotal": 6,
+    "tipoTempo": "Meses",
+    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
+    "createdAt": "2023-05-18T11:02:10.054002-04:00",
+    "updatedAt": "2026-08-25T09:46:04.531783-04:00"
+  },
+  {
+    "titulo": "Regime especial - operações de exportação, saídas com o fim específico de exportação e remessas para formação de lote de produtos in natura, inclusive algodão em pluma, exceto soja e milho (Decreto nº 11.803/2005)",
+    "nomePopular": null,
+    "slug": "regime-especial-permissao-para-realizar-operacoes-de-exportacao-de-saidas-com-o-fim-especifico-de-exportacao-e-de-remessas-para-formacao-de-lote-de-produtos-in-natura-inclusive-algodao-em-pluma-dec-118032005128",
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "setor": "Unidade de Regimes Especiais",
+    "categoria": "financas-e-impostos",
+    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa f&iacute;sica ou jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS.</span></p>\r\n\r\n<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa f&iacute;sica ou jur&iacute;dica inscrita no Cadastro da Agropecu&aacute;ria (CAP) do Estado de MS.</span></p>",
+    "publicoEspecifico": [
+      "Cidadão",
+      "Empresa"
+    ],
+    "ativo": true,
+    "digital": false,
+    "online": false,
+    "destaque": false,
+    "custo": "Cinco Uferms.",
+    "tempoTotal": 6,
+    "tipoTempo": "Meses",
+    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
+    "createdAt": "2023-05-17T15:05:47.021289-04:00",
+    "updatedAt": "2026-08-25T11:26:01.285200-04:00"
   },
   {
     "titulo": "Programa Institucional de Iniciação Científica – PIC",
@@ -24833,6 +24694,76 @@
     "urlExterno": null,
     "createdAt": "2025-09-25T14:09:25.341585-04:00",
     "updatedAt": "2025-10-22T09:03:42.361827-04:00"
+  },
+  {
+    "titulo": "Credenciamento para recebimento de produtos agrícolas para depósito, remetidos por produtores rurais do estado de Mato Grosso, com suspensão da cobrança do ICMS (Protocolo ICMS 10/05)",
+    "nomePopular": null,
+    "slug": "credenciamento-para-recebimento-de-produtos-agricolas-para-deposito-com-suspensao-da-cobranca-do-icms-remetidos-por-produtores-rurais-do-estado-de-mato-grosso-prot-icms-100516",
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "setor": "Unidade de Regimes Especiais",
+    "categoria": "financas-e-impostos",
+    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS.</span></p>\r\n\r\n<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa f&iacute;sica ou jur&iacute;dica inscrita no Cadastro da Agropecu&aacute;ria (CAP) do Estado de MS.</span></p>",
+    "publicoEspecifico": [
+      "Cidadão",
+      "Empresa"
+    ],
+    "ativo": true,
+    "digital": false,
+    "online": false,
+    "destaque": false,
+    "custo": "Cinco Uferms.",
+    "tempoTotal": 6,
+    "tipoTempo": "Meses",
+    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
+    "createdAt": "2023-05-19T14:37:36.152591-04:00",
+    "updatedAt": "2026-08-25T09:17:18.632998-04:00"
+  },
+  {
+    "titulo": "Regime especial - substituto tributário do ICMS devido sobre autopeças adquiridas em outra Unidade da Federação - apenas para atacadistas/distribuidoras de autopeças (art. 4º, I, c, 4 do Anexo V ao RICMS e art. 5º do Decreto nº 14.383/2016)",
+    "nomePopular": null,
+    "slug": "regime-especial-substituto-tributario-do-icms-devido-sobre-autopecas-adquiridas-em-outra-unidade-da-federacao-apenas-para-atacadistasdistribuidoras-de-autopecas-art-4o-i-c-4-do-anexo-v-ao-ricms-e-art-5o-do-dec-143832016183",
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "setor": "Unidade de Regimes Especiais",
+    "categoria": "financas-e-impostos",
+    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica estabelecida em Mato Grosso do Sul e inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS, desde que seja atacadista/distribuidora de autope&ccedil;as.</span></p>",
+    "publicoEspecifico": [
+      "Empresa"
+    ],
+    "ativo": true,
+    "digital": false,
+    "online": false,
+    "destaque": false,
+    "custo": "Cinco Uferms.",
+    "tempoTotal": 6,
+    "tipoTempo": "Meses",
+    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
+    "createdAt": "2023-05-19T08:49:52.550886-04:00",
+    "updatedAt": "2026-08-25T10:51:55.593188-04:00"
+  },
+  {
+    "titulo": "Autorização específica - diferimento do ICMS na aquisição de produtos agrícolas por indústrias, na operação interna (art. 3º do Decreto nº 9.895/2000) - apenas para indústrias, exceto fabricantes de ração animal",
+    "nomePopular": null,
+    "slug": "autorizacao-especifica-aquisicao-de-produtos-agricolas-por-industria-exceto-fabricante-de-racao-animal-com-diferimento-do-lancamento-e-do-pagamento-do-icms-na-operacao-interna28",
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "setor": "Unidade de Regimes Especiais",
+    "categoria": "financas-e-impostos",
+    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS, que exer&ccedil;a a atividade de industrial.</span></p>",
+    "publicoEspecifico": [
+      "Empresa"
+    ],
+    "ativo": true,
+    "digital": false,
+    "online": false,
+    "destaque": false,
+    "custo": "Cinco Uferms.",
+    "tempoTotal": 6,
+    "tipoTempo": "Meses",
+    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
+    "createdAt": "2023-05-22T07:32:12.476127-04:00",
+    "updatedAt": "2026-08-25T11:27:18.408389-04:00"
   },
   {
     "titulo": "Solicitar credenciamento de instituições no SIATER",
@@ -25022,6 +24953,29 @@
     "urlExterno": null,
     "createdAt": "2023-05-05T11:12:18.492996-04:00",
     "updatedAt": "2026-07-01T16:07:05.425373-04:00"
+  },
+  {
+    "titulo": "Autorização específica - remessa interna para industrialização com diferimento do ICMS incidente sobre o valor do serviço de industrialização, no retorno dos produtos ao estabelecimento de origem (Decreto nº 11.236/2003)",
+    "nomePopular": null,
+    "slug": "autorizacao-especifica-remessa-para-industrializacao-operacao-interna-com-diferimento-do-icms-incidente-sobre-o-valor-do-servico-de-industrializacao-no-retorno-dos-produtos-ao-estabelecimento-de-origem-dec-1123620036",
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "setor": "Unidade de Regimes Especiais",
+    "categoria": "financas-e-impostos",
+    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS, desde que seja industrial e seja detentor de benef&iacute;cio ou incentivo fiscal concedido mediante delibera&ccedil;&atilde;o ou proposta do CDI/MS ou mediante acordo celebrado na forma do disposto no art. 34 da <a href=\"https://aacpdappls.net.ms.gov.br/appls/legislacao/serc/legato.nsf/23b657614c182061042579c80053770d/8c374a7005c9643104256da9006e87c4?OpenDocument\" style=\"color:#0563c1; text-decoration:underline\">Lei Complementar n&ordm; 93 de 2001</a>.</span></p>",
+    "publicoEspecifico": [
+      "Empresa"
+    ],
+    "ativo": true,
+    "digital": false,
+    "online": false,
+    "destaque": false,
+    "custo": "Cinco Uferms.",
+    "tempoTotal": 6,
+    "tipoTempo": "Meses",
+    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
+    "createdAt": "2023-05-22T10:54:26.764321-04:00",
+    "updatedAt": "2026-08-25T11:27:43.529798-04:00"
   },
   {
     "titulo": "PROE – DIVISÃO DE ESTÁGIOS, PROGRAMAS E PROJETOS DE ENSINO (DEPPE/PROE) – CERTIFICADOS INDIVIDUAIS DE SEGURO ACADÊMICO",
@@ -25428,6 +25382,29 @@
     "updatedAt": "2025-09-01T22:58:13.097138-04:00"
   },
   {
+    "titulo": "Fusão/Incorporação (art. 13-A e 13-B do Anexo V ao Regulamento do ICMS)",
+    "nomePopular": null,
+    "slug": "fusaoincorporacao-art-13-a-e-13-b-do-anexo-v-ao-regulamento-do-icms-ricms106",
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "setor": "Unidade de Regimes Especiais",
+    "categoria": "financas-e-impostos",
+    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS.</span></p>",
+    "publicoEspecifico": [
+      "Empresa"
+    ],
+    "ativo": true,
+    "digital": false,
+    "online": false,
+    "destaque": false,
+    "custo": "Depende.",
+    "tempoTotal": 6,
+    "tipoTempo": "Meses",
+    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
+    "createdAt": "2023-05-17T13:54:09.308123-04:00",
+    "updatedAt": "2026-08-25T11:33:05.121280-04:00"
+  },
+  {
     "titulo": "Redefinição de senha do login UEMS dos alunos de pós-graduação",
     "nomePopular": "Recuperar a senha do login UEMS da pós-graduação",
     "slug": "redefinicao-de-senha-do-login-uems-dos-alunos-de-pos-graduacao191",
@@ -25449,6 +25426,29 @@
     "urlExterno": "https://www.uems.br/diretoria/dinf/Help-Desk/",
     "createdAt": "2024-09-02T08:21:28.814406-04:00",
     "updatedAt": "2025-09-02T14:48:02.266787-04:00"
+  },
+  {
+    "titulo": "Autorização específica - credenciamento para remessa de alumínio a estabelecimentos de outra UF, assumindo a responsabilidade pelo pagamento do ICMS (art. 47-A, § 5º, II do Anexo III ao RICMS)",
+    "nomePopular": null,
+    "slug": "autorizacao-especifica-credenciamento-para-remessa-de-aluminio-em-outra-uf-clausula-1a-4o-ii-do-convenio-icms-362016-art-47-a-5o-ii-do-anexo-iii-ao-regulamento-do-icms34",
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "setor": "Unidade de Regimes Especiais",
+    "categoria": "financas-e-impostos",
+    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS.</span></p>",
+    "publicoEspecifico": [
+      "Empresa"
+    ],
+    "ativo": true,
+    "digital": false,
+    "online": false,
+    "destaque": false,
+    "custo": "Cinco Uferms.",
+    "tempoTotal": 6,
+    "tipoTempo": "Meses",
+    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
+    "createdAt": "2023-05-17T13:37:15.636354-04:00",
+    "updatedAt": "2026-08-25T11:33:27.391660-04:00"
   },
   {
     "titulo": "Solicitar informações sobre o FCO",
@@ -25545,6 +25545,29 @@
     "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
     "createdAt": "2023-05-05T09:34:49.909709-04:00",
     "updatedAt": "2025-10-30T11:23:11.241777-04:00"
+  },
+  {
+    "titulo": "Autorização específica - diferimento do ICMS na aquisição de embalagens plásticas e latas produzidas em MS para acondicionar os produtos do adquirente (Resolução Interna SEF de 1993) - apenas para indústrias e abatedores de animais",
+    "nomePopular": null,
+    "slug": "autorizacao-especifica-diferimento-do-icms-na-aquisicao-de-embalagens-plasticas-e-latas-produzidas-em-ms-e-utilizadas-no-acondicionamento-dos-produtos-do-adquirente-resolucao-interna-sef-000-de-17081993173",
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "setor": "Unidade de Regimes Especiais",
+    "categoria": "financas-e-impostos",
+    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica estabelecida em Mato Grosso do Sul e inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS, desde que seja ind&uacute;stria ou<strong> </strong>estabelecimento abatedor de aves, bovinos, su&iacute;nos e outros animais. </span></p>",
+    "publicoEspecifico": [
+      "Empresa"
+    ],
+    "ativo": true,
+    "digital": false,
+    "online": false,
+    "destaque": false,
+    "custo": "Cinco Uferms.",
+    "tempoTotal": 6,
+    "tipoTempo": "Meses",
+    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
+    "createdAt": "2023-05-17T10:34:42.930056-04:00",
+    "updatedAt": "2026-08-25T11:34:14.861922-04:00"
   },
   {
     "titulo": "Solicitar serviço de imagem e diagnóstico",
@@ -25665,27 +25688,27 @@
     "updatedAt": "2026-07-01T16:07:07.967763-04:00"
   },
   {
-    "titulo": "Cursar a Atualização de Examinador de Trânsito",
-    "nomePopular": "Atualização de Examinador de Trânsito",
-    "slug": "cursar-a-atualizacao-de-examinador-de-transito103",
-    "orgao": "Departamento Estadual de Trânsito de Mato Grosso do Sul",
-    "orgaoSigla": "DETRAN",
-    "setor": "Diretoria de Educação de Trânsito",
-    "categoria": "transito-e-transportes",
-    "publico": "<p><span style=\"font-size:11pt\">Servidor com forma&ccedil;&atilde;o de Examinador de Tr&acirc;nsito</span></p>",
+    "titulo": "Regime especial - dilatação de prazo para pagamento, por período mensal, do ICMS devido nas saídas interestaduais de soja e farelo de soja - indústrias de óleo de soja (art. 4º, I, a do Anexo V ao RICMS, c/c art. 74, III do RICMS)",
+    "nomePopular": null,
+    "slug": "regime-especial-dilatacao-do-prazo-para-pagamento-mensal-do-icms-devido-nas-saidas-interestaduais-de-soja-e-farelo-de-soja-apenas-para-industrias-de-oleo-de-soja-art-4o-i-a-do-anexo-v-ao-ricms-combinado-com-art-74-iii-do-regulamento-do-icms-r13",
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "setor": "Unidade de Regimes Especiais",
+    "categoria": "financas-e-impostos",
+    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS, cadastrada como industrial fabricante de &oacute;leo de soja.</span></p>",
     "publicoEspecifico": [
-      "Servidor"
+      "Empresa"
     ],
-    "ativo": false,
+    "ativo": true,
     "digital": false,
     "online": false,
     "destaque": false,
-    "custo": "Sem custo",
-    "tempoTotal": 20,
-    "tipoTempo": "Horas",
-    "urlExterno": "www.meudetran.ms.gov.br/educacao.php",
-    "createdAt": "2024-08-09T10:33:53.679114-04:00",
-    "updatedAt": "2026-02-24T08:20:07.373755-05:00"
+    "custo": "Cinco Uferms.",
+    "tempoTotal": 6,
+    "tipoTempo": "Meses",
+    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
+    "createdAt": "2023-05-17T11:08:59.454940-04:00",
+    "updatedAt": "2026-08-25T11:35:12.707297-04:00"
   },
   {
     "titulo": "Regime especial - frigorífico de outra UF - cadastro como substituto tributário responsável pelo pagamento da diferença de peso ou preço - frigoríficos do estado de São Paulo (Protocolo ICMS 03/88)",
@@ -25708,7 +25731,30 @@
     "tipoTempo": "Meses",
     "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
     "createdAt": "2023-05-17T09:38:50.557922-04:00",
-    "updatedAt": "2025-12-12T19:48:22.816495-05:00"
+    "updatedAt": "2026-08-25T11:35:33.756348-04:00"
+  },
+  {
+    "titulo": "Cursar a Atualização de Examinador de Trânsito",
+    "nomePopular": "Atualização de Examinador de Trânsito",
+    "slug": "cursar-a-atualizacao-de-examinador-de-transito103",
+    "orgao": "Departamento Estadual de Trânsito de Mato Grosso do Sul",
+    "orgaoSigla": "DETRAN",
+    "setor": "Diretoria de Educação de Trânsito",
+    "categoria": "transito-e-transportes",
+    "publico": "<p><span style=\"font-size:11pt\">Servidor com forma&ccedil;&atilde;o de Examinador de Tr&acirc;nsito</span></p>",
+    "publicoEspecifico": [
+      "Servidor"
+    ],
+    "ativo": false,
+    "digital": false,
+    "online": false,
+    "destaque": false,
+    "custo": "Sem custo",
+    "tempoTotal": 20,
+    "tipoTempo": "Horas",
+    "urlExterno": "www.meudetran.ms.gov.br/educacao.php",
+    "createdAt": "2024-08-09T10:33:53.679114-04:00",
+    "updatedAt": "2026-02-24T08:20:07.373755-05:00"
   },
   {
     "titulo": "Solicitar registros de certificados de cursos especializados para condutores de veículos",
@@ -25803,6 +25849,30 @@
     "urlExterno": null,
     "createdAt": "2023-05-31T14:07:57.344394-04:00",
     "updatedAt": "2024-09-05T16:47:35.293267-04:00"
+  },
+  {
+    "titulo": "Autorização específica - dilatação do prazo para pagamento semanal do ICMS nas saídas interestaduais - outras empresas NÃO ENQUADRADAS como comércio de cereais, usinas, combustíveis, frigoríficos ou atacadistas de carne",
+    "nomePopular": null,
+    "slug": "autorizacao-especifica-dilatacao-do-prazo-p-pagamento-semanal-do-icms-devido-nas-saidas-interestaduais-p-empresas-que-nao-se-enquadram-como-cerealistas-comercializadoras-de-cereais-industriais-de-combustiveis-frigorificos-e-atacadistas-de-carne88",
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "setor": "Unidade de Regimes Especiais",
+    "categoria": "financas-e-impostos",
+    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS.</span></p>\r\n\r\n<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa f&iacute;sica ou jur&iacute;dica inscrita no Cadastro da Agropecu&aacute;ria (CAP) do Estado de MS.</span></p>",
+    "publicoEspecifico": [
+      "Cidadão",
+      "Empresa"
+    ],
+    "ativo": true,
+    "digital": false,
+    "online": false,
+    "destaque": false,
+    "custo": "Cinco Uferms.",
+    "tempoTotal": 6,
+    "tipoTempo": "Meses",
+    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
+    "createdAt": "2024-06-24T14:04:44.417903-04:00",
+    "updatedAt": "2026-08-25T11:37:50.018981-04:00"
   },
   {
     "titulo": "Acessar portal da transparência da MSGÁS",
@@ -25900,6 +25970,30 @@
     "updatedAt": "2025-11-14T08:01:34.188555-05:00"
   },
   {
+    "titulo": "Declaração única de importação (DUIMP) - aprovação de pagamento ou exoneração do ICMS Importação e emissão de GLME",
+    "nomePopular": "Solicitar a aprovação do ICMS declarado incidente sobre operações de importação",
+    "slug": "declaracao-unica-de-importacao-duimp-aprovacao-de-pagamento-ou-exoneracao-do-icms-importacao-e-emissao-de-glme51",
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "setor": "Unidade de Controle e Monitoramento do Comércio Exterior",
+    "categoria": "financas-e-impostos",
+    "publico": "<p><span style=\"font-size:16px\">Pessoa f&iacute;sica ou jur&iacute;dica, inscrita ou n&atilde;o no Cadastro de Contribuintes do Estado do MS (CCE).</span></p>",
+    "publicoEspecifico": [
+      "Cidadão",
+      "Empresa"
+    ],
+    "ativo": true,
+    "digital": false,
+    "online": false,
+    "destaque": false,
+    "custo": "Sem custo.",
+    "tempoTotal": 15,
+    "tipoTempo": "Dias corridos",
+    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
+    "createdAt": "2026-08-25T08:57:36.829620-04:00",
+    "updatedAt": "2026-08-25T14:14:57.759382-04:00"
+  },
+  {
     "titulo": "Solicitar orientação técnica para o desenvolvimento do setor de turismo em Mato Grosso do Sul",
     "nomePopular": "Orientação Técnica",
     "slug": "orientacao-tecnica-para-o-desenvolvimento-do-setor-de-turismo-em-mato-grosso-do-sul157",
@@ -25995,29 +26089,6 @@
     "urlExterno": null,
     "createdAt": "2023-12-28T13:32:42.295269-05:00",
     "updatedAt": "2025-11-30T07:30:12.546830-05:00"
-  },
-  {
-    "titulo": "Regime especial - transportadora conveniada por meio de Termo de Acordo para atuar como fiel depositária das mercadorias que transporta (Anexo XII ao RICMS)",
-    "nomePopular": null,
-    "slug": "regime-especial-transportadora-conveniada-por-meio-de-termo-de-acordo-para-atuar-como-fiel-depositaria-das-mercadorias-que-transporta-anexo-xii-ao-ricms99",
-    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
-    "orgaoSigla": "SEFAZ MS",
-    "setor": "Unidade de Regimes Especiais",
-    "categoria": "financas-e-impostos",
-    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS que exer&ccedil;a a atividade de transporte de cargas.</span></p>",
-    "publicoEspecifico": [
-      "Empresa"
-    ],
-    "ativo": true,
-    "digital": false,
-    "online": false,
-    "destaque": false,
-    "custo": "Cinco Uferms.",
-    "tempoTotal": 6,
-    "tipoTempo": "Meses",
-    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
-    "createdAt": "2023-05-19T10:07:25.966281-04:00",
-    "updatedAt": "2025-12-08T08:44:58.421555-05:00"
   },
   {
     "titulo": "Emitir, no formato digital, a Carteira de Identificação Estudantil de Mato Grosso do Sul",
@@ -28106,30 +28177,6 @@
     "updatedAt": "2026-06-15T17:12:52.168489-04:00"
   },
   {
-    "titulo": "Autorização específica - dilatação do prazo para pagamento semanal do ICMS nas saídas interestaduais - empresas NÃO ENQUADRADAS como cerealistas ou comercializadoras de cereais, usinas ou industriais de combustíveis, frigoríficos e atacadistas de carne",
-    "nomePopular": null,
-    "slug": "autorizacao-especifica-dilatacao-do-prazo-p-pagamento-semanal-do-icms-devido-nas-saidas-interestaduais-p-empresas-que-nao-se-enquadram-como-cerealistas-comercializadoras-de-cereais-industriais-de-combustiveis-frigorificos-e-atacadistas-de-carne88",
-    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
-    "orgaoSigla": "SEFAZ MS",
-    "setor": "Unidade de Regimes Especiais",
-    "categoria": "financas-e-impostos",
-    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS.</span></p>\r\n\r\n<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa f&iacute;sica ou jur&iacute;dica inscrita no Cadastro da Agropecu&aacute;ria (CAP) do Estado de MS.</span></p>",
-    "publicoEspecifico": [
-      "Cidadão",
-      "Empresa"
-    ],
-    "ativo": true,
-    "digital": false,
-    "online": false,
-    "destaque": false,
-    "custo": "Cinco Uferms.",
-    "tempoTotal": 6,
-    "tipoTempo": "Meses",
-    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
-    "createdAt": "2024-06-24T14:04:44.417903-04:00",
-    "updatedAt": "2025-12-18T10:11:28.630749-05:00"
-  },
-  {
     "titulo": "Solicitar peticionamento processual",
     "nomePopular": "Pedir para que alguém ajude a fazer um documento legal",
     "slug": "solicitar-peticionamento-processual-sistema-e-ms132",
@@ -28529,29 +28576,6 @@
     "urlExterno": "https://www.meudetran.ms.gov.br/habilitacao/junta-medica",
     "createdAt": "2023-05-31T15:13:09.785292-04:00",
     "updatedAt": "2026-06-15T17:12:54.658302-04:00"
-  },
-  {
-    "titulo": "Autorização específica - diferimento do ICMS na aquisição de produtos agrícolas por indústrias, na operação interna (art. 3º do Decreto nº 9.895/2000) - apenas para indústrias, exceto fabricantes de ração animal",
-    "nomePopular": null,
-    "slug": "autorizacao-especifica-aquisicao-de-produtos-agricolas-por-industria-exceto-fabricante-de-racao-animal-com-diferimento-do-lancamento-e-do-pagamento-do-icms-na-operacao-interna28",
-    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
-    "orgaoSigla": "SEFAZ MS",
-    "setor": "Unidade de Regimes Especiais",
-    "categoria": "financas-e-impostos",
-    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa jur&iacute;dica inscrita no Cadastro de Com&eacute;rcio, Ind&uacute;stria e Servi&ccedil;os (CCIS) do Estado de MS, que exer&ccedil;a a atividade de industrial.</span></p>",
-    "publicoEspecifico": [
-      "Empresa"
-    ],
-    "ativo": true,
-    "digital": false,
-    "online": false,
-    "destaque": false,
-    "custo": "Cinco Uferms.",
-    "tempoTotal": 6,
-    "tipoTempo": "Meses",
-    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
-    "createdAt": "2023-05-22T07:32:12.476127-04:00",
-    "updatedAt": "2025-12-12T19:51:34.150695-05:00"
   },
   {
     "titulo": "Solicitar realização de exame/reexame prático de direção veicular (obtenção de CNH)",
@@ -30082,7 +30106,7 @@
     "tipoTempo": "Meses",
     "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
     "createdAt": "2023-05-19T14:06:55.802334-04:00",
-    "updatedAt": "2025-12-23T09:35:15.358442-05:00"
+    "updatedAt": "2026-08-25T11:30:27.663515-04:00"
   },
   {
     "titulo": "Participar da banda sinfônica mirim da polícia militar",
@@ -31361,7 +31385,7 @@
     "tipoTempo": "Meses",
     "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
     "createdAt": "2023-05-22T09:23:36.200660-04:00",
-    "updatedAt": "2025-12-08T08:47:35.692241-05:00"
+    "updatedAt": "2026-08-25T08:46:07.617683-04:00"
   },
   {
     "titulo": "Solicitar Autorização Ambiental para Supressão Vegetal",
@@ -31458,7 +31482,7 @@
     "tipoTempo": "Meses",
     "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
     "createdAt": "2023-05-22T13:50:23.162795-04:00",
-    "updatedAt": "2025-12-09T13:01:53.363488-05:00"
+    "updatedAt": "2026-08-25T09:44:44.887389-04:00"
   },
   {
     "titulo": "Autorização específica - crédito presumido nas operações com os produtos resultantes da industrialização do leite (art. 1º do Decreto nº 6.996/1993) - apenas para industrializadores de leite",
@@ -31481,7 +31505,7 @@
     "tipoTempo": "Meses",
     "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
     "createdAt": "2023-05-22T11:28:10.146878-04:00",
-    "updatedAt": "2025-12-10T12:38:22.599698-05:00"
+    "updatedAt": "2026-08-25T11:02:28.465780-04:00"
   },
   {
     "titulo": "Fazer pedido de acesso à informação",
@@ -33068,7 +33092,7 @@
     "tipoTempo": "Meses",
     "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
     "createdAt": "2023-05-18T09:24:28.848678-04:00",
-    "updatedAt": "2025-12-11T14:48:32.455987-05:00"
+    "updatedAt": "2026-08-25T11:26:56.780263-04:00"
   },
   {
     "titulo": "Solicitar parecer de viabilidade técnica de condição sanitária",
@@ -33872,7 +33896,7 @@
     "tipoTempo": "Meses",
     "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
     "createdAt": "2023-05-17T11:54:38.081159-04:00",
-    "updatedAt": "2025-12-16T14:56:47.586200-05:00"
+    "updatedAt": "2026-08-25T11:34:38.751243-04:00"
   },
   {
     "titulo": "Consultar vacinas e antígenos nas lojas agropecuárias",
@@ -33919,7 +33943,7 @@
     "tipoTempo": "Meses",
     "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
     "createdAt": "2023-05-17T13:24:39.259014-04:00",
-    "updatedAt": "2025-12-16T14:55:58.696682-05:00"
+    "updatedAt": "2026-08-25T11:33:49.468612-04:00"
   },
   {
     "titulo": "Solicitar processo de concurso público docente",

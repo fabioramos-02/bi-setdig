@@ -56,11 +56,13 @@ export function getGa4Horarios(): BreakdownPorPeriodo<HorarioGa4> {
   return readDataset<BreakdownPorPeriodo<HorarioGa4>>("ga4", "v2", "horarios") ?? BREAKDOWN_VAZIO;
 }
 
-// --- Cadastros do Portal Único (app_id=36) ---
-export type PortalUnicoCadastros = { referencia: string; valor: number; variacaoAbsoluta: number };
+// --- Eventos de Navegação por Perfil ---
+export type CliqueAba = { perfil: string; cliques: number };
+export type CliqueServico = { perfil: string; servico: string; cliques: number };
+export type NavegacaoPerfilEventos = { cliquesAba: CliqueAba[]; cliquesServico: CliqueServico[] };
 
-export function getPortalUnicoCadastros(): BreakdownPorPeriodo<PortalUnicoCadastros> {
-  return readDataset<BreakdownPorPeriodo<PortalUnicoCadastros>>("portal-unico", "v1", "cadastros") ?? BREAKDOWN_VAZIO;
+export function getMatomoEventosNavegacaoPerfil(): Record<PeriodoFixo, NavegacaoPerfilEventos> {
+  return readDataset<Record<PeriodoFixo, NavegacaoPerfilEventos>>("matomo", "v1", "eventos-perfil-navegacao") ?? ({} as Record<PeriodoFixo, NavegacaoPerfilEventos>);
 }
 
 /** Cidades onde o app foi aberto (dimension `city` do GA4). Reusa tipo Cidade
@@ -269,6 +271,18 @@ export type AcessoCartaCompleto = {
 };
 export function getMatomoAcessosCartasCompleto(): BreakdownPorPeriodo<AcessoCartaCompleto> {
   return readDataset<BreakdownPorPeriodo<AcessoCartaCompleto>>("matomo", "v1", "acessos-cartas-completo") ?? BREAKDOWN_VAZIO;
+}
+
+// Total de cidadãos únicos que já acessaram o Portal Único (app_id=36 no
+// controlador_prd, tabela authentication_historicologin). Snapshot histórico
+// absoluto — NÃO reage ao filtro de período (é 1 número desde o início).
+// Publicado por data-platform/run.py::run_portal_unico_db. `null` quando o
+// dataset ainda não foi publicado (VPN indisponível na última rodada).
+export type PortalUnicoCadastros = { total: number; referencia: string };
+
+export function getPortalUnicoCadastros(): PortalUnicoCadastros | null {
+  const dado = readDataset<PortalUnicoCadastros[]>("portal-unico", "v1", "cadastros");
+  return dado && dado.length > 0 ? dado[0] : null;
 }
 
 // --- Catálogo de serviços do app MS Digital (nativo × web) ---

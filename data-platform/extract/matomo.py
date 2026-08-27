@@ -17,11 +17,42 @@ MATOMO_URL = os.getenv("MATOMO_URL", "")
 MATOMO_SITE_ID = os.getenv("MATOMO_SITE_ID", "")
 MATOMO_TOKEN = os.getenv("MATOMO_TOKEN", "")
 
+# Fila serial + rate limit — quebrar acessos-botao em 40 órgãos × 4 períodos × 2
+# endpoints = 320 chamadas por rodada. Sem espaçamento estoura filter/rate limit
+# do servidor (429 ou timeout). Delay default 250ms entre requests; ajustável via
+# MATOMO_REQUEST_DELAY_MS. Envelope de retry: 3 tentativas com backoff exponencial
+# em 5xx/429/timeout — 4xx (401/403 token, 400 param) NÃO retenta.
+_REQUEST_DELAY_MS = int(os.getenv("MATOMO_REQUEST_DELAY_MS", "250") or "250")
+_MAX_TENTATIVAS = 3
+_ultima_chamada_ts = 0.0
+
+
+def _throttle() -> None:
+    """Serializa chamadas: garante _REQUEST_DELAY_MS entre requests
+    consecutivas dentro do mesmo processo. Global — funciona pra qualquer
+    ordem de chamada (batch por órgão, loop de períodos, etc)."""
+    global _ultima_chamada_ts
+    if _REQUEST_DELAY_MS <= 0:
+        return
+    delay_s = _REQUEST_DELAY_MS / 1000.0
+    delta = time.monotonic() - _ultima_chamada_ts
+    if delta < delay_s:
+        time.sleep(delay_s - delta)
+    _ultima_chamada_ts = time.monotonic()
+
 
 def _call(method: str, period: str, date: str, extra: dict | None = None, site_id: str | None = None, timeout: int = 30):
-    """2 tentativas em 5xx/timeout (servidor Matomo é instável em relatórios
-    pesados tipo Transitions — ver transform/perfil.py:20-31). Sem lib nova,
-    só um retry simples: 4xx (token/param errado) não adianta repetir."""
+    """Fila global (throttle) + retry com backoff exponencial. 3 tentativas
+    em 5xx/429/timeout (servidor Matomo é instável em relatórios pesados —
+    ver transform/perfil.py:20-31 e o run.py::run_matomo_acessos_botao).
+    4xx que não seja 429 (401 token, 403 permissão, 400 param) NÃO retenta
+    — falhou permanente, insistir só multiplica erro no log."""
+    if not MATOMO_TOKEN:
+        raise RuntimeError(
+            "MATOMO_TOKEN vazio — .env não carregou ou token não configurado. "
+            "Verifique arquivo .env na raiz do repo (chave MATOMO_TOKEN)."
+        )
+
     params = {
         "module": "API",
         "method": method,
@@ -35,20 +66,36 @@ def _call(method: str, period: str, date: str, extra: dict | None = None, site_i
         params.update(extra)
     url = f"{MATOMO_URL}index.php?{urllib.parse.urlencode(params)}"
 
-    for tentativa in (1, 2):
+    ultima_exc: Exception | None = None
+    for tentativa in range(1, _MAX_TENTATIVAS + 1):
+        _throttle()
         try:
             response = requests.get(url, timeout=timeout)
             response.raise_for_status()
             return response.json()
-        except requests.exceptions.Timeout:
-            if tentativa == 2:
+        except requests.exceptions.Timeout as exc:
+            ultima_exc = exc
+            if tentativa == _MAX_TENTATIVAS:
                 raise
-            time.sleep(5)
+            time.sleep(2 ** tentativa)  # 2s, 4s
         except requests.exceptions.HTTPError as exc:
-            is_4xx = exc.response is not None and exc.response.status_code < 500
-            if tentativa == 2 or is_4xx:
+            ultima_exc = exc
+            status = exc.response.status_code if exc.response is not None else 0
+            # 429 (rate limit) retenta com backoff mais longo (respeita
+            # Retry-After se o servidor mandar). 5xx retenta backoff exponencial
+            # normal. Demais 4xx (401/403/400) falha imediato — retry piora log.
+            if status == 429:
+                if tentativa == _MAX_TENTATIVAS:
+                    raise
+                retry_after = int(exc.response.headers.get("Retry-After", "0") or "0") if exc.response is not None else 0
+                time.sleep(max(retry_after, 2 ** (tentativa + 1)))
+                continue
+            is_4xx = 400 <= status < 500
+            if tentativa == _MAX_TENTATIVAS or is_4xx:
                 raise
-            time.sleep(5)
+            time.sleep(2 ** tentativa)
+    if ultima_exc is not None:
+        raise ultima_exc
 
 
 def get_visits_summary(period: str, date: str, site_id: str | None = None) -> dict:
@@ -102,6 +149,15 @@ def get_outlinks(period: str, date: str, site_id: str | None = None, limit: int 
     relatório hierárquico nativo do Matomo já agrupa outlinks por domínio no
     primeiro nível (ver transform/matomo.py::outlinks)."""
     return _call("Actions.getOutlinks", period, date, {"filter_limit": limit}, site_id)
+
+
+def get_event_names(period: str, date: str, site_id: str | None = None, limit: int = 500, segment: str | None = None) -> list:
+    """Extrai Eventos customizados agregados por Nome. 
+    Ideal usar com segment (ex: 'eventCategory==Navegacao_Perfil,eventAction==Clique_Aba')."""
+    extra = {"filter_limit": limit, "flat": 1}
+    if segment:
+        extra["segment"] = segment
+    return _call("Events.getName", period, date, extra, site_id)
 
 
 def get_outlinks_flat(period: str, date: str, site_id: str | None = None, limit: int = 5000, timeout: int = 60) -> list:

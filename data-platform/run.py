@@ -506,6 +506,23 @@ def run_msdigital_db() -> None:
     print(f"[msdigital-db] faixas-de-acesso-por-tipo -> {[(r['faixa'], r['govbr'], r['proprio']) for r in faixas_por_tipo]}")
 
 
+def run_portal_unico_db() -> None:
+    """Total de usuários únicos que já acessaram o Portal Único (app_id=36).
+
+    Fonte: `controlador_prd.public.authentication_historicologin` (Postgres,
+    VPN). Um número absoluto histórico — sem filtro de data, sem breakdown
+    por período. Alimenta card na Visão Geral do Portal Único (não reage
+    ao filtro).
+    """
+    from extract import portal_unico_db as pu
+
+    total = pu.contar_usuarios_total()
+    payload = {"total": total, "referencia": datetime.now(timezone.utc).isoformat()}
+    validate_rows([payload], required=["total", "referencia"], non_negative=["total"])
+    publish("portal-unico", "cadastros", [payload])
+    print(f"[portal-unico-db] cadastros -> {total} usuários únicos")
+
+
 def run_qualidade() -> None:
     from extract import qualidade
     from transform import qualidade as t_qualidade
@@ -588,6 +605,27 @@ def run_portal_unico() -> None:
     print(f"[portal-unico] cadastros -> {out}")
 
 
+def run_matomo_eventos_perfil() -> None:
+    from extract import matomo
+    from transform import eventos_perfil as t_eventos
+    
+    eventos_aba_brutos = {}
+    eventos_servico_brutos = {}
+    
+    for chave, (period, date) in PERIODOS_FIXOS.items():
+        abas = matomo.get_event_names(period, date, segment="eventCategory==Navegacao_Perfil,eventAction==Clique_Aba")
+        servicos = matomo.get_event_names(period, date, segment="eventCategory==Navegacao_Perfil,eventAction==Clique_Servico")
+        eventos_aba_brutos[chave] = abas
+        eventos_servico_brutos[chave] = servicos
+        
+    breakdown = t_eventos.build_eventos_breakdown(eventos_aba_brutos, eventos_servico_brutos)
+    
+    t_eventos.validar(breakdown)
+    
+    out = publish("matomo", "eventos-perfil-navegacao", breakdown)
+    print(f"[matomo] eventos-perfil-navegacao -> {out}")
+
+
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
@@ -598,6 +636,7 @@ if __name__ == "__main__":
         ("matomo", run_matomo),
         ("matomo_perfil", run_matomo_perfil),
         ("matomo_perfil_filtro", run_matomo_perfil_filtro),
+        ("matomo_eventos_perfil", run_matomo_eventos_perfil),
         ("matomo_jornada", run_matomo_jornada),
         ("matomo_acessos_botao", run_matomo_acessos_botao),
         ("matomo-cartas", run_matomo_acessos_botao), # alias para o plano SGD
@@ -607,6 +646,7 @@ if __name__ == "__main__":
         ("cartas", run_cartas),
         ("qualidade", run_qualidade),
         ("msdigital_db", run_msdigital_db),
+        ("portal_unico_db", run_portal_unico_db),
         ("portal_unico", run_portal_unico),
     ]
     

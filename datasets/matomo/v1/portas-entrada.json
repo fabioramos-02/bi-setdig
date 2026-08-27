@@ -2,169 +2,169 @@
   "dia": [
     {
       "pagina": "/",
-      "entradas": 2566
-    },
-    {
-      "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
-      "entradas": 773
+      "entradas": 213
     },
     {
       "pagina": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
-      "entradas": 737
+      "entradas": 98
+    },
+    {
+      "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
+      "entradas": 57
     },
     {
       "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
-      "entradas": 651
+      "entradas": 50
     },
     {
       "pagina": "/orgao/jucemsjunta-comercial-do-estado-de-mato-grosso-do-sul118/servicos",
-      "entradas": 506
+      "entradas": 20
     },
     {
-      "pagina": "/empresa-industria-e-comercio/pesquisar-viabilidade198/",
-      "entradas": 342
-    },
-    {
-      "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
-      "entradas": 332
-    },
-    {
-      "pagina": "/financas-e-impostos/portal-e-fazenda-cadastro135/",
-      "entradas": 325
+      "pagina": "/workspace",
+      "entradas": 20
     },
     {
       "pagina": "/seguranca/delegacia-virtual-devir105/",
-      "entradas": 265
+      "entradas": 19
     },
     {
-      "pagina": "/empresa-industria-e-comercio/emitir-certidao-simplificada-digital84/",
-      "entradas": 247
+      "pagina": "/habitacao/inscricaocadastro67/",
+      "entradas": 15
+    },
+    {
+      "pagina": "/seguranca/expedicao-de-certidao-de-antecedentes-criminais35/",
+      "entradas": 15
+    },
+    {
+      "pagina": "/educacao-e-pesquisa/consultar-notas-e-frequencia-de-estudantes143",
+      "entradas": 14
     }
   ],
   "semana": [
     {
       "pagina": "/",
-      "entradas": 6477
+      "entradas": 10262
     },
     {
       "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
-      "entradas": 2035
+      "entradas": 3554
     },
     {
       "pagina": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
-      "entradas": 1839
+      "entradas": 3378
     },
     {
       "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
-      "entradas": 1645
+      "entradas": 3052
     },
     {
       "pagina": "/orgao/jucemsjunta-comercial-do-estado-de-mato-grosso-do-sul118/servicos",
-      "entradas": 1175
+      "entradas": 1984
     },
     {
       "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
-      "entradas": 825
-    },
-    {
-      "pagina": "/seguranca/expedicao-de-certidao-de-antecedentes-criminais35/",
-      "entradas": 801
+      "entradas": 1368
     },
     {
       "pagina": "/empresa-industria-e-comercio/pesquisar-viabilidade198/",
-      "entradas": 786
-    },
-    {
-      "pagina": "/financas-e-impostos/portal-e-fazenda-cadastro135/",
-      "entradas": 742
+      "entradas": 1291
     },
     {
       "pagina": "/seguranca/delegacia-virtual-devir105/",
-      "entradas": 739
+      "entradas": 1201
+    },
+    {
+      "pagina": "/financas-e-impostos/portal-e-fazenda-cadastro135/",
+      "entradas": 1189
+    },
+    {
+      "pagina": "/seguranca/expedicao-de-certidao-de-antecedentes-criminais35/",
+      "entradas": 1153
     }
   ],
   "mes": [
     {
       "pagina": "/",
-      "entradas": 77598
+      "entradas": 81383
     },
     {
       "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
-      "entradas": 27292
+      "entradas": 28811
     },
     {
       "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
-      "entradas": 26207
+      "entradas": 27614
     },
     {
       "pagina": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
-      "entradas": 21361
-    },
-    {
-      "pagina": "/financas-e-impostos/ipva-consulta-de-debito54/",
-      "entradas": 11534
+      "entradas": 22900
     },
     {
       "pagina": "/orgao/jucemsjunta-comercial-do-estado-de-mato-grosso-do-sul118/servicos",
-      "entradas": 11182
+      "entradas": 11991
+    },
+    {
+      "pagina": "/financas-e-impostos/ipva-consulta-de-debito54/",
+      "entradas": 11981
     },
     {
       "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
-      "entradas": 8486
+      "entradas": 9029
     },
     {
       "pagina": "/empresa-industria-e-comercio/pesquisar-viabilidade198/",
-      "entradas": 7638
+      "entradas": 8143
     },
     {
       "pagina": "/financas-e-impostos/portal-e-fazenda-cadastro135/",
-      "entradas": 6899
+      "entradas": 7346
     },
     {
       "pagina": "/seguranca/delegacia-virtual-devir105/",
-      "entradas": 6485
+      "entradas": 6947
     }
   ],
   "ano": [
     {
       "pagina": "/",
-      "entradas": 1059066
+      "entradas": 1062851
     },
     {
       "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
-      "entradas": 257793
+      "entradas": 259312
     },
     {
       "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
-      "entradas": 149911
+      "entradas": 151318
     },
     {
       "pagina": "/workspace/minha-area/meus-sistemas",
-      "entradas": 130626
+      "entradas": 130738
     },
     {
       "pagina": "/noticias/ - Others",
-      "entradas": 110834
+      "entradas": 110867
     },
     {
       "pagina": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
-      "entradas": 104187
+      "entradas": 105726
     },
     {
       "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
-      "entradas": 93618
+      "entradas": 94161
     },
     {
       "pagina": "/financas-e-impostos/portal-e-fazenda-cadastro135/",
-      "entradas": 65749
+      "entradas": 66196
     },
     {
       "pagina": "/financas-e-impostos/ipva-consulta-de-debito54/",
-      "entradas": 63000
+      "entradas": 63447
     },
     {
       "pagina": "/workspace",
-      "entradas": 62106
+      "entradas": 62302
     }
   ]
 }

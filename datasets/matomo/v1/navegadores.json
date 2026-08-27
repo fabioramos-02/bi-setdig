@@ -1,90 +1,90 @@
 {
   "dia": [
     {
-      "navegador": "Chrome",
-      "visitas": 5450
-    },
-    {
       "navegador": "Chrome Mobile",
-      "visitas": 2429
+      "visitas": 300
     },
     {
-      "navegador": "Microsoft Edge",
-      "visitas": 1154
+      "navegador": "Chrome",
+      "visitas": 283
     },
     {
       "navegador": "Mobile Safari",
-      "visitas": 1062
+      "visitas": 130
+    },
+    {
+      "navegador": "Chrome Webview",
+      "visitas": 62
     },
     {
       "navegador": "Outros",
-      "visitas": 1438
+      "visitas": 148
     }
   ],
   "semana": [
     {
       "navegador": "Chrome",
-      "visitas": 13211
+      "visitas": 20039
     },
     {
       "navegador": "Chrome Mobile",
-      "visitas": 6771
+      "visitas": 12032
     },
     {
       "navegador": "Mobile Safari",
-      "visitas": 2904
+      "visitas": 5330
     },
     {
       "navegador": "Microsoft Edge",
-      "visitas": 2744
+      "visitas": 4361
     },
     {
       "navegador": "Outros",
-      "visitas": 4123
+      "visitas": 7170
     }
   ],
   "mes": [
     {
       "navegador": "Chrome",
-      "visitas": 130763
+      "visitas": 137591
     },
     {
       "navegador": "Chrome Mobile",
-      "visitas": 82672
+      "visitas": 87933
     },
     {
       "navegador": "Mobile Safari",
-      "visitas": 34320
+      "visitas": 36746
     },
     {
       "navegador": "Microsoft Edge",
-      "visitas": 27074
+      "visitas": 28691
     },
     {
       "navegador": "Outros",
-      "visitas": 54253
+      "visitas": 57295
     }
   ],
   "ano": [
     {
       "navegador": "Chrome",
-      "visitas": 1571623
+      "visitas": 1578451
     },
     {
       "navegador": "Chrome Mobile",
-      "visitas": 819522
+      "visitas": 824783
     },
     {
       "navegador": "Microsoft Edge",
-      "visitas": 280854
+      "visitas": 282471
     },
     {
       "navegador": "Mobile Safari",
-      "visitas": 279415
+      "visitas": 281841
     },
     {
       "navegador": "Outros",
-      "visitas": 381145
+      "visitas": 384187
     }
   ]
 }

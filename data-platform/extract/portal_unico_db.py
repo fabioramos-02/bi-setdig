@@ -13,7 +13,6 @@ cadastro sem primeiro login não vira uso). Ver ADR-013 e docstring do
 from __future__ import annotations
 
 import os
-from datetime import date
 
 import psycopg2
 from dotenv import load_dotenv
@@ -38,25 +37,19 @@ _CONTAGEM_SQL = """
     SELECT count(distinct user_id) AS total
     FROM public.authentication_historicologin
     WHERE app_id = %s
-      AND created_at <= %s
 """
 
 
-def contar_usuarios_ate(fim_janela: date, app_id: int = APP_ID_PORTAL_UNICO) -> int:
-    """`count(distinct user_id)` acumulado até `fim_janela` (inclusive).
+def contar_usuarios_total(app_id: int = APP_ID_PORTAL_UNICO) -> int:
+    """`count(distinct user_id)` histórico completo do Portal Único.
 
-    Formato ISO de data é passado como parâmetro (nunca interpolado em
-    string) — o SQL original do ticket usava `'03/31/2026'`, formato
-    ambíguo (MM/DD/YYYY vs DD/MM/YYYY) e sujeito ao locale do servidor.
-
-    `fim_janela` é uma `date` — psycopg2 converte para o tipo `date` no
-    Postgres, o `<=` compara `created_at::date`. Se precisar de precisão
-    até fim-do-dia (23:59:59), passar `datetime` correspondente.
-    """
+    Sem filtro de data — retorna 1 número absoluto: quantos cidadãos
+    distintos já fizeram login ao menos uma vez desde o início da tabela.
+    Espelha exatamente o SQL do ticket SGD (versão simplificada 2026-08)."""
     conn = psycopg2.connect(_connection_url(), connect_timeout=10, client_encoding="utf8")
     try:
         with conn.cursor() as cur:
-            cur.execute(_CONTAGEM_SQL, (app_id, fim_janela))
+            cur.execute(_CONTAGEM_SQL, (app_id,))
             row = cur.fetchone()
             return int(row[0]) if row and row[0] is not None else 0
     finally:

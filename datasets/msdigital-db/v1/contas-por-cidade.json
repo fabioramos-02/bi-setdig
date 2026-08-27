@@ -2,7 +2,7 @@
   {
     "cidade": "Campo Grande",
     "codigoIbge": "5002704",
-    "ativas": 3162
+    "ativas": 3167
   },
   {
     "cidade": "Dourados",
@@ -17,7 +17,7 @@
   {
     "cidade": "Corumbá",
     "codigoIbge": "5003207",
-    "ativas": 178
+    "ativas": 179
   },
   {
     "cidade": "Ponta Porã",
@@ -27,7 +27,7 @@
   {
     "cidade": "Nova Andradina",
     "codigoIbge": "5006200",
-    "ativas": 111
+    "ativas": 112
   },
   {
     "cidade": "Aquidauana",
@@ -92,7 +92,7 @@
   {
     "cidade": "Sidrolândia",
     "codigoIbge": "5007901",
-    "ativas": 38
+    "ativas": 39
   },
   {
     "cidade": "Bataguassu",
@@ -122,7 +122,7 @@
   {
     "cidade": "Itaporã",
     "codigoIbge": "5004502",
-    "ativas": 27
+    "ativas": 28
   },
   {
     "cidade": "Ivinhema",
@@ -130,13 +130,13 @@
     "ativas": 27
   },
   {
-    "cidade": "Bonito",
-    "codigoIbge": "5002209",
-    "ativas": 24
-  },
-  {
     "cidade": "Miranda",
     "codigoIbge": "5005608",
+    "ativas": 25
+  },
+  {
+    "cidade": "Bonito",
+    "codigoIbge": "5002209",
     "ativas": 24
   },
   {
@@ -310,6 +310,11 @@
     "ativas": 6
   },
   {
+    "cidade": "Rochedo",
+    "codigoIbge": "5007505",
+    "ativas": 6
+  },
+  {
     "cidade": "Angélica",
     "codigoIbge": "5000856",
     "ativas": 5
@@ -327,11 +332,6 @@
   {
     "cidade": "Corguinho",
     "codigoIbge": "5003108",
-    "ativas": 5
-  },
-  {
-    "cidade": "Rochedo",
-    "codigoIbge": "5007505",
     "ativas": 5
   },
   {

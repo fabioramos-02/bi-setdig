@@ -9,7 +9,7 @@ import { BarChart } from "@/components/charts/BarChart";
 import { FunnelChart } from "@/components/charts/FunnelChart";
 import { RankingBarChart } from "@/components/charts/RankingBarChart";
 import { PORTAL_BASE_URL } from "@/components/dashboard/ServiceCardGrid";
-import type { PerfilFiltroPeriodo, ServicoAcessado, AcessoCartaCompleto } from "@/lib/data";
+import type { PerfilFiltroPeriodo, ServicoAcessado, AcessoCartaCompleto, NavegacaoPerfilEventos } from "@/lib/data";
 
 /**
  * Adoção do filtro de Perfil do Portal Único (estudo portado do bench-carta).
@@ -18,12 +18,14 @@ import type { PerfilFiltroPeriodo, ServicoAcessado, AcessoCartaCompleto } from "
  */
 export function ServicosPorPerfilTab({
   dados,
+  eventos,
   servicosMaisAcessados,
   acessosCartas,
   semDadoLive,
   status,
 }: {
   dados: PerfilFiltroPeriodo;
+  eventos?: NavegacaoPerfilEventos;
   servicosMaisAcessados: ServicoAcessado[];
   acessosCartas: AcessoCartaCompleto[];
   // ponytail: acessosCartas ainda é snapshot-only (não plumbado no
@@ -54,24 +56,43 @@ export function ServicosPorPerfilTab({
       {/* 1. Narrativa + KPIs */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-8">
         <div className="lg:col-span-2">
-          <StoryCard
-            anchor={
-              <>
-                Cerca de 1 em cada <strong>{resumo.umACada.toLocaleString("pt-BR")}</strong> visitantes do portal chega a
-                um serviço pelo filtro de Perfil.
-              </>
-            }
-            caption={`No período, os serviços em destaque somaram ${resumo.atribuiveis.toLocaleString("pt-BR")} visitas — ${resumo.proxyRatePct.toFixed(2)}% dos visitantes da página inicial. Nem tudo isso vem do filtro: menu e busca levam aos mesmos serviços.`}
-            comoLer="O clique na aba de perfil (Cidadão, Servidor Público, Empresa, Gestão Pública) não é registrado separadamente pela ferramenta de estatísticas do portal — só dá pra medir direto quantas visitas os serviços em destaque receberam. A estimativa de uso do filtro (1 em cada N) vem de um estudo pequeno feito em 2025 e é um número máximo possível: o uso real tende a ser ainda menor."
-          />
+          {eventos && eventos.cliquesAba.length > 0 ? (
+            <StoryCard
+              anchor={
+                <>
+                  Houve <strong>{eventos.cliquesAba.reduce((acc, a) => acc + a.cliques, 0).toLocaleString("pt-BR")}</strong> cliques nas abas de Perfil no período.
+                </>
+              }
+              caption={`Destes, ${eventos.cliquesServico.reduce((acc, s) => acc + s.cliques, 0).toLocaleString("pt-BR")} resultaram em cliques diretos nos serviços em destaque.`}
+              comoLer="A medição agora reflete interações reais dos visitantes (Event Tracking) nas abas de categoria e nos serviços, e não mais uma estimativa baseada apenas nas visitas às páginas de destino."
+            />
+          ) : (
+            <StoryCard
+              anchor={
+                <>
+                  Cerca de 1 em cada <strong>{resumo.umACada.toLocaleString("pt-BR")}</strong> visitantes do portal chega a
+                  um serviço pelo filtro de Perfil.
+                </>
+              }
+              caption={`No período, os serviços em destaque somaram ${resumo.atribuiveis.toLocaleString("pt-BR")} visitas — ${resumo.proxyRatePct.toFixed(2)}% dos visitantes da página inicial. Nem tudo isso vem do filtro: menu e busca levam aos mesmos serviços.`}
+              comoLer="O clique na aba de perfil (Cidadão, Servidor Público, Empresa, Gestão Pública) não era registrado separadamente pela ferramenta de estatísticas até recentemente — a estimativa (1 em cada N) vem de um estudo. Recomendamos consultar períodos mais recentes para dados precisos."
+            />
+          )}
         </div>
         <div className="grid grid-cols-1 gap-4">
           <MetricCard label="Visitantes da página inicial" value={resumo.homeVisitors} />
-          <MetricCard
-            label="Visitas aos serviços em destaque"
-            value={resumo.atribuiveis}
-            sub={`mínimo considerado relevante: ${resumo.limiarPct}%`}
-          />
+          {eventos && eventos.cliquesAba.length > 0 ? (
+            <MetricCard
+              label="Cliques nas abas de perfil"
+              value={eventos.cliquesAba.reduce((acc, a) => acc + a.cliques, 0)}
+            />
+          ) : (
+            <MetricCard
+              label="Visitas aos serviços em destaque"
+              value={resumo.atribuiveis}
+              sub={`mínimo considerado relevante: ${resumo.limiarPct}%`}
+            />
+          )}
         </div>
       </div>
 
@@ -86,18 +107,34 @@ export function ServicosPorPerfilTab({
       {/* 3. Funil */}
       <DashboardSection title="Como o visitante chega ao serviço pelo filtro">
         <ChartLoading status={status} height={120}>
-          <FunnelChart
-            steps={[
-              { label: "Visitantes da página inicial", value: resumo.homeVisitors },
-              { label: "Visitas aos serviços em destaque", value: resumo.atribuiveis },
-              { label: "Estimativa de uso do filtro", value: estimativaUsoFiltro },
-            ]}
-          />
+          {eventos && eventos.cliquesAba.length > 0 ? (
+            <FunnelChart
+              steps={[
+                { label: "Visitantes da página inicial", value: resumo.homeVisitors },
+                { label: "Cliques nas abas de Perfil", value: eventos.cliquesAba.reduce((acc, a) => acc + a.cliques, 0) },
+                { label: "Cliques nos serviços", value: eventos.cliquesServico.reduce((acc, s) => acc + s.cliques, 0) },
+              ]}
+            />
+          ) : (
+            <FunnelChart
+              steps={[
+                { label: "Visitantes da página inicial", value: resumo.homeVisitors },
+                { label: "Visitas aos serviços em destaque", value: resumo.atribuiveis },
+                { label: "Estimativa de uso do filtro", value: estimativaUsoFiltro },
+              ]}
+            />
+          )}
         </ChartLoading>
-        <p className="mt-4 text-xs" style={{ color: "var(--ds-color-text-muted)" }}>
-          Cada barra é uma etapa: quem visita a página inicial, quem chega aos serviços em destaque, e quantos desses acessos vêm
-          de fato do filtro de Perfil — a última barra é estimativa, não medida direta.
-        </p>
+        {eventos && eventos.cliquesAba.length > 0 ? (
+          <p className="mt-4 text-xs" style={{ color: "var(--ds-color-text-muted)" }}>
+            Adoção real do filtro de Perfil baseada em rastreamento de eventos na interface.
+          </p>
+        ) : (
+          <p className="mt-4 text-xs" style={{ color: "var(--ds-color-text-muted)" }}>
+            Cada barra é uma etapa: quem visita a página inicial, quem chega aos serviços em destaque, e quantos desses acessos vêm
+            de fato do filtro de Perfil — a última barra é estimativa, não medida direta.
+          </p>
+        )}
       </DashboardSection>
 
       {/* 4. Distribuição por perfil */}

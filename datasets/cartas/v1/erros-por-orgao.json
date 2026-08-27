@@ -29,20 +29,20 @@
   {
     "orgao": "Secretaria de Estado de Assistência Social e Direitos Humanos",
     "orgaoSigla": "SEAD",
-    "total": 67,
+    "total": 68,
     "atendidos": 65,
-    "pendentes": 2,
-    "percentAtendido": 97.0,
+    "pendentes": 3,
+    "percentAtendido": 95.6,
     "tempoMedioResolucaoDias": 31.6
   },
   {
     "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
     "orgaoSigla": "SEFAZ MS",
-    "total": 61,
-    "atendidos": 61,
+    "total": 63,
+    "atendidos": 63,
     "pendentes": 0,
     "percentAtendido": 100.0,
-    "tempoMedioResolucaoDias": 35.1
+    "tempoMedioResolucaoDias": 34.0
   },
   {
     "orgao": "Secretaria de Estado de Educação de Mato Grosso do Sul",
@@ -56,10 +56,10 @@
   {
     "orgao": "Procuradoria Geral do Estado de Mato Grosso do Sul",
     "orgaoSigla": "PGE MS",
-    "total": 28,
+    "total": 29,
     "atendidos": 28,
-    "pendentes": 0,
-    "percentAtendido": 100.0,
+    "pendentes": 1,
+    "percentAtendido": 96.6,
     "tempoMedioResolucaoDias": 134.1
   },
   {

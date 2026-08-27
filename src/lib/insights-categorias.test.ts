@@ -27,10 +27,10 @@ const CATALOGO: CategoriaResumo[] = [
 ];
 
 const ACESSOS: FatiaCategoria[] = [
-  { categoria: "Servidor Público", valor: 66978, participacao: 0 },
-  { categoria: "Saúde", valor: 42082, participacao: 0 },
-  { categoria: "Trânsito", valor: 13972, participacao: 0 },
-  { categoria: "Mulher MS", valor: 100, participacao: 0 },
+  { categoria: "Servidor Público", valor: 66978, participacaoPct: 0 },
+  { categoria: "Saúde", valor: 42082, participacaoPct: 0 },
+  { categoria: "Trânsito", valor: 13972, participacaoPct: 0 },
+  { categoria: "Mulher MS", valor: 100, participacaoPct: 0 },
 ];
 
 test("ranking ordena por acessos e inclui categorias sem uso", () => {

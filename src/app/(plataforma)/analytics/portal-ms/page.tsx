@@ -20,6 +20,7 @@ import {
   getMatomoAcessosCartasCompleto,
   getCartasInventarioRelacao,
   getPortalUnicoCadastros,
+  getMatomoEventosNavegacaoPerfil,
 } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -43,6 +44,7 @@ export default function AnalyticsPortalMsPage() {
   const acessosCartas = getMatomoAcessosCartasCompleto();
   const inventarioCartas = getCartasInventarioRelacao();
   const portalUnicoCadastros = getPortalUnicoCadastros();
+  const eventosPerfil = getMatomoEventosNavegacaoPerfil();
 
   if (diarias.length === 0) {
     return (
@@ -83,6 +85,7 @@ export default function AnalyticsPortalMsPage() {
       acessosCartas={acessosCartas}
       inventarioCartas={inventarioCartas}
       portalUnicoCadastros={portalUnicoCadastros}
+      eventosPerfil={eventosPerfil}
     />
   );
 }

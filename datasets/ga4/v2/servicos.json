@@ -2,102 +2,130 @@
   "dia": [
     {
       "servico": "Saúde",
-      "acessos": 205
+      "acessos": 398
     },
     {
       "servico": "Cartão SUS Online",
-      "acessos": 192
+      "acessos": 391
     },
     {
       "servico": "Servidor Público",
-      "acessos": 94
+      "acessos": 354
     },
     {
       "servico": "Documentos Pendentes",
-      "acessos": 73
-    },
-    {
-      "servico": "Cartão do Doador de Sangue",
-      "acessos": 66
+      "acessos": 264
     },
     {
       "servico": "Portal do Servidor",
-      "acessos": 37
+      "acessos": 120
     },
     {
-      "servico": "Resultado de Exames Hemosul",
-      "acessos": 33
-    },
-    {
-      "servico": "Educação",
-      "acessos": 30
-    },
-    {
-      "servico": "Trânsito",
-      "acessos": 30
-    },
-    {
-      "servico": "Carteira do Estudante - CDIEMS",
-      "acessos": 22
-    },
-    {
-      "servico": "Contracheque",
-      "acessos": 22
-    },
-    {
-      "servico": "Documentos Assinados",
-      "acessos": 22
-    },
-    {
-      "servico": "Débito de Veículos",
-      "acessos": 22
+      "servico": "Cartão do Doador de Sangue",
+      "acessos": 92
     },
     {
       "servico": "Consultar CDIEMS",
-      "acessos": 21
+      "acessos": 74
+    },
+    {
+      "servico": "Documentos Assinados",
+      "acessos": 74
+    },
+    {
+      "servico": "Resultado de Exames Hemosul",
+      "acessos": 71
+    },
+    {
+      "servico": "Educação",
+      "acessos": 66
+    },
+    {
+      "servico": "Contracheque",
+      "acessos": 64
+    },
+    {
+      "servico": "Trânsito",
+      "acessos": 61
+    },
+    {
+      "servico": "Carteira do Estudante - CDIEMS",
+      "acessos": 55
     },
     {
       "servico": "Cartão de Vacinação de Rotina",
-      "acessos": 18
+      "acessos": 38
     },
     {
-      "servico": "Solicitar CDIEMS",
-      "acessos": 14
+      "servico": "Débito de Veículos",
+      "acessos": 35
+    },
+    {
+      "servico": "Carteira Funcional",
+      "acessos": 23
+    },
+    {
+      "servico": "Pontuaçao CNH",
+      "acessos": 23
     },
     {
       "servico": "Cartão de Vacinação Covid-19",
+      "acessos": 20
+    },
+    {
+      "servico": "Multas",
+      "acessos": 19
+    },
+    {
+      "servico": "Segurança",
+      "acessos": 18
+    },
+    {
+      "servico": "Habitação",
+      "acessos": 16
+    },
+    {
+      "servico": "Solicitar CDIEMS",
+      "acessos": 15
+    },
+    {
+      "servico": "Mulher MS",
+      "acessos": 13
+    },
+    {
+      "servico": "Medicamentos",
       "acessos": 12
     },
     {
-      "servico": "Resultado de Exames LACEN",
+      "servico": "Trabalho e Qualificação",
       "acessos": 12
+    },
+    {
+      "servico": "Assistência Social",
+      "acessos": 11
+    },
+    {
+      "servico": "BIM",
+      "acessos": 11
+    },
+    {
+      "servico": "Meio Ambiente",
+      "acessos": 11
+    },
+    {
+      "servico": "Resultado de Exames LACEN",
+      "acessos": 10
     },
     {
       "servico": "Autorização de Pesca Digital (Carteira)",
       "acessos": 9
     },
     {
-      "servico": "Assistência Social",
-      "acessos": 7
+      "servico": "Clube de Benefícios",
+      "acessos": 8
     },
     {
-      "servico": "Carteira Funcional",
-      "acessos": 7
-    },
-    {
-      "servico": "Habitação",
-      "acessos": 7
-    },
-    {
-      "servico": "Multas",
-      "acessos": 7
-    },
-    {
-      "servico": "Segurança",
-      "acessos": 7
-    },
-    {
-      "servico": "Meio Ambiente",
+      "servico": "Informe de Rendimentos",
       "acessos": 6
     },
     {
@@ -105,19 +133,7 @@
       "acessos": 6
     },
     {
-      "servico": "Estabelecimentos de Saúde",
-      "acessos": 5
-    },
-    {
-      "servico": "Mulher MS",
-      "acessos": 5
-    },
-    {
-      "servico": "Pessoal",
-      "acessos": 5
-    },
-    {
-      "servico": "Pontuaçao CNH",
+      "servico": "Passe Livre Intermunicipal",
       "acessos": 5
     },
     {
@@ -125,293 +141,265 @@
       "acessos": 5
     },
     {
-      "servico": "Medicamentos",
+      "servico": "Agronegócio",
       "acessos": 4
     },
     {
-      "servico": "Passe Livre Intermunicipal",
+      "servico": "Cultura e Esporte",
       "acessos": 4
     },
     {
-      "servico": "Servidores",
+      "servico": "Entretenimento",
       "acessos": 4
     },
     {
-      "servico": "Trabalho e Qualificação",
+      "servico": "LeiaMS",
       "acessos": 4
-    },
-    {
-      "servico": "Informe de Rendimentos",
-      "acessos": 3
     },
     {
       "servico": "Turismo",
+      "acessos": 4
+    },
+    {
+      "servico": "Pessoal",
       "acessos": 3
+    },
+    {
+      "servico": "Servidores",
+      "acessos": 3
+    },
+    {
+      "servico": "AGEMS",
+      "acessos": 2
     },
     {
       "servico": "Licenciamento Ambiental",
       "acessos": 2
     },
     {
-      "servico": "BIM",
+      "servico": "Carteira de Identificação Desportiva",
       "acessos": 1
     },
     {
-      "servico": "Cultura e Esporte",
-      "acessos": 1
-    },
-    {
-      "servico": "Delegacias e Endereços",
-      "acessos": 1
-    },
-    {
-      "servico": "Despesa",
-      "acessos": 1
-    },
-    {
-      "servico": "Despesas",
-      "acessos": 1
-    },
-    {
-      "servico": "Endereços dos CRAS",
-      "acessos": 1
-    },
-    {
-      "servico": "Entretenimento",
-      "acessos": 1
-    },
-    {
-      "servico": "LeiaMS",
-      "acessos": 1
-    },
-    {
-      "servico": "Receitas",
+      "servico": "Cartão de Vacinação",
       "acessos": 1
     }
   ],
   "semana": [
     {
       "servico": "Saúde",
-      "acessos": 6961
+      "acessos": 7172
     },
     {
       "servico": "Cartão SUS Online",
-      "acessos": 6157
+      "acessos": 6501
     },
     {
       "servico": "Servidor Público",
-      "acessos": 5768
+      "acessos": 5819
     },
     {
       "servico": "Documentos Pendentes",
-      "acessos": 3869
+      "acessos": 4214
     },
     {
       "servico": "Cartão do Doador de Sangue",
-      "acessos": 3041
-    },
-    {
-      "servico": "Educação",
-      "acessos": 2445
+      "acessos": 2881
     },
     {
       "servico": "Consultar CDIEMS",
-      "acessos": 2433
+      "acessos": 2163
     },
     {
       "servico": "Portal do Servidor",
-      "acessos": 2212
+      "acessos": 2151
+    },
+    {
+      "servico": "Educação",
+      "acessos": 2110
     },
     {
       "servico": "Trânsito",
-      "acessos": 2089
+      "acessos": 2004
     },
     {
       "servico": "Carteira do Estudante - CDIEMS",
-      "acessos": 2025
+      "acessos": 1804
     },
     {
       "servico": "Resultado de Exames Hemosul",
-      "acessos": 1755
+      "acessos": 1721
     },
     {
       "servico": "Cartão de Vacinação de Rotina",
-      "acessos": 1207
-    },
-    {
-      "servico": "Solicitar CDIEMS",
-      "acessos": 1183
+      "acessos": 1348
     },
     {
       "servico": "Documentos Assinados",
-      "acessos": 1180
-    },
-    {
-      "servico": "Débito de Veículos",
-      "acessos": 1175
+      "acessos": 1247
     },
     {
       "servico": "Contracheque",
-      "acessos": 1118
+      "acessos": 1182
+    },
+    {
+      "servico": "Débito de Veículos",
+      "acessos": 1052
+    },
+    {
+      "servico": "Solicitar CDIEMS",
+      "acessos": 938
     },
     {
       "servico": "Cartão de Vacinação Covid-19",
-      "acessos": 757
+      "acessos": 860
     },
     {
       "servico": "Multas",
-      "acessos": 753
+      "acessos": 748
     },
     {
       "servico": "Pontuaçao CNH",
-      "acessos": 614
+      "acessos": 635
     },
     {
       "servico": "Carteira Funcional",
-      "acessos": 472
+      "acessos": 448
     },
     {
       "servico": "Segurança",
-      "acessos": 441
+      "acessos": 409
     },
     {
       "servico": "Resultado de Exames LACEN",
-      "acessos": 381
+      "acessos": 404
     },
     {
       "servico": "Habitação",
-      "acessos": 380
+      "acessos": 388
     },
     {
       "servico": "Transparência",
-      "acessos": 372
+      "acessos": 313
     },
     {
       "servico": "Assistência Social",
-      "acessos": 268
-    },
-    {
-      "servico": "Meio Ambiente",
-      "acessos": 256
-    },
-    {
-      "servico": "Medicamentos",
-      "acessos": 253
-    },
-    {
-      "servico": "Servidores",
-      "acessos": 251
+      "acessos": 276
     },
     {
       "servico": "Mulher MS",
-      "acessos": 249
+      "acessos": 265
     },
     {
-      "servico": "Pessoal",
-      "acessos": 234
+      "servico": "Medicamentos",
+      "acessos": 238
     },
     {
       "servico": "Trabalho e Qualificação",
-      "acessos": 234
+      "acessos": 232
+    },
+    {
+      "servico": "Meio Ambiente",
+      "acessos": 229
+    },
+    {
+      "servico": "Servidores",
+      "acessos": 226
+    },
+    {
+      "servico": "Pessoal",
+      "acessos": 219
     },
     {
       "servico": "Passe Livre Intermunicipal",
-      "acessos": 206
+      "acessos": 185
     },
     {
       "servico": "Autorização de Pesca Digital (Carteira)",
-      "acessos": 198
-    },
-    {
-      "servico": "Estabelecimentos de Saúde",
-      "acessos": 162
-    },
-    {
-      "servico": "Cultura e Esporte",
-      "acessos": 153
-    },
-    {
-      "servico": "BIM",
-      "acessos": 147
+      "acessos": 182
     },
     {
       "servico": "Procon - MS",
-      "acessos": 145
+      "acessos": 170
+    },
+    {
+      "servico": "Estabelecimentos de Saúde",
+      "acessos": 156
     },
     {
       "servico": "AGEMS",
-      "acessos": 143
+      "acessos": 150
     },
     {
-      "servico": "Turismo",
-      "acessos": 143
+      "servico": "Cultura e Esporte",
+      "acessos": 150
     },
     {
-      "servico": "Entretenimento",
+      "servico": "BIM",
       "acessos": 136
     },
     {
-      "servico": "Clube de Benefícios",
-      "acessos": 126
+      "servico": "Turismo",
+      "acessos": 128
     },
     {
-      "servico": "Informe de Rendimentos",
-      "acessos": 118
+      "servico": "Entretenimento",
+      "acessos": 114
     },
     {
       "servico": "Agronegócio",
-      "acessos": 88
+      "acessos": 98
+    },
+    {
+      "servico": "Informe de Rendimentos",
+      "acessos": 98
+    },
+    {
+      "servico": "Clube de Benefícios",
+      "acessos": 93
     },
     {
       "servico": "LeiaMS",
-      "acessos": 66
+      "acessos": 49
     },
     {
       "servico": "Cartão de Vacinação",
-      "acessos": 23
-    },
-    {
-      "servico": "Diárias",
-      "acessos": 23
+      "acessos": 24
     },
     {
       "servico": "Licenciamento Ambiental",
-      "acessos": 22
+      "acessos": 23
     },
     {
       "servico": "Delegacias e Endereços",
-      "acessos": 20
+      "acessos": 22
     },
     {
-      "servico": "Corpo de Bombeiros Militar",
-      "acessos": 18
+      "servico": "Diárias",
+      "acessos": 19
     },
     {
       "servico": "Endereços dos CRAS",
       "acessos": 17
     },
     {
-      "servico": "Despesas",
-      "acessos": 16
+      "servico": "Corpo de Bombeiros Militar",
+      "acessos": 14
     },
     {
       "servico": "Receitas",
-      "acessos": 13
-    },
-    {
-      "servico": "Despesa",
-      "acessos": 11
+      "acessos": 12
     },
     {
       "servico": "Previsão Semanal",
-      "acessos": 11
+      "acessos": 10
     },
     {
       "servico": "Delegacias da Mulher",
       "acessos": 9
     },
     {
-      "servico": "Passagens",
+      "servico": "Despesas",
       "acessos": 9
     },
     {
@@ -419,23 +407,27 @@
       "acessos": 8
     },
     {
-      "servico": "Estrada Viva",
+      "servico": "Despesa",
       "acessos": 7
     },
     {
-      "servico": "Pesquisa de Receita",
-      "acessos": 4
+      "servico": "Estrada Viva",
+      "acessos": 6
     },
     {
       "servico": "Combate à Violência",
-      "acessos": 3
-    },
-    {
-      "servico": "Consolidada",
-      "acessos": 2
+      "acessos": 5
     },
     {
       "servico": "Detran - Destinação de Multas",
+      "acessos": 5
+    },
+    {
+      "servico": "Passagens",
+      "acessos": 4
+    },
+    {
+      "servico": "Carteira de Identificação Desportiva",
       "acessos": 2
     },
     {
@@ -443,8 +435,8 @@
       "acessos": 2
     },
     {
-      "servico": "Carteira de Identificação Desportiva",
-      "acessos": 1
+      "servico": "Pesquisa de Receita",
+      "acessos": 2
     },
     {
       "servico": "Registrar Notificação",
@@ -454,254 +446,246 @@
   "mes": [
     {
       "servico": "Servidor Público",
-      "acessos": 31989
+      "acessos": 31434
     },
     {
       "servico": "Saúde",
-      "acessos": 30598
+      "acessos": 29521
     },
     {
       "servico": "Cartão SUS Online",
-      "acessos": 26444
+      "acessos": 25834
     },
     {
       "servico": "Portal do Servidor",
-      "acessos": 18326
+      "acessos": 18049
     },
     {
       "servico": "Documentos Pendentes",
-      "acessos": 15887
+      "acessos": 15719
     },
     {
       "servico": "Consultar CDIEMS",
-      "acessos": 15318
+      "acessos": 14954
     },
     {
       "servico": "Educação",
-      "acessos": 14242
+      "acessos": 13747
     },
     {
       "servico": "Contracheque",
-      "acessos": 13824
+      "acessos": 13607
     },
     {
       "servico": "Cartão do Doador de Sangue",
-      "acessos": 13523
+      "acessos": 12719
     },
     {
       "servico": "Carteira do Estudante - CDIEMS",
-      "acessos": 12414
+      "acessos": 12078
     },
     {
       "servico": "Trânsito",
-      "acessos": 10901
+      "acessos": 10538
     },
     {
       "servico": "Resultado de Exames Hemosul",
-      "acessos": 6873
+      "acessos": 6643
     },
     {
       "servico": "Débito de Veículos",
-      "acessos": 6630
+      "acessos": 6313
     },
     {
       "servico": "Solicitar CDIEMS",
-      "acessos": 5921
+      "acessos": 5787
     },
     {
       "servico": "Documentos Assinados",
-      "acessos": 5223
+      "acessos": 5125
     },
     {
       "servico": "Cartão de Vacinação de Rotina",
-      "acessos": 5137
+      "acessos": 5034
     },
     {
       "servico": "Cartão de Vacinação Covid-19",
-      "acessos": 3526
+      "acessos": 3437
     },
     {
       "servico": "Multas",
-      "acessos": 3461
+      "acessos": 3385
     },
     {
       "servico": "Pontuaçao CNH",
-      "acessos": 2715
+      "acessos": 2698
     },
     {
       "servico": "Carteira Funcional",
-      "acessos": 2452
+      "acessos": 2386
     },
     {
       "servico": "Habitação",
-      "acessos": 1935
+      "acessos": 1882
     },
     {
       "servico": "Segurança",
-      "acessos": 1784
+      "acessos": 1754
     },
     {
       "servico": "Resultado de Exames LACEN",
-      "acessos": 1629
+      "acessos": 1606
     },
     {
       "servico": "Transparência",
-      "acessos": 1581
+      "acessos": 1516
     },
     {
       "servico": "Assistência Social",
-      "acessos": 1315
+      "acessos": 1241
     },
     {
       "servico": "Meio Ambiente",
-      "acessos": 1267
+      "acessos": 1212
     },
     {
       "servico": "Mulher MS",
-      "acessos": 1155
+      "acessos": 1138
     },
     {
       "servico": "Trabalho e Qualificação",
-      "acessos": 1115
+      "acessos": 1087
     },
     {
       "servico": "Servidores",
-      "acessos": 1099
+      "acessos": 1076
     },
     {
       "servico": "Medicamentos",
-      "acessos": 1045
+      "acessos": 1026
     },
     {
       "servico": "Pessoal",
-      "acessos": 1039
+      "acessos": 1014
     },
     {
       "servico": "Autorização de Pesca Digital (Carteira)",
-      "acessos": 943
-    },
-    {
-      "servico": "Passe Livre Intermunicipal",
-      "acessos": 874
+      "acessos": 919
     },
     {
       "servico": "BIM",
-      "acessos": 862
+      "acessos": 836
+    },
+    {
+      "servico": "Passe Livre Intermunicipal",
+      "acessos": 836
     },
     {
       "servico": "Cultura e Esporte",
-      "acessos": 849
+      "acessos": 815
     },
     {
       "servico": "Procon - MS",
-      "acessos": 719
+      "acessos": 714
     },
     {
       "servico": "Informe de Rendimentos",
-      "acessos": 705
-    },
-    {
-      "servico": "Turismo",
-      "acessos": 703
-    },
-    {
-      "servico": "Entretenimento",
-      "acessos": 702
+      "acessos": 680
     },
     {
       "servico": "AGEMS",
-      "acessos": 700
+      "acessos": 669
+    },
+    {
+      "servico": "Turismo",
+      "acessos": 661
+    },
+    {
+      "servico": "Entretenimento",
+      "acessos": 650
     },
     {
       "servico": "Estabelecimentos de Saúde",
-      "acessos": 662
+      "acessos": 630
     },
     {
       "servico": "Clube de Benefícios",
-      "acessos": 569
+      "acessos": 534
     },
     {
       "servico": "Agronegócio",
-      "acessos": 420
+      "acessos": 412
     },
     {
       "servico": "LeiaMS",
-      "acessos": 272
+      "acessos": 268
     },
     {
       "servico": "Cartão de Vacinação",
-      "acessos": 153
+      "acessos": 133
     },
     {
       "servico": "Diárias",
-      "acessos": 99
-    },
-    {
-      "servico": "Corpo de Bombeiros Militar",
-      "acessos": 83
-    },
-    {
-      "servico": "Licenciamento Ambiental",
-      "acessos": 82
+      "acessos": 100
     },
     {
       "servico": "Delegacias e Endereços",
-      "acessos": 81
+      "acessos": 85
+    },
+    {
+      "servico": "Licenciamento Ambiental",
+      "acessos": 83
     },
     {
       "servico": "Endereços dos CRAS",
-      "acessos": 78
+      "acessos": 77
+    },
+    {
+      "servico": "Corpo de Bombeiros Militar",
+      "acessos": 72
     },
     {
       "servico": "Previsão Semanal",
-      "acessos": 66
+      "acessos": 63
     },
     {
       "servico": "Receitas",
-      "acessos": 65
-    },
-    {
-      "servico": "Despesas",
       "acessos": 59
     },
     {
+      "servico": "Despesas",
+      "acessos": 57
+    },
+    {
       "servico": "Delegacias da Mulher",
-      "acessos": 52
+      "acessos": 51
     },
     {
       "servico": "Despesa",
-      "acessos": 41
+      "acessos": 39
     },
     {
       "servico": "Estrada Viva",
-      "acessos": 38
+      "acessos": 35
     },
     {
       "servico": "Passagens",
-      "acessos": 37
-    },
-    {
-      "servico": "Simplificada",
-      "acessos": 31
+      "acessos": 33
     },
     {
       "servico": "Combate à Violência",
       "acessos": 30
     },
     {
+      "servico": "Simplificada",
+      "acessos": 28
+    },
+    {
       "servico": "Carteira de Identificação Desportiva",
-      "acessos": 19
+      "acessos": 20
     },
     {
       "servico": "Pesquisa de Receita",
-      "acessos": 17
-    },
-    {
-      "servico": "Notificações Pendentes",
-      "acessos": 15
-    },
-    {
-      "servico": "Registrar Notificação",
       "acessos": 15
     },
     {
@@ -709,262 +693,270 @@
       "acessos": 14
     },
     {
+      "servico": "Notificações Pendentes",
+      "acessos": 14
+    },
+    {
+      "servico": "Registrar Notificação",
+      "acessos": 13
+    },
+    {
       "servico": "Consolidada",
-      "acessos": 10
+      "acessos": 8
     }
   ],
   "ano": [
     {
       "servico": "Servidor Público",
-      "acessos": 363663
+      "acessos": 364777
     },
     {
       "servico": "Saúde",
-      "acessos": 329849
+      "acessos": 329981
     },
     {
       "servico": "Cartão SUS Online",
-      "acessos": 305368
+      "acessos": 304997
     },
     {
       "servico": "Portal do Servidor",
-      "acessos": 244074
+      "acessos": 244314
     },
     {
       "servico": "Contracheque",
-      "acessos": 182191
+      "acessos": 182391
     },
     {
       "servico": "Educação",
-      "acessos": 149125
+      "acessos": 149048
     },
     {
       "servico": "Documentos Pendentes",
-      "acessos": 147139
+      "acessos": 148211
     },
     {
       "servico": "Consultar CDIEMS",
-      "acessos": 145160
+      "acessos": 145143
     },
     {
       "servico": "Cartão do Doador de Sangue",
-      "acessos": 137887
+      "acessos": 138142
     },
     {
       "servico": "Carteira do Estudante - CDIEMS",
-      "acessos": 118822
+      "acessos": 118779
     },
     {
       "servico": "Trânsito",
-      "acessos": 102962
+      "acessos": 103207
     },
     {
       "servico": "Solicitar CDIEMS",
-      "acessos": 66222
+      "acessos": 66245
     },
     {
       "servico": "Cartão de Vacinação",
-      "acessos": 60281
+      "acessos": 59651
     },
     {
       "servico": "Documentos Assinados",
-      "acessos": 55432
+      "acessos": 55632
     },
     {
       "servico": "Débito de Veículos",
-      "acessos": 54390
+      "acessos": 54543
     },
     {
       "servico": "Resultado de Exames Hemosul",
-      "acessos": 33360
+      "acessos": 34186
     },
     {
       "servico": "Carteira Funcional",
-      "acessos": 31095
+      "acessos": 31076
     },
     {
       "servico": "Multas",
-      "acessos": 30947
+      "acessos": 31064
     },
     {
       "servico": "Pontuaçao CNH",
-      "acessos": 27263
+      "acessos": 27367
     },
     {
       "servico": "Habitação",
-      "acessos": 23890
+      "acessos": 23847
     },
     {
       "servico": "Segurança",
-      "acessos": 23674
+      "acessos": 23650
     },
     {
       "servico": "Transparência",
-      "acessos": 21022
+      "acessos": 20971
     },
     {
       "servico": "Assistência Social",
-      "acessos": 17862
+      "acessos": 17869
     },
     {
       "servico": "Informe de Rendimentos",
-      "acessos": 16936
+      "acessos": 16933
     },
     {
       "servico": "Trabalho e Qualificação",
-      "acessos": 15259
+      "acessos": 15192
     },
     {
       "servico": "Servidores",
-      "acessos": 14493
+      "acessos": 14467
     },
     {
       "servico": "Pessoal",
-      "acessos": 14299
+      "acessos": 14271
     },
     {
       "servico": "Mulher MS",
-      "acessos": 13371
-    },
-    {
-      "servico": "Passe Livre Intermunicipal",
-      "acessos": 12871
+      "acessos": 13367
     },
     {
       "servico": "Cartão de Vacinação de Rotina",
-      "acessos": 12410
+      "acessos": 13085
+    },
+    {
+      "servico": "Passe Livre Intermunicipal",
+      "acessos": 12909
     },
     {
       "servico": "Medicamentos",
-      "acessos": 12351
+      "acessos": 12297
     },
     {
       "servico": "Meio Ambiente",
-      "acessos": 11860
+      "acessos": 11833
     },
     {
       "servico": "Cultura e Esporte",
-      "acessos": 9830
+      "acessos": 9821
     },
     {
       "servico": "BIM",
-      "acessos": 9570
+      "acessos": 9565
     },
     {
       "servico": "Procon - MS",
-      "acessos": 9505
+      "acessos": 9504
     },
     {
       "servico": "Estabelecimentos de Saúde",
-      "acessos": 9045
-    },
-    {
-      "servico": "AGEMS",
-      "acessos": 8900
+      "acessos": 8992
     },
     {
       "servico": "Cartão de Vacinação Covid-19",
-      "acessos": 8557
+      "acessos": 8983
+    },
+    {
+      "servico": "AGEMS",
+      "acessos": 8896
     },
     {
       "servico": "Autorização de Pesca Digital (Carteira)",
-      "acessos": 8250
+      "acessos": 8247
     },
     {
       "servico": "Turismo",
-      "acessos": 7828
+      "acessos": 7814
     },
     {
       "servico": "Entretenimento",
-      "acessos": 7515
+      "acessos": 7499
     },
     {
       "servico": "Clube de Benefícios",
-      "acessos": 7376
+      "acessos": 7353
     },
     {
       "servico": "Agronegócio",
-      "acessos": 5331
-    },
-    {
-      "servico": "Carteira de Identificação Desportiva",
-      "acessos": 3758
+      "acessos": 5349
     },
     {
       "servico": "Resultado de Exames LACEN",
-      "acessos": 3719
+      "acessos": 3920
+    },
+    {
+      "servico": "Carteira de Identificação Desportiva",
+      "acessos": 3730
     },
     {
       "servico": "LeiaMS",
-      "acessos": 1935
+      "acessos": 1953
     },
     {
       "servico": "Diárias",
-      "acessos": 1546
+      "acessos": 1548
     },
     {
       "servico": "Receitas",
-      "acessos": 1115
+      "acessos": 1108
     },
     {
       "servico": "Endereços dos CRAS",
-      "acessos": 1073
+      "acessos": 1069
     },
     {
       "servico": "Licenciamento Ambiental",
-      "acessos": 915
-    },
-    {
-      "servico": "Despesas",
-      "acessos": 787
+      "acessos": 913
     },
     {
       "servico": "Corpo de Bombeiros Militar",
-      "acessos": 786
+      "acessos": 790
+    },
+    {
+      "servico": "Despesas",
+      "acessos": 783
     },
     {
       "servico": "Delegacias e Endereços",
-      "acessos": 709
-    },
-    {
-      "servico": "Previsão Semanal",
-      "acessos": 670
+      "acessos": 713
     },
     {
       "servico": "Passagens",
-      "acessos": 668
+      "acessos": 664
+    },
+    {
+      "servico": "Previsão Semanal",
+      "acessos": 662
     },
     {
       "servico": "Despesa",
-      "acessos": 606
+      "acessos": 600
     },
     {
       "servico": "Delegacias da Mulher",
-      "acessos": 482
+      "acessos": 481
     },
     {
       "servico": "Simplificada",
-      "acessos": 466
+      "acessos": 462
     },
     {
       "servico": "Estrada Viva",
-      "acessos": 314
+      "acessos": 310
     },
     {
       "servico": "Pesquisa de Receita",
-      "acessos": 290
+      "acessos": 286
     },
     {
       "servico": "Detran - Destinação de Multas",
-      "acessos": 252
+      "acessos": 254
     },
     {
       "servico": "Combate à Violência",
-      "acessos": 196
+      "acessos": 198
     },
     {
       "servico": "Consolidada",
-      "acessos": 189
+      "acessos": 186
     },
     {
       "servico": "Registrar Notificação",
@@ -972,7 +964,7 @@
     },
     {
       "servico": "Notificações Pendentes",
-      "acessos": 71
+      "acessos": 72
     },
     {
       "servico": "Denúncia",

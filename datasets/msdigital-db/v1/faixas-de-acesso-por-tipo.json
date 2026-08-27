@@ -1,32 +1,32 @@
 [
   {
     "faixa": "Nos últimos 6 meses",
-    "govbr": 18812,
-    "proprio": 50823,
-    "total": 69635
+    "govbr": 18866,
+    "proprio": 50851,
+    "total": 69717
   },
   {
     "faixa": "Entre 6 meses e 2 anos",
-    "govbr": 17314,
-    "proprio": 51570,
-    "total": 68884
+    "govbr": 17271,
+    "proprio": 51350,
+    "total": 68621
   },
   {
     "faixa": "Entre 2 e 4 anos",
-    "govbr": 4150,
-    "proprio": 47847,
-    "total": 51997
+    "govbr": 4277,
+    "proprio": 48005,
+    "total": 52282
   },
   {
     "faixa": "Mais de 4 anos",
     "govbr": 0,
-    "proprio": 25351,
-    "total": 25351
+    "proprio": 25554,
+    "total": 25554
   },
   {
     "faixa": "Uma vez apenas",
-    "govbr": 37374,
-    "proprio": 114830,
-    "total": 152204
+    "govbr": 37451,
+    "proprio": 114907,
+    "total": 152358
   }
 ]

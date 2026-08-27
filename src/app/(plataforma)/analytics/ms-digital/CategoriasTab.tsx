@@ -257,13 +257,50 @@ export function CategoriasTab({
         <OrgaosPorCategoriaSection orgaos={orgaosResponsaveis} totalGeral={total} />
       </DashboardSection>
 
-      {/* 5. Nativos × Web — barra 100% empilhada horizontal */}
-      <DashboardSection title="Nativos × web">
-        <NativoWebBar nativo={resumo.nativo} web={resumo.web} />
-        <p className="mt-3 text-xs" style={{ color: "var(--ds-color-text-muted)" }}>
-          Nativo = tela dentro do app. Web = manda o cidadão para um site externo. Quanto mais nativo, mais o serviço
-          vive dentro do app.
+      {/* 5. Nativos × Redirecionados — total + drill por categoria */}
+      <DashboardSection title="Nativos × redirecionados">
+        <p className="mb-3 text-sm" style={{ color: "var(--ds-color-text-secondary)" }}>
+          Nativo = tela dentro do app. Redirecionado = manda o cidadão para um site fora do aplicativo. Quanto mais nativo, mais o serviço vive dentro do app — internalizar o redirecionado é o que a fila de trabalho da equipe do MS Digital busca.
         </p>
+
+        <p className="mb-2 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--ds-color-text-muted)" }}>
+          Total do app
+        </p>
+        <NativoWebBar nativo={resumo.nativo} web={resumo.web} />
+
+        <div className="mt-6">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--ds-color-text-muted)" }}>
+            Por categoria — onde o cidadão sai do app
+          </p>
+          <ul className="flex flex-col gap-3">
+            {categorias.map((c) => (
+              <li
+                key={c.categoria}
+                className="grid grid-cols-1 sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,2fr)] gap-x-4 gap-y-2 items-center"
+              >
+                <div className="min-w-0">
+                  <p
+                    className="text-sm font-semibold truncate"
+                    style={{ color: "var(--ds-color-text-primary)" }}
+                    title={c.categoria}
+                  >
+                    {c.categoria}
+                  </p>
+                </div>
+                <p
+                  className="text-xs tabular-nums whitespace-nowrap"
+                  style={{ color: "var(--ds-color-text-secondary)" }}
+                >
+                  {c.nativo.toLocaleString("pt-BR")} nativos · {c.web.toLocaleString("pt-BR")} redirecionados
+                  <span style={{ color: "var(--ds-color-text-muted)" }}> · {c.total.toLocaleString("pt-BR")} no total</span>
+                </p>
+                <div className="min-w-0">
+                  <NativoWebBar nativo={c.nativo} web={c.web} variante="compacta" />
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </DashboardSection>
 
       {/* 6. Pontos de atenção */}
