@@ -242,7 +242,16 @@ export type AcessoBotaoCarta = {
   categoria: string | null;
   urlCarta: string;
   urlExterno: string;
+  // Cliques no botão "Acessar serviço" — pageMetrics.outlinks filtrado pelo
+  // host de urlExterno na resposta Transitions.getTransitionsForAction.
   cliques: number;
+  // Acessos à própria página da carta no portal — pageMetrics.pageviews da
+  // mesma resposta Transitions (grátis, mesma chamada). Base da conversão.
+  // Opcional pra objetos construídos client-side sem chamar Matomo (fallback).
+  acessosCarta?: number;
+  // % de cidadãos que abriram a carta e clicaram no destino externo.
+  // null quando acessosCarta = 0 (divisão indefinida).
+  taxaConversaoPct?: number | null;
 };
 
 // Total de cidadãos únicos que já acessaram o Portal Único (app_id=36 no

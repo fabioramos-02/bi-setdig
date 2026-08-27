@@ -22,6 +22,20 @@ const THRESHOLD_BULK_ORGAO = 15;
 const prazoDe = (c: CartaRelacao) => prazoServico(c.tempoTotal, c.tipoTempo);
 
 type EstadoBulk = "idle" | "carregando" | "sucesso" | "erro";
+type FluxoCarta = { cliques: number; acessosCarta: number; taxaConversaoPct: number | null };
+
+function fluxoDe(c: AcessoBotaoCarta): FluxoCarta {
+  return {
+    cliques: c.cliques,
+    acessosCarta: c.acessosCarta ?? 0,
+    taxaConversaoPct: c.taxaConversaoPct ?? null,
+  };
+}
+
+function formatarTaxa(pct: number | null): string {
+  if (pct === null) return "—";
+  return `${pct.toFixed(1)}%`;
+}
 
 /** Tabela operacional das cartas ativas — Nome/Órgão/Categoria/Prazo/Acessos +
  * link pro portal. Coluna "Acessar Serviço" só aparece quando o usuário
@@ -51,7 +65,7 @@ export function ExplorarTab({
   // Cliques em "Acessar serviço" — populado incrementalmente pelas chamadas
   // ao vivo. Chave = slug. Ausente = ainda não buscado; 0 = buscado e sem
   // clique no período (diferença importante pra UX).
-  const [cliquesPorSlug, setCliquesPorSlug] = useState<Map<string, number>>(new Map());
+  const [fluxoPorSlug, setFluxoPorSlug] = useState<Map<string, FluxoCarta>>(new Map());
   const [carregandoSlug, setCarregandoSlug] = useState<Set<string>>(new Set());
   const [estadoBulk, setEstadoBulk] = useState<EstadoBulk>("idle");
   const [erroMsg, setErroMsg] = useState<string | null>(null);
@@ -63,7 +77,7 @@ export function ExplorarTab({
   const [rangeAnterior, setRangeAnterior] = useState(range);
   if (rangeAnterior.inicio !== range.inicio || rangeAnterior.fim !== range.fim) {
     setRangeAnterior(range);
-    setCliquesPorSlug(new Map());
+    setFluxoPorSlug(new Map());
     setCarregandoSlug(new Set());
     setEstadoBulk("idle");
     setErroMsg(null);
@@ -97,9 +111,9 @@ export function ExplorarTab({
       );
       if (!r.ok) throw new Error(`HTTP ${r.status}`);
       const data = (await r.json()) as { cartas: AcessoBotaoCarta[] };
-      setCliquesPorSlug((prev) => {
+      setFluxoPorSlug((prev) => {
         const m = new Map(prev);
-        for (const c of data.cartas ?? []) m.set(c.slug, c.cliques);
+        for (const c of data.cartas ?? []) m.set(c.slug, fluxoDe(c));
         return m;
       });
       setEstadoBulk("sucesso");
@@ -120,9 +134,9 @@ export function ExplorarTab({
       );
       if (!r.ok) throw new Error(`HTTP ${r.status}`);
       const data = (await r.json()) as { carta: AcessoBotaoCarta };
-      setCliquesPorSlug((prev) => {
+      setFluxoPorSlug((prev) => {
         const m = new Map(prev);
-        m.set(slug, data.carta.cliques);
+        m.set(slug, fluxoDe(data.carta));
         return m;
       });
     } catch (exc) {
@@ -219,17 +233,37 @@ export function ExplorarTab({
       label: "Acessar Serviço",
       align: "right",
       sortable: true,
-      sortValue: (c) => cliquesPorSlug.get(c.slug) ?? -1,
+      sortValue: (c) => fluxoPorSlug.get(c.slug)?.cliques ?? -1,
       render: (c) => (
         <CelulaCliques
           slug={c.slug}
           temUrlExterno={Boolean(c.urlExterno)}
-          cliques={cliquesPorSlug.get(c.slug)}
+          cliques={fluxoPorSlug.get(c.slug)?.cliques}
           carregando={carregandoSlug.has(c.slug)}
           modoIndividual={Boolean(modoIndividual)}
           onBuscar={() => buscarSlugIndividual(c.slug)}
         />
       ),
+    });
+    colunas.push({
+      key: "conversao",
+      label: "Conversão",
+      align: "right",
+      sortable: true,
+      sortValue: (c) => fluxoPorSlug.get(c.slug)?.taxaConversaoPct ?? -1,
+      render: (c) => {
+        const f = fluxoPorSlug.get(c.slug);
+        if (!f) return <span style={{ color: "var(--ds-color-text-muted)" }}>—</span>;
+        return (
+          <span
+            className="text-base"
+            style={{ color: f.taxaConversaoPct !== null && f.taxaConversaoPct >= 50 ? "var(--ds-color-success)" : "var(--ds-color-text-primary)" }}
+            title={f.acessosCarta > 0 ? `${f.cliques.toLocaleString("pt-BR")} cliques em ${f.acessosCarta.toLocaleString("pt-BR")} acessos à carta` : undefined}
+          >
+            {formatarTaxa(f.taxaConversaoPct)}
+          </span>
+        );
+      },
     });
   }
 
@@ -277,7 +311,7 @@ export function ExplorarTab({
           quantidade={cartasDoOrgaoComUrl.length}
           rotuloPeriodo={rotuloPeriodo}
           estado={estadoBulk}
-          jaCarregado={cartasDoOrgaoComUrl.some((c) => cliquesPorSlug.has(c.slug))}
+          jaCarregado={cartasDoOrgaoComUrl.some((c) => fluxoPorSlug.has(c.slug))}
           onBuscar={buscarBulkOrgao}
         />
       )}
@@ -322,7 +356,8 @@ export function ExplorarTab({
               Prazo: prazoDe(c),
               Custo: c.custo ?? "",
               [`Acessos ${rotuloPeriodo}`]: visitasPorSlug.get(c.slug) ?? 0,
-              [`Cliques Acessar Serviço ${rotuloPeriodo}`]: cliquesPorSlug.get(c.slug) ?? "",
+              [`Cliques Acessar Serviço ${rotuloPeriodo}`]: fluxoPorSlug.get(c.slug)?.cliques ?? "",
+              [`Conversão ${rotuloPeriodo} (%)`]: fluxoPorSlug.get(c.slug)?.taxaConversaoPct?.toFixed(1) ?? "",
               Link: `${PORTAL_BASE}/${c.categoria}/${c.slug}`,
             }))}
             filename="cartas-servico"

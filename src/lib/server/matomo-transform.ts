@@ -24,6 +24,19 @@ export function cliquesTransitionsPorHost(raw: TransitionsRaw | null | undefined
   return total;
 }
 
+/** Fluxo carta→outlink em 1 leitura da mesma resposta Transitions:
+ *  acessosCarta (pageMetrics.pageviews) + cliques (soma dos outlinks pro
+ *  host de urlExterno). Base pra taxa de conversão "abriu a carta e
+ *  clicou no botão". */
+export function fluxoCartaOutlink(
+  raw: TransitionsRaw | null | undefined,
+  urlExterno: string,
+): { acessosCarta: number; cliques: number } {
+  const acessosCarta = raw?.pageMetrics?.pageviews ?? 0;
+  const cliques = cliquesTransitionsPorHost(raw, urlExterno);
+  return { acessosCarta, cliques };
+}
+
 function hostnameOf(url: string): string {
   try {
     return new URL(url).hostname.toLowerCase();

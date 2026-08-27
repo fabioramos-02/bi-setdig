@@ -12,6 +12,20 @@ const PORTAL_BASE = "https://www.ms.gov.br";
 const THRESHOLD_BULK_ORGAO = 15;
 
 type EstadoBulk = "idle" | "carregando" | "sucesso" | "erro";
+type FluxoCarta = { cliques: number; acessosCarta: number; taxaConversaoPct: number | null };
+
+function fluxoDe(c: AcessoBotaoCarta): FluxoCarta {
+  return {
+    cliques: c.cliques,
+    acessosCarta: c.acessosCarta ?? 0,
+    taxaConversaoPct: c.taxaConversaoPct ?? null,
+  };
+}
+
+function formatarTaxa(pct: number | null): string {
+  if (pct === null) return "—";
+  return `${pct.toFixed(1)}%`;
+}
 
 function hostDe(url: string): string {
   try {
@@ -43,7 +57,7 @@ export function AcessarServicoTab({
 }) {
   const [orgaoAtivo, setOrgaoAtivo] = useState<string>("");
   const [busca, setBusca] = useState<string>("");
-  const [cliquesPorSlug, setCliquesPorSlug] = useState<Map<string, number>>(new Map());
+  const [fluxoPorSlug, setFluxoPorSlug] = useState<Map<string, FluxoCarta>>(new Map());
   const [carregandoSlug, setCarregandoSlug] = useState<Set<string>>(new Set());
   const [estadoBulk, setEstadoBulk] = useState<EstadoBulk>("idle");
   const [erroMsg, setErroMsg] = useState<string | null>(null);
@@ -55,7 +69,7 @@ export function AcessarServicoTab({
   const [rangeAnterior, setRangeAnterior] = useState(range);
   if (rangeAnterior.inicio !== range.inicio || rangeAnterior.fim !== range.fim) {
     setRangeAnterior(range);
-    setCliquesPorSlug(new Map());
+    setFluxoPorSlug(new Map());
     setCarregandoSlug(new Set());
     setEstadoBulk("idle");
     setErroMsg(null);
@@ -91,9 +105,9 @@ export function AcessarServicoTab({
       );
       if (!r.ok) throw new Error(`HTTP ${r.status}`);
       const data = (await r.json()) as { cartas: AcessoBotaoCarta[] };
-      setCliquesPorSlug((prev) => {
+      setFluxoPorSlug((prev) => {
         const m = new Map(prev);
-        for (const c of data.cartas ?? []) m.set(c.slug, c.cliques);
+        for (const c of data.cartas ?? []) m.set(c.slug, fluxoDe(c));
         return m;
       });
       setEstadoBulk("sucesso");
@@ -114,9 +128,9 @@ export function AcessarServicoTab({
       );
       if (!r.ok) throw new Error(`HTTP ${r.status}`);
       const data = (await r.json()) as { carta: AcessoBotaoCarta };
-      setCliquesPorSlug((prev) => {
+      setFluxoPorSlug((prev) => {
         const m = new Map(prev);
-        m.set(slug, data.carta.cliques);
+        m.set(slug, fluxoDe(data.carta));
         return m;
       });
     } catch (exc) {
@@ -132,12 +146,12 @@ export function AcessarServicoTab({
   }
 
   // AcessoBotaoCarta[] derivado do que já foi buscado (pra reusar
-  // destinosPorHost e cálculos). Cartas sem clique carregado ficam fora.
+  // destinosPorHost e cálculos). Cartas sem fluxo carregado ficam fora.
   const cartasCarregadas = useMemo<AcessoBotaoCarta[]>(() => {
     const out: AcessoBotaoCarta[] = [];
     for (const c of cartasDoOrgao) {
-      const cliques = cliquesPorSlug.get(c.slug);
-      if (cliques === undefined) continue;
+      const f = fluxoPorSlug.get(c.slug);
+      if (!f) continue;
       out.push({
         slug: c.slug,
         titulo: c.titulo,
@@ -145,13 +159,19 @@ export function AcessarServicoTab({
         categoria: c.categoria ?? null,
         urlCarta: `${PORTAL_BASE}/${c.categoria ?? ""}/${c.slug}`,
         urlExterno: c.urlExterno ?? "",
-        cliques,
+        cliques: f.cliques,
+        acessosCarta: f.acessosCarta,
+        taxaConversaoPct: f.taxaConversaoPct,
       });
     }
     return out.sort((a, b) => b.cliques - a.cliques);
-  }, [cartasDoOrgao, cliquesPorSlug]);
+  }, [cartasDoOrgao, fluxoPorSlug]);
 
   const totalCliques = cartasCarregadas.reduce((acc, c) => acc + c.cliques, 0);
+  const totalAcessosCarta = cartasCarregadas.reduce((acc, c) => acc + (c.acessosCarta ?? 0), 0);
+  // Conversão média ponderada por acessos — evita distorção de cartas de nicho
+  // com 1 acesso e 1 clique (100%) inflando média simples.
+  const conversaoMediaPct = totalAcessosCarta > 0 ? (100 * totalCliques) / totalAcessosCarta : null;
   const destinos = useMemo(() => destinosPorHost(cartasCarregadas, 5), [cartasCarregadas]);
   const semOrgao = !orgaoAtivo;
   const semDadoAindaCarregado = orgaoAtivo && cartasCarregadas.length === 0;
@@ -218,12 +238,17 @@ export function AcessarServicoTab({
       )}
 
       {cartasCarregadas.length > 0 && (
-        <div className="grid gap-3 grid-cols-1 sm:grid-cols-3 min-w-0">
+        <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 min-w-0">
           <MetricCard label="Cliques no botão Acessar Serviço" value={totalCliques} sub={rotuloPeriodo} />
           <MetricCard
-            label="Cartas com cliques"
-            value={cartasCarregadas.filter((c) => c.cliques > 0).length}
-            sub={`de ${cartasCarregadas.length} carregadas`}
+            label="Acessos às cartas"
+            value={totalAcessosCarta}
+            sub={`em ${cartasCarregadas.length} carta${cartasCarregadas.length === 1 ? "" : "s"} carregada${cartasCarregadas.length === 1 ? "" : "s"}`}
+          />
+          <MetricCard
+            label="Conversão média"
+            value={formatarTaxa(conversaoMediaPct)}
+            sub="cidadãos que abriram a carta e clicaram no botão"
           />
           <MetricCard
             label="Sistema externo líder"
@@ -297,7 +322,7 @@ export function AcessarServicoTab({
           <TabelaVolume
             cartas={cartasFiltradas}
             visitasPorSlug={visitasPorSlug}
-            cliquesPorSlug={cliquesPorSlug}
+            fluxoPorSlug={fluxoPorSlug}
             carregandoSlug={carregandoSlug}
             modoIndividual={Boolean(modoIndividual)}
             onBuscarSlug={buscarSlugIndividual}
@@ -311,14 +336,14 @@ export function AcessarServicoTab({
 function TabelaVolume({
   cartas,
   visitasPorSlug,
-  cliquesPorSlug,
+  fluxoPorSlug,
   carregandoSlug,
   modoIndividual,
   onBuscarSlug,
 }: {
   cartas: CartaRelacao[];
   visitasPorSlug: Map<string, number>;
-  cliquesPorSlug: Map<string, number>;
+  fluxoPorSlug: Map<string, FluxoCarta>;
   carregandoSlug: Set<string>;
   modoIndividual: boolean;
   onBuscarSlug: (slug: string) => void;
@@ -363,16 +388,36 @@ function TabelaVolume({
       label: "Cliques em Acessar Serviço",
       align: "right",
       sortable: true,
-      sortValue: (c) => cliquesPorSlug.get(c.slug) ?? -1,
+      sortValue: (c) => fluxoPorSlug.get(c.slug)?.cliques ?? -1,
       render: (c) => (
         <CelulaCliques
           slug={c.slug}
-          cliques={cliquesPorSlug.get(c.slug)}
+          cliques={fluxoPorSlug.get(c.slug)?.cliques}
           carregando={carregandoSlug.has(c.slug)}
           modoIndividual={modoIndividual}
           onBuscar={() => onBuscarSlug(c.slug)}
         />
       ),
+    },
+    {
+      key: "conversao",
+      label: "Conversão",
+      align: "right",
+      sortable: true,
+      sortValue: (c) => fluxoPorSlug.get(c.slug)?.taxaConversaoPct ?? -1,
+      render: (c) => {
+        const f = fluxoPorSlug.get(c.slug);
+        if (!f) return <span style={{ color: "var(--ds-color-text-muted)" }}>—</span>;
+        return (
+          <span
+            className="text-base"
+            style={{ color: f.taxaConversaoPct !== null && f.taxaConversaoPct >= 50 ? "var(--ds-color-success)" : "var(--ds-color-text-primary)" }}
+            title={f.acessosCarta > 0 ? `${f.cliques.toLocaleString("pt-BR")} cliques em ${f.acessosCarta.toLocaleString("pt-BR")} acessos à carta` : undefined}
+          >
+            {formatarTaxa(f.taxaConversaoPct)}
+          </span>
+        );
+      },
     },
     {
       key: "destino",

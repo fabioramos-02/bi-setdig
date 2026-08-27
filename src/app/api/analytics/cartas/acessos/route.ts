@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import * as matomo from "@/lib/server/matomo-client";
-import { cliquesTransitionsPorHost } from "@/lib/server/matomo-transform";
+import { fluxoCartaOutlink } from "@/lib/server/matomo-transform";
 import { getCartasInventarioRelacao, type AcessoBotaoCarta, type CartaRelacao } from "@/lib/data";
 
 export const runtime = "nodejs";
@@ -47,8 +47,8 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: `carta '${slug}' não encontrada no inventário ativo` }, { status: 404 });
     }
     try {
-      const cliques = await cliquesDaCarta(carta, inicio, fim);
-      return NextResponse.json({ carta: toAcesso(carta, cliques) });
+      const fluxo = await fluxoDaCarta(carta, inicio, fim);
+      return NextResponse.json({ carta: toAcesso(carta, fluxo) });
     } catch (exc) {
       console.error(`[api/analytics/cartas/acessos?slug=${slug}] falhou:`, exc);
       return NextResponse.json({ error: "Matomo indisponível" }, { status: 502 });
@@ -61,19 +61,20 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ cartas: [], totalCartasComUrlExterno: 0, totalCartasComCliques: 0 });
   }
 
-  const cliquesPorCarta = await Promise.all(
-    cartasOrgao.map(async (c): Promise<[CartaRelacao, number]> => {
+  type Fluxo = { acessosCarta: number; cliques: number };
+  const fluxoPorCarta = await Promise.all(
+    cartasOrgao.map(async (c): Promise<[CartaRelacao, Fluxo]> => {
       try {
-        return [c, await cliquesDaCarta(c, inicio, fim)];
+        return [c, await fluxoDaCarta(c, inicio, fim)];
       } catch (exc) {
         console.error(`[api/analytics/cartas/acessos?orgao=${orgao} carta=${c.slug}] falhou:`, exc);
-        return [c, 0];
+        return [c, { acessosCarta: 0, cliques: 0 }];
       }
     }),
   );
 
-  const cartas = cliquesPorCarta
-    .map(([c, cliques]) => toAcesso(c, cliques))
+  const cartas = fluxoPorCarta
+    .map(([c, fluxo]) => toAcesso(c, fluxo))
     .sort((a, b) => b.cliques - a.cliques);
 
   return NextResponse.json({
@@ -83,13 +84,21 @@ export async function GET(req: NextRequest) {
   });
 }
 
-async function cliquesDaCarta(carta: CartaRelacao, inicio: string, fim: string): Promise<number> {
+async function fluxoDaCarta(
+  carta: CartaRelacao,
+  inicio: string,
+  fim: string,
+): Promise<{ acessosCarta: number; cliques: number }> {
   const actionUrl = `${PORTAL_BASE_URL}/${carta.categoria ?? ""}/${carta.slug}`;
   const raw = await matomo.getTransitionsForAction(inicio, fim, actionUrl);
-  return cliquesTransitionsPorHost(raw, carta.urlExterno ?? "");
+  return fluxoCartaOutlink(raw, carta.urlExterno ?? "");
 }
 
-function toAcesso(carta: CartaRelacao, cliques: number): AcessoBotaoCarta {
+function toAcesso(
+  carta: CartaRelacao,
+  fluxo: { acessosCarta: number; cliques: number },
+): AcessoBotaoCarta {
+  const taxa = fluxo.acessosCarta > 0 ? (100 * fluxo.cliques) / fluxo.acessosCarta : null;
   return {
     slug: carta.slug,
     titulo: carta.titulo,
@@ -97,6 +106,8 @@ function toAcesso(carta: CartaRelacao, cliques: number): AcessoBotaoCarta {
     categoria: carta.categoria ?? null,
     urlCarta: `${PORTAL_BASE_URL}/${carta.categoria ?? ""}/${carta.slug}`,
     urlExterno: carta.urlExterno ?? "",
-    cliques,
+    cliques: fluxo.cliques,
+    acessosCarta: fluxo.acessosCarta,
+    taxaConversaoPct: taxa,
   };
 }
