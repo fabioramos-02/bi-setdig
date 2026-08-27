@@ -14,32 +14,31 @@ import type { AcessoBotaoCarta, CartaRelacao } from "@/lib/data";
 const PASSO = 50;
 const PORTAL_BASE = "https://www.ms.gov.br";
 const TODOS = "";
+// Limite entre "1 chamada Matomo pro órgão inteiro" (bulk, viável quando são
+// poucas cartas) e "1 chamada por carta na hora que o usuário clica"
+// (individual — evita chamada gigante em órgãos grandes).
+const THRESHOLD_BULK_ORGAO = 15;
 
 const prazoDe = (c: CartaRelacao) => prazoServico(c.tempoTotal, c.tipoTempo);
 
-/** Tabela operacional das cartas ativas — Nome/Órgão/Categoria/Prazo/Acessos +
- * link pro portal. Ordena pela procura (acessos no período) por padrão, com
- * ordenação por coluna disponível. Busca livre + filtro por Órgão/Categoria/
- * Público-alvo (combinam em AND) + paginação (a lista é grande, ~1200 cartas
- * ativas). */
-type EstadoAcesso = "idle" | "carregando" | "sucesso" | "erro";
+type EstadoBulk = "idle" | "carregando" | "sucesso" | "erro";
 
+/** Tabela operacional das cartas ativas — Nome/Órgão/Categoria/Prazo/Acessos +
+ * link pro portal. Coluna "Acessar Serviço" só aparece quando o usuário
+ * filtra por órgão: se o órgão tem ≤15 cartas, uma barra "Buscar cliques
+ * deste órgão" carrega tudo em 1 chamada; se tem >15, cada linha ganha
+ * botão individual "Ver cliques" que faz 1 chamada Matomo segmentada
+ * pela carta (precisa em URL compartilhada). */
 export function ExplorarTab({
   cartas,
   visitasPorSlug,
-  acessosBotaoPorSlug,
-  acessosBotaoStatus,
   range,
-  isPeriodoCorrente,
   status,
   rotuloPeriodo,
 }: {
   cartas: CartaRelacao[];
   visitasPorSlug: Map<string, number>;
-  acessosBotaoPorSlug: Map<string, number>;
-  acessosBotaoStatus: StatusIntervalo;
   range: { inicio: string; fim: string };
-  isPeriodoCorrente: boolean;
   status: StatusIntervalo;
   rotuloPeriodo: string;
 }) {
@@ -49,47 +48,81 @@ export function ExplorarTab({
   const [publicoFiltro, setPublicoFiltro] = useState(TODOS);
   const [visiveis, setVisiveis] = useState(PASSO);
 
-  // ponytail: BarraDeAcao duplicada com AcessarServicoTab (2º consumidor).
-  // Extrair pra components/dashboard/ só quando aparecer 3º uso.
-  const [estadoAcesso, setEstadoAcesso] = useState<EstadoAcesso>("idle");
-  const [acessosVivo, setAcessosVivo] = useState<Map<string, number> | null>(null);
-  const [rangeAcessoVivo, setRangeAcessoVivo] = useState<{ inicio: string; fim: string } | null>(null);
-  const [erroAcessoMsg, setErroAcessoMsg] = useState<string | null>(null);
-
-  const acessoVivoValido =
-    acessosVivo !== null && rangeAcessoVivo?.inicio === range.inicio && rangeAcessoVivo?.fim === range.fim;
-  const acessosEffective = acessoVivoValido ? acessosVivo! : acessosBotaoPorSlug;
-  const dadoAcessoLive = acessoVivoValido;
-
-  async function buscarAcessosVivo() {
-    setEstadoAcesso("carregando");
-    setErroAcessoMsg(null);
-    try {
-      const r = await fetch(`/api/analytics/cartas/acessos?inicio=${range.inicio}&fim=${range.fim}`);
-      if (!r.ok) throw new Error(`HTTP ${r.status}`);
-      const data = (await r.json()) as { cartas: AcessoBotaoCarta[] };
-      const mapa = new Map<string, number>();
-      for (const c of data.cartas ?? []) mapa.set(c.slug, c.cliques);
-      setAcessosVivo(mapa);
-      setRangeAcessoVivo({ inicio: range.inicio, fim: range.fim });
-      setEstadoAcesso("sucesso");
-    } catch (exc) {
-      console.error("[ExplorarTab] buscar acessos ao vivo falhou:", exc);
-      setErroAcessoMsg("Não foi possível buscar os cliques ao vivo. Tente de novo em instantes.");
-      setEstadoAcesso("erro");
-    }
-  }
+  // Cliques em "Acessar serviço" — populado incrementalmente pelas chamadas
+  // ao vivo. Chave = slug. Ausente = ainda não buscado; 0 = buscado e sem
+  // clique no período (diferença importante pra UX).
+  const [cliquesPorSlug, setCliquesPorSlug] = useState<Map<string, number>>(new Map());
+  const [carregandoSlug, setCarregandoSlug] = useState<Set<string>>(new Set());
+  const [estadoBulk, setEstadoBulk] = useState<EstadoBulk>("idle");
+  const [erroMsg, setErroMsg] = useState<string | null>(null);
 
   const orgaos = useMemo(() => [...new Set(cartas.map((c) => c.orgaoSigla))].sort(), [cartas]);
   const categorias = useMemo(
     () => [...new Set(cartas.map((c) => c.categoria).filter((c): c is string => Boolean(c)))].sort(),
     [cartas],
   );
-  // `publico` é texto livre em HTML (regra de elegibilidade completa, quase
-  // único por carta) — não serve de filtro. `publicoEspecifico` é a
-  // taxonomia limpa (Cidadão/Empresa/Gestão Pública/Servidor), e pode ter
-  // mais de um valor por carta.
   const publicos = useMemo(() => [...new Set(cartas.flatMap((c) => c.publicoEspecifico))].sort(), [cartas]);
+
+  const cartasDoOrgao = useMemo(
+    () => (orgaoFiltro ? cartas.filter((c) => c.orgaoSigla === orgaoFiltro) : []),
+    [cartas, orgaoFiltro],
+  );
+  const cartasDoOrgaoComUrl = useMemo(
+    () => cartasDoOrgao.filter((c) => c.urlExterno),
+    [cartasDoOrgao],
+  );
+  const modoBulk = orgaoFiltro && cartasDoOrgaoComUrl.length > 0 && cartasDoOrgaoComUrl.length <= THRESHOLD_BULK_ORGAO;
+  const modoIndividual = orgaoFiltro && cartasDoOrgaoComUrl.length > THRESHOLD_BULK_ORGAO;
+
+  async function buscarBulkOrgao() {
+    if (!orgaoFiltro) return;
+    setEstadoBulk("carregando");
+    setErroMsg(null);
+    try {
+      const r = await fetch(
+        `/api/analytics/cartas/acessos?inicio=${range.inicio}&fim=${range.fim}&orgao=${encodeURIComponent(orgaoFiltro)}`,
+      );
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      const data = (await r.json()) as { cartas: AcessoBotaoCarta[] };
+      setCliquesPorSlug((prev) => {
+        const m = new Map(prev);
+        for (const c of data.cartas ?? []) m.set(c.slug, c.cliques);
+        return m;
+      });
+      setEstadoBulk("sucesso");
+    } catch (exc) {
+      console.error("[ExplorarTab] bulk-orgão falhou:", exc);
+      setErroMsg("Não foi possível buscar os cliques do órgão. Tente novamente.");
+      setEstadoBulk("erro");
+    }
+  }
+
+  async function buscarSlugIndividual(slug: string) {
+    if (carregandoSlug.has(slug)) return;
+    setCarregandoSlug((prev) => new Set(prev).add(slug));
+    setErroMsg(null);
+    try {
+      const r = await fetch(
+        `/api/analytics/cartas/acessos?inicio=${range.inicio}&fim=${range.fim}&slug=${encodeURIComponent(slug)}`,
+      );
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      const data = (await r.json()) as { carta: AcessoBotaoCarta };
+      setCliquesPorSlug((prev) => {
+        const m = new Map(prev);
+        m.set(slug, data.carta.cliques);
+        return m;
+      });
+    } catch (exc) {
+      console.error(`[ExplorarTab] individual ${slug} falhou:`, exc);
+      setErroMsg(`Não foi possível buscar os cliques da carta ${slug}.`);
+    } finally {
+      setCarregandoSlug((prev) => {
+        const s = new Set(prev);
+        s.delete(slug);
+        return s;
+      });
+    }
+  }
 
   const resetarPagina = () => setVisiveis(PASSO);
 
@@ -165,44 +198,44 @@ export function ExplorarTab({
         </span>
       ),
     },
-    {
+  ];
+
+  if (orgaoFiltro && cartasDoOrgaoComUrl.length > 0) {
+    colunas.push({
       key: "cliques-botao",
-      label: dadoAcessoLive
-        ? "Acessar Serviço (ao vivo)"
-        : acessosBotaoStatus === "fallback"
-        ? "Acessar Serviço (aprox.)"
-        : "Acessar Serviço",
+      label: "Acessar Serviço",
       align: "right",
       sortable: true,
-      sortValue: (c) => acessosEffective.get(c.slug) ?? 0,
-      render: (c) => {
-        const cliques = acessosEffective.get(c.slug) ?? 0;
-        return cliques > 0 ? (
-          <span className="font-semibold" style={{ color: "var(--ds-color-primary-600)" }}>
-            {cliques.toLocaleString("pt-BR")}
-          </span>
-        ) : (
-          <span style={{ color: "var(--ds-color-text-muted)" }}>—</span>
-        );
-      },
-    },
-    {
-      key: "portal",
-      label: "Portal",
-      align: "right",
+      sortValue: (c) => cliquesPorSlug.get(c.slug) ?? -1,
       render: (c) => (
-        <a
-          href={`${PORTAL_BASE}/${c.categoria}/${c.slug}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:underline text-xs"
-          style={{ color: "var(--ds-color-primary-600)" }}
-        >
-          Abrir ↗
-        </a>
+        <CelulaCliques
+          slug={c.slug}
+          temUrlExterno={Boolean(c.urlExterno)}
+          cliques={cliquesPorSlug.get(c.slug)}
+          carregando={carregandoSlug.has(c.slug)}
+          modoIndividual={Boolean(modoIndividual)}
+          onBuscar={() => buscarSlugIndividual(c.slug)}
+        />
       ),
-    },
-  ];
+    });
+  }
+
+  colunas.push({
+    key: "portal",
+    label: "Portal",
+    align: "right",
+    render: (c) => (
+      <a
+        href={`${PORTAL_BASE}/${c.categoria}/${c.slug}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:underline text-xs"
+        style={{ color: "var(--ds-color-primary-600)" }}
+      >
+        Abrir ↗
+      </a>
+    ),
+  });
 
   return (
     <div className="flex flex-col gap-4">
@@ -211,17 +244,46 @@ export function ExplorarTab({
         mensagemFallback="Não foi possível buscar os acessos desse período agora — tenta um período menor ou tenta de novo em instantes."
       />
 
-      <BarraDeAcaoAcesso
-        rotuloPeriodo={rotuloPeriodo}
-        range={range}
-        estado={estadoAcesso}
-        dadoLive={dadoAcessoLive}
-        isPeriodoCorrente={isPeriodoCorrente}
-        acessosBotaoStatus={acessosBotaoStatus}
-        onBuscar={buscarAcessosVivo}
-      />
+      {!orgaoFiltro && (
+        <div
+          className="text-base rounded"
+          style={{
+            background: "var(--ds-color-background-muted)",
+            padding: "var(--ds-spacing-16)",
+            border: "1px solid var(--ds-color-border)",
+            color: "var(--ds-color-text-secondary)",
+          }}
+        >
+          Filtre por órgão para carregar os cliques em <strong>Acessar serviço</strong> de cada carta.
+        </div>
+      )}
 
-      {erroAcessoMsg && (
+      {modoBulk && (
+        <BarraBulkOrgao
+          orgao={orgaoFiltro}
+          quantidade={cartasDoOrgaoComUrl.length}
+          rotuloPeriodo={rotuloPeriodo}
+          estado={estadoBulk}
+          jaCarregado={cartasDoOrgaoComUrl.some((c) => cliquesPorSlug.has(c.slug))}
+          onBuscar={buscarBulkOrgao}
+        />
+      )}
+
+      {modoIndividual && (
+        <div
+          className="text-base rounded"
+          style={{
+            background: "var(--ds-color-background-muted)",
+            padding: "var(--ds-spacing-16)",
+            border: "1px solid var(--ds-color-border)",
+            color: "var(--ds-color-text-secondary)",
+          }}
+        >
+          O órgão <strong>{orgaoFiltro}</strong> tem {cartasDoOrgaoComUrl.length} cartas com link externo — clique em <strong>Ver cliques</strong> em cada linha para carregar sob demanda.
+        </div>
+      )}
+
+      {erroMsg && (
         <div
           role="alert"
           className="text-base rounded"
@@ -232,7 +294,7 @@ export function ExplorarTab({
             border: "1px solid var(--ds-color-danger, #dc2626)",
           }}
         >
-          {erroAcessoMsg}
+          {erroMsg}
         </div>
       )}
 
@@ -247,7 +309,7 @@ export function ExplorarTab({
               Prazo: prazoDe(c),
               Custo: c.custo ?? "",
               [`Acessos ${rotuloPeriodo}`]: visitasPorSlug.get(c.slug) ?? 0,
-              [`Cliques Acessar Serviço ${rotuloPeriodo}`]: acessosEffective.get(c.slug) ?? 0,
+              [`Cliques Acessar Serviço ${rotuloPeriodo}`]: cliquesPorSlug.get(c.slug) ?? "",
               Link: `${PORTAL_BASE}/${c.categoria}/${c.slug}`,
             }))}
             filename="cartas-servico"
@@ -327,34 +389,63 @@ export function ExplorarTab({
   );
 }
 
-function BarraDeAcaoAcesso({
-  rotuloPeriodo,
-  range,
-  estado,
-  dadoLive,
-  isPeriodoCorrente,
-  acessosBotaoStatus,
+function CelulaCliques({
+  slug,
+  temUrlExterno,
+  cliques,
+  carregando,
+  modoIndividual,
   onBuscar,
 }: {
+  slug: string;
+  temUrlExterno: boolean;
+  cliques: number | undefined;
+  carregando: boolean;
+  modoIndividual: boolean;
+  onBuscar: () => void;
+}) {
+  if (!temUrlExterno) return <span style={{ color: "var(--ds-color-text-muted)" }}>—</span>;
+  if (carregando) return <Spinner />;
+  if (cliques !== undefined) {
+    return cliques > 0 ? (
+      <span className="font-semibold" style={{ color: "var(--ds-color-primary-600)" }}>
+        {cliques.toLocaleString("pt-BR")}
+      </span>
+    ) : (
+      <span style={{ color: "var(--ds-color-text-muted)" }}>0</span>
+    );
+  }
+  if (!modoIndividual) return <span style={{ color: "var(--ds-color-text-muted)" }}>—</span>;
+  return (
+    <button
+      type="button"
+      onClick={onBuscar}
+      aria-label={`Ver cliques da carta ${slug}`}
+      className="text-xs underline"
+      style={{ color: "var(--ds-color-primary-600)", background: "transparent", border: 0, cursor: "pointer" }}
+    >
+      Ver cliques
+    </button>
+  );
+}
+
+function BarraBulkOrgao({
+  orgao,
+  quantidade,
+  rotuloPeriodo,
+  estado,
+  jaCarregado,
+  onBuscar,
+}: {
+  orgao: string;
+  quantidade: number;
   rotuloPeriodo: string;
-  range: { inicio: string; fim: string };
-  estado: EstadoAcesso;
-  dadoLive: boolean;
-  isPeriodoCorrente: boolean;
-  acessosBotaoStatus: StatusIntervalo;
+  estado: EstadoBulk;
+  jaCarregado: boolean;
   onBuscar: () => void;
 }) {
   const carregando = estado === "carregando";
-  const rotulo = dadoLive
-    ? "Atualizar cliques ao vivo"
-    : isPeriodoCorrente
-    ? "Buscar cliques ao vivo"
-    : "Buscar cliques do período";
-  const contexto = dadoLive
-    ? `Coluna "Acessar Serviço" mostra cliques ao vivo do período ${rotuloPeriodo} (${brDia(range.inicio)} a ${brDia(range.fim)}).`
-    : acessosBotaoStatus === "fallback"
-    ? `Coluna "Acessar Serviço" usa snapshot aproximado — clique para buscar os cliques exatos do período selecionado.`
-    : `Coluna "Acessar Serviço" usa o snapshot ${rotuloPeriodo} — clique para buscar os cliques ao vivo.`;
+  const rotulo = jaCarregado ? "Atualizar cliques" : "Buscar cliques deste órgão";
   return (
     <div
       className="flex flex-wrap items-center justify-between gap-3 rounded"
@@ -364,11 +455,8 @@ function BarraDeAcaoAcesso({
         border: "1px solid var(--ds-color-border)",
       }}
     >
-      <div
-        className="text-base min-w-0"
-        style={{ color: "var(--ds-color-text-secondary)", flex: "1 1 260px" }}
-      >
-        {contexto}
+      <div className="text-base min-w-0" style={{ color: "var(--ds-color-text-secondary)", flex: "1 1 260px" }}>
+        Órgão <strong>{orgao}</strong> tem {quantidade} carta{quantidade === 1 ? "" : "s"} com link externo. 1 chamada carrega todas em segundos, {rotuloPeriodo}.
       </div>
       <button
         type="button"
@@ -384,26 +472,24 @@ function BarraDeAcaoAcesso({
         }}
         aria-live="polite"
       >
-        {carregando && (
-          <span
-            aria-hidden
-            className="animate-spin rounded-full"
-            style={{
-              width: 14,
-              height: 14,
-              border: "2px solid var(--ds-color-border)",
-              borderTopColor: "var(--ds-color-text-secondary)",
-            }}
-          />
-        )}
+        {carregando && <Spinner />}
         {carregando ? "Buscando no Matomo…" : rotulo}
       </button>
     </div>
   );
 }
 
-function brDia(d: string): string {
-  return /^\d{4}-\d{2}-\d{2}$/.test(d)
-    ? `${d.slice(8, 10)}/${d.slice(5, 7)}/${d.slice(0, 4)}`
-    : d;
+function Spinner() {
+  return (
+    <span
+      aria-hidden
+      className="inline-block animate-spin rounded-full"
+      style={{
+        width: 14,
+        height: 14,
+        border: "2px solid var(--ds-color-border)",
+        borderTopColor: "var(--ds-color-text-secondary)",
+      }}
+    />
+  );
 }

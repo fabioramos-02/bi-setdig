@@ -12,8 +12,8 @@ import { OrgaosSetoresTab } from "./OrgaosSetoresTab";
 import { NovosServicosTab } from "./NovosServicosTab";
 import { AcessarServicoTab } from "./AcessarServicoTab";
 import { usePeriodo } from "@/lib/periodo-context";
-import { ehPeriodoCorrente, intervaloDoBucket, rotuloPeriodoResolvido } from "@/lib/period-filter";
-import type { InventarioResumo, InventarioOrgao, CartaRelacao, AcessoBotaoCarta } from "@/lib/data";
+import { intervaloDoBucket, rotuloPeriodoResolvido } from "@/lib/period-filter";
+import type { InventarioResumo, InventarioOrgao, CartaRelacao } from "@/lib/data";
 
 const ROTULO_PERIODO = { dia: "no dia", semana: "na semana", mes: "no mês", ano: "no ano", intervalo: "no intervalo" };
 
@@ -42,18 +42,15 @@ export function ServicosClient({
   const { estado, min, max } = usePeriodo();
   const [abaAtiva, setAbaAtiva] = useState("visao-geral");
   const range = intervaloDoBucket(estado, min, max);
-  const isPeriodoCorrente = ehPeriodoCorrente(estado, min, max);
 
-  // /servicos não tem snapshot estático — busca ao vivo sempre. Só o
-  // inventário (resumo/relacao/orgaos) é estático. Dois fetches paralelos:
-  // visitas por carta (/api/analytics/servicos) e cliques no botão Acessar
-  // Serviço (/api/analytics/cartas/acessos). Ambos sub-segundo.
+  // Visitas por carta (Matomo pageviews) — busca ao vivo sempre no
+  // /api/analytics/servicos, sub-segundo. Cliques em "Acessar serviço"
+  // ficaram fora daqui — cada aba (Explorar / Acessar Serviço) gerencia
+  // seu próprio fetch sob demanda, restrito ao órgão selecionado (ver
+  // ExplorarTab / AcessarServicoTab).
   const [live, setLive] = useState<LiveServicos | null>(null);
   const [liveRange, setLiveRange] = useState<{ inicio: string; fim: string } | null>(null);
   const [liveStatus, setLiveStatus] = useState<"idle" | "erro">("idle");
-  const [acessosBotaoLive, setAcessosBotaoLive] = useState<AcessoBotaoCarta[]>([]);
-  const [acessosBotaoRange, setAcessosBotaoRange] = useState<{ inicio: string; fim: string } | null>(null);
-  const [acessosBotaoStatus, setAcessosBotaoStatus] = useState<StatusIntervalo>("carregando");
 
   useEffect(() => {
     let cancelado = false;
@@ -77,47 +74,15 @@ export function ServicosClient({
     };
   }, [range.inicio, range.fim]);
 
-  useEffect(() => {
-    let cancelado = false;
-    setAcessosBotaoStatus("carregando");
-    fetch(`/api/analytics/cartas/acessos?inicio=${range.inicio}&fim=${range.fim}`)
-      .then((r) => {
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        return r.json() as Promise<{ cartas: AcessoBotaoCarta[] }>;
-      })
-      .then((data) => {
-        if (cancelado) return;
-        setAcessosBotaoLive(data.cartas ?? []);
-        setAcessosBotaoRange({ inicio: range.inicio, fim: range.fim });
-        setAcessosBotaoStatus("ok");
-      })
-      .catch(() => {
-        if (cancelado) return;
-        setAcessosBotaoStatus("fallback");
-      });
-    return () => {
-      cancelado = true;
-    };
-  }, [range.inicio, range.fim]);
-
   const valido = live !== null && liveRange?.inicio === range.inicio && liveRange?.fim === range.fim;
   const status: StatusIntervalo = valido ? "ok" : liveStatus === "erro" ? "fallback" : "carregando";
   const rotuloPeriodo = ROTULO_PERIODO[estado.tipo];
-
-  const acessosBotaoValidos =
-    acessosBotaoRange?.inicio === range.inicio && acessosBotaoRange?.fim === range.fim ? acessosBotaoLive : [];
 
   const visitasPorSlug = useMemo(() => {
     const m = new Map<string, number>();
     for (const c of live?.porCarta ?? []) m.set(c.slug, c.visitas);
     return m;
   }, [live]);
-
-  const acessosBotaoPorSlug = useMemo(() => {
-    const m = new Map<string, number>();
-    for (const c of acessosBotaoValidos) m.set(c.slug, c.cliques);
-    return m;
-  }, [acessosBotaoValidos]);
 
   const cartasAtivas = useMemo(() => relacao.filter((c) => c.ativo), [relacao]);
   const filtroRelatorio = rotuloPeriodoResolvido(estado) || "período atual";
@@ -132,7 +97,6 @@ export function ServicosClient({
           cartas={cartasAtivas}
           orgaos={orgaos}
           live={valido ? live : null}
-          acessosBotao={acessosBotaoValidos}
           status={status}
           rotuloPeriodo={rotuloPeriodo}
         />
@@ -145,10 +109,7 @@ export function ServicosClient({
         <ExplorarTab
           cartas={cartasAtivas}
           visitasPorSlug={visitasPorSlug}
-          acessosBotaoPorSlug={acessosBotaoPorSlug}
-          acessosBotaoStatus={acessosBotaoStatus}
           range={range}
-          isPeriodoCorrente={isPeriodoCorrente}
           status={status}
           rotuloPeriodo={rotuloPeriodo}
         />
@@ -177,7 +138,7 @@ export function ServicosClient({
       label: "5. Botão Acessar Serviço",
       content: (
         <AcessarServicoTab
-          cartasSnapshot={acessosBotaoValidos}
+          cartas={cartasAtivas}
           visitasPorSlug={visitasPorSlug}
           rotuloPeriodo={rotuloPeriodo}
           range={range}

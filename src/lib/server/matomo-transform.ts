@@ -9,10 +9,19 @@ import type { Cidade, Horario, Pagina, TermoBusca, PaginaEntrada, DominioSaida, 
 
 const _normUrl = (u?: string | null): string => (u ?? "").trim().toLowerCase().replace(/\/+$/, "");
 
-/** Espelho TS de data-platform/transform/matomo.py::acessos_botao_servico_por_url.
- * Cruza outlinks (Actions.getOutlinks?flat=1, 1 chamada site-wide) com
- * `urlExterno` do inventário. Ordena por cliques desc. */
-export function acessosBotaoServicoPorUrl(outlinksFlat: MatomoRow[], inventario: CartaRelacao[]): AcessoBotaoCarta[] {
+/** Cruza outlinks (Actions.getOutlinks?flat=1) com `urlExterno` do
+ *  inventário. Ordena por cliques desc.
+ *
+ *  `incluirZero=false` (default): descarta cartas sem clique — modo
+ *  ranking, útil quando a chamada é ampla (bulk site-wide/órgão) e o
+ *  consumidor quer só quem apareceu.
+ *  `incluirZero=true`: mantém cartas sem clique — modo individual, o
+ *  usuário clicou pra saber e quer resposta mesmo que 0. */
+export function acessosBotaoServicoPorUrl(
+  outlinksFlat: MatomoRow[],
+  inventario: CartaRelacao[],
+  incluirZero = false,
+): AcessoBotaoCarta[] {
   const cliquesPorUrl = new Map<string, number>();
   for (const row of outlinksFlat ?? []) {
     const url = _normUrl(row.url ?? row.label);
@@ -23,7 +32,7 @@ export function acessosBotaoServicoPorUrl(outlinksFlat: MatomoRow[], inventario:
   for (const c of inventario) {
     if (!c.ativo || !c.slug || !c.urlExterno) continue;
     const cliques = cliquesPorUrl.get(_normUrl(c.urlExterno)) ?? 0;
-    if (cliques === 0) continue;
+    if (cliques === 0 && !incluirZero) continue;
     linhas.push({
       slug: c.slug,
       titulo: c.titulo,

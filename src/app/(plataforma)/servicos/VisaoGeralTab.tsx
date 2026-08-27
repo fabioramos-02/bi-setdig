@@ -3,14 +3,13 @@ import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
 import { labelCategoria, resumoPrazo, resumoPublico, agruparOrgaosSetores } from "@/lib/servicos";
 import { calcularInsightConcentracaoOrgaos } from "@/lib/insights";
-import { destinosPorHost, totalCliques } from "@/lib/insights-acessos-botao";
 import {
   contarCartasNovosNoMes,
   gerarPontosAtencao,
   mesAtualEAnterior,
   sintetizarSituacao,
 } from "@/lib/insights-visao-geral-servicos";
-import type { InventarioResumo, CartaRelacao, InventarioOrgao, AcessoBotaoCarta } from "@/lib/data";
+import type { InventarioResumo, CartaRelacao, InventarioOrgao } from "@/lib/data";
 import type { LiveServicos } from "./ServicosClient";
 
 /** Visão macro executiva de /servicos: resumo das outras 4 abas em 4 blocos
@@ -22,7 +21,6 @@ export function VisaoGeralTab({
   cartas,
   orgaos,
   live,
-  acessosBotao,
   status,
   rotuloPeriodo,
 }: {
@@ -30,19 +28,15 @@ export function VisaoGeralTab({
   cartas: CartaRelacao[];
   orgaos: InventarioOrgao[];
   live: LiveServicos | null;
-  acessosBotao: AcessoBotaoCarta[];
   status: StatusIntervalo;
   rotuloPeriodo: string;
 }) {
   const totalAcessos = live ? live.porCarta.reduce((acc, c) => acc + c.visitas, 0) : null;
-  const totalCliquesBotao = totalCliques(acessosBotao);
-  const destinos = destinosPorHost(acessosBotao, 1);
-  const destinoLider = destinos[0] ?? null;
 
   const situacao = sintetizarSituacao({
     servicosAtivos: resumo.ativos,
     totalAcessos,
-    totalCliquesBotao,
+    totalCliquesBotao: 0,
     rotuloPeriodo,
   });
 
@@ -78,8 +72,8 @@ export function VisaoGeralTab({
   const pontos = gerarPontosAtencao({
     concentracaoOrgaoPct: insightConcentracao?.participacaoPct ?? 0,
     orgaoSigla: insightConcentracao?.orgaoSigla ?? null,
-    destinoLiderPct: destinoLider?.pct ?? 0,
-    destinoLiderHost: destinoLider?.host ?? null,
+    destinoLiderPct: 0,
+    destinoLiderHost: null,
     categoriaLiderPct,
     cartasNovosMesAtual,
     cartasNovosMesAnterior,
@@ -99,7 +93,7 @@ export function VisaoGeralTab({
         <p className="text-sm mb-4" style={{ color: "var(--ds-color-text-secondary)" }}>
           {situacao.notaSaude}
         </p>
-        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
           <MetricCard
             label="Serviços ativos"
             value={resumo.ativos}
@@ -109,11 +103,6 @@ export function VisaoGeralTab({
             label={`Acessos a serviços ${rotuloPeriodo}`}
             value={totalAcessos ?? "—"}
             sub={live ? `soma de todas as cartas` : "aguardando dados"}
-          />
-          <MetricCard
-            label="Cliques em Acessar Serviço"
-            value={totalCliquesBotao}
-            sub={destinoLider ? `${destinoLider.pct.toFixed(0)}% vai para ${destinoLider.host}` : "—"}
           />
         </div>
       </DashboardSection>
@@ -147,21 +136,6 @@ export function VisaoGeralTab({
               <p className="text-base" style={{ color: "var(--ds-color-text-primary)" }}>
                 <span className="font-semibold">{orgaoDemandaTop.rotulo}</span> recebeu{" "}
                 <span className="font-semibold">{orgaoDemandaPct.toFixed(0)}%</span> dos acessos {rotuloPeriodo} — o órgão mais procurado pelo cidadão.
-              </p>
-            </li>
-          )}
-          {destinoLider && (
-            <li className="flex items-start gap-3">
-              <span
-                className="material-icons mt-0.5"
-                aria-hidden
-                style={{ color: "var(--ds-color-primary-600)", fontSize: 22 }}
-              >
-                open_in_new
-              </span>
-              <p className="text-base" style={{ color: "var(--ds-color-text-primary)" }}>
-                <span className="font-semibold">{destinoLider.host}</span> concentra{" "}
-                <span className="font-semibold">{destinoLider.pct.toFixed(0)}%</span> dos cliques em Acessar Serviço — o sistema externo que mais recebe cidadãos do portal.
               </p>
             </li>
           )}
