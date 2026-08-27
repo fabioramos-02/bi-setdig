@@ -18,7 +18,6 @@ import {
   getMsdigitalContasPorFaixaEtaria,
   getMsdigitalContasPorCidade,
   getMsdigitalFaixasDeAcesso,
-  getMsdigitalContasCriadasPorDia,
   getDatasetUpdatedAt,
   getGa4FrequenciaAcesso,
   getGa4Geografia,
@@ -52,7 +51,6 @@ export default function AnalyticsMsDigitalPage() {
   const contasPorCidade = getMsdigitalContasPorCidade();
   const faixasDeAcesso = getMsdigitalFaixasDeAcesso();
   const snapshotAtualizadoEm = getDatasetUpdatedAt("msdigital-db", "faixas-de-acesso");
-  const contasCriadasPorDia = getMsdigitalContasCriadasPorDia();
   const tipoLogin = getMsdigitalTipoLogin();
   const faixasDeAcessoPorTipo = getMsdigitalFaixasDeAcessoPorTipo();
   const frequenciaAcesso = getGa4FrequenciaAcesso();
@@ -91,7 +89,6 @@ export default function AnalyticsMsDigitalPage() {
       contasPorCidade={contasPorCidade}
       faixasDeAcesso={faixasDeAcesso}
       snapshotAtualizadoEm={snapshotAtualizadoEm}
-      contasCriadasPorDia={contasCriadasPorDia}
       tipoLogin={tipoLogin}
       faixasDeAcessoPorTipo={faixasDeAcessoPorTipo}
       frequenciaAcesso={frequenciaAcesso}
