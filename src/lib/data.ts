@@ -234,6 +234,11 @@ export function getMatomoFugaHub(): BreakdownPorPeriodo<DominioSaida> {
 // Actions.getOutlinks?flat=1 cruzada com `urlExterno` do inventário, feita
 // on-demand pelo Client. Não há snapshot estático — o front busca ao vivo
 // quando abre a aba.
+// `cliquesCompartilhado=true` quando 2+ cartas do inventário apontam pra
+// mesma URL externa (60 URLs, 546 cartas afetadas). Matomo agrega cliques
+// por URL destino, então o valor mostrado é o total do destino — pra
+// desambiguar por carta precisaria de chamada segmentada por slug, que é
+// cara. Sinal pra UI mostrar aviso; o número em si é honesto (agregado).
 export type AcessoBotaoCarta = {
   slug: string;
   titulo: string;
@@ -242,6 +247,7 @@ export type AcessoBotaoCarta = {
   urlCarta: string;
   urlExterno: string;
   cliques: number;
+  cliquesCompartilhado?: boolean;
 };
 
 // Total de cidadãos únicos que já acessaram o Portal Único (app_id=36 no

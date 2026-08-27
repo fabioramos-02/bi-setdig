@@ -12,6 +12,7 @@ const PORTAL_BASE = "https://www.ms.gov.br";
 const THRESHOLD_BULK_ORGAO = 15;
 
 type EstadoBulk = "idle" | "carregando" | "sucesso" | "erro";
+type DadoCliques = { cliques: number; compartilhado: boolean };
 
 function hostDe(url: string): string {
   try {
@@ -43,7 +44,7 @@ export function AcessarServicoTab({
 }) {
   const [orgaoAtivo, setOrgaoAtivo] = useState<string>("");
   const [busca, setBusca] = useState<string>("");
-  const [cliquesPorSlug, setCliquesPorSlug] = useState<Map<string, number>>(new Map());
+  const [cliquesPorSlug, setCliquesPorSlug] = useState<Map<string, DadoCliques>>(new Map());
   const [carregandoSlug, setCarregandoSlug] = useState<Set<string>>(new Set());
   const [estadoBulk, setEstadoBulk] = useState<EstadoBulk>("idle");
   const [erroMsg, setErroMsg] = useState<string | null>(null);
@@ -90,7 +91,7 @@ export function AcessarServicoTab({
       const data = (await r.json()) as { cartas: AcessoBotaoCarta[] };
       setCliquesPorSlug((prev) => {
         const m = new Map(prev);
-        for (const c of data.cartas ?? []) m.set(c.slug, c.cliques);
+        for (const c of data.cartas ?? []) m.set(c.slug, { cliques: c.cliques, compartilhado: !!c.cliquesCompartilhado });
         return m;
       });
       setEstadoBulk("sucesso");
@@ -113,7 +114,7 @@ export function AcessarServicoTab({
       const data = (await r.json()) as { carta: AcessoBotaoCarta };
       setCliquesPorSlug((prev) => {
         const m = new Map(prev);
-        m.set(slug, data.carta.cliques);
+        m.set(slug, { cliques: data.carta.cliques, compartilhado: !!data.carta.cliquesCompartilhado });
         return m;
       });
     } catch (exc) {
@@ -133,8 +134,8 @@ export function AcessarServicoTab({
   const cartasCarregadas = useMemo<AcessoBotaoCarta[]>(() => {
     const out: AcessoBotaoCarta[] = [];
     for (const c of cartasDoOrgao) {
-      const cliques = cliquesPorSlug.get(c.slug);
-      if (cliques === undefined) continue;
+      const dado = cliquesPorSlug.get(c.slug);
+      if (dado === undefined) continue;
       out.push({
         slug: c.slug,
         titulo: c.titulo,
@@ -142,7 +143,8 @@ export function AcessarServicoTab({
         categoria: c.categoria ?? null,
         urlCarta: `${PORTAL_BASE}/${c.categoria ?? ""}/${c.slug}`,
         urlExterno: c.urlExterno ?? "",
-        cliques,
+        cliques: dado.cliques,
+        cliquesCompartilhado: dado.compartilhado,
       });
     }
     return out.sort((a, b) => b.cliques - a.cliques);
@@ -315,7 +317,7 @@ function TabelaVolume({
 }: {
   cartas: CartaRelacao[];
   visitasPorSlug: Map<string, number>;
-  cliquesPorSlug: Map<string, number>;
+  cliquesPorSlug: Map<string, DadoCliques>;
   carregandoSlug: Set<string>;
   modoIndividual: boolean;
   onBuscarSlug: (slug: string) => void;
@@ -360,11 +362,11 @@ function TabelaVolume({
       label: "Cliques em Acessar Serviço",
       align: "right",
       sortable: true,
-      sortValue: (c) => cliquesPorSlug.get(c.slug) ?? -1,
+      sortValue: (c) => cliquesPorSlug.get(c.slug)?.cliques ?? -1,
       render: (c) => (
         <CelulaCliques
           slug={c.slug}
-          cliques={cliquesPorSlug.get(c.slug)}
+          dado={cliquesPorSlug.get(c.slug)}
           carregando={carregandoSlug.has(c.slug)}
           modoIndividual={modoIndividual}
           onBuscar={() => onBuscarSlug(c.slug)}
@@ -398,22 +400,32 @@ function TabelaVolume({
 
 function CelulaCliques({
   slug,
-  cliques,
+  dado,
   carregando,
   modoIndividual,
   onBuscar,
 }: {
   slug: string;
-  cliques: number | undefined;
+  dado: DadoCliques | undefined;
   carregando: boolean;
   modoIndividual: boolean;
   onBuscar: () => void;
 }) {
   if (carregando) return <Spinner />;
-  if (cliques !== undefined) {
-    return cliques > 0 ? (
+  if (dado !== undefined) {
+    return dado.cliques > 0 ? (
       <span className="font-semibold text-base" style={{ color: "var(--ds-color-primary-600)" }}>
-        {cliques.toLocaleString("pt-BR")}
+        {dado.cliques.toLocaleString("pt-BR")}
+        {dado.compartilhado && (
+          <span
+            className="ml-1 text-xs align-middle"
+            style={{ color: "var(--ds-color-warning, #b45309)" }}
+            title="Este destino é usado por várias cartas — o valor mostrado é o total do destino, não só desta carta."
+            aria-label="Cliques compartilhados entre várias cartas com o mesmo destino"
+          >
+            ⚠
+          </span>
+        )}
       </span>
     ) : (
       <span style={{ color: "var(--ds-color-text-muted)" }}>0</span>

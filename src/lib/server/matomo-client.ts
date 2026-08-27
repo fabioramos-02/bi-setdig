@@ -107,15 +107,6 @@ export function getOutlinksFlat(inicio: string, fim: string, limit = 5000, siteI
   return call<MatomoRow[]>("Actions.getOutlinks", inicio, fim, { filter_limit: limit, flat: 1 }, siteId);
 }
 
-/** `Actions.getOutlinks?flat=1` restrito por `segment` — usado pelas 2
- *  rotas on-demand de cliques por carta:
- *    - bulk por órgão: segment `outlinkUrl=@dom1,outlinkUrl=@dom2` (OR)
- *    - individual por carta: segment `pageUrl=@/<slug>;outlinkUrl=@<dom>` (AND)
- *  `limit=-1` remove filter_limit (Matomo aceita, evita truncar). */
-export function getOutlinksFlatSegmented(inicio: string, fim: string, segment: string, limit = -1, siteId?: string) {
-  return call<MatomoRow[]>("Actions.getOutlinks", inicio, fim, { filter_limit: limit, flat: 1, segment }, siteId);
-}
-
 export function getVisitsSummaryDaily(inicio: string, fim: string, siteId?: string) {
   return callDaily<MatomoDailyRaw>("VisitsSummary.get", inicio, fim, siteId);
 }

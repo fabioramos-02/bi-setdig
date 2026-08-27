@@ -16,11 +16,15 @@ const _normUrl = (u?: string | null): string => (u ?? "").trim().toLowerCase().r
  *  ranking, útil quando a chamada é ampla (bulk site-wide/órgão) e o
  *  consumidor quer só quem apareceu.
  *  `incluirZero=true`: mantém cartas sem clique — modo individual, o
- *  usuário clicou pra saber e quer resposta mesmo que 0. */
+ *  usuário clicou pra saber e quer resposta mesmo que 0.
+ *  `urlsCompartilhadas`: set (normalizado) de URLs que aparecem em 2+ cartas
+ *  no inventário total — marca `cliquesCompartilhado=true` na saída
+ *  (rota calcula uma vez sobre o inventário completo). */
 export function acessosBotaoServicoPorUrl(
   outlinksFlat: MatomoRow[],
   inventario: CartaRelacao[],
   incluirZero = false,
+  urlsCompartilhadas?: Set<string>,
 ): AcessoBotaoCarta[] {
   const cliquesPorUrl = new Map<string, number>();
   for (const row of outlinksFlat ?? []) {
@@ -31,9 +35,10 @@ export function acessosBotaoServicoPorUrl(
   const linhas: AcessoBotaoCarta[] = [];
   for (const c of inventario) {
     if (!c.ativo || !c.slug || !c.urlExterno) continue;
-    const cliques = cliquesPorUrl.get(_normUrl(c.urlExterno)) ?? 0;
+    const urlNorm = _normUrl(c.urlExterno);
+    const cliques = cliquesPorUrl.get(urlNorm) ?? 0;
     if (cliques === 0 && !incluirZero) continue;
-    linhas.push({
+    const linha: AcessoBotaoCarta = {
       slug: c.slug,
       titulo: c.titulo,
       orgaoSigla: c.orgaoSigla ?? null,
@@ -41,9 +46,29 @@ export function acessosBotaoServicoPorUrl(
       urlCarta: `https://www.ms.gov.br/${c.categoria ?? ""}/${c.slug}`,
       urlExterno: c.urlExterno,
       cliques,
-    });
+    };
+    if (urlsCompartilhadas?.has(urlNorm)) linha.cliquesCompartilhado = true;
+    linhas.push(linha);
   }
   return linhas.sort((a, b) => b.cliques - a.cliques);
+}
+
+/** Set (normalizado) de URLs externas que 2+ cartas do inventário apontam.
+ *  Usado pela rota pra marcar `cliquesCompartilhado` na saída — sinal pra UI
+ *  mostrar aviso ⚠ quando o valor de cliques é o agregado do destino,
+ *  não específico da carta. */
+export function urlsCompartilhadasNoInventario(inventario: CartaRelacao[]): Set<string> {
+  const contagem = new Map<string, number>();
+  for (const c of inventario) {
+    if (!c.ativo || !c.urlExterno) continue;
+    const u = _normUrl(c.urlExterno);
+    if (u) contagem.set(u, (contagem.get(u) ?? 0) + 1);
+  }
+  const out = new Set<string>();
+  for (const [u, n] of contagem) {
+    if (n > 1) out.add(u);
+  }
+  return out;
 }
 
 type MatomoRow = { label?: string; nb_visits?: number; url?: string };
