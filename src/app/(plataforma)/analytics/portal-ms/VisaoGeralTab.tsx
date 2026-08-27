@@ -115,7 +115,7 @@ export function VisaoGeralTab({
             icon={FileSignature}
             label="Sistemas com Assinador Gov.BR"
             value={sistemasComAssinador.length}
-            sub="usam assinatura eletrônica via Portal Único"
+            sub="usam assinatura eletrônica"
           />
           <MetricCard
             icon={FileText}
