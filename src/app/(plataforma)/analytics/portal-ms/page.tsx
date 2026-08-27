@@ -17,7 +17,6 @@ import {
   getMatomoDemandaPorOrgao,
   getMatomoPortasEntrada,
   getMatomoFugaHub,
-  getMatomoAcessosCartasCompleto,
   getCartasInventarioRelacao,
   getPortalUnicoCadastros,
   getMatomoEventosNavegacaoPerfil,
@@ -41,7 +40,6 @@ export default function AnalyticsPortalMsPage() {
   const demandaPorOrgao = getMatomoDemandaPorOrgao();
   const portasEntrada = getMatomoPortasEntrada();
   const fugaHub = getMatomoFugaHub();
-  const acessosCartas = getMatomoAcessosCartasCompleto();
   const inventarioCartas = getCartasInventarioRelacao();
   const portalUnicoCadastros = getPortalUnicoCadastros();
   const eventosPerfil = getMatomoEventosNavegacaoPerfil();
@@ -82,7 +80,6 @@ export default function AnalyticsPortalMsPage() {
       demandaPorOrgao={demandaPorOrgao}
       portasEntrada={portasEntrada}
       fugaHub={fugaHub}
-      acessosCartas={acessosCartas}
       inventarioCartas={inventarioCartas}
       portalUnicoCadastros={portalUnicoCadastros}
       eventosPerfil={eventosPerfil}

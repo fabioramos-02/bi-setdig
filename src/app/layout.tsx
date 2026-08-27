@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
-import Script from "next/script";
 import { ThemeProvider } from "next-themes";
+import { PlausibleAnalytics } from "@/components/PlausibleAnalytics";
 import "./globals.css";
 
 const openSans = Open_Sans({
@@ -25,17 +25,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
       </head>
       <body className="min-h-full flex flex-col">
-        <Script
-          src="https://plausible.io/js/pa-YFgILOkHZ2-PDKZGoeFpU.js"
-          strategy="afterInteractive"
-        />
-        <Script
-          id="plausible-init"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()`,
-          }}
-        />
+        <PlausibleAnalytics />
         <ThemeProvider attribute="data-theme" defaultTheme="light" enableSystem>
           {children}
         </ThemeProvider>

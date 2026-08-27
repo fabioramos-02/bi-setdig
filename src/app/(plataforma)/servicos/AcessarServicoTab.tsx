@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { DataTable, type Coluna } from "@/components/dashboard/DataTable";
 import { EmptyCard } from "@/components/ds/EmptyCard";
@@ -98,43 +98,6 @@ export function AcessarServicoTab({
       setEstado("erro");
     }
   }
-
-  // Fetch automático: snapshot está vazio há tempos (guarda do pipeline
-  // preservou vazio → BI mostrava tabela em branco). Busca ao vivo sempre
-  // que o range muda; usuário mantém botão "Atualizar" pra rebuscar.
-  useEffect(() => {
-    let cancelado = false;
-    (async () => {
-      const alvo = { inicio: range.inicio, fim: range.fim };
-      setEstado("carregando");
-      setErroMsg(null);
-      try {
-        const r = await fetch(`/api/analytics/cartas/acessos?inicio=${alvo.inicio}&fim=${alvo.fim}`);
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        const data = (await r.json()) as {
-          cartas: AcessoBotaoCarta[];
-          totalCartasComUrlExterno?: number;
-          totalCartasComCliques?: number;
-        };
-        if (cancelado) return;
-        setLive(data.cartas ?? []);
-        setLiveRange(alvo);
-        setLiveCobertura({
-          comUrlExterno: data.totalCartasComUrlExterno ?? 0,
-          comCliques: data.totalCartasComCliques ?? (data.cartas ?? []).length,
-        });
-        setEstado("sucesso");
-      } catch (exc) {
-        if (cancelado) return;
-        console.error("[AcessarServicoTab] auto-fetch falhou:", exc);
-        setErroMsg("Não foi possível carregar os dados ao vivo agora. Mostrando último snapshot publicado.");
-        setEstado("erro");
-      }
-    })();
-    return () => {
-      cancelado = true;
-    };
-  }, [range.inicio, range.fim]);
 
   const total = useMemo(() => totalCliques(cartas), [cartas]);
   const destinos = useMemo(() => destinosPorHost(cartas, 5), [cartas]);

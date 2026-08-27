@@ -22,7 +22,7 @@ export function VisaoGeralTab({
   cartas,
   orgaos,
   live,
-  acessosBotaoSnapshot,
+  acessosBotao,
   status,
   rotuloPeriodo,
 }: {
@@ -30,13 +30,13 @@ export function VisaoGeralTab({
   cartas: CartaRelacao[];
   orgaos: InventarioOrgao[];
   live: LiveServicos | null;
-  acessosBotaoSnapshot: AcessoBotaoCarta[];
+  acessosBotao: AcessoBotaoCarta[];
   status: StatusIntervalo;
   rotuloPeriodo: string;
 }) {
   const totalAcessos = live ? live.porCarta.reduce((acc, c) => acc + c.visitas, 0) : null;
-  const totalCliquesBotao = totalCliques(acessosBotaoSnapshot);
-  const destinos = destinosPorHost(acessosBotaoSnapshot, 1);
+  const totalCliquesBotao = totalCliques(acessosBotao);
+  const destinos = destinosPorHost(acessosBotao, 1);
   const destinoLider = destinos[0] ?? null;
 
   const situacao = sintetizarSituacao({

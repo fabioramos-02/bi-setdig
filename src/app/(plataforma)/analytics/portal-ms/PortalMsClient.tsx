@@ -41,7 +41,6 @@ import type {
   DominioSaida,
   DemandaOrgao,
   CartaRelacao,
-  AcessoCartaCompleto,
   PortalUnicoCadastros,
   NavegacaoPerfilEventos,
 } from "@/lib/data";
@@ -79,7 +78,6 @@ export function PortalMsClient({
   servicosMaisAcessados,
   portasEntrada,
   fugaHub,
-  acessosCartas,
   inventarioCartas,
   demandaPorOrgao,
   portalUnicoCadastros,
@@ -98,7 +96,6 @@ export function PortalMsClient({
   servicosMaisAcessados: BreakdownPorPeriodo<ServicoAcessado>;
   portasEntrada: BreakdownPorPeriodo<PaginaEntrada>;
   fugaHub: BreakdownPorPeriodo<DominioSaida>;
-  acessosCartas: BreakdownPorPeriodo<AcessoCartaCompleto>;
   inventarioCartas: CartaRelacao[];
   demandaPorOrgao: BreakdownPorPeriodo<DemandaOrgao>;
   // ponytail: total histórico absoluto — não reage ao filtro de período.
@@ -289,8 +286,6 @@ export function PortalMsClient({
           dados={perfilAtual}
           eventos={eventosPerfil[periodoAtual]}
           servicosMaisAcessados={servicosAcessadosAtual}
-          acessosCartas={acessosCartas[periodoAtual]}
-          semDadoLive={precisaLive}
           status={statusBreakdown}
         />
       ),

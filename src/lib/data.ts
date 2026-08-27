@@ -230,11 +230,10 @@ export function getMatomoFugaHub(): BreakdownPorPeriodo<DominioSaida> {
   return readDataset<BreakdownPorPeriodo<DominioSaida>>("matomo", "v1", "fuga-hub") ?? BREAKDOWN_VAZIO;
 }
 
-// Cliques no botão "Acessar serviço" por carta — método Actions.getOutlinks
-// site-wide (flat=1) cruzado com `urlExterno` do inventário. 1 chamada Matomo
-// por período em vez de N chamadas Transitions (~100× mais rápido).
-// Trade-off: sem pageviews → sem taxa de conversão. Gestora pediu volume, não
-// conversão; Transitions fica de fora até pedirem taxa (ver ADR).
+// DTO de retorno da rota `/api/analytics/cartas/acessos` — 1 chamada
+// Actions.getOutlinks?flat=1 cruzada com `urlExterno` do inventário, feita
+// on-demand pelo Client. Não há snapshot estático — o front busca ao vivo
+// quando abre a aba.
 export type AcessoBotaoCarta = {
   slug: string;
   titulo: string;
@@ -244,34 +243,6 @@ export type AcessoBotaoCarta = {
   urlExterno: string;
   cliques: number;
 };
-export function getMatomoAcessosBotaoServico(): BreakdownPorPeriodo<AcessoBotaoCarta> {
-  return readDataset<BreakdownPorPeriodo<AcessoBotaoCarta>>("matomo", "v1", "acessos-botao-servico") ?? BREAKDOWN_VAZIO;
-}
-
-// Pageviews + visitas + cliques + taxa de conversão por carta — dataset novo
-// (2026-08 SGD): extração quebrada por órgão (1 chamada Matomo por órgão) pra
-// não estourar filter_limit=5000 do outlinks site-wide. Pageviews vêm de
-// Actions.getPageUrls com segment=pageUrl=@slug; cliques do getOutlinks
-// segmentado por outlinkUrl=@dominio. `taxaConversaoPct = null` quando
-// pageviews=0 (carta sem pageview no período — taxa é indefinida, nunca 0
-// falso). Órgão que falhou na extração fica ausente do JSON (padrão existente
-// pra dado indisponível — ver datasets/_logs/matomo-cartas-falhas.jsonl).
-export type AcessoCartaCompleto = {
-  slug: string;
-  titulo: string;
-  orgaoSigla: string | null;
-  categoria: string | null;
-  urlCarta: string;
-  urlExterno: string;
-  pageviews: number;
-  visitas: number;
-  visitantesUnicos: number;
-  cliques: number;
-  taxaConversaoPct: number | null;
-};
-export function getMatomoAcessosCartasCompleto(): BreakdownPorPeriodo<AcessoCartaCompleto> {
-  return readDataset<BreakdownPorPeriodo<AcessoCartaCompleto>>("matomo", "v1", "acessos-cartas-completo") ?? BREAKDOWN_VAZIO;
-}
 
 // Total de cidadãos únicos que já acessaram o Portal Único (app_id=36 no
 // controlador_prd, tabela authentication_historicologin). Snapshot histórico
