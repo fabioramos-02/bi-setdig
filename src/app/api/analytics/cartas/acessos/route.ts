@@ -1,24 +1,27 @@
 import { NextRequest, NextResponse } from "next/server";
 import * as matomo from "@/lib/server/matomo-client";
-import { acessosBotaoServicoPorUrl, urlsCompartilhadasNoInventario } from "@/lib/server/matomo-transform";
-import { getCartasInventarioRelacao, type AcessoBotaoCarta } from "@/lib/data";
+import { cliquesTransitionsPorHost } from "@/lib/server/matomo-transform";
+import { getCartasInventarioRelacao, type AcessoBotaoCarta, type CartaRelacao } from "@/lib/data";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
-export const maxDuration = 30;
+export const maxDuration = 60;
 
-/** Cliques em "Acessar serviço" sob demanda — 1 chamada Matomo
- *  `Actions.getOutlinks?flat=1` sem segment (sub-segundo até em period=year;
- *  segment ligado engargala em >30s → 502, ver refactor 2026-08-27). Server
- *  cruza com inventário local filtrado por `orgao` OU `slug` e devolve.
+const PORTAL_BASE_URL = "https://www.ms.gov.br";
+
+/** Cliques em "Acessar serviço" EXATOS por carta —
+ *  `Transitions.getTransitionsForAction` na URL do portal da carta
+ *  (`https://www.ms.gov.br/<categoria>/<slug>`). Retorna outlinks daquela
+ *  página específica; sessão que passou pela carta e clicou no destino
+ *  externo. Resolve URL compartilhada (N cartas → mesmo urlExterno): cada
+ *  carta tem slug único no portal, Transitions só devolve o que originou
+ *  dela.
  *
- *  Rota rejeita chamada sem `orgao` nem `slug` — a UX força filtrar por
- *  órgão antes de buscar; evita retornar o inventário inteiro à toa.
- *
- *  URL compartilhada entre N cartas (60 URLs, 546 cartas): o valor mostrado
- *  é o total do destino, não específico da carta. Marca-se com
- *  `cliquesCompartilhado=true` e a UI mostra ⚠. Desambiguar exigia N
- *  chamadas segmentadas — cura pior que a doença.
+ *  Rota rejeita chamada sem `orgao` ou `slug`.
+ *  Modo `?slug=`: 1 chamada Transitions.
+ *  Modo `?orgao=`: N chamadas Transitions paralelas (1 por carta ativa
+ *  com urlExterno). Threshold client THRESHOLD_BULK_ORGAO=15 mantém N
+ *  pequeno; individual (>15) fica no clique da linha.
  */
 export async function GET(req: NextRequest) {
   const inicio = req.nextUrl.searchParams.get("inicio");
@@ -36,36 +39,64 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "use apenas 'orgao' ou 'slug', não os dois" }, { status: 400 });
   }
 
-  const inventarioTodo = getCartasInventarioRelacao();
-  const inventarioAtivo = inventarioTodo.filter((c) => c.ativo && c.slug && c.urlExterno);
-  const compartilhadas = urlsCompartilhadasNoInventario(inventarioTodo);
-
-  let outlinks;
-  try {
-    outlinks = await matomo.getOutlinksFlat(inicio, fim);
-  } catch (exc) {
-    console.error(`[api/analytics/cartas/acessos] falhou:`, exc);
-    return NextResponse.json({ error: "Matomo indisponível" }, { status: 502 });
-  }
+  const inventario = getCartasInventarioRelacao().filter((c) => c.ativo && c.slug && c.urlExterno);
 
   if (slug) {
-    const carta = inventarioAtivo.find((c) => c.slug === slug);
+    const carta = inventario.find((c) => c.slug === slug);
     if (!carta) {
       return NextResponse.json({ error: `carta '${slug}' não encontrada no inventário ativo` }, { status: 404 });
     }
-    const linhas = acessosBotaoServicoPorUrl(outlinks, [carta], true, compartilhadas);
-    return NextResponse.json({ carta: linhas[0] as AcessoBotaoCarta });
+    try {
+      const cliques = await cliquesDaCarta(carta, inicio, fim);
+      return NextResponse.json({ carta: toAcesso(carta, cliques) });
+    } catch (exc) {
+      console.error(`[api/analytics/cartas/acessos?slug=${slug}] falhou:`, exc);
+      return NextResponse.json({ error: "Matomo indisponível" }, { status: 502 });
+    }
   }
 
-  // Modo órgão
-  const cartasOrgao = inventarioAtivo.filter((c) => c.orgaoSigla === orgao);
+  // Modo órgão — N chamadas Transitions em paralelo
+  const cartasOrgao = inventario.filter((c) => c.orgaoSigla === orgao);
   if (cartasOrgao.length === 0) {
     return NextResponse.json({ cartas: [], totalCartasComUrlExterno: 0, totalCartasComCliques: 0 });
   }
-  const cartas = acessosBotaoServicoPorUrl(outlinks, cartasOrgao, true, compartilhadas);
+
+  const cliquesPorCarta = await Promise.all(
+    cartasOrgao.map(async (c): Promise<[CartaRelacao, number]> => {
+      try {
+        return [c, await cliquesDaCarta(c, inicio, fim)];
+      } catch (exc) {
+        console.error(`[api/analytics/cartas/acessos?orgao=${orgao} carta=${c.slug}] falhou:`, exc);
+        return [c, 0];
+      }
+    }),
+  );
+
+  const cartas = cliquesPorCarta
+    .map(([c, cliques]) => toAcesso(c, cliques))
+    .sort((a, b) => b.cliques - a.cliques);
+
   return NextResponse.json({
     cartas,
     totalCartasComUrlExterno: cartasOrgao.length,
     totalCartasComCliques: cartas.filter((c) => c.cliques > 0).length,
   });
+}
+
+async function cliquesDaCarta(carta: CartaRelacao, inicio: string, fim: string): Promise<number> {
+  const actionUrl = `${PORTAL_BASE_URL}/${carta.categoria ?? ""}/${carta.slug}`;
+  const raw = await matomo.getTransitionsForAction(inicio, fim, actionUrl);
+  return cliquesTransitionsPorHost(raw, carta.urlExterno ?? "");
+}
+
+function toAcesso(carta: CartaRelacao, cliques: number): AcessoBotaoCarta {
+  return {
+    slug: carta.slug,
+    titulo: carta.titulo,
+    orgaoSigla: carta.orgaoSigla ?? null,
+    categoria: carta.categoria ?? null,
+    urlCarta: `${PORTAL_BASE_URL}/${carta.categoria ?? ""}/${carta.slug}`,
+    urlExterno: carta.urlExterno ?? "",
+    cliques,
+  };
 }

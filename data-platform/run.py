@@ -344,20 +344,31 @@ def run_msdigital_db() -> None:
 
 
 def run_portal_unico_db() -> None:
-    """Total de usuários únicos que já acessaram o Portal Único (app_id=36).
-
-    Fonte: `controlador_prd.public.authentication_historicologin` (Postgres,
-    VPN). Um número absoluto histórico — sem filtro de data, sem breakdown
-    por período. Alimenta card na Visão Geral do Portal Único (não reage
-    ao filtro).
+    """Snapshot do banco `controlador_prd` — usuários únicos + sistemas
+    integrados. Ambos são números absolutos históricos (sem filtro de data,
+    sem breakdown por período) — alimentam cards da Visão Geral do Portal
+    Único que não reagem ao filtro. Fonte: Postgres, exige VPN.
     """
     from extract import portal_unico_db as pu
 
-    total = pu.contar_usuarios_total()
-    payload = {"total": total, "referencia": datetime.now(timezone.utc).isoformat()}
-    validate_rows([payload], required=["total", "referencia"], non_negative=["total"])
-    publish("portal-unico", "cadastros", [payload])
-    print(f"[portal-unico-db] cadastros -> {total} usuários únicos")
+    referencia = datetime.now(timezone.utc).isoformat()
+
+    total_usuarios = pu.contar_usuarios_total()
+    payload_usuarios = {"total": total_usuarios, "referencia": referencia}
+    validate_rows([payload_usuarios], required=["total", "referencia"], non_negative=["total"])
+    publish("portal-unico", "cadastros", [payload_usuarios])
+    print(f"[portal-unico-db] cadastros -> {total_usuarios} usuários únicos")
+
+    total_apps = pu.contar_aplicacoes_oauth()
+    payload_apps = {"total": total_apps, "referencia": referencia}
+    validate_rows([payload_apps], required=["total", "referencia"], non_negative=["total"])
+    publish("portal-unico", "aplicacoes-oauth", [payload_apps])
+    print(f"[portal-unico-db] aplicacoes-oauth -> {total_apps} sistemas integrados")
+
+    sistemas_assinador = pu.listar_sistemas_com_assinador()
+    validate_rows(sistemas_assinador, required=["appId", "nome", "callback"], non_negative=["appId"])
+    publish("portal-unico", "sistemas-assinador", sistemas_assinador)
+    print(f"[portal-unico-db] sistemas-assinador -> {len(sistemas_assinador)} sistemas com assinador")
 
 
 def run_qualidade() -> None:

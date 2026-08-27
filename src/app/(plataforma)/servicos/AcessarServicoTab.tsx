@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { DataTable, type Coluna } from "@/components/dashboard/DataTable";
 import { EmptyCard } from "@/components/ds/EmptyCard";
@@ -12,7 +12,6 @@ const PORTAL_BASE = "https://www.ms.gov.br";
 const THRESHOLD_BULK_ORGAO = 15;
 
 type EstadoBulk = "idle" | "carregando" | "sucesso" | "erro";
-type DadoCliques = { cliques: number; compartilhado: boolean };
 
 function hostDe(url: string): string {
   try {
@@ -44,20 +43,23 @@ export function AcessarServicoTab({
 }) {
   const [orgaoAtivo, setOrgaoAtivo] = useState<string>("");
   const [busca, setBusca] = useState<string>("");
-  const [cliquesPorSlug, setCliquesPorSlug] = useState<Map<string, DadoCliques>>(new Map());
+  const [cliquesPorSlug, setCliquesPorSlug] = useState<Map<string, number>>(new Map());
   const [carregandoSlug, setCarregandoSlug] = useState<Set<string>>(new Set());
   const [estadoBulk, setEstadoBulk] = useState<EstadoBulk>("idle");
   const [erroMsg, setErroMsg] = useState<string | null>(null);
 
   // Cache de cliques é por período — trocou o range, cache antigo vira dado
-  // errado no filtro novo. Reseta pra forçar nova busca sob demanda no período
-  // atual (AGENTS.md: nada estático em domínio com filtro de período).
-  useEffect(() => {
+  // errado no filtro novo. Reset em render (padrão React "adjusting state on
+  // prop change") pra forçar nova busca sob demanda no período atual
+  // (AGENTS.md: nada estático em domínio com filtro de período).
+  const [rangeAnterior, setRangeAnterior] = useState(range);
+  if (rangeAnterior.inicio !== range.inicio || rangeAnterior.fim !== range.fim) {
+    setRangeAnterior(range);
     setCliquesPorSlug(new Map());
     setCarregandoSlug(new Set());
     setEstadoBulk("idle");
     setErroMsg(null);
-  }, [range.inicio, range.fim]);
+  }
 
   const orgaos = useMemo(() => [...new Set(cartas.map((c) => c.orgaoSigla))].sort(), [cartas]);
 
@@ -91,7 +93,7 @@ export function AcessarServicoTab({
       const data = (await r.json()) as { cartas: AcessoBotaoCarta[] };
       setCliquesPorSlug((prev) => {
         const m = new Map(prev);
-        for (const c of data.cartas ?? []) m.set(c.slug, { cliques: c.cliques, compartilhado: !!c.cliquesCompartilhado });
+        for (const c of data.cartas ?? []) m.set(c.slug, c.cliques);
         return m;
       });
       setEstadoBulk("sucesso");
@@ -114,7 +116,7 @@ export function AcessarServicoTab({
       const data = (await r.json()) as { carta: AcessoBotaoCarta };
       setCliquesPorSlug((prev) => {
         const m = new Map(prev);
-        m.set(slug, { cliques: data.carta.cliques, compartilhado: !!data.carta.cliquesCompartilhado });
+        m.set(slug, data.carta.cliques);
         return m;
       });
     } catch (exc) {
@@ -134,8 +136,8 @@ export function AcessarServicoTab({
   const cartasCarregadas = useMemo<AcessoBotaoCarta[]>(() => {
     const out: AcessoBotaoCarta[] = [];
     for (const c of cartasDoOrgao) {
-      const dado = cliquesPorSlug.get(c.slug);
-      if (dado === undefined) continue;
+      const cliques = cliquesPorSlug.get(c.slug);
+      if (cliques === undefined) continue;
       out.push({
         slug: c.slug,
         titulo: c.titulo,
@@ -143,8 +145,7 @@ export function AcessarServicoTab({
         categoria: c.categoria ?? null,
         urlCarta: `${PORTAL_BASE}/${c.categoria ?? ""}/${c.slug}`,
         urlExterno: c.urlExterno ?? "",
-        cliques: dado.cliques,
-        cliquesCompartilhado: dado.compartilhado,
+        cliques,
       });
     }
     return out.sort((a, b) => b.cliques - a.cliques);
@@ -317,7 +318,7 @@ function TabelaVolume({
 }: {
   cartas: CartaRelacao[];
   visitasPorSlug: Map<string, number>;
-  cliquesPorSlug: Map<string, DadoCliques>;
+  cliquesPorSlug: Map<string, number>;
   carregandoSlug: Set<string>;
   modoIndividual: boolean;
   onBuscarSlug: (slug: string) => void;
@@ -362,11 +363,11 @@ function TabelaVolume({
       label: "Cliques em Acessar Serviço",
       align: "right",
       sortable: true,
-      sortValue: (c) => cliquesPorSlug.get(c.slug)?.cliques ?? -1,
+      sortValue: (c) => cliquesPorSlug.get(c.slug) ?? -1,
       render: (c) => (
         <CelulaCliques
           slug={c.slug}
-          dado={cliquesPorSlug.get(c.slug)}
+          cliques={cliquesPorSlug.get(c.slug)}
           carregando={carregandoSlug.has(c.slug)}
           modoIndividual={modoIndividual}
           onBuscar={() => onBuscarSlug(c.slug)}
@@ -400,32 +401,22 @@ function TabelaVolume({
 
 function CelulaCliques({
   slug,
-  dado,
+  cliques,
   carregando,
   modoIndividual,
   onBuscar,
 }: {
   slug: string;
-  dado: DadoCliques | undefined;
+  cliques: number | undefined;
   carregando: boolean;
   modoIndividual: boolean;
   onBuscar: () => void;
 }) {
   if (carregando) return <Spinner />;
-  if (dado !== undefined) {
-    return dado.cliques > 0 ? (
+  if (cliques !== undefined) {
+    return cliques > 0 ? (
       <span className="font-semibold text-base" style={{ color: "var(--ds-color-primary-600)" }}>
-        {dado.cliques.toLocaleString("pt-BR")}
-        {dado.compartilhado && (
-          <span
-            className="ml-1 text-xs align-middle"
-            style={{ color: "var(--ds-color-warning, #b45309)" }}
-            title="Este destino é usado por várias cartas — o valor mostrado é o total do destino, não só desta carta."
-            aria-label="Cliques compartilhados entre várias cartas com o mesmo destino"
-          >
-            ⚠
-          </span>
-        )}
+        {cliques.toLocaleString("pt-BR")}
       </span>
     ) : (
       <span style={{ color: "var(--ds-color-text-muted)" }}>0</span>

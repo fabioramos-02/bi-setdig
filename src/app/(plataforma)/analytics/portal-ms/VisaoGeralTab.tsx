@@ -1,4 +1,6 @@
-import { TrendingUp, TrendingDown, Search, Landmark, MapPin, Users } from "lucide-react";
+"use client";
+
+import { TrendingUp, TrendingDown, Search, Landmark, MapPin, Users, Puzzle, FileText, FileSignature } from "lucide-react";
 import { MetricCard } from "@/components/dashboard/MetricCard";
 import { ExportCsvButton } from "@/components/dashboard/ExportCsvButton";
 import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
@@ -11,7 +13,15 @@ import type { InsightBusca } from "@/lib/insights";
 import type { ResumoPeriodo, PontoAgregado } from "@/lib/period-filter";
 import type { SaudePortal, ContextoAnual, Recomendacao } from "@/lib/saude-portal";
 import type { ServicoTop, OrgaoTop } from "@/lib/servicos-portal";
-import type { Cidade, ServicoAcessado, PortalUnicoCadastros } from "@/lib/data";
+import type {
+  Cidade,
+  ServicoAcessado,
+  PortalUnicoCadastros,
+  PortalUnicoAplicacoesOauth,
+  PortalUnicoAplicacaoRelacao,
+  FormularioFormFlow,
+  SistemaComAssinador,
+} from "@/lib/data";
 import { municipiosComAcesso, municipiosSemAcesso, MUNICIPIOS_MS, slugIbge } from "@/lib/municipios-ms";
 
 const COR_NIVEL: Record<SaudePortal["nivel"], string> = {
@@ -27,11 +37,9 @@ const ROTULO_NIVEL: Record<SaudePortal["nivel"], string> = {
 
 const ESTILO_HEADER = { color: "var(--ds-color-text-secondary)" } as const;
 
-/** Conteúdo da aba "Visão Geral" — lida como um Executive Briefing (AGENTS.md
- * "BI de gestão"): Situação Geral (o que aconteceu) → Achados (o que
- * significa) → Alcance no território (onde chega/não chega) → Pontos de
- * atenção (onde agir). Cálculo todo em PortalMsClient/lib; aqui só
- * apresentação. Extraído de PortalMsClient pra não estourar 250 linhas. */
+/** Aba "Visão Geral" — Executive Briefing macroestratégico do Portal Único.
+ *  Só KPIs + narrativa curta. Catálogos completos (sistemas Gov.BR,
+ *  assinador, formulários) vivem na aba "Ecossistema Digital". */
 export function VisaoGeralTab({
   kpis,
   cidadesAtual,
@@ -49,6 +57,10 @@ export function VisaoGeralTab({
   fraseNavegacaoPerfil,
   matchRate,
   portalUnicoCadastros,
+  portalUnicoAplicacoesOauth,
+  portalUnicoAplicacoesRelacao,
+  formulariosFormFlow,
+  sistemasComAssinador,
 }: {
   kpis: ResumoPeriodo;
   cidadesAtual: Cidade[];
@@ -66,7 +78,15 @@ export function VisaoGeralTab({
   fraseNavegacaoPerfil: string | null;
   matchRate: number;
   portalUnicoCadastros: PortalUnicoCadastros | null;
+  portalUnicoAplicacoesOauth: PortalUnicoAplicacoesOauth | null;
+  portalUnicoAplicacoesRelacao: PortalUnicoAplicacaoRelacao[];
+  formulariosFormFlow: FormularioFormFlow[];
+  sistemasComAssinador: SistemaComAssinador[];
 }) {
+  const contagemProd = portalUnicoAplicacoesRelacao.filter((a) => a.ambiente === "prod").length;
+  const subtituloSistemas = portalUnicoAplicacoesRelacao.length > 0
+    ? `${contagemProd} em produção · ${portalUnicoAplicacoesRelacao.length} no total`
+    : "aplicações que usam o login único do Estado";
   const semAcesso = municipiosSemAcesso(cidadesAtual);
   const comAcesso = municipiosComAcesso(cidadesAtual);
   return (
@@ -78,12 +98,30 @@ export function VisaoGeralTab({
           Situação Geral
         </h3>
 
-        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           <MetricCard
             icon={Users}
             label="Cidadãos que já usam o Portal Único"
             value={portalUnicoCadastros?.total ?? "—"}
             sub="acesso registrado ao menos uma vez, desde o início"
+          />
+          <MetricCard
+            icon={Puzzle}
+            label="Sistemas integrados ao Gov.BR"
+            value={portalUnicoAplicacoesOauth?.total ?? portalUnicoAplicacoesRelacao.length}
+            sub={subtituloSistemas}
+          />
+          <MetricCard
+            icon={FileSignature}
+            label="Sistemas com Assinador Gov.BR"
+            value={sistemasComAssinador.length}
+            sub="usam assinatura eletrônica via Portal Único"
+          />
+          <MetricCard
+            icon={FileText}
+            label="Formulários digitais no FormFlow"
+            value={formulariosFormFlow.length}
+            sub="serviços com formulário publicado"
           />
           <MetricCard
             icon={saude && saude.variacaoPct < 0 ? TrendingDown : TrendingUp}
@@ -117,8 +155,6 @@ export function VisaoGeralTab({
               aria-hidden
               style={{ backgroundColor: COR_NIVEL[saude.nivel], width: 10, height: 10, borderRadius: "50%", flexShrink: 0 }}
             />
-            {/* min-w-0: sem isso o texto longo não encolhe e estoura a página em
-                375px, arrastando o gráfico junto (ADR-009). */}
             <p className="min-w-0">
               <span className="font-semibold">{ROTULO_NIVEL[saude.nivel]}</span>{" "}
               <span style={{ color: "var(--ds-color-text-secondary)" }}>— {saude.frase}</span>
@@ -188,7 +224,6 @@ export function VisaoGeralTab({
           Quais regiões acessam o portal?
         </p>
 
-        {/* Mapa com largura ampliada para melhor visualização das regiões. */}
         <div className="max-w-lg mx-auto">
           <ChartLoading status={status} height={400}>
             {matchRate > 0.5 ? (

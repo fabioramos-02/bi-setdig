@@ -230,15 +230,11 @@ export function getMatomoFugaHub(): BreakdownPorPeriodo<DominioSaida> {
   return readDataset<BreakdownPorPeriodo<DominioSaida>>("matomo", "v1", "fuga-hub") ?? BREAKDOWN_VAZIO;
 }
 
-// DTO de retorno da rota `/api/analytics/cartas/acessos` — 1 chamada
-// Actions.getOutlinks?flat=1 cruzada com `urlExterno` do inventário, feita
-// on-demand pelo Client. Não há snapshot estático — o front busca ao vivo
-// quando abre a aba.
-// `cliquesCompartilhado=true` quando 2+ cartas do inventário apontam pra
-// mesma URL externa (60 URLs, 546 cartas afetadas). Matomo agrega cliques
-// por URL destino, então o valor mostrado é o total do destino — pra
-// desambiguar por carta precisaria de chamada segmentada por slug, que é
-// cara. Sinal pra UI mostrar aviso; o número em si é honesto (agregado).
+// DTO de retorno da rota `/api/analytics/cartas/acessos` — cliques
+// EXATOS por carta via Transitions.getTransitionsForAction na URL do portal
+// (sessões que passaram pela carta e clicaram no outlink daquele destino).
+// Resolve URL compartilhada: cada carta tem slug próprio → Transitions
+// devolve só o que originou dela.
 export type AcessoBotaoCarta = {
   slug: string;
   titulo: string;
@@ -247,7 +243,6 @@ export type AcessoBotaoCarta = {
   urlCarta: string;
   urlExterno: string;
   cliques: number;
-  cliquesCompartilhado?: boolean;
 };
 
 // Total de cidadãos únicos que já acessaram o Portal Único (app_id=36 no
@@ -260,6 +255,44 @@ export type PortalUnicoCadastros = { total: number; referencia: string };
 export function getPortalUnicoCadastros(): PortalUnicoCadastros | null {
   const dado = readDataset<PortalUnicoCadastros[]>("portal-unico", "v1", "cadastros");
   return dado && dado.length > 0 ? dado[0] : null;
+}
+
+// Sistemas integrados ao login único do Portal Único (Gov.BR / SSO).
+// COUNT(*) de `oauth2_provider_application` no controlador_prd — mesmo
+// padrão histórico absoluto de `PortalUnicoCadastros`. `null` sem VPN.
+export type PortalUnicoAplicacoesOauth = { total: number; referencia: string };
+
+export function getPortalUnicoAplicacoesOauth(): PortalUnicoAplicacoesOauth | null {
+  const dado = readDataset<PortalUnicoAplicacoesOauth[]>("portal-unico", "v1", "aplicacoes-oauth");
+  return dado && dado.length > 0 ? dado[0] : null;
+}
+
+// Relação nomeada dos sistemas integrados — nomes dos apps + ambiente
+// classificado por heurística de nomenclatura (HOM/HOMOLOGAÇÃO/PREPRODUCAO
+// → hom; TESTE → dev; resto → prod). Lista curada manualmente; atualização
+// por PR. Complementa o total do dataset `aplicacoes-oauth` (banco).
+export type AmbienteAplicacao = "dev" | "hom" | "prod";
+export type PortalUnicoAplicacaoRelacao = { titulo: string; ambiente: AmbienteAplicacao };
+
+export function getPortalUnicoAplicacoesRelacao(): PortalUnicoAplicacaoRelacao[] {
+  return readDataset<PortalUnicoAplicacaoRelacao[]>("portal-unico", "v1", "aplicacoes-oauth-relacao") ?? [];
+}
+
+// Sistemas integrados ao Assinador Gov.BR — apps com callback ativo em
+// authentication_assinaturaredirecionamento (banco controlador_prd).
+// Publicado por run_portal_unico_db. Dedupe por appId no server.
+export type SistemaComAssinador = { appId: number; nome: string; callback: string };
+
+export function getSistemasComAssinador(): SistemaComAssinador[] {
+  return readDataset<SistemaComAssinador[]>("portal-unico", "v1", "sistemas-assinador") ?? [];
+}
+
+// Formulários digitais no FormFlow — lista estática (curada manualmente,
+// atualização por PR). Sem métrica de uso por ora; só o catálogo.
+export type FormularioFormFlow = { titulo: string };
+
+export function getFormulariosFormFlow(): FormularioFormFlow[] {
+  return readDataset<FormularioFormFlow[]>("formflow", "v1", "formularios") ?? [];
 }
 
 // --- Catálogo de serviços do app MS Digital (nativo × web) ---

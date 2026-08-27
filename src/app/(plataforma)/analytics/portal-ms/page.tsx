@@ -19,6 +19,10 @@ import {
   getMatomoFugaHub,
   getCartasInventarioRelacao,
   getPortalUnicoCadastros,
+  getPortalUnicoAplicacoesOauth,
+  getPortalUnicoAplicacoesRelacao,
+  getSistemasComAssinador,
+  getFormulariosFormFlow,
   getMatomoEventosNavegacaoPerfil,
 } from "@/lib/data";
 
@@ -42,6 +46,10 @@ export default function AnalyticsPortalMsPage() {
   const fugaHub = getMatomoFugaHub();
   const inventarioCartas = getCartasInventarioRelacao();
   const portalUnicoCadastros = getPortalUnicoCadastros();
+  const portalUnicoAplicacoesOauth = getPortalUnicoAplicacoesOauth();
+  const portalUnicoAplicacoesRelacao = getPortalUnicoAplicacoesRelacao();
+  const sistemasComAssinador = getSistemasComAssinador();
+  const formulariosFormFlow = getFormulariosFormFlow();
   const eventosPerfil = getMatomoEventosNavegacaoPerfil();
 
   if (diarias.length === 0) {
@@ -82,6 +90,10 @@ export default function AnalyticsPortalMsPage() {
       fugaHub={fugaHub}
       inventarioCartas={inventarioCartas}
       portalUnicoCadastros={portalUnicoCadastros}
+      portalUnicoAplicacoesOauth={portalUnicoAplicacoesOauth}
+      portalUnicoAplicacoesRelacao={portalUnicoAplicacoesRelacao}
+      sistemasComAssinador={sistemasComAssinador}
+      formulariosFormFlow={formulariosFormFlow}
       eventosPerfil={eventosPerfil}
     />
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { ExportCsvButton } from "@/components/dashboard/ExportCsvButton";
 import { DataTable, type Coluna } from "@/components/dashboard/DataTable";
@@ -22,7 +22,6 @@ const THRESHOLD_BULK_ORGAO = 15;
 const prazoDe = (c: CartaRelacao) => prazoServico(c.tempoTotal, c.tipoTempo);
 
 type EstadoBulk = "idle" | "carregando" | "sucesso" | "erro";
-type DadoCliques = { cliques: number; compartilhado: boolean };
 
 /** Tabela operacional das cartas ativas — Nome/Órgão/Categoria/Prazo/Acessos +
  * link pro portal. Coluna "Acessar Serviço" só aparece quando o usuário
@@ -52,20 +51,23 @@ export function ExplorarTab({
   // Cliques em "Acessar serviço" — populado incrementalmente pelas chamadas
   // ao vivo. Chave = slug. Ausente = ainda não buscado; 0 = buscado e sem
   // clique no período (diferença importante pra UX).
-  const [cliquesPorSlug, setCliquesPorSlug] = useState<Map<string, DadoCliques>>(new Map());
+  const [cliquesPorSlug, setCliquesPorSlug] = useState<Map<string, number>>(new Map());
   const [carregandoSlug, setCarregandoSlug] = useState<Set<string>>(new Set());
   const [estadoBulk, setEstadoBulk] = useState<EstadoBulk>("idle");
   const [erroMsg, setErroMsg] = useState<string | null>(null);
 
   // Cache de cliques é por período — trocou o range, cache antigo vira dado
-  // errado no filtro novo. Reseta pra forçar nova busca sob demanda no período
-  // atual (AGENTS.md: nada estático em domínio com filtro de período).
-  useEffect(() => {
+  // errado no filtro novo. Reset em render (padrão React "adjusting state on
+  // prop change") pra forçar nova busca sob demanda no período atual
+  // (AGENTS.md: nada estático em domínio com filtro de período).
+  const [rangeAnterior, setRangeAnterior] = useState(range);
+  if (rangeAnterior.inicio !== range.inicio || rangeAnterior.fim !== range.fim) {
+    setRangeAnterior(range);
     setCliquesPorSlug(new Map());
     setCarregandoSlug(new Set());
     setEstadoBulk("idle");
     setErroMsg(null);
-  }, [range.inicio, range.fim]);
+  }
 
   const orgaos = useMemo(() => [...new Set(cartas.map((c) => c.orgaoSigla))].sort(), [cartas]);
   const categorias = useMemo(
@@ -97,7 +99,7 @@ export function ExplorarTab({
       const data = (await r.json()) as { cartas: AcessoBotaoCarta[] };
       setCliquesPorSlug((prev) => {
         const m = new Map(prev);
-        for (const c of data.cartas ?? []) m.set(c.slug, { cliques: c.cliques, compartilhado: !!c.cliquesCompartilhado });
+        for (const c of data.cartas ?? []) m.set(c.slug, c.cliques);
         return m;
       });
       setEstadoBulk("sucesso");
@@ -120,7 +122,7 @@ export function ExplorarTab({
       const data = (await r.json()) as { carta: AcessoBotaoCarta };
       setCliquesPorSlug((prev) => {
         const m = new Map(prev);
-        m.set(slug, { cliques: data.carta.cliques, compartilhado: !!data.carta.cliquesCompartilhado });
+        m.set(slug, data.carta.cliques);
         return m;
       });
     } catch (exc) {
@@ -217,12 +219,12 @@ export function ExplorarTab({
       label: "Acessar Serviço",
       align: "right",
       sortable: true,
-      sortValue: (c) => cliquesPorSlug.get(c.slug)?.cliques ?? -1,
+      sortValue: (c) => cliquesPorSlug.get(c.slug) ?? -1,
       render: (c) => (
         <CelulaCliques
           slug={c.slug}
           temUrlExterno={Boolean(c.urlExterno)}
-          dado={cliquesPorSlug.get(c.slug)}
+          cliques={cliquesPorSlug.get(c.slug)}
           carregando={carregandoSlug.has(c.slug)}
           modoIndividual={Boolean(modoIndividual)}
           onBuscar={() => buscarSlugIndividual(c.slug)}
@@ -320,7 +322,7 @@ export function ExplorarTab({
               Prazo: prazoDe(c),
               Custo: c.custo ?? "",
               [`Acessos ${rotuloPeriodo}`]: visitasPorSlug.get(c.slug) ?? 0,
-              [`Cliques Acessar Serviço ${rotuloPeriodo}`]: cliquesPorSlug.get(c.slug)?.cliques ?? "",
+              [`Cliques Acessar Serviço ${rotuloPeriodo}`]: cliquesPorSlug.get(c.slug) ?? "",
               Link: `${PORTAL_BASE}/${c.categoria}/${c.slug}`,
             }))}
             filename="cartas-servico"
@@ -403,34 +405,24 @@ export function ExplorarTab({
 function CelulaCliques({
   slug,
   temUrlExterno,
-  dado,
+  cliques,
   carregando,
   modoIndividual,
   onBuscar,
 }: {
   slug: string;
   temUrlExterno: boolean;
-  dado: DadoCliques | undefined;
+  cliques: number | undefined;
   carregando: boolean;
   modoIndividual: boolean;
   onBuscar: () => void;
 }) {
   if (!temUrlExterno) return <span style={{ color: "var(--ds-color-text-muted)" }}>—</span>;
   if (carregando) return <Spinner />;
-  if (dado !== undefined) {
-    return dado.cliques > 0 ? (
+  if (cliques !== undefined) {
+    return cliques > 0 ? (
       <span className="font-semibold" style={{ color: "var(--ds-color-primary-600)" }}>
-        {dado.cliques.toLocaleString("pt-BR")}
-        {dado.compartilhado && (
-          <span
-            className="ml-1 text-xs align-middle"
-            style={{ color: "var(--ds-color-warning, #b45309)" }}
-            title="Este destino é usado por várias cartas — o valor mostrado é o total do destino, não só desta carta."
-            aria-label="Cliques compartilhados entre várias cartas com o mesmo destino"
-          >
-            ⚠
-          </span>
-        )}
+        {cliques.toLocaleString("pt-BR")}
       </span>
     ) : (
       <span style={{ color: "var(--ds-color-text-muted)" }}>0</span>

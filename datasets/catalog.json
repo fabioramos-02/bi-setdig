@@ -11,6 +11,39 @@
     "bytes": 5501
   },
   {
+    "dataset": "formularios",
+    "source": "formflow",
+    "owner": "SETDIG",
+    "updatedAt": "2026-08-27T00:00:00+00:00",
+    "frequency": "manual",
+    "version": "v1",
+    "schema": "datasets/formflow/README.md",
+    "rows": 14,
+    "bytes": 1600
+  },
+  {
+    "dataset": "aplicacoes-oauth-relacao",
+    "source": "portal-unico",
+    "owner": "SETDIG",
+    "updatedAt": "2026-08-27T00:00:00+00:00",
+    "frequency": "manual",
+    "version": "v1",
+    "schema": "datasets/portal-unico/README.md",
+    "rows": 42,
+    "bytes": 4400
+  },
+  {
+    "dataset": "sistemas-assinador",
+    "source": "portal-unico",
+    "owner": "SETDIG",
+    "updatedAt": "2026-08-27T00:00:00+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "datasets/portal-unico/README.md",
+    "rows": 16,
+    "bytes": 2400
+  },
+  {
     "dataset": "catalogo-servicos",
     "source": "app",
     "owner": "SETDIG",
@@ -531,11 +564,22 @@
     "dataset": "cadastros",
     "source": "portal-unico",
     "owner": "SETDIG",
-    "updatedAt": "2026-08-27T13:28:48.876766+00:00",
+    "updatedAt": "2026-08-27T18:19:07.991949+00:00",
     "frequency": "daily",
     "version": "v1",
     "schema": "data-platform/schemas/portal-unico-cadastros.schema.json",
     "rows": 1,
     "bytes": 85
+  },
+  {
+    "dataset": "aplicacoes-oauth",
+    "source": "portal-unico",
+    "owner": "SETDIG",
+    "updatedAt": "2026-08-27T18:19:08.017596+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/portal-unico-aplicacoes-oauth.schema.json",
+    "rows": 1,
+    "bytes": 81
   }
 ]

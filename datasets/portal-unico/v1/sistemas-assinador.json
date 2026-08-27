@@ -1,0 +1,82 @@
+[
+  {
+    "appId": 52,
+    "nome": "ASSINADOR GOVBR CBMMS - SEJUSP",
+    "callback": "https://assinador.bombeiros.ms.gov.br/callback-govbr"
+  },
+  {
+    "appId": 40,
+    "nome": "CRONOS - SEJUSP - CBMMS",
+    "callback": "https://cronos.bombeiros.ms.gov.br/callback-govbr/assinatura"
+  },
+  {
+    "appId": 38,
+    "nome": "Diario Oficial - SAD",
+    "callback": "https://www.diariooficial.ms.gov.br/externo/assinatura/gestor"
+  },
+  {
+    "appId": 51,
+    "nome": "EMS-PUBLICO - V2 - SAD",
+    "callback": "https://e-ms.ms.gov.br/callback/assinar-govbr"
+  },
+  {
+    "appId": 50,
+    "nome": "EMS-V2 - SAD",
+    "callback": "https://e-ms.ms.gov.br/callback/assinar-govbr"
+  },
+  {
+    "appId": 31,
+    "nome": "e-Saniagro - IAGRO - MS",
+    "callback": "https://servicos.efazenda.ms.gov.br/e-saniagro/Laboratorio/AssinarLaudo"
+  },
+  {
+    "appId": 41,
+    "nome": "MADES - IMASUL",
+    "callback": "https://monitoralertas.imasul.ms.gov.br/signature/callback"
+  },
+  {
+    "appId": 36,
+    "nome": "Portal ms.gov.br",
+    "callback": "https://control.ms.gov.br/govbr/assinatura/callback/"
+  },
+  {
+    "appId": 44,
+    "nome": "PROD - Parcerias - EPE",
+    "callback": "https://www.parcerias.ms.gov.br/assinar"
+  },
+  {
+    "appId": 43,
+    "nome": "PROD - PECON MS - IAGRO",
+    "callback": "https://control.ms.gov.br/govbr/assinatura/callback/"
+  },
+  {
+    "appId": 35,
+    "nome": "REDESUAS - SEAD - MS",
+    "callback": "https://www.redesuas.ms.gov.br/assinar"
+  },
+  {
+    "appId": 8,
+    "nome": "SIAFIC - Sistema Financeiro",
+    "callback": "https://transferems.siafic.ms.gov.br/assinatura"
+  },
+  {
+    "appId": 37,
+    "nome": "SIRIEMA - IMASUL",
+    "callback": "http://v2.siriema.imasul.ms.gov.br/assinatura"
+  },
+  {
+    "appId": 14,
+    "nome": "TARS - CBMMS - SEJUSP - Homologação",
+    "callback": "https://hom.tars.bombeiros.ms.gov.br/callback-govbr/assinatura"
+  },
+  {
+    "appId": 13,
+    "nome": "TARS - Tecnologia Avançada de Recursos e Serviços - CBMMS",
+    "callback": "https://tars.bombeiros.ms.gov.br/callback-govbr/assinatura"
+  },
+  {
+    "appId": 46,
+    "nome": "TESTE ASSINADOR - EDS",
+    "callback": "http://localhost:3030/Assinar"
+  }
+]

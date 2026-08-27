@@ -5,71 +5,37 @@
  * (Navegador, Dispositivo, Horario, Cidade, Pagina, TermoBusca, ...) — as
  * Tabs que já existem não precisam saber se o dado veio do JSON ou daqui.
  */
-import type { Cidade, Horario, Pagina, TermoBusca, PaginaEntrada, DominioSaida, VisitaDiaria, AcessoBotaoCarta, CartaRelacao } from "@/lib/data";
+import type { Cidade, Horario, Pagina, TermoBusca, PaginaEntrada, DominioSaida, VisitaDiaria } from "@/lib/data";
 
-const _normUrl = (u?: string | null): string => (u ?? "").trim().toLowerCase().replace(/\/+$/, "");
-
-/** Cruza outlinks (Actions.getOutlinks?flat=1) com `urlExterno` do
- *  inventário. Ordena por cliques desc.
- *
- *  `incluirZero=false` (default): descarta cartas sem clique — modo
- *  ranking, útil quando a chamada é ampla (bulk site-wide/órgão) e o
- *  consumidor quer só quem apareceu.
- *  `incluirZero=true`: mantém cartas sem clique — modo individual, o
- *  usuário clicou pra saber e quer resposta mesmo que 0.
- *  `urlsCompartilhadas`: set (normalizado) de URLs que aparecem em 2+ cartas
- *  no inventário total — marca `cliquesCompartilhado=true` na saída
- *  (rota calcula uma vez sobre o inventário completo). */
-export function acessosBotaoServicoPorUrl(
-  outlinksFlat: MatomoRow[],
-  inventario: CartaRelacao[],
-  incluirZero = false,
-  urlsCompartilhadas?: Set<string>,
-): AcessoBotaoCarta[] {
-  const cliquesPorUrl = new Map<string, number>();
-  for (const row of outlinksFlat ?? []) {
-    const url = _normUrl(row.url ?? row.label);
-    if (!url) continue;
-    cliquesPorUrl.set(url, (cliquesPorUrl.get(url) ?? 0) + (row.nb_visits ?? 0));
+/** Soma `referrals` dos outlinks retornados por
+ *  Transitions.getTransitionsForAction cujo `label` casa com o host de
+ *  `urlExterno` — cliques da carta (sessão passou pela `actionUrl` da
+ *  chamada) pro destino externo, exatos. Aceita ambos formatos que Matomo
+ *  devolve: só domínio ("falabr.cgu.gov.br") ou URL completa. */
+export function cliquesTransitionsPorHost(raw: TransitionsRaw | null | undefined, urlExterno: string): number {
+  const host = hostnameOf(urlExterno);
+  if (!host) return 0;
+  const outlinks = raw?.outlinks ?? [];
+  let total = 0;
+  for (const o of outlinks) {
+    const label = (o.label ?? "").toLowerCase();
+    if (label.includes(host)) total += o.referrals ?? 0;
   }
-  const linhas: AcessoBotaoCarta[] = [];
-  for (const c of inventario) {
-    if (!c.ativo || !c.slug || !c.urlExterno) continue;
-    const urlNorm = _normUrl(c.urlExterno);
-    const cliques = cliquesPorUrl.get(urlNorm) ?? 0;
-    if (cliques === 0 && !incluirZero) continue;
-    const linha: AcessoBotaoCarta = {
-      slug: c.slug,
-      titulo: c.titulo,
-      orgaoSigla: c.orgaoSigla ?? null,
-      categoria: c.categoria ?? null,
-      urlCarta: `https://www.ms.gov.br/${c.categoria ?? ""}/${c.slug}`,
-      urlExterno: c.urlExterno,
-      cliques,
-    };
-    if (urlsCompartilhadas?.has(urlNorm)) linha.cliquesCompartilhado = true;
-    linhas.push(linha);
-  }
-  return linhas.sort((a, b) => b.cliques - a.cliques);
+  return total;
 }
 
-/** Set (normalizado) de URLs externas que 2+ cartas do inventário apontam.
- *  Usado pela rota pra marcar `cliquesCompartilhado` na saída — sinal pra UI
- *  mostrar aviso ⚠ quando o valor de cliques é o agregado do destino,
- *  não específico da carta. */
-export function urlsCompartilhadasNoInventario(inventario: CartaRelacao[]): Set<string> {
-  const contagem = new Map<string, number>();
-  for (const c of inventario) {
-    if (!c.ativo || !c.urlExterno) continue;
-    const u = _normUrl(c.urlExterno);
-    if (u) contagem.set(u, (contagem.get(u) ?? 0) + 1);
+function hostnameOf(url: string): string {
+  try {
+    return new URL(url).hostname.toLowerCase();
+  } catch {
+    return "";
   }
-  const out = new Set<string>();
-  for (const [u, n] of contagem) {
-    if (n > 1) out.add(u);
-  }
-  return out;
 }
+
+type TransitionsRaw = {
+  pageMetrics?: { pageviews?: number; entries?: number; exits?: number };
+  outlinks?: { label?: string; referrals?: number }[];
+};
 
 type MatomoRow = { label?: string; nb_visits?: number; url?: string };
 type MatomoDailyRaw = Record<string, { nb_visits?: number; nb_uniq_visitors?: number; nb_actions?: number }>;

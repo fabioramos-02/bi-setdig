@@ -67,7 +67,10 @@ export function CategoriasTab({
   const alertas = pontosAtencaoCategorias(rankings);
   const categoriasComUso = rankings.filter((r) => r.totalServicos > 0 && r.acessos > 0).length;
 
-  const servicosSel = sel ? servicos.filter((s) => s.categoria === sel) : [];
+  const servicosSel = useMemo(
+    () => (sel ? servicos.filter((s) => s.categoria === sel) : []),
+    [sel, servicos],
+  );
   const contagemServico = contagemPorServico(acessosServico);
   const rankingSel = useMemo(() => {
     if (!sel) return [];

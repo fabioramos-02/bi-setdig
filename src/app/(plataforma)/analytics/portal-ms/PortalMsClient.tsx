@@ -10,6 +10,7 @@ import { PerfilCidadaoTab } from "./PerfilCidadaoTab";
 import { ServicosPorPerfilTab } from "./ServicosPorPerfilTab";
 import { FluxoNavegacaoTab } from "./FluxoNavegacaoTab";
 import { VisaoGeralTab } from "./VisaoGeralTab";
+import { EcossistemaTab } from "./EcossistemaTab";
 import { BuscaTab } from "./BuscaTab";
 import { PaginasTab } from "./PaginasTab";
 import { aplicarFiltroPeriodo, chavePeriodoFixo, resumoDoPeriodo, intervaloDoBucket, ehPeriodoCorrente, rotuloPeriodoResolvido } from "@/lib/period-filter";
@@ -42,6 +43,11 @@ import type {
   DemandaOrgao,
   CartaRelacao,
   PortalUnicoCadastros,
+  PortalUnicoAplicacoesOauth,
+  PortalUnicoAplicacaoRelacao,
+  AmbienteAplicacao,
+  SistemaComAssinador,
+  FormularioFormFlow,
   NavegacaoPerfilEventos,
 } from "@/lib/data";
 
@@ -81,6 +87,10 @@ export function PortalMsClient({
   inventarioCartas,
   demandaPorOrgao,
   portalUnicoCadastros,
+  portalUnicoAplicacoesOauth,
+  portalUnicoAplicacoesRelacao,
+  sistemasComAssinador,
+  formulariosFormFlow,
   eventosPerfil,
 }: {
   diarias: VisitaDiaria[];
@@ -101,6 +111,10 @@ export function PortalMsClient({
   // ponytail: total histórico absoluto — não reage ao filtro de período.
   // `null` quando o dataset ainda não foi publicado (VPN indisponível).
   portalUnicoCadastros: PortalUnicoCadastros | null;
+  portalUnicoAplicacoesOauth: PortalUnicoAplicacoesOauth | null;
+  portalUnicoAplicacoesRelacao: PortalUnicoAplicacaoRelacao[];
+  sistemasComAssinador: SistemaComAssinador[];
+  formulariosFormFlow: FormularioFormFlow[];
   eventosPerfil: Record<PeriodoFixo, NavegacaoPerfilEventos>;
 }) {
   // Contexto do classificador semântico (ADR-012) — montado 1x a partir do
@@ -214,6 +228,12 @@ export function PortalMsClient({
     recomendacaoConcentracao: concentracao,
   });
 
+  const contagemAmbientes = useMemo(() => {
+    const c: Record<AmbienteAplicacao, number> = { prod: 0, hom: 0, dev: 0 };
+    for (const a of portalUnicoAplicacoesRelacao) c[a.ambiente]++;
+    return c;
+  }, [portalUnicoAplicacoesRelacao]);
+
   const abas: TabItem[] = [
     {
       id: "visao-geral",
@@ -236,6 +256,10 @@ export function PortalMsClient({
           fraseNavegacaoPerfil={fraseNavegacaoPerfil}
           matchRate={matchRate}
           portalUnicoCadastros={portalUnicoCadastros}
+          portalUnicoAplicacoesOauth={portalUnicoAplicacoesOauth}
+          portalUnicoAplicacoesRelacao={portalUnicoAplicacoesRelacao}
+          formulariosFormFlow={formulariosFormFlow}
+          sistemasComAssinador={sistemasComAssinador}
         />
       ),
     },
@@ -301,6 +325,18 @@ export function PortalMsClient({
           totalVisitas={kpis.visitas}
           status={statusBreakdown}
           ctxSemantico={ctxSemantico}
+        />
+      ),
+    },
+    {
+      id: "ecossistema",
+      label: "7. Ecossistema Digital",
+      content: (
+        <EcossistemaTab
+          sistemas={portalUnicoAplicacoesRelacao}
+          contagemAmbientes={contagemAmbientes}
+          sistemasAssinador={sistemasComAssinador}
+          formularios={formulariosFormFlow}
         />
       ),
     },
