@@ -20,10 +20,10 @@
   {
     "orgao": "Coordenadoria Geral de Perícias de Mato Grosso do Sul",
     "orgaoSigla": "CGP",
-    "total": 73,
+    "total": 74,
     "atendidos": 72,
-    "pendentes": 1,
-    "percentAtendido": 98.6,
+    "pendentes": 2,
+    "percentAtendido": 97.3,
     "tempoMedioResolucaoDias": 109.7
   },
   {
@@ -56,10 +56,10 @@
   {
     "orgao": "Procuradoria Geral do Estado de Mato Grosso do Sul",
     "orgaoSigla": "PGE MS",
-    "total": 29,
+    "total": 30,
     "atendidos": 28,
-    "pendentes": 1,
-    "percentAtendido": 96.6,
+    "pendentes": 2,
+    "percentAtendido": 93.3,
     "tempoMedioResolucaoDias": 134.1
   },
   {

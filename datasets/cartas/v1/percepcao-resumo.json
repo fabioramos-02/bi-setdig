@@ -1,15 +1,15 @@
 [
   {
-    "csatMedia": 2.9,
+    "csatMedia": 2.8,
     "csatDistribuicao": {
-      "1": 1110,
-      "2": 396,
-      "3": 585,
+      "1": 1120,
+      "2": 398,
+      "3": 588,
       "4": 511,
-      "5": 802
+      "5": 806
     },
-    "totalVotos": 3404,
-    "clarezaPositivaPct": 56.7,
-    "totalAvaliacoesClareza": 11780
+    "totalVotos": 3423,
+    "clarezaPositivaPct": 56.6,
+    "totalAvaliacoesClareza": 11820
   }
 ]

@@ -1,18 +1,18 @@
 [
   {
-    "ativosHoje": 88521,
-    "ativosSemana": 449210,
-    "ativosMes": 1174624,
-    "totalUsuariosMes": 109142,
-    "sessoesMes": 130547,
-    "stickinessPct": 7.5,
-    "fidelidadeSemanaPct": 38.2,
-    "sessoesPorUsuario": 1.2,
-    "diasEntreAcessos": 23.3,
-    "cohortSemana": "2026-08-18 a 2026-08-24",
-    "cohortTamanho": 1734,
-    "retencaoD1Pct": 12.5,
-    "retencaoD7Pct": 0.4,
+    "ativosHoje": 86258,
+    "ativosSemana": 446781,
+    "ativosMes": 1177126,
+    "totalUsuariosMes": 106825,
+    "sessoesMes": 127315,
+    "stickinessPct": 7.3,
+    "fidelidadeSemanaPct": 38.0,
+    "sessoesPorUsuario": 1.19,
+    "diasEntreAcessos": 23.5,
+    "cohortSemana": "2026-08-20 a 2026-08-26",
+    "cohortTamanho": 1711,
+    "retencaoD1Pct": 12.3,
+    "retencaoD7Pct": 0.2,
     "retencaoD30Pct": 0.0
   }
 ]

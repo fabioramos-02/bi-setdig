@@ -4,30 +4,30 @@
     "orgaoSigla": "DETRAN",
     "csatMedia": 2.6,
     "csatDistribuicao": {
-      "1": 220,
-      "2": 59,
-      "3": 96,
+      "1": 222,
+      "2": 60,
+      "3": 97,
       "4": 70,
-      "5": 94
+      "5": 95
     },
-    "totalVotos": 539,
-    "clarezaPositivaPct": 45.8,
-    "totalAvaliacoesClareza": 1941
+    "totalVotos": 544,
+    "clarezaPositivaPct": 45.7,
+    "totalAvaliacoesClareza": 1949
   },
   {
     "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
     "orgaoSigla": "SEFAZ MS",
     "csatMedia": 2.5,
     "csatDistribuicao": {
-      "1": 184,
+      "1": 185,
       "2": 42,
       "3": 60,
       "4": 48,
       "5": 76
     },
-    "totalVotos": 410,
+    "totalVotos": 411,
     "clarezaPositivaPct": 43.8,
-    "totalAvaliacoesClareza": 1346
+    "totalAvaliacoesClareza": 1347
   },
   {
     "orgao": "Secretaria de Estado de Educação de Mato Grosso do Sul",
@@ -35,59 +35,59 @@
     "csatMedia": 3.2,
     "csatDistribuicao": {
       "1": 72,
-      "2": 40,
+      "2": 41,
       "3": 54,
       "4": 63,
       "5": 86
     },
-    "totalVotos": 315,
-    "clarezaPositivaPct": 55.9,
-    "totalAvaliacoesClareza": 1235
+    "totalVotos": 316,
+    "clarezaPositivaPct": 56.0,
+    "totalAvaliacoesClareza": 1241
   },
   {
     "orgao": "Polícia Civil de Mato Grosso do Sul",
     "orgaoSigla": "PCMS",
     "csatMedia": 2.8,
     "csatDistribuicao": {
-      "1": 90,
+      "1": 91,
       "2": 35,
       "3": 56,
       "4": 38,
       "5": 59
     },
-    "totalVotos": 278,
-    "clarezaPositivaPct": 76.5,
-    "totalAvaliacoesClareza": 1496
+    "totalVotos": 279,
+    "clarezaPositivaPct": 76.4,
+    "totalAvaliacoesClareza": 1501
   },
   {
     "orgao": "Secretaria de Estado de Assistência Social e Direitos Humanos",
     "orgaoSigla": "SEAD",
-    "csatMedia": 3.1,
+    "csatMedia": 3.0,
     "csatDistribuicao": {
-      "1": 69,
+      "1": 70,
       "2": 34,
-      "3": 59,
+      "3": 60,
       "4": 39,
       "5": 74
     },
-    "totalVotos": 275,
-    "clarezaPositivaPct": 68.5,
-    "totalAvaliacoesClareza": 910
+    "totalVotos": 277,
+    "clarezaPositivaPct": 68.3,
+    "totalAvaliacoesClareza": 915
   },
   {
     "orgao": "Procuradoria Geral do Estado de Mato Grosso do Sul",
     "orgaoSigla": "PGE MS",
     "csatMedia": 2.2,
     "csatDistribuicao": {
-      "1": 98,
+      "1": 100,
       "2": 40,
-      "3": 41,
+      "3": 42,
       "4": 16,
       "5": 20
     },
-    "totalVotos": 215,
-    "clarezaPositivaPct": 30.6,
-    "totalAvaliacoesClareza": 630
+    "totalVotos": 218,
+    "clarezaPositivaPct": 30.4,
+    "totalAvaliacoesClareza": 635
   },
   {
     "orgao": "Coordenadoria Geral de Perícias de Mato Grosso do Sul",
@@ -98,11 +98,11 @@
       "2": 20,
       "3": 14,
       "4": 29,
-      "5": 34
+      "5": 36
     },
-    "totalVotos": 180,
-    "clarezaPositivaPct": 54.3,
-    "totalAvaliacoesClareza": 580
+    "totalVotos": 182,
+    "clarezaPositivaPct": 54.5,
+    "totalAvaliacoesClareza": 583
   },
   {
     "orgao": "Junta Comercial do Estado de Mato Grosso do Sul",
@@ -116,8 +116,8 @@
       "5": 64
     },
     "totalVotos": 129,
-    "clarezaPositivaPct": 66.9,
-    "totalAvaliacoesClareza": 363
+    "clarezaPositivaPct": 66.8,
+    "totalAvaliacoesClareza": 364
   },
   {
     "orgao": "Secretaria de Estado de Saúde de Mato Grosso do Sul",
@@ -135,6 +135,21 @@
     "totalAvaliacoesClareza": 336
   },
   {
+    "orgao": "Agência de Habitação Popular de Mato Grosso do Sul",
+    "orgaoSigla": "AGEHAB",
+    "csatMedia": 3.4,
+    "csatDistribuicao": {
+      "1": 15,
+      "2": 10,
+      "3": 18,
+      "4": 22,
+      "5": 27
+    },
+    "totalVotos": 92,
+    "clarezaPositivaPct": 69.8,
+    "totalAvaliacoesClareza": 305
+  },
+  {
     "orgao": "Universidade Estadual de Mato Grosso do Sul",
     "orgaoSigla": "UEMS",
     "csatMedia": 3.7,
@@ -148,21 +163,6 @@
     "totalVotos": 92,
     "clarezaPositivaPct": 54.3,
     "totalAvaliacoesClareza": 300
-  },
-  {
-    "orgao": "Agência de Habitação Popular de Mato Grosso do Sul",
-    "orgaoSigla": "AGEHAB",
-    "csatMedia": 3.4,
-    "csatDistribuicao": {
-      "1": 15,
-      "2": 10,
-      "3": 18,
-      "4": 22,
-      "5": 26
-    },
-    "totalVotos": 91,
-    "clarezaPositivaPct": 69.8,
-    "totalAvaliacoesClareza": 305
   },
   {
     "orgao": "Secretaria de Estado de Governo e Gestão Estratégica de Mato Grosso do Sul",
@@ -191,8 +191,8 @@
       "5": 8
     },
     "totalVotos": 74,
-    "clarezaPositivaPct": 55.1,
-    "totalAvaliacoesClareza": 158
+    "clarezaPositivaPct": 55.9,
+    "totalAvaliacoesClareza": 161
   },
   {
     "orgao": "Agência de Previdência Social de Mato Grosso do Sul",
@@ -274,30 +274,30 @@
     "orgaoSigla": "SANESUL",
     "csatMedia": 2.2,
     "csatDistribuicao": {
-      "1": 20,
+      "1": 21,
       "2": 7,
       "3": 5,
       "4": 3,
       "5": 6
     },
-    "totalVotos": 41,
-    "clarezaPositivaPct": 25.0,
-    "totalAvaliacoesClareza": 96
+    "totalVotos": 42,
+    "clarezaPositivaPct": 24.7,
+    "totalAvaliacoesClareza": 97
   },
   {
     "orgao": "Secretaria de Estado de Administração de Mato Grosso do Sul",
     "orgaoSigla": "SAD",
     "csatMedia": 3.0,
     "csatDistribuicao": {
-      "1": 9,
+      "1": 10,
       "2": 7,
       "3": 8,
       "4": 7,
       "5": 9
     },
-    "totalVotos": 40,
-    "clarezaPositivaPct": 66.7,
-    "totalAvaliacoesClareza": 129
+    "totalVotos": 41,
+    "clarezaPositivaPct": 66.2,
+    "totalAvaliacoesClareza": 130
   },
   {
     "orgao": "Secretaria de Estado da Cidadania",
@@ -362,15 +362,15 @@
   {
     "orgao": "Corpo de Bombeiros Militar",
     "orgaoSigla": "CBMMS",
-    "csatMedia": 2.8,
+    "csatMedia": 2.7,
     "csatDistribuicao": {
-      "1": 9,
+      "1": 10,
       "2": 2,
       "3": 1,
       "4": 3,
       "5": 6
     },
-    "totalVotos": 21,
+    "totalVotos": 22,
     "clarezaPositivaPct": 58.8,
     "totalAvaliacoesClareza": 51
   },
@@ -386,8 +386,8 @@
       "5": 9
     },
     "totalVotos": 18,
-    "clarezaPositivaPct": 56.8,
-    "totalAvaliacoesClareza": 44
+    "clarezaPositivaPct": 57.8,
+    "totalAvaliacoesClareza": 45
   },
   {
     "orgao": "Companhia de Gás do Estado de Mato Grosso do Sul",

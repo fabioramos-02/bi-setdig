@@ -22310,29 +22310,6 @@
     "updatedAt": "2024-09-05T16:47:42.689209-04:00"
   },
   {
-    "titulo": "Cadastro da agropecuária (CAP) - inscrição de pescador profissional",
-    "nomePopular": null,
-    "slug": "cadastro-da-agropecuaria-cap-inscricao-de-pescador-profissional111",
-    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
-    "orgaoSigla": "SEFAZ MS",
-    "setor": "Unidade de Cadastro Fiscal",
-    "categoria": "agropecuaria-e-vida-rural",
-    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa F&iacute;sica que exer&ccedil;a &uacute;nica e exclusivamente a atividade de pesca.</span></p>",
-    "publicoEspecifico": [
-      "Cidadão"
-    ],
-    "ativo": true,
-    "digital": false,
-    "online": false,
-    "destaque": false,
-    "custo": "Sem custo",
-    "tempoTotal": 20,
-    "tipoTempo": "Dias corridos",
-    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
-    "createdAt": "2023-06-05T09:38:51.247738-04:00",
-    "updatedAt": "2025-11-12T21:05:37.293097-05:00"
-  },
-  {
     "titulo": "Assistência administrativa à coordenação do curso de ciências biológicas",
     "nomePopular": "Auxiliar de coordenação",
     "slug": "assistencia-administrativa-a-coordenacao-do-curso-de-ciencias-biologicas10",
@@ -26136,6 +26113,29 @@
     "urlExterno": null,
     "createdAt": "2023-04-27T16:29:36.070597-04:00",
     "updatedAt": "2024-09-05T16:47:26.575987-04:00"
+  },
+  {
+    "titulo": "Cadastro da agropecuária (CAP) - inscrição de pescador profissional",
+    "nomePopular": "Solicitar Inscrição Estadual de pescador profissional",
+    "slug": "cadastro-da-agropecuaria-cap-inscricao-de-pescador-profissional111",
+    "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "orgaoSigla": "SEFAZ MS",
+    "setor": "Unidade de Cadastro Fiscal",
+    "categoria": "agropecuaria-e-vida-rural",
+    "publico": "<p style=\"text-align:justify\"><span style=\"font-size:16px\">Pessoa f&iacute;sica que exer&ccedil;a &uacute;nica e exclusivamente a atividade de pesca.</span></p>",
+    "publicoEspecifico": [
+      "Cidadão"
+    ],
+    "ativo": true,
+    "digital": false,
+    "online": false,
+    "destaque": false,
+    "custo": "Sem custo.",
+    "tempoTotal": 20,
+    "tipoTempo": "Dias corridos",
+    "urlExterno": "https://eservicos.sefaz.ms.gov.br/",
+    "createdAt": "2023-06-05T09:38:51.247738-04:00",
+    "updatedAt": "2026-08-27T08:49:09.277199-04:00"
   },
   {
     "titulo": "Regularizar estoque de agrotóxicos",
