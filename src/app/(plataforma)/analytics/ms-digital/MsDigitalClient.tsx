@@ -38,6 +38,7 @@ import type {
   CategoriaOrgaos,
   Cidade,
   ContasResumo,
+  PortalUnicoCadastros,
   ContaPorAno,
   ContaPorFaixaEtaria,
   ContaPorCidade,
@@ -90,6 +91,7 @@ export function MsDigitalClient({
   frequenciaAcesso,
   snapshotFrequenciaEm,
   geografiaGa4,
+  portalUnicoCadastros,
 }: {
   visaoGeral: BreakdownPorPeriodo<GA4Overview>;
   plataforma: BreakdownPorPeriodo<Plataforma>;
@@ -115,6 +117,7 @@ export function MsDigitalClient({
   faixasDeAcessoPorTipo: FaixaAcessoPorTipo[];
   frequenciaAcesso: FrequenciaAcesso | null;
   snapshotFrequenciaEm: string | null;
+  portalUnicoCadastros: PortalUnicoCadastros | null;
 }) {
   const [abaAtiva, setAbaAtiva] = useState("visao-geral");
   const { estado, min, max } = usePeriodo();
@@ -202,6 +205,10 @@ export function MsDigitalClient({
   // serviços mais acessados gerais (Matomo), app = GA4. Reconciliação em
   // lib/cross-canal (compara listas como conjuntos, não linha a linha).
   const comparacao = compararCanais({
+    // Totais absolutos (do banco, estáticos) — quantos usuários cada canal tem
+    // cadastrados. Não reagem ao filtro de período.
+    totalApp: contasResumo?.contasTotal ?? 0,
+    totalPortal: portalUnicoCadastros?.total ?? null,
     appVisaoGeral: vg,
     // Serviço-folha reclassificado (não a categoria crua do GA4) — mesmo dado do
     // ranking em Funcionalidades, pra comparar serviço real × serviço real.

@@ -526,5 +526,16 @@
     "schema": "data-platform/schemas/matomo-sites.schema.json",
     "rows": 0,
     "bytes": 2
+  },
+  {
+    "dataset": "cadastros",
+    "source": "portal-unico",
+    "owner": "SETDIG",
+    "updatedAt": "2026-08-27T13:28:48.876766+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/portal-unico-cadastros.schema.json",
+    "rows": 1,
+    "bytes": 85
   }
 ]

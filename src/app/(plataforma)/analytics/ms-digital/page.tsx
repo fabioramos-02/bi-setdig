@@ -24,6 +24,7 @@ import {
   getGa4Geografia,
   getMsdigitalTipoLogin,
   getMsdigitalFaixasDeAcessoPorTipo,
+  getPortalUnicoCadastros,
 } from "@/lib/data";
 import { resumoCatalogo, porCategoria } from "@/lib/catalogo-app";
 
@@ -57,6 +58,7 @@ export default function AnalyticsMsDigitalPage() {
   const frequenciaAcesso = getGa4FrequenciaAcesso();
   const snapshotFrequenciaEm = getDatasetUpdatedAt("ga4", "frequencia-acesso");
   const geografiaGa4 = getGa4Geografia();
+  const portalUnicoCadastros = getPortalUnicoCadastros();
 
   if (visaoGeral.mes.length === 0) {
     return (
@@ -95,6 +97,7 @@ export default function AnalyticsMsDigitalPage() {
       frequenciaAcesso={frequenciaAcesso}
       snapshotFrequenciaEm={snapshotFrequenciaEm}
       geografiaGa4={geografiaGa4}
+      portalUnicoCadastros={portalUnicoCadastros}
     />
   );
 }

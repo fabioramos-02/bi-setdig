@@ -20,7 +20,7 @@ export function CrossCanalTab({
   comparacao: ComparacaoCanais;
   status: StatusIntervalo;
 }) {
-  const { alcanceApp, alcancePortal, appServicos, portalServicos, appPlataforma, portalDispositivos } = comparacao;
+  const { totalApp, totalPortal, alcanceApp, alcancePortal, appServicos, portalServicos, appPlataforma, portalDispositivos } = comparacao;
   const maior = alcanceApp >= alcancePortal ? "app" : "portal";
 
   return (
@@ -33,8 +33,17 @@ export function CrossCanalTab({
       />
 
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
-        <MetricCard label="Pessoas no app (MS Digital)" value={alcanceApp} sub="usuários ativos no período" />
-        <MetricCard label="Pessoas no portal (site)" value={alcancePortal} sub="visitantes únicos no período" />
+        <MetricCard label="Pessoas no app (MS Digital)" value={totalApp} sub="usuários cadastrados no total" />
+        <MetricCard
+          label="Pessoas no portal (site)"
+          value={totalPortal ?? "—"}
+          sub={totalPortal !== null ? "cidadãos com acesso registrado" : "aguardando publicação do dado"}
+        />
+      </div>
+
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
+        <MetricCard label="Acessos ao app" value={alcanceApp} sub="pessoas que usaram no período" />
+        <MetricCard label="Acessos ao portal" value={alcancePortal} sub="visitantes únicos no período" />
       </div>
 
       <DashboardSection title="Serviços mais acessados em cada canal">

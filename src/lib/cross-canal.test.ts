@@ -20,13 +20,24 @@ const appPlataforma: Plataforma[] = [{ operatingSystem: "Android", activeUsers: 
 const portalDispositivos: Dispositivo[] = [{ dispositivo: "Desktop", visitas: 600 }];
 
 test("alcanceApp soma activeUsers; alcancePortal vem de portalUniques", () => {
-  const r = compararCanais({ appVisaoGeral, appServicos, appPlataforma, portalUniques: 5000, portalServicos, portalDispositivos });
+  const r = compararCanais({ totalApp: 368532, totalPortal: 300000, appVisaoGeral, appServicos, appPlataforma, portalUniques: 5000, portalServicos, portalDispositivos });
   assert.equal(r.alcanceApp, 500); // 100 + 400
   assert.equal(r.alcancePortal, 5000);
 });
 
+test("totalApp/totalPortal passam direto (estáticos, do banco)", () => {
+  const r = compararCanais({ totalApp: 368532, totalPortal: 300000, appVisaoGeral, appServicos, appPlataforma, portalUniques: 1, portalServicos, portalDispositivos });
+  assert.equal(r.totalApp, 368532);
+  assert.equal(r.totalPortal, 300000);
+});
+
+test("totalPortal aceita null quando dataset ainda não publicado", () => {
+  const r = compararCanais({ totalApp: 368532, totalPortal: null, appVisaoGeral, appServicos, appPlataforma, portalUniques: 1, portalServicos, portalDispositivos });
+  assert.equal(r.totalPortal, null);
+});
+
 test("mapeia acessos→valor (app) e visitas→valor (portal), sem join entre listas", () => {
-  const r = compararCanais({ appVisaoGeral, appServicos, appPlataforma, portalUniques: 1, portalServicos, portalDispositivos });
+  const r = compararCanais({ totalApp: 368532, totalPortal: 300000, appVisaoGeral, appServicos, appPlataforma, portalUniques: 1, portalServicos, portalDispositivos });
   assert.deepEqual(r.appServicos[0], { servico: "Contracheque", valor: 50 });
   assert.deepEqual(r.portalServicos[0], { servico: "IPVA", valor: 900 });
   // listas independentes: nenhum nome do app aparece no portal e vice-versa
@@ -36,19 +47,19 @@ test("mapeia acessos→valor (app) e visitas→valor (portal), sem join entre li
 });
 
 test("respeita topN (corta cada lado), assume array já ordenado", () => {
-  const r = compararCanais({ appVisaoGeral, appServicos, appPlataforma, portalUniques: 1, portalServicos, portalDispositivos, topN: 2 });
+  const r = compararCanais({ totalApp: 368532, totalPortal: 300000, appVisaoGeral, appServicos, appPlataforma, portalUniques: 1, portalServicos, portalDispositivos, topN: 2 });
   assert.equal(r.appServicos.length, 2);
   assert.equal(r.portalServicos.length, 2);
   assert.equal(r.appServicos[1].servico, "Cartão SUS");
 });
 
 test("topN default = 5", () => {
-  const r = compararCanais({ appVisaoGeral, appServicos, appPlataforma, portalUniques: 1, portalServicos, portalDispositivos });
+  const r = compararCanais({ totalApp: 368532, totalPortal: 300000, appVisaoGeral, appServicos, appPlataforma, portalUniques: 1, portalServicos, portalDispositivos });
   assert.equal(r.appServicos.length, 3); // só tem 3, não corta
 });
 
 test("plataforma/dispositivos passam direto, sem transformação", () => {
-  const r = compararCanais({ appVisaoGeral, appServicos, appPlataforma, portalUniques: 1, portalServicos, portalDispositivos });
+  const r = compararCanais({ totalApp: 368532, totalPortal: 300000, appVisaoGeral, appServicos, appPlataforma, portalUniques: 1, portalServicos, portalDispositivos });
   assert.deepEqual(r.appPlataforma, appPlataforma);
   assert.deepEqual(r.portalDispositivos, portalDispositivos);
 });
