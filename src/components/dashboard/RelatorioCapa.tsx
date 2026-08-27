@@ -27,6 +27,9 @@ export function RelatorioCapa({ titulo, filtro }: { titulo: string; filtro: stri
       </h1>
 
       <p className="text-sm" style={{ color: "var(--ds-color-text-secondary)" }}>
+        <strong>Recorte:</strong> {filtro}
+      </p>
+      <p className="text-sm" style={{ color: "var(--ds-color-text-secondary)" }}>
         <strong>Extraído em:</strong> {formatarExtracao(new Date())}
       </p>
     </div>

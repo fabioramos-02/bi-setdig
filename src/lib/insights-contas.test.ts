@@ -22,13 +22,6 @@ const RESUMO_OK: ContasResumo = {
   taxaAtivacaoPct: 92.0,
 };
 
-const RESUMO_RUIM: ContasResumo = {
-  contasTotal: 100000,
-  contasAtivas: 70000,
-  matriculas: 0,
-  taxaAtivacaoPct: 70.0,
-};
-
 const FAIXAS_ACESSO_TIPICAS: FaixaAcesso[] = [
   { faixa: "Nos últimos 6 meses", quantidade: 25000, percentPct: 25.0 },
   { faixa: "Entre 6 meses e 2 anos", quantidade: 15000, percentPct: 15.0 },

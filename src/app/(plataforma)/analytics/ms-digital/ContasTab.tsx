@@ -12,12 +12,9 @@ import type {
   ContaPorFaixaEtaria,
   ContaPorCidade,
   FaixaAcesso,
-  ContaCriadaDia,
   TipoLogin,
 } from "@/lib/data";
-import type { PeriodoState } from "@/lib/period-filter";
 import {
-  contasNoPeriodo,
   pctSemInformacaoNascimento,
   pontosAtencao,
   saudeAtivacao,
@@ -39,20 +36,14 @@ export function ContasTab({
   faixaEtaria,
   porCidade,
   faixasDeAcesso,
-  criadasPorDia,
   tipoLogin,
-  estadoPeriodo,
-  rotuloPeriodo,
 }: {
   resumo: ContasResumo;
   porAno: ContaPorAno[];
   faixaEtaria: ContaPorFaixaEtaria[];
   porCidade: ContaPorCidade[];
   faixasDeAcesso: FaixaAcesso[];
-  criadasPorDia: ContaCriadaDia[];
   tipoLogin: TipoLogin[];
-  estadoPeriodo: PeriodoState;
-  rotuloPeriodo: string;
 }) {
   const saude = saudeAtivacao(resumo.taxaAtivacaoPct);
   const situacao = situacaoGeral(resumo, faixasDeAcesso);
@@ -63,9 +54,6 @@ export function ContasTab({
   const semInfo = faixaEtaria.find((f) => f.faixa === "Não informado")?.quantidade ?? 0;
   const comInfo = faixaEtaria.filter((f) => f.faixa !== "Não informado");
   const totalComInfo = comInfo.reduce((a, f) => a + f.quantidade, 0);
-
-  // Reage ao filtro de período (dia/semana/mês/ano/intervalo).
-  const noPeriodo = contasNoPeriodo(criadasPorDia, estadoPeriodo);
 
   const cidadesParaMapa = porCidade
     .filter((c) => c.codigoIbge)

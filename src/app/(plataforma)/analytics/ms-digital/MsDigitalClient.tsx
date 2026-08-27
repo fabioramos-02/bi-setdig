@@ -44,7 +44,6 @@ import type {
   ContaPorCidade,
   FaixaAcesso,
   FaixaAcessoPorTipo,
-  ContaCriadaDia,
   FrequenciaAcesso,
   TipoLogin,
 } from "@/lib/data";
@@ -85,7 +84,6 @@ export function MsDigitalClient({
   contasPorCidade,
   faixasDeAcesso,
   snapshotAtualizadoEm,
-  contasCriadasPorDia,
   tipoLogin,
   faixasDeAcessoPorTipo,
   frequenciaAcesso,
@@ -112,7 +110,6 @@ export function MsDigitalClient({
   contasPorCidade: ContaPorCidade[];
   faixasDeAcesso: FaixaAcesso[];
   snapshotAtualizadoEm: string | null;
-  contasCriadasPorDia: ContaCriadaDia[];
   tipoLogin: TipoLogin[];
   faixasDeAcessoPorTipo: FaixaAcessoPorTipo[];
   frequenciaAcesso: FrequenciaAcesso | null;
@@ -324,10 +321,7 @@ export function MsDigitalClient({
           faixaEtaria={contasPorFaixaEtaria}
           porCidade={contasPorCidade}
           faixasDeAcesso={faixasDeAcesso}
-          criadasPorDia={contasCriadasPorDia}
           tipoLogin={tipoLogin}
-          estadoPeriodo={estado}
-          rotuloPeriodo={rotuloPeriodo}
         />
       ),
     });
