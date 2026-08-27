@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { ExportCsvButton } from "@/components/dashboard/ExportCsvButton";
 import { DataTable, type Coluna } from "@/components/dashboard/DataTable";
@@ -55,6 +55,16 @@ export function ExplorarTab({
   const [carregandoSlug, setCarregandoSlug] = useState<Set<string>>(new Set());
   const [estadoBulk, setEstadoBulk] = useState<EstadoBulk>("idle");
   const [erroMsg, setErroMsg] = useState<string | null>(null);
+
+  // Cache de cliques é por período — trocou o range, cache antigo vira dado
+  // errado no filtro novo. Reseta pra forçar nova busca sob demanda no período
+  // atual (AGENTS.md: nada estático em domínio com filtro de período).
+  useEffect(() => {
+    setCliquesPorSlug(new Map());
+    setCarregandoSlug(new Set());
+    setEstadoBulk("idle");
+    setErroMsg(null);
+  }, [range.inicio, range.fim]);
 
   const orgaos = useMemo(() => [...new Set(cartas.map((c) => c.orgaoSigla))].sort(), [cartas]);
   const categorias = useMemo(
