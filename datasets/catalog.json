@@ -536,6 +536,21 @@
     "version": "v1",
     "schema": "data-platform/schemas/matomo-fuga-hub.schema.json",
     "rows": 40,
+<<<<<<< HEAD
     "bytes": 3160
+=======
+    "bytes": 3150
+  },
+  {
+    "dataset": "sites",
+    "source": "matomo",
+    "owner": "SETDIG",
+    "updatedAt": "2026-08-27T09:06:45.599262+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/matomo-sites.schema.json",
+    "rows": 0,
+    "bytes": 2
+>>>>>>> bfbc2ef04deeaa9e4b7cb74342684473cf4f4c8b
   }
 ]
