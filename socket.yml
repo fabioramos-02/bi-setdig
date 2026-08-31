@@ -1,0 +1,7 @@
+# socket.yml
+ignore:
+  - package: web-vitals
+    versions: ["5.3.0"]
+    alerts:
+      - obfuscated
+    reason: "Falso positivo: minificação oficial do Google"
