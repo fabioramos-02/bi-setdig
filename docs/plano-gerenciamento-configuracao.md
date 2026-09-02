@@ -1,5 +1,18 @@
 ## Plano de Gerência de Configuração de Software (BI-SETDIG)
 
+
+## - Falta
+-- Incluir tabela de versionamento
+Introdução
+Na sessão objetivo falta falar da padronização das nomenclatura 
+ESTRATÉGIA DE VERSIONAMENTO E BRANCHES
+Regras de uso de branches
+Main
+Feature
+Falta incluir a imagem da ramificação de exmeplo
+
+
+
 ## Contexto 
 Formalizar e padronizar, ferramentas e métodos utilizado na evolução e correção do código fonte do (BI-SETDIG).
 
@@ -12,6 +25,7 @@ Formalizar e padronizar, ferramentas e métodos utilizado na evolução e corre�
 
 ## Escopo 
 Esse Plano é voltado a equipe de análise e desenvolvimento, e estará relacionado com o código fonte e a atualização do código, portanto seu ciclo será até a morte do projeto.
+
 
 ## Objetivos 
 Trazer mais confiabilidade na qualidade dos códigos subidos, e evitar erros de versão;
