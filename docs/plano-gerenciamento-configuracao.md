@@ -81,7 +81,7 @@ e qual o motivo de tal alteração, contendo informações de quem subiu o codig
 conter mais de 4 PRs para se caso a feature aprensentar problemas, o erro será menos complicado de achar ou menos complexo de modificar o codigo, em relação a isso outra feature deverá ser criada sendo um espelho da branch main.
 
 <div style="text-align: center;">
-<img src="image-1.png" alt="Trunk Based" style="width: 600px; height: 500px">
+<img src="../docs/assets/exemplo-de-grafo.png" alt="Trunk Based" style="width: 600px>
 </div>
 
 
