@@ -98,8 +98,8 @@ export function ExplorarTab({
     () => cartasDoOrgao.filter((c) => c.urlExterno),
     [cartasDoOrgao],
   );
-  const modoBulk = orgaoFiltro && cartasDoOrgaoComUrl.length > 0 && cartasDoOrgaoComUrl.length <= THRESHOLD_BULK_ORGAO;
-  const modoIndividual = orgaoFiltro && cartasDoOrgaoComUrl.length > THRESHOLD_BULK_ORGAO;
+  const modoBulk = orgaoFiltro && cartasDoOrgaoComUrl.length > 0 && (cartasDoOrgaoComUrl.length <= THRESHOLD_BULK_ORGAO && rotuloPeriodo.toLowerCase().trim() !== "no ano");
+  const modoIndividual = orgaoFiltro && (cartasDoOrgaoComUrl.length > THRESHOLD_BULK_ORGAO || rotuloPeriodo.toLocaleLowerCase() === "no ano");
 
   async function buscarBulkOrgao() {
     if (!orgaoFiltro) return;
@@ -326,7 +326,7 @@ export function ExplorarTab({
             color: "var(--ds-color-text-secondary)",
           }}
         >
-          O órgão <strong>{orgaoFiltro}</strong> tem {cartasDoOrgaoComUrl.length} cartas com link externo — clique em <strong>Ver cliques</strong> em cada linha para carregar sob demanda.
+          O órgão <strong>{orgaoFiltro}</strong> tem {cartasDoOrgaoComUrl.length} cartas com link externo ou ano selecionado — clique em <strong>Ver cliques</strong> em cada linha para carregar sob demanda.
         </div>
       )}
 

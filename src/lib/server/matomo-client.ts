@@ -127,7 +127,7 @@ export function getTransitionsForAction(inicio: string, fim: string, actionUrl: 
     "Transitions.getTransitionsForAction",
     inicio,
     fim,
-    { actionType: "url", actionName: actionUrl },
+    { actionType: "url", actionName: actionUrl, parts: "pageMetrics,outlinks" },
     siteId,
   );
 }

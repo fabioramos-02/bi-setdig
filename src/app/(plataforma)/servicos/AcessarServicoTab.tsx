@@ -92,8 +92,8 @@ export function AcessarServicoTab({
     );
   }, [cartasDoOrgao, busca]);
 
-  const modoBulk = orgaoAtivo && cartasDoOrgao.length > 0 && cartasDoOrgao.length <= THRESHOLD_BULK_ORGAO;
-  const modoIndividual = orgaoAtivo && cartasDoOrgao.length > THRESHOLD_BULK_ORGAO;
+  const modoBulk = orgaoAtivo && cartasDoOrgao.length > 0 && (cartasDoOrgao.length <= THRESHOLD_BULK_ORGAO && rotuloPeriodo.toLowerCase().trim() !== "no ano");
+  const modoIndividual = orgaoAtivo && (cartasDoOrgao.length > THRESHOLD_BULK_ORGAO || rotuloPeriodo.toLowerCase().trim() === "no ano");
 
   async function buscarBulkOrgao() {
     if (!orgaoAtivo) return;
@@ -218,7 +218,7 @@ export function AcessarServicoTab({
             color: "var(--ds-color-text-secondary)",
           }}
         >
-          O órgão <strong>{orgaoAtivo}</strong> tem {cartasDoOrgao.length} cartas com link externo — clique em <strong>Ver cliques</strong> em cada linha para carregar sob demanda.
+          O órgão <strong>{orgaoAtivo}</strong> tem {cartasDoOrgao.length} cartas com link externo ou ano selecionado — clique em <strong>Ver cliques</strong> em cada linha para carregar sob demanda.
         </div>
       )}
 
