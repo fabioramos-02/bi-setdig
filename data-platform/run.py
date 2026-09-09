@@ -186,6 +186,57 @@ def run_matomo_jornada() -> None:
     print(f"[matomo] fuga-hub -> {[(k, len(v)) for k, v in saidas.items()]}")
 
 
+def run_matomo_acessos_botao_mensal() -> None:
+    """Cliques mensais no botão "Acessar Serviço" — 1 chamada
+    Transitions.getTransitionsForAction por carta com urlExterno × mês.
+    Alimenta a aba Ano dos Serviços sem request ao vivo, eliminando risco
+    de rate-limit no Matomo quando o cidadão navega no anual.
+
+    Idempotente: meses passados não mudam entre execuções; só o mês corrente
+    é recalculado a cada rodada. Falha por carta/mês vira 0 no dataset e é
+    logada — não derruba o run inteiro. Depende de cartas/inventario-relacao
+    já publicado; sem inventário, pula sem erro.
+    """
+    inventario = _ler_inventario_cartas()
+    if not inventario:
+        print("[matomo] acessos-servico-mensal: inventário indisponível, pulando")
+        return
+    cartas_ativas = [c for c in inventario if c.get("ativo") and c.get("urlExterno")]
+    agora = datetime.now(timezone.utc)
+    ano, mes_atual = agora.year, agora.month
+    resultado = []
+    for carta in cartas_ativas:
+        meses = {}
+        for m in range(1, mes_atual + 1):
+            try:
+                raw = matomo.get_transitions_for_action(
+                    period="month",
+                    date=f"{ano}-{m:02d}-01",
+                    action_url=carta["urlExterno"],
+                )
+                cliques = sum(
+                    int(o.get("referrals") or 0)
+                    for o in (raw.get("outlinks") or [])
+                )
+            except Exception as exc:  # noqa: BLE001 — falha isolada por carta/mês
+                print(f"[matomo] acessos-servico-mensal: falhou {carta['slug']} {ano}-{m:02d}: {exc}")
+                cliques = 0
+            meses[f"{m:02d}"] = cliques
+        resultado.append({
+            "slug": carta["slug"],
+            "orgaoSigla": carta.get("orgaoSigla") or "",
+            "urlExterno": carta["urlExterno"],
+            "meses": meses,
+        })
+    payload = {
+        "ano": ano,
+        "geradoEm": agora.isoformat(),
+        "cartas": resultado,
+    }
+    publish("matomo", "acessos-servico-mensal", payload)
+    print(f"[matomo] acessos-servico-mensal -> {len(resultado)} cartas × {mes_atual} meses")
+
+
 def run_ga4() -> None:
     # visao-geral vira breakdown por período (v2) — o filtro do MS Digital
     # precisa recortar os KPIs por dia/semana/mes/ano (ADR-007).
@@ -443,6 +494,7 @@ if __name__ == "__main__":
         ("matomo_perfil_filtro", run_matomo_perfil_filtro),
         ("matomo_eventos_perfil", run_matomo_eventos_perfil),
         ("matomo_jornada", run_matomo_jornada),
+        ("matomo_acessos_botao_mensal", run_matomo_acessos_botao_mensal),
         ("ga4", run_ga4),
         ("ga4_perfil", run_ga4_perfil),
         ("sites", run_sites),
