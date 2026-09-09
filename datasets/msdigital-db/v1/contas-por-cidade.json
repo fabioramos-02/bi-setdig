@@ -2,17 +2,17 @@
   {
     "cidade": "Campo Grande",
     "codigoIbge": "5002704",
-    "ativas": 3167
+    "ativas": 3179
   },
   {
     "cidade": "Dourados",
     "codigoIbge": "5003702",
-    "ativas": 687
+    "ativas": 690
   },
   {
     "cidade": "Três Lagoas",
     "codigoIbge": "5008305",
-    "ativas": 312
+    "ativas": 315
   },
   {
     "cidade": "Corumbá",
@@ -22,7 +22,7 @@
   {
     "cidade": "Ponta Porã",
     "codigoIbge": "5006606",
-    "ativas": 151
+    "ativas": 153
   },
   {
     "cidade": "Nova Andradina",
@@ -47,7 +47,7 @@
   {
     "cidade": "Maracaju",
     "codigoIbge": "5005400",
-    "ativas": 70
+    "ativas": 69
   },
   {
     "cidade": "Naviraí",
@@ -265,6 +265,11 @@
     "ativas": 9
   },
   {
+    "cidade": "Bandeirantes",
+    "codigoIbge": "5001508",
+    "ativas": 8
+  },
+  {
     "cidade": "Juti",
     "codigoIbge": "5005152",
     "ativas": 8
@@ -287,11 +292,6 @@
   {
     "cidade": "Coronel Sapucaia",
     "codigoIbge": "5003157",
-    "ativas": 7
-  },
-  {
-    "cidade": "Bandeirantes",
-    "codigoIbge": "5001508",
     "ativas": 7
   },
   {
@@ -387,6 +387,6 @@
   {
     "cidade": "Outros municípios / fora de MS",
     "codigoIbge": "",
-    "ativas": 653
+    "ativas": 656
   }
 ]

@@ -99,9 +99,9 @@
     "orgao": "Secretaria de Estado de Meio Ambiente, Desenvolvimento, Ciência, Tecnologia e Inovação de Mato Grosso do Sul",
     "orgaoSigla": "SEMADESC",
     "total": 35,
-    "ativos": 16,
+    "ativos": 17,
     "digitais": 8,
-    "percentDigital": 50.0
+    "percentDigital": 47.1
   },
   {
     "orgao": "Agência de Desenvolvimento Agrário e Extensão Rural de Mato Grosso do Sul",
@@ -124,16 +124,16 @@
     "orgaoSigla": "AGEMS",
     "total": 26,
     "ativos": 24,
-    "digitais": 13,
-    "percentDigital": 54.2
+    "digitais": 14,
+    "percentDigital": 58.3
   },
   {
     "orgao": "Fundação de Desporto e Lazer de Mato Grosso do Sul",
     "orgaoSigla": "FUNDESPORTE",
     "total": 25,
     "ativos": 12,
-    "digitais": 4,
-    "percentDigital": 33.3
+    "digitais": 5,
+    "percentDigital": 41.7
   },
   {
     "orgao": "Junta Comercial do Estado de Mato Grosso do Sul",

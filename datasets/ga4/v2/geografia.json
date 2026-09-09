@@ -2,138 +2,38 @@
   "dia": [
     {
       "cidade": "Campo Grande",
-      "visitas": 224
-    },
-    {
-      "cidade": "Joao Pessoa",
-      "visitas": 54
-    },
-    {
-      "cidade": "Sao Paulo",
-      "visitas": 36
-    },
-    {
-      "cidade": "Dourados",
-      "visitas": 32
-    },
-    {
-      "cidade": "Belem",
-      "visitas": 30
+      "visitas": 56
     },
     {
       "cidade": "Ananindeua",
-      "visitas": 26
+      "visitas": 3
     },
     {
-      "cidade": "Tres Lagoas",
-      "visitas": 20
+      "cidade": "Joao Pessoa",
+      "visitas": 3
     },
     {
-      "cidade": "Recife",
-      "visitas": 15
+      "cidade": "Bataguassu",
+      "visitas": 2
     },
     {
-      "cidade": "Rio de Janeiro",
-      "visitas": 15
+      "cidade": "Belem",
+      "visitas": 2
     },
     {
-      "cidade": "Bonito",
-      "visitas": 9
+      "cidade": "Dourados",
+      "visitas": 2
     },
     {
-      "cidade": "Nova Andradina",
-      "visitas": 8
+      "cidade": "Marituba",
+      "visitas": 2
     },
     {
-      "cidade": "Ponta Pora",
-      "visitas": 8
+      "cidade": "Sao Paulo",
+      "visitas": 2
     },
     {
       "cidade": "Sidrolandia",
-      "visitas": 7
-    },
-    {
-      "cidade": "Aquidauana",
-      "visitas": 6
-    },
-    {
-      "cidade": "Brasilia",
-      "visitas": 6
-    },
-    {
-      "cidade": "Corumba",
-      "visitas": 6
-    },
-    {
-      "cidade": "Chapadao do Sul",
-      "visitas": 4
-    },
-    {
-      "cidade": "Nova Iguacu",
-      "visitas": 4
-    },
-    {
-      "cidade": "Paranaiba",
-      "visitas": 4
-    },
-    {
-      "cidade": "Cuiaba",
-      "visitas": 3
-    },
-    {
-      "cidade": "Fortaleza",
-      "visitas": 3
-    },
-    {
-      "cidade": "Jardim",
-      "visitas": 3
-    },
-    {
-      "cidade": "Juazeiro do Norte",
-      "visitas": 3
-    },
-    {
-      "cidade": "Londrina",
-      "visitas": 3
-    },
-    {
-      "cidade": "Maringa",
-      "visitas": 3
-    },
-    {
-      "cidade": "Simoes Filho",
-      "visitas": 3
-    },
-    {
-      "cidade": "Curitiba",
-      "visitas": 2
-    },
-    {
-      "cidade": "Embu-Guacu",
-      "visitas": 2
-    },
-    {
-      "cidade": "Goiania",
-      "visitas": 2
-    },
-    {
-      "cidade": "Itaperuna",
-      "visitas": 2
-    },
-    {
-      "cidade": "Jacobina",
-      "visitas": 2
-    },
-    {
-      "cidade": "Rio das Ostras",
-      "visitas": 2
-    },
-    {
-      "cidade": "Salvador",
-      "visitas": 2
-    },
-    {
-      "cidade": "Sao Joao de Meriti",
       "visitas": 2
     },
     {
@@ -141,453 +41,369 @@
       "visitas": 1
     },
     {
-      "cidade": "Andradina",
+      "cidade": "Aquidauana",
       "visitas": 1
     },
     {
-      "cidade": "Aquiraz",
+      "cidade": "Birigui",
       "visitas": 1
     },
     {
-      "cidade": "Assis",
+      "cidade": "Brasilia",
       "visitas": 1
     },
     {
-      "cidade": "Barueri",
+      "cidade": "Chapadao do Sul",
       "visitas": 1
     },
     {
-      "cidade": "Bataguassu",
+      "cidade": "Corumba",
       "visitas": 1
     },
     {
-      "cidade": "Bauru",
+      "cidade": "Dracena",
       "visitas": 1
     },
     {
-      "cidade": "Belo Horizonte",
+      "cidade": "Goiania",
       "visitas": 1
     },
     {
-      "cidade": "Boituva",
+      "cidade": "Nova Andradina",
       "visitas": 1
     },
     {
-      "cidade": "Caarapo",
+      "cidade": "Nova Iguacu",
       "visitas": 1
     },
     {
-      "cidade": "Caieiras",
+      "cidade": "Paranaiba",
       "visitas": 1
     },
     {
-      "cidade": "Campinas",
+      "cidade": "Rio de Janeiro",
       "visitas": 1
     },
     {
-      "cidade": "Carpi",
+      "cidade": "Serra Negra",
       "visitas": 1
     },
     {
-      "cidade": "Cascavel",
-      "visitas": 1
-    },
-    {
-      "cidade": "Castanhal",
-      "visitas": 1
-    },
-    {
-      "cidade": "Duque de Caxias",
-      "visitas": 1
-    },
-    {
-      "cidade": "Florianopolis",
-      "visitas": 1
-    },
-    {
-      "cidade": "Goiana",
-      "visitas": 1
-    },
-    {
-      "cidade": "Governador Valadares",
-      "visitas": 1
-    },
-    {
-      "cidade": "Iturama",
-      "visitas": 1
-    },
-    {
-      "cidade": "Ivinhema",
-      "visitas": 1
-    },
-    {
-      "cidade": "Monte Mor",
-      "visitas": 1
-    },
-    {
-      "cidade": "Natal",
-      "visitas": 1
-    },
-    {
-      "cidade": "Navirai",
-      "visitas": 1
-    },
-    {
-      "cidade": "Paraguacu Paulista",
-      "visitas": 1
-    },
-    {
-      "cidade": "Paranavai",
-      "visitas": 1
-    },
-    {
-      "cidade": "Piedade",
-      "visitas": 1
-    },
-    {
-      "cidade": "Pilar do Sul",
-      "visitas": 1
-    },
-    {
-      "cidade": "Presidente Prudente",
-      "visitas": 1
-    },
-    {
-      "cidade": "Ribeirao Pires",
-      "visitas": 1
-    },
-    {
-      "cidade": "Rondonopolis",
-      "visitas": 1
-    },
-    {
-      "cidade": "Santo Andre",
-      "visitas": 1
-    },
-    {
-      "cidade": "Sao Jose de Ribamar",
-      "visitas": 1
-    },
-    {
-      "cidade": "Sinop",
-      "visitas": 1
-    },
-    {
-      "cidade": "Sorocaba",
-      "visitas": 1
-    },
-    {
-      "cidade": "Terra Roxa",
+      "cidade": "Tres Lagoas",
       "visitas": 1
     }
   ],
   "semana": [
     {
       "cidade": "Campo Grande",
-      "visitas": 7063
+      "visitas": 8203
     },
     {
       "cidade": "Dourados",
-      "visitas": 1037
+      "visitas": 1065
     },
     {
       "cidade": "Sao Paulo",
-      "visitas": 940
-    },
-    {
-      "cidade": "Joao Pessoa",
-      "visitas": 514
-    },
-    {
-      "cidade": "Belem",
-      "visitas": 506
+      "visitas": 1008
     },
     {
       "cidade": "Tres Lagoas",
-      "visitas": 443
+      "visitas": 511
     },
     {
-      "cidade": "Ananindeua",
-      "visitas": 367
+      "cidade": "Belem",
+      "visitas": 464
     },
     {
-      "cidade": "Brasilia",
-      "visitas": 314
+      "cidade": "Joao Pessoa",
+      "visitas": 452
     },
     {
       "cidade": "Ponta Pora",
-      "visitas": 286
+      "visitas": 292
     },
     {
-      "cidade": "Rio de Janeiro",
-      "visitas": 278
+      "cidade": "Ananindeua",
+      "visitas": 267
     },
     {
-      "cidade": "Corumba",
-      "visitas": 200
+      "cidade": "Brasilia",
+      "visitas": 261
     },
     {
       "cidade": "Aquidauana",
-      "visitas": 197
+      "visitas": 258
     },
     {
-      "cidade": "Recife",
-      "visitas": 164
+      "cidade": "Rio de Janeiro",
+      "visitas": 244
+    },
+    {
+      "cidade": "Corumba",
+      "visitas": 220
     },
     {
       "cidade": "Nova Andradina",
-      "visitas": 154
+      "visitas": 184
     },
     {
       "cidade": "Sidrolandia",
-      "visitas": 139
+      "visitas": 164
     },
     {
       "cidade": "Navirai",
-      "visitas": 117
+      "visitas": 140
     },
     {
-      "cidade": "Bonito",
-      "visitas": 105
-    },
-    {
-      "cidade": "Chapadao do Sul",
-      "visitas": 85
+      "cidade": "Recife",
+      "visitas": 139
     },
     {
       "cidade": "Paranaiba",
-      "visitas": 85
+      "visitas": 129
     },
     {
-      "cidade": "Nova Iguacu",
-      "visitas": 80
-    },
-    {
-      "cidade": "Maringa",
-      "visitas": 78
-    },
-    {
-      "cidade": "Curitiba",
-      "visitas": 75
+      "cidade": "Bonito",
+      "visitas": 125
     },
     {
       "cidade": "Amambai",
-      "visitas": 73
+      "visitas": 107
+    },
+    {
+      "cidade": "Chapadao do Sul",
+      "visitas": 91
     },
     {
       "cidade": "Jardim",
-      "visitas": 67
+      "visitas": 91
+    },
+    {
+      "cidade": "Maringa",
+      "visitas": 80
+    },
+    {
+      "cidade": "Ivinhema",
+      "visitas": 72
     },
     {
       "cidade": "Bataguassu",
-      "visitas": 51
+      "visitas": 64
+    },
+    {
+      "cidade": "Curitiba",
+      "visitas": 61
+    },
+    {
+      "cidade": "Nova Iguacu",
+      "visitas": 60
+    },
+    {
+      "cidade": "Campinas",
+      "visitas": 56
     },
     {
       "cidade": "Santo Andre",
       "visitas": 50
     },
     {
-      "cidade": "Juazeiro do Norte",
-      "visitas": 47
-    },
-    {
-      "cidade": "Goiania",
-      "visitas": 44
-    },
-    {
-      "cidade": "Ivinhema",
-      "visitas": 44
-    },
-    {
-      "cidade": "Campinas",
-      "visitas": 41
+      "cidade": "Frutal",
+      "visitas": 42
     },
     {
       "cidade": "Fortaleza",
-      "visitas": 41
+      "visitas": 40
+    },
+    {
+      "cidade": "Sao Jose do Rio Preto",
+      "visitas": 36
+    },
+    {
+      "cidade": "Goiania",
+      "visitas": 34
+    },
+    {
+      "cidade": "Juazeiro do Norte",
+      "visitas": 32
     },
     {
       "cidade": "Caarapo",
-      "visitas": 39
-    },
-    {
-      "cidade": "Frutal",
-      "visitas": 39
-    },
-    {
-      "cidade": "Marituba",
-      "visitas": 35
-    },
-    {
-      "cidade": "Sao Joao de Meriti",
-      "visitas": 35
-    },
-    {
-      "cidade": "Presidente Epitacio",
-      "visitas": 29
-    },
-    {
-      "cidade": "Salvador",
-      "visitas": 27
-    },
-    {
-      "cidade": "Nilopolis",
-      "visitas": 25
+      "visitas": 31
     },
     {
       "cidade": "Cuiaba",
+      "visitas": 31
+    },
+    {
+      "cidade": "Salvador",
+      "visitas": 30
+    },
+    {
+      "cidade": "Guaira",
+      "visitas": 25
+    },
+    {
+      "cidade": "Marituba",
+      "visitas": 25
+    },
+    {
+      "cidade": "Presidente Epitacio",
+      "visitas": 25
+    },
+    {
+      "cidade": "Uberlandia",
+      "visitas": 25
+    },
+    {
+      "cidade": "Belo Horizonte",
       "visitas": 23
     },
     {
       "cidade": "Simoes Filho",
-      "visitas": 22
-    },
-    {
-      "cidade": "Belo Horizonte",
-      "visitas": 18
-    },
-    {
-      "cidade": "Andradina",
-      "visitas": 17
-    },
-    {
-      "cidade": "Itaperuna",
-      "visitas": 17
+      "visitas": 23
     },
     {
       "cidade": "Bauru",
+      "visitas": 20
+    },
+    {
+      "cidade": "Itaperuna",
+      "visitas": 20
+    },
+    {
+      "cidade": "Presidente Prudente",
+      "visitas": 20
+    },
+    {
+      "cidade": "Sao Joao de Meriti",
+      "visitas": 20
+    },
+    {
+      "cidade": "Andradina",
+      "visitas": 19
+    },
+    {
+      "cidade": "Rondonopolis",
+      "visitas": 18
+    },
+    {
+      "cidade": "Nilopolis",
+      "visitas": 17
+    },
+    {
+      "cidade": "Florianopolis",
       "visitas": 16
-    },
-    {
-      "cidade": "Londrina",
-      "visitas": 16
-    },
-    {
-      "cidade": "Sao Bernardo do Campo",
-      "visitas": 16
-    },
-    {
-      "cidade": "Castanhal",
-      "visitas": 15
-    },
-    {
-      "cidade": "Guaira",
-      "visitas": 15
-    },
-    {
-      "cidade": "Osasco",
-      "visitas": 14
-    },
-    {
-      "cidade": "San Francisco",
-      "visitas": 14
-    },
-    {
-      "cidade": "Tupi Paulista",
-      "visitas": 14
-    },
-    {
-      "cidade": "Sao Jose do Rio Preto",
-      "visitas": 13
-    },
-    {
-      "cidade": "Uberlandia",
-      "visitas": 13
     },
     {
       "cidade": "Guarulhos",
+      "visitas": 16
+    },
+    {
+      "cidade": "Dracena",
+      "visitas": 15
+    },
+    {
+      "cidade": "Paranavai",
+      "visitas": 15
+    },
+    {
+      "cidade": "Barretos",
+      "visitas": 13
+    },
+    {
+      "cidade": "Londrina",
+      "visitas": 13
+    },
+    {
+      "cidade": "Ribeirao Preto",
       "visitas": 12
     },
     {
-      "cidade": "Jacobina",
+      "cidade": "Sao Luis",
       "visitas": 12
+    },
+    {
+      "cidade": "Belford Roxo",
+      "visitas": 11
+    },
+    {
+      "cidade": "Iturama",
+      "visitas": 11
     },
     {
       "cidade": "Santa Rita",
-      "visitas": 12
-    },
-    {
-      "cidade": "Campo Mourao",
       "visitas": 11
     },
     {
-      "cidade": "Porto Alegre",
+      "cidade": "Santo Anastacio",
       "visitas": 11
     },
     {
-      "cidade": "Cabedelo",
-      "visitas": 10
+      "cidade": "Vila Velha",
+      "visitas": 11
+    },
+    {
+      "cidade": "Vitoria",
+      "visitas": 11
     },
     {
       "cidade": "Cascavel",
       "visitas": 10
     },
     {
-      "cidade": "Ribeirao Preto",
+      "cidade": "Joinville",
       "visitas": 10
     },
     {
-      "cidade": "Rio das Ostras",
+      "cidade": "Osasco",
       "visitas": 10
     },
     {
-      "cidade": "Sao Luis",
+      "cidade": "Porto Alegre",
       "visitas": 10
     },
     {
-      "cidade": "Americana",
-      "visitas": 9
-    },
-    {
-      "cidade": "Barueri",
-      "visitas": 9
-    },
-    {
-      "cidade": "Belford Roxo",
-      "visitas": 9
-    },
-    {
-      "cidade": "Dracena",
-      "visitas": 9
+      "cidade": "Terra Roxa",
+      "visitas": 10
     },
     {
       "cidade": "Ilha Solteira",
       "visitas": 9
     },
     {
-      "cidade": "Iturama",
+      "cidade": "Santana de Parnaiba",
       "visitas": 9
     },
     {
-      "cidade": "Presidente Prudente",
+      "cidade": "Sao Bernardo do Campo",
       "visitas": 9
     },
     {
-      "cidade": "Florianopolis",
+      "cidade": "Botucatu",
       "visitas": 8
     },
     {
-      "cidade": "Japeri",
+      "cidade": "Castanhal",
       "visitas": 8
     },
     {
-      "cidade": "Paranavai",
+      "cidade": "Sorocaba",
       "visitas": 8
     },
     {
-      "cidade": "Rondonopolis",
+      "cidade": "Suzano",
       "visitas": 8
     },
     {
-      "cidade": "Vila Velha",
-      "visitas": 8
-    },
-    {
-      "cidade": "Natal",
+      "cidade": "Campo Mourao",
       "visitas": 7
     },
     {
-      "cidade": "Penapolis",
+      "cidade": "Indaiatuba",
+      "visitas": 7
+    },
+    {
+      "cidade": "Maceio",
       "visitas": 7
     },
     {
@@ -595,23 +411,23 @@
       "visitas": 7
     },
     {
-      "cidade": "Santo Anastacio",
+      "cidade": "Sinop",
       "visitas": 7
     },
     {
-      "cidade": "Sarandi",
+      "cidade": "Vitoria da Conquista",
       "visitas": 7
     },
     {
-      "cidade": "Sorocaba",
-      "visitas": 7
+      "cidade": "Assis",
+      "visitas": 6
     },
     {
-      "cidade": "Vitoria",
-      "visitas": 7
+      "cidade": "Barueri",
+      "visitas": 6
     },
     {
-      "cidade": "Joinville",
+      "cidade": "Jacobina",
       "visitas": 6
     },
     {
@@ -619,15 +435,11 @@
       "visitas": 6
     },
     {
-      "cidade": "Palmas",
+      "cidade": "Paranhos",
       "visitas": 6
     },
     {
-      "cidade": "Piracicaba",
-      "visitas": 6
-    },
-    {
-      "cidade": "Piraju",
+      "cidade": "Porto Velho",
       "visitas": 6
     },
     {
@@ -635,7 +447,15 @@
       "visitas": 6
     },
     {
-      "cidade": "Santos",
+      "cidade": "Sao Jose dos Campos",
+      "visitas": 6
+    },
+    {
+      "cidade": "Tucurui",
+      "visitas": 6
+    },
+    {
+      "cidade": "Tupi Paulista",
       "visitas": 6
     },
     {
@@ -647,7 +467,19 @@
       "visitas": 5
     },
     {
-      "cidade": "Botucatu",
+      "cidade": "Bastos",
+      "visitas": 5
+    },
+    {
+      "cidade": "Cabedelo",
+      "visitas": 5
+    },
+    {
+      "cidade": "Campina Grande",
+      "visitas": 5
+    },
+    {
+      "cidade": "Carapicuiba",
       "visitas": 5
     },
     {
@@ -655,55 +487,59 @@
       "visitas": 5
     },
     {
-      "cidade": "Jales",
+      "cidade": "Formosa",
       "visitas": 5
     },
     {
-      "cidade": "Jundiai",
+      "cidade": "Itapevi",
       "visitas": 5
     },
     {
-      "cidade": "Mineiros",
+      "cidade": "Itu",
       "visitas": 5
     },
     {
-      "cidade": "Petropolis",
+      "cidade": "Japeri",
       "visitas": 5
     },
     {
-      "cidade": "Santa Isabel",
+      "cidade": "Natal",
       "visitas": 5
     },
     {
-      "cidade": "Santana de Parnaiba",
+      "cidade": "Pereira Barreto",
       "visitas": 5
     },
     {
-      "cidade": "Sao Jose dos Campos",
+      "cidade": "Presidente Venceslau",
       "visitas": 5
     },
     {
-      "cidade": "Valenca",
+      "cidade": "Sao Joao da Boa Vista",
       "visitas": 5
     },
     {
-      "cidade": "Vitoria da Conquista",
-      "visitas": 5
-    },
-    {
-      "cidade": "Barretos",
+      "cidade": "Balneario Camboriu",
       "visitas": 4
     },
     {
-      "cidade": "Bayeux",
+      "cidade": "Caieiras",
       "visitas": 4
     },
     {
-      "cidade": "Descalvado",
+      "cidade": "Cananeia",
       "visitas": 4
     },
     {
-      "cidade": "Greerton",
+      "cidade": "Capivari",
+      "visitas": 4
+    },
+    {
+      "cidade": "Castilho",
+      "visitas": 4
+    },
+    {
+      "cidade": "Itapolis",
       "visitas": 4
     },
     {
@@ -711,103 +547,99 @@
       "visitas": 4
     },
     {
-      "cidade": "Itu",
+      "cidade": "Jatai",
       "visitas": 4
     },
     {
-      "cidade": "Maceio",
+      "cidade": "Jundiai",
       "visitas": 4
     },
     {
-      "cidade": "Mesquita",
+      "cidade": "Mairipora",
       "visitas": 4
     },
     {
-      "cidade": "Paranhos",
+      "cidade": "Nova Odessa",
       "visitas": 4
     },
     {
-      "cidade": "Piedade",
+      "cidade": "Novo Gama",
       "visitas": 4
     },
     {
-      "cidade": "Porto Velho",
+      "cidade": "Palmas",
       "visitas": 4
     },
     {
-      "cidade": "Sao Carlos",
+      "cidade": "Paragominas",
       "visitas": 4
     },
     {
-      "cidade": "Sao Joao da Boa Vista",
+      "cidade": "Penapolis",
       "visitas": 4
     },
     {
-      "cidade": "Sinop",
+      "cidade": "Rio Claro",
       "visitas": 4
     },
     {
-      "cidade": "Sumare",
+      "cidade": "Rio Verde",
       "visitas": 4
     },
     {
-      "cidade": "Suzano",
+      "cidade": "Rio das Ostras",
       "visitas": 4
     },
     {
-      "cidade": "Abaetetuba",
+      "cidade": "Sao Jose de Ribamar",
+      "visitas": 4
+    },
+    {
+      "cidade": "Sarandi",
+      "visitas": 4
+    },
+    {
+      "cidade": "Ubatuba",
+      "visitas": 4
+    },
+    {
+      "cidade": "Umuarama",
+      "visitas": 4
+    },
+    {
+      "cidade": "Aracatuba",
       "visitas": 3
     },
     {
-      "cidade": "Arapongas",
+      "cidade": "Bayeux",
       "visitas": 3
     },
     {
-      "cidade": "Barcarena",
+      "cidade": "Birigui",
       "visitas": 3
     },
     {
-      "cidade": "Breves",
+      "cidade": "Braganca Paulista",
       "visitas": 3
     },
     {
-      "cidade": "Cacapava",
+      "cidade": "Contagem",
       "visitas": 3
     },
     {
-      "cidade": "Calpella",
+      "cidade": "Encarnacion",
       "visitas": 3
     },
     {
-      "cidade": "Campina Grande",
+      "cidade": "Franca",
       "visitas": 3
     },
     {
-      "cidade": "Caraguatatuba",
+      "cidade": "Holambra",
       "visitas": 3
     },
     {
-      "cidade": "Castilho",
-      "visitas": 3
-    },
-    {
-      "cidade": "Cerquilho",
-      "visitas": 3
-    },
-    {
-      "cidade": "Cotia",
-      "visitas": 3
-    },
-    {
-      "cidade": "Embu-Guacu",
-      "visitas": 3
-    },
-    {
-      "cidade": "Formosa",
-      "visitas": 3
-    },
-    {
-      "cidade": "Indaiatuba",
+      "cidade": "Imperatriz",
       "visitas": 3
     },
     {
@@ -815,7 +647,11 @@
       "visitas": 3
     },
     {
-      "cidade": "Itapevi",
+      "cidade": "Itaituba",
+      "visitas": 3
+    },
+    {
+      "cidade": "Jaguariuna",
       "visitas": 3
     },
     {
@@ -823,79 +659,103 @@
       "visitas": 3
     },
     {
-      "cidade": "New York",
+      "cidade": "Loanda",
       "visitas": 3
     },
     {
-      "cidade": "Niteroi",
+      "cidade": "Monte Mor",
       "visitas": 3
     },
     {
-      "cidade": "Nova Esperanca",
+      "cidade": "Osvaldo Cruz",
       "visitas": 3
     },
     {
-      "cidade": "Pereira Barreto",
+      "cidade": "Porto Seguro",
       "visitas": 3
     },
     {
-      "cidade": "Presidente Venceslau",
+      "cidade": "Primavera do Leste",
       "visitas": 3
     },
     {
-      "cidade": "Salinopolis",
+      "cidade": "Santa Maria",
       "visitas": 3
     },
     {
-      "cidade": "Sao Jose de Ribamar",
+      "cidade": "Sao Jose dos Pinhais",
       "visitas": 3
     },
     {
-      "cidade": "Terra Roxa",
+      "cidade": "Sao Sebastiao",
       "visitas": 3
     },
     {
-      "cidade": "Vargem Grande Paulista",
+      "cidade": "Sobral",
       "visitas": 3
     },
     {
-      "cidade": "Varzea Grande",
+      "cidade": "Sumare",
       "visitas": 3
     },
     {
-      "cidade": "Adamantina",
+      "cidade": "Tehran",
+      "visitas": 3
+    },
+    {
+      "cidade": "Teresina",
+      "visitas": 3
+    },
+    {
+      "cidade": "Toledo",
+      "visitas": 3
+    },
+    {
+      "cidade": "Valenca",
+      "visitas": 3
+    },
+    {
+      "cidade": "Vicente de Carvalho",
+      "visitas": 3
+    },
+    {
+      "cidade": "Agudos",
       "visitas": 2
     },
     {
-      "cidade": "Alta Floresta",
+      "cidade": "Altonia",
       "visitas": 2
     },
     {
-      "cidade": "Altamira",
+      "cidade": "Americana",
       "visitas": 2
     },
     {
-      "cidade": "Anapolis",
+      "cidade": "Aracariguama",
       "visitas": 2
     },
     {
-      "cidade": "Aracaju",
+      "cidade": "Arapongas",
       "visitas": 2
     },
     {
-      "cidade": "Aruja",
+      "cidade": "Barcarena",
       "visitas": 2
     },
     {
-      "cidade": "Bacabal",
+      "cidade": "Bertioga",
       "visitas": 2
     },
     {
-      "cidade": "Birigui",
+      "cidade": "Boa Vista",
       "visitas": 2
     },
     {
-      "cidade": "Boituva",
+      "cidade": "Bom Jesus do Itabapoana",
+      "visitas": 2
+    },
+    {
+      "cidade": "Caceres",
       "visitas": 2
     },
     {
@@ -903,23 +763,43 @@
       "visitas": 2
     },
     {
-      "cidade": "Campo Largo",
+      "cidade": "Caldas Novas",
       "visitas": 2
     },
     {
-      "cidade": "Carapicuiba",
+      "cidade": "Campo Formoso",
       "visitas": 2
     },
     {
-      "cidade": "Chapeco",
+      "cidade": "Campos do Jordao",
       "visitas": 2
     },
     {
-      "cidade": "Cordeiropolis",
+      "cidade": "Capim Grosso",
       "visitas": 2
     },
     {
-      "cidade": "Cristalina",
+      "cidade": "Caxias do Sul",
+      "visitas": 2
+    },
+    {
+      "cidade": "Cerquilho",
+      "visitas": 2
+    },
+    {
+      "cidade": "Chicago",
+      "visitas": 2
+    },
+    {
+      "cidade": "Cotia",
+      "visitas": 2
+    },
+    {
+      "cidade": "Dublin",
+      "visitas": 2
+    },
+    {
+      "cidade": "Espirito Santo do Pinhal",
       "visitas": 2
     },
     {
@@ -927,27 +807,39 @@
       "visitas": 2
     },
     {
-      "cidade": "Foz do Iguacu",
+      "cidade": "Franco da Rocha",
       "visitas": 2
     },
     {
-      "cidade": "Franca",
+      "cidade": "Greerton",
       "visitas": 2
     },
     {
-      "cidade": "Frankfurt am Main",
+      "cidade": "Guarapari",
       "visitas": 2
     },
     {
-      "cidade": "Ilheus",
+      "cidade": "Guariba",
       "visitas": 2
     },
     {
-      "cidade": "Itaituba",
+      "cidade": "Ibitinga",
       "visitas": 2
     },
     {
-      "cidade": "Itapetininga",
+      "cidade": "Ilhabela",
+      "visitas": 2
+    },
+    {
+      "cidade": "Ipora",
+      "visitas": 2
+    },
+    {
+      "cidade": "Itirapina",
+      "visitas": 2
+    },
+    {
+      "cidade": "Jales",
       "visitas": 2
     },
     {
@@ -955,39 +847,19 @@
       "visitas": 2
     },
     {
-      "cidade": "Juiz de Fora",
+      "cidade": "Ji-Parana",
       "visitas": 2
     },
     {
-      "cidade": "Juquitiba",
+      "cidade": "Louveira",
       "visitas": 2
     },
     {
-      "cidade": "Lins",
+      "cidade": "Macapa",
       "visitas": 2
     },
     {
-      "cidade": "Lisbon",
-      "visitas": 2
-    },
-    {
-      "cidade": "Lucas do Rio Verde",
-      "visitas": 2
-    },
-    {
-      "cidade": "Luziania",
-      "visitas": 2
-    },
-    {
-      "cidade": "Mandaguacu",
-      "visitas": 2
-    },
-    {
-      "cidade": "Marechal Candido Rondon",
-      "visitas": 2
-    },
-    {
-      "cidade": "Marialva",
+      "cidade": "Marica",
       "visitas": 2
     },
     {
@@ -995,321 +867,249 @@
       "visitas": 2
     },
     {
-      "cidade": "Mirandopolis",
+      "cidade": "Martinopolis",
       "visitas": 2
     },
     {
-      "cidade": "Mogi Guacu",
+      "cidade": "Mesquita",
       "visitas": 2
     },
     {
-      "cidade": "Mogi das Cruzes",
+      "cidade": "Miami",
       "visitas": 2
     },
     {
-      "cidade": "Monte Mor",
+      "cidade": "Minneola",
       "visitas": 2
     },
     {
-      "cidade": "Osvaldo Cruz",
-      "visitas": 2
-    },
-    {
-      "cidade": "Patrocinio",
-      "visitas": 2
-    },
-    {
-      "cidade": "Paulinia",
-      "visitas": 2
-    },
-    {
-      "cidade": "Ponta Grossa",
-      "visitas": 2
-    },
-    {
-      "cidade": "Pontes e Lacerda",
-      "visitas": 2
-    },
-    {
-      "cidade": "Porto Belo",
-      "visitas": 2
-    },
-    {
-      "cidade": "Porto Ferreira",
-      "visitas": 2
-    },
-    {
-      "cidade": "Ribeirao Pires",
-      "visitas": 2
-    },
-    {
-      "cidade": "Ribeirao das Neves",
-      "visitas": 2
-    },
-    {
-      "cidade": "Rio Claro",
-      "visitas": 2
-    },
-    {
-      "cidade": "Rio Verde",
-      "visitas": 2
-    },
-    {
-      "cidade": "Santa Izabel do Para",
-      "visitas": 2
-    },
-    {
-      "cidade": "Santo Antonio do Descoberto",
-      "visitas": 2
-    },
-    {
-      "cidade": "Sao Caetano do Sul",
-      "visitas": 2
-    },
-    {
-      "cidade": "Serra Negra",
-      "visitas": 2
-    },
-    {
-      "cidade": "Sobral",
+      "cidade": "Mossoro",
       "visitas": 2
     }
   ],
   "mes": [
     {
       "cidade": "Campo Grande",
-      "visitas": 25175
+      "visitas": 23217
     },
     {
       "cidade": "Sao Paulo",
-      "visitas": 3856
+      "visitas": 3343
     },
     {
       "cidade": "Dourados",
-      "visitas": 3542
-    },
-    {
-      "cidade": "Brasilia",
-      "visitas": 1681
+      "visitas": 3251
     },
     {
       "cidade": "Tres Lagoas",
-      "visitas": 1634
+      "visitas": 1460
+    },
+    {
+      "cidade": "Brasilia",
+      "visitas": 1282
     },
     {
       "cidade": "Belem",
-      "visitas": 1203
+      "visitas": 1184
     },
     {
       "cidade": "Joao Pessoa",
-      "visitas": 1124
+      "visitas": 1127
     },
     {
       "cidade": "Ponta Pora",
-      "visitas": 964
+      "visitas": 920
     },
     {
       "cidade": "Aquidauana",
-      "visitas": 821
-    },
-    {
-      "cidade": "Corumba",
-      "visitas": 764
+      "visitas": 771
     },
     {
       "cidade": "Ananindeua",
-      "visitas": 736
+      "visitas": 725
+    },
+    {
+      "cidade": "Corumba",
+      "visitas": 686
     },
     {
       "cidade": "Rio de Janeiro",
-      "visitas": 664
+      "visitas": 678
     },
     {
       "cidade": "Sidrolandia",
-      "visitas": 527
+      "visitas": 516
     },
     {
       "cidade": "Nova Andradina",
-      "visitas": 492
+      "visitas": 513
     },
     {
       "cidade": "Navirai",
-      "visitas": 474
+      "visitas": 449
     },
     {
       "cidade": "Recife",
-      "visitas": 387
+      "visitas": 381
     },
     {
       "cidade": "Paranaiba",
-      "visitas": 360
+      "visitas": 373
     },
     {
       "cidade": "Bonito",
-      "visitas": 343
+      "visitas": 335
     },
     {
       "cidade": "Amambai",
-      "visitas": 342
+      "visitas": 296
     },
     {
       "cidade": "Chapadao do Sul",
-      "visitas": 309
-    },
-    {
-      "cidade": "Curitiba",
-      "visitas": 258
+      "visitas": 283
     },
     {
       "cidade": "Jardim",
-      "visitas": 246
+      "visitas": 240
     },
     {
-      "cidade": "Campinas",
-      "visitas": 217
+      "cidade": "Curitiba",
+      "visitas": 228
     },
     {
       "cidade": "Ivinhema",
-      "visitas": 213
+      "visitas": 199
     },
     {
-      "cidade": "Nova Iguacu",
-      "visitas": 205
+      "cidade": "Campinas",
+      "visitas": 188
     },
     {
       "cidade": "Bataguassu",
-      "visitas": 203
+      "visitas": 185
     },
     {
-      "cidade": "Caarapo",
-      "visitas": 201
-    },
-    {
-      "cidade": "Goiania",
-      "visitas": 161
+      "cidade": "Nova Iguacu",
+      "visitas": 184
     },
     {
       "cidade": "Maringa",
-      "visitas": 156
+      "visitas": 161
+    },
+    {
+      "cidade": "Goiania",
+      "visitas": 151
+    },
+    {
+      "cidade": "Caarapo",
+      "visitas": 149
     },
     {
       "cidade": "Fortaleza",
-      "visitas": 143
+      "visitas": 140
     },
     {
       "cidade": "Santo Andre",
-      "visitas": 137
+      "visitas": 130
     },
     {
-      "cidade": "Juazeiro do Norte",
-      "visitas": 120
-    },
-    {
-      "cidade": "Marituba",
-      "visitas": 116
+      "cidade": "Frutal",
+      "visitas": 118
     },
     {
       "cidade": "Presidente Epitacio",
       "visitas": 114
     },
     {
-      "cidade": "Frutal",
-      "visitas": 104
+      "cidade": "Juazeiro do Norte",
+      "visitas": 106
     },
     {
-      "cidade": "Salvador",
-      "visitas": 101
+      "cidade": "Marituba",
+      "visitas": 103
     },
     {
       "cidade": "Cuiaba",
-      "visitas": 93
+      "visitas": 87
     },
     {
-      "cidade": "Sao Jose do Rio Preto",
-      "visitas": 89
-    },
-    {
-      "cidade": "Belo Horizonte",
+      "cidade": "Salvador",
       "visitas": 85
     },
     {
-      "cidade": "Andradina",
-      "visitas": 73
+      "cidade": "Sao Jose do Rio Preto",
+      "visitas": 84
     },
     {
       "cidade": "Guaira",
-      "visitas": 71
+      "visitas": 83
     },
     {
       "cidade": "Sao Joao de Meriti",
+      "visitas": 75
+    },
+    {
+      "cidade": "Belo Horizonte",
       "visitas": 71
     },
     {
-      "cidade": "Presidente Prudente",
-      "visitas": 66
-    },
-    {
-      "cidade": "Guarulhos",
-      "visitas": 58
-    },
-    {
-      "cidade": "Paranavai",
-      "visitas": 57
-    },
-    {
       "cidade": "Bauru",
-      "visitas": 55
-    },
-    {
-      "cidade": "Simoes Filho",
-      "visitas": 54
+      "visitas": 70
     },
     {
       "cidade": "Uberlandia",
-      "visitas": 52
+      "visitas": 60
     },
     {
-      "cidade": "Londrina",
-      "visitas": 50
+      "cidade": "Andradina",
+      "visitas": 58
+    },
+    {
+      "cidade": "Simoes Filho",
+      "visitas": 56
+    },
+    {
+      "cidade": "Guarulhos",
+      "visitas": 55
     },
     {
       "cidade": "Nilopolis",
-      "visitas": 49
+      "visitas": 54
     },
     {
-      "cidade": "Florianopolis",
-      "visitas": 47
+      "cidade": "Paranavai",
+      "visitas": 54
     },
     {
-      "cidade": "Iturama",
-      "visitas": 47
+      "cidade": "Presidente Prudente",
+      "visitas": 53
     },
     {
       "cidade": "Rondonopolis",
-      "visitas": 47
-    },
-    {
-      "cidade": "Duque de Caxias",
-      "visitas": 46
-    },
-    {
-      "cidade": "Santo Anastacio",
-      "visitas": 46
-    },
-    {
-      "cidade": "Dracena",
-      "visitas": 45
-    },
-    {
-      "cidade": "Sao Bernardo do Campo",
-      "visitas": 45
-    },
-    {
-      "cidade": "Porto Alegre",
       "visitas": 43
     },
     {
+      "cidade": "Santo Anastacio",
+      "visitas": 43
+    },
+    {
+      "cidade": "Florianopolis",
+      "visitas": 42
+    },
+    {
       "cidade": "Belford Roxo",
+      "visitas": 41
+    },
+    {
+      "cidade": "Dracena",
+      "visitas": 40
+    },
+    {
+      "cidade": "Porto Alegre",
+      "visitas": 39
+    },
+    {
+      "cidade": "Sao Bernardo do Campo",
       "visitas": 39
     },
     {
@@ -1317,15 +1117,15 @@
       "visitas": 37
     },
     {
-      "cidade": "Sorocaba",
+      "cidade": "Londrina",
       "visitas": 37
     },
     {
-      "cidade": "Ribeirao Preto",
-      "visitas": 33
+      "cidade": "Iturama",
+      "visitas": 36
     },
     {
-      "cidade": "Sao Luis",
+      "cidade": "Castanhal",
       "visitas": 33
     },
     {
@@ -1333,83 +1133,95 @@
       "visitas": 31
     },
     {
-      "cidade": "Maceio",
+      "cidade": "Santa Rita",
       "visitas": 30
     },
     {
-      "cidade": "Sao Jose dos Campos",
+      "cidade": "Joinville",
       "visitas": 29
     },
     {
-      "cidade": "Castanhal",
-      "visitas": 28
+      "cidade": "Ribeirao Preto",
+      "visitas": 29
     },
     {
-      "cidade": "Santa Rita",
-      "visitas": 28
-    },
-    {
-      "cidade": "Campo Mourao",
+      "cidade": "Duque de Caxias",
       "visitas": 27
     },
     {
-      "cidade": "Joinville",
+      "cidade": "Sorocaba",
+      "visitas": 27
+    },
+    {
+      "cidade": "Maceio",
       "visitas": 26
+    },
+    {
+      "cidade": "Campo Mourao",
+      "visitas": 25
     },
     {
       "cidade": "Ilha Solteira",
       "visitas": 25
     },
     {
-      "cidade": "Asuncion",
-      "visitas": 24
-    },
-    {
-      "cidade": "Natal",
-      "visitas": 24
-    },
-    {
-      "cidade": "Santa Fe do Sul",
-      "visitas": 24
-    },
-    {
       "cidade": "Terra Roxa",
-      "visitas": 24
-    },
-    {
-      "cidade": "Vitoria",
-      "visitas": 23
-    },
-    {
-      "cidade": "Americana",
-      "visitas": 22
+      "visitas": 25
     },
     {
       "cidade": "Cascavel",
-      "visitas": 22
+      "visitas": 24
     },
     {
       "cidade": "Jacobina",
-      "visitas": 22
+      "visitas": 24
     },
     {
-      "cidade": "Suzano",
-      "visitas": 22
+      "cidade": "Santana de Parnaiba",
+      "visitas": 24
     },
     {
-      "cidade": "Altamira",
-      "visitas": 21
+      "cidade": "Asuncion",
+      "visitas": 23
+    },
+    {
+      "cidade": "Natal",
+      "visitas": 23
+    },
+    {
+      "cidade": "Penapolis",
+      "visitas": 23
+    },
+    {
+      "cidade": "Sao Jose dos Campos",
+      "visitas": 23
+    },
+    {
+      "cidade": "Sao Luis",
+      "visitas": 23
     },
     {
       "cidade": "Barueri",
+      "visitas": 22
+    },
+    {
+      "cidade": "Indaiatuba",
+      "visitas": 22
+    },
+    {
+      "cidade": "Sarandi",
+      "visitas": 22
+    },
+    {
+      "cidade": "Botucatu",
       "visitas": 21
     },
     {
-      "cidade": "Porto Velho",
+      "cidade": "Santa Fe do Sul",
       "visitas": 21
     },
     {
-      "cidade": "Tatui",
+      "cidade": "Tupi Paulista",
       "visitas": 21
     },
     {
@@ -1417,7 +1229,7 @@
       "visitas": 21
     },
     {
-      "cidade": "Bastos",
+      "cidade": "Barretos",
       "visitas": 20
     },
     {
@@ -1425,179 +1237,123 @@
       "visitas": 20
     },
     {
-      "cidade": "Manaus",
+      "cidade": "Vitoria",
       "visitas": 20
     },
     {
-      "cidade": "Paranhos",
-      "visitas": 20
-    },
-    {
-      "cidade": "Santarem",
-      "visitas": 20
-    },
-    {
-      "cidade": "Botucatu",
+      "cidade": "Americana",
       "visitas": 19
     },
     {
-      "cidade": "Japeri",
+      "cidade": "Bastos",
       "visitas": 19
     },
     {
-      "cidade": "Palmas",
+      "cidade": "Sinop",
       "visitas": 19
     },
     {
-      "cidade": "Santana de Parnaiba",
-      "visitas": 18
+      "cidade": "Suzano",
+      "visitas": 19
     },
     {
-      "cidade": "Santos",
-      "visitas": 18
-    },
-    {
-      "cidade": "Tupi Paulista",
-      "visitas": 18
-    },
-    {
-      "cidade": "Sarandi",
+      "cidade": "Jundiai",
       "visitas": 17
     },
     {
-      "cidade": "Cabo Frio",
+      "cidade": "Paranhos",
+      "visitas": 17
+    },
+    {
+      "cidade": "Santarem",
+      "visitas": 17
+    },
+    {
+      "cidade": "Cotia",
       "visitas": 16
     },
     {
-      "cidade": "Itu",
+      "cidade": "Japeri",
       "visitas": 16
     },
     {
-      "cidade": "Rio das Ostras",
+      "cidade": "Lencois Paulista",
       "visitas": 16
     },
     {
-      "cidade": "Sao Carlos",
-      "visitas": 16
-    },
-    {
-      "cidade": "Vitoria da Conquista",
-      "visitas": 16
+      "cidade": "Cabedelo",
+      "visitas": 15
     },
     {
       "cidade": "Itaquaquecetuba",
       "visitas": 15
     },
     {
-      "cidade": "Juquitiba",
+      "cidade": "Itu",
       "visitas": 15
     },
     {
-      "cidade": "Sao Jose dos Pinhais",
+      "cidade": "Porto Velho",
       "visitas": 15
-    },
-    {
-      "cidade": "Sao Sebastiao",
-      "visitas": 15
-    },
-    {
-      "cidade": "Sinop",
-      "visitas": 15
-    },
-    {
-      "cidade": "Jales",
-      "visitas": 14
-    },
-    {
-      "cidade": "Jundiai",
-      "visitas": 14
-    },
-    {
-      "cidade": "Rio Verde",
-      "visitas": 14
     },
     {
       "cidade": "San Francisco",
+      "visitas": 15
+    },
+    {
+      "cidade": "Sao Joao da Boa Vista",
+      "visitas": 15
+    },
+    {
+      "cidade": "Vitoria da Conquista",
+      "visitas": 15
+    },
+    {
+      "cidade": "Greerton",
       "visitas": 14
     },
     {
-      "cidade": "Cabedelo",
-      "visitas": 13
+      "cidade": "Santos",
+      "visitas": 14
     },
     {
-      "cidade": "Cajamar",
-      "visitas": 13
-    },
-    {
-      "cidade": "Caraguatatuba",
-      "visitas": 13
-    },
-    {
-      "cidade": "Carapicuiba",
-      "visitas": 13
-    },
-    {
-      "cidade": "Cotia",
-      "visitas": 13
-    },
-    {
-      "cidade": "Indaiatuba",
-      "visitas": 13
-    },
-    {
-      "cidade": "Lencois Paulista",
-      "visitas": 13
-    },
-    {
-      "cidade": "Penapolis",
-      "visitas": 13
-    },
-    {
-      "cidade": "Salto",
-      "visitas": 13
+      "cidade": "Sao Sebastiao",
+      "visitas": 14
     },
     {
       "cidade": "Sumare",
-      "visitas": 13
-    },
-    {
-      "cidade": "Araucaria",
-      "visitas": 12
-    },
-    {
-      "cidade": "Boa Vista",
-      "visitas": 12
-    },
-    {
-      "cidade": "Foz do Iguacu",
-      "visitas": 12
-    },
-    {
-      "cidade": "Piedade",
-      "visitas": 12
-    },
-    {
-      "cidade": "Piracicaba",
-      "visitas": 12
-    },
-    {
-      "cidade": "Aquiraz",
-      "visitas": 11
-    },
-    {
-      "cidade": "Araraquara",
-      "visitas": 11
-    },
-    {
-      "cidade": "Barretos",
-      "visitas": 11
-    },
-    {
-      "cidade": "Bayeux",
-      "visitas": 11
+      "visitas": 14
     },
     {
       "cidade": "Braganca Paulista",
+      "visitas": 13
+    },
+    {
+      "cidade": "Manaus",
+      "visitas": 13
+    },
+    {
+      "cidade": "Palmas",
+      "visitas": 13
+    },
+    {
+      "cidade": "Piedade",
+      "visitas": 13
+    },
+    {
+      "cidade": "Campina Grande",
+      "visitas": 12
+    },
+    {
+      "cidade": "Presidente Venceslau",
+      "visitas": 12
+    },
+    {
+      "cidade": "Rio das Ostras",
+      "visitas": 12
+    },
+    {
+      "cidade": "Bayeux",
       "visitas": 11
     },
     {
@@ -1605,83 +1361,119 @@
       "visitas": 11
     },
     {
-      "cidade": "Mogi das Cruzes",
+      "cidade": "Piracicaba",
       "visitas": 11
     },
     {
-      "cidade": "Presidente Venceslau",
+      "cidade": "Sao Carlos",
       "visitas": 11
-    },
-    {
-      "cidade": "Santa Isabel",
-      "visitas": 11
-    },
-    {
-      "cidade": "Aracatuba",
-      "visitas": 10
-    },
-    {
-      "cidade": "Campina Grande",
-      "visitas": 10
-    },
-    {
-      "cidade": "Governador Valadares",
-      "visitas": 10
-    },
-    {
-      "cidade": "Petropolis",
-      "visitas": 10
-    },
-    {
-      "cidade": "Ribeirao Pires",
-      "visitas": 10
-    },
-    {
-      "cidade": "Sao Joao da Boa Vista",
-      "visitas": 10
-    },
-    {
-      "cidade": "Vinhedo",
-      "visitas": 10
-    },
-    {
-      "cidade": "Feira de Santana",
-      "visitas": 9
-    },
-    {
-      "cidade": "Juiz de Fora",
-      "visitas": 9
-    },
-    {
-      "cidade": "Lins",
-      "visitas": 9
-    },
-    {
-      "cidade": "Mesquita",
-      "visitas": 9
-    },
-    {
-      "cidade": "Planaltina",
-      "visitas": 9
-    },
-    {
-      "cidade": "Registro",
-      "visitas": 9
-    },
-    {
-      "cidade": "Rio Claro",
-      "visitas": 9
-    },
-    {
-      "cidade": "Santa Izabel do Para",
-      "visitas": 9
     },
     {
       "cidade": "Sao Jose de Ribamar",
-      "visitas": 9
+      "visitas": 11
+    },
+    {
+      "cidade": "Altamira",
+      "visitas": 10
+    },
+    {
+      "cidade": "Aquiraz",
+      "visitas": 10
+    },
+    {
+      "cidade": "Assis",
+      "visitas": 10
+    },
+    {
+      "cidade": "Balneario Camboriu",
+      "visitas": 10
+    },
+    {
+      "cidade": "Barcarena",
+      "visitas": 10
+    },
+    {
+      "cidade": "Jaguariuna",
+      "visitas": 10
+    },
+    {
+      "cidade": "Marilia",
+      "visitas": 10
+    },
+    {
+      "cidade": "Mesquita",
+      "visitas": 10
+    },
+    {
+      "cidade": "Piraju",
+      "visitas": 10
+    },
+    {
+      "cidade": "Rio Claro",
+      "visitas": 10
+    },
+    {
+      "cidade": "Rio Verde",
+      "visitas": 10
+    },
+    {
+      "cidade": "Sao Jose dos Pinhais",
+      "visitas": 10
     },
     {
       "cidade": "Tucurui",
+      "visitas": 10
+    },
+    {
+      "cidade": "Aracatuba",
+      "visitas": 9
+    },
+    {
+      "cidade": "Cabo Frio",
+      "visitas": 9
+    },
+    {
+      "cidade": "Formosa",
+      "visitas": 9
+    },
+    {
+      "cidade": "Itapevi",
+      "visitas": 9
+    },
+    {
+      "cidade": "Jacarei",
+      "visitas": 9
+    },
+    {
+      "cidade": "Jales",
+      "visitas": 9
+    },
+    {
+      "cidade": "Juquitiba",
+      "visitas": 9
+    },
+    {
+      "cidade": "Mogi das Cruzes",
+      "visitas": 9
+    },
+    {
+      "cidade": "Osvaldo Cruz",
+      "visitas": 9
+    },
+    {
+      "cidade": "Petropolis",
+      "visitas": 9
+    },
+    {
+      "cidade": "Santa Isabel",
+      "visitas": 9
+    },
+    {
+      "cidade": "Sobral",
+      "visitas": 9
+    },
+    {
+      "cidade": "Teresina",
       "visitas": 9
     },
     {
@@ -1689,31 +1481,31 @@
       "visitas": 8
     },
     {
-      "cidade": "Anapolis",
-      "visitas": 8
-    },
-    {
-      "cidade": "Aracaju",
-      "visitas": 8
-    },
-    {
-      "cidade": "Assis",
-      "visitas": 8
-    },
-    {
       "cidade": "Birigui",
       "visitas": 8
     },
     {
-      "cidade": "Formosa",
+      "cidade": "Blumenau",
       "visitas": 8
     },
     {
-      "cidade": "Franco da Rocha",
+      "cidade": "Boa Vista",
       "visitas": 8
     },
     {
-      "cidade": "Greerton",
+      "cidade": "Caieiras",
+      "visitas": 8
+    },
+    {
+      "cidade": "Cajamar",
+      "visitas": 8
+    },
+    {
+      "cidade": "Caraguatatuba",
+      "visitas": 8
+    },
+    {
+      "cidade": "Carapicuiba",
       "visitas": 8
     },
     {
@@ -1725,39 +1517,31 @@
       "visitas": 8
     },
     {
-      "cidade": "Itaguai",
+      "cidade": "Mairipora",
       "visitas": 8
     },
     {
-      "cidade": "Itajai",
+      "cidade": "Miami",
       "visitas": 8
     },
     {
-      "cidade": "Jacarei",
+      "cidade": "Mineiros",
       "visitas": 8
     },
     {
-      "cidade": "Jaguariuna",
+      "cidade": "New York",
       "visitas": 8
     },
     {
-      "cidade": "Limeira",
+      "cidade": "Niteroi",
       "visitas": 8
     },
     {
-      "cidade": "Marilia",
+      "cidade": "Santa Izabel do Para",
       "visitas": 8
     },
     {
-      "cidade": "Paulinia",
-      "visitas": 8
-    },
-    {
-      "cidade": "Piraju",
-      "visitas": 8
-    },
-    {
-      "cidade": "Ponta Grossa",
+      "cidade": "Sao Caetano do Sul",
       "visitas": 8
     },
     {
@@ -1765,55 +1549,39 @@
       "visitas": 8
     },
     {
-      "cidade": "Sobral",
+      "cidade": "Taubate",
       "visitas": 8
     },
     {
-      "cidade": "Teresina",
+      "cidade": "Toledo",
       "visitas": 8
     },
     {
-      "cidade": "Blumenau",
+      "cidade": "Umuarama",
+      "visitas": 8
+    },
+    {
+      "cidade": "Aracariguama",
       "visitas": 7
     },
     {
-      "cidade": "Cacapava",
+      "cidade": "Aruja",
       "visitas": 7
     },
     {
-      "cidade": "Dois Vizinhos",
+      "cidade": "Breves",
       "visitas": 7
     },
     {
-      "cidade": "Embu-Guacu",
+      "cidade": "Itaituba",
       "visitas": 7
     },
     {
-      "cidade": "Iguape",
+      "cidade": "Juiz de Fora",
       "visitas": 7
     },
     {
-      "cidade": "Itapevi",
-      "visitas": 7
-    },
-    {
-      "cidade": "Ituverava",
-      "visitas": 7
-    },
-    {
-      "cidade": "Marica",
-      "visitas": 7
-    },
-    {
-      "cidade": "Miami",
-      "visitas": 7
-    },
-    {
-      "cidade": "Mineiros",
-      "visitas": 7
-    },
-    {
-      "cidade": "Olinda",
+      "cidade": "Lucas do Rio Verde",
       "visitas": 7
     },
     {
@@ -1821,35 +1589,19 @@
       "visitas": 7
     },
     {
-      "cidade": "Santa Cruz De La Sierra",
+      "cidade": "Primavera do Leste",
       "visitas": 7
     },
     {
-      "cidade": "Sao Caetano do Sul",
+      "cidade": "Tatui",
       "visitas": 7
     },
     {
-      "cidade": "Serra",
-      "visitas": 7
-    },
-    {
-      "cidade": "Taubate",
-      "visitas": 7
-    },
-    {
-      "cidade": "Amparo",
+      "cidade": "Aracaju",
       "visitas": 6
     },
     {
-      "cidade": "Aracariguama",
-      "visitas": 6
-    },
-    {
-      "cidade": "Barcarena",
-      "visitas": 6
-    },
-    {
-      "cidade": "Caucaia",
+      "cidade": "Cacapava",
       "visitas": 6
     },
     {
@@ -1861,130 +1613,194 @@
       "visitas": 6
     },
     {
-      "cidade": "Fazenda Rio Grande",
+      "cidade": "Encarnacion",
       "visitas": 6
     },
     {
-      "cidade": "Itapecerica da Serra",
+      "cidade": "Feira de Santana",
+      "visitas": 6
+    },
+    {
+      "cidade": "Foz do Iguacu",
+      "visitas": 6
+    },
+    {
+      "cidade": "Itaguai",
+      "visitas": 6
+    },
+    {
+      "cidade": "Itapolis",
+      "visitas": 6
+    },
+    {
+      "cidade": "Jatai",
+      "visitas": 6
+    },
+    {
+      "cidade": "Linhares",
+      "visitas": 6
+    },
+    {
+      "cidade": "Lins",
+      "visitas": 6
+    },
+    {
+      "cidade": "Marica",
+      "visitas": 6
+    },
+    {
+      "cidade": "Mirandopolis",
+      "visitas": 6
+    },
+    {
+      "cidade": "Monte Mor",
+      "visitas": 6
+    },
+    {
+      "cidade": "Paragominas",
+      "visitas": 6
+    },
+    {
+      "cidade": "Paulinia",
+      "visitas": 6
+    },
+    {
+      "cidade": "Registro",
+      "visitas": 6
+    },
+    {
+      "cidade": "Salto",
+      "visitas": 6
+    },
+    {
+      "cidade": "Santa Cruz De La Sierra",
+      "visitas": 6
+    },
+    {
+      "cidade": "Santa Maria",
       "visitas": 6
     }
   ],
   "ano": [
     {
       "cidade": "Campo Grande",
-      "visitas": 109027
+      "visitas": 109016
     },
     {
       "cidade": "Brasilia",
-      "visitas": 30517
+      "visitas": 29616
     },
     {
       "cidade": "Sao Paulo",
-      "visitas": 21421
+      "visitas": 21084
     },
     {
       "cidade": "Dourados",
-      "visitas": 20155
+      "visitas": 20038
     },
     {
       "cidade": "Tres Lagoas",
-      "visitas": 8135
+      "visitas": 8068
     },
     {
       "cidade": "Goiania",
-      "visitas": 7832
+      "visitas": 7818
     },
     {
       "cidade": "Ponta Pora",
-      "visitas": 6149
+      "visitas": 6065
     },
     {
       "cidade": "Rio Branco",
-      "visitas": 5831
+      "visitas": 5821
     },
     {
       "cidade": "Corumba",
-      "visitas": 4419
+      "visitas": 4361
     },
     {
       "cidade": "Aquidauana",
-      "visitas": 4272
+      "visitas": 4278
     },
     {
       "cidade": "Joao Pessoa",
-      "visitas": 4036
+      "visitas": 4015
     },
     {
       "cidade": "Belem",
-      "visitas": 3668
+      "visitas": 3648
     },
     {
       "cidade": "Rio de Janeiro",
-      "visitas": 3433
+      "visitas": 3408
     },
     {
       "cidade": "Nova Andradina",
-      "visitas": 2965
+      "visitas": 2969
     },
     {
       "cidade": "Chapadao do Sul",
-      "visitas": 2646
-    },
-    {
-      "cidade": "Campinas",
-      "visitas": 2403
+      "visitas": 2619
     },
     {
       "cidade": "Sidrolandia",
-      "visitas": 2379
+      "visitas": 2437
+    },
+    {
+      "cidade": "Campinas",
+      "visitas": 2421
     },
     {
       "cidade": "Curitiba",
-      "visitas": 2378
+      "visitas": 2371
     },
     {
       "cidade": "Navirai",
-      "visitas": 2269
+      "visitas": 2260
     },
     {
       "cidade": "Paranaiba",
-      "visitas": 2160
+      "visitas": 2169
     },
     {
       "cidade": "Ananindeua",
-      "visitas": 2152
+      "visitas": 2126
     },
     {
       "cidade": "Porto Velho",
-      "visitas": 2051
+      "visitas": 2035
     },
     {
       "cidade": "Bonito",
-      "visitas": 1928
+      "visitas": 1955
     },
     {
       "cidade": "Recife",
-      "visitas": 1774
+      "visitas": 1745
     },
     {
       "cidade": "Jardim",
-      "visitas": 1416
+      "visitas": 1403
     },
     {
       "cidade": "Ivinhema",
-      "visitas": 1399
+      "visitas": 1401
     },
     {
       "cidade": "Presidente Epitacio",
-      "visitas": 1086
+      "visitas": 1058
     },
     {
       "cidade": "Fortaleza",
-      "visitas": 1036
+      "visitas": 1017
     },
     {
       "cidade": "Juiz de Fora",
       "visitas": 996
+    },
+    {
+      "cidade": "Amambai",
+      "visitas": 950
     },
     {
       "cidade": "Cuiaba",
@@ -1992,127 +1808,119 @@
     },
     {
       "cidade": "Sao Jose do Rio Preto",
-      "visitas": 921
-    },
-    {
-      "cidade": "Amambai",
-      "visitas": 894
+      "visitas": 916
     },
     {
       "cidade": "Palmas",
-      "visitas": 888
+      "visitas": 886
     },
     {
       "cidade": "Nova Iguacu",
-      "visitas": 857
+      "visitas": 846
     },
     {
       "cidade": "Salvador",
-      "visitas": 803
+      "visitas": 797
     },
     {
       "cidade": "Florianopolis",
-      "visitas": 744
+      "visitas": 755
     },
     {
       "cidade": "Maringa",
-      "visitas": 737
+      "visitas": 745
     },
     {
       "cidade": "Guaira",
-      "visitas": 686
+      "visitas": 712
     },
     {
       "cidade": "Frutal",
-      "visitas": 667
+      "visitas": 656
     },
     {
       "cidade": "Belo Horizonte",
-      "visitas": 634
+      "visitas": 633
     },
     {
       "cidade": "Governador Valadares",
-      "visitas": 602
+      "visitas": 594
     },
     {
       "cidade": "Caarapo",
-      "visitas": 542
+      "visitas": 574
     },
     {
       "cidade": "Bataguassu",
-      "visitas": 496
+      "visitas": 533
     },
     {
       "cidade": "Andradina",
-      "visitas": 459
+      "visitas": 455
     },
     {
       "cidade": "Uberlandia",
-      "visitas": 444
-    },
-    {
-      "cidade": "Santo Andre",
-      "visitas": 419
-    },
-    {
-      "cidade": "Guarulhos",
-      "visitas": 415
+      "visitas": 447
     },
     {
       "cidade": "Bauru",
-      "visitas": 410
+      "visitas": 424
+    },
+    {
+      "cidade": "Santo Andre",
+      "visitas": 424
+    },
+    {
+      "cidade": "Guarulhos",
+      "visitas": 422
     },
     {
       "cidade": "Porto Alegre",
-      "visitas": 409
+      "visitas": 408
     },
     {
       "cidade": "Marituba",
-      "visitas": 396
+      "visitas": 397
     },
     {
       "cidade": "Presidente Prudente",
-      "visitas": 374
+      "visitas": 378
     },
     {
       "cidade": "Maceio",
-      "visitas": 343
-    },
-    {
-      "cidade": "Juazeiro do Norte",
-      "visitas": 337
+      "visitas": 346
     },
     {
       "cidade": "Sao Joao de Meriti",
-      "visitas": 333
+      "visitas": 335
+    },
+    {
+      "cidade": "Juazeiro do Norte",
+      "visitas": 332
     },
     {
       "cidade": "Iturama",
-      "visitas": 325
+      "visitas": 329
     },
     {
       "cidade": "Santo Anastacio",
-      "visitas": 311
-    },
-    {
-      "cidade": "Nilopolis",
-      "visitas": 274
+      "visitas": 317
     },
     {
       "cidade": "Rondonopolis",
-      "visitas": 268
+      "visitas": 274
+    },
+    {
+      "cidade": "Nilopolis",
+      "visitas": 272
     },
     {
       "cidade": "Sao Jose dos Campos",
-      "visitas": 263
+      "visitas": 271
     },
     {
       "cidade": "Sorocaba",
-      "visitas": 262
-    },
-    {
-      "cidade": "Boa Vista",
-      "visitas": 261
+      "visitas": 268
     },
     {
       "cidade": "Duque de Caxias",
@@ -2120,406 +1928,414 @@
     },
     {
       "cidade": "Terra Roxa",
-      "visitas": 249
+      "visitas": 257
     },
     {
-      "cidade": "Natal",
-      "visitas": 246
-    },
-    {
-      "cidade": "Londrina",
-      "visitas": 245
+      "cidade": "Boa Vista",
+      "visitas": 255
     },
     {
       "cidade": "Ribeirao Preto",
-      "visitas": 242
+      "visitas": 248
     },
     {
       "cidade": "Castanhal",
-      "visitas": 240
+      "visitas": 243
     },
     {
-      "cidade": "Sao Luis",
-      "visitas": 223
+      "cidade": "Londrina",
+      "visitas": 243
+    },
+    {
+      "cidade": "Natal",
+      "visitas": 242
     },
     {
       "cidade": "Joinville",
       "visitas": 221
     },
     {
+      "cidade": "Sao Luis",
+      "visitas": 217
+    },
+    {
       "cidade": "Sao Bernardo do Campo",
-      "visitas": 213
+      "visitas": 214
     },
     {
       "cidade": "Ilha Solteira",
-      "visitas": 195
-    },
-    {
-      "cidade": "Manaus",
-      "visitas": 194
-    },
-    {
-      "cidade": "Asuncion",
-      "visitas": 192
-    },
-    {
-      "cidade": "Barueri",
-      "visitas": 190
+      "visitas": 196
     },
     {
       "cidade": "Dracena",
+      "visitas": 192
+    },
+    {
+      "cidade": "Manaus",
       "visitas": 190
     },
     {
+      "cidade": "Barueri",
+      "visitas": 189
+    },
+    {
+      "cidade": "Asuncion",
+      "visitas": 188
+    },
+    {
       "cidade": "Santos",
-      "visitas": 183
+      "visitas": 185
     },
     {
       "cidade": "Osasco",
-      "visitas": 178
-    },
-    {
-      "cidade": "Foz do Iguacu",
       "visitas": 177
     },
     {
+      "cidade": "Foz do Iguacu",
+      "visitas": 176
+    },
+    {
       "cidade": "Tupi Paulista",
-      "visitas": 174
+      "visitas": 176
     },
     {
       "cidade": "Simoes Filho",
       "visitas": 170
     },
     {
-      "cidade": "Marilia",
-      "visitas": 165
+      "cidade": "Vila Velha",
+      "visitas": 167
     },
     {
-      "cidade": "Vila Velha",
-      "visitas": 165
+      "cidade": "Santa Rita",
+      "visitas": 166
     },
     {
       "cidade": "San Francisco",
       "visitas": 163
     },
     {
-      "cidade": "Santa Rita",
+      "cidade": "Marilia",
       "visitas": 162
     },
     {
+      "cidade": "Penapolis",
+      "visitas": 160
+    },
+    {
+      "cidade": "Cascavel",
+      "visitas": 154
+    },
+    {
       "cidade": "Osvaldo Cruz",
-      "visitas": 156
+      "visitas": 154
     },
     {
       "cidade": "Presidente Venceslau",
-      "visitas": 156
-    },
-    {
-      "cidade": "Penapolis",
       "visitas": 153
     },
     {
       "cidade": "Belford Roxo",
-      "visitas": 149
-    },
-    {
-      "cidade": "Cascavel",
-      "visitas": 148
-    },
-    {
-      "cidade": "Aracatuba",
-      "visitas": 144
+      "visitas": 147
     },
     {
       "cidade": "Paranavai",
-      "visitas": 138
+      "visitas": 146
+    },
+    {
+      "cidade": "Aracatuba",
+      "visitas": 145
     },
     {
       "cidade": "Itu",
-      "visitas": 135
-    },
-    {
-      "cidade": "Franca",
-      "visitas": 132
+      "visitas": 140
     },
     {
       "cidade": "Jundiai",
-      "visitas": 131
-    },
-    {
-      "cidade": "Itaperuna",
-      "visitas": 130
-    },
-    {
-      "cidade": "Botucatu",
-      "visitas": 126
+      "visitas": 140
     },
     {
       "cidade": "Indaiatuba",
-      "visitas": 126
+      "visitas": 137
     },
     {
-      "cidade": "Aracaju",
-      "visitas": 124
+      "cidade": "Botucatu",
+      "visitas": 136
+    },
+    {
+      "cidade": "Franca",
+      "visitas": 135
     },
     {
       "cidade": "Vitoria",
-      "visitas": 124
+      "visitas": 126
     },
     {
-      "cidade": "Itajai",
+      "cidade": "Itaperuna",
       "visitas": 123
     },
     {
-      "cidade": "Sarandi",
-      "visitas": 120
-    },
-    {
-      "cidade": "Campo Mourao",
-      "visitas": 119
-    },
-    {
-      "cidade": "Mogi das Cruzes",
-      "visitas": 119
-    },
-    {
-      "cidade": "Campina Grande",
-      "visitas": 118
-    },
-    {
-      "cidade": "Cabedelo",
-      "visitas": 116
+      "cidade": "Aracaju",
+      "visitas": 122
     },
     {
       "cidade": "Suzano",
-      "visitas": 116
+      "visitas": 122
     },
     {
-      "cidade": "Maua",
-      "visitas": 115
+      "cidade": "Campina Grande",
+      "visitas": 121
     },
     {
-      "cidade": "Olimpia",
-      "visitas": 115
+      "cidade": "Mogi das Cruzes",
+      "visitas": 121
     },
     {
-      "cidade": "Santa Fe do Sul",
-      "visitas": 115
-    },
-    {
-      "cidade": "Santarem",
-      "visitas": 115
-    },
-    {
-      "cidade": "Sao Jose dos Pinhais",
-      "visitas": 112
+      "cidade": "Itajai",
+      "visitas": 120
     },
     {
       "cidade": "Cotia",
-      "visitas": 110
+      "visitas": 116
+    },
+    {
+      "cidade": "Olimpia",
+      "visitas": 116
+    },
+    {
+      "cidade": "Santa Fe do Sul",
+      "visitas": 116
+    },
+    {
+      "cidade": "Sarandi",
+      "visitas": 116
+    },
+    {
+      "cidade": "Cabedelo",
+      "visitas": 115
+    },
+    {
+      "cidade": "Campo Mourao",
+      "visitas": 115
+    },
+    {
+      "cidade": "Maua",
+      "visitas": 113
+    },
+    {
+      "cidade": "Santarem",
+      "visitas": 112
     },
     {
       "cidade": "Jales",
       "visitas": 109
     },
     {
+      "cidade": "Sao Jose dos Pinhais",
+      "visitas": 106
+    },
+    {
       "cidade": "Piracicaba",
-      "visitas": 107
-    },
-    {
-      "cidade": "Americana",
-      "visitas": 103
-    },
-    {
-      "cidade": "Aparecida de Goiania",
-      "visitas": 100
+      "visitas": 105
     },
     {
       "cidade": "Sinop",
-      "visitas": 97
+      "visitas": 101
     },
     {
-      "cidade": "Cabo Frio",
-      "visitas": 94
+      "cidade": "Americana",
+      "visitas": 100
+    },
+    {
+      "cidade": "Aparecida de Goiania",
+      "visitas": 99
     },
     {
       "cidade": "Balneario Camboriu",
-      "visitas": 92
-    },
-    {
-      "cidade": "Sao Sebastiao",
-      "visitas": 92
+      "visitas": 97
     },
     {
       "cidade": "Braganca Paulista",
-      "visitas": 90
+      "visitas": 97
+    },
+    {
+      "cidade": "Sao Sebastiao",
+      "visitas": 97
+    },
+    {
+      "cidade": "Santana de Parnaiba",
+      "visitas": 96
+    },
+    {
+      "cidade": "Cabo Frio",
+      "visitas": 92
     },
     {
       "cidade": "Jacobina",
-      "visitas": 90
-    },
-    {
-      "cidade": "Niteroi",
-      "visitas": 89
-    },
-    {
-      "cidade": "Porto Seguro",
-      "visitas": 89
+      "visitas": 91
     },
     {
       "cidade": "Taubate",
+      "visitas": 91
+    },
+    {
+      "cidade": "Niteroi",
+      "visitas": 90
+    },
+    {
+      "cidade": "Porto Seguro",
+      "visitas": 90
+    },
+    {
+      "cidade": "Santa Cruz De La Sierra",
       "visitas": 88
+    },
+    {
+      "cidade": "Toledo",
+      "visitas": 88
+    },
+    {
+      "cidade": "Bayeux",
+      "visitas": 87
     },
     {
       "cidade": "Feira de Santana",
       "visitas": 87
     },
     {
-      "cidade": "Toledo",
-      "visitas": 87
-    },
-    {
-      "cidade": "Bayeux",
-      "visitas": 86
-    },
-    {
       "cidade": "Mesquita",
-      "visitas": 86
-    },
-    {
-      "cidade": "Santa Cruz De La Sierra",
-      "visitas": 86
-    },
-    {
-      "cidade": "Santana de Parnaiba",
-      "visitas": 85
-    },
-    {
-      "cidade": "Abaetetuba",
-      "visitas": 83
-    },
-    {
-      "cidade": "Birigui",
-      "visitas": 82
-    },
-    {
-      "cidade": "Cajamar",
-      "visitas": 82
-    },
-    {
-      "cidade": "Diadema",
-      "visitas": 82
+      "visitas": 84
     },
     {
       "cidade": "Praia Grande",
+      "visitas": 84
+    },
+    {
+      "cidade": "Cajamar",
+      "visitas": 83
+    },
+    {
+      "cidade": "Barretos",
       "visitas": 82
+    },
+    {
+      "cidade": "Sao Joao da Boa Vista",
+      "visitas": 82
+    },
+    {
+      "cidade": "Abaetetuba",
+      "visitas": 81
+    },
+    {
+      "cidade": "Birigui",
+      "visitas": 81
     },
     {
       "cidade": "Umuarama",
       "visitas": 81
     },
     {
-      "cidade": "Ciudad del Este",
+      "cidade": "Varzea Grande",
+      "visitas": 81
+    },
+    {
+      "cidade": "Diadema",
       "visitas": 80
     },
     {
-      "cidade": "Rio das Ostras",
-      "visitas": 79
-    },
-    {
-      "cidade": "Varzea Grande",
-      "visitas": 79
-    },
-    {
       "cidade": "Caraguatatuba",
-      "visitas": 78
+      "visitas": 79
     },
     {
-      "cidade": "Araraquara",
-      "visitas": 77
-    },
-    {
-      "cidade": "Mountain View",
-      "visitas": 77
+      "cidade": "Uberaba",
+      "visitas": 79
     },
     {
       "cidade": "Tatui",
       "visitas": 77
     },
     {
-      "cidade": "Uberaba",
-      "visitas": 77
-    },
-    {
-      "cidade": "Ponta Grossa",
+      "cidade": "Araraquara",
       "visitas": 76
     },
     {
-      "cidade": "Vitoria da Conquista",
-      "visitas": 76
-    },
-    {
-      "cidade": "Sao Joao da Boa Vista",
+      "cidade": "Rio das Ostras",
       "visitas": 75
     },
     {
-      "cidade": "Calpella",
+      "cidade": "Sao Carlos",
+      "visitas": 75
+    },
+    {
+      "cidade": "Vitoria da Conquista",
+      "visitas": 75
+    },
+    {
+      "cidade": "Ciudad del Este",
       "visitas": 74
     },
     {
-      "cidade": "Barretos",
-      "visitas": 72
-    },
-    {
-      "cidade": "Sao Carlos",
-      "visitas": 72
+      "cidade": "Calpella",
+      "visitas": 73
     },
     {
       "cidade": "Sumare",
+      "visitas": 73
+    },
+    {
+      "cidade": "Ponta Grossa",
       "visitas": 72
     },
     {
-      "cidade": "Marica",
+      "cidade": "Itaquaquecetuba",
       "visitas": 71
     },
     {
-      "cidade": "Itaquaquecetuba",
+      "cidade": "Ubatuba",
+      "visitas": 71
+    },
+    {
+      "cidade": "Marica",
       "visitas": 70
     },
     {
       "cidade": "Paulinia",
-      "visitas": 67
+      "visitas": 70
     },
     {
-      "cidade": "Ubatuba",
-      "visitas": 67
+      "cidade": "Mountain View",
+      "visitas": 69
     },
     {
-      "cidade": "Santa Izabel do Para",
+      "cidade": "Rio Claro",
       "visitas": 66
+    },
+    {
+      "cidade": "Juquitiba",
+      "visitas": 64
+    },
+    {
+      "cidade": "Valinhos",
+      "visitas": 64
     },
     {
       "cidade": "Cidade Ocidental",
       "visitas": 63
     },
     {
-      "cidade": "Jaboatao dos Guararapes",
-      "visitas": 62
-    },
-    {
-      "cidade": "Juquitiba",
-      "visitas": 62
-    },
-    {
       "cidade": "Poa",
-      "visitas": 62
-    },
-    {
-      "cidade": "Rio Claro",
-      "visitas": 62
+      "visitas": 63
     },
     {
       "cidade": "Santa Isabel",
+      "visitas": 63
+    },
+    {
+      "cidade": "Santa Izabel do Para",
+      "visitas": 63
+    },
+    {
+      "cidade": "Marechal Candido Rondon",
       "visitas": 62
     },
     {
@@ -2531,63 +2347,59 @@
       "visitas": 61
     },
     {
-      "cidade": "Jatai",
+      "cidade": "Jaboatao dos Guararapes",
       "visitas": 61
     },
     {
-      "cidade": "Marechal Candido Rondon",
-      "visitas": 61
-    },
-    {
-      "cidade": "Valinhos",
+      "cidade": "Piedade",
       "visitas": 61
     },
     {
       "cidade": "Registro",
-      "visitas": 60
+      "visitas": 61
     },
     {
       "cidade": "Rio Verde",
       "visitas": 60
     },
     {
-      "cidade": "Aruja",
+      "cidade": "Amparo",
       "visitas": 59
     },
     {
-      "cidade": "Teresina",
+      "cidade": "Jatai",
       "visitas": 59
     },
     {
       "cidade": "Salto",
-      "visitas": 58
+      "visitas": 59
     },
     {
-      "cidade": "Serra",
+      "cidade": "Encarnacion",
       "visitas": 58
-    },
-    {
-      "cidade": "Araucaria",
-      "visitas": 57
     },
     {
       "cidade": "Itapema",
-      "visitas": 57
+      "visitas": 58
     },
     {
       "cidade": "Itapevi",
-      "visitas": 57
+      "visitas": 58
     },
     {
-      "cidade": "Piedade",
-      "visitas": 57
-    },
-    {
-      "cidade": "Amparo",
-      "visitas": 56
+      "cidade": "Serra Negra",
+      "visitas": 58
     },
     {
       "cidade": "Ribeirao Pires",
+      "visitas": 57
+    },
+    {
+      "cidade": "Campos do Jordao",
+      "visitas": 56
+    },
+    {
+      "cidade": "Jacarei",
       "visitas": 56
     },
     {
@@ -2595,76 +2407,72 @@
       "visitas": 56
     },
     {
-      "cidade": "Blumenau",
+      "cidade": "Aruja",
       "visitas": 55
-    },
-    {
-      "cidade": "Encarnacion",
-      "visitas": 55
-    },
-    {
-      "cidade": "Campos do Jordao",
-      "visitas": 54
     },
     {
       "cidade": "Lins",
+      "visitas": 55
+    },
+    {
+      "cidade": "Mineiros",
+      "visitas": 55
+    },
+    {
+      "cidade": "Serra",
+      "visitas": 55
+    },
+    {
+      "cidade": "Lencois Paulista",
       "visitas": 54
     },
     {
-      "cidade": "Serra Negra",
+      "cidade": "Teresina",
       "visitas": 54
+    },
+    {
+      "cidade": "Blumenau",
+      "visitas": 53
     },
     {
       "cidade": "Embu",
       "visitas": 53
     },
     {
-      "cidade": "Mineiros",
+      "cidade": "Jaguariuna",
       "visitas": 53
     },
     {
-      "cidade": "Miami",
+      "cidade": "Paranhos",
+      "visitas": 53
+    },
+    {
+      "cidade": "Carapicuiba",
       "visitas": 52
+    },
+    {
+      "cidade": "Greerton",
+      "visitas": 52
+    },
+    {
+      "cidade": "Votuporanga",
+      "visitas": 52
+    },
+    {
+      "cidade": "Contagem",
+      "visitas": 51
+    },
+    {
+      "cidade": "Miami",
+      "visitas": 51
     },
     {
       "cidade": "Ourinhos",
       "visitas": 51
     },
     {
-      "cidade": "Votuporanga",
-      "visitas": 51
-    },
-    {
-      "cidade": "Carapicuiba",
-      "visitas": 50
-    },
-    {
-      "cidade": "Contagem",
-      "visitas": 50
-    },
-    {
-      "cidade": "Jacarei",
-      "visitas": 50
-    },
-    {
-      "cidade": "Jaguariuna",
-      "visitas": 50
-    },
-    {
-      "cidade": "Altamira",
-      "visitas": 49
-    },
-    {
-      "cidade": "Campo Largo",
-      "visitas": 49
-    },
-    {
       "cidade": "Ibiuna",
-      "visitas": 49
-    },
-    {
-      "cidade": "Castilho",
-      "visitas": 48
+      "visitas": 50
     }
   ]
 }

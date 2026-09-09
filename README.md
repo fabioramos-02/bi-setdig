@@ -52,6 +52,7 @@ python data-platform/run.py
 ```
 
 
+
 ## Padrões
 
 - Sem fetch/cálculo em componente `.tsx` → mora em `src/lib/`.
