@@ -570,5 +570,16 @@
     "schema": "data-platform/schemas/portal-unico-sistemas-assinador.schema.json",
     "rows": 16,
     "bytes": 2176
+  },
+  {
+    "dataset": "acessos-servico-mensal",
+    "source": "matomo",
+    "owner": "SETDIG",
+    "updatedAt": "2026-09-09T18:48:01.505718+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/matomo-acessos-servico-mensal.schema.json",
+    "rows": 3,
+    "bytes": 291604
   }
 ]
