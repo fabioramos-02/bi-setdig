@@ -112,6 +112,7 @@ export function ServicosClient({
           range={range}
           status={status}
           rotuloPeriodo={rotuloPeriodo}
+          periodoTipo={estado.tipo}
         />
       ),
     },
@@ -141,6 +142,7 @@ export function ServicosClient({
           cartas={cartasAtivas}
           visitasPorSlug={visitasPorSlug}
           rotuloPeriodo={rotuloPeriodo}
+          periodoTipo={estado.tipo}
           range={range}
           totalCartasAtivas={resumo.ativos}
           totalOrgaos={orgaos.length}

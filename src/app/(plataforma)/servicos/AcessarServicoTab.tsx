@@ -47,6 +47,7 @@ export function AcessarServicoTab({
   range,
   totalCartasAtivas,
   totalOrgaos,
+  periodoTipo,
 }: {
   cartas: CartaRelacao[];
   visitasPorSlug: Map<string, number>;
@@ -54,6 +55,7 @@ export function AcessarServicoTab({
   range: { inicio: string; fim: string };
   totalCartasAtivas: number;
   totalOrgaos: number;
+  periodoTipo: "dia" | "semana" | "mes" | "ano" | "intervalo";
 }) {
   const [orgaoAtivo, setOrgaoAtivo] = useState<string>("");
   const [busca, setBusca] = useState<string>("");
@@ -92,8 +94,8 @@ export function AcessarServicoTab({
     );
   }, [cartasDoOrgao, busca]);
 
-  const modoBulk = orgaoAtivo && cartasDoOrgao.length > 0 && (cartasDoOrgao.length <= THRESHOLD_BULK_ORGAO && rotuloPeriodo.toLowerCase().trim() !== "no ano");
-  const modoIndividual = orgaoAtivo && (cartasDoOrgao.length > THRESHOLD_BULK_ORGAO || rotuloPeriodo.toLowerCase().trim() === "no ano");
+  const modoBulk = orgaoAtivo && cartasDoOrgao.length > 0 && cartasDoOrgao.length <= THRESHOLD_BULK_ORGAO && periodoTipo !== "ano";
+  const modoIndividual = orgaoAtivo && (cartasDoOrgao.length > THRESHOLD_BULK_ORGAO || periodoTipo === "ano");
 
   async function buscarBulkOrgao() {
     if (!orgaoAtivo) return;
@@ -218,8 +220,11 @@ export function AcessarServicoTab({
             color: "var(--ds-color-text-secondary)",
           }}
         >
-          O órgão <strong>{orgaoAtivo}</strong> tem {cartasDoOrgao.length} cartas com link externo ou ano selecionado — clique em <strong>Ver cliques</strong> em cada linha para carregar sob demanda.
-        </div>
+          {modoIndividual && periodoTipo === "ano" ? (
+            <>Os cliques do ano são somados a partir dos totais mensais atualizados todas as noites — não é preciso clicar em cada carta.</>
+          ) : (
+            <>Este órgão tem <strong>{cartasDoOrgao.length}</strong> cartas com link externo. Para não sobrecarregar a consulta, clique em <strong>Ver cliques</strong> na carta desejada.</>
+          )}        </div>
       )}
 
       {erroMsg && (
