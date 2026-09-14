@@ -5,7 +5,7 @@ import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { DataTable, type Coluna } from "@/components/dashboard/DataTable";
 import { EmptyCard } from "@/components/ds/EmptyCard";
 import { MetricCard } from "@/components/dashboard/MetricCard";
-import type { AcessoBotaoCarta, CartaRelacao } from "@/lib/data";
+import type { AcessoBotaoCarta, AcessosServicoMensal, CartaRelacao } from "@/lib/data";
 import { destinosPorHost } from "@/lib/insights-acessos-botao";
 
 const PORTAL_BASE = "https://www.ms.gov.br";
@@ -48,6 +48,7 @@ export function AcessarServicoTab({
   totalCartasAtivas,
   totalOrgaos,
   periodoTipo,
+  acessosMensal,
 }: {
   cartas: CartaRelacao[];
   visitasPorSlug: Map<string, number>;
@@ -56,6 +57,7 @@ export function AcessarServicoTab({
   totalCartasAtivas: number;
   totalOrgaos: number;
   periodoTipo: "dia" | "semana" | "mes" | "ano" | "intervalo";
+  acessosMensal: AcessosServicoMensal;
 }) {
   const [orgaoAtivo, setOrgaoAtivo] = useState<string>("");
   const [busca, setBusca] = useState<string>("");
@@ -94,8 +96,22 @@ export function AcessarServicoTab({
     );
   }, [cartasDoOrgao, busca]);
 
+  const fluxoDoSnapshotAno = useMemo(() => {
+    if (periodoTipo !== "ano") return null;
+    const m = new Map<string, FluxoCarta>();
+    for (const carta of acessosMensal.cartas) {
+      const cliques = Object.values(carta.meses).reduce((soma, n) => soma + n, 0);
+      const acessosCarta = visitasPorSlug.get(carta.slug) ?? 0;
+      const taxa = acessosCarta > 0 ? (cliques / acessosCarta) * 100 : null;
+      m.set(carta.slug, { cliques, acessosCarta, taxaConversaoPct: taxa });
+    }
+    return m;
+  }, [periodoTipo, acessosMensal, visitasPorSlug]);
+
+  const fluxoSlug = fluxoDoSnapshotAno ?? fluxoPorSlug;
+
   const modoBulk = orgaoAtivo && cartasDoOrgao.length > 0 && cartasDoOrgao.length <= THRESHOLD_BULK_ORGAO && periodoTipo !== "ano";
-  const modoIndividual = orgaoAtivo && (cartasDoOrgao.length > THRESHOLD_BULK_ORGAO || periodoTipo === "ano");
+  const modoIndividual = orgaoAtivo && cartasDoOrgao.length > THRESHOLD_BULK_ORGAO || periodoTipo === "ano";
 
   async function buscarBulkOrgao() {
     if (!orgaoAtivo) return;
@@ -152,7 +168,7 @@ export function AcessarServicoTab({
   const cartasCarregadas = useMemo<AcessoBotaoCarta[]>(() => {
     const out: AcessoBotaoCarta[] = [];
     for (const c of cartasDoOrgao) {
-      const f = fluxoPorSlug.get(c.slug);
+      const f = fluxoSlug.get(c.slug);
       if (!f) continue;
       out.push({
         slug: c.slug,
@@ -167,7 +183,7 @@ export function AcessarServicoTab({
       });
     }
     return out.sort((a, b) => b.cliques - a.cliques);
-  }, [cartasDoOrgao, fluxoPorSlug]);
+  }, [cartasDoOrgao, fluxoSlug]);
 
   const totalCliques = cartasCarregadas.reduce((acc, c) => acc + c.cliques, 0);
   const totalAcessosCarta = cartasCarregadas.reduce((acc, c) => acc + (c.acessosCarta ?? 0), 0);
@@ -327,7 +343,7 @@ export function AcessarServicoTab({
           <TabelaVolume
             cartas={cartasFiltradas}
             visitasPorSlug={visitasPorSlug}
-            fluxoPorSlug={fluxoPorSlug}
+            fluxoPorSlug={fluxoSlug}
             carregandoSlug={carregandoSlug}
             modoIndividual={Boolean(modoIndividual)}
             onBuscarSlug={buscarSlugIndividual}

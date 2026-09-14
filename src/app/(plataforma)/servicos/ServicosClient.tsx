@@ -13,7 +13,7 @@ import { NovosServicosTab } from "./NovosServicosTab";
 import { AcessarServicoTab } from "./AcessarServicoTab";
 import { usePeriodo } from "@/lib/periodo-context";
 import { intervaloDoBucket, rotuloPeriodoResolvido } from "@/lib/period-filter";
-import type { InventarioResumo, InventarioOrgao, CartaRelacao } from "@/lib/data";
+import type { InventarioResumo, InventarioOrgao, CartaRelacao, AcessosServicoMensal } from "@/lib/data";
 
 const ROTULO_PERIODO = { dia: "no dia", semana: "na semana", mes: "no mês", ano: "no ano", intervalo: "no intervalo" };
 
@@ -34,10 +34,12 @@ export function ServicosClient({
   resumo,
   orgaos,
   relacao,
+  acessosMensal,
 }: {
   resumo: InventarioResumo;
   orgaos: InventarioOrgao[];
   relacao: CartaRelacao[];
+  acessosMensal: AcessosServicoMensal;
 }) {
   const { estado, min, max } = usePeriodo();
   const [abaAtiva, setAbaAtiva] = useState("visao-geral");
@@ -113,6 +115,7 @@ export function ServicosClient({
           status={status}
           rotuloPeriodo={rotuloPeriodo}
           periodoTipo={estado.tipo}
+          acessosMensal={acessosMensal}
         />
       ),
     },
@@ -143,6 +146,7 @@ export function ServicosClient({
           visitasPorSlug={visitasPorSlug}
           rotuloPeriodo={rotuloPeriodo}
           periodoTipo={estado.tipo}
+          acessosMensal={acessosMensal}
           range={range}
           totalCartasAtivas={resumo.ativos}
           totalOrgaos={orgaos.length}

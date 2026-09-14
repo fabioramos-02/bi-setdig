@@ -1,6 +1,6 @@
-import fs from "node:fs";
-import path from "node:path";
-import { SIGLAS_CENSO, type OrgaoCenso } from "./censo";
+import fs, { readFileSync } from "node:fs";
+import path, { join } from "node:path";
+import { SIGLAS_CENSO, type OrgaoCenso } from "./censo.ts";
 
 /**
  * Único ponto de leitura de datasets/ (ver docs/architecture/data-flow.md).
@@ -14,6 +14,7 @@ function readDataset<T>(source: string, version: string, dataset: string): T | n
 }
 
 export type VisitasResumo = {
+  slug: any;
   date: string;
   visitas: number;
   visitantesUnicos: number;
@@ -555,4 +556,22 @@ export type ErroRelacao = {
 
 export function getCartasErrosRelacao(): ErroRelacao[] {
   return readDataset<ErroRelacao[]>("cartas", "v1", "erros-relacao") ?? [];
+}
+export type AcessosServicoMensal = {
+  ano: number;
+  geradoEm: string;
+  cartas: {
+    slug: string;
+    orgaoSigla: string;
+    urlExterno: string;
+    meses: Record<string, number>; // "01".."12" → cliques
+  }[];
+};
+
+export function getAcessosServicoMensal(): AcessosServicoMensal {
+  try {
+    return JSON.parse(readFileSync(join(process.cwd(), "datasets/matomo/v1/acessos-servico-mensal.json"), "utf-8"));
+  } catch {
+    return { ano: new Date().getFullYear(), geradoEm: "", cartas: [] };
+  }
 }
