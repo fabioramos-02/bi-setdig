@@ -11,9 +11,9 @@ test("leitura bem sucedida", () => {
 test("Snapshot com 3 cartas × 3 meses → soma dos meses = total do ano", () => {
     const acessosMensal = getAcessosServicoMensal();
     var total = 0;
-    for (let cartas of acessosMensal.cartas) {
+    for (const cartas of acessosMensal.cartas) {
         if (cartas.orgaoSigla === "CGP") {
-            for (let mes of Object.values(cartas.meses)) {
+            for (const mes of Object.values(cartas.meses)) {
                 total = total + mes;
             }
         }
@@ -24,7 +24,7 @@ test("Snapshot com 3 cartas × 3 meses → soma dos meses = total do ano", () =>
 test("Mes faltando", () => {
     const acessosMensal = getAcessosServicoMensal();
     var total = 0;
-    for (let cartas of acessosMensal.cartas) {
+    for (const cartas of acessosMensal.cartas) {
         if (cartas.orgaoSigla === "AEM") {
             for (let mes of Object.values(cartas.meses)) {
                 total = total + mes;
