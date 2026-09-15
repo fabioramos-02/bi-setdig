@@ -11,11 +11,15 @@ cadastro sem primeiro login não vira uso). Ver ADR-013 e docstring do
 `contar_usuarios_ate`.
 """
 from __future__ import annotations
+from pathlib import Path
+from datetime import datetime
+import json
 
 import os
 
 import psycopg2
 from dotenv import load_dotenv
+from extract.init_class import AcessosServicoMensalPy
 
 load_dotenv()
 
@@ -98,3 +102,17 @@ def listar_sistemas_com_assinador() -> list[dict]:
             return saida
     finally:
         conn.close()
+
+DatSets_dir = Path("datasets/matomo/v1/acessos-servico-mensal.json")
+
+def get_acessos_mensal() -> AcessosServicoMensalPy:
+    caminho_do_json = DatSets_dir
+    try:
+        with open(caminho_do_json, "r",encoding="utf-8") as arquivo:
+            return json.load(arquivo)
+    except (FileNotFoundError, json.JSONDecodeError, OSError):
+        return{
+            "ano": datetime.now().year,
+            "geradoEm": "",
+            "cartas": []
+        }

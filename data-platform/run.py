@@ -16,10 +16,11 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from extract import ga4, matomo
+from extract import ga4, matomo, portal_unico_db
 from publish.writer import publish
 from transform import matomo as t_matomo
 from validate.rules import validate_period_breakdown, validate_rows
+from extract.init_class import CartaAcessoPy
 
 # Períodos fixos que o PeriodRadioGroup do portal oferece (ver ADR-007) —
 # breakdowns (navegadores/dispositivos/horários/geografia) são extraídos só
@@ -184,6 +185,39 @@ def run_matomo_jornada() -> None:
     validate_period_breakdown(saidas, ["dominio", "saidas"], ["saidas"])
     publish("matomo", "fuga-hub", saidas)
     print(f"[matomo] fuga-hub -> {[(k, len(v)) for k, v in saidas.items()]}")
+
+def run_matomo_10_mais_acessados_no_mes() -> list[CartaAcessoPy]:
+    """Retornara uma lista com as 10 cartas mais acessadas no mes,
+    utilizará o mes passado, por que ele já estará completo e não precisará fazer
+    a execução do código para cada dia que passar, atualizar o json do mes"""
+    from datetime import date
+    mes = date.today().month
+    numero_mes = mes - 1 if mes > 1 else 12
+    data = f"{numero_mes:02d}"
+    acessoMensalPy = portal_unico_db.get_acessos_mensal()
+    cartas_com_total: list[CartaAcessoPy] = []
+    for carta in acessoMensalPy.get("cartas",[]):
+        mes = carta.get("meses",{})
+        total_de_cliques = mes.get(data,0)
+        carta_atualizada = dict(carta)
+        carta_atualizada["total de cliques"] = total_de_cliques
+        cartas_com_total.append(carta_atualizada)
+    cartas_com_total.sort(key=lambda c:c.get("total de cliques",0), reverse=True)
+    return cartas_com_total[:10]
+
+
+def run_matomo_10_mais_acessados_ano() -> list[CartaAcessoPy]:
+    """Retorna a lista com as 10 cartas mais acessadas no ano."""
+    acessoMensalPy = portal_unico_db.get_acessos_mensal()
+    cartas_com_total: list[CartaAcessoPy] = []
+    for carta in acessoMensalPy.get("cartas", []):
+        total_de_cliques = sum(carta.get("meses", {}).values())
+        
+        carta_atualizada = dict(carta)
+        carta_atualizada["total_de_cliques"] = total_de_cliques
+        cartas_com_total.append(carta_atualizada)
+    cartas_com_total.sort(key=lambda c: c.get("total_de_cliques", 0), reverse=True)
+    return cartas_com_total[:10]
 
 
 def run_matomo_acessos_botao_mensal() -> None:
