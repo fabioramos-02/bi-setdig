@@ -14,7 +14,7 @@ function readDataset<T>(source: string, version: string, dataset: string): T | n
 }
 
 export type VisitasResumo = {
-  slug: any;
+  slug: string;
   date: string;
   visitas: number;
   visitantesUnicos: number;
