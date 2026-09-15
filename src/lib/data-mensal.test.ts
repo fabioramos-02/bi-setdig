@@ -26,7 +26,7 @@ test("Mes faltando", () => {
     var total = 0;
     for (const cartas of acessosMensal.cartas) {
         if (cartas.orgaoSigla === "AEM") {
-            for (let mes of Object.values(cartas.meses)) {
+            for (const mes of Object.values(cartas.meses)) {
                 total = total + mes;
             }
         }
