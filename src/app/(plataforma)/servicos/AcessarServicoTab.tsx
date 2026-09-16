@@ -110,7 +110,7 @@ export function AcessarServicoTab({
 
   const fluxoDoSnapshotMes = useMemo(() => {
     if (periodoTipo !== "mes") return null;
-    const mesChave = range.inicio.slice(5, 7); // ex: "08" para agosto
+    const mesChave = range.inicio.slice(5, 7);
     const m = new Map<string, FluxoCarta>();
     for (const carta of acessosMensal.cartas) {
       const cliques = carta.meses[mesChave] ?? 0;
