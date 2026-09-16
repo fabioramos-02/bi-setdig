@@ -114,9 +114,24 @@ export function ExplorarTab({
     return m;
   }, [periodoTipo, acessosMensal, visitasPorSlug]);
 
-  const fonteFluxo = fluxoDoSnapshotAno ?? fluxoPorSlug;
-  const modoBulk = orgaoFiltro && cartasDoOrgaoComUrl.length > 0 && cartasDoOrgaoComUrl.length <= THRESHOLD_BULK_ORGAO && periodoTipo !== "ano";
-  const modoIndividual = orgaoFiltro && cartasDoOrgaoComUrl.length > THRESHOLD_BULK_ORGAO && periodoTipo !== "ano";
+  const fluxoDoSnapshotMes = useMemo(() => {
+    if (periodoTipo !== "mes") return null;
+    const mesChave = range.inicio.slice(5, 7); // ex: "08" para agosto
+    const m = new Map<string, FluxoCarta>();
+    for (const carta of acessosMensal.cartas) {
+      const cliques = carta.meses[mesChave] ?? 0;
+      const acessosCarta = visitasPorSlug.get(carta.slug) ?? 0;
+      const taxa = acessosCarta > 0 ? (cliques / acessosCarta) * 100 : null;
+      m.set(carta.slug, { cliques, acessosCarta, taxaConversaoPct: taxa });
+    }
+    return m;
+  }, [periodoTipo, acessosMensal, visitasPorSlug, visitasPorSlug]);
+
+  const fluxoSlugPeriodo = periodoTipo === "mes" ? fluxoDoSnapshotMes : fluxoDoSnapshotAno;
+  const fonteFluxo = fluxoSlugPeriodo ?? fluxoPorSlug;
+
+  const modoBulk = orgaoFiltro && cartasDoOrgaoComUrl.length > 0 && cartasDoOrgaoComUrl.length <= THRESHOLD_BULK_ORGAO && periodoTipo !== "ano" && periodoTipo !== "mes";
+  const modoIndividual = orgaoFiltro && cartasDoOrgaoComUrl.length > THRESHOLD_BULK_ORGAO || (periodoTipo === "ano" || periodoTipo === "mes");
 
   async function buscarBulkOrgao() {
     if (!orgaoFiltro) return;
