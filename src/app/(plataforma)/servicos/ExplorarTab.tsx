@@ -9,7 +9,7 @@ import { EmptyCard } from "@/components/ds/EmptyCard";
 import { AvisoSnapshotAproximado, type StatusIntervalo } from "@/components/dashboard/AvisoSnapshotAproximado";
 import { ChartLoading } from "@/components/dashboard/ChartLoading";
 import { labelCategoria, prazoServico } from "@/lib/servicos";
-import type { AcessoBotaoCarta, CartaRelacao } from "@/lib/data";
+import type { AcessoBotaoCarta, AcessosServicoMensal, CartaRelacao } from "@/lib/data";
 
 const PASSO = 50;
 const PORTAL_BASE = "https://www.ms.gov.br";
@@ -49,12 +49,16 @@ export function ExplorarTab({
   range,
   status,
   rotuloPeriodo,
+  periodoTipo,
+  acessosMensal,
 }: {
   cartas: CartaRelacao[];
   visitasPorSlug: Map<string, number>;
   range: { inicio: string; fim: string };
   status: StatusIntervalo;
   rotuloPeriodo: string;
+  periodoTipo: "dia" | "semana" | "mes" | "ano" | "intervalo"
+  acessosMensal: AcessosServicoMensal;
 }) {
   const [busca, setBusca] = useState("");
   const [orgaoFiltro, setOrgaoFiltro] = useState(TODOS);
@@ -98,8 +102,36 @@ export function ExplorarTab({
     () => cartasDoOrgao.filter((c) => c.urlExterno),
     [cartasDoOrgao],
   );
-  const modoBulk = orgaoFiltro && cartasDoOrgaoComUrl.length > 0 && cartasDoOrgaoComUrl.length <= THRESHOLD_BULK_ORGAO;
-  const modoIndividual = orgaoFiltro && cartasDoOrgaoComUrl.length > THRESHOLD_BULK_ORGAO;
+  const fluxoDoSnapshotAno = useMemo(() => {
+    if (periodoTipo !== "ano") return null;
+    const m = new Map<string, FluxoCarta>();
+    for (const carta of acessosMensal.cartas) {
+      const cliques = Object.values(carta.meses).reduce((soma, n) => soma + n, 0);
+      const acessosCarta = visitasPorSlug.get(carta.slug) ?? 0;
+      const taxa = acessosCarta > 0 ? (cliques / acessosCarta) * 100 : null;
+      m.set(carta.slug, { cliques, acessosCarta, taxaConversaoPct: taxa });
+    }
+    return m;
+  }, [periodoTipo, acessosMensal, visitasPorSlug]);
+
+  const fluxoDoSnapshotMes = useMemo(() => {
+    if (periodoTipo !== "mes") return null;
+    const mesChave = range.inicio.slice(5, 7);
+    const m = new Map<string, FluxoCarta>();
+    for (const carta of acessosMensal.cartas) {
+      const cliques = carta.meses[mesChave] ?? 0;
+      const acessosCarta = visitasPorSlug.get(carta.slug) ?? 0;
+      const taxa = acessosCarta > 0 ? (cliques / acessosCarta) * 100 : null;
+      m.set(carta.slug, { cliques, acessosCarta, taxaConversaoPct: taxa });
+    }
+    return m;
+  }, [periodoTipo, acessosMensal, visitasPorSlug, visitasPorSlug]);
+
+  const fluxoSlugPeriodo = periodoTipo === "mes" ? fluxoDoSnapshotMes : fluxoDoSnapshotAno;
+  const fonteFluxo = fluxoSlugPeriodo ?? fluxoPorSlug;
+
+  const modoBulk = orgaoFiltro && cartasDoOrgaoComUrl.length > 0 && cartasDoOrgaoComUrl.length <= THRESHOLD_BULK_ORGAO && periodoTipo !== "ano" && periodoTipo !== "mes";
+  const modoIndividual = orgaoFiltro && cartasDoOrgaoComUrl.length > THRESHOLD_BULK_ORGAO || (periodoTipo === "ano" || periodoTipo === "mes");
 
   async function buscarBulkOrgao() {
     if (!orgaoFiltro) return;
@@ -233,12 +265,12 @@ export function ExplorarTab({
       label: "Acessar Serviço",
       align: "right",
       sortable: true,
-      sortValue: (c) => fluxoPorSlug.get(c.slug)?.cliques ?? -1,
+      sortValue: (c) => fonteFluxo.get(c.slug)?.cliques ?? -1,
       render: (c) => (
         <CelulaCliques
           slug={c.slug}
           temUrlExterno={Boolean(c.urlExterno)}
-          cliques={fluxoPorSlug.get(c.slug)?.cliques}
+          cliques={fonteFluxo.get(c.slug)?.cliques}
           carregando={carregandoSlug.has(c.slug)}
           modoIndividual={Boolean(modoIndividual)}
           onBuscar={() => buscarSlugIndividual(c.slug)}
@@ -250,9 +282,9 @@ export function ExplorarTab({
       label: "Conversão",
       align: "right",
       sortable: true,
-      sortValue: (c) => fluxoPorSlug.get(c.slug)?.taxaConversaoPct ?? -1,
+      sortValue: (c) => fonteFluxo.get(c.slug)?.taxaConversaoPct ?? -1,
       render: (c) => {
-        const f = fluxoPorSlug.get(c.slug);
+        const f = fonteFluxo.get(c.slug);
         if (!f) return <span style={{ color: "var(--ds-color-text-muted)" }}>—</span>;
         return (
           <span
@@ -311,7 +343,7 @@ export function ExplorarTab({
           quantidade={cartasDoOrgaoComUrl.length}
           rotuloPeriodo={rotuloPeriodo}
           estado={estadoBulk}
-          jaCarregado={cartasDoOrgaoComUrl.some((c) => fluxoPorSlug.has(c.slug))}
+          jaCarregado={cartasDoOrgaoComUrl.some((c) => fonteFluxo.has(c.slug))}
           onBuscar={buscarBulkOrgao}
         />
       )}
@@ -326,7 +358,21 @@ export function ExplorarTab({
             color: "var(--ds-color-text-secondary)",
           }}
         >
-          O órgão <strong>{orgaoFiltro}</strong> tem {cartasDoOrgaoComUrl.length} cartas com link externo — clique em <strong>Ver cliques</strong> em cada linha para carregar sob demanda.
+          <>Esse orgão possui uma quantidade de cartas elevadas, portanto serão mostrados individualmente</>
+        </div>
+      )}
+
+      {fluxoDoSnapshotAno && (
+        <div
+          className="text-base rounded"
+          style={{
+            background: "var(--ds-color-background-muted)",
+            padding: "var(--ds-spacing-16)",
+            border: "1px solid var(--ds-color-border)",
+            color: "var(--ds-color-text-secondary)",
+          }}
+        >
+          <>Foi feita a soma dos meses para que não sobrecarregasse o sistema</>
         </div>
       )}
 
@@ -356,8 +402,8 @@ export function ExplorarTab({
               Prazo: prazoDe(c),
               Custo: c.custo ?? "",
               [`Acessos ${rotuloPeriodo}`]: visitasPorSlug.get(c.slug) ?? 0,
-              [`Cliques Acessar Serviço ${rotuloPeriodo}`]: fluxoPorSlug.get(c.slug)?.cliques ?? "",
-              [`Conversão ${rotuloPeriodo} (%)`]: fluxoPorSlug.get(c.slug)?.taxaConversaoPct?.toFixed(1) ?? "",
+              [`Cliques Acessar Serviço ${rotuloPeriodo}`]: fonteFluxo.get(c.slug)?.cliques ?? "",
+              [`Conversão ${rotuloPeriodo} (%)`]: fonteFluxo.get(c.slug)?.taxaConversaoPct?.toFixed(1) ?? "",
               Link: `${PORTAL_BASE}/${c.categoria}/${c.slug}`,
             }))}
             filename="cartas-servico"

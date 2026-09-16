@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "matomo/acessos-servico-mensal",
+  "description": "Cliques mensais em \"Acessar serviço\" (link externo) por carta — snapshot noturno consumido pela aba Ano dos Serviços, evita chamada ao vivo ao Matomo e risco de rate-limit.",
+  "type": "object",
+  "required": ["ano", "geradoEm", "cartas"],
+  "properties": {
+    "ano": { "type": "integer", "minimum": 2020 },
+    "geradoEm": { "type": "string", "format": "date-time" },
+    "cartas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["slug", "orgaoSigla", "urlExterno", "meses"],
+        "properties": {
+          "slug": { "type": "string" },
+          "orgaoSigla": { "type": "string" },
+          "urlExterno": { "type": "string", "format": "uri" },
+          "meses": {
+            "type": "object",
+            "description": "Chave = mês (01..12), valor = cliques no botão no mês.",
+            "patternProperties": {
+              "^(0[1-9]|1[0-2])$": { "type": "integer", "minimum": 0 }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    }
+  }
+}

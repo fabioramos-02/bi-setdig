@@ -16,10 +16,11 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from extract import ga4, matomo
+from extract import ga4, matomo, portal_unico_db
 from publish.writer import publish
 from transform import matomo as t_matomo
 from validate.rules import validate_period_breakdown, validate_rows
+from extract.init_class import CartaAcessoPy
 
 # Períodos fixos que o PeriodRadioGroup do portal oferece (ver ADR-007) —
 # breakdowns (navegadores/dispositivos/horários/geografia) são extraídos só
@@ -184,6 +185,90 @@ def run_matomo_jornada() -> None:
     validate_period_breakdown(saidas, ["dominio", "saidas"], ["saidas"])
     publish("matomo", "fuga-hub", saidas)
     print(f"[matomo] fuga-hub -> {[(k, len(v)) for k, v in saidas.items()]}")
+
+def run_matomo_10_mais_acessados_no_mes() -> list[CartaAcessoPy]:
+    """Retornara uma lista com as 10 cartas mais acessadas no mes,
+    utilizará o mes passado, por que ele já estará completo e não precisará fazer
+    a execução do código para cada dia que passar, atualizar o json do mes"""
+    from datetime import date
+    mes = date.today().month
+    numero_mes = mes - 1 if mes > 1 else 12
+    data = f"{numero_mes:02d}"
+    acessoMensalPy = portal_unico_db.get_acessos_mensal()
+    cartas_com_total: list[CartaAcessoPy] = []
+    for carta in acessoMensalPy.get("cartas",[]):
+        mes = carta.get("meses",{})
+        total_de_cliques = mes.get(data,0)
+        carta_atualizada = dict(carta)
+        carta_atualizada["total de cliques"] = total_de_cliques
+        cartas_com_total.append(carta_atualizada)
+    cartas_com_total.sort(key=lambda c:c.get("total de cliques",0), reverse=True)
+    return cartas_com_total[:10]
+
+
+def run_matomo_10_mais_acessados_ano() -> list[CartaAcessoPy]:
+    """Retorna a lista com as 10 cartas mais acessadas no ano."""
+    acessoMensalPy = portal_unico_db.get_acessos_mensal()
+    cartas_com_total: list[CartaAcessoPy] = []
+    for carta in acessoMensalPy.get("cartas", []):
+        total_de_cliques = sum(carta.get("meses", {}).values())
+        
+        carta_atualizada = dict(carta)
+        carta_atualizada["total_de_cliques"] = total_de_cliques
+        cartas_com_total.append(carta_atualizada)
+    cartas_com_total.sort(key=lambda c: c.get("total_de_cliques", 0), reverse=True)
+    return cartas_com_total[:10]
+
+
+def run_matomo_acessos_botao_mensal() -> None:
+    """Cliques mensais no botão "Acessar Serviço" — 1 chamada
+    Transitions.getTransitionsForAction por carta com urlExterno × mês.
+    Alimenta a aba Ano dos Serviços sem request ao vivo, eliminando risco
+    de rate-limit no Matomo quando o cidadão navega no anual.
+
+    Idempotente: meses passados não mudam entre execuções; só o mês corrente
+    é recalculado a cada rodada. Falha por carta/mês vira 0 no dataset e é
+    logada — não derruba o run inteiro. Depende de cartas/inventario-relacao
+    já publicado; sem inventário, pula sem erro.
+    """
+    inventario = _ler_inventario_cartas()
+    if not inventario:
+        print("[matomo] acessos-servico-mensal: inventário indisponível, pulando")
+        return
+    cartas_ativas = [c for c in inventario if c.get("ativo") and c.get("urlExterno")]
+    agora = datetime.now(timezone.utc)
+    ano, mes_atual = agora.year, agora.month
+    resultado = []
+    for carta in cartas_ativas:
+        meses = {}
+        for m in range(1, mes_atual + 1):
+            try:
+                raw = matomo.get_transitions_for_action(
+                    period="month",
+                    date=f"{ano}-{m:02d}-01",
+                    action_url=carta["urlExterno"],
+                )
+                cliques = sum(
+                    int(o.get("referrals") or 0)
+                    for o in (raw.get("outlinks") or [])
+                )
+            except Exception as exc:  # noqa: BLE001 — falha isolada por carta/mês
+                print(f"[matomo] acessos-servico-mensal: falhou {carta['slug']} {ano}-{m:02d}: {exc}")
+                cliques = 0
+            meses[f"{m:02d}"] = cliques
+        resultado.append({
+            "slug": carta["slug"],
+            "orgaoSigla": carta.get("orgaoSigla") or "",
+            "urlExterno": carta["urlExterno"],
+            "meses": meses,
+        })
+    payload = {
+        "ano": ano,
+        "geradoEm": agora.isoformat(),
+        "cartas": resultado,
+    }
+    publish("matomo", "acessos-servico-mensal", payload)
+    print(f"[matomo] acessos-servico-mensal -> {len(resultado)} cartas × {mes_atual} meses")
 
 
 def run_ga4() -> None:
@@ -443,6 +528,7 @@ if __name__ == "__main__":
         ("matomo_perfil_filtro", run_matomo_perfil_filtro),
         ("matomo_eventos_perfil", run_matomo_eventos_perfil),
         ("matomo_jornada", run_matomo_jornada),
+        ("matomo_acessos_botao_mensal", run_matomo_acessos_botao_mensal),
         ("ga4", run_ga4),
         ("ga4_perfil", run_ga4_perfil),
         ("sites", run_sites),

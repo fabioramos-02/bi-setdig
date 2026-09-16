@@ -166,7 +166,12 @@
   },
   {
     "mes": "2026-08",
-    "abertos": 36,
-    "resolvidos": 59
+    "abertos": 42,
+    "resolvidos": 75
+  },
+  {
+    "mes": "2026-09",
+    "abertos": 4,
+    "resolvidos": 4
   }
 ]

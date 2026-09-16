@@ -2,317 +2,317 @@
   "dia": [
     {
       "termo": "inscrição estadual",
-      "buscas": 102
+      "buscas": 41
     },
     {
       "termo": "ipva",
-      "buscas": 50
-    },
-    {
-      "termo": "procon",
-      "buscas": 17
+      "buscas": 26
     },
     {
       "termo": "substituição tributária",
-      "buscas": 16
-    },
-    {
-      "termo": "cidadão",
-      "buscas": 6
-    },
-    {
-      "termo": "itcd",
-      "buscas": 6
-    },
-    {
-      "termo": "autoparcelamento",
-      "buscas": 4
-    },
-    {
-      "termo": "efd",
-      "buscas": 2
+      "buscas": 5
     },
     {
       "termo": "empresa",
+      "buscas": 4
+    },
+    {
+      "termo": "procon",
+      "buscas": 4
+    },
+    {
+      "termo": "autoparcelamento",
+      "buscas": 3
+    },
+    {
+      "termo": "itcd",
+      "buscas": 3
+    },
+    {
+      "termo": "defesa civil",
       "buscas": 2
+    },
+    {
+      "termo": "licenciamento",
+      "buscas": 2
+    },
+    {
+      "termo": "mulher",
+      "buscas": 2
+    },
+    {
+      "termo": "cidadão",
+      "buscas": 1
+    },
+    {
+      "termo": "conpras",
+      "buscas": 1
+    },
+    {
+      "termo": "detran",
+      "buscas": 1
+    },
+    {
+      "termo": "detran ms",
+      "buscas": 1
+    },
+    {
+      "termo": "efd",
+      "buscas": 1
+    },
+    {
+      "termo": "fernando augusto ribeiro pereira",
+      "buscas": 1
+    },
+    {
+      "termo": "ipva do meu veiculo",
+      "buscas": 1
+    },
+    {
+      "termo": "rg",
+      "buscas": 1
     },
     {
       "termo": "servidor",
-      "buscas": 2
-    },
-    {
-      "termo": "cnh",
-      "buscas": 2
-    },
-    {
-      "termo": "agendamento de eudentidade",
       "buscas": 1
     },
     {
-      "termo": "atendimento on-line",
-      "buscas": 1
-    },
-    {
-      "termo": "boleto",
-      "buscas": 1
-    },
-    {
-      "termo": "carteira de visitante",
-      "buscas": 1
-    },
-    {
-      "termo": "certidão negativa policia civil",
-      "buscas": 1
-    },
-    {
-      "termo": "clebson gonçalves martins",
-      "buscas": 1
-    },
-    {
-      "termo": "coleta",
-      "buscas": 1
-    },
-    {
-      "termo": "concta de contribuinte",
-      "buscas": 1
-    },
-    {
-      "termo": "debitos veiculos",
+      "termo": "supervisor",
       "buscas": 1
     }
   ],
   "semana": [
     {
       "termo": "inscrição estadual",
-      "buscas": 626
+      "buscas": 183
     },
     {
       "termo": "ipva",
-      "buscas": 317
-    },
-    {
-      "termo": "substituição tributária",
-      "buscas": 99
+      "buscas": 154
     },
     {
       "termo": "procon",
-      "buscas": 79
+      "buscas": 38
+    },
+    {
+      "termo": "substituição tributária",
+      "buscas": 23
     },
     {
       "termo": "itcd",
-      "buscas": 39
-    },
-    {
-      "termo": "autoparcelamento",
-      "buscas": 29
+      "buscas": 18
     },
     {
       "termo": "cidadão",
-      "buscas": 21
+      "buscas": 14
     },
     {
       "termo": "empresa",
-      "buscas": 20
+      "buscas": 10
     },
     {
-      "termo": "servidor",
-      "buscas": 13
-    },
-    {
-      "termo": "licenciamento",
+      "termo": "autoparcelamento",
       "buscas": 9
     },
     {
-      "termo": "mulher",
-      "buscas": 8
+      "termo": "licenciamento",
+      "buscas": 6
     },
     {
-      "termo": "rg",
-      "buscas": 7
+      "termo": "servidor",
+      "buscas": 4
     },
     {
-      "termo": "283007419",
-      "buscas": 5
+      "termo": "primeira cnh",
+      "buscas": 3
     },
     {
-      "termo": "nada consta",
-      "buscas": 5
+      "termo": "veículo",
+      "buscas": 3
     },
     {
       "termo": "defesa civil",
-      "buscas": 4
+      "buscas": 2
+    },
+    {
+      "termo": "detran ms",
+      "buscas": 2
     },
     {
       "termo": "efd",
-      "buscas": 4
+      "buscas": 2
     },
     {
-      "termo": "transferência de veículos",
-      "buscas": 4
+      "termo": "mulher",
+      "buscas": 2
+    },
+    {
+      "termo": "nota fiscal",
+      "buscas": 2
+    },
+    {
+      "termo": "rg",
+      "buscas": 2
     },
     {
       "termo": "cnh",
-      "buscas": 4
+      "buscas": 2
     },
     {
-      "termo": "curso",
-      "buscas": 3
-    },
-    {
-      "termo": "gestão pública",
-      "buscas": 3
+      "termo": "00983631158",
+      "buscas": 1
     }
   ],
   "mes": [
     {
-      "termo": "ipva",
-      "buscas": 2763
+      "termo": "inscrição estadual",
+      "buscas": 728
     },
     {
-      "termo": "inscrição estadual",
-      "buscas": 2525
+      "termo": "ipva",
+      "buscas": 579
     },
     {
       "termo": "procon",
-      "buscas": 504
+      "buscas": 149
     },
     {
       "termo": "substituição tributária",
-      "buscas": 483
+      "buscas": 108
     },
     {
       "termo": "itcd",
-      "buscas": 210
-    },
-    {
-      "termo": "autoparcelamento",
-      "buscas": 188
+      "buscas": 62
     },
     {
       "termo": "cidadão",
-      "buscas": 155
+      "buscas": 46
+    },
+    {
+      "termo": "autoparcelamento",
+      "buscas": 31
     },
     {
       "termo": "empresa",
-      "buscas": 87
+      "buscas": 24
     },
     {
       "termo": "licenciamento",
-      "buscas": 66
+      "buscas": 24
     },
     {
       "termo": "servidor",
-      "buscas": 56
-    },
-    {
-      "termo": "rg",
-      "buscas": 51
+      "buscas": 23
     },
     {
       "termo": "mulher",
-      "buscas": 45
+      "buscas": 15
     },
     {
-      "termo": "efd",
-      "buscas": 33
-    },
-    {
-      "termo": "defesa civil",
-      "buscas": 28
-    },
-    {
-      "termo": "cnh",
-      "buscas": 27
-    },
-    {
-      "termo": "multa",
-      "buscas": 14
-    },
-    {
-      "termo": "boletim",
+      "termo": "rg",
       "buscas": 10
     },
     {
-      "termo": "gestão pública",
-      "buscas": 9
+      "termo": "carteira de trabalho",
+      "buscas": 6
     },
     {
-      "termo": "283007419",
-      "buscas": 8
+      "termo": "efd",
+      "buscas": 6
+    },
+    {
+      "termo": "boletim de ocorrência",
+      "buscas": 4
+    },
+    {
+      "termo": "defesa civil",
+      "buscas": 4
     },
     {
       "termo": "detran ms",
-      "buscas": 8
+      "buscas": 4
+    },
+    {
+      "termo": "54.015.945.0001-06",
+      "buscas": 3
+    },
+    {
+      "termo": "cnh",
+      "buscas": 3
+    },
+    {
+      "termo": "débitos",
+      "buscas": 3
     }
   ],
   "ano": [
     {
       "termo": "ipva",
-      "buscas": 32526
+      "buscas": 33406
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 11398
+      "buscas": 12503
     },
     {
       "termo": "procon",
-      "buscas": 6932
+      "buscas": 7153
     },
     {
       "termo": "substituição tributária",
-      "buscas": 4751
+      "buscas": 4905
     },
     {
       "termo": "itcd",
-      "buscas": 1841
+      "buscas": 1937
     },
     {
       "termo": "cidadão",
-      "buscas": 1552
+      "buscas": 1620
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 1413
+      "buscas": 1463
     },
     {
       "termo": "servidor",
-      "buscas": 1227
+      "buscas": 1259
     },
     {
       "termo": "empresa",
-      "buscas": 763
+      "buscas": 797
     },
     {
       "termo": "licenciamento",
-      "buscas": 343
+      "buscas": 382
     },
     {
       "termo": "mulher",
-      "buscas": 273
-    },
-    {
-      "termo": "nota fiscal",
-      "buscas": 256
+      "buscas": 294
     },
     {
       "termo": "defesa civil",
-      "buscas": 244
+      "buscas": 252
+    },
+    {
+      "termo": "nota fiscal",
+      "buscas": 252
     },
     {
       "termo": "efd",
-      "buscas": 235
+      "buscas": 247
     },
     {
       "termo": "cnh",
-      "buscas": 234
+      "buscas": 238
     },
     {
       "termo": "rg",
-      "buscas": 198
+      "buscas": 213
     },
     {
       "termo": "fundação estadual jornalista luiz chagas de rádio e televisão",
-      "buscas": 157
+      "buscas": 161
     },
     {
       "termo": "web email",
@@ -320,7 +320,7 @@
     },
     {
       "termo": "gestão pública",
-      "buscas": 140
+      "buscas": 142
     },
     {
       "termo": "processo seletivo",

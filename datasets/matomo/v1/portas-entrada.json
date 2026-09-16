@@ -2,169 +2,169 @@
   "dia": [
     {
       "pagina": "/",
-      "entradas": 2297
+      "entradas": 1269
     },
     {
       "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
-      "entradas": 744
+      "entradas": 321
     },
     {
       "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
-      "entradas": 675
+      "entradas": 303
     },
     {
       "pagina": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
-      "entradas": 588
+      "entradas": 277
     },
     {
       "pagina": "/orgao/jucemsjunta-comercial-do-estado-de-mato-grosso-do-sul118/servicos",
-      "entradas": 403
-    },
-    {
-      "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
-      "entradas": 289
+      "entradas": 171
     },
     {
       "pagina": "/empresa-industria-e-comercio/pesquisar-viabilidade198/",
-      "entradas": 279
+      "entradas": 143
+    },
+    {
+      "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
+      "entradas": 122
     },
     {
       "pagina": "/financas-e-impostos/portal-e-fazenda-cadastro135/",
-      "entradas": 245
+      "entradas": 121
     },
     {
       "pagina": "/workspace",
-      "entradas": 239
+      "entradas": 121
     },
     {
-      "pagina": "/financas-e-impostos/ipva-consulta-de-debito54/",
-      "entradas": 223
+      "pagina": "/empresa-industria-e-comercio/emitir-certidao-simplificada-digital84/",
+      "entradas": 104
     }
   ],
   "semana": [
     {
       "pagina": "/",
-      "entradas": 12346
-    },
-    {
-      "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
-      "entradas": 4241
-    },
-    {
-      "pagina": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
-      "entradas": 3868
+      "entradas": 6298
     },
     {
       "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
-      "entradas": 3677
+      "entradas": 1936
     },
     {
-      "pagina": "/orgao/jucemsjunta-comercial-do-estado-de-mato-grosso-do-sul118/servicos",
-      "entradas": 2367
+      "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
+      "entradas": 1918
     },
     {
-      "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
+      "pagina": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
       "entradas": 1647
     },
     {
-      "pagina": "/empresa-industria-e-comercio/pesquisar-viabilidade198/",
-      "entradas": 1558
+      "pagina": "/orgao/jucemsjunta-comercial-do-estado-de-mato-grosso-do-sul118/servicos",
+      "entradas": 800
     },
     {
-      "pagina": "/financas-e-impostos/portal-e-fazenda-cadastro135/",
-      "entradas": 1424
+      "pagina": "/empresa-industria-e-comercio/pesquisar-viabilidade198/",
+      "entradas": 627
+    },
+    {
+      "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
+      "entradas": 606
     },
     {
       "pagina": "/seguranca/delegacia-virtual-devir105/",
-      "entradas": 1380
+      "entradas": 604
     },
     {
-      "pagina": "/seguranca/expedicao-de-certidao-de-antecedentes-criminais35/",
-      "entradas": 1282
+      "pagina": "/financas-e-impostos/ipva-consulta-de-debito54/",
+      "entradas": 586
+    },
+    {
+      "pagina": "/financas-e-impostos/portal-e-fazenda-cadastro135/",
+      "entradas": 579
     }
   ],
   "mes": [
     {
       "pagina": "/",
-      "entradas": 83467
-    },
-    {
-      "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
-      "entradas": 29498
+      "entradas": 22507
     },
     {
       "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
-      "entradas": 28239
+      "entradas": 7487
+    },
+    {
+      "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
+      "entradas": 7176
     },
     {
       "pagina": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
-      "entradas": 23390
+      "entradas": 6713
     },
     {
       "pagina": "/orgao/jucemsjunta-comercial-do-estado-de-mato-grosso-do-sul118/servicos",
-      "entradas": 12374
+      "entradas": 3020
     },
     {
       "pagina": "/financas-e-impostos/ipva-consulta-de-debito54/",
-      "entradas": 12192
+      "entradas": 2382
     },
     {
       "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
-      "entradas": 9308
+      "entradas": 2365
     },
     {
       "pagina": "/empresa-industria-e-comercio/pesquisar-viabilidade198/",
-      "entradas": 8410
+      "entradas": 2364
     },
     {
       "pagina": "/financas-e-impostos/portal-e-fazenda-cadastro135/",
-      "entradas": 7581
+      "entradas": 2290
     },
     {
       "pagina": "/seguranca/delegacia-virtual-devir105/",
-      "entradas": 7126
+      "entradas": 1826
     }
   ],
   "ano": [
     {
       "pagina": "/",
-      "entradas": 1064935
+      "entradas": 1099545
     },
     {
       "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
-      "entradas": 259999
+      "entradas": 271355
     },
     {
       "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
-      "entradas": 151943
+      "entradas": 164227
     },
     {
       "pagina": "/workspace/minha-area/meus-sistemas",
-      "entradas": 130877
-    },
-    {
-      "pagina": "/noticias/ - Others",
-      "entradas": 110883
+      "entradas": 132251
     },
     {
       "pagina": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
-      "entradas": 106216
+      "entradas": 116348
+    },
+    {
+      "pagina": "/noticias/ - Others",
+      "entradas": 111059
     },
     {
       "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
-      "entradas": 94440
+      "entradas": 97927
     },
     {
       "pagina": "/financas-e-impostos/portal-e-fazenda-cadastro135/",
-      "entradas": 66431
+      "entradas": 69720
     },
     {
       "pagina": "/financas-e-impostos/ipva-consulta-de-debito54/",
-      "entradas": 63658
+      "entradas": 67302
     },
     {
       "pagina": "/workspace",
-      "entradas": 62521
+      "entradas": 65110
     }
   ]
 }
