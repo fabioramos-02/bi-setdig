@@ -20,7 +20,7 @@ export async function GET(req: NextRequest) {
     const [visaoGeral, plataforma, servicos, funil, horarios] = await Promise.all([
       ga4.getOverview(inicio, fim),
       ga4.getPlatform(inicio, fim),
-      ga4.getServices(inicio, fim, 15),
+      ga4.getServices(inicio, fim, 100),
       ga4.getFunnel(inicio, fim),
       ga4.getVisitTime(inicio, fim),
     ]);
