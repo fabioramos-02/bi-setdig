@@ -18,9 +18,14 @@ export function NativoWebBar({
   nativo,
   web,
   variante = "completa",
+  unidade = "serviços",
+  rotulos = { nativo: "nativos", web: "redirecionados" },
 }: {
   nativo: number;
   web: number;
+  /** O que `nativo`/`web` contam — catálogo conta serviços, Funcionalidades conta acessos. */
+  unidade?: string;
+  rotulos?: { nativo: string; web: string };
   /** `compacta` esconde a legenda (usa quando a legenda já aparece
    *  externamente, ex.: numa lista por categoria) e reduz a altura. */
   variante?: "completa" | "compacta";
@@ -57,7 +62,7 @@ export function NativoWebBar({
           className={`flex ${alturaBarra} flex-1 rounded overflow-hidden min-w-0`}
           style={{ background: COR_WEB }}
           role="img"
-          aria-label={`${fmtInt(nativo)} serviços nativos (${fmtPct(pctNativo)}) e ${fmtInt(web)} redirecionados (${fmtPct(pctWeb)})`}
+          aria-label={`${fmtInt(nativo)} ${unidade} ${rotulos.nativo} (${fmtPct(pctNativo)}) e ${fmtInt(web)} ${rotulos.web} (${fmtPct(pctWeb)})`}
         >
           {pctNativo > 0 && (
             <div
@@ -65,8 +70,8 @@ export function NativoWebBar({
               style={{ width: `${pctNativo}%`, background: COR_NATIVO, minWidth: 0 }}
             >
               {nativoInline && !compacta && (
-                <span className="text-sm font-semibold tabular-nums whitespace-nowrap" style={{ color: "#fff" }}>
-                  {fmtInt(nativo)} nativos ({fmtPct(pctNativo)})
+                <span className="hidden sm:inline text-sm font-semibold tabular-nums whitespace-nowrap" style={{ color: "#fff" }}>
+                  {fmtInt(nativo)} {rotulos.nativo} ({fmtPct(pctNativo)})
                 </span>
               )}
             </div>
@@ -74,10 +79,10 @@ export function NativoWebBar({
           {webInline && !compacta && (
             <div className="flex items-center justify-center px-2" style={{ width: `${pctWeb}%`, minWidth: 0 }}>
               <span
-                className="text-sm font-semibold tabular-nums whitespace-nowrap"
+                className="hidden sm:inline text-sm font-semibold tabular-nums whitespace-nowrap"
                 style={{ color: "var(--ds-color-text-primary)" }}
               >
-                {fmtInt(web)} redirecionados ({fmtPct(pctWeb)})
+                {fmtInt(web)} {rotulos.web} ({fmtPct(pctWeb)})
               </span>
             </div>
           )}
@@ -85,15 +90,23 @@ export function NativoWebBar({
 
         {!compacta && (!nativoInline || !webInline) && (
           <span
-            className="text-xs tabular-nums whitespace-nowrap"
+            className="hidden sm:inline text-xs tabular-nums whitespace-nowrap"
             style={{ color: "var(--ds-color-text-secondary)" }}
           >
-            {!nativoInline && `${fmtInt(nativo)} nativos`}
+            {!nativoInline && `${fmtInt(nativo)} ${rotulos.nativo}`}
             {!nativoInline && !webInline && " · "}
-            {!webInline && `${fmtInt(web)} redirecionados`}
+            {!webInline && `${fmtInt(web)} ${rotulos.web}`}
           </span>
         )}
       </div>
+
+      {/* Mobile: segmento estreito não cabe o rótulo inline (vazava) — números
+          descem pra uma linha só, abaixo da barra. */}
+      {!compacta && (
+        <p className="sm:hidden text-xs tabular-nums" style={{ color: "var(--ds-color-text-secondary)" }}>
+          {fmtInt(nativo)} {rotulos.nativo} ({fmtPct(pctNativo)}) · {fmtInt(web)} {rotulos.web} ({fmtPct(pctWeb)})
+        </p>
+      )}
     </div>
   );
 }

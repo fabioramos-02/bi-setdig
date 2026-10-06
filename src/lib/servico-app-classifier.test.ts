@@ -104,3 +104,40 @@ test("normalizador casa 'LeiaMS' com 'Leia MS' (junto vs separado)", () => {
   assert.equal(r.servicosFolha[0].acessos, 50);
   assert.equal(r.categorias.find((c) => c.categoria === "Cultura e Esporte")?.valor, 50);
 });
+
+test("alias: nome da tela no app que diverge do catálogo casa com o serviço certo", () => {
+  const cat: ServicoCatalogo[] = [
+    ...catalogo,
+    { categoria: "Saúde", servico: "Cartão de Vacinação", tipo: "nativo", ativo: true, url: null },
+  ];
+  const r = classificarAcessosApp(
+    [
+      { servico: "Cartão SUS Online", acessos: 300 },
+      { servico: "Cartão de Vacinação", acessos: 50 },
+      { servico: "Cartão de Vacinação Covid-19", acessos: 10 },
+      { servico: "Cartão de Vacinação de Rotina", acessos: 15 },
+    ],
+    cat,
+  );
+  assert.equal(r.naoIdentificadoPct, 0);
+  assert.equal(r.servicosFolha.find((s) => s.servico === "Cartão do SUS Online")?.acessos, 300);
+  assert.equal(r.servicosFolha.find((s) => s.servico === "Cartão de Vacinação")?.acessos, 75);
+});
+
+test("tipo do catálogo vai pro serviço-folha e acessosPorTipo separa app × site", () => {
+  const cat: ServicoCatalogo[] = [
+    ...catalogo,
+    { categoria: "Documentos", servico: "Documentos Pendentes", tipo: "web", ativo: true, url: "https://x" },
+  ];
+  const r = classificarAcessosApp(
+    [
+      { servico: "Contracheque", acessos: 30 },
+      { servico: "Documentos Pendentes", acessos: 70 },
+      { servico: "Servidor Público", acessos: 999 }, // tela de categoria não entra no tipo
+    ],
+    cat,
+  );
+  assert.equal(r.servicosFolha.find((s) => s.servico === "Documentos Pendentes")?.tipo, "web");
+  assert.equal(r.servicosFolha.find((s) => s.servico === "Contracheque")?.tipo, "nativo");
+  assert.deepEqual(r.acessosPorTipo, { nativo: 30, web: 70 });
+});

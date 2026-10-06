@@ -21,6 +21,7 @@ import {
   calcularInsightCategoria,
   calcularInsightFunil,
   calcularInsightHorario,
+  calcularInsightTipoUso,
 } from "@/lib/insights";
 import { classificarAcessosApp } from "@/lib/servico-app-classifier";
 import { compararCanais } from "@/lib/cross-canal";
@@ -197,6 +198,7 @@ export function MsDigitalClient({
   const insightPlataforma = calcularInsightPlataforma(plat);
   const insightServico = calcularInsightServico(classificado.servicosFolha);
   const insightCategoria = calcularInsightCategoria(classificado.categorias);
+  const insightTipoUso = calcularInsightTipoUso(classificado.acessosPorTipo);
   const insightFunil = calcularInsightFunil(fun);
   const insightHorario = calcularInsightHorario(hor);
 
@@ -255,7 +257,10 @@ export function MsDigitalClient({
           naoIdentificadoPct={classificado.naoIdentificadoPct}
           insightServico={insightServico}
           insightCategoria={insightCategoria}
+          insightTipoUso={insightTipoUso}
+          rotuloPeriodo={rotuloPeriodo}
           status={statusGa4}
+          onIrPara={setAbaAtiva}
         />
       ),
     },
