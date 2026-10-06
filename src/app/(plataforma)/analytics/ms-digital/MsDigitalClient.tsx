@@ -13,6 +13,8 @@ import { JornadaTab } from "./JornadaTab";
 import { CrossCanalTab } from "./CrossCanalTab";
 import { CategoriasTab } from "./CategoriasTab";
 import { ContasTab } from "./ContasTab";
+import { MigracaoTab } from "./MigracaoTab";
+import { rankingMigracao, calcularInsightMigracao } from "@/lib/migracao-nativos";
 import {
   calcularInsightPlataforma,
   calcularInsightServico,
@@ -198,6 +200,11 @@ export function MsDigitalClient({
   const insightFunil = calcularInsightFunil(fun);
   const insightHorario = calcularInsightHorario(hor);
 
+  // Telas cruas (não o `classificado`): o mapa de migração casa direto contra
+  // o nome da tela, porque o catálogo não cobre todas (ver lib/migracao-nativos).
+  const migracao = rankingMigracao(serv);
+  const insightMigracao = calcularInsightMigracao(migracao);
+
   // Cross-BI: mesmo período nos dois canais. Portal = únicos do bucket +
   // serviços mais acessados gerais (Matomo), app = GA4. Reconciliação em
   // lib/cross-canal (compara listas como conjuntos, não linha a linha).
@@ -306,14 +313,19 @@ export function MsDigitalClient({
         />
       ),
     },
+    {
+      id: "migracao",
+      label: "7. Prioridade de migração",
+      content: <MigracaoTab ranking={migracao} insight={insightMigracao} rotuloPeriodo={rotuloPeriodo} status={statusGa4} />,
+    },
   ];
 
-  // 7ª aba — cadastro (SQL Server). Ignora filtro de período (cadastro é
+  // 8ª aba — cadastro (SQL Server). Ignora filtro de período (cadastro é
   // snapshot). Só aparece se o pipeline msdigital_db publicou dados.
   if (contasResumo) {
     abas.push({
       id: "contas",
-      label: "7. Contas",
+      label: "8. Contas",
       content: (
         <ContasTab
           resumo={contasResumo}
