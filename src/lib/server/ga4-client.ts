@@ -81,7 +81,7 @@ const EXCLUIR_TELA = new Set(["(not set)", "", "(other)"]);
 
 export type Servico = { servico: string; acessos: number };
 
-export async function getServices(inicio: string, fim: string, limit = 15): Promise<Servico[]> {
+export async function getServices(inicio: string, fim: string, limit = 100): Promise<Servico[]> {
   let rows: Servico[] = [];
   for (const dim of SCREEN_DIM_CANDIDATES) {
     try {
