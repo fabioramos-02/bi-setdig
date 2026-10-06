@@ -37,28 +37,49 @@ export function folhaDe(servico: string): string {
   return partes[partes.length - 1].trim();
 }
 
+/** Nome da tela no app → nome no catálogo, onde os dois divergem por texto
+ * (não por acento/espaço, que `normalizar` já resolve). Sub-telas de vacina
+ * somam no serviço-mãe. Achado com dado real em 2026-10: "Cartão SUS Online"
+ * sozinho tinha ~300 mil acessos/ano caindo em "não identificado".
+ * ponytail: mapa manual — melhoria de verdade é o app mandar id do serviço. */
+const ALIAS_TELA: Record<string, string> = {
+  "Cartão SUS Online": "Cartão do SUS Online",
+  "Cartão de Vacinação Covid-19": "Cartão de Vacinação",
+  "Cartão de Vacinação de Rotina": "Cartão de Vacinação",
+  "Resultado de Exames LACEN": "Exames LACEN",
+  "Carteira de Identificação Desportiva": "CID - Carteira de Identificação Desportiva",
+};
+const ALIAS_NORMALIZADO = new Map(Object.entries(ALIAS_TELA).map(([tela, cat]) => [normalizar(tela), normalizar(cat)]));
+
+export type ServicoFolha = Servico & { tipo: ServicoCatalogo["tipo"] };
+
 export type ResultadoClassificacao = {
-  servicosFolha: Servico[];
+  servicosFolha: ServicoFolha[];
   categorias: FatiaCategoria[];
   naoIdentificadoPct: number;
+  /** Acessos a serviço-folha separados por onde o serviço roda: tela do app
+   * (nativo) ou site aberto pelo app (web). */
+  acessosPorTipo: { nativo: number; web: number };
 };
 
 export function classificarAcessosApp(rows: Servico[], catalogo: ServicoCatalogo[]): ResultadoClassificacao {
   const categoriasSet = new Set(catalogo.map((c) => normalizar(c.categoria)));
-  const folhaMap = new Map<string, { folha: string; categoria: string }>();
+  const folhaMap = new Map<string, { folha: string; categoria: string; tipo: ServicoCatalogo["tipo"] }>();
   for (const c of catalogo) {
     const folha = folhaDe(c.servico);
-    folhaMap.set(normalizar(folha), { folha, categoria: c.categoria });
+    folhaMap.set(normalizar(folha), { folha, categoria: c.categoria, tipo: c.tipo });
   }
 
-  const folhaAcessos = new Map<string, number>();
+  const folhaAcessos = new Map<string, { acessos: number; tipo: ServicoCatalogo["tipo"] }>();
+  const acessosPorTipo = { nativo: 0, web: 0 };
   const categoriaAcessos = new Map<string, number>();
   let naoIdentificado = 0;
   let total = 0;
 
   for (const row of rows) {
     total += row.acessos;
-    const chave = normalizar(row.servico);
+    const bruta = normalizar(row.servico);
+    const chave = ALIAS_NORMALIZADO.get(bruta) ?? bruta;
 
     if (categoriasSet.has(chave)) {
       // Acesso direto na tela-categoria (menu) — conta pra "categoria mais usada".
@@ -70,7 +91,8 @@ export function classificarAcessosApp(rows: Servico[], catalogo: ServicoCatalogo
     if (folha) {
       // Serviço-folha real — conta no ranking de serviços E soma na categoria-mãe
       // (usar quantos acessaram a área toda, não só quem parou no menu).
-      folhaAcessos.set(folha.folha, (folhaAcessos.get(folha.folha) ?? 0) + row.acessos);
+      folhaAcessos.set(folha.folha, { acessos: (folhaAcessos.get(folha.folha)?.acessos ?? 0) + row.acessos, tipo: folha.tipo });
+      acessosPorTipo[folha.tipo] += row.acessos;
       categoriaAcessos.set(folha.categoria, (categoriaAcessos.get(folha.categoria) ?? 0) + row.acessos);
       continue;
     }
@@ -81,7 +103,7 @@ export function classificarAcessosApp(rows: Servico[], catalogo: ServicoCatalogo
   }
 
   const servicosFolha = [...folhaAcessos.entries()]
-    .map(([servico, acessos]) => ({ servico, acessos }))
+    .map(([servico, { acessos, tipo }]) => ({ servico, acessos, tipo }))
     .sort((a, b) => b.acessos - a.acessos);
 
   const totalCategorias = [...categoriaAcessos.values()].reduce((acc, v) => acc + v, 0);
@@ -89,7 +111,7 @@ export function classificarAcessosApp(rows: Servico[], catalogo: ServicoCatalogo
     .map(([categoria, valor]) => ({ categoria, valor, participacaoPct: totalCategorias > 0 ? (valor / totalCategorias) * 100 : 0 }))
     .sort((a, b) => b.valor - a.valor);
 
-  return { servicosFolha, categorias, naoIdentificadoPct: total > 0 ? (naoIdentificado / total) * 100 : 0 };
+  return { servicosFolha, categorias, naoIdentificadoPct: total > 0 ? (naoIdentificado / total) * 100 : 0, acessosPorTipo };
 }
 
 /** Lookup nome-normalizado(folha)->acessos, pra CategoriasTab achar o número

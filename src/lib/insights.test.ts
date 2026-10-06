@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { calcularInsightBusca, calcularInsightConcentracaoGeo, calcularInsightHorarioPortal } from "./insights.ts";
+import { calcularInsightTipoUso, calcularInsightBusca, calcularInsightConcentracaoGeo, calcularInsightHorarioPortal } from "./insights.ts";
 
 const TERMOS = [
   { termo: "ipva", buscas: 833 },
@@ -55,4 +55,9 @@ test("calcularInsightHorarioPortal: pega a hora de pico e formata o rótulo cru"
 
 test("calcularInsightHorarioPortal: lista vazia -> null", () => {
   assert.equal(calcularInsightHorarioPortal([]), null);
+});
+
+test("calcularInsightTipoUso: % dentro do app sobre app + site; sem acesso → null", () => {
+  assert.equal(calcularInsightTipoUso({ nativo: 75, web: 25 })?.pctNativo, 75);
+  assert.equal(calcularInsightTipoUso({ nativo: 0, web: 0 }), null);
 });

@@ -80,7 +80,7 @@ export function MigracaoTab({
 
       <div className="min-w-0">
         <div className="flex items-center justify-between gap-3 mb-3">
-          <h3 style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm font-semibold">
+          <h3 style={{ color: "var(--ds-color-text-primary)", fontSize: "1rem", lineHeight: 1.4, fontWeight: 600, margin: 0 }}>
             Quais serviços nativos migrar primeiro?
           </h3>
           <ExportCsvButton rows={csv} filename="prioridade-migracao-nativos" />

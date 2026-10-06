@@ -137,6 +137,16 @@ export function calcularInsightServico(servicos: Servico[]): InsightServico | nu
   return { servico: top.servico, participacaoPct: total > 0 ? (top.acessos / total) * 100 : 0 };
 }
 
+export type InsightTipoUso = { pctNativo: number; nativo: number; web: number };
+
+/** Quanto do uso de serviços acontece em tela do app (nativo) × site aberto
+ * pelo app (web) — sobre `acessosPorTipo` de classificarAcessosApp. */
+export function calcularInsightTipoUso(acessos: { nativo: number; web: number }): InsightTipoUso | null {
+  const total = acessos.nativo + acessos.web;
+  if (total === 0) return null;
+  return { pctNativo: (acessos.nativo / total) * 100, ...acessos };
+}
+
 export type InsightCategoria = { categoria: string; participacaoPct: number };
 
 /** Categoria (área do app) mais usada — molde de calcularInsightServico, mas
