@@ -26,7 +26,7 @@ test("rankingMigracao: agrupa telas no alvo e casa grafia divergente do app", ()
 
 test("rankingMigracao: tela web e tela de categoria não entram no uso nativo", () => {
   const r = rankingMigracao([
-    { servico: "Documentos Pendentes", acessos: 1000 },
+    { servico: "Agrotóxico", acessos: 1000 },
     { servico: "Saúde", acessos: 1000 },
     { servico: "Multas", acessos: 10 },
   ]);

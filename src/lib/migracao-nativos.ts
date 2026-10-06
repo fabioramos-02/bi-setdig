@@ -53,7 +53,8 @@ export const MIGRACAO_NATIVOS: AlvoMigracao[] = [
   { servico: "Portal do Servidor > Informe de Rendimentos", categoria: "Servidor Público", telas: ["Informe de Rendimentos"] },
   { servico: "Portal do Servidor > Carteira Funcional", categoria: "Servidor Público", telas: ["Carteira Funcional"] },
   { servico: "Portal do Servidor > BIM", categoria: "Servidor Público", telas: ["BIM"] },
-  { servico: "Relatório de diárias", categoria: "Servidor Público", telas: ["Relatório de diárias"] },
+  { servico: "Relatório de diárias", categoria: "Servidor Público", telas: ["Documentos Pendentes", "Documentos Assinados"] },
+  // ^ "Diárias" no GA é a consulta da Transparência (Pessoal > Diárias), não o relatório do servidor.
   { servico: "Clube de Benefícios", categoria: "Servidor Público", telas: ["Clube de Benefícios"] },
   { servico: "Estrada Viva > Registrar Notificação", categoria: "Meio Ambiente", telas: ["Registrar Notificação"] },
   { servico: "Estrada Viva > Notificações Pendentes", categoria: "Meio Ambiente", telas: ["Notificações Pendentes"] },
