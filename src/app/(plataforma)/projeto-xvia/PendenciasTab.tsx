@@ -3,7 +3,8 @@ import { StoryCard } from "@/components/dashboard/StoryCard";
 import { RankingBarChart } from "@/components/charts/RankingBarChart";
 import { DataTable, type Coluna } from "@/components/dashboard/DataTable";
 import { ExportCsvButton } from "@/components/dashboard/ExportCsvButton";
-import { fmtNum, linkTfs, pendencias, type TfsItem } from "@/lib/tfs";
+import { fmtNum, linkTfs, pendencias, type Filtros, type TfsItem } from "@/lib/tfs";
+import type { Filtrar } from "./ProjetoXviaClient";
 
 const colunas: Coluna<TfsItem>[] = [
   {
@@ -26,7 +27,7 @@ const colunas: Coluna<TfsItem>[] = [
 
 /** Pendências e problemas: entregas em Aguardando decisão ou Impedido, ou com
  * dependência registrada, ligadas à Feature e ao épico. As mais paradas primeiro. */
-export function PendenciasTab({ itens }: { itens: TfsItem[] }) {
+export function PendenciasTab({ itens, filtros, filtrar }: { itens: TfsItem[]; filtros: Filtros; filtrar: Filtrar }) {
   const lista = pendencias(itens);
   const porEpico = new Map<string, number>();
   for (const p of lista) porEpico.set(p.epico ?? "Sem épico", (porEpico.get(p.epico ?? "Sem épico") ?? 0) + 1);
@@ -45,7 +46,8 @@ export function PendenciasTab({ itens }: { itens: TfsItem[] }) {
       />
 
       <DashboardSection title="Em quais módulos estão as pendências?">
-        <RankingBarChart itens={ranking} cor="var(--ds-color-danger)" />
+        <RankingBarChart itens={ranking} cor="var(--ds-color-danger)" onSelect={(it) => filtrar("modulo", it.label)} selecionado={filtros.modulo} />
+        <p className="mt-3 text-xs" style={{ color: "var(--ds-color-text-muted)" }}>Clique num módulo para ver só as pendências dele.</p>
       </DashboardSection>
 
       <DashboardSection

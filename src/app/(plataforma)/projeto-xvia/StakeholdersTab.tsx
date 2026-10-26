@@ -2,7 +2,8 @@ import { StoryCard } from "@/components/dashboard/StoryCard";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { DataTable, type Coluna } from "@/components/dashboard/DataTable";
 import { ExportCsvButton } from "@/components/dashboard/ExportCsvButton";
-import { fmtNum, stakeholdersDoProjeto, type LinhaStakeholder, type TfsItem, type TfsStakeholder } from "@/lib/tfs";
+import { fmtNum, stakeholdersDoProjeto, type Filtros, type LinhaStakeholder, type TfsItem, type TfsStakeholder } from "@/lib/tfs";
+import type { Filtrar } from "./ProjetoXviaClient";
 
 const PAPEL = { piloto: "Órgão piloto", parceiro: "Órgão parceiro" } as const;
 
@@ -19,7 +20,7 @@ const colunas: Coluna<LinhaStakeholder>[] = [
 /** Órgãos envolvidos: os que têm entregas no backlog (pelo prefixo da Feature,
  * ex. [SES]) ou papel definido. Ponto focal e papel piloto/parceiro são
  * preenchidos à mão em datasets/tfs/v1/stakeholders.json. */
-export function StakeholdersTab({ itens, stakeholders }: { itens: TfsItem[]; stakeholders: TfsStakeholder[] }) {
+export function StakeholdersTab({ itens, stakeholders, filtros, filtrar }: { itens: TfsItem[]; stakeholders: TfsStakeholder[]; filtros: Filtros; filtrar: Filtrar }) {
   const linhas = stakeholdersDoProjeto(stakeholders, itens);
   const pilotos = linhas.filter((l) => l.papel === "piloto").length;
   const parceiros = linhas.filter((l) => l.papel === "parceiro").length;
@@ -46,8 +47,11 @@ export function StakeholdersTab({ itens, stakeholders }: { itens: TfsItem[]; sta
         }
       >
         <div className="overflow-x-auto min-w-0">
-          <DataTable columns={colunas} rows={linhas} rowKey={(r) => r.sigla} />
+          <DataTable columns={colunas} rows={linhas} rowKey={(r) => r.sigla} onRowClick={(r) => filtrar("orgao", r.sigla)} />
         </div>
+        <p className="mt-3 text-xs" style={{ color: "var(--ds-color-text-muted)" }}>
+          {filtros.orgao ? `Painel filtrado em ${filtros.orgao} — clique de novo na linha para voltar a todos.` : "Clique num órgão para ver o painel só com as entregas dele."}
+        </p>
       </DashboardSection>
     </div>
   );

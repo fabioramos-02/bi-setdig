@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { ContentTopBar } from "@/components/ds/ContentTopBar";
 import { EmptyCard } from "@/components/ds/EmptyCard";
 import {
   getDatasetUpdatedAt,
   getTfsContrato,
+  getTfsEtpUst,
   getTfsItens,
   getTfsSprints,
   getTfsStakeholders,
@@ -33,13 +35,17 @@ export default function ProjetoXviaPage() {
   }
 
   return (
-    <ProjetoXviaClient
-      itens={itens}
-      sprints={getTfsSprints()}
-      contrato={getTfsContrato()}
-      stakeholders={getTfsStakeholders()}
-      // "Hoje" é o dia da extração: os prazos e dias parados batem com o dado.
-      hoje={atualizadoEm.slice(0, 10)}
-    />
+    // Filtros ficam na URL (useSearchParams) — exige Suspense.
+    <Suspense>
+      <ProjetoXviaClient
+        itens={itens}
+        sprints={getTfsSprints()}
+        contrato={getTfsContrato()}
+        etp={getTfsEtpUst()}
+        stakeholders={getTfsStakeholders()}
+        // "Hoje" é o dia da extração: prazos e dias parados batem com o dado.
+        hoje={atualizadoEm.slice(0, 10)}
+      />
+    </Suspense>
   );
 }

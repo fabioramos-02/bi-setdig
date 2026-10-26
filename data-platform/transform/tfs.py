@@ -25,6 +25,16 @@ PREFIXO = re.compile(r"^\[([^\]]+)\]\s*-?\s*(\S*)")
 ALIAS_ORGAO = {"SED": "SEDMS", "CGE": "CGEMS", "ENTRETENIMENTO": "FERTELEDUCATIVAMS"}
 
 
+# A X-VIA não preenche a atividade UST do TFS: escreve o código do catálogo
+# dela na descrição ("Catálogo DOC.07 - …"). Faixa vem como "NEG.03/04/05".
+CODIGO_CATALOGO = re.compile(r"Cat[aá]logo\s+([A-Z]+\.\d+(?:/\d+)*)")
+
+
+def codigo_catalogo(descricao: str | None) -> str | None:
+    m = CODIGO_CATALOGO.search(descricao or "")
+    return m.group(1) if m else None
+
+
 def frente(area: str) -> str:
     return "SGD" if area == "XVIA\\SGD" or area.startswith("XVIA\\SGD\\") else "X-VIA"
 
@@ -114,6 +124,7 @@ def montar_itens(arvore: dict[int, int | None], brutos: list[dict],
             "complexidadeUst": f.get("Custom.SGI.ComplexidadeUST") or None,
             "ust": ust.get(str(lancamento)) if lancamento else None,
             "dataExecucao": _data(f.get("Custom.SGI.DataExecucao")),
+            "codigoCatalogo": codigo_catalogo(f.get("System.Description")) if tipo == "Task" else None,
         })
     linhas.sort(key=lambda x: x["id"])
     return linhas

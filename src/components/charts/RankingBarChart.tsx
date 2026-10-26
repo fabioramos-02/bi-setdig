@@ -12,6 +12,8 @@ export function RankingBarChart({
   cor = "var(--ds-color-primary-600)",
   formatarValor = (v: number) => v.toLocaleString("pt-BR"),
   compact = false,
+  onSelect,
+  selecionado,
 }: {
   itens: ItemRanking[];
   cor?: string;
@@ -21,6 +23,10 @@ export function RankingBarChart({
   /** Reduz espaçamento e altura das barras — pra caber mais no relatório/PDF
    * sem perder legibilidade (usado na Visão Geral). */
   compact?: boolean;
+  /** Barra clicável (filtrar/abrir detalhe) — vira <button>; `href` continua valendo. */
+  onSelect?: (item: ItemRanking) => void;
+  /** Label do item ativo — fica destacado. */
+  selecionado?: string;
 }) {
   const max = itens.reduce((m, x) => Math.max(m, x.valor), 0);
   const alturaBarra = compact ? "h-2" : "h-2.5";
@@ -31,16 +37,20 @@ export function RankingBarChart({
         const frac = max > 0 ? it.valor / max : 0;
         const largura = Math.max(frac * 100, 4);
         const opacidade = 0.35 + 0.65 * frac; // intensidade: claro (menos) → cheio (mais)
-        const Wrapper = it.href ? "a" : "div";
+        const clicavel = !!(it.href || onSelect);
+        const Wrapper = it.href ? "a" : onSelect ? "button" : "div";
+        const ativo = selecionado === it.label;
         return (
           <Wrapper
             key={`${it.href ?? it.label}-${i}`}
             {...(it.href ? { href: it.href, target: "_blank", rel: "noopener noreferrer" } : {})}
-            className={`block rounded px-2 -mx-2 transition-colors ${compact ? "py-1" : "py-1.5"} ${it.href ? "group hover:bg-[var(--ds-color-background-muted)]" : ""}`}
+            {...(!it.href && onSelect ? { type: "button" as const, onClick: () => onSelect(it), "aria-pressed": ativo } : {})}
+            className={`block w-full text-left rounded px-2 -mx-2 transition-colors ${compact ? "py-1" : "py-1.5"} ${clicavel ? "group cursor-pointer hover:bg-[var(--ds-color-background-muted)]" : ""}`}
+            style={ativo ? { background: "var(--ds-color-background-muted)", outline: "2px solid var(--ds-color-primary-600)" } : undefined}
           >
             <div className={`flex justify-between items-baseline gap-3 text-sm ${compact ? "mb-0.5" : "mb-1"}`}>
               <span
-                className={`font-medium truncate ${it.href ? "group-hover:underline" : ""}`}
+                className={`font-medium truncate ${clicavel ? "group-hover:underline" : ""}`}
                 style={{ color: "var(--ds-color-text-primary)" }}
               >
                 {it.label}

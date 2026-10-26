@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { SIGLAS_CENSO, type OrgaoCenso } from "./censo";
-import type { TfsContrato, TfsItem, TfsSprint, TfsStakeholder } from "./tfs";
+import type { EtpUst, TfsContrato, TfsItem, TfsSprint, TfsStakeholder } from "./tfs";
 
 /**
  * Único ponto de leitura de datasets/ (ver docs/architecture/data-flow.md).
@@ -574,4 +574,7 @@ export function getTfsStakeholders(): TfsStakeholder[] {
 }
 export function getTfsContrato(): TfsContrato | null {
   return readDataset<TfsContrato>("tfs", "v1", "contrato");
+}
+export function getTfsEtpUst(): EtpUst | null {
+  return readDataset<EtpUst>("tfs", "v1", "etp-ust");
 }

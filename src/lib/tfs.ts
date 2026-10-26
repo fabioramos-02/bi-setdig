@@ -35,6 +35,7 @@ export type TfsItem = {
   complexidadeUst: string | null;
   ust: number | null;
   dataExecucao: string | null;
+  codigoCatalogo: string | null;
 };
 
 export type TfsSprint = {
@@ -169,42 +170,125 @@ export function entregasDoMes(itens: TfsItem[], mes: string) {
   return [...porSprint].map(([sprint, lista]) => ({ sprint, itens: lista })).sort((a, b) => a.sprint.localeCompare(b.sprint));
 }
 
-/** UST: executada = Tasks Done com atividade do contrato; priorizada = Tasks
- * ainda abertas na sprint atual ou nas futuras. Valor em R$ só com o R$/UST
- * do TR preenchido. */
-export function execucaoFinanceira(itens: TfsItem[], sprints: TfsSprint[], contrato: TfsContrato | null) {
-  const tasks = itens.filter((i) => i.tipo === "Task" && i.estado !== "Removed");
-  const vigentes = new Set(sprints.filter((s) => s.situacao !== "encerrada").map((s) => s.sprint));
-  const comUst = tasks.filter((t) => t.ust !== null);
-  const soma = (lista: TfsItem[]) => lista.reduce((s, t) => s + (t.ust ?? 0), 0);
-  const executadas = comUst.filter((t) => t.estado === "Done");
-  const priorizadas = comUst.filter((t) => aberto(t) && vigentes.has(t.sprint));
+// --- UST da X-VIA × ETP -----------------------------------------------------
+// A X-VIA não preenche a atividade UST do TFS: o código do catálogo dela vem da
+// descrição da Task ("Catálogo DOC.07 …"). Só conta o que está na área que a
+// X-VIA fatura (XVIA\Customização UST). Valores pela tabela do ETP (pp. 68–71).
 
-  const mapa = new Map<string, { epico: string; executada: number; priorizada: number; previsao: number | null }>();
-  for (const t of comUst) {
-    const epico = t.epico ?? "Sem épico";
-    const m = mapa.get(epico) ?? {
-      epico, executada: 0, priorizada: 0,
-      previsao: contrato?.previsaoPorModulo.find((p) => p.epico === epico)?.ust ?? null,
-    };
-    if (t.estado === "Done") m.executada += t.ust ?? 0;
-    else if (vigentes.has(t.sprint)) m.priorizada += t.ust ?? 0;
-    mapa.set(epico, m);
+export const AREA_UST = "XVIA\\Customização UST";
+
+export type EtpLinha = { codigo: string | null; servico: string; ust: number; ocorrencia: number; complexidade?: string };
+export type EtpUst = {
+  totalEtp: number;
+  totalEstrutural: number;
+  perfis: { perfil: string; servicos: number; ustPorServico: number; itens: EtpLinha[] }[];
+  estruturais: EtpLinha[];
+};
+
+export type CodigoEtp = { codigo: string; servico: string; ustUnitaria: number; previsto: number };
+
+/** Por código: UST unitária (do perfil; senão da linha estrutural) e UST
+ * prevista no ETP (ocorrência × nº de serviços do perfil + linhas estruturais). */
+export function ustEtp(etp: EtpUst): Map<string, CodigoEtp> {
+  const mapa = new Map<string, CodigoEtp>();
+  const somar = (l: EtpLinha, mult: number, doPerfil: boolean) => {
+    if (!l.codigo) return;
+    const atual = mapa.get(l.codigo);
+    if (!atual) {
+      mapa.set(l.codigo, { codigo: l.codigo, servico: l.servico, ustUnitaria: l.ust, previsto: l.ust * l.ocorrencia * mult });
+      return;
+    }
+    atual.previsto += l.ust * l.ocorrencia * mult;
+    if (doPerfil) Object.assign(atual, { servico: l.servico, ustUnitaria: l.ust });
+  };
+  for (const p of etp.perfis) for (const l of p.itens) somar(l, p.servicos, true);
+  for (const l of etp.estruturais) somar(l, 1, false);
+  return mapa;
+}
+
+export type SituacaoUst = "sem código" | "faixa a definir" | "fora do ETP";
+export type LinhaCodigo = CodigoEtp & { tarefas: number; lancada: number; executada: number; saldo: number; itens: TfsItem[] };
+
+export function ehTarefaXvia(i: TfsItem) {
+  return i.tipo === "Task" && i.estado !== "Removed" && (i.area === AREA_UST || i.area.startsWith(`${AREA_UST}\\`));
+}
+
+/** Lançado = toda Task com código do ETP (UST unitária × 1); executado = as Done.
+ * Task sem código, com faixa (NEG.03/04/05) ou código fora do ETP fica "a
+ * classificar": fora da soma, listada para a X-VIA corrigir. */
+export function execucaoXvia(itens: TfsItem[], etp: EtpUst | null, contrato: TfsContrato | null) {
+  const tabela = etp ? ustEtp(etp) : new Map<string, CodigoEtp>();
+  const tarefas = itens.filter(ehTarefaXvia);
+  const porCodigo = new Map<string, LinhaCodigo>();
+  const aClassificar: (TfsItem & { situacao: SituacaoUst })[] = [];
+
+  for (const t of tarefas) {
+    const cod = t.codigoCatalogo;
+    const ref = cod ? tabela.get(cod) : undefined;
+    if (!ref) {
+      const situacao: SituacaoUst = !cod ? "sem código" : cod.includes("/") ? "faixa a definir" : "fora do ETP";
+      aClassificar.push({ ...t, situacao });
+      continue;
+    }
+    const linha = porCodigo.get(ref.codigo) ?? { ...ref, tarefas: 0, lancada: 0, executada: 0, saldo: ref.previsto, itens: [] };
+    linha.tarefas += 1;
+    linha.lancada += ref.ustUnitaria;
+    if (t.estado === "Done") linha.executada += ref.ustUnitaria;
+    linha.saldo = linha.previsto - linha.lancada;
+    linha.itens.push(t);
+    porCodigo.set(ref.codigo, linha);
+  }
+  // Códigos do ETP ainda sem nenhuma Task também aparecem: mostram o que falta usar.
+  for (const ref of tabela.values()) {
+    if (!porCodigo.has(ref.codigo)) porCodigo.set(ref.codigo, { ...ref, tarefas: 0, lancada: 0, executada: 0, saldo: ref.previsto, itens: [] });
   }
 
-  const ustExecutada = soma(executadas);
+  const contagemAClassificar: Record<SituacaoUst, number> = { "sem código": 0, "faixa a definir": 0, "fora do ETP": 0 };
+  for (const t of aClassificar) contagemAClassificar[t.situacao] += 1;
+
+  const linhas = [...porCodigo.values()].sort((a, b) => b.lancada - a.lancada || b.previsto - a.previsto);
+  const ustExecutada = linhas.reduce((s, l) => s + l.executada, 0);
+  const ustLancada = linhas.reduce((s, l) => s + l.lancada, 0);
+  const total = contrato?.ustTotalTr ?? etp?.totalEtp ?? null;
   const valorUst = contrato?.valorUst ?? null;
-  const totalTr = contrato?.ustTotalTr ?? null;
+  const pct = (n: number) => (total ? Math.round((n / total) * 1000) / 10 : null);
   return {
+    tarefas: tarefas.length,
     ustExecutada,
-    ustPriorizada: soma(priorizadas),
-    ustTotalTr: totalTr,
-    pctTr: totalTr ? Math.round((ustExecutada / totalTr) * 1000) / 10 : null,
+    ustLancada,
+    ustTotal: total,
+    pctExecutado: pct(ustExecutada),
+    pctLancado: pct(ustLancada),
     valorExecutado: valorUst === null ? null : ustExecutada * valorUst,
-    valorPriorizado: valorUst === null ? null : soma(priorizadas) * valorUst,
-    tasksTotal: tasks.length,
-    tasksSemUst: tasks.length - comUst.length,
-    porModulo: [...mapa.values()].sort((a, b) => b.executada + b.priorizada - (a.executada + a.priorizada)),
+    valorLancado: valorUst === null ? null : ustLancada * valorUst,
+    porCodigo: linhas,
+    aClassificar,
+    contagemAClassificar,
+  };
+}
+
+// --- Filtros do painel (ficam na URL) --------------------------------------
+
+export type Filtros = { modulo: string; frente: string; orgao: string; sprint: string };
+export const FILTROS_VAZIOS: Filtros = { modulo: "", frente: "", orgao: "", sprint: "" };
+
+export function filtrarItens(itens: TfsItem[], f: Filtros): TfsItem[] {
+  return itens.filter(
+    (i) =>
+      (!f.modulo || i.epico === f.modulo) &&
+      (!f.frente || i.frente === f.frente) &&
+      (!f.orgao || i.orgao === f.orgao) &&
+      (!f.sprint || i.sprint === f.sprint),
+  );
+}
+
+export function opcoesFiltro(itens: TfsItem[]) {
+  const unicos = (vals: (string | null)[]) =>
+    [...new Set(vals.filter((v): v is string => !!v))].sort((a, b) => a.localeCompare(b, "pt-BR"));
+  return {
+    modulo: unicos(itens.map((i) => i.epico)),
+    orgao: unicos(itens.map((i) => i.orgao)),
+    sprint: unicos(itens.map((i) => i.sprint)),
   };
 }
 

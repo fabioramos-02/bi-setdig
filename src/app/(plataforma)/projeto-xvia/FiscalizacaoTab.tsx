@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { RankingBarChart } from "@/components/charts/RankingBarChart";
@@ -33,6 +36,7 @@ const colunas: Coluna<TfsItem>[] = [
 /** Fiscalização e aceite: o que foi priorizado na sprint atual (e onde está no
  * quadro), o que foi entregue no mês e o que já está em produção. */
 export function FiscalizacaoTab({ itens, sprints, hoje }: { itens: TfsItem[]; sprints: TfsSprint[]; hoje: string }) {
+  const [coluna, setColuna] = useState<string | null>(null);
   const atual = sprintAtual(sprints);
   const sprint = entregasDaSprint(itens, atual);
   const mes = hoje.slice(0, 7);
@@ -56,7 +60,23 @@ export function FiscalizacaoTab({ itens, sprints, hoje }: { itens: TfsItem[]; sp
 
       {atual && sprint.porColuna.length > 0 && (
         <DashboardSection title={`Onde estão as entregas da ${atual.nome}?`}>
-          <RankingBarChart itens={sprint.porColuna.map((c) => ({ label: c.coluna, valor: c.total }))} />
+          <RankingBarChart
+            itens={sprint.porColuna.map((c) => ({ label: c.coluna, valor: c.total }))}
+            onSelect={(it) => setColuna(it.label === coluna ? null : it.label)}
+            selecionado={coluna ?? undefined}
+          />
+          {coluna ? (
+            <div className="mt-4 min-w-0">
+              <h3 className="text-sm font-semibold mb-2" style={{ color: "var(--ds-color-text-primary)" }}>
+                {coluna} — entregas da {atual.nome}
+              </h3>
+              <div className="overflow-x-auto min-w-0">
+                <DataTable columns={colunas} rows={sprint.itens.filter((i) => (i.coluna ?? "Sem coluna") === coluna)} rowKey={(r) => String(r.id)} />
+              </div>
+            </div>
+          ) : (
+            <p className="mt-3 text-xs" style={{ color: "var(--ds-color-text-muted)" }}>Clique numa etapa para ver as entregas que estão nela.</p>
+          )}
         </DashboardSection>
       )}
 

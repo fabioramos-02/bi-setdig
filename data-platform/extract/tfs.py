@@ -25,7 +25,7 @@ API = "4.1"
 PASTA_QUERIES = "Shared Queries/BI SETDIG"
 
 CAMPOS = [
-    "System.Id", "System.WorkItemType", "System.Title", "System.State",
+    "System.Id", "System.WorkItemType", "System.Title", "System.State", "System.Description",
     "System.BoardColumn", "System.AreaPath", "System.IterationPath", "System.Tags",
     "System.CreatedDate", "System.ChangedDate", "Microsoft.VSTS.Common.ClosedDate",
     "Microsoft.VSTS.Scheduling.TargetDate", "Microsoft.VSTS.Scheduling.Effort",

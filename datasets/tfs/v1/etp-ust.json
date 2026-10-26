@@ -1,0 +1,539 @@
+{
+  "fonte": "ETP Plataforma Digital pós-parecer, versão final — item 7.1.2.4, pp. 68–71 (memória de cálculo das UST).",
+  "comoPreencher": "Transcrição literal da tabela do ETP. Peculiaridades do original: TES.07 aparece duas vezes nas atividades estruturais (com o serviço 'Documentação Técnica de API/Web Service', 5 UST, e 'Teste de aceitação', 2 UST) — a UST unitária do código vem dos perfis (2); TES.11 aparece duas vezes; 'Especificar funcionalidade' não tem código. O ETP declara 'Total Estrutural: 15.355 USTs' (7.1.2.4.20), mas as linhas somam 15.560 — e é com 15.560 que a consolidação fecha os 23.356 (4.576 + 1.526 + 1.694 + 15.560). Aqui vale a soma das linhas.",
+  "totalEtp": 23356,
+  "totalEstrutural": 15560,
+  "perfis": [
+    {
+      "perfil": "Simples",
+      "servicos": 22,
+      "ustPorServico": 208,
+      "itens": [
+        {
+          "codigo": "DEV.15",
+          "servico": "Avaliação de Código (Code Review / Pull Request) - Nível Básico",
+          "ust": 2,
+          "ocorrencia": 1
+        },
+        {
+          "codigo": "DEV.13",
+          "servico": "Publicação de Branches e Versionamento de Código",
+          "ust": 3,
+          "ocorrencia": 3
+        },
+        {
+          "codigo": "DEV.06",
+          "servico": "Criação de Protótipo – Alta Fidelidade",
+          "ust": 18,
+          "ocorrencia": 2
+        },
+        {
+          "codigo": "DEV.07",
+          "servico": "Atualização de Protótipo – Alta Fidelidade",
+          "ust": 8,
+          "ocorrencia": 2
+        },
+        {
+          "codigo": "DEV.02",
+          "servico": "Criação de Tela Web",
+          "ust": 18,
+          "ocorrencia": 2
+        },
+        {
+          "codigo": "DEV.03",
+          "servico": "Atualização de Tela Web",
+          "ust": 8,
+          "ocorrencia": 2
+        },
+        {
+          "codigo": "DEV.10",
+          "servico": "Criação de integração com Sistemas Externos",
+          "ust": 10,
+          "ocorrencia": 3
+        },
+        {
+          "codigo": "DEV.11",
+          "servico": "Atualização de integração com Sistemas Externos",
+          "ust": 8,
+          "ocorrencia": 3
+        },
+        {
+          "codigo": "DEV.19",
+          "servico": "Implantação de Pipeline CI/CD",
+          "ust": 3,
+          "ocorrencia": 1
+        },
+        {
+          "codigo": "DEV.20",
+          "servico": "Automação de Build e Deploy",
+          "ust": 2,
+          "ocorrencia": 1
+        },
+        {
+          "codigo": "DOC.03",
+          "servico": "Documentação Técnica de API/Web Service",
+          "ust": 5,
+          "ocorrencia": 1
+        },
+        {
+          "codigo": "DOC.05",
+          "servico": "Documentação Técnica de outras naturezas",
+          "ust": 5,
+          "ocorrencia": 3
+        },
+        {
+          "codigo": "TES.07",
+          "servico": "Teste de aceitação",
+          "ust": 2,
+          "ocorrencia": 1
+        },
+        {
+          "codigo": "TES.01",
+          "servico": "Teste de Usabilidade",
+          "ust": 6,
+          "ocorrencia": 1
+        },
+        {
+          "codigo": "TES.02",
+          "servico": "Teste de Acessibilidade",
+          "ust": 6,
+          "ocorrencia": 1
+        }
+      ]
+    },
+    {
+      "perfil": "Médio",
+      "servicos": 7,
+      "ustPorServico": 218,
+      "itens": [
+        {
+          "codigo": "DEV.16",
+          "servico": "Avaliação de Código (Code Review / Pull Request) - Nível Intermediário",
+          "ust": 6,
+          "ocorrencia": 2
+        },
+        {
+          "codigo": "DEV.13",
+          "servico": "Publicação de Branches e Versionamento de Código",
+          "ust": 3,
+          "ocorrencia": 3
+        },
+        {
+          "codigo": "DEV.06",
+          "servico": "Criação de Protótipo – Alta Fidelidade",
+          "ust": 18,
+          "ocorrencia": 2
+        },
+        {
+          "codigo": "DEV.07",
+          "servico": "Atualização de Protótipo – Alta Fidelidade",
+          "ust": 8,
+          "ocorrencia": 2
+        },
+        {
+          "codigo": "DEV.02",
+          "servico": "Criação de Tela Web",
+          "ust": 18,
+          "ocorrencia": 2
+        },
+        {
+          "codigo": "DEV.03",
+          "servico": "Atualização de Tela Web",
+          "ust": 8,
+          "ocorrencia": 2
+        },
+        {
+          "codigo": "DEV.10",
+          "servico": "Criação de integração com Sistemas Externos",
+          "ust": 10,
+          "ocorrencia": 3
+        },
+        {
+          "codigo": "DEV.11",
+          "servico": "Atualização de integração com Sistemas Externos",
+          "ust": 8,
+          "ocorrencia": 3
+        },
+        {
+          "codigo": "DEV.19",
+          "servico": "Implantação de Pipeline CI/CD",
+          "ust": 3,
+          "ocorrencia": 1
+        },
+        {
+          "codigo": "DEV.20",
+          "servico": "Automação de Build e Deploy",
+          "ust": 2,
+          "ocorrencia": 1
+        },
+        {
+          "codigo": "DOC.03",
+          "servico": "Documentação Técnica de API/Web Service",
+          "ust": 5,
+          "ocorrencia": 1
+        },
+        {
+          "codigo": "DOC.05",
+          "servico": "Documentação Técnica de outras naturezas",
+          "ust": 5,
+          "ocorrencia": 3
+        },
+        {
+          "codigo": "TES.07",
+          "servico": "Teste de aceitação",
+          "ust": 2,
+          "ocorrencia": 1
+        },
+        {
+          "codigo": "TES.01",
+          "servico": "Teste de Usabilidade",
+          "ust": 6,
+          "ocorrencia": 1
+        },
+        {
+          "codigo": "TES.02",
+          "servico": "Teste de Acessibilidade",
+          "ust": 6,
+          "ocorrencia": 1
+        }
+      ]
+    },
+    {
+      "perfil": "Complexo",
+      "servicos": 7,
+      "ustPorServico": 242,
+      "itens": [
+        {
+          "codigo": "DEV.17",
+          "servico": "Avaliação de Código (Code Review / Pull Request) - Nível Avançado",
+          "ust": 12,
+          "ocorrencia": 3
+        },
+        {
+          "codigo": "DEV.13",
+          "servico": "Publicação de Branches e Versionamento de Código",
+          "ust": 3,
+          "ocorrencia": 3
+        },
+        {
+          "codigo": "DEV.06",
+          "servico": "Criação de Protótipo – Alta Fidelidade",
+          "ust": 18,
+          "ocorrencia": 2
+        },
+        {
+          "codigo": "DEV.07",
+          "servico": "Atualização de Protótipo – Alta Fidelidade",
+          "ust": 8,
+          "ocorrencia": 2
+        },
+        {
+          "codigo": "DEV.02",
+          "servico": "Criação de Tela Web",
+          "ust": 18,
+          "ocorrencia": 2
+        },
+        {
+          "codigo": "DEV.03",
+          "servico": "Atualização de Tela Web",
+          "ust": 8,
+          "ocorrencia": 2
+        },
+        {
+          "codigo": "DEV.10",
+          "servico": "Criação de integração com Sistemas Externos",
+          "ust": 10,
+          "ocorrencia": 3
+        },
+        {
+          "codigo": "DEV.11",
+          "servico": "Atualização de integração com Sistemas Externos",
+          "ust": 8,
+          "ocorrencia": 3
+        },
+        {
+          "codigo": "DEV.19",
+          "servico": "Implantação de Pipeline CI/CD",
+          "ust": 3,
+          "ocorrencia": 1
+        },
+        {
+          "codigo": "DEV.20",
+          "servico": "Automação de Build e Deploy",
+          "ust": 2,
+          "ocorrencia": 1
+        },
+        {
+          "codigo": "DOC.03",
+          "servico": "Documentação Técnica de API/Web Service",
+          "ust": 5,
+          "ocorrencia": 1
+        },
+        {
+          "codigo": "DOC.05",
+          "servico": "Documentação Técnica de outras naturezas",
+          "ust": 5,
+          "ocorrencia": 3
+        },
+        {
+          "codigo": "TES.07",
+          "servico": "Teste de aceitação",
+          "ust": 2,
+          "ocorrencia": 1
+        },
+        {
+          "codigo": "TES.01",
+          "servico": "Teste de Usabilidade",
+          "ust": 6,
+          "ocorrencia": 1
+        },
+        {
+          "codigo": "TES.02",
+          "servico": "Teste de Acessibilidade",
+          "ust": 6,
+          "ocorrencia": 1
+        }
+      ]
+    }
+  ],
+  "estruturais": [
+    {
+      "codigo": "NEG.30",
+      "servico": "Criação de cronograma de execução de projetos",
+      "complexidade": "Única",
+      "ust": 4,
+      "ocorrencia": 4
+    },
+    {
+      "codigo": "GP.08",
+      "servico": "Planejamento e Revisão de Cronogramas",
+      "complexidade": "Única",
+      "ust": 8,
+      "ocorrencia": 4
+    },
+    {
+      "codigo": "NEG.31",
+      "servico": "Elaboração e atualização do backlog da iteração (planejamento da sprint)",
+      "complexidade": "Única",
+      "ust": 2,
+      "ocorrencia": 24
+    },
+    {
+      "codigo": "NEG.01",
+      "servico": "Elaboração e atualização do backlog do produto ou demandas",
+      "complexidade": "Única",
+      "ust": 2,
+      "ocorrencia": 24
+    },
+    {
+      "codigo": "NEG.02",
+      "servico": "Priorização das solicitações de negócio",
+      "complexidade": "Única",
+      "ust": 2,
+      "ocorrencia": 24
+    },
+    {
+      "codigo": "NEG.06",
+      "servico": "Registro de solicitações de negócio",
+      "complexidade": "Única",
+      "ust": 1,
+      "ocorrencia": 24
+    },
+    {
+      "codigo": "DOC.07",
+      "servico": "Elaboração de documentação de ação de projeto (apresentações, atas, relatórios técnicos)",
+      "complexidade": "Única",
+      "ust": 3,
+      "ocorrencia": 12
+    },
+    {
+      "codigo": "DEVOPS.17",
+      "servico": "Monitoramento operacional de sistemas",
+      "complexidade": "Única",
+      "ust": 2,
+      "ocorrencia": 365
+    },
+    {
+      "codigo": "DEVOPS.09",
+      "servico": "Ministração de treinamentos e palestras",
+      "complexidade": "Complexa",
+      "ust": 24,
+      "ocorrencia": 5
+    },
+    {
+      "codigo": "DEV.08",
+      "servico": "Desenvolvimento de funcionalidade",
+      "complexidade": "Complexa",
+      "ust": 18,
+      "ocorrencia": 256
+    },
+    {
+      "codigo": "DEV.09",
+      "servico": "Atualização de funcionalidade",
+      "complexidade": "Média",
+      "ust": 8,
+      "ocorrencia": 40
+    },
+    {
+      "codigo": null,
+      "servico": "Especificar funcionalidade (Tarefa / Épico)",
+      "complexidade": "Única",
+      "ust": 2,
+      "ocorrencia": 120
+    },
+    {
+      "codigo": "UX.23",
+      "servico": "Acessibilidade Digital",
+      "complexidade": "Única",
+      "ust": 4,
+      "ocorrencia": 12
+    },
+    {
+      "codigo": "DOC.08",
+      "servico": "Elaboração de documento de retrospectiva",
+      "complexidade": "Única",
+      "ust": 10,
+      "ocorrencia": 24
+    },
+    {
+      "codigo": "DOC.06",
+      "servico": "Documento de revisão da iteração (sprint)",
+      "complexidade": "Única",
+      "ust": 10,
+      "ocorrencia": 24
+    },
+    {
+      "codigo": "DEV.10",
+      "servico": "Criação de integração com Sistemas Externos",
+      "complexidade": "Média",
+      "ust": 10,
+      "ocorrencia": 120
+    },
+    {
+      "codigo": "DEV.11",
+      "servico": "Atualização de integração com Sistemas Externos",
+      "complexidade": "Média",
+      "ust": 8,
+      "ocorrencia": 120
+    },
+    {
+      "codigo": "TES.07",
+      "servico": "Documentação Técnica de API/Web Service",
+      "complexidade": "Única",
+      "ust": 5,
+      "ocorrencia": 10
+    },
+    {
+      "codigo": "TES.07",
+      "servico": "Teste de aceitação",
+      "complexidade": "Única",
+      "ust": 2,
+      "ocorrencia": 12
+    },
+    {
+      "codigo": "TES.08",
+      "servico": "Teste de carga",
+      "complexidade": "Complexa",
+      "ust": 24,
+      "ocorrencia": 12
+    },
+    {
+      "codigo": "TES.09",
+      "servico": "Teste de desempenho",
+      "complexidade": "Complexa",
+      "ust": 24,
+      "ocorrencia": 12
+    },
+    {
+      "codigo": "TES.10",
+      "servico": "Teste de regressão",
+      "complexidade": "Única",
+      "ust": 8,
+      "ocorrencia": 12
+    },
+    {
+      "codigo": "TES.11",
+      "servico": "Teste de segurança",
+      "complexidade": "Única",
+      "ust": 8,
+      "ocorrencia": 12
+    },
+    {
+      "codigo": "DEV.13",
+      "servico": "Publicação de Branches e Versionamento de Código",
+      "complexidade": "Simples",
+      "ust": 3,
+      "ocorrencia": 36
+    },
+    {
+      "codigo": "DEV.14",
+      "servico": "Atualização de Bibliotecas, Plugins e Frameworks",
+      "complexidade": "Complexa",
+      "ust": 12,
+      "ocorrencia": 60
+    },
+    {
+      "codigo": "UX.01",
+      "servico": "Criação de Estrutura de Página em CMS - Back-end",
+      "complexidade": "Média",
+      "ust": 16,
+      "ocorrencia": 10
+    },
+    {
+      "codigo": "UX.02",
+      "servico": "Criação de Estrutura de Página em CMS - Front-end",
+      "complexidade": "Média",
+      "ust": 16,
+      "ocorrencia": 10
+    },
+    {
+      "codigo": "UX.03",
+      "servico": "Criação de Página Completa em CMS - Back-end",
+      "complexidade": "Complexa",
+      "ust": 36,
+      "ocorrencia": 10
+    },
+    {
+      "codigo": "UX.04",
+      "servico": "Criação de Página Completa em CMS - Front-end",
+      "complexidade": "Complexa",
+      "ust": 36,
+      "ocorrencia": 10
+    },
+    {
+      "codigo": "UX.05",
+      "servico": "Atualização de Página Existente em CMS - Nível básico",
+      "complexidade": "Simples",
+      "ust": 2,
+      "ocorrencia": 10
+    },
+    {
+      "codigo": "UX.06",
+      "servico": "Atualização de Página Existente em CMS - Nível intermediário",
+      "complexidade": "Média",
+      "ust": 8,
+      "ocorrencia": 10
+    },
+    {
+      "codigo": "UX.07",
+      "servico": "Atualização de Página Existente em CMS - Nível avançado",
+      "complexidade": "Complexa",
+      "ust": 24,
+      "ocorrencia": 10
+    },
+    {
+      "codigo": "TES.11",
+      "servico": "Teste de segurança",
+      "complexidade": "Única",
+      "ust": 8,
+      "ocorrencia": 12
+    },
+    {
+      "codigo": "IA.16",
+      "servico": "Implementação de Motor de Recomendação",
+      "complexidade": "Complexa",
+      "ust": 36,
+      "ocorrencia": 96
+    }
+  ]
+}

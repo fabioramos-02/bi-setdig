@@ -3,7 +3,7 @@ python data-platform/transform/tfs_test.py
 """
 from datetime import date
 
-from tfs import frente, montar_itens, montar_sprints, orgao_da_feature
+from tfs import codigo_catalogo, frente, montar_itens, montar_sprints, orgao_da_feature
 
 HOJE = date(2026, 10, 26)
 SIGLAS = {"SES", "IMASUL", "DETRAN", "SEDMS"}
@@ -75,6 +75,13 @@ def test_tipo_entrega_task_herda_do_pbi():
 
 def test_dias_sem_atualizar():
     assert _itens()[3]["diasSemAtualizar"] == 6
+
+
+def test_codigo_catalogo_na_descricao():
+    assert codigo_catalogo("<div>Validar.<br>Catálogo DOC.07 - Elaboração</div>") == "DOC.07"
+    assert codigo_catalogo("Catalogo NEG.03/04/05 (definir)") == "NEG.03/04/05"
+    assert codigo_catalogo("sem código") is None
+    assert codigo_catalogo(None) is None
 
 
 def test_sprints():

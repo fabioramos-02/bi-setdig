@@ -1,14 +1,20 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import fs from "node:fs";
 import {
   entregasDaSprint,
   entregasDoMes,
-  execucaoFinanceira,
+  AREA_UST,
+  execucaoXvia,
+  filtrarItens,
+  FILTROS_VAZIOS,
+  ustEtp,
   pendencias,
   porModulo,
   prazoProjeto,
   resumoEntregas,
   stakeholdersDoProjeto,
+  type EtpUst,
   type TfsContrato,
   type TfsItem,
   type TfsSprint,
@@ -20,6 +26,7 @@ const item = (over: Partial<TfsItem>): TfsItem => ({
   featureId: 20, feature: "f", pbiId: null, orgao: null, tags: [], tipoEntrega: null,
   pendencia: false, criadoEm: null, alteradoEm: null, fechadoEm: null, prazo: null,
   diasSemAtualizar: null, atividadeUst: null, complexidadeUst: null, ust: null, dataExecucao: null,
+  codigoCatalogo: null,
   ...over,
 });
 
@@ -88,24 +95,43 @@ test("entregasDaSprint e entregasDoMes", () => {
   assert.deepEqual(entregasDoMes(itens, "2026-10").map((g) => g.sprint), ["XVIA\\Sprint 4"]);
 });
 
-test("execucaoFinanceira: executada Done, priorizada na sprint vigente, R$ pelo TR", () => {
-  const f = execucaoFinanceira([
-    item({ tipo: "Task", estado: "Done", ust: 9, sprint: "XVIA\\Sprint 4" }),
-    item({ tipo: "Task", estado: "To Do", ust: 6 }),
-    item({ tipo: "Task", estado: "To Do", ust: 3, sprint: "XVIA\\Sprint 4" }),
-    item({ tipo: "Task" }),
-  ], sprints, contrato({ ustTotalTr: 90, valorUst: 100 }));
-  assert.equal(f.ustExecutada, 9);
-  assert.equal(f.ustPriorizada, 6);
-  assert.equal(f.pctTr, 10);
-  assert.equal(f.valorExecutado, 900);
-  assert.equal(f.tasksSemUst, 1);
+const etp = JSON.parse(fs.readFileSync("datasets/tfs/v1/etp-ust.json", "utf-8")) as EtpUst;
+
+test("ustEtp: previsto por código fecha o total do ETP (23.356)", () => {
+  const tabela = ustEtp(etp);
+  const soma = [...tabela.values()].reduce((s, c) => s + c.previsto, 0);
+  const semCodigo = etp.estruturais.filter((l) => !l.codigo).reduce((s, l) => s + l.ust * l.ocorrencia, 0);
+  assert.equal(soma + semCodigo, etp.totalEtp);
+  // DEV.13: 3×3 em 36 serviços (324) + estrutural 3×36 (108)
+  assert.equal(tabela.get("DEV.13")?.previsto, 432);
+  // TES.07: unitária vem do perfil (2), não da linha estrutural de documentação (5)
+  assert.equal(tabela.get("TES.07")?.ustUnitaria, 2);
 });
 
-test("execucaoFinanceira: sem TR o valor fica null", () => {
-  const f = execucaoFinanceira([item({ tipo: "Task", estado: "Done", ust: 9 })], sprints, contrato());
-  assert.equal(f.valorExecutado, null);
-  assert.equal(f.pctTr, null);
+test("execucaoXvia: só área Customização UST; sem código/faixa/fora do ETP ficam a classificar", () => {
+  const ust = AREA_UST;
+  const f = execucaoXvia([
+    item({ tipo: "Task", area: ust, codigoCatalogo: "DEV.13", estado: "Done" }),
+    item({ tipo: "Task", area: ust, codigoCatalogo: "DEV.13" }),
+    item({ tipo: "Task", area: ust, codigoCatalogo: "NEG.03/04/05" }),
+    item({ tipo: "Task", area: ust, codigoCatalogo: "NEG.19" }),
+    item({ tipo: "Task", area: ust }),
+    item({ tipo: "Task", area: "XVIA\\SGD", codigoCatalogo: "DEV.13", estado: "Done" }),
+  ], etp, contrato({ ustTotalTr: 23356, valorUst: 10 }));
+  assert.equal(f.tarefas, 5);
+  assert.equal(f.ustExecutada, 3);
+  assert.equal(f.ustLancada, 6);
+  assert.equal(f.valorExecutado, 30);
+  assert.deepEqual(f.contagemAClassificar, { "sem código": 1, "faixa a definir": 1, "fora do ETP": 1 });
+  const dev13 = f.porCodigo.find((l) => l.codigo === "DEV.13");
+  assert.equal(dev13?.saldo, 432 - 6);
+  assert.ok(f.porCodigo.some((l) => l.codigo === "IA.16" && l.tarefas === 0));
+});
+
+test("filtrarItens: combina módulo, frente, órgão e sprint", () => {
+  const itens = [item({ id: 1, epico: "CMS", frente: "SGD" }), item({ id: 2, epico: "CMS" }), item({ id: 3, epico: "Portal" })];
+  assert.equal(filtrarItens(itens, FILTROS_VAZIOS).length, 3);
+  assert.deepEqual(filtrarItens(itens, { ...FILTROS_VAZIOS, modulo: "CMS", frente: "X-VIA" }).map((i) => i.id), [2]);
 });
 
 test("stakeholdersDoProjeto: só órgão com item ou papel", () => {

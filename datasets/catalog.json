@@ -583,28 +583,6 @@
     "bytes": 12523
   },
   {
-    "dataset": "itens",
-    "source": "tfs",
-    "owner": "SETDIG",
-    "updatedAt": "2026-10-26T20:31:39.549652+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/tfs-itens.schema.json",
-    "rows": 2035,
-    "bytes": 1459297
-  },
-  {
-    "dataset": "sprints",
-    "source": "tfs",
-    "owner": "SETDIG",
-    "updatedAt": "2026-10-26T20:31:39.786971+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/tfs-sprints.schema.json",
-    "rows": 6,
-    "bytes": 874
-  },
-  {
     "dataset": "catalogo-ust",
     "source": "tfs",
     "owner": "SETDIG",
@@ -625,5 +603,27 @@
     "schema": "data-platform/schemas/tfs-contrato.schema.json",
     "rows": 1,
     "bytes": 367
+  },
+  {
+    "dataset": "itens",
+    "source": "tfs",
+    "owner": "SETDIG",
+    "updatedAt": "2026-10-26T20:53:13.915590+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/tfs-itens.schema.json",
+    "rows": 2035,
+    "bytes": 1518411
+  },
+  {
+    "dataset": "sprints",
+    "source": "tfs",
+    "owner": "SETDIG",
+    "updatedAt": "2026-10-26T20:53:14.163651+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/tfs-sprints.schema.json",
+    "rows": 6,
+    "bytes": 874
   }
 ]

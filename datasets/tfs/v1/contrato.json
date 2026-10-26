@@ -1,9 +1,9 @@
 {
-  "comoPreencher": "Preencher à mão com os números do Termo de Referência do contrato X-VIA. Campos null aparecem como 'a preencher' na página. previsaoPorModulo usa o título do épico como está no TFS.",
+  "comoPreencher": "Preencher à mão. ustTotalTr = total consolidado do ETP (item 7.1.2.4.21, 23.356 UST). valorUst (R$ por UST) e fim (vigência) ainda a informar — null aparece como 'a informar' na página.",
   "contrato": "Plataforma Digital X-VIA",
   "inicio": "2026-07-27",
   "fim": null,
-  "ustTotalTr": null,
+  "ustTotalTr": 23356,
   "valorUst": null,
   "previsaoPorModulo": []
 }

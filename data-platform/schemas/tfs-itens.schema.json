@@ -153,6 +153,13 @@
           "string",
           "null"
         ]
+      },
+      "codigoCatalogo": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "Código do catálogo X-VIA lido da descrição da Task ('Catálogo DOC.07 …'); faixa vem como 'NEG.03/04/05'."
       }
     }
   }

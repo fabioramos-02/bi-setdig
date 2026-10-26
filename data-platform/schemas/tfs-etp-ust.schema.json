@@ -1,0 +1,112 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "tfs/etp-ust",
+  "description": "Memória de cálculo de UST do ETP da Plataforma Digital (pp. 68–71): perfis de serviço e atividades estruturais. Manual.",
+  "type": "object",
+  "required": [
+    "totalEtp",
+    "perfis",
+    "estruturais"
+  ],
+  "properties": {
+    "fonte": {
+      "type": "string"
+    },
+    "comoPreencher": {
+      "type": "string"
+    },
+    "totalEtp": {
+      "type": "integer"
+    },
+    "totalEstrutural": {
+      "type": "integer"
+    },
+    "perfis": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "perfil",
+          "servicos",
+          "ustPorServico",
+          "itens"
+        ],
+        "properties": {
+          "perfil": {
+            "type": "string"
+          },
+          "servicos": {
+            "type": "integer"
+          },
+          "ustPorServico": {
+            "type": "integer"
+          },
+          "itens": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "codigo",
+                "servico",
+                "ust",
+                "ocorrencia"
+              ],
+              "properties": {
+                "codigo": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "servico": {
+                  "type": "string"
+                },
+                "complexidade": {
+                  "type": "string"
+                },
+                "ust": {
+                  "type": "integer"
+                },
+                "ocorrencia": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "estruturais": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "codigo",
+          "servico",
+          "ust",
+          "ocorrencia"
+        ],
+        "properties": {
+          "codigo": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "servico": {
+            "type": "string"
+          },
+          "complexidade": {
+            "type": "string"
+          },
+          "ust": {
+            "type": "integer"
+          },
+          "ocorrencia": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}
