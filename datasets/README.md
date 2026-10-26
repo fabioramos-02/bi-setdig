@@ -13,7 +13,7 @@ datasets/
 └── logs/                 # 1 registro por execução do pipeline (ok/rows/bytes)
 ```
 
-- **fonte**: `matomo` (portal web), `ga4` (app MS Digital), `app` (catálogo manual), `cartas` (inventário).
+- **fonte**: `matomo` (portal web), `ga4` (app MS Digital), `app` (catálogo manual), `cartas` (inventário), `tfs` (backlog do projeto X-VIA).
 - **versão**: `vN`. Mudança de shape que quebra = nova pasta (ADR-004). Ex.: GA4 virou `v2` ao ganhar recorte por período.
 - **schema**: cada dataset tem um contrato em [`../data-platform/schemas/`](../data-platform/schemas/) — fonte da verdade dos tipos TS em `src/lib/data.ts`.
 
@@ -31,6 +31,8 @@ datasets/
 | ga4 | visao-geral, plataforma, servicos, funil, horarios | por período¹ (v2) | Uso do app MS Digital |
 | app | catalogo-servicos | lista | 121 serviços do app: categoria, nativo/web, ativo, url (só web, ~83% cadastrada) |
 | cartas | inventario-count | 1 linha | Total de cartas de serviço |
+| tfs | itens, sprints | lista | Backlog do projeto X-VIA no TFS (ADR-014) |
+| tfs | catalogo-ust, contrato, stakeholders | manual | Catálogo de UST do contrato, números do TR e órgãos/pontos focais |
 
 ¹ **por período** = objeto com 4 chaves `{ dia, semana, mes, ano }` (ADR-007). "Intervalo de datas" cai no snapshot `mes`.
 

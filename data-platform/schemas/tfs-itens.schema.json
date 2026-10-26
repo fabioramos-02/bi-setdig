@@ -1,0 +1,159 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "tfs/itens",
+  "description": "Backlog do projeto X-VIA no TFS, 1 linha por work item pendurado nos épicos abertos (extract/tfs.py, transform/tfs.py). Snapshot sem filtro de período.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "id",
+      "tipo",
+      "titulo",
+      "estado",
+      "frente",
+      "tags",
+      "pendencia"
+    ],
+    "properties": {
+      "id": {
+        "type": "integer"
+      },
+      "tipo": {
+        "type": "string"
+      },
+      "titulo": {
+        "type": "string"
+      },
+      "estado": {
+        "type": "string"
+      },
+      "coluna": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "area": {
+        "type": "string"
+      },
+      "frente": {
+        "enum": [
+          "X-VIA",
+          "SGD"
+        ]
+      },
+      "sprint": {
+        "type": "string"
+      },
+      "epicoId": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "epico": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "featureId": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "feature": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "pbiId": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "orgao": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "tags": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "tipoEntrega": {
+        "enum": [
+          "Negócio",
+          "Órgão",
+          "Desenvolvimento X-VIA",
+          null
+        ]
+      },
+      "pendencia": {
+        "type": "boolean"
+      },
+      "criadoEm": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "alteradoEm": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "fechadoEm": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "prazo": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "diasSemAtualizar": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "minimum": 0
+      },
+      "atividadeUst": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "complexidadeUst": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "ust": {
+        "type": [
+          "number",
+          "null"
+        ],
+        "minimum": 0
+      },
+      "dataExecucao": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    }
+  }
+}

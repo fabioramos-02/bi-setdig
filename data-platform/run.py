@@ -431,6 +431,34 @@ def run_matomo_eventos_perfil() -> None:
     print(f"[matomo] eventos-perfil-navegacao -> {out}")
 
 
+def _ler_dataset(source: str, dataset: str, padrao):
+    caminho = Path(__file__).resolve().parent.parent / "datasets" / source / "v1" / f"{dataset}.json"
+    return json.loads(caminho.read_text(encoding="utf-8")) if caminho.exists() else padrao
+
+
+def run_tfs() -> None:
+    """Backlog do projeto X-VIA no TFS (API, sem VPN — responde pelo IP
+    público). Snapshot sem filtro de período: o backlog é o estado de hoje.
+    Catálogo de UST e stakeholders são datasets manuais já publicados."""
+    from extract import tfs
+    from transform import tfs as t_tfs
+
+    catalogo = _ler_dataset("tfs", "catalogo-ust", {"data": []})
+    siglas = {s["sigla"] for s in _ler_dataset("tfs", "stakeholders", [])}
+
+    arvore = tfs.get_arvore()
+    itens = t_tfs.montar_itens(arvore, tfs.get_itens(list(arvore)), catalogo, siglas, t_tfs.hoje_utc())
+    validate_rows(itens, required=["id", "tipo", "titulo", "estado", "frente"],
+                  non_negative=["ust", "diasSemAtualizar"])
+    publish("tfs", "itens", itens)
+    print(f"[tfs] itens -> {len(itens)} work items")
+
+    sprints = t_tfs.montar_sprints(tfs.get_sprints())
+    validate_rows(sprints, required=["sprint", "inicio", "fim", "situacao"], non_negative=[])
+    publish("tfs", "sprints", sprints)
+    print(f"[tfs] sprints -> {[s['nome'] for s in sprints]}")
+
+
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
@@ -450,6 +478,7 @@ if __name__ == "__main__":
         ("qualidade", run_qualidade),
         ("msdigital_db", run_msdigital_db),
         ("portal_unico_db", run_portal_unico_db),
+        ("tfs", run_tfs),
     ]
     
     if args.domain:

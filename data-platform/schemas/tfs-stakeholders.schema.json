@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "tfs/stakeholders",
+  "description": "Órgãos do Estado (notas de secretarias do vault) + ponto focal e papel preenchidos à mão (scripts/stakeholders_do_vault.py).",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "sigla",
+      "nome",
+      "modulos"
+    ],
+    "properties": {
+      "sigla": {
+        "type": "string"
+      },
+      "nome": {
+        "type": "string"
+      },
+      "secretario": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "site": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "pontoFocal": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "contato": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "papel": {
+        "enum": [
+          "piloto",
+          "parceiro",
+          null
+        ]
+      },
+      "modulos": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "sprint": "XVIA\\Sprint 0",
+    "nome": "Sprint 0",
+    "inicio": "2026-07-27",
+    "fim": "2026-08-14",
+    "situacao": "encerrada"
+  },
+  {
+    "sprint": "XVIA\\Sprint 1",
+    "nome": "Sprint 1",
+    "inicio": "2026-08-17",
+    "fim": "2026-08-28",
+    "situacao": "encerrada"
+  },
+  {
+    "sprint": "XVIA\\Sprint 2",
+    "nome": "Sprint 2",
+    "inicio": "2026-08-31",
+    "fim": "2026-09-14",
+    "situacao": "encerrada"
+  },
+  {
+    "sprint": "XVIA\\Sprint 3",
+    "nome": "Sprint 3",
+    "inicio": "2026-09-15",
+    "fim": "2026-09-28",
+    "situacao": "encerrada"
+  },
+  {
+    "sprint": "XVIA\\Sprint 4",
+    "nome": "Sprint 4",
+    "inicio": "2026-09-29",
+    "fim": "2026-10-13",
+    "situacao": "encerrada"
+  },
+  {
+    "sprint": "XVIA\\Sprint 5",
+    "nome": "Sprint 5",
+    "inicio": "2026-10-14",
+    "fim": "2026-10-27",
+    "situacao": "atual"
+  }
+]

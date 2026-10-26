@@ -1,0 +1,9 @@
+{
+  "comoPreencher": "Preencher à mão com os números do Termo de Referência do contrato X-VIA. Campos null aparecem como 'a preencher' na página. previsaoPorModulo usa o título do épico como está no TFS.",
+  "contrato": "Plataforma Digital X-VIA",
+  "inicio": "2026-07-27",
+  "fim": null,
+  "ustTotalTr": null,
+  "valorUst": null,
+  "previsaoPorModulo": []
+}

@@ -1,0 +1,472 @@
+[
+  {
+    "sigla": "ACADEPOL",
+    "nome": "Academia da Polícia Civil do Estado de Mato Grosso do Sul",
+    "secretario": null,
+    "site": "https://www.acadepol.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "AEM",
+    "nome": "Agência Estadual de Metrologia de Mato Grosso do Sul",
+    "secretario": "Marcos Henrique Derzi Wasilewski",
+    "site": "https://www.aem.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "AGEHAB",
+    "nome": "Agência de Habitação Popular de Mato Grosso do Sul",
+    "secretario": "Maria do Carmo Avesani Lopez",
+    "site": "https://www.agehab.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "AGEMS",
+    "nome": "Agência Estadual de Regulação de Serviços Públicos de Mato Grosso do Sul",
+    "secretario": "Carlos Alberto de Assis",
+    "site": "https://www.agems.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "AGEPEN",
+    "nome": "Agência Estadual de Administração do Sistema Penitenciário",
+    "secretario": "Rodrigo Rossi Maiorchini",
+    "site": "https://www.agepen.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "AGEPREV",
+    "nome": "Agência de Previdência Social de Mato Grosso do Sul",
+    "secretario": null,
+    "site": "https://www.ageprev.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "AGESUL",
+    "nome": "Agência Estadual de Gestão de Empreendimentos de Mato Grosso do Sul",
+    "secretario": null,
+    "site": "https://www.agesul.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "AGRAER",
+    "nome": "Agência de Desenvolvimento Agrário e Extensão Rural de Mato Grosso do Sul",
+    "secretario": "Fernando Luiz Nascimento",
+    "site": "https://www.agraer.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "CASACIVIL",
+    "nome": "Secretaria de Estado da Casa Civil",
+    "secretario": "Walter Benedito Carneiro Júnior",
+    "site": "https://www.casacivil.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "CBMMS",
+    "nome": "Corpo de Bombeiros Militar de Mato Grosso do Sul",
+    "secretario": null,
+    "site": "https://www.bombeiros.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "CGEMS",
+    "nome": "Controladoria-Geral do Estado de Mato Grosso do Sul",
+    "secretario": "Carlos Eduardo Girão de Arruda",
+    "site": "https://www.cge.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "CGP",
+    "nome": "Coordenadoria-Geral de Perícias de Mato Grosso do Sul",
+    "secretario": "Nelson Fermino Junior",
+    "site": "https://www.cgp.sejusp.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "DETRAN",
+    "nome": "Departamento Estadual de Trânsito de Mato Grosso do Sul",
+    "secretario": "Rudel Espíndola Trindade Júnior",
+    "site": "https://www.detran.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "ESCOLAGOV",
+    "nome": "Fundação Escola de Governo de Mato Grosso do Sul",
+    "secretario": null,
+    "site": "https://www.escolagov.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "FADEB",
+    "nome": "Fundação de Apoio e Desenvolvimento à Educação Básica",
+    "secretario": "Maria Cecilia Amendola da Motta",
+    "site": "https://www.fadeb.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "FCMS",
+    "nome": "Fundação de Cultura de Mato Grosso do Sul",
+    "secretario": "Eduardo Mendes Pinto",
+    "site": "https://www.fundacaodecultura.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "FERTELEDUCATIVAMS",
+    "nome": "Fundação Estadual Jornalista Luiz Chagas de Rádio e Televisão",
+    "secretario": null,
+    "site": null,
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "FUNDECT",
+    "nome": "Fundação de Apoio ao Desenvolvimento do Ensino, Ciência e Tecnologia de MS",
+    "secretario": null,
+    "site": "https://www.fundect.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "FUNDESPORTE",
+    "nome": "Fundação de Desporto e Lazer de Mato Grosso do Sul",
+    "secretario": null,
+    "site": "https://www.fundesporte.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "FUNDTUR",
+    "nome": "Fundação de Turismo de Mato Grosso do Sul",
+    "secretario": null,
+    "site": "https://www.turismo.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "FUNSAU",
+    "nome": "Fundação Serviços de Saúde de Mato Grosso do Sul",
+    "secretario": null,
+    "site": null,
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "FUNTRAB",
+    "nome": "Fundação de Trabalho de Mato Grosso do Sul",
+    "secretario": "Marina Hojaij Carvalho Dobashi",
+    "site": "https://www.funtrab.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "HRMS",
+    "nome": "Hospital Regional de Mato Grosso do Sul",
+    "secretario": null,
+    "site": "https://www.hospitalregional.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "IAGRO",
+    "nome": "Agência Estadual de Defesa Sanitária Animal e Vegetal de Mato Grosso do Sul",
+    "secretario": "Daniel de Barbosa Ingold",
+    "site": "https://www.iagro.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "IMASUL",
+    "nome": "Instituto de Meio Ambiente de Mato Grosso do Sul",
+    "secretario": "André Borges Barros de Araújo",
+    "site": "https://www.imasul.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "JUCEMS",
+    "nome": "Junta Comercial do Estado de Mato Grosso do Sul",
+    "secretario": null,
+    "site": "https://www.jucems.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "MSGAS",
+    "nome": "Companhia de Gás do Estado de Mato Grosso do Sul",
+    "secretario": null,
+    "site": "https://msgas.com.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "PCMS",
+    "nome": "Polícia Civil de Mato Grosso do Sul",
+    "secretario": "Dr. Lupérsio Degerone Lúcio",
+    "site": "https://www.pc.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "PGEMS",
+    "nome": "Procuradoria-Geral do Estado de Mato Grosso do Sul",
+    "secretario": "Márcio André Batista de Arruda",
+    "site": "https://www.pge.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "PMMS",
+    "nome": "Polícia Militar de Mato Grosso do Sul",
+    "secretario": null,
+    "site": "https://www.pm.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "SAD",
+    "nome": "Secretaria de Estado de Administração de Mato Grosso do Sul",
+    "secretario": "Roberto Gurgel de Oliveira Filho",
+    "site": "https://www.sad.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "SANESUL",
+    "nome": "Empresa de Saneamento de Mato Grosso do Sul",
+    "secretario": null,
+    "site": "https://www.sanesul.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "SEAD",
+    "nome": "Secretaria de Estado de Assistência Social e Direitos Humanos",
+    "secretario": "Patrícia Elias Cozzolino de Oliveira",
+    "site": "https://www.sead.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "SEC",
+    "nome": "Secretaria de Estado da Cidadania",
+    "secretario": "José Francisco Sarmento Nogueira",
+    "site": "https://www.sec.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "SECOM",
+    "nome": "Secretaria-Executiva de Comunicação",
+    "secretario": null,
+    "site": "https://www.segov.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "SEDMS",
+    "nome": "Secretaria de Estado de Educação de Mato Grosso do Sul",
+    "secretario": "Hélio Queiroz Daher",
+    "site": "https://www.sed.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "SEFAZMS",
+    "nome": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "secretario": "Flávio César Mendes de Oliveira",
+    "site": "https://www.sefaz.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "SEGOVMS",
+    "nome": "Secretaria de Estado de Governo e Gestão Estratégica de Mato Grosso do Sul",
+    "secretario": "Rodrigo Perez Ramos",
+    "site": "https://www.segov.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "SEILOG",
+    "nome": "Secretaria de Estado de Infraestrutura e Logística de Mato Grosso do Sul",
+    "secretario": "Guilherme Alcântara de Carvalho",
+    "site": "https://www.seilog.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "SEJUSP",
+    "nome": "Secretaria de Estado de Justiça e Segurança Pública de Mato Grosso do Sul",
+    "secretario": "Antonio Carlos Videira",
+    "site": "https://www.sejusp.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "SEL",
+    "nome": "Secretaria-Executiva de Licitações",
+    "secretario": "Rodolpho Moraes",
+    "site": "https://www.compras.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "SEMADESC",
+    "nome": "Secretaria de Estado de Meio Ambiente, Desenvolvimento, Ciência, Tecnologia e Inovação de MS",
+    "secretario": "Artur Henrique Leite Falcette",
+    "site": "https://www.semadesc.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "SES",
+    "nome": "Secretaria de Estado de Saúde de Mato Grosso do Sul",
+    "secretario": "Maurício Simões Corrêa",
+    "site": "https://www.saude.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "SETDIG",
+    "nome": "Secretaria-Executiva de Transformação Digital",
+    "secretario": "Robson Roberto Duarte de Alencar",
+    "site": "https://www.setdig.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "SETESC",
+    "nome": "Secretaria de Estado de Turismo, Esporte e Cultura",
+    "secretario": "Alessandro Menezes",
+    "site": "https://www.setesc.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "SUGESP",
+    "nome": "Superintendência de Gestão de Pessoas",
+    "secretario": null,
+    "site": "https://www.sed.ms.gov.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  },
+  {
+    "sigla": "UEMS",
+    "nome": "Universidade Estadual de Mato Grosso do Sul",
+    "secretario": null,
+    "site": "https://www.uems.br",
+    "pontoFocal": null,
+    "contato": null,
+    "papel": null,
+    "modulos": []
+  }
+]

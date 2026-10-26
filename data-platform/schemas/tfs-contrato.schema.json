@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "tfs/contrato",
+  "description": "Números do Termo de Referência do contrato X-VIA, preenchidos à mão. null = a preencher.",
+  "type": "object",
+  "required": [
+    "contrato",
+    "inicio"
+  ],
+  "properties": {
+    "contrato": {
+      "type": "string"
+    },
+    "inicio": {
+      "type": "string"
+    },
+    "fim": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ustTotalTr": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "valorUst": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "previsaoPorModulo": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "epico",
+          "ust"
+        ],
+        "properties": {
+          "epico": {
+            "type": "string"
+          },
+          "ust": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

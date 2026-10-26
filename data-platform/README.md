@@ -9,7 +9,7 @@ extract → transform → validate → publish
 (fontes)   (agrega)    (checa)    (datasets/ + catalog + log)
 ```
 
-- **extract/** — clientes das fontes: `matomo.py` (portal web), `ga4.py` (app MS Digital), `cartas.py` (Postgres, exige VPN).
+- **extract/** — clientes das fontes: `matomo.py` (portal web), `ga4.py` (app MS Digital), `cartas.py` (Postgres, exige VPN), `tfs.py` (backlog do projeto X-VIA, API do TFS com PAT — ADR-014).
 - **transform/** — agregações puras (sem I/O): `matomo.py`, `perfil.py` (adoção do filtro de Perfil), `servicos.py` (serviços reais mais acessados).
 - **validate/rules.py** — campo obrigatório, não-negativo, breakdown por período. Falha aborta o publish (dado velho > dado errado).
 - **publish/writer.py** — escreve `datasets/<fonte>/<versão>/<dataset>.json`, atualiza `catalog.json` e grava log.
@@ -36,6 +36,9 @@ pip install -r requirements.txt
 python data-platform/run.py                       # roda tudo (fonte indisponível não derruba as outras)
 python data-platform/build_catalogo.py            # catálogo de serviços do app (lê o xlsx manual + enriquece com URL)
 python data-platform/enriquecer_catalogo_com_url.py  # só re-casa URL no catálogo já publicado (sem reler o xlsx)
+python data-platform/run.py --domain tfs          # só o backlog do TFS (TFS_PAT no .env)
+python data-platform/scripts/criar_queries_tfs.py # cria/atualiza Shared Queries/BI SETDIG no TFS
+python data-platform/scripts/stakeholders_do_vault.py <vault>/10-conhecimento/secretarias  # órgãos (preserva o preenchido à mão)
 ```
 
 O catálogo do app ganha `url` por serviço via `data-platform/reference/ms_digital_catalogo_urls.py`

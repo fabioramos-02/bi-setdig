@@ -84,6 +84,14 @@ const DOMINIOS: Dominio[] = [
         cor: "var(--ds-color-primary-600)",
         tags: ["censo", "governança", "maturidade", "estratégico"],
       },
+      {
+        nome: "Projeto X-VIA",
+        rota: "/projeto-xvia",
+        icone: "assignment",
+        descricao: "Prazo, entregas, pendências e UST do contrato",
+        cor: "var(--ds-color-primary-600)",
+        tags: ["tfs", "backlog", "ust", "sprint", "pendências", "x-via", "sgd", "contrato", "fiscalização"],
+      },
     ],
   },
 ];

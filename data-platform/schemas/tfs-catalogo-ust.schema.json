@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "tfs/catalogo-ust",
+  "description": "Catálogo de atividades do contrato 'Governo do Estado' (scp-api TabelaAtividades), copiado à mão. complexidades[].id = Custom.SGI.LancamentoAtividadeID.",
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "descricaoAtividade",
+          "complexidades"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "descricaoAtividade": {
+            "type": "string"
+          },
+          "complexidades": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "complexidade",
+                "valorUst"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "complexidade": {
+                  "type": "string"
+                },
+                "valorUst": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

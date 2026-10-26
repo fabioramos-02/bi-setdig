@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { SIGLAS_CENSO, type OrgaoCenso } from "./censo";
+import type { TfsContrato, TfsItem, TfsSprint, TfsStakeholder } from "./tfs";
 
 /**
  * Único ponto de leitura de datasets/ (ver docs/architecture/data-flow.md).
@@ -555,4 +556,22 @@ export type ErroRelacao = {
 
 export function getCartasErrosRelacao(): ErroRelacao[] {
   return readDataset<ErroRelacao[]>("cartas", "v1", "erros-relacao") ?? [];
+}
+
+// --- Projeto X-VIA (backlog do TFS) ---
+// Sem filtro de período, por natureza: o backlog é o estado de hoje (o que
+// está aberto, parado, em produção), não analytics de acesso. Extraído da API
+// do TFS por data-platform/extract/tfs.py (ADR-014); contrato, catálogo de UST
+// e stakeholders são manuais. Tipos e cálculo em lib/tfs.ts.
+export function getTfsItens(): TfsItem[] {
+  return readDataset<TfsItem[]>("tfs", "v1", "itens") ?? [];
+}
+export function getTfsSprints(): TfsSprint[] {
+  return readDataset<TfsSprint[]>("tfs", "v1", "sprints") ?? [];
+}
+export function getTfsStakeholders(): TfsStakeholder[] {
+  return readDataset<TfsStakeholder[]>("tfs", "v1", "stakeholders") ?? [];
+}
+export function getTfsContrato(): TfsContrato | null {
+  return readDataset<TfsContrato>("tfs", "v1", "contrato");
 }
