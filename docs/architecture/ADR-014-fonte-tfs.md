@@ -38,3 +38,13 @@ O TFS tem API REST com PAT e responde pelo IP público, sem VPN. A tentação er
 - O consumo de UST depende de a tarefa ter a atividade do contrato vinculada. Em 26/10, só 54 de ~1.376 tarefas tinham, e a página avisa isso.
 - Se o runner do GitHub não alcançar o TFS (firewall por origem), roda-se `python data-platform/run.py --domain tfs` na rede da SETDIG e commita-se o resultado.
 - `itens.json` tem ~1,5 MB, perto do teto de 2 MB. Se o backlog crescer, cortar campos ou separar as Tasks num dataset próprio (v2).
+
+## Adendo (2026-10-26) — UST da X-VIA vem do ETP, não do TFS
+
+As tarefas da X-VIA (área `XVIA\Customização UST`, 617 em 26/10) **não** têm os campos `Custom.SGI.*`. A X-VIA escreve o código do catálogo dela na descrição ("Catálogo DOC.07 …"). Por isso:
+
+- `transform/tfs.py` grava `codigoCatalogo`, lido da descrição. A descrição em si não é publicada.
+- `datasets/tfs/v1/etp-ust.json` (manual) transcreve a memória de cálculo do ETP (pp. 68–71). Cada tarefa vale a UST unitária do código, e o total é 23.356 UST. O ETP declara "Total Estrutural 15.355", mas as linhas somam 15.560, e é esse valor que fecha o consolidado; vale a soma das linhas.
+- Tarefa sem código, com faixa (`NEG.03/04/05`) ou com código fora do ETP fica "a classificar": não entra na soma e aparece listada.
+- A UST da SGD (catálogo "Governo do Estado") saiu do painel, que mostra só o que a X-VIA fatura.
+- Filtros (módulo, frente, órgão, sprint) ficam na URL e valem para todas as abas.

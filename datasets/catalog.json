@@ -594,17 +594,6 @@
     "bytes": 30694
   },
   {
-    "dataset": "contrato",
-    "source": "tfs",
-    "owner": "SETDIG",
-    "updatedAt": "2026-10-26T20:31:49.403023+00:00",
-    "frequency": "manual",
-    "version": "v1",
-    "schema": "data-platform/schemas/tfs-contrato.schema.json",
-    "rows": 1,
-    "bytes": 367
-  },
-  {
     "dataset": "itens",
     "source": "tfs",
     "owner": "SETDIG",
@@ -625,5 +614,27 @@
     "schema": "data-platform/schemas/tfs-sprints.schema.json",
     "rows": 6,
     "bytes": 874
+  },
+  {
+    "dataset": "etp-ust",
+    "source": "tfs",
+    "owner": "SETDIG",
+    "updatedAt": "2026-10-26T20:59:17.158355+00:00",
+    "frequency": "manual",
+    "version": "v1",
+    "schema": "data-platform/schemas/tfs-etp-ust.schema.json",
+    "rows": 79,
+    "bytes": 14823
+  },
+  {
+    "dataset": "contrato",
+    "source": "tfs",
+    "owner": "SETDIG",
+    "updatedAt": "2026-10-26T20:59:17.158355+00:00",
+    "frequency": "manual",
+    "version": "v1",
+    "schema": "data-platform/schemas/tfs-contrato.schema.json",
+    "rows": 1,
+    "bytes": 379
   }
 ]

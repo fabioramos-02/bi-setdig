@@ -32,7 +32,7 @@ datasets/
 | app | catalogo-servicos | lista | 121 serviços do app: categoria, nativo/web, ativo, url (só web, ~83% cadastrada) |
 | cartas | inventario-count | 1 linha | Total de cartas de serviço |
 | tfs | itens, sprints | lista | Backlog do projeto X-VIA no TFS (ADR-014) |
-| tfs | catalogo-ust, contrato, stakeholders | manual | Catálogo de UST do contrato, números do TR e órgãos/pontos focais |
+| tfs | catalogo-ust, contrato, stakeholders, etp-ust | manual | Catálogo de UST do contrato SGD, números do TR (23.356 UST), órgãos/pontos focais e a memória de cálculo de UST do ETP (pp. 68–71) |
 
 ¹ **por período** = objeto com 4 chaves `{ dia, semana, mes, ano }` (ADR-007). "Intervalo de datas" cai no snapshot `mes`.
 
