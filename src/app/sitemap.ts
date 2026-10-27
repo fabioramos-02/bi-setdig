@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
-import { SIGLAS_CENSO } from "@/lib/censo";
-import { getMatomoSites } from "@/lib/data";
+import { getCensoTodos, getMatomoSites } from "@/lib/data";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://bi-setdig.vercel.app";
 
@@ -28,8 +27,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  const censoOrgaos = SIGLAS_CENSO.map((orgao) => ({
-    url: `${baseUrl}/censo-digital/${orgao}`,
+  const censoOrgaos = getCensoTodos().map((o) => ({
+    url: `${baseUrl}/censo-digital/${o.orgaoSigla.toLowerCase()}`,
     lastModified: now,
     changeFrequency: "weekly" as const,
     priority: 0.7,

@@ -8,14 +8,14 @@ import { StoryCard } from "@/components/dashboard/StoryCard";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { RankingBarChart } from "@/components/charts/RankingBarChart";
 import { getCensoTodos } from "@/lib/data";
-import { agregarGoverno } from "@/lib/censo";
+import { agregarGoverno, matrizImpactoEsforco } from "@/lib/censo";
 import { ComoLerEscala } from "./ComoLerEscala";
 import { KpiCenso } from "./KpiCenso";
-import { DonutProgresso } from "./DonutProgresso";
 import { PizzaDistribuicao } from "./PizzaDistribuicao";
+import { MatrizImpactoEsforco } from "./MatrizImpactoEsforco";
 
 export const metadata: Metadata = {
-  title: "Levantamento inicial de Serviços Digitais | SETDIG",
+  title: "Levantamento de Serviços Digitais | SETDIG",
 };
 
 export default function CensoDigitalPage() {
@@ -24,7 +24,7 @@ export default function CensoDigitalPage() {
   if (orgaos.length === 0) {
     return (
       <div className="flex flex-col flex-1">
-        <ContentTopBar title="Levantamento inicial de Serviços Digitais" />
+        <ContentTopBar title="Levantamento de Serviços Digitais" />
         <main className="flex-1 p-6">
           <EmptyCard message="Ainda não há órgãos avaliados aqui." />
         </main>
@@ -35,38 +35,42 @@ export default function CensoDigitalPage() {
   const p = agregarGoverno(orgaos);
   const lider = p.orgaos[0];
   const lanterna = p.orgaos[p.orgaos.length - 1];
+  // maior número absoluto de serviços que podem virar digitais
+  const maisOportunidade = [...p.orgaos].sort((a, b) => b.oportunidades - a.oportunidades)[0];
+  const matriz = matrizImpactoEsforco(orgaos);
+  const n = (v: number) => v.toLocaleString("pt-BR");
+  const c = (v: number) => v.toLocaleString("pt-BR", { notation: "compact", maximumFractionDigits: 1 });
 
   return (
     <div className="flex flex-col flex-1">
-      <ContentTopBar title="Levantamento inicial de Serviços Digitais">
+      <ContentTopBar title="Levantamento de Serviços Digitais">
         <ExportarRelatorioButton filtro="Retrato atual dos serviços digitais" />
       </ContentTopBar>
       <main className="flex-1 p-6 flex flex-col gap-6">
-        <RelatorioCapa titulo="Levantamento inicial de Serviços Digitais" filtro="Retrato atual dos serviços digitais" />
+        <RelatorioCapa titulo="Levantamento de Serviços Digitais" filtro="Retrato atual dos serviços digitais" />
         <StoryCard
-          anchor={`Foram mapeados ${p.nOrgaos.toLocaleString("pt-BR")} ${p.nOrgaos === 1 ? "órgão" : "órgãos"}, com ${p.total.toLocaleString("pt-BR")} ${p.total === 1 ? "carta de serviço" : "cartas de serviço"}. Atualmente, ${p.nDigital.toLocaleString("pt-BR")} são serviços digitais, ou seja, podem ser resolvidos sem interação presencial com a repartição pública.`}
-
-          comoLer="Cada serviço é medido numa régua de 0 (só no balcão) a 4 (100% pela internet). Chamamos de digital quem chega aos níveis 3 e 4. A classificação usa inteligência artificial com revisão humana — pode conter aproximações. Neste momento, estamos passando por revisão junto aos órgãos para que esses números sejam o mais próximo do real."
+          anchor={`${n(p.nOrgaos)} órgãos informaram ${n(p.total)} serviços. ${p.pctDigital.toLocaleString("pt-BR")}% deles (${n(p.nDigital)}) já podem ser resolvidos 100% pela internet, e ${n(p.oportunidades)} ainda exigem ir ao balcão sem obrigação legal — esses podem virar digitais.`}
+          comoLer={`Cada serviço tem um grau de 0 (só presencial) a 5 (100% online e automático). Chamamos de digital quem está nos níveis 4 e 5. O grau foi informado pelo próprio órgão, sem conferência externa.${p.nSemNivel ? ` ${n(p.nSemNivel)} ${p.nSemNivel === 1 ? "serviço ficou" : "serviços ficaram"} sem grau informado e não entram nos percentuais.` : ""}${p.semResposta.length ? ` Sem serviços informados: ${p.semResposta.join(", ")}.` : ""}`}
         />
 
         <ComoLerEscala distribuicao={p.distribuicao} />
 
         <div className="grid gap-4 grid-cols-2 lg:grid-cols-5">
-          <KpiCenso label="Órgãos avaliados" value={p.nOrgaos} />
-          <KpiCenso label="Serviços avaliados" value={p.total} />
-          <KpiCenso label="Já resolvem online" value={`${p.pctDigital.toLocaleString("pt-BR")}%`} sub={`${p.nDigital.toLocaleString("pt-BR")} serviços`} tom="digital" />
-          <KpiCenso label="100% pela internet" value={p.n4} tom="digital" />
-          <KpiCenso label="Podem ser trasnfromados" value={p.aUmPasso} tom="win" />
+          <KpiCenso label="Serviços informados" value={p.total} sub={`por ${n(p.nOrgaos)} órgãos`} />
+          <KpiCenso label="Já resolvem online" value={`${p.pctDigital.toLocaleString("pt-BR")}%`} sub={`${n(p.nDigital)} serviços (níveis 4 e 5)`} tom="digital" />
+          <KpiCenso label="Online e automáticos" value={p.nTopo} sub="sem depender de servidor (nível 5)" tom="digital" />
+          <KpiCenso label="Podem virar digitais" value={p.oportunidades} sub={`níveis 1 e 2 · outros ${n(p.nExigenciaLegal)} têm etapa presencial por lei`} tom="win" />
+          <KpiCenso
+            label="dos pedidos mensais caem em serviço 100% online"
+            value={`${p.pctDemandaDigital.toLocaleString("pt-BR")}%`}
+            sub={`${c(p.demandaDigital)} de ${c(p.demandaTotal)} pedidos/mês informados (${n(p.nComDemanda)} serviços)`}
+            tom="info"
+          />
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-[1.6fr_1fr]">
-          <DashboardSection title="Serviços distribuídos por categorias">
-            <PizzaDistribuicao distribuicao={p.distribuicao} total={p.total} />
-          </DashboardSection>
-          <DashboardSection title="Quanto já dá para resolver pela internet">
-            <DonutProgresso pct={p.pctDigital} legenda="dos serviços já resolvem pela internet" />
-          </DashboardSection>
-        </div>
+        <DashboardSection title="Serviços distribuídos por categorias">
+          <PizzaDistribuicao distribuicao={p.distribuicao} total={p.total} />
+        </DashboardSection>
 
         <DashboardSection title="Quais órgãos estão mais avançados na oferta de serviços digitais?">
           <RankingBarChart
@@ -76,10 +80,14 @@ export default function CensoDigitalPage() {
           {lider && lanterna && lider.sigla !== lanterna.sigla && (
             <p className="mt-4 text-sm" style={{ color: "var(--ds-color-text-secondary)" }}>
               <strong>{lider.sigla}</strong> lidera com {lider.pctDigital.toLocaleString("pt-BR")}% dos serviços já online.{" "}
-              <strong>{lanterna.sigla}</strong> concentra a maior oportunidade: {lanterna.aUmPasso.toLocaleString("pt-BR")} serviços a um passo de ficarem digitais.
+              {maisOportunidade && maisOportunidade.oportunidades > 0 && (
+                <><strong>{maisOportunidade.sigla}</strong> concentra a maior oportunidade: {n(maisOportunidade.oportunidades)} serviços que podem virar digitais.</>
+              )}
             </p>
           )}
         </DashboardSection>
+
+        <MatrizImpactoEsforco matriz={matriz} recorte="governo" />
 
         <DashboardSection title="Análise por órgão">
           <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
@@ -95,7 +103,7 @@ export default function CensoDigitalPage() {
                 <div className="flex gap-4 text-sm">
                   <Stat valor={o.total.toLocaleString("pt-BR")} rotulo="serviços" />
                   <Stat valor={`${o.pctDigital.toLocaleString("pt-BR")}%`} rotulo="online" />
-                  <Stat valor={o.aUmPasso.toLocaleString("pt-BR")} rotulo="" />
+                  <Stat valor={n(o.oportunidades)} rotulo="podem virar digitais" />
                 </div>
               </Link>
             ))}

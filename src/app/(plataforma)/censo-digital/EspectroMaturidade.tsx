@@ -1,6 +1,6 @@
 import type { NivelContagem } from "@/lib/censo";
 
-/** Espectro de maturidade: uma barra empilhada presencial→digital (5 faixas
+/** Espectro de maturidade: uma barra empilhada presencial→digital (6 faixas
  * coloridas, proporção por quantidade) + a lista dos níveis com quanto e %.
  * Responde "Serviços distribuídos por categorias". */
 export function EspectroMaturidade({ distribuicao, total }: { distribuicao: NivelContagem[]; total: number }) {
@@ -14,7 +14,7 @@ export function EspectroMaturidade({ distribuicao, total }: { distribuicao: Nive
             <div
               key={d.nivel}
               className="flex items-center justify-center text-xs font-bold min-w-0"
-              style={{ width: `${pct}%`, background: d.cor, color: d.nivel === 2 ? "var(--ds-color-text-primary)" : "#fff" }}
+              style={{ width: `${pct}%`, background: d.cor, color: d.textoEscuro ? "#1a1a1a" : "#fff" }}
               title={`N${d.nivel} — ${d.rotulo}: ${d.qtd} (${pct.toFixed(0)}%)`}
             >
               {pct >= 8 && <span className="truncate px-1">N{d.nivel}</span>}

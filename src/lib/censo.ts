@@ -1,109 +1,186 @@
 /**
- * Censo de maturidade digital — escala 0–4 e cálculo dos indicadores.
+ * Censo de serviços digitais — escala 0–5 (grau de digitalização) e cálculo
+ * dos indicadores.
  *
- * Porte enxuto de `mapeamento-inicial-servicos-digitais/src/censo/{niveis,metricas}.py`.
- * A escala mede quanto de cada carta de serviço já dá pra resolver sem sair de
- * casa (0 = só no balcão → 4 = 100% pela internet). Fonte da verdade dos rótulos,
- * cores e regras de agregação usadas nas telas do Censo Digital.
+ * Escala do dicionário da SGD (questionário autodeclarado por cada órgão,
+ * planilha unificada → data-platform/build_censo.py). Mede quanto de cada carta
+ * de serviço já dá pra resolver sem ir ao balcão (0 = só presencial → 5 = 100%
+ * online e automático). Fonte da verdade dos rótulos, cores e regras de
+ * agregação usadas nas telas do Censo Digital.
  *
  * Documentação da metodologia: docs/censo-maturidade.md
  */
 
-/** Uma carta de serviço já classificada — 1 linha do snapshot do censo. */
+/** Uma carta de serviço informada pelo órgão — 1 linha do censo. */
 export type LinhaCensal = {
   id: string;
   titulo: string;
-  nomePopular: string;
-  slug: string;
-  urlServico: string;
-  urlExterno: string | null;
-  nivel: number; // 0–4
-  etapaBloqueio: string; // etapa que impede subir de nível ("" se nenhuma)
-  falaSistema: boolean; // a carta menciona um sistema/plataforma digital
-  sistemaCitado: string; // nome do sistema citado ("" se nenhum)
-  justificativa: string; // por que recebeu esse nível
+  setor: string | null;
+  nivel: number | null; // 0–5; null = órgão não informou
+  etapaPresencial: string | null; // o que ainda é feito no balcão
+  demandaMensal: number | null; // solicitações/mês; null = não informado ou ilegível
+  demandaTexto: string | null; // texto original quando demandaMensal é null
+  slug: string | null;
+  urlServico: string | null;
 };
 
-/** Snapshot de um órgão: cabeçalho + cartas classificadas. */
+/** Um órgão: cabeçalho + cartas informadas. */
 export type OrgaoCenso = {
   orgaoSigla: string;
   orgaoNome: string;
   cartas: LinhaCensal[];
 };
 
-/** Órgãos com snapshot publicado em datasets/censo/v1/<sigla>.json.
- * Adicionar órgão = gerar o JSON + registrar a sigla aqui (ver docs/censo-maturidade.md). */
-export const SIGLAS_CENSO = ["iagro", "detran", "sead"] as const;
-
-/** Definição canônica da escala 0–4. `cor` é a rampa presencial→digital
- * (vermelho→verde). DS-MS não tem laranja/dourado próprios — as duas cores
- * intermediárias são extensões locais documentadas (mesma decisão do censo
- * original). O resto vem de token do Design System. */
+/** Definição canônica da escala 0–5. `cor` é a rampa presencial→digital
+ * (vermelho→verde). DS-MS não tem laranja nem verde-escuro próprios — essas
+ * duas cores são extensões locais (o laranja já vinha do censo anterior).
+ * `textoEscuro`: fundo claro (âmbar) pede texto escuro pra contraste. */
 export const NIVEIS = [
   {
-    nivel: 0, rotulo: "100% presencial", ehDigital: "Não", cor: "var(--ds-color-error)",
-    descricao: "Nenhuma etapa online — para resolver, é preciso ir presencialmente."
+    nivel: 0, rotulo: "Só presencial", ehDigital: "Não", cor: "var(--ds-color-error)", textoEscuro: false,
+    descricao: "Informação e atendimento só no balcão — o serviço nem aparece no Portal Único.",
   },
   {
-    nivel: 1, rotulo: "Informação online", ehDigital: "Não", cor: "#ff6200",
-    descricao: "Apenas a informação sobre o serviço é online, todo o processo segue presencial."
+    nivel: 1, rotulo: "Só a informação está online", ehDigital: "Não", cor: "#ff6200", textoEscuro: false,
+    descricao: "Dá para se informar pela internet, mas todo o processo segue presencial.",
   },
   {
-    nivel: 2, rotulo: "Etapas digitais e presenciais", ehDigital: "Em parte", cor: "var(--ds-color-tertiary-600)",
-    descricao: "Alguma etapa digital e presencial, mas pode ser transformado em serviço digital."
+    nivel: 2, rotulo: "Parte online, pode virar digital", ehDigital: "Em parte", cor: "var(--ds-color-tertiary-600)", textoEscuro: true,
+    descricao: "Alguma etapa já é pela internet, mas ainda há etapa presencial que pode ser transformada.",
   },
   {
-    nivel: 3, rotulo: "Etapa presencial por questões legais", ehDigital: "Em parte", cor: "var(--ds-color-info)",
-    descricao: "Quase digital: 1 etapa presencial por questão legal."
+    nivel: 3, rotulo: "Parte online, presença exigida por lei", ehDigital: "Em parte", cor: "var(--ds-color-info)", textoEscuro: false,
+    descricao: "Alguma etapa já é pela internet, mas a lei exige uma etapa presencial.",
   },
   {
-    nivel: 4, rotulo: "100% digital, mas com back-office", ehDigital: "Sim", cor: "var(--ds-color-success)",
-    descricao: "Resolve do começo ao fim sem sair de casa, mas passa por análise humana."
+    nivel: 4, rotulo: "100% online para o cidadão", ehDigital: "Sim", cor: "var(--ds-color-success)", textoEscuro: false,
+    descricao: "O cidadão começa e termina pela internet; por dentro, um servidor ainda analisa o pedido.",
+  },
+  {
+    nivel: 5, rotulo: "100% online e automático", ehDigital: "Sim", cor: "color-mix(in srgb, var(--ds-color-success) 65%, black)", textoEscuro: false,
+    descricao: "Pela internet do começo ao fim, sem depender de nenhum servidor público.",
   },
 ] as const;
 
-/** Níveis contados como "resolve pela internet" no indicador de % digital. */
-export const NIVEIS_DIGITAIS = [3, 4];
-/** Cartas a um passo de ficar 100% digitais — a métrica de priorização. */
-export const NIVEIS_A_UM_PASSO = [2, 3];
+/** Níveis em que o cidadão resolve sem ir ao balcão (% online). */
+export const NIVEIS_DIGITAIS = [4, 5];
+/** Níveis que podem virar digitais — a métrica de priorização. O 3 fica de
+ * fora: a etapa presencial é exigência legal, não decisão do órgão. */
+export const NIVEIS_OPORTUNIDADE = [1, 2];
+export const NIVEL_TOPO = 5;
 
-export function corDoNivel(nivel: number): string {
+const naLista = (lista: number[], nivel: number | null) => nivel !== null && lista.includes(nivel);
+
+export function corDoNivel(nivel: number | null): string {
   return NIVEIS.find((n) => n.nivel === nivel)?.cor ?? "var(--ds-color-neutral-400)";
 }
-export function rotuloDoNivel(nivel: number): string {
-  return NIVEIS.find((n) => n.nivel === nivel)?.rotulo ?? "?";
+export function rotuloDoNivel(nivel: number | null): string {
+  return NIVEIS.find((n) => n.nivel === nivel)?.rotulo ?? "Não informado";
+}
+export function textoEscuroDoNivel(nivel: number | null): boolean {
+  return NIVEIS.find((n) => n.nivel === nivel)?.textoEscuro ?? false;
 }
 
-export type NivelContagem = { nivel: number; rotulo: string; qtd: number; cor: string };
+export type NivelContagem = { nivel: number; rotulo: string; qtd: number; cor: string; textoEscuro: boolean };
 
 export type ResumoCenso = {
   total: number;
-  distribuicao: NivelContagem[]; // uma entrada por nível 0–4, sempre as 5
+  distribuicao: NivelContagem[]; // uma entrada por nível 0–5, sempre as 6
+  nSemNivel: number; // cartas sem grau informado (fora da distribuição)
   nDigital: number;
-  pctDigital: number; // % em nível 3–4
-  n4: number; // 100% pela internet
-  aUmPasso: number; // nº em nível 2–3
-  nFalaSistema: number;
+  pctDigital: number; // % em nível 4–5, sobre as cartas COM grau informado
+  nTopo: number; // nível 5 — automático
+  oportunidades: number; // nº em nível 1–2
+  nExigenciaLegal: number; // nº em nível 3
+  /** Demanda mensal: base = cartas com número informado (ver comoLer na tela). */
+  nComDemanda: number;
+  demandaTotal: number;
+  demandaDigital: number; // pedidos/mês que caem em serviço nível 4–5
+  pctDemandaDigital: number; // % da demanda informada já atendida online (4–5)
 };
 
-/** KPIs de um órgão. Porte de metricas.py::resumir. */
+const pct = (n: number, base: number) => (base ? Math.round((1000 * n) / base) / 10 : 0);
+
+/** KPIs de um conjunto de cartas (órgão ou governo inteiro). */
 export function resumirOrgao(cartas: LinhaCensal[]): ResumoCenso {
-  const total = cartas.length;
+  const comNivel = cartas.filter((c) => c.nivel !== null);
   const distribuicao: NivelContagem[] = NIVEIS.map((n) => ({
     nivel: n.nivel,
     rotulo: n.rotulo,
     cor: n.cor,
-    qtd: cartas.filter((c) => c.nivel === n.nivel).length,
+    textoEscuro: n.textoEscuro,
+    qtd: comNivel.filter((c) => c.nivel === n.nivel).length,
   }));
-  const nDigital = cartas.filter((c) => NIVEIS_DIGITAIS.includes(c.nivel)).length;
+  const nDigital = comNivel.filter((c) => naLista(NIVEIS_DIGITAIS, c.nivel)).length;
+
+  const comDemanda = cartas.filter((c) => c.demandaMensal !== null && c.nivel !== null);
+  const demandaTotal = comDemanda.reduce((s, c) => s + (c.demandaMensal ?? 0), 0);
+  const demandaDigital = comDemanda
+    .filter((c) => naLista(NIVEIS_DIGITAIS, c.nivel))
+    .reduce((s, c) => s + (c.demandaMensal ?? 0), 0);
+
   return {
-    total,
+    total: cartas.length,
     distribuicao,
+    nSemNivel: cartas.length - comNivel.length,
     nDigital,
-    pctDigital: total ? Math.round((1000 * nDigital) / total) / 10 : 0,
-    n4: cartas.filter((c) => c.nivel === 4).length,
-    aUmPasso: cartas.filter((c) => NIVEIS_A_UM_PASSO.includes(c.nivel)).length,
-    nFalaSistema: cartas.filter((c) => c.falaSistema).length,
+    pctDigital: pct(nDigital, comNivel.length),
+    nTopo: comNivel.filter((c) => c.nivel === NIVEL_TOPO).length,
+    oportunidades: comNivel.filter((c) => naLista(NIVEIS_OPORTUNIDADE, c.nivel)).length,
+    nExigenciaLegal: comNivel.filter((c) => c.nivel === 3).length,
+    nComDemanda: comDemanda.length,
+    demandaTotal,
+    demandaDigital,
+    pctDemandaDigital: pct(demandaDigital, demandaTotal),
+  };
+}
+
+export type Prioridade = LinhaCensal & { orgaoSigla: string };
+
+/** Quadrantes da matriz impacto × esforço. Esforço vem do nível (≤ 2 = alto,
+ * ainda falta quase tudo; ≥ 3 = baixo); impacto vem dos pedidos por mês
+ * (acima da mediana do recorte = alto). */
+export type Quadrante = "rapido" | "estruturante" | "oportuno" | "evitar";
+export const NIVEL_MAX_ESFORCO_ALTO = 2;
+
+export function quadranteDe(c: { nivel: number | null; demandaMensal: number | null }, mediana: number): Quadrante | null {
+  if (c.nivel === null || c.demandaMensal === null) return null;
+  const altoImpacto = c.demandaMensal > mediana;
+  const altoEsforco = c.nivel <= NIVEL_MAX_ESFORCO_ALTO;
+  if (altoImpacto) return altoEsforco ? "estruturante" : "rapido";
+  return altoEsforco ? "evitar" : "oportuno";
+}
+
+function mediana(valores: number[]): number {
+  if (valores.length === 0) return 0;
+  const v = [...valores].sort((a, b) => a - b);
+  const m = Math.floor(v.length / 2);
+  return v.length % 2 ? v[m] : (v[m - 1] + v[m]) / 2;
+}
+
+export type MatrizCenso = {
+  mediana: number; // corte de impacto (pedidos/mês) deste recorte
+  quadrantes: Record<Quadrante, Prioridade[]>; // cada um por demanda desc
+  semDemanda: number; // cartas com nível mas sem número de pedidos — fora da matriz
+  semNivel: number; // cartas sem grau informado — fora da matriz
+};
+
+/** Matriz impacto × esforço de um recorte (governo inteiro ou 1 órgão). A
+ * mediana é do próprio recorte, então "alto impacto" é relativo: no órgão,
+ * compara com os outros serviços dele. Inclui todos os níveis (0–5) — o
+ * nível 5 cai em "baixo esforço" e a tela mostra quantos já estão no máximo. */
+export function matrizImpactoEsforco(orgaos: OrgaoCenso[]): MatrizCenso {
+  const cartas: Prioridade[] = orgaos.flatMap((o) => o.cartas.map((c) => ({ ...c, orgaoSigla: o.orgaoSigla })));
+  const posicionaveis = cartas.filter((c) => c.nivel !== null && c.demandaMensal !== null);
+  const corte = mediana(posicionaveis.map((c) => c.demandaMensal as number));
+  const quadrantes: Record<Quadrante, Prioridade[]> = { rapido: [], estruturante: [], oportuno: [], evitar: [] };
+  for (const c of posicionaveis) quadrantes[quadranteDe(c, corte) as Quadrante].push(c);
+  for (const q of Object.values(quadrantes)) q.sort((a, b) => (b.demandaMensal ?? 0) - (a.demandaMensal ?? 0));
+  return {
+    mediana: corte,
+    quadrantes,
+    semDemanda: cartas.filter((c) => c.nivel !== null && c.demandaMensal === null).length,
+    semNivel: cartas.filter((c) => c.nivel === null).length,
   };
 }
 
@@ -112,27 +189,33 @@ export type OrgaoNoRanking = {
   nome: string;
   total: number;
   pctDigital: number;
-  aUmPasso: number;
-  n4: number;
+  oportunidades: number;
+  nTopo: number;
 };
 
 export type PanoramaCenso = ResumoCenso & {
   nOrgaos: number;
-  orgaos: OrgaoNoRanking[]; // ordenados por pctDigital desc (mais → menos maduro)
+  orgaos: OrgaoNoRanking[]; // só órgãos com carta, por pctDigital desc
+  semResposta: string[]; // siglas que não informaram nenhum serviço
 };
 
-/** Panorama do governo: soma os órgãos nível a nível e monta o ranking.
- * Porte de metricas.py::agregar (+ o ranking de indice.py). */
+/** Panorama do governo: % recalculado sobre o total geral (não média das
+ * médias) + ranking dos órgãos. */
 export function agregarGoverno(orgaos: OrgaoCenso[]): PanoramaCenso {
-  const todas = orgaos.flatMap((o) => o.cartas);
-  const base = resumirOrgao(todas);
+  const comCartas = orgaos.filter((o) => o.cartas.length > 0);
+  const base = resumirOrgao(comCartas.flatMap((o) => o.cartas));
 
-  const ranking: OrgaoNoRanking[] = orgaos
+  const ranking: OrgaoNoRanking[] = comCartas
     .map((o) => {
       const r = resumirOrgao(o.cartas);
-      return { sigla: o.orgaoSigla, nome: o.orgaoNome, total: r.total, pctDigital: r.pctDigital, aUmPasso: r.aUmPasso, n4: r.n4 };
+      return { sigla: o.orgaoSigla, nome: o.orgaoNome, total: r.total, pctDigital: r.pctDigital, oportunidades: r.oportunidades, nTopo: r.nTopo };
     })
-    .sort((a, b) => b.pctDigital - a.pctDigital);
+    .sort((a, b) => b.pctDigital - a.pctDigital || b.total - a.total);
 
-  return { ...base, nOrgaos: orgaos.length, orgaos: ranking };
+  return {
+    ...base,
+    nOrgaos: comCartas.length,
+    orgaos: ranking,
+    semResposta: orgaos.filter((o) => o.cartas.length === 0).map((o) => o.orgaoSigla),
+  };
 }

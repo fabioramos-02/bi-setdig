@@ -1,45 +1,51 @@
-# Censo de maturidade digital — dados
+# Censo de serviços digitais — dados
 
-Um arquivo por órgão: `v1/<sigla>.json`. Retrato **estático** (snapshot) do
-estado de cada carta de serviço na régua de maturidade 0–4. Diferente das outras
-fontes, **não é gerado pelo pipeline `data-platform/`** nem tem filtro de período
-— é um congelamento manual da classificação (IA + revisão humana). Metodologia da
-escala em [`docs/censo-maturidade.md`](../../docs/censo-maturidade.md).
+Arquivo único: `v2/censo.json`, com a lista de órgãos e as cartas de cada um. É o retrato
+**autodeclarado** pelos órgãos no questionário da Superintendência de Governo
+Digital (SGD): cada órgão informou o grau de digitalização (0–5) de cada serviço.
+Não tem filtro de período, porque cada arquivo é uma rodada do censo. Metodologia da escala em
+[`docs/censo-maturidade.md`](../../docs/censo-maturidade.md).
+
+`v1/` (3 órgãos, régua 0–4 classificada por IA) foi substituído pelo `v2` — ver
+[ADR-015](../../docs/architecture/ADR-015-censo-autodeclarado.md).
 
 ## Shape
 
 ```jsonc
-{
-  "orgaoSigla": "IAGRO",
-  "orgaoNome": "Agência Estadual de Defesa Sanitária...",
-  "cartas": [
-    {
-      "id": "1406",
-      "titulo": "Atualizar cadastro de núcleo avícola comercial",
-      "nomePopular": "...",
-      "slug": "...",              // slug no portal ms.gov.br
-      "urlServico": "https://www.ms.gov.br/...",
-      "urlExterno": null,          // sistema externo, se houver
-      "nivel": 2,                  // 0–4 (ver docs/censo-maturidade.md)
-      "etapaBloqueio": "Entrega presencial da documentação...", // o que trava
-      "falaSistema": true,         // menciona algum sistema/plataforma
-      "sistemaCitado": "e-Saniagro",
-      "justificativa": "..."       // por que recebeu esse nível
-    }
-  ]
-}
+[
+  {
+    "orgaoSigla": "SEFAZ",
+    "orgaoNome": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
+    "cartas": [
+      {
+        "id": "sefaz-1",               // <sigla>-<ordem na aba>
+        "titulo": "IPVA - consulta de débito",
+        "setor": "...",
+        "nivel": 5,                    // 0–5; null = órgão não informou
+        "etapaPresencial": null,       // o que ainda é feito no balcão
+        "demandaMensal": 595721,       // pedidos/mês; null = não informado ou ilegível
+        "demandaTexto": null,          // texto original quando demandaMensal é null
+        "slug": "...",                 // casado com cartas/v1/inventario-relacao
+        "urlServico": "https://www.ms.gov.br/..."
+      }
+    ]
+  }
+]
 ```
 
 Os tipos TypeScript (`LinhaCensal`, `OrgaoCenso`) e o cálculo dos indicadores
-(% online, "a um passo", distribuição) vivem em [`src/lib/censo.ts`](../../src/lib/censo.ts).
+(% online, oportunidades, demanda) ficam em [`src/lib/censo.ts`](../../src/lib/censo.ts).
 
-## Como adicionar um órgão
+## Como atualizar (nova rodada do censo)
 
-1. No repo de origem (`mapeamento-inicial-servicos-digitais`), gerar a
-   classificação do órgão (`exports/<sigla>/cartas.json` + `data/<sigla>/maturidade.json`).
-2. Rodar o join/trim (script one-shot que produziu estes arquivos) para gerar
-   `v1/<sigla>.json` no shape acima.
-3. Registrar a sigla em `SIGLAS_CENSO` (`src/lib/censo.ts`).
-4. Adicionar a entrada em `datasets/catalog.json`.
+```bash
+python data-platform/build_censo.py "caminho/da/planilha unificada.xlsx"
+```
 
-A rota `/censo-digital/<sigla>` é gerada automaticamente (`generateStaticParams`).
+- O caminho padrão é `~/Downloads/planilha unificada.xlsx`.
+- O xlsx **não** é versionado, porque traz o nome e o e-mail de quem preencheu. Esses campos não vão para o JSON.
+- O script imprime:
+  - a contagem por nível;
+  - quantos serviços casaram com o inventário de cartas (link no portal);
+  - quantos tiveram a demanda lida como número.
+- A rota `/censo-digital/<sigla>` aparece sozinha para cada aba `Serviços <SIGLA>`.

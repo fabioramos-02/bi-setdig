@@ -22,7 +22,7 @@ governança da transformação digital estadual.
 
 ### Governança Estratégica
 
-- [Levantamento inicial de Serviços Digitais](/censo-digital) — indicadores de transformação digital por órgão.
+- [Levantamento de Serviços Digitais](/censo-digital) — indicadores de transformação digital por órgão.
 
 ## Metadados
 

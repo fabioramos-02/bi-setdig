@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { SIGLAS_CENSO, type OrgaoCenso } from "./censo";
+import type { OrgaoCenso } from "./censo";
 import type { EtpUst, TfsContrato, TfsItem, TfsSprint, TfsStakeholder } from "./tfs";
 
 /**
@@ -526,16 +526,15 @@ export function getCartasPercepcaoPorOrgao(): PercepcaoOrgao[] {
   return readDataset<PercepcaoOrgao[]>("cartas", "v1", "percepcao-por-orgao") ?? [];
 }
 
-// --- Censo de maturidade digital ---
-// Estático por natureza: é um retrato do estado de cada órgão (classificação
-// assistida por IA + revisão humana), não analytics de acesso ao vivo — por isso
-// não tem filtro de período. Cresce adicionando 1 arquivo por órgão + a sigla em
-// SIGLAS_CENSO (ver docs/censo-maturidade.md). Tipos/cálculo em lib/censo.ts.
-export function getCensoOrgao(sigla: string): OrgaoCenso | null {
-  return readDataset<OrgaoCenso>("censo", "v1", sigla.toLowerCase());
-}
+// --- Censo de serviços digitais ---
+// Estático por natureza: é o retrato autodeclarado por cada órgão numa rodada
+// do censo da SGD (data-platform/build_censo.py), não analytics de acesso — por
+// isso não tem filtro de período. Tipos/cálculo em lib/censo.ts.
 export function getCensoTodos(): OrgaoCenso[] {
-  return SIGLAS_CENSO.map((s) => getCensoOrgao(s)).filter((o): o is OrgaoCenso => o !== null);
+  return readDataset<OrgaoCenso[]>("censo", "v2", "censo") ?? [];
+}
+export function getCensoOrgao(sigla: string): OrgaoCenso | null {
+  return getCensoTodos().find((o) => o.orgaoSigla.toLowerCase() === sigla.toLowerCase()) ?? null;
 }
 
 export type ErroRelacao = {

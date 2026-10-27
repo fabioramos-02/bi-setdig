@@ -53,11 +53,12 @@ export function ComoLerEscala({ distribuicao }: { distribuicao?: NivelContagem[]
         </table>
 
         <p className="mt-4 rounded-md p-3 text-sm" style={{ background: "var(--ds-color-background-muted)", color: "var(--ds-color-text-secondary)" }}>
-          <strong style={{ color: "var(--ds-color-text-primary)" }}>Serviços que podem ser digitalizados (níveis 1–2):</strong>{" "}
-          serviços que após análise crítica, podem ser transformados. Esse é o foco para a ampliação da entrega de serviços digitais.
+          <strong style={{ color: "var(--ds-color-text-primary)" }}>Serviços que podem virar digitais (níveis 1 e 2):</strong>{" "}
+          o atendimento presencial não é exigido por lei, então dá para transformar. É o foco para ampliar a oferta de serviços digitais.
+          O nível 3 fica de fora: ali a etapa presencial é obrigação legal.
         </p>
         <p className="mt-2 text-xs" style={{ color: "var(--ds-color-text-muted)" }}>
-          A classificação é feita com apoio de inteligência artificial e revisada por pessoas, por isso, para maior aproximação da realidade estamos realizando o levantamento junto aos órgãos.
+          O grau de cada serviço foi informado pelo próprio órgão no levantamento da Superintendência de Governo Digital — é a visão de quem presta o serviço, sem conferência externa.
         </p>
       </div>
     </details>

@@ -1,6 +1,6 @@
 import type { NivelContagem } from "@/lib/censo";
 
-/** Donut multicor da distribuição 0–4 (uma fatia por nível, cor da rampa),
+/** Donut multicor da distribuição 0–5 (uma fatia por nível, cor da rampa),
  * centro com o total de serviços + legenda. Réplica da `.pizza` do site
  * original — conic-gradient montado a partir das quantidades. CSS puro. */
 export function PizzaDistribuicao({ distribuicao, total }: { distribuicao: NivelContagem[]; total: number }) {
@@ -21,7 +21,7 @@ export function PizzaDistribuicao({ distribuicao, total }: { distribuicao: Nivel
         className="relative rounded-full shrink-0"
         style={{ width: 180, height: 180, background: gradiente }}
         role="img"
-        aria-label={`Distribuição de ${total.toLocaleString("pt-BR")} serviços entre os níveis 0 a 4`}
+        aria-label={`Distribuição de ${total.toLocaleString("pt-BR")} serviços entre os níveis 0 a 5`}
       >
         <div
           className="absolute rounded-full grid place-content-center text-center"

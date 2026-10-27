@@ -1,115 +1,72 @@
-# Censo Digital — como funciona o censo de maturidade
+# Censo Digital — como funciona
 
 O **Censo Digital** mede quanto de cada serviço do Governo de MS já pode ser
 resolvido pela internet, sem o cidadão precisar ir a um balcão. Cada carta de
-serviço recebe uma nota numa régua de **0 a 4**, e o painel (`/censo-digital`)
+serviço recebe um **grau de digitalização de 0 a 5**. O painel (`/censo-digital`)
 mostra o panorama do governo e o retrato de cada órgão.
 
-Hoje é um **retrato estático** de 3 órgãos (IAGRO, DETRAN, SEAD). Foi pensado para
-crescer: cada órgão novo é um arquivo a mais, sem mudar a estrutura.
+A fonte é o **levantamento da Superintendência de Governo Digital (SGD)**: um
+questionário em que **cada órgão informou** o grau dos próprios serviços, a
+etapa presencial e quantos pedidos cada um recebe por mês. Decisão registrada no
+[ADR-015](architecture/ADR-015-censo-autodeclarado.md).
 
-## A régua de maturidade (0 a 4)
+## A escala (0 a 5)
 
-| Nível | Rótulo | Resolve online? | O que significa |
+| Nível | Rótulo no painel | Resolve online? | Quando o órgão escolhe |
 |:-:|---|:-:|---|
-| **0** | Apenas presencial | Não | Só dá para resolver no balcão — nada pela internet. |
-| **1** | Informação online | Não | Dá para se informar online (requisitos, prazos), mas o processo corre todo no balcão. |
-| **2** | Começa online, termina no balcão | Em parte | Começa pela internet (formulário, agendamento) e termina presencial. |
-| **3** | Quase tudo online | Quase | Quase tudo pela internet — trava só numa etapa física (uma vistoria ou assinatura). |
-| **4** | 100% pela internet | Sim | Resolve do começo ao fim sem sair de casa. |
+| **0** | Só presencial | Não | Informação e serviço só no balcão — o serviço nem está no Portal Único. |
+| **1** | Só a informação está online | Não | A carta está no Portal Único, mas nenhuma etapa é digital. |
+| **2** | Parte online, pode virar digital | Em parte | Alguma etapa já é digital, e a etapa presencial **pode** ser transformada. |
+| **3** | Parte online, presença exigida por lei | Em parte | Alguma etapa já é digital, mas a etapa presencial é **exigência legal**. |
+| **4** | 100% online para o cidadão | Sim | O cidadão começa e termina online; por dentro, um servidor ainda analisa o pedido. |
+| **5** | 100% online e automático | Sim | Online do começo ao fim, sem interação com servidor público. |
 
-A régua é **ordinal**: não existe uma nota contínua, cada carta cai num dos cinco
-degraus. A fonte da verdade dos rótulos e cores está em
-[`src/lib/censo.ts`](../src/lib/censo.ts) (`NIVEIS`).
+A escala é **ordinal**: cada carta cai num dos seis degraus. A fonte da verdade
+dos rótulos e cores está em [`src/lib/censo.ts`](../src/lib/censo.ts) (`NIVEIS`).
 
 ## Os indicadores
 
-- **Já resolvem online (% digital)** — proporção de serviços nos níveis **3 e 4**.
-  É o indicador-resumo de avanço do órgão e do governo.
-- **100% pela internet** — serviços no nível **4** (jornada inteira sem balcão).
-- **A um passo** — serviços nos níveis **2 e 3**. São os que já começaram a
-  digitalização e estão perto de fechar o ciclo; a métrica de priorização (o
-  menor esforço para o maior ganho).
-- **Usam algum sistema** — cartas que mencionam um sistema/plataforma digital.
+- **Já resolvem online (% digital):** proporção de serviços nos níveis **4 e 5**, calculada sobre os serviços com grau informado.
+- **Online e automáticos:** serviços no nível **5**.
+- **Podem virar digitais:** serviços nos níveis **1 e 2**, onde a ida ao balcão não é obrigação legal. É a métrica de priorização. O nível 3 fica de fora de propósito e aparece no painel como "etapa presencial por lei".
+- **Dos pedidos mensais caem em serviço 100% online:** soma dos pedidos por mês dos serviços nos níveis 4–5, dividida pela soma de todos os pedidos. O card mostra a conta inteira ("1,2 mi de 1,3 mi pedidos/mês informados") e quantos serviços entram nela. A base são **só os serviços que informaram um número**.
 
-No panorama do governo, o **% digital é recalculado sobre o total geral** de
-serviços (não é a média das médias entre órgãos), e o ranking ordena os órgãos do
-mais ao menos avançado por esse percentual.
+## Matriz de impacto × esforço ("Onde investir")
 
-## Como os dados são coletados
+Cada serviço com grau **e** número de pedidos cai num de quatro quadrantes. A matriz existe no governo (todos os órgãos) e em cada órgão.
 
-A maturidade de cada serviço é levantada num processo de **três etapas**. Ele roda
-no repositório de origem (`mapeamento-inicial-servicos-digitais`); aqui no portal
-o que existe é o **resultado congelado** (ver "Estado atual" abaixo).
+- **Esforço** vem do nível: quanto menor, mais falta digitalizar. Níveis **0–2 = alto esforço**, **3–5 = baixo**.
+- **Impacto** vem dos pedidos por mês. **Alto impacto = acima da mediana do recorte**: no governo, a mediana de todos os serviços; no órgão, a mediana dos serviços dele. É uma comparação relativa, então todo órgão tem os seus "mais procurados".
+- **Todos os níveis entram, inclusive o 5.** Cada quadrante mostra uma faixa com a mistura de níveis e quantos já estão no nível 5 (online e automático, sem nada a transformar). O texto acima da matriz dá o total do nível 5.
 
-### 1. Levantamento dos serviços
+| Quadrante | Leitura |
+|---|---|
+| Alto impacto, baixo esforço | Muito procurados e quase digitais: completar ou automatizar primeiro. |
+| Alto impacto, alto esforço | Muito procurados e ainda no balcão: projeto maior, alto retorno. |
+| Baixo impacto, baixo esforço | Ajustes quando houver fôlego. |
+| Baixo impacto, alto esforço | Deixe para depois. |
 
-Os serviços e a **jornada de cada um** (o passo a passo que o cidadão percorre) são
-lidos direto da base de serviços do Estado — a mesma que alimenta o portal
-ms.gov.br. Para cada serviço registra-se: título, descrição, requisitos, e a lista
-de **etapas** da jornada, cada etapa com o seu **canal de atendimento** (se aquele
-passo é feito pela internet, presencialmente, ou dos dois jeitos). As etapas são
-guardadas uma a uma, sem juntar num texto só — porque o canal de cada etapa é o
-sinal mais importante para medir a maturidade.
+Fica fora da matriz quem não tem grau ou número de pedidos, e a tela diz quantos são. A tabela do órgão exporta CSV (das linhas filtradas) com o quadrante de cada serviço. Cálculo em `matrizImpactoEsforco`/`quadranteDe` (`src/lib/censo.ts`).
 
-### 2. Classificação na régua 0–4
+No panorama do governo, o % digital é recalculado sobre o total geral de
+serviços, não como média das médias dos órgãos. O ranking ordena os órgãos do mais
+ao menos avançado. Órgão que não informou nenhum serviço fica fora do ranking e
+aparece citado no texto.
 
-Cada serviço é lido e recebe um nível de 0 a 4 com apoio de **inteligência
-artificial**, seguindo a régua e as regras abaixo, e passa por **revisão humana**.
+## Limitações do dado (e como o painel mostra)
 
-**O sinal mais forte é o canal de cada etapa da jornada:**
+- **Autodeclarado:** o grau é a visão do próprio órgão, sem conferência externa. O painel diz isso no texto de leitura.
+- **Grau não informado:** algumas linhas vieram sem grau. Elas aparecem como "Não informado" na tabela e ficam fora dos percentuais.
+- **Pedidos por mês em texto livre:** a planilha traz respostas como "aprox 5500", "7 ao ano" e "Não é possível quantificar". O conversor lê o que é número. Quando não consegue, guarda o texto original, e a tabela mostra "sem número" com o texto como dica. A seção de prioridades diz quantos serviços ficaram de fora.
 
-- Todas as etapas pela internet → candidato a **nível 3 ou 4**.
-- Todas presenciais → **nível 0 ou 1**.
-- Mistura de online e presencial → **nível 2 ou 3**.
+## Como atualizar
 
-**Regras de desempate** (quando o serviço fica entre dois níveis):
+Ver [`datasets/censo/README.md`](../datasets/censo/README.md). Em resumo:
 
-1. O canal das etapas decide primeiro (regra acima).
-2. Se a jornada é toda online e trava **só numa** etapa física — uma vistoria no
-   local, uma perícia, uma junta médica ou uma assinatura à mão — é **nível 3**
-   (não 2). É o caso típico de vistoria sanitária, por exemplo.
-3. Se há várias etapas presenciais, ou a conclusão obrigatoriamente acontece no
-   balcão, é **nível 2**.
-4. Se só existe informação online (requisitos, prazos), sem nenhum passo de
-   solicitação pela internet, é **nível 1**. Se nem isso, **nível 0**.
-5. Um serviço que usa um sistema/plataforma próprio reforça o nível 3 ou 4 —
-   conferindo se o sistema cobre a jornada inteira ou só um pedaço.
-6. **Na dúvida entre dois níveis, escolhe-se o menor** (critério conservador), e o
-   motivo fica registrado na justificativa daquele serviço.
+```bash
+python data-platform/build_censo.py "caminho/da/planilha unificada.xlsx"
+```
 
-Para cada serviço o resultado guarda: o nível, **a etapa que impede subir de
-nível** (o que ainda trava), se menciona algum sistema (e qual), e uma
-justificativa de 1–2 frases citando a evidência.
-
-### 3. Montagem do painel
-
-O levantamento e a classificação são cruzados serviço a serviço, e viram os
-indicadores e a tabela que este painel mostra.
-
-## Por que dá para crescer sem retrabalho
-
-O censo foi montado em duas camadas: uma **base comum** (a régua, o cálculo dos
-indicadores, o layout) que vale para qualquer órgão, e uma **parte por órgão**
-(a identidade e os sistemas próprios daquele órgão). Adicionar um órgão novo mexe
-só na parte dele — a base não muda. Por isso o painel escala para outros órgãos do
-Estado com pouco esforço.
-
-## Estado atual
-
-Hoje o portal traz um **retrato estático** de 3 órgãos. Os números são um
-congelamento da classificação — não se atualizam sozinhos a cada acesso. Quando um
-órgão é reavaliado, o retrato dele é regerado e substituído (ver
-[`datasets/censo/README.md`](../datasets/censo/README.md)).
-
-> **Honestidade sobre o dado:** a classificação é assistida por inteligência
-> artificial e pode conter aproximações. Por isso o painel sempre mostra a
-> justificativa de cada nível e deixa claro que houve revisão humana — o número
-> orienta a decisão, não a substitui.
-
-## Como adicionar um órgão
-
-Ver o passo a passo em [`datasets/censo/README.md`](../datasets/censo/README.md).
-Em resumo: gerar o `<sigla>.json`, registrar a sigla em `SIGLAS_CENSO`
-(`src/lib/censo.ts`) e a entrada em `datasets/catalog.json`. A rota
-`/censo-digital/<sigla>` aparece sozinha.
+Cada aba `Serviços <SIGLA>` vira um órgão, e a rota `/censo-digital/<sigla>`
+aparece sozinha. As colunas são reconhecidas pelo texto da pergunta no cabeçalho,
+então uma aba com colunas a mais (como as da AGRAER e da SAD) continua funcionando.

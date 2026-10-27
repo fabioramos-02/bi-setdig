@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "censo/censo",
+  "description": "Censo de serviços digitais (SGD) — grau de digitalização 0–5 autodeclarado por órgão, da planilha unificada",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["orgaoSigla", "orgaoNome", "cartas"],
+    "properties": {
+      "orgaoSigla": { "type": "string" },
+      "orgaoNome": { "type": "string" },
+      "cartas": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["id", "titulo", "nivel"],
+          "properties": {
+            "id": { "type": "string", "description": "<sigla>-<ordem na aba>; estável só dentro da mesma rodada" },
+            "titulo": { "type": "string" },
+            "setor": { "type": ["string", "null"] },
+            "nivel": { "type": ["integer", "null"], "minimum": 0, "maximum": 5, "description": "null = órgão não informou o grau" },
+            "etapaPresencial": { "type": ["string", "null"] },
+            "demandaMensal": { "type": ["number", "null"], "minimum": 0, "description": "solicitações/mês lidas do texto livre; null quando não deu pra ler" },
+            "demandaTexto": { "type": ["string", "null"], "description": "texto original quando demandaMensal é null" },
+            "slug": { "type": ["string", "null"] },
+            "urlServico": { "type": ["string", "null"] }
+          }
+        }
+      }
+    }
+  }
+}
