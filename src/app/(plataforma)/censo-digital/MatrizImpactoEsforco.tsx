@@ -154,7 +154,7 @@ function Lista({ itens, mostrarOrgao }: { itens: Prioridade[]; mostrarOrgao: boo
       {itens.map((c) => (
         <li key={`${c.orgaoSigla}-${c.id}`} className="flex items-center gap-2 py-1.5 min-w-0" style={{ borderTop: "1px solid var(--ds-color-border)" }}>
           <NivelBadge nivel={c.nivel} compacto />
-          <span className="flex-1 min-w-0 text-sm truncate" title={c.titulo}>
+          <span className="flex-1 min-w-0 text-sm leading-snug line-clamp-2" title={c.titulo}>
             {c.urlServico ? (
               <a href={c.urlServico} target="_blank" rel="noopener noreferrer" className="hover:underline" style={{ color: "var(--ds-color-text-primary)" }}>
                 {c.titulo}
