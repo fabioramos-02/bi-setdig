@@ -18,7 +18,7 @@ const QUADRANTES: { chave: Quadrante; titulo: string; acao: string; cor: string 
     acao: "Pouco procurados e quase digitais: ajustes quando houver fôlego.",
   },
   {
-    chave: "evitar", titulo: "Baixo impacto, alto esforço", cor: "var(--ds-color-error)",
+    chave: "evitar", titulo: "Baixo impacto, alto esforço", cor: "var(--ds-color-danger)",
     acao: "Pouco procurados e longe do digital: deixe para depois.",
   },
 ];

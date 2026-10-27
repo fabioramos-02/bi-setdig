@@ -136,7 +136,7 @@ export function CartasTable({ cartas, orgaoSigla, mediana }: { cartas: LinhaCens
           </Chip>
         ))}
         {(contagem.get(null) ?? 0) > 0 && (
-          <Chip ativo={nivelFiltro === null} cor="var(--ds-color-neutral-400)" onClick={() => setNivelFiltro(nivelFiltro === null ? undefined : null)}>
+          <Chip ativo={nivelFiltro === null} cor="var(--ds-color-neutral-500)" onClick={() => setNivelFiltro(nivelFiltro === null ? undefined : null)}>
             Não informado ({contagem.get(null)})
           </Chip>
         )}
@@ -154,7 +154,7 @@ export function CartasTable({ cartas, orgaoSigla, mediana }: { cartas: LinhaCens
   );
 }
 
-function Chip({ ativo, cor, onClick, children }: { ativo: boolean; cor?: string; onClick: () => void; children: React.ReactNode }) {
+export function Chip({ ativo, cor, onClick, children }: { ativo: boolean; cor?: string; onClick: () => void; children: React.ReactNode }) {
   const c = cor ?? "var(--ds-color-primary-600)";
   return (
     <button

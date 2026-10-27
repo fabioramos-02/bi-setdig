@@ -49,3 +49,24 @@ python data-platform/build_censo.py "caminho/da/planilha unificada.xlsx"
   - quantos serviços casaram com o inventário de cartas (link no portal);
   - quantos tiveram a demanda lida como número.
 - A rota `/censo-digital/<sigla>` aparece sozinha para cada aba `Serviços <SIGLA>`.
+
+## Etapas das cartas nível 4 (`v2/etapas-n4.json`)
+
+Alimenta a aba "Nível 4 na prática" de `/censo-digital`: para cada serviço nível 4 com carta
+ligada (`slug`), as etapas publicadas no Portal Único, para conferir se o
+"100% online" declarado é formulário online/sistema ou baixar formulário e
+mandar por e-mail. Classificação por palavra-chave em
+[`src/lib/censo-n4.ts`](../../src/lib/censo-n4.ts). Decisão em
+[ADR-016](../../docs/architecture/ADR-016-nivel-4-pelas-etapas-da-carta.md).
+
+```jsonc
+[{ "id": "aem-1", "slug": "...", "etapas": [{ "titulo": "...", "texto": "..." }],
+   "linkAcesso": null, "linkIntegrado": false }]
+```
+
+Rode depois do `build_censo.py` (lê o `censo.json` publicado, não o xlsx).
+Precisa de `PORTAL_API_KEY` no `.env` (header Authorization da API de serviços do portal):
+
+```bash
+python data-platform/build_etapas_n4.py
+```

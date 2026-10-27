@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import type { OrgaoCenso } from "./censo";
+import type { EtapasCarta } from "./censo-n4";
 import type { EtpUst, TfsContrato, TfsItem, TfsSprint, TfsStakeholder } from "./tfs";
 
 /**
@@ -535,6 +536,12 @@ export function getCensoTodos(): OrgaoCenso[] {
 }
 export function getCensoOrgao(sigla: string): OrgaoCenso | null {
   return getCensoTodos().find((o) => o.orgaoSigla.toLowerCase() === sigla.toLowerCase()) ?? null;
+}
+/** Etapas publicadas no portal das cartas nível 4 do censo
+ * (data-platform/build_etapas_n4.py). Estático pelo mesmo motivo do censo.
+ * Vazio = ainda não coletado. Classificação em lib/censo-n4.ts. */
+export function getEtapasN4(): EtapasCarta[] {
+  return readDataset<EtapasCarta[]>("censo", "v2", "etapas-n4") ?? [];
 }
 
 export type ErroRelacao = {

@@ -37,7 +37,7 @@ export type OrgaoCenso = {
  * `textoEscuro`: fundo claro (âmbar) pede texto escuro pra contraste. */
 export const NIVEIS = [
   {
-    nivel: 0, rotulo: "Só presencial", ehDigital: "Não", cor: "var(--ds-color-error)", textoEscuro: false,
+    nivel: 0, rotulo: "Só presencial", ehDigital: "Não", cor: "var(--ds-color-danger)", textoEscuro: false,
     descricao: "Informação e atendimento só no balcão — o serviço nem aparece no Portal Único.",
   },
   {
@@ -72,7 +72,7 @@ export const NIVEL_TOPO = 5;
 const naLista = (lista: number[], nivel: number | null) => nivel !== null && lista.includes(nivel);
 
 export function corDoNivel(nivel: number | null): string {
-  return NIVEIS.find((n) => n.nivel === nivel)?.cor ?? "var(--ds-color-neutral-400)";
+  return NIVEIS.find((n) => n.nivel === nivel)?.cor ?? "var(--ds-color-neutral-500)";
 }
 export function rotuloDoNivel(nivel: number | null): string {
   return NIVEIS.find((n) => n.nivel === nivel)?.rotulo ?? "Não informado";
