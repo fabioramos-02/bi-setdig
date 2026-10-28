@@ -60,12 +60,13 @@ mandar por e-mail. Classificação por palavra-chave em
 [ADR-016](../../docs/architecture/ADR-016-nivel-4-pelas-etapas-da-carta.md).
 
 ```jsonc
-[{ "id": "aem-1", "slug": "...", "etapas": [{ "titulo": "...", "texto": "..." }],
+[{ "id": "aem-1", "slug": "...",
+   "etapas": [{ "titulo": "...", "texto": "...", "canais": ["Online"] }],
    "linkAcesso": null, "linkIntegrado": false }]
 ```
 
-Rode depois do `build_censo.py` (lê o `censo.json` publicado, não o xlsx).
-Precisa de `PORTAL_API_KEY` no `.env` (header Authorization da API de serviços do portal):
+Fonte: tabela `gerenciamento_jornada` do banco das Cartas (exige VPN da SETDIG).
+Rode depois do `build_censo.py` (lê o `censo.json` publicado, não o xlsx):
 
 ```bash
 python data-platform/build_etapas_n4.py

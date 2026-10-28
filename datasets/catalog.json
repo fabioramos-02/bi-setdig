@@ -614,5 +614,16 @@
     "schema": "data-platform/schemas/censo-censo.schema.json",
     "rows": 27,
     "bytes": 474349
+  },
+  {
+    "dataset": "etapas-n4",
+    "source": "censo",
+    "owner": "SETDIG",
+    "updatedAt": "2026-10-28T12:09:23.517665+00:00",
+    "frequency": "manual",
+    "version": "v2",
+    "schema": "data-platform/schemas/censo-etapas-n4.schema.json",
+    "rows": 448,
+    "bytes": 714686
   }
 ]

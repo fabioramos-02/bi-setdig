@@ -15,7 +15,8 @@ import type { LinhaCensal, OrgaoCenso } from "./censo";
 export type EtapasCarta = {
   id: string; // mesmo id da carta no censo
   slug: string;
-  etapas: { titulo: string; texto: string }[];
+  /** `canais`: como a própria carta marca a etapa — "Online" e/ou "Presencial". */
+  etapas: { titulo: string; texto: string; canais?: string[] }[];
   linkAcesso: string | null; // botão "Acessar serviço" da carta, quando habilitado
   linkIntegrado: boolean;
 };
@@ -62,22 +63,32 @@ function normalizar(s: string): string {
 // carta mal escrita cai na categoria errada — a evidência na tabela deixa o
 // gestor conferir. Upgrade: revisão manual dos casos "Carta não diz como pedir".
 const PRESENCIAL = ["comparec", "presencialmente", "dirigir-se", "dirija-se", "pessoalmente", "balcao", "protocolar na", "protocolo fisico", "atendimento presencial"];
-// Baixar/imprimir/preencher + formulário (ou formulário apontando pra .pdf/.doc).
-// Verbo solto não basta: "baixe o certificado" acontece em serviço com sistema.
-const DOWNLOAD = /(baix|download|imprim|preench)\w*[^.|]{0,40}(formulario|requerimento|ficha|modelo|anexo)|(formulario|requerimento|ficha|modelo)[^.|]{0,60}\.(pdf|docx?|odt)\b/;
+// Baixar/imprimir + formulário (ou formulário apontando pra .pdf/.doc). Verbo
+// solto não basta ("baixe o certificado" acontece em serviço com sistema), e
+// "preencher o formulário" sozinho também não — é o que se faz no online.
+const DOWNLOAD = /(baix|download|imprim)\w*[^.|]{0,40}(formulario|requerimento|ficha|modelo|anexo)|(formulario|requerimento|ficha|modelo)[^.|]{0,60}\.(pdf|docx?|odt)\b/;
 const EMAIL = ["e-mail", "email", "mailto:"];
-const ONLINE = ["forms.ms.gov.br", "xforms", "sistema", "plataforma", "gov.br", "acesse o link", "acessar servico", "aplicativo", "http"];
+const ONLINE = ["forms.ms.gov.br", "xforms", "sistema", "plataforma", "gov.br", "acesse o link", "acessar servico", "aplicativo"];
+// Link de verdade (domínio após o http). Carta com <a href="http://"> vazio é comum.
+const RE_LINK = /https?:\/\/[a-z0-9-]+\.[a-z]/;
 const RE_EMAIL = /[\w.+-]+@[\w-]+(\.[\w-]+)+/;
 // "não precisa comparecer", "sem necessidade de comparecimento" não contam.
 const NEGACAO = /\b(nao|sem|dispensa\w*)\b[^.;]{0,30}$/;
+// Presença como uma opção entre canais: "por e-mail, telefone ou pessoalmente",
+// "pessoalmente ou via e-mail" — o cidadão não é obrigado a ir. E-mail sozinho
+// antes não basta: "envie por e-mail e depois compareça" é sequência, não opção.
+const OPCIONAL_ANTES = /\b(ou|telefone|whatsapp)\b[^.;]{0,25}$/;
+const OPCIONAL_DEPOIS = /^[^.;]{0,25}\bou\b/;
 
 /** Primeira palavra da lista que aparece, com o trecho em volta. `negavel`:
- * ignora ocorrência logo após "não/sem/dispensa" (só faz sentido pra presença). */
+ * ignora ocorrência negada ou oferecida como opção (só faz sentido pra presença). */
 function achar(texto: string, palavras: string[], negavel = false): string | null {
   for (const p of palavras) {
     let i = texto.indexOf(p);
     while (i >= 0) {
-      if (!negavel || !NEGACAO.test(texto.slice(Math.max(0, i - 40), i))) {
+      const antes = texto.slice(Math.max(0, i - 40), i);
+      const depois = texto.slice(i + p.length, i + p.length + 30);
+      if (!negavel || !(NEGACAO.test(antes) || OPCIONAL_ANTES.test(antes) || OPCIONAL_DEPOIS.test(depois))) {
         return texto.slice(Math.max(0, i - 50), i + p.length + 50).trim();
       }
       i = texto.indexOf(p, i + 1);
@@ -101,10 +112,15 @@ export function classificarN4(etapas: EtapasCarta | undefined): ClassificacaoN4 
   const semEmail = texto.replace(new RegExp(RE_EMAIL, "g"), " ").replace(/mailto:\S*/g, " ");
   const temEmail = RE_EMAIL.test(texto) || achar(texto, EMAIL) !== null;
   const linkSistema = etapas.linkIntegrado || (etapas.linkAcesso !== null && !/\.(pdf|docx?|odt)$/i.test(etapas.linkAcesso));
-  const online = achar(semEmail.replace(/https?:\S+\.(pdf|docx?|odt)\b/g, " "), ONLINE);
+  const semArquivo = semEmail.replace(/https?:\S+\.(pdf|docx?|odt)\b/g, " ");
+  const link = RE_LINK.exec(semArquivo);
+  const online = achar(semArquivo, ONLINE) ?? (link ? semArquivo.slice(Math.max(0, link.index - 50), link.index + 60).trim() : null);
 
   const presencial = achar(texto, PRESENCIAL, true);
   if (presencial) return { categoria: "presencial", evidencia: presencial };
+  // A própria carta marca a etapa como presencial (e não online).
+  const etapaPresencial = etapas.etapas.find((e) => e.canais?.includes("Presencial") && !e.canais.includes("Online"));
+  if (etapaPresencial) return { categoria: "presencial", evidencia: `Etapa "${etapaPresencial.titulo}" marcada como presencial na carta` };
 
   const m = DOWNLOAD.exec(texto);
   if (m && (temEmail || (!online && !linkSistema))) {

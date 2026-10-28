@@ -19,6 +19,22 @@ test("classificarN4: formulário em .pdf sem sistema também é o caso-problema"
 test("classificarN4: presencial vence e-mail; negação não conta", () => {
   assert.equal(classificarN4(carta("Envie por e-mail e depois compareça à unidade com os originais")).categoria, "presencial");
   assert.equal(classificarN4(carta("Não é necessário comparecer. Acesse o sistema e faça o pedido")).categoria, "online");
+  // presença oferecida como opção não obriga
+  assert.equal(classificarN4(carta("Contato por e-mail, telefone ou pessoalmente no endereço da sede")).categoria, "so-email");
+  assert.equal(classificarN4(carta("Protocolar pessoalmente ou via e-mail")).categoria, "so-email");
+});
+
+test("classificarN4: link vazio não é sistema; preencher formulário sozinho não é download", () => {
+  assert.equal(classificarN4(carta("Solicite pelo e-mail http://   e aguarde")).categoria, "so-email");
+  assert.equal(classificarN4(carta("Faça login no gov.br e preencha o formulário. Dúvidas: a@x.ms.gov.br")).categoria, "online");
+});
+
+test("classificarN4: etapa marcada só como Presencial na carta = presencial", () => {
+  const base = carta("Acesse o sistema e faça o pedido");
+  const marcada = { ...base, etapas: [...base.etapas, { titulo: "Retirada", texto: "Retire o documento", canais: ["Presencial"] }] };
+  assert.equal(classificarN4(marcada).categoria, "presencial");
+  const ambos = { ...base, etapas: [{ ...base.etapas[0], canais: ["Online", "Presencial"] }] };
+  assert.equal(classificarN4(ambos).categoria, "online");
 });
 
 test("classificarN4: sistema/forms ou botão de acesso = online, mesmo com e-mail de contato", () => {

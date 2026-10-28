@@ -32,7 +32,7 @@ export function Nivel4Tab({ p, etapasLidas }: { p: PanoramaN4; etapasLidas: bool
   return (
     <div className="flex flex-col gap-6">
       <StoryCard
-        anchor={`${n(fe.qtd)} dos ${n(total)} serviços que os órgãos declararam 100% online (nível 4) ainda pedem que o cidadão baixe um formulário e mande por e-mail${cat.presencial.qtd ? `, e ${n(cat.presencial.qtd)} ainda pedem alguma ida presencial` : ""}. Só ${n(cat.online.qtd)} (${cat.online.pct.toLocaleString("pt-BR")}%) recebem o pedido direto em formulário online ou sistema.`}
+        anchor={`Dos ${n(total)} serviços que os órgãos declararam 100% online (nível 4), ${n(cat.online.qtd)} (${cat.online.pct.toLocaleString("pt-BR")}%) recebem o pedido direto em formulário online ou sistema. Mas ${n(cat.presencial.qtd)} ainda pedem alguma ida presencial e ${n(fe.qtd)} mandam o cidadão baixar um formulário e enviar por e-mail.`}
         comoLer={`O nível 4 foi informado pelo próprio órgão. Aqui conferimos o que a carta publicada no Portal Único diz nas etapas, procurando palavras como "baixe o formulário", endereço de e-mail ou "compareça". É uma leitura automática do texto: a tabela mostra o trecho usado em cada serviço, para conferir.${lacuna ? ` ${n(lacuna)} serviços não têm carta ligada ou a carta não diz como pedir — eles continuam na conta, para a lacuna não sumir.` : ""}`}
       />
 

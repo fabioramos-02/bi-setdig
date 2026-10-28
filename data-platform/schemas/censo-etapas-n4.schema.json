@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "censo/etapas-n4",
+  "description": "Etapas publicadas (gerenciamento_jornada) das cartas nível 4 do censo — base da aba Nível 4 na prática (ADR-016)",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "slug", "etapas", "linkAcesso", "linkIntegrado"],
+    "properties": {
+      "id": { "type": "string", "description": "mesmo id da carta em censo/censo" },
+      "slug": { "type": "string" },
+      "etapas": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["titulo", "texto", "canais"],
+          "properties": {
+            "titulo": { "type": "string" },
+            "texto": { "type": "string", "description": "conteúdo da etapa sem HTML; links viram texto (url)" },
+            "canais": { "type": "array", "items": { "enum": ["Online", "Presencial"] }, "description": "como a carta marca a etapa" }
+          }
+        }
+      },
+      "linkAcesso": { "type": ["string", "null"], "description": "botão Acessar serviço, quando habilitado" },
+      "linkIntegrado": { "type": "boolean" }
+    }
+  }
+}

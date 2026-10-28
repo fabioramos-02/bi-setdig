@@ -37,14 +37,24 @@ _INVENTARIO_SQL = """
 """
 
 
-def _query(sql: str) -> list[dict]:
+_JORNADA_SQL = """
+    SELECT s.slug, s.url_externo, s.acesso_externo, s.link_integrado,
+           j.ordem, j.titulo, j.conteudo, j.canal_prestacao
+    FROM gerenciamento_servicos s
+    LEFT JOIN gerenciamento_jornada j ON j.servico_id = s.id
+    WHERE s.slug = ANY(%s)
+    ORDER BY s.slug, j.ordem
+"""
+
+
+def _query(sql: str, params: tuple | None = None) -> list[dict]:
     # client_encoding explícito: sem isso, psycopg2 nesta máquina negocia um
     # encoding que corrompe acento (Ag�ncia, Sa�de) mesmo com o banco em
     # UTF-8 — achado ao inspecionar orgao/conteudo publicados com "�".
     conn = psycopg2.connect(_connection_url(), connect_timeout=10, client_encoding="utf8")
     try:
         with conn.cursor() as cur:
-            cur.execute(sql)
+            cur.execute(sql, params)
             colunas = [d[0] for d in cur.description]
             return [dict(zip(colunas, row)) for row in cur.fetchall()]
     finally:
@@ -56,3 +66,10 @@ def get_inventario() -> list[dict]:
     (ADR-005). `created_at` alimenta "Novos Serviços"; `setor` (nome da unidade)
     alimenta a análise de setor mais demandado."""
     return _query(_INVENTARIO_SQL)
+
+
+def get_jornadas(slugs: list[str]) -> list[dict]:
+    """Etapas (`gerenciamento_jornada`) das cartas pedidas, 1 linha por etapa
+    (carta sem etapa vem com 1 linha de etapa nula), + campos do botão
+    "Acessar serviço". `canal_prestacao` = ["Online"] / ["Presencial"] por etapa."""
+    return _query(_JORNADA_SQL, (slugs,))
