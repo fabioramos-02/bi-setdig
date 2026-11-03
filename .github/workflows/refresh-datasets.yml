@@ -7,10 +7,11 @@ name: Refresh datasets
 #
 # PRÉ-REQUISITO (fazer uma vez, no GitHub → Settings → Secrets and variables →
 # Actions): cadastrar MATOMO_TOKEN, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET,
-# GOOGLE_REFRESH_TOKEN, GOOGLE_PROPERTY_ID, TFS_PAT. Sem eles o job roda mas as fontes
-# ficam indisponíveis e nada é publicado. Postgres/Cartas NÃO entra aqui
-# (exige VPN da SETDIG) — run.py isola a falha por fonte, então cartas só
-# imprime FALHOU e as demais publicam normalmente.
+# GOOGLE_REFRESH_TOKEN, GOOGLE_PROPERTY_ID, TFS_PAT. Fonte sem secret falha e o
+# job fica VERMELHO (run.py sai 1) — o GitHub avisa por e-mail. As fontes que
+# funcionaram são commitadas mesmo assim (passo de commit com `if: always()`).
+# Postgres/Cartas/MS Digital NÃO entram aqui (exigem VPN da SETDIG): --sem-vpn
+# pula essas, que seguem rodando à mão na rede da SETDIG.
 
 on:
   schedule:
@@ -44,8 +45,9 @@ jobs:
           GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
           GOOGLE_PROPERTY_ID: ${{ secrets.GOOGLE_PROPERTY_ID }}
           TFS_PAT: ${{ secrets.TFS_PAT }}
-        run: python run.py
+        run: python run.py --sem-vpn
       - name: Commit datasets se mudaram
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

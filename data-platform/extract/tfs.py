@@ -23,6 +23,9 @@ PROJETO = "XVIA"
 TIME = "XVIA Team"
 API = "4.1"
 PASTA_QUERIES = "Shared Queries/BI SETDIG"
+# Dashboard do time no TFS (XVIA/_dashboards/dashboard/<id>): o BI roda as
+# consultas por trás de cada card/gráfico, então card novo lá aparece aqui.
+DASHBOARD_TIME = "85ffe596-bdda-4268-83ee-e78fd55d3569"
 
 CAMPOS = [
     "System.Id", "System.WorkItemType", "System.Title", "System.State", "System.Description",
@@ -136,17 +139,35 @@ def get_arvore() -> dict[int, int | None]:
     return arvore
 
 
-def get_itens(ids: list[int]) -> list[dict]:
-    """Campos de CAMPOS em lotes de 200 (limite da API)."""
+def get_itens(ids: list[int], campos: list[str] = CAMPOS) -> list[dict]:
+    """Campos pedidos em lotes de 200 (limite da API)."""
     saida = []
     for i in range(0, len(ids), 200):
         fatia = ids[i:i + 200]
         resp = pedir("GET", "wit/workitems", raiz=TFS_URL, params={
-            "ids": ",".join(map(str, fatia)), "fields": ",".join(CAMPOS)})
+            "ids": ",".join(map(str, fatia)), "fields": ",".join(campos)})
         saida.extend(resp.get("value", []))
     return saida
 
 
+def _raiz_time() -> str:
+    return f"{TFS_URL}/{PROJETO}/{requests.utils.quote(TIME)}"
+
+
 def get_sprints() -> list[dict]:
-    raiz = f"{TFS_URL}/{PROJETO}/{requests.utils.quote(TIME)}"
-    return pedir("GET", "work/teamsettings/iterations", raiz=raiz).get("value", [])
+    return pedir("GET", "work/teamsettings/iterations", raiz=_raiz_time()).get("value", [])
+
+
+def get_dashboard(dashboard_id: str = DASHBOARD_TIME) -> list[dict]:
+    """Widgets do dashboard (settings vêm como string JSON)."""
+    return pedir("GET", f"dashboard/dashboards/{dashboard_id}", raiz=_raiz_time(),
+                 params={"api-version": "4.1-preview.2"}).get("widgets", [])
+
+
+def ids_da_query(query_id: str) -> list[int]:
+    """Ids que a consulta salva devolve. Consulta plana -> `workItems`; em
+    árvore/vínculo -> alvos distintos de `workItemRelations`."""
+    resp = pedir("GET", f"wit/wiql/{query_id}")
+    if resp.get("workItems") is not None:
+        return [w["id"] for w in resp["workItems"]]
+    return list(dict.fromkeys(r["target"]["id"] for r in resp.get("workItemRelations", []) if r.get("target")))

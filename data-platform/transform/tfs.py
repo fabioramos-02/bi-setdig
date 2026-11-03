@@ -6,7 +6,9 @@ Regras combinadas com a SGD em 26/10/2026 (nota do vault
 """
 from __future__ import annotations
 
+import json
 import re
+from collections import Counter
 from datetime import date, datetime
 
 # Coluna do board -> tipo de entrega do relatório. Só PBI e Bug têm coluna;
@@ -139,6 +141,43 @@ def montar_sprints(brutos: list[dict]) -> list[dict]:
         "situacao": {"past": "encerrada", "current": "atual", "future": "futura"}.get(
             s.get("attributes", {}).get("timeFrame", ""), "futura"),
     } for s in brutos]
+
+
+def ler_widget(w: dict) -> dict | None:
+    """Widget do dashboard -> {titulo, queryId, groupBy, ordem}, ou None se não
+    tem consulta (membros do time, links). Card de consulta traz `queryId`;
+    gráfico traz `transformOptions.filter` (id da consulta) + `groupBy`."""
+    try:
+        s = json.loads(w.get("settings") or "{}")
+    except ValueError:
+        return None
+    if not isinstance(s, dict):
+        return None
+    opcoes = s.get("transformOptions") or {}
+    query = s.get("queryId") or opcoes.get("filter")
+    if not query:
+        return None
+    pos = w.get("position") or {}
+    return {
+        "titulo": (w.get("name") or s.get("queryName") or "").strip(),
+        "queryId": query,
+        "groupBy": opcoes.get("groupBy") or None,
+        "ordem": (pos.get("row", 0), pos.get("column", 0)),
+    }
+
+
+def agrupar(valores: list, campo: str = "") -> list[dict]:
+    """Contagem por valor do campo do gráfico, maior primeiro. Caminho de
+    sprint/área vira o último trecho ("XVIA\\Sprint 7" -> "Sprint 7"); sprint
+    na raiz do projeto ("XVIA") = item sem sprint."""
+    def rotulo(v) -> str:
+        if not v:
+            return "Sem valor"
+        if campo == "System.IterationPath" and "\\" not in str(v):
+            return "Sem sprint"
+        return str(v).rsplit("\\", 1)[-1]
+    rotulos = [rotulo(v) for v in valores]
+    return [{"rotulo": r, "qtd": n} for r, n in Counter(rotulos).most_common()]
 
 
 def hoje_utc() -> date:

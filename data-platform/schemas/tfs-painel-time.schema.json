@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "tfs/painel-time",
+  "description": "Cards e gráficos do dashboard do time XVIA no TFS, recalculados rodando a consulta salva por trás de cada um (ADR-014, adendo 2026-11). Ordem = posição no dashboard.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["titulo", "tipo", "total"],
+    "properties": {
+      "titulo": { "type": "string", "description": "nome do card/gráfico como está no dashboard" },
+      "tipo": { "enum": ["numero", "grafico"] },
+      "total": { "type": "integer", "minimum": 0, "description": "itens que a consulta devolve" },
+      "grupos": {
+        "type": "array",
+        "description": "só em gráfico: contagem por valor do campo agrupado, maior primeiro",
+        "items": {
+          "type": "object",
+          "required": ["rotulo", "qtd"],
+          "properties": { "rotulo": { "type": "string" }, "qtd": { "type": "integer", "minimum": 0 } }
+        }
+      }
+    }
+  }
+}

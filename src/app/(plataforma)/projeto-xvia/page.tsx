@@ -7,9 +7,11 @@ import {
   getTfsContrato,
   getTfsEtpUst,
   getTfsItens,
+  getTfsPainelTime,
   getTfsSprints,
   getTfsStakeholders,
 } from "@/lib/data";
+import { diasDesde } from "@/lib/tfs-painel";
 import { ProjetoXviaClient } from "./ProjetoXviaClient";
 
 export const metadata: Metadata = {
@@ -34,6 +36,15 @@ export default function ProjetoXviaPage() {
     );
   }
 
+  const painelEm = getDatasetUpdatedAt("tfs", "painel-time");
+  const painel = {
+    widgets: getTfsPainelTime(),
+    atualizadoEm: painelEm,
+    // Medido no build: a Vercel rebuilda a cada commit do refresh automático,
+    // então atraso grande aqui = refresh parado (aviso visível na aba).
+    diasSemAtualizar: painelEm ? diasDesde(painelEm, new Date()) : null,
+  };
+
   return (
     // Filtros ficam na URL (useSearchParams) — exige Suspense.
     <Suspense>
@@ -45,6 +56,7 @@ export default function ProjetoXviaPage() {
         stakeholders={getTfsStakeholders()}
         // "Hoje" é o dia da extração: prazos e dias parados batem com o dado.
         hoje={atualizadoEm.slice(0, 10)}
+        painel={painel}
       />
     </Suspense>
   );

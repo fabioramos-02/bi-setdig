@@ -48,3 +48,27 @@ As tarefas da X-VIA (área `XVIA\Customização UST`, 617 em 26/10) **não** tê
 - Tarefa sem código, com faixa (`NEG.03/04/05`) ou com código fora do ETP fica "a classificar": não entra na soma e aparece listada.
 - A UST da SGD (catálogo "Governo do Estado") saiu do painel, que mostra só o que a X-VIA fatura.
 - Filtros (módulo, frente, órgão, sprint) ficam na URL e valem para todas as abas.
+
+## Adendo (2026-11-03) — quadro do time espelhado e refresh que avisa quando para
+
+**Problema:** o refresh diário (`refresh-datasets.yml`) ficou parado de 27/08 a 03/11 sem ninguém perceber. Os secrets `TFS_PAT`, `MATOMO_TOKEN` e `GOOGLE_REFRESH_TOKEN` estavam vazios, e toda fonte falhava. O `run.py` isola a falha de cada fonte e saía com código 0, então o job ficava verde e não commitava nada.
+
+**Decisões:**
+- **O refresh falha alto.** Se alguma fonte falhar, o `run.py` sai com código 1 depois de publicar as que funcionaram. O passo de commit do workflow roda com `if: always()`: o que deu certo é publicado e o job fica vermelho, e o GitHub avisa por e-mail.
+- **`--sem-vpn` no CI.** Cartas, qualidade, MS Digital e Portal Único (banco) exigem VPN e nunca rodam no GitHub. O workflow pula essas fontes, para o vermelho significar "algo que deveria funcionar parou".
+- **Quadro do time = consultas do próprio dashboard.** O dashboard do time no TFS (`DASHBOARD_TIME` em `extract/tfs.py`) é lido pela API.
+  - Para cada card ou gráfico com consulta salva, roda-se a consulta (`wit/wiql/{id}`).
+  - Card guarda o total. Gráfico guarda a contagem pelo campo agrupado (`groupBy`), buscando só esse campo.
+  - Publica `datasets/tfs/v1/painel-time.json`, na ordem do dashboard.
+  - Card novo no TFS aparece no BI sem mudar código.
+  - "Reunião", "Aplicativo", "Pacotes de entrega" etc. são consultas, não campos. Por isso não dava para derivá-los do `itens.json`.
+- **Leitura de gestão** (`src/lib/tfs-painel.ts`): os cards são separados pelo nome em três grupos.
+  - **pede ação** = impedido, aguardando decisão, bug;
+  - **em andamento ou fora da fila** = em desenvolvimento, despriorizado, descontinuado;
+  - **tamanho do trabalho** = o resto.
+  - Card com nome novo cai em "tamanho" até alguém acrescentar a palavra na regra.
+- **Aba "Acompanhamento do time"** em `/projeto-xvia`. Os filtros da página não se aplicam a ela, e a aba diz isso. Com mais de 2 dias sem atualizar, mostra aviso visível.
+
+**Consequências:**
+- O PAT precisa ler Work Items **e** Dashboards.
+- Enquanto Matomo e GA4 seguirem sem secret, o job fica vermelho todo dia. É o aviso correto.

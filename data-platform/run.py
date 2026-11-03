@@ -458,11 +458,29 @@ def run_tfs() -> None:
     publish("tfs", "sprints", sprints)
     print(f"[tfs] sprints -> {[s['nome'] for s in sprints]}")
 
+    # Dashboard do time: roda a consulta de cada card/gráfico (ADR-014, adendo 2026-11).
+    painel = []
+    for w in sorted(filter(None, map(t_tfs.ler_widget, tfs.get_dashboard())), key=lambda w: w["ordem"]):
+        ids = tfs.ids_da_query(w["queryId"])
+        linha = {"titulo": w["titulo"], "tipo": "grafico" if w["groupBy"] else "numero", "total": len(ids)}
+        if w["groupBy"]:
+            valores = [it["fields"].get(w["groupBy"]) for it in tfs.get_itens(ids, [w["groupBy"]])]
+            linha["grupos"] = t_tfs.agrupar(valores, w["groupBy"])
+        painel.append(linha)
+    validate_rows(painel, required=["titulo", "tipo", "total"], non_negative=["total"])
+    publish("tfs", "painel-time", painel)
+    print(f"[tfs] painel-time -> {[(p['titulo'], p['total']) for p in painel]}")
+
+
+FONTES_VPN = {"cartas", "qualidade", "msdigital_db", "portal_unico_db"}
+
 
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument("--domain", type=str, help="Domínio específico para rodar")
+    parser.add_argument("--sem-vpn", action="store_true",
+                        help="Pula fontes que só respondem na VPN da SETDIG (uso no GitHub Actions)")
     args = parser.parse_args()
 
     todas_as_funcoes = [
@@ -487,9 +505,20 @@ if __name__ == "__main__":
             print(f"Domínio {args.domain} não encontrado.")
             sys.exit(1)
         todas_as_funcoes = alvo
+    if args.sem_vpn:
+        todas_as_funcoes = [item for item in todas_as_funcoes if item[0] not in FONTES_VPN]
 
+    falhas = []
     for nome, fn in todas_as_funcoes:
         try:
             fn()
         except Exception as exc:  # noqa: BLE001 — fonte indisponível não derruba as outras
             print(f"[{nome}] FALHOU: {exc}")
+            falhas.append(nome)
+
+    # Sai com erro se alguma fonte falhou: as que funcionaram já publicaram, mas o
+    # job do GitHub precisa ficar vermelho. Antes saía 0 e o refresh ficou parado
+    # de 27/08 a 03/11 com todos os secrets vazios, sem ninguém perceber.
+    if falhas:
+        print(f"Fontes que falharam: {falhas}")
+        sys.exit(1)

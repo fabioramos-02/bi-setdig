@@ -3,7 +3,7 @@ python data-platform/transform/tfs_test.py
 """
 from datetime import date
 
-from tfs import codigo_catalogo, frente, montar_itens, montar_sprints, orgao_da_feature
+from tfs import agrupar, codigo_catalogo, frente, ler_widget, montar_itens, montar_sprints, orgao_da_feature
 
 HOJE = date(2026, 10, 26)
 SIGLAS = {"SES", "IMASUL", "DETRAN", "SEDMS"}
@@ -89,6 +89,22 @@ def test_sprints():
         "startDate": "2026-10-14T00:00:00Z", "finishDate": "2026-10-27T00:00:00Z", "timeFrame": "current"}}])
     assert s == [{"sprint": "XVIA\\Sprint 5", "nome": "Sprint 5", "inicio": "2026-10-14",
                   "fim": "2026-10-27", "situacao": "atual"}]
+
+
+def test_ler_widget():
+    card = {"name": "BUG", "position": {"row": 2, "column": 3}, "settings": '{"queryId": "q1", "queryName": "Bugs"}'}
+    grafico = {"name": "PACOTES DE ENTREGA", "position": {"row": 3, "column": 4},
+               "settings": '{"transformOptions": {"filter": "q2", "groupBy": "System.BoardColumn"}}'}
+    assert ler_widget(card) == {"titulo": "BUG", "queryId": "q1", "groupBy": None, "ordem": (2, 3)}
+    assert ler_widget(grafico)["groupBy"] == "System.BoardColumn"
+    assert ler_widget({"name": "XVIA Team", "settings": '{"members": []}'}) is None
+    assert ler_widget({"name": "Work", "settings": "não é json"}) is None
+
+
+def test_agrupar():
+    assert agrupar(["XVIA\\Sprint 7", "XVIA\\Sprint 7", "XVIA", None], "System.IterationPath") == [
+        {"rotulo": "Sprint 7", "qtd": 2}, {"rotulo": "Sem sprint", "qtd": 1}, {"rotulo": "Sem valor", "qtd": 1}]
+    assert agrupar(["Em Produção", "A fazer", "Em Produção"], "System.BoardColumn")[0] == {"rotulo": "Em Produção", "qtd": 2}
 
 
 if __name__ == "__main__":

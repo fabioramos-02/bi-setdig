@@ -14,6 +14,8 @@ import { PendenciasTab } from "./PendenciasTab";
 import { FiscalizacaoTab } from "./FiscalizacaoTab";
 import { UstTab } from "./UstTab";
 import { StakeholdersTab } from "./StakeholdersTab";
+import { AcompanhamentoTab } from "./AcompanhamentoTab";
+import type { WidgetPainel } from "@/lib/tfs-painel";
 
 export type Filtrar = (campo: keyof Filtros, valor: string) => void;
 
@@ -28,6 +30,7 @@ export function ProjetoXviaClient({
   etp,
   stakeholders,
   hoje,
+  painel,
 }: {
   itens: TfsItem[];
   sprints: TfsSprint[];
@@ -35,6 +38,7 @@ export function ProjetoXviaClient({
   etp: EtpUst | null;
   stakeholders: TfsStakeholder[];
   hoje: string;
+  painel: { widgets: WidgetPainel[]; atualizadoEm: string | null; diasSemAtualizar: number | null };
 }) {
   const params = useSearchParams();
   const router = useRouter();
@@ -66,6 +70,7 @@ export function ProjetoXviaClient({
     { id: "fiscalizacao", label: "Fiscalização e aceite", content: <FiscalizacaoTab itens={recorte} sprints={sprints} hoje={hoje} /> },
     { id: "ust", label: "UST da X-VIA × ETP", content: <UstTab itens={recorte} etp={etp} contrato={contrato} /> },
     { id: "orgaos", label: "Órgãos e pontos focais", content: <StakeholdersTab itens={recorte} stakeholders={stakeholders} filtros={filtros} filtrar={filtrar} /> },
+    { id: "acompanhamento", label: "Acompanhamento do time", content: <AcompanhamentoTab {...painel} /> },
   ];
 
   return (

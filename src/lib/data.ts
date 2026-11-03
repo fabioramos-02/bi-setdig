@@ -3,6 +3,7 @@ import path from "node:path";
 import type { OrgaoCenso } from "./censo";
 import type { EtapasCarta } from "./censo-n4";
 import type { EtpUst, TfsContrato, TfsItem, TfsSprint, TfsStakeholder } from "./tfs";
+import type { WidgetPainel } from "./tfs-painel";
 
 /**
  * Único ponto de leitura de datasets/ (ver docs/architecture/data-flow.md).
@@ -583,4 +584,9 @@ export function getTfsContrato(): TfsContrato | null {
 }
 export function getTfsEtpUst(): EtpUst | null {
   return readDataset<EtpUst>("tfs", "v1", "etp-ust");
+}
+/** Cards e gráficos do dashboard do time no TFS, recalculados pela consulta de
+ * cada um. Vazio = ainda não extraído. Leitura em lib/tfs-painel.ts. */
+export function getTfsPainelTime(): WidgetPainel[] {
+  return readDataset<WidgetPainel[]>("tfs", "v1", "painel-time") ?? [];
 }
