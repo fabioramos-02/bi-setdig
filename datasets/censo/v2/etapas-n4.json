@@ -550,63 +550,6 @@
     "linkIntegrado": false
   },
   {
-    "id": "agems-9",
-    "slug": "solicitar-vistoria-de-veiculo-de-passageiros-intermunicipal-na-modalidade-fretamento82",
-    "etapas": [
-      {
-        "titulo": "Cadastrar o veículo no sistema MONITORA",
-        "texto": "Acessar o endereço eletrônico https://www.monitora.ms.gov.br/ https://www.monitora.ms.gov.br/ e utilizar login e senha de operador para solicitar registro de veículo. Preencher os dados do veículo já registrado, inserir os documentos listados no item “Exigências para realizar o serviço” e aguardar análise da AGEMS.",
-        "canais": [
-          "Online"
-        ]
-      },
-      {
-        "titulo": "Conferir no Sistema Monitora a resposta da AGEMS",
-        "texto": "Se houver necessidade de correção da informação ou do documento juntado, a AGEMS reprova o documento para que seja corrigido e reenviado. Se a documentação estiver correta, o status no sistema aparecerá como “Ativo” e possibilitará a solicitação de vistoria.",
-        "canais": [
-          "Online"
-        ]
-      },
-      {
-        "titulo": "Solicitar vistoria de veículo",
-        "texto": "O usuário pode solicitar vistoria de veículo com o status “Ativo” e com toda a documentação aprovada no Sistema. Basta selecionar o veículo que deseja vistoriar e gerar automaticamente um Requerimento de Vistoria.",
-        "canais": [
-          "Online"
-        ]
-      },
-      {
-        "titulo": "Efetuar o pagamento da taxa",
-        "texto": "Pagar a Guia que foi gerada pelo sistema. A compensação será automática assim que for efetuado o pagamento.",
-        "canais": [
-          "Online"
-        ]
-      },
-      {
-        "titulo": "Agendar a vistoria",
-        "texto": "Solicitar no sistema o agendamento da vistoria, indicando a data em que o veículo estará disponível para verificação do vistoriador.",
-        "canais": [
-          "Online"
-        ]
-      },
-      {
-        "titulo": "Disponibilizar o veículo na data agendada",
-        "texto": "Estar com o veículo disponível para vistoria na data e hora agendadas.",
-        "canais": [
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Imprimir o Certificado de Vistoria",
-        "texto": "Após a aprovação pelo vistoriador, acessar o sistema MONITORA. Na coluna Ações do Requerimento de Vistoria escolher “Gerar PDF”, imprimir e portar no veículo o documento que comprova a regularidade. Em caso de dúvida, consultar o Manual do MONITORA no site da AGEMS, no endereço https://www.agems.ms.gov.br/informativos/guias-e-manuais/ https://www.agems.ms.gov.br/informativos/guias-e-manuais/ .",
-        "canais": [
-          "Online"
-        ]
-      }
-    ],
-    "linkAcesso": "https://www.monitora.ms.gov.br/",
-    "linkIntegrado": false
-  },
-  {
     "id": "agems-11",
     "slug": "obter-credenciamento-como-comercializador-de-gas-natural-e-biometano7",
     "etapas": [
@@ -1231,42 +1174,6 @@
     "linkIntegrado": false
   },
   {
-    "id": "ageprev-16",
-    "slug": "requerer-a-reducao-da-contribuicao-previdenciaria195",
-    "etapas": [
-      {
-        "titulo": "Reunir os documentos",
-        "texto": "Separe os documentos obrigatórios para a abertura, especialmente o laudo médico indicando a patologia.",
-        "canais": [
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Protocolizar pedido na Ageprev",
-        "texto": "Entregar no atendimento presencial ou enviar pelos correios para a Gerência de Registro e Arquivo/Ageprev: Av. Mato Grosso 5778, Bloco n. 1, Carandá Bosque CEP 79031-001 Campo Grande-MS.",
-        "canais": [
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Acompanhar a análise",
-        "texto": "Após conferência de documentos, encaminha para a Diretoria de Perícia Médica - Dipem para analisar o enquadramento da patologia considerada grave conforme o laudo médico apresentado. A finalização do processo é feita por meio de Parecer Técnico/Jurídico que é conferido e auditado por setores competentes.",
-        "canais": [
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Receber a confirmação",
-        "texto": "A comunicação do resultado do processo administrativo é feita por meio de publicação no Diário Oficial do Estado de MS - D.O.E.- MS",
-        "canais": [
-          "Presencial"
-        ]
-      }
-    ],
-    "linkAcesso": null,
-    "linkIntegrado": false
-  },
-  {
     "id": "ageprev-17",
     "slug": "requerer-a-reversao-de-cota-de-pensao8",
     "etapas": [
@@ -1296,42 +1203,6 @@
     "linkIntegrado": false
   },
   {
-    "id": "ageprev-18",
-    "slug": "solicitacao-de-revisao-de-proventos-alteracao-de-aposentadoria175",
-    "etapas": [
-      {
-        "titulo": "Protocolizar o pedido",
-        "texto": "O aposentado deve comparecer à Gerência de Registro e Arquivo – Gerarq/Diraf (setor de protocolo da Ageprev) para entregar o Requerimento de Revisão de Benefício junto com todos os documentos necessários. É fornecido um número de protocolo para acompanhamento.",
-        "canais": [
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Triagem e análise dos documentos",
-        "texto": "A Gerência de Análise de Benefícios - Geab/Dirb faz a verificação da documentação apresentada. Se houver falhas ou documentos faltantes, o segurado será informado por ofício, contato telefônico ou mensagem eletrônica. A comunicação será feita pelos contatos informados no requerimento.",
-        "canais": [
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Acompanhamento do pedido",
-        "texto": "O andamento do pedido pode ser acompanhado pelo número de protocolo fornecido.",
-        "canais": [
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Decisão e publicação",
-        "texto": "Após a análise final, a decisão sobre a revisão — deferimento ou indeferimento — é publicada no Diário Oficial Eletrônico do Estado de Mato Grosso do Sul (D.O.E.-MS).",
-        "canais": [
-          "Presencial"
-        ]
-      }
-    ],
-    "linkAcesso": null,
-    "linkIntegrado": false
-  },
-  {
     "id": "ageprev-19",
     "slug": "revisao-de-pensao-previdenciaria120",
     "etapas": [
@@ -1346,97 +1217,6 @@
       {
         "titulo": "Aguardar análise e parecer e acompanhar a publicação oficial",
         "texto": "Aguardar a análise e acompanhar a publicação de resultado no Diário Oficial do Estado de MS - https://www.spdo.ms.gov.br/diariodoe",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      }
-    ],
-    "linkAcesso": null,
-    "linkIntegrado": false
-  },
-  {
-    "id": "ageprev-20",
-    "slug": "requerer-a-revisao-de-reforma35",
-    "etapas": [
-      {
-        "titulo": "Baixar o formulário",
-        "texto": "Acesse o site da Ageprev e baixe o formulário “Revisão de Reforma”.",
-        "canais": [
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Preencher o formulário",
-        "texto": "Informe seus dados pessoais e descreva o motivo da solicitação (erro, valor, data ou documento incorreto).",
-        "canais": [
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Anexar documentos",
-        "texto": "Anexe os comprovantes que sustentam o pedido de revisão.",
-        "canais": [
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Protocolizar o pedido",
-        "texto": "Entregue presencialmente ou envie por meio digital ao protocolo da Ageprev.",
-        "canais": [
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Aguardar análise e resultado",
-        "texto": "A equipe técnica fará a reavaliação e comunicará o resultado ao solicitante por meio de decisão publicada no Diário Oficial do Estado (D.O.E.-MS)",
-        "canais": [
-          "Presencial"
-        ]
-      }
-    ],
-    "linkAcesso": null,
-    "linkIntegrado": false
-  },
-  {
-    "id": "ageprev-22",
-    "slug": "avaliacao-pericial-para-comunicacao-de-acidente-de-trabalho-cat-avaliacao-pericial-para-comunicacao-de-acidente-de-trabalho-cat172",
-    "etapas": [
-      {
-        "titulo": "Comparecer na USRH - gerar formulário",
-        "texto": "O s ervidor ou representante deve se dirigir à Unidade Setorial de Recursos Humanos – USRH do órgão de origem para abrir a CAT, no período máximo de 24 horas após o acidente; A CAT vai gerar um formulário que deverá ser preenchido pelo médico-assistente, que fez o primeiro atendimento após o acidente. Deverá estar carimbado e assinado;",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Entrega de formulário preenchido e assinado pelo médico-assistente",
-        "texto": "O formulário deverá ser entregue na USRH do órgão de origem, que o encaminhará, via e-mail, para a perícia-oficial (Gerência de Medicina do Trabalho, Diretoria de Perícia Médica/Ageprev)",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Comunicação entre GMET/DIPEM E USRH/Origem",
-        "texto": "Gerência de Medicina do Trabalho/Dipem agendará a data e o horário para realização da perícia e comunicará à USRH do órgão de origem",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Comparecimento do servidor para perícia",
-        "texto": "O servidor deverá comparecer na perícia médica oficial no horário agendado, com os documentos pessoais.",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Entrega do resultado da perícia-oficial para servidor",
-        "texto": "Uma via do resultado da perícia é entregue ao servidor, sendo que a mesma também estará disponível no sistema para acesso da USRH do órgão de origem.",
         "canais": [
           "Online",
           "Presencial"
@@ -1892,14 +1672,6 @@
     "etapas": [
       {
         "titulo": "Publicação do Edital com a quantidade de vagas em Diário Oficial do Estado",
-        "texto": "A publicação do Edital com a quantidade de vagas em Diário Oficial do Estado é feita pelo link: http://https://www.spdo.ms.gov.br/diariodoe https://www.spdo.ms.gov.br/diariodoe",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Publicação do Edital com a quantidade de vagas em Diário Oficial do Estado",
         "texto": "A publicação do Edital com a quantidade de vagas em Diário Oficial do Estado é feita pelo link https://www.imprensaoficial.ms.gov.br/",
         "canais": [
           "Online",
@@ -1907,8 +1679,8 @@
         ]
       },
       {
-        "titulo": "Inscrição no Programa",
-        "texto": "A inscrição deverá ser realizada, exclusivamente, através do formulário de inscrição disponível na internet, pelo site MEU DETRAN/MS: https://www.meudetran.ms.gov.br/%20→%20Educação%20→%20Programas https://www.meudetran.ms.gov.br/ → Educação → Programas e Projetos de Educação para o Trânsito → Vencendo o Medo de Dirigir. Antes de efetuar a inscrição, o candidato deverá conhecer o edital e certificar-se de que atende todos os critérios de exigibilidade para a inscrição no programa.",
+        "titulo": "Publicação do Edital com a quantidade de vagas em Diário Oficial do Estado",
+        "texto": "A publicação do Edital com a quantidade de vagas em Diário Oficial do Estado é feita pelo link: http://https://www.spdo.ms.gov.br/diariodoe https://www.spdo.ms.gov.br/diariodoe",
         "canais": [
           "Online",
           "Presencial"
@@ -1917,6 +1689,14 @@
       {
         "titulo": "Inscrição no Programa",
         "texto": "A inscrição deverá ser realizada, exclusivamente, através do formulário de inscrição disponível na internet, pelo site MEU DETRAN/MS: https://www.meudetran.ms.gov.br/ em seguida clicar na Aba Educação, depois, na Aba Programas e Projetos de Educação para o Trânsito, e por fim, Vencendo o Medo de Dirigir. Antes de efetuar a inscrição, o candidato deverá conhecer o edital e certificar-se de que atende todos os critérios de exigibilidade para a inscrição no programa.",
+        "canais": [
+          "Online",
+          "Presencial"
+        ]
+      },
+      {
+        "titulo": "Inscrição no Programa",
+        "texto": "A inscrição deverá ser realizada, exclusivamente, através do formulário de inscrição disponível na internet, pelo site MEU DETRAN/MS: https://www.meudetran.ms.gov.br/%20→%20Educação%20→%20Programas https://www.meudetran.ms.gov.br/ → Educação → Programas e Projetos de Educação para o Trânsito → Vencendo o Medo de Dirigir. Antes de efetuar a inscrição, o candidato deverá conhecer o edital e certificar-se de que atende todos os critérios de exigibilidade para a inscrição no programa.",
         "canais": [
           "Online",
           "Presencial"
@@ -2123,16 +1903,16 @@
     "slug": "programa-detran-vai-a-escola9",
     "etapas": [
       {
-        "titulo": "Solicitar programa Detran vai à escola",
-        "texto": "Após o encaminhamento do e-mail, a equipe técnica da Divisão de Educação irá entrar em contato para agendamento da data do atendimento e demais providências",
+        "titulo": "Instituição de Ensino solicita por Ofício o atendimento",
+        "texto": "A Instituição de Ensino deverá solicitar o atendimento, no e-mail mailto:diret@detran.ms.gov.br diret@detran.ms.gov.br ou mailto:diedu@detran.ms.gov.br diedu@detran.ms.gov.br . O ofício deverá conter: Nome e endereço da Instituição; Nome e contato do coordenador solicitante; Tema a ser abordado; Número de alunos a serem atendidos e Data sugerida.",
         "canais": [
           "Online",
           "Presencial"
         ]
       },
       {
-        "titulo": "Instituição de Ensino solicita por Ofício o atendimento",
-        "texto": "A Instituição de Ensino deverá solicitar o atendimento, no e-mail mailto:diret@detran.ms.gov.br diret@detran.ms.gov.br ou mailto:diedu@detran.ms.gov.br diedu@detran.ms.gov.br . O ofício deverá conter: Nome e endereço da Instituição; Nome e contato do coordenador solicitante; Tema a ser abordado; Número de alunos a serem atendidos e Data sugerida.",
+        "titulo": "Solicitar programa Detran vai à escola",
+        "texto": "Após o encaminhamento do e-mail, a equipe técnica da Divisão de Educação irá entrar em contato para agendamento da data do atendimento e demais providências",
         "canais": [
           "Online",
           "Presencial"
@@ -2336,134 +2116,6 @@
     "linkIntegrado": false
   },
   {
-    "id": "detran-48",
-    "slug": "solicitacao-de-baixa-definitiva-de-cadastro-de-veiculo55",
-    "etapas": [
-      {
-        "titulo": "Vistoria",
-        "texto": "A vistoria deve ser feita em das agências do DETRAN-MS",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Entrega do recorte do chassi e placas",
-        "texto": "Entregar o recorte do chassi e as placas (menos para os veículos de exportação, trilha e competição)",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Comparecer à agência de trânsito",
-        "texto": "Comparecimento à agência de trânsito com os documentos citados acima.",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Pagar guia",
-        "texto": "Realizar o pagamento da guia do serviço.",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Aguardar a emissão da certidão de baixa definitiva",
-        "texto": "Aguardar o prazo solicitado pela agência de trânsito para a baixa definitiva do veículo e retornar à agência para retirar a certidão de baixa definitiva.",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      }
-    ],
-    "linkAcesso": "https://www.meudetran.ms.gov.br/agendamento.php",
-    "linkIntegrado": false
-  },
-  {
-    "id": "detran-53",
-    "slug": "solicitacao-de-remarcacao-de-chassi-eou-motor-do-veiculo173",
-    "etapas": [
-      {
-        "titulo": "Vistoria",
-        "texto": "A vistoria pode ser feita em das agências do DETRAN-MS ou em empresas credenciadas de vistoria.",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Comparecer à agência de trânsito",
-        "texto": "Comparecimento à agência de trânsito com os documentos citados acima.",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Pagar guia",
-        "texto": "Realizar o pagamento da guia do serviço.",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Aguardar a emissão do documento",
-        "texto": "Aguardar o prazo solicitado pela agência de trânsito para a emissão do novo documento com as alterações solicitadas.",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      }
-    ],
-    "linkAcesso": "https://www.meudetran.ms.gov.br/veiculo.php#",
-    "linkIntegrado": false
-  },
-  {
-    "id": "detran-55",
-    "slug": "transferencia-de-propriedade-veicular1",
-    "etapas": [
-      {
-        "titulo": "Vistoria",
-        "texto": "A vistoria pode ser feita em das agências do DETRAN-MS ou em https://www.detran.ms.gov.br/veiculos-2/consulta-vistoria/consulta-vistoria/ empresas credenciadas de vistoria .",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Comparecer à agência de trânsito",
-        "texto": "Comparecimento à agência de trânsito com os documentos citados acima.",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Pagar guia",
-        "texto": "Realizar o pagamento da guia do serviço.",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Aguardar a emissão do documento",
-        "texto": "Aguardar o prazo solicitado pela agência de trânsito para a emissão da autorização.",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      }
-    ],
-    "linkAcesso": "https://www2.meudetran.ms.gov.br/veiculo.php#",
-    "linkIntegrado": false
-  },
-  {
     "id": "detran-57",
     "slug": "contestacao-administrativa-de-multa-autuacao-e-penalidades159",
     "etapas": [
@@ -2607,52 +2259,6 @@
         "canais": [
           "Online",
           "Presencial"
-        ]
-      }
-    ],
-    "linkAcesso": null,
-    "linkIntegrado": false
-  },
-  {
-    "id": "funtrab-3",
-    "slug": "intermediacao-de-empregos7",
-    "etapas": [
-      {
-        "titulo": "INTERMEDIAÇÃO DE EMPREGOS",
-        "texto": "O candidato deve comparecer na Funtrab( se estiver em Campo Grande) ou na Casa do Trabalhador(se estiver no interior do Estado) e trazer RG, CPF e Carteira de Trabalho (documentos originais).",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "ATUALIZAR CADASTRO",
-        "texto": "O trabalhador precisa manter seu cadastro atualizado a cada três meses, pois assim que surgir uma oportunidade de trabalho ele será convocado a comparecer à Funtrab(em Campo Grande) ou se estiver no interior do Estado, na Casa do Trabalhador do município.",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      }
-    ],
-    "linkAcesso": "funtrab.ms.gov.br",
-    "linkIntegrado": false
-  },
-  {
-    "id": "funtrab-4",
-    "slug": "anunciar-vagas-de-emprego-no-sine-sistema-nacional-de-emprego71",
-    "etapas": [
-      {
-        "titulo": "Comparecer à Funtrab ou nas Casas do Trabalhador",
-        "texto": "O trabalhador interessado pode comparecer à Funtrab (Campo Grande ), à Rua 13 de maio, 2.773 -Centro, de segunda a sexta, das 7h30 às 16h30, com RG, CPF e Carteira de Trabalho. Caso esteja no interior de MS, pode comparecer em uma das 35 Casas do Trabalhador no município.",
-        "canais": [
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Endereços de atendimento",
-        "texto": "Os endereços são estes: https://www.funtrab.ms.gov.br/fale-conosco/unidades/unidades-regionais/ Unidades Regionais – FUNTRAB",
-        "canais": [
-          "Online"
         ]
       }
     ],
@@ -3702,42 +3308,6 @@
     "linkIntegrado": false
   },
   {
-    "id": "iagro-77",
-    "slug": "credenciamento-de-laboratorios-de-alimentos-eou-agua-de-abastecimento91",
-    "etapas": [
-      {
-        "titulo": "Elaborar ofício de interesse no credenciamento",
-        "texto": "Elaborar ofício dirigido à Chefia da Divisão de Inspeção de Produtos de Origem Animal (DIPOA) manifestando interesse e solicitação de credenciamento do laboratório.",
-        "canais": [
-          "Online"
-        ]
-      },
-      {
-        "titulo": "Protocolar na Iagro",
-        "texto": "Protocoloar o ofício e documentos em uma https://www.iagro.ms.gov.br/fale-conosco/unidades/ Unidade Local da Iagro ou na https://www.iagro.ms.gov.br/fale-conosco/ Iagro Central.",
-        "canais": [
-          "Online"
-        ]
-      },
-      {
-        "titulo": "Análise técnica da documentação",
-        "texto": "A documentação encaminhada será analisada pelos técnicos da Gerência de Inspeção e Defesa Sanitária Animal - GIDSA e Gerência de Laboratórios - GLAB. Caso necessário, será solicitado uma reunião para apresentação do laboratório e/ou uma visita “in loco” para avaliação.",
-        "canais": [
-          "Online"
-        ]
-      },
-      {
-        "titulo": "Aprovação do registro do laboratório",
-        "texto": "A Iagro emitirá um parecer técnico sobre o credenciamento com base nas exigências descritas na https://www.iagro.ms.gov.br/wp-content/uploads/2023/10/PORTARIA-IAGRO-MS-N.%C2%B0-3626-DE-02.10.2019-Credenciamento-de-Laboratorio.pdf Portaria IAGRO nº 3626/2019. Quando aprovado, o credenciamento será publicado no https://www.spdo.ms.gov.br/diariodoe Diário Oficinal do Estado.",
-        "canais": [
-          "Online"
-        ]
-      }
-    ],
-    "linkAcesso": null,
-    "linkIntegrado": false
-  },
-  {
     "id": "iagro-78",
     "slug": "atendimento-a-denuncias-sobre-locais-eou-produtos-e-subprodutos-clandestinos-de-origem-animal23",
     "etapas": [
@@ -3757,42 +3327,6 @@
       }
     ],
     "linkAcesso": null,
-    "linkIntegrado": false
-  },
-  {
-    "id": "iagro-79",
-    "slug": "obtencao-do-selo-arte50",
-    "etapas": [
-      {
-        "titulo": "Preencher o requerimento",
-        "texto": "Preencher e assinar o https://www.iagro.ms.gov.br/wp-content/uploads/2020/10/MOD.DIPOA_.NUART_.003-Requerimento-de-Solicitacao-de-SIE-Selo-Arte-Rev-0.docx requerimento de Selo Arte.",
-        "canais": [
-          "Online"
-        ]
-      },
-      {
-        "titulo": "Protocolar na Iagro",
-        "texto": "Protocolar em uma https://www.iagro.ms.gov.br/fale-conosco/unidades/unidades-regionais/ Unidade Local da Iagro ou na https://www.iagro.ms.gov.br/fale-conosco/ Iagro Central.",
-        "canais": [
-          "Online"
-        ]
-      },
-      {
-        "titulo": "Aguardar avaliação",
-        "texto": "A Iagro fará a avaliação do processo produtivo.",
-        "canais": [
-          "Online"
-        ]
-      },
-      {
-        "titulo": "Obter o Selo Arte",
-        "texto": "Após analises, a Iagro fará a concessão do Selo Arte.",
-        "canais": [
-          "Online"
-        ]
-      }
-    ],
-    "linkAcesso": "https://www.ms.gov.br/workspace/formularios/obter-selo-arte13",
     "linkIntegrado": false
   },
   {
@@ -5023,72 +4557,6 @@
     "linkIntegrado": false
   },
   {
-    "id": "imasul-29",
-    "slug": "solicitar-de-criacao-ou-ampliacao-de-rppn155",
-    "etapas": [
-      {
-        "titulo": "Protocolo da solicitação",
-        "texto": "O particular protocola no Imasul a documentação contida na https://www.imasul.ms.gov.br/wp-content/uploads/2021/12/resolucao-semagro-703-2020.pdf Resolução Semagro n. 703/2020",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Conferência das informações",
-        "texto": "A Gerência de Unidades de Conservação (GUC) promove a instrução processual para análise da documentação, verificando sua legitimidade e adequação, e caso a documentação esteja correta, dá prosseguimento aos trâmites;",
-        "canais": [
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Publicar edital de consulta",
-        "texto": "O Imasul realiza a publicação do Edital de Consulta Pública com resumo da proposta, além de mapas de localização;",
-        "canais": [
-          "Online"
-        ]
-      },
-      {
-        "titulo": "Encaminhar ofício",
-        "texto": "O Imasul encaminha Ofício ao representante do município, informando a intenção de criar a RPPN;",
-        "canais": [
-          "Online"
-        ]
-      },
-      {
-        "titulo": "Vistoria e parecer",
-        "texto": "O Imasul realiza vistoria in loco , emitindo Parecer Técnico conclusivo;",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Publica a Resolução de criação da RPPN",
-        "texto": "O Imasul publica a Resolução de Criação da RPPN;",
-        "canais": [
-          "Online"
-        ]
-      },
-      {
-        "titulo": "Averbação na matrícula",
-        "texto": "O particular realiza a averbação à margem da matricula do imóvel;",
-        "canais": [
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "RPPN inserida no SISLA",
-        "texto": "O Imasul insere no Sistema Interativo de Suporte ao Licenciamento Ambiental (SISLA) o polígono da unidade de conservação recém-criada para conhecimento público.",
-        "canais": [
-          "Online"
-        ]
-      }
-    ],
-    "linkAcesso": null,
-    "linkIntegrado": false
-  },
-  {
     "id": "imasul-30",
     "slug": "solicitar-inscricao-de-uc-no-cadastro-estadual-de-unidades-de-conservacao-ceuc156",
     "etapas": [
@@ -5204,93 +4672,6 @@
         "texto": "O Imasul encaminha para as Secretarias Estaduais pertinentes os índices ambientais definitivos, que serão publicados no Diário Oficial do Estado e definirão o rateio dos recursos do ICMS Ecológico para o exercício financeiro seguinte.",
         "canais": [
           "Online"
-        ]
-      }
-    ],
-    "linkAcesso": null,
-    "linkIntegrado": false
-  },
-  {
-    "id": "imasul-32",
-    "slug": "solicitar-realizacao-de-atividade-academica-e-outros-usos-nos-parques-estaduais36",
-    "etapas": [
-      {
-        "titulo": "Consulta da agenda",
-        "texto": "Consultar a Unidade de Conservação quanto à disponibilidade de agenda;",
-        "canais": [
-          "Online"
-        ]
-      },
-      {
-        "titulo": "Protocolar pedido",
-        "texto": "Formalizar o pedido por meio de protocolo no Imasul;",
-        "canais": [
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Enviar documentação",
-        "texto": "Enviar a documentação e formulário exigidos;",
-        "canais": [
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Entregar declaração",
-        "texto": "Entregar declaração de compromisso com a unidade de conservação assinado;",
-        "canais": [
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Assinar Termo",
-        "texto": "Preencher e assinar o Termo de conhecimento de riscos inerentes as atividades em área natural aberta, responsabilizando-se pela prevenção.",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      }
-    ],
-    "linkAcesso": null,
-    "linkIntegrado": false
-  },
-  {
-    "id": "imasul-33",
-    "slug": "descentalizar-o-licenciamento-ambiental170",
-    "etapas": [
-      {
-        "titulo": "Protocolo da solicitação",
-        "texto": "Protocolar junto ao Imasul : Ofício do chefe do Poder Executivo manisfestando interesse na formalização da descentralização do licenciamento; https://www.imasul.ms.gov.br/wp-content/uploads/2026/04/Requerimento-Padrao-1.docx Requerimento padrão assinado ; Documentos comprabatórios: Cópia do instrumento legal que institui a política municipal de meio ambiente; Cópia do instrumento legal que institui o órgão colegiado de instância deliberativa, com participação da sociedade civil (Conselho Municipal de Meio Ambiente); Cópia do instrumento legal que institui órgão técnico-administrativo da estrutura do Poder Executivo Municipal com atribuições específicas ou compartilhadas na área de meio ambiente; Cópia do instrumento legal que institui sistema de fiscalização ambiental estabelecido que preveja multas pelo descumprimento de obrigações de natureza ambiental. Cópia do Termo de Posse, documento de identidade e CPF do Prefeito Municipal; Cópia do Cartão do Cadastro Nacional de Pessoa Jurídica (CNPJ) da Prefeitura Municipal; Cópia do instrumento da última nomeação dos membros do Conselho Municipal de Meio Ambiente, constando o período de mandato; Cópia da Ata da última reunião do Conselho Municipal de Meio Ambiente; Cópia atualizada do instrumento legal designando a equipe que compõe o corpo técnico multidisciplinar, com a indicação do nome, cargo, formação profissional, vínculo e órgão de lotação, inclusive o do responsável pelo órgão ambiental do município; e, Ato de nomeação do representante legal para assuntos relacionados ao processo de descentralização.",
-        "canais": [
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Análise dos documentos",
-        "texto": "A documentação apresentada será submetida à análise da equipe técnica do Imasul.",
-        "canais": [
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Elaborar o Termo de Cooperação",
-        "texto": "Uma vez aprovada, será elaborado o Termo de Cooperação Técnica, que será encaminhado para assinatura do Diretor-Presidente do Imasul e do Prefeito Municipal.",
-        "canais": [
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Assinatura do Termo",
-        "texto": "OTermo de Cooperação Técnica é assinado pelo Diretor-Presidente do Imasul e pelo Prefeito Municipal",
-        "canais": [
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Assinatura e publicação em Diário Oficial",
-        "texto": "Após a formalização das assinaturas, o documento será enviado para publicação no Diário Oficial do MS",
-        "canais": [
-          "Presencial"
         ]
       }
     ],
@@ -5513,6 +4894,54 @@
     "linkIntegrado": false
   },
   {
+    "id": "pmms-4",
+    "slug": "051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170",
+    "etapas": [
+      {
+        "titulo": "Cadastrar no sistema",
+        "texto": "O boletim on-line é um serviço exclusivo pelo site http://boat.sigo.ms.gov.br/#/ http://boat.sigo.ms.gov.br/#/ . O usuário poderá acessar diretamente o link de registro ou pelo site http://www.pm.ms.gov.br/ www.pm.ms.gov.br , onde está disponível atalho para acessar a página de registro. Como se trata de registro on-line o usuário deve realizar: 1 -Cadastrar no sistema ( http://boat.sigo.ms.gov.br/#/ http://boat.sigo.ms.gov.br/#/ ) a informação dos documentos pessoais, endereço, endereço de e-mail e cadastrar uma senha para acesso.",
+        "canais": []
+      },
+      {
+        "titulo": "Elaborar o boletim",
+        "texto": "2 – Após o cadastro o usuário entrará usando CPF e senha para elaboração do boletim, seguindo passo-a-passo as orientações do sistema.",
+        "canais": []
+      }
+    ],
+    "linkAcesso": "http://boat.sigo.ms.gov.br/#/",
+    "linkIntegrado": false
+  },
+  {
+    "id": "pmms-6",
+    "slug": "solicitar-resgate-de-animal-silvestre186",
+    "etapas": [],
+    "linkAcesso": "@pmms.1bpma",
+    "linkIntegrado": false
+  },
+  {
+    "id": "pmms-14",
+    "slug": "16-servico-de-denuncia-181-disque-denuncia60",
+    "etapas": [
+      {
+        "titulo": "Receber a denuncia por meio do 181 ou pelo site https://www.181.ms.gov.br/",
+        "texto": "1 – A denúncia é recebida pelo atendente do 181 ou pela internet através do site https://www.181.ms.gov.br/ https://www.181.ms.gov.br/ . Se estiver ocorrendo uma infração penal no momento da ligação, o cidadão deve acionar o serviço de emergência ou urgência 190.",
+        "canais": []
+      },
+      {
+        "titulo": "Narrar os fatos no telefone 181 ou descrever os fatos via site do 181",
+        "texto": "2 – Caso o crime não estiver acontecendo durante a ligação, o cidadão narrará os fatos para o atendente ou informa via on-line através do site 181.",
+        "canais": []
+      },
+      {
+        "titulo": "Tratamento das denúncias",
+        "texto": "3 – As denúncias são encaminhadas aos órgãos competentes para análise, averiguação e providências necessárias.",
+        "canais": []
+      }
+    ],
+    "linkAcesso": "https://www.181.ms.gov.br/denuncia/",
+    "linkIntegrado": false
+  },
+  {
     "id": "sad-4",
     "slug": "cadastro-de-fornecedores36",
     "etapas": [
@@ -5532,6 +4961,180 @@
       }
     ],
     "linkAcesso": "https://www.siga.ms.gov.br/auth/realms/az/protocol/openid-connect/auth?client_id=efornecedor-app&redirect_uri=https%3A%2F%2Fwww.siga.ms.gov.br%2Fefornecedor%2F&state=b69fd0af-e6d9-4698-901a-3d72bf2dc7da&response_mode=fragment&response_type=code&scope=ope",
+    "linkIntegrado": false
+  },
+  {
+    "id": "sec-10",
+    "slug": "pedido-de-acesso-a-informacao46",
+    "etapas": [
+      {
+        "titulo": "Acesse a Plataforma Fala.BR",
+        "texto": "Acesse o site da https://falabr.cgu.gov.br/web/login?tipo=8&redirect=/v-app/manifestacao/criar?tipo=8 Plataforma Fala.BR ou clique no botão abaixo “Acessar Serviço”. Clique no ícone “Acesso à Informação - LAI”.",
+        "canais": [
+          "Online",
+          "Presencial"
+        ]
+      },
+      {
+        "titulo": "Indique a opção aplicável ao seu caso e clique em Continuar",
+        "texto": "Indique a opção aplicável ao seu caso e clique em Continuar.",
+        "canais": [
+          "Online"
+        ]
+      },
+      {
+        "titulo": "Faça login na Plataforma Fala.BR",
+        "texto": "Clique em “Entrar com Gov.BR” nos ícones Pessoa Física ou Pessoa Jurídica. Se você ainda não tem uma conta Gov.BR, crie a sua clicando nesse https://www.gov.br/pt-br/servicos/criar-sua-conta-gov.br link .",
+        "canais": [
+          "Online"
+        ]
+      },
+      {
+        "titulo": "Faça seu pedido",
+        "texto": "Após registrar seu pedido de acesso à informação, a Plataforma Fala.BR irá informar o número do protocolo (NUP) e o e-mail utilizado que receberá notificações do sistema.",
+        "canais": [
+          "Online"
+        ]
+      },
+      {
+        "titulo": "Acompanhe seu pedido",
+        "texto": "O acompanhamento da resposta do pedido é feito de duas formas: Fazendo login na Plataforma Fala.BR com a conta Gov.BR e acessando o menu “Meus Pedidos e Recursos de Acesso à Informação”, ou Acessando o e-mail de cadastro informado na conta Gov.BR.",
+        "canais": [
+          "Online"
+        ]
+      },
+      {
+        "titulo": "Resposta do Pedido",
+        "texto": "Pedido fornecido: A resposta da manifestação fornecida no prazo de até 30 (trinta) dias será registrada na Plataforma Fala.BR que enviará automaticamente uma mensagem de alerta para o e-mail de cadastro. Ausência de resposta: o usuário pode registrar uma Reclamação na Plataforma Fala.BR.",
+        "canais": [
+          "Online"
+        ]
+      },
+      {
+        "titulo": "Recursos",
+        "texto": "Caso a resposta ao pedido não seja satisfatória ou a resposta tenha sido negada é possível registrar recurso de primeira instância à autoridade máxima do órgão no prazo de 10 (dez) dias a contar da publicação na Plataforma Fala.BR que deverá julgar e publicar em até 15 (quinze) dias. Se o recurso de primeira instância for negado o usuário poderá apresentar recurso de segunda instância ao Ouvidor-Geral do Estado, no prazo de 10 (dez) dias, a contar da publicação, que deverá julgar e publicar em até 15 (quinze) dias.",
+        "canais": [
+          "Online"
+        ]
+      }
+    ],
+    "linkAcesso": "https://falabr.cgu.gov.br/web/home",
+    "linkIntegrado": false
+  },
+  {
+    "id": "sec-11",
+    "slug": "registrar-denuncia148",
+    "etapas": [
+      {
+        "titulo": "Acesse a Plataforma Fala.BR",
+        "texto": "Acesse o site da https://falabr.cgu.gov.br/web/home?modoOuvidoria=1&ouvidoriaInterna=false https://falabr.cgu.gov.br/web/home?modoOuvidoria=1&ouvidoriaInterna=false Plataforma Fala.BR ou clique no botão abaixo “Acessar Serviço”. Clique no ícone “Ouvidoria” e em seguida no ícone “Denúncia”.",
+        "canais": [
+          "Online",
+          "Presencial"
+        ]
+      },
+      {
+        "titulo": "Leia atentamente a mensagem de alerta do sistema e clique em Avançar",
+        "texto": "Ler atentamente a mensagem de alerta.",
+        "canais": [
+          "Online"
+        ]
+      },
+      {
+        "titulo": "Selecione o Assunto da denúncia",
+        "texto": "Selecionar o assunto.",
+        "canais": [
+          "Online"
+        ]
+      },
+      {
+        "titulo": "Escolha uma identificação",
+        "texto": "Denúncia anônima: Clique em “Registrar Denúncia” no ícone Denúncias Anônimas. Denúncia identificada: Clique em “Entrar com Gov.BR” nos ícones Pessoa Física ou Pessoa Jurídica. Se você ainda não tem uma conta Gov.BR, crie a sua clicando nesse https://www.gov.br/pt-br/servicos/criar-sua-conta-gov.br link .",
+        "canais": [
+          "Online",
+          "Presencial"
+        ]
+      },
+      {
+        "titulo": "Faça sua denúncia",
+        "texto": "Denúncia anônima: Após registrar a denúncia anônima, a Plataforma Fala.BR informará que não é possível fazer o acompanhamento. Denúncia identificada: Após registrar a denúncia identificada, a Plataforma Fala.BR irá informar o número do protocolo (NUP) e o e-mail utilizado que receberá notificações do sistema.",
+        "canais": [
+          "Online",
+          "Presencial"
+        ]
+      },
+      {
+        "titulo": "Acompanhe a denúncia identificada",
+        "texto": "O acompanhamento da resposta da denúncia identificada é feito de duas formas: Fazendo login na Plataforma Fala.BR com a conta Gov.BR e acessando o menu “Minhas Manifestações”, ou Acessando o e-mail de cadastro da conta Gov.BR.",
+        "canais": [
+          "Online"
+        ]
+      },
+      {
+        "titulo": "Resposta da denúncia identificada",
+        "texto": "A resposta da denúncia fornecida no prazo de até 60 (sessenta) dias pode ser a informação de que ela foi encaminhada para apuração. Quando a Controladoria-Geral do Estado – CGE – receber o resultado final da apuração a denúncia será reaberta e o resultado registrado na Plataforma Fala.BR que enviará automaticamente uma mensagem de alerta para o e-mail de cadastro.",
+        "canais": [
+          "Online"
+        ]
+      }
+    ],
+    "linkAcesso": "https://falabr.cgu.gov.br/web/home",
+    "linkIntegrado": false
+  },
+  {
+    "id": "sec-12",
+    "slug": "registrar-reclamacao-solicitacao-sugestao-e-elogio143",
+    "etapas": [
+      {
+        "titulo": "Acesse a Plataforma Fala.BR",
+        "texto": "Acesse o site da https://falabr.cgu.gov.br/web/home?modoOuvidoria=1&ouvidoriaInterna=false Plataforma Fala.BR ou clique no botão abaixo “Acessar Serviço”. Clique no ícone “Ouvidoria”.",
+        "canais": [
+          "Online",
+          "Presencial"
+        ]
+      },
+      {
+        "titulo": "Escolha o tipo de manifestação",
+        "texto": "Reclamação Solicitação Sugestão Elogio",
+        "canais": [
+          "Online",
+          "Presencial"
+        ]
+      },
+      {
+        "titulo": "Faça login na Plataforma Fala.BR",
+        "texto": "Clique em “Entrar com Gov.BR” nos ícones Pessoa Física ou Pessoa Jurídica. Se você ainda não tem uma conta Gov.BR, crie a sua clicando nesse https://www.gov.br/pt-br/servicos/criar-sua-conta-gov.br link .",
+        "canais": [
+          "Online",
+          "Presencial"
+        ]
+      },
+      {
+        "titulo": "Faça sua manifestação",
+        "texto": "Após registrar a manifestação, a Plataforma Fala.BR irá informar o número do protocolo (NUP) e o e-mail utilizado que receberá notificações do sistema.",
+        "canais": [
+          "Online",
+          "Presencial"
+        ]
+      },
+      {
+        "titulo": "Acompanhe sua manifestação",
+        "texto": "O acompanhamento da resposta da manifestação é feito de duas formas: Fazendo login na https://falabr.cgu.gov.br/web/home Plataforma Fala.BR com a conta Gov.BR e acessando o menu “Minhas Manifestações”, ou cessando o e-mail de cadastro da conta Gov.BR.",
+        "canais": [
+          "Online",
+          "Presencial"
+        ]
+      },
+      {
+        "titulo": "Resposta da manifestação",
+        "texto": "A resposta da manifestação fornecida no prazo de até 60 (sessenta) dias será registrada na Plataforma Fala.BR que enviará automaticamente uma mensagem de alerta para o e-mail de cadastro.",
+        "canais": [
+          "Online",
+          "Presencial"
+        ]
+      }
+    ],
+    "linkAcesso": "https://falabr.cgu.gov.br/web/home",
     "linkIntegrado": false
   },
   {
@@ -6135,78 +5738,6 @@
     "linkIntegrado": false
   },
   {
-    "id": "sed-30",
-    "slug": "oferta-da-educacao-quilombola106",
-    "etapas": [
-      {
-        "titulo": "Pré-Matrícula",
-        "texto": "Efetuar a pré-matrícula no site www.matriculadigital.ms.gov.br e assinalar a opção para a unidade escolar que oferta a educação quilombola. Acompanhar, via protocolo disponibilizado no sistema, a designação da matrícula.",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Efetivação da Matrícula",
-        "texto": "Após a designação do sistema para a unidade escolar escolhida, dirigir-se à escola para a efetiviação da matrícula com os devidos documentos necessários.",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      }
-    ],
-    "linkAcesso": null,
-    "linkIntegrado": false
-  },
-  {
-    "id": "sed-32",
-    "slug": "oferta-da-educacao-do-campo148",
-    "etapas": [
-      {
-        "titulo": "Pré-Matrícula",
-        "texto": "Acessar o site http://www.matriculadigital.ms.gov.br www.matriculadigital.ms.gov.br e efetuar a pré-matrícula na unidade escolar que oferta a Educação do Campo. Acompanhar, via protocolo disponibilizado pelo sistema, a designação do estudante para a escola escolhida.",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Efetivação da Matrícula",
-        "texto": "Após a designação do candidato à escola pretendida, dirigir-se à unidade escolar com os documentos necessários para a efetivação da matrícula.",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      }
-    ],
-    "linkAcesso": null,
-    "linkIntegrado": false
-  },
-  {
-    "id": "sed-33",
-    "slug": "ofertar-educacao-de-jovens-e-adultos35",
-    "etapas": [
-      {
-        "titulo": "Pré-Matrícula",
-        "texto": "Acessar o site www.matriculadigital.ms.gov.br e realizar a pré-inscrição em uma unidade que oferte a Educação de Joves e Adultos no município. Acompanhar via protocolo disponibilizado no ato da pré-matrícula a designação do candidato para a escola pretendida.",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Efetivação da Matrícula",
-        "texto": "Após a designação do candidato pelo sistema, comparecer à unidade escolar e fazer a avaliação de equivalência de estudos, caso o estudante já tenha frequentado uma escola anteriormente para a efetivação da matrícula no ano de estudo correspondente.",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      }
-    ],
-    "linkAcesso": null,
-    "linkIntegrado": false
-  },
-  {
     "id": "sed-34",
     "slug": "oferta-da-educacao-escolar-indigena188",
     "etapas": [
@@ -6228,30 +5759,6 @@
       }
     ],
     "linkAcesso": null,
-    "linkIntegrado": false
-  },
-  {
-    "id": "sed-35",
-    "slug": "avanco-do-jovem-na-aprendizagem-em-mato-grosso-do-sul111",
-    "etapas": [
-      {
-        "titulo": "Pré-Matrícula",
-        "texto": "Realizar a pré-matrícula no site http://www.matriculadigital.ms.gov.br www.matriculadigital.ms.gov.br a inscrição para a escola pretendida que oferta o programa AJA e acompanhar, via protocolo do sistema, a designação para a unidade escolar escolhida.",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      },
-      {
-        "titulo": "Efetivação da Matrícula",
-        "texto": "Após a designação para a escola pretendida, o aluno deverá comparecer à unidade escolar, com os documentos necessários para assinar o Requerimento de Matrícula e efetivar a inscrição dentro dos prazos estabelecidos.",
-        "canais": [
-          "Online",
-          "Presencial"
-        ]
-      }
-    ],
-    "linkAcesso": "matriculadigital.ms.gov.br",
     "linkIntegrado": false
   },
   {
@@ -11323,21 +10830,6 @@
     "linkIntegrado": false
   },
   {
-    "id": "sefaz-195",
-    "slug": "itcd-causa-mortis-e-doacoes-pedido-de-parcelamento-de-debito-ppd123",
-    "etapas": [
-      {
-        "titulo": "Solicitar o serviço presencialmente",
-        "texto": "Dirigir-se à Agência Fazendária mais próxima ou à Unidade de Cobrança e Controle de Créditos Tributários - UCOBC, portando os documentos exigidos, para a formalização e a assinatura do PPD. Reemissão de DAEMS Estando o DAEMS vencido, o interessado deve solicitar a reemissão por e-mail, no endereço mailto:itcd@fazenda.ms.gov.br itcd@fazenda.ms.gov.br , mencionando o número da Declaração de ITCD. A emissão será feita com os encargos devidos, e o interessado poderá então comparecer ao atendimento presencial.",
-        "canais": [
-          "Online"
-        ]
-      }
-    ],
-    "linkAcesso": null,
-    "linkIntegrado": false
-  },
-  {
     "id": "sefaz-196",
     "slug": "itcd-causa-mortis-e-doacoes-reclamacao-administrativa155",
     "etapas": [
@@ -13438,7 +12930,93 @@
     "linkIntegrado": false
   },
   {
-    "id": "semadesc-5",
+    "id": "semadesc-1",
+    "slug": "programa-ms-industria140",
+    "etapas": [
+      {
+        "titulo": "Envio da Carta Consulta",
+        "texto": "A empresa interessada envia a Carta Consulta através do sistema e-SAP.",
+        "canais": [
+          "Online"
+        ]
+      },
+      {
+        "titulo": "Encaminhamento para a SEMADESC",
+        "texto": "A SEFAZ encaminha a solicitação para a SEMADESC, desde que todos os documentos necessários estejam anexados.",
+        "canais": [
+          "Online"
+        ]
+      },
+      {
+        "titulo": "Recebimento e análise do pedido",
+        "texto": "A SEMADESC recebe e analisa a solicitação de incentivo fiscal. Um parecer é elaborado, indicando se o pedido foi deferido ou indeferido.",
+        "canais": [
+          "Online"
+        ]
+      },
+      {
+        "titulo": "Encaminhamento par a SEFAZ",
+        "texto": "Após a análise, a decisão é enviada para a SEFAZ via e-SAP para os procedimentos finais e elaboração do Termo de Acordo.",
+        "canais": [
+          "Online"
+        ]
+      },
+      {
+        "titulo": "Publicação e entrega do termo",
+        "texto": "O Termo de Acordo é publicado no Diário Oficial do Estado e entregue à empresa, acompanhado de um ofício com as orientações necessárias.",
+        "canais": [
+          "Online"
+        ]
+      }
+    ],
+    "linkAcesso": "http://www.semadesc.ms.gov.br/industria-e-comercio/",
+    "linkIntegrado": false
+  },
+  {
+    "id": "semadesc-2",
+    "slug": "solicitar-credenciamento-de-instrucao-de-assistencia-tecnica-e-extesao-ruralater-no-sistema-de-informacao-de-assistencia-tecnicasiater111",
+    "etapas": [
+      {
+        "titulo": "Cadastro",
+        "texto": "A Empresa realiza o pré-cadastro no https://sistemasweb.mda.gov.br/siater/sys/siater/login site ;",
+        "canais": [
+          "Online"
+        ]
+      },
+      {
+        "titulo": "Senha de acesso",
+        "texto": "O SIATER fornece senha de acesso.",
+        "canais": [
+          "Online"
+        ]
+      },
+      {
+        "titulo": "Anexando os documentos exigidos, finalizando",
+        "texto": "O responsável pela Empresa completa todos os campos do Cadastro, anexando os documentos exigidos, finalizando.",
+        "canais": [
+          "Online"
+        ]
+      },
+      {
+        "titulo": "Análise",
+        "texto": "A solicitação é analisada pelo Conselho Estadual de Desenvolvimento Rural Sustentável de Agricultura Familiar (CEDRAF/MS), aprovando ou reprovando o Credenciamento.",
+        "canais": [
+          "Online"
+        ]
+      },
+      {
+        "titulo": "Reconsiderações.",
+        "texto": "Em caso de reprovação, a Empresa pode recorrer ao SIATER e solicitar reconsideração.",
+        "canais": [
+          "Online"
+        ]
+      }
+    ],
+    "linkAcesso": "https://cheffescolar.sed.ms.gov.br/cheffescolar/chamada-publica",
+    "linkIntegrado": false
+  },
+  {
+    "id": "semadesc-4",
     "slug": "solicitar-cadastro-de-areas-de-florestas-plantadas36",
     "etapas": [
       {
@@ -13481,7 +13059,7 @@
     "linkIntegrado": false
   },
   {
-    "id": "semadesc-6",
+    "id": "semadesc-5",
     "slug": "programa-de-avancos-na-pecuaria-de-mato-grosso-do-sul-proape-sub-programa-ovinos-e-caprinos39",
     "etapas": [
       {
@@ -13510,7 +13088,7 @@
     "linkIntegrado": false
   },
   {
-    "id": "semadesc-7",
+    "id": "semadesc-6",
     "slug": "programa-de-avancos-na-pecuaria-de-mato-grosso-do-sul-proape-sub-programa-leitao-vida58",
     "etapas": [
       {
@@ -13539,7 +13117,7 @@
     "linkIntegrado": false
   },
   {
-    "id": "semadesc-8",
+    "id": "semadesc-7",
     "slug": "programa-de-avancos-na-pecuaria-de-mato-grosso-do-sul-proape-sub-programa-peixe-vida121",
     "etapas": [
       {
@@ -13582,7 +13160,7 @@
     "linkIntegrado": false
   },
   {
-    "id": "semadesc-9",
+    "id": "semadesc-8",
     "slug": "programa-de-avancos-na-pecuaria-de-mato-grosso-do-sul-proape-sub-programa-precoce-ms89",
     "etapas": [
       {
@@ -13611,7 +13189,7 @@
     "linkIntegrado": false
   },
   {
-    "id": "semadesc-10",
+    "id": "semadesc-9",
     "slug": "programa-de-desenvolvimento-da-producao-agropecuaria-ms-pdagro6",
     "etapas": [
       {
@@ -13633,57 +13211,7 @@
     "linkIntegrado": false
   },
   {
-    "id": "semadesc-12",
-    "slug": "fundo-constitucional-do-centro-oeste-fco63",
-    "etapas": [
-      {
-        "titulo": "Verificar a elegibilidade",
-        "texto": "Certifique-se de que o seu projeto atende aos requisitos do FCO, que incluem ser um produtor rural ou empresário e desenvolver atividades em um dos estados do Centro-Oeste (Mato Grosso, Mato Grosso do Sul, Goiás, Distrito Federal).",
-        "canais": [
-          "Online"
-        ]
-      },
-      {
-        "titulo": "Procurar uma instituição financeira credenciada",
-        "texto": "Dirija-se a uma agência do Banco do Brasil ou de outras instituições financeiras credenciadas para obter financiamento com recursos do FCO.",
-        "canais": [
-          "Online"
-        ]
-      },
-      {
-        "titulo": "Preencher a carta-consulta",
-        "texto": "A carta-consulta é um formulário digital que deve ser preenchido pelo proponente ou consultor técnico, contendo informações sobre o projeto de financiamento, encaminhando ao Agente Financeiro.",
-        "canais": [
-          "Online"
-        ]
-      },
-      {
-        "titulo": "Apresentar a documentação",
-        "texto": "É necessário anexar a Carta Consulta e a documentação completa, como: comprovantes de regularidade; licenças; projetos; plantas arquitetônicas; memoriais descritivos; orçamento e outros documentos exigidos pela instituição financeira.",
-        "canais": [
-          "Online"
-        ]
-      },
-      {
-        "titulo": "Acompanhar o trâmite",
-        "texto": "Acompanhe o processo de análise da sua proposta de financiamento, pelo código do protocolo digital (Carta Consulta) que inclui avaliação do enquadramento do projeto, análise cadastral e financeira.",
-        "canais": [
-          "Online"
-        ]
-      },
-      {
-        "titulo": "Receber informações da contratação",
-        "texto": "Após a aprovação da Carta Consulta, você receberá informações do Agente Financeiro a contratação do financiamento, incluindo os termos e condições.",
-        "canais": [
-          "Online"
-        ]
-      }
-    ],
-    "linkAcesso": "http://www.semadesc.ms.gov.br/fco-3/",
-    "linkIntegrado": false
-  },
-  {
-    "id": "semadesc-14",
+    "id": "semadesc-13",
     "slug": "centro-de-monitoramento-do-tempo-e-do-clima-de-ms-cemtecms36",
     "etapas": [
       {

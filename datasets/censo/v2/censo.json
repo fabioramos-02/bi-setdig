@@ -283,8 +283,8 @@
         "id": "agems-9",
         "titulo": "Solicitar vistoria de veículo de passageiros de viagem intermunicipal na modalidade fretamento",
         "setor": "Câmara Técnica de Transportes",
-        "nivel": 4,
-        "etapaPresencial": null,
+        "nivel": 3,
+        "etapaPresencial": "Vistoria",
         "demandaMensal": 50.0,
         "demandaTexto": null,
         "slug": "solicitar-vistoria-de-veiculo-de-passageiros-intermunicipal-na-modalidade-fretamento82",
@@ -691,7 +691,7 @@
         "id": "ageprev-16",
         "titulo": "Requerer a redução da contribuição previdenciária",
         "setor": "Diretoria de Benefícios (DIRB)",
-        "nivel": 4,
+        "nivel": 2,
         "etapaPresencial": "Os pedidos de redução da contribuição previdenciária são instruídos digitalmente e seguem análise do médico perito, para em seguida a etapa final (deferindo ou não) de modo também digital",
         "demandaMensal": 100.0,
         "demandaTexto": null,
@@ -713,7 +713,7 @@
         "id": "ageprev-18",
         "titulo": "Requerer a revisão de proventos - alteração de aposentadoria",
         "setor": "Diretoria de Benefícios (DIRB)",
-        "nivel": 4,
+        "nivel": 1,
         "etapaPresencial": "O requerimento é feito de forma digital e posteriormente a análise se utiliza de informações nos bancos de dados",
         "demandaMensal": 20.0,
         "demandaTexto": null,
@@ -735,7 +735,7 @@
         "id": "ageprev-20",
         "titulo": "Requerer a revisão de reforma",
         "setor": "Diretoria de Benefícios (DIRB)",
-        "nivel": 4,
+        "nivel": 2,
         "etapaPresencial": "O requerimento é feito de forma digital e posteriormente a análise se utiliza de informações nos bancos de dados",
         "demandaMensal": 2.0,
         "demandaTexto": null,
@@ -757,7 +757,7 @@
         "id": "ageprev-22",
         "titulo": "Solicitar a avaliação pericial para comunicação de acidente de trabalho - CAT",
         "setor": "Diretoria de Perícia Médica (DIPEM)",
-        "nivel": 4,
+        "nivel": 3,
         "etapaPresencial": "O requerimento é feito de forma digital e posteriormente a análise se utiliza de informações nos bancos de dados",
         "demandaMensal": 10.0,
         "demandaTexto": null,
@@ -1788,8 +1788,8 @@
         "id": "detran-48",
         "titulo": "Solicitar baixa definitiva do veículo",
         "setor": "Diretoria de Registro e Controle de Veículos",
-        "nivel": 4,
-        "etapaPresencial": null,
+        "nivel": 3,
+        "etapaPresencial": "Entrega do chassi",
         "demandaMensal": null,
         "demandaTexto": null,
         "slug": "solicitacao-de-baixa-definitiva-de-cadastro-de-veiculo55",
@@ -1843,8 +1843,8 @@
         "id": "detran-53",
         "titulo": "Solicitar remarcação de chassi ou motor do veículo",
         "setor": "Diretoria de Registro e Controle de Veículos",
-        "nivel": 4,
-        "etapaPresencial": null,
+        "nivel": 3,
+        "etapaPresencial": "Remarcação do chassi",
         "demandaMensal": null,
         "demandaTexto": null,
         "slug": "solicitacao-de-remarcacao-de-chassi-eou-motor-do-veiculo173",
@@ -1865,8 +1865,8 @@
         "id": "detran-55",
         "titulo": "Transferir propriedade do veículo",
         "setor": "Diretoria de Registro e Controle de Veículos",
-        "nivel": 4,
-        "etapaPresencial": null,
+        "nivel": 3,
+        "etapaPresencial": "vistoria",
         "demandaMensal": null,
         "demandaTexto": null,
         "slug": "transferencia-de-propriedade-veicular1",
@@ -2434,7 +2434,7 @@
         "id": "funtrab-3",
         "titulo": "Cadastrar às vagas de emprego",
         "setor": "INTERMEDIAÇÃO DE EMPREGOS",
-        "nivel": 4,
+        "nivel": 2,
         "etapaPresencial": "Cadastramento",
         "demandaMensal": 1485.0,
         "demandaTexto": null,
@@ -2445,7 +2445,7 @@
         "id": "funtrab-4",
         "titulo": "Consultar vagas de emprego",
         "setor": "INTERMEDIAÇÃO DE EMPREGOS",
-        "nivel": 4,
+        "nivel": 2,
         "etapaPresencial": "Candidar a vaga",
         "demandaMensal": null,
         "demandaTexto": null,
@@ -3342,8 +3342,8 @@
         "id": "iagro-77",
         "titulo": "Credenciar laboratório de alimentos e/ou água de abastecimento",
         "setor": "Divisão de Inspeção de Produtos de Origem Animal",
-        "nivel": 4,
-        "etapaPresencial": null,
+        "nivel": 2,
+        "etapaPresencial": "Protocolar",
         "demandaMensal": 1.0,
         "demandaTexto": null,
         "slug": "credenciamento-de-laboratorios-de-alimentos-eou-agua-de-abastecimento91",
@@ -3364,7 +3364,7 @@
         "id": "iagro-79",
         "titulo": "Obter selo arte",
         "setor": "Divisão de Inspeção de Produtos de Origem Animal",
-        "nivel": 4,
+        "nivel": 2,
         "etapaPresencial": "vistoria no local interessado pelo fiscal da IAGRO",
         "demandaMensal": 1.0,
         "demandaTexto": null,
@@ -4096,8 +4096,8 @@
         "id": "imasul-29",
         "titulo": "Solicitar de criação (ou ampliação) de RPPN",
         "setor": "Gerência de Unidades de Conservação",
-        "nivel": 4,
-        "etapaPresencial": null,
+        "nivel": 3,
+        "etapaPresencial": "visita in locus",
         "demandaMensal": null,
         "demandaTexto": null,
         "slug": "solicitar-de-criacao-ou-ampliacao-de-rppn155",
@@ -4129,7 +4129,7 @@
         "id": "imasul-32",
         "titulo": "Solicitar realização de atividade acadêmica e outros usos nos Parques Estaduais",
         "setor": "Gerência de Unidades de Conservação",
-        "nivel": 4,
+        "nivel": 2,
         "etapaPresencial": null,
         "demandaMensal": null,
         "demandaTexto": null,
@@ -4140,7 +4140,7 @@
         "id": "imasul-33",
         "titulo": "Descentralizar o licenciamento ambiental",
         "setor": "Unidade de Municipalização e Gestão Ambiental",
-        "nivel": 4,
+        "nivel": 2,
         "etapaPresencial": null,
         "demandaMensal": null,
         "demandaTexto": null,
@@ -4580,6 +4580,166 @@
     ]
   },
   {
+    "orgaoSigla": "PMMS",
+    "orgaoNome": "Polícia Militar de Mato Grosso do Sul",
+    "cartas": [
+      {
+        "id": "pmms-1",
+        "titulo": "Solicitar serviço de emergência e urgência 190",
+        "setor": "Centro de Operações da Polícia Militar - Serviço de Emergência e Urgência 190",
+        "nivel": 3,
+        "etapaPresencial": "A parte presencial diz respeito ao contato telefônico, pois é necessário a coleta de informação do usuário",
+        "demandaMensal": 40000.0,
+        "demandaTexto": null,
+        "slug": "01-servico-de-emergencia-e-urgencia-190141",
+        "urlServico": "https://www.ms.gov.br/seguranca/01-servico-de-emergencia-e-urgencia-190141"
+      },
+      {
+        "id": "pmms-2",
+        "titulo": "Policiamento Rural – Guardião da vida, do Progresso e da Segurança no Campo",
+        "setor": "Patrulha Rural - Proteção de vidas no campo",
+        "nivel": 3,
+        "etapaPresencial": null,
+        "demandaMensal": null,
+        "demandaTexto": null,
+        "slug": "04-patrulha-rural-protecao-de-vidas-no-campo91",
+        "urlServico": "https://www.ms.gov.br/seguranca/04-patrulha-rural-protecao-de-vidas-no-campo91"
+      },
+      {
+        "id": "pmms-3",
+        "titulo": "Policiamento de trânsito – Proteção de vidas no trânsito das cidades",
+        "setor": "Policiamento de trânsito - Proteção de vidas no trânsito das cidades",
+        "nivel": 3,
+        "etapaPresencial": "Nos casos em que tenham vítimas e não seja feito o atendimento pela PMMS, o cidadão deverá realizar esse registro pessoalmente na Sessão do ROST no BPMTRAN.",
+        "demandaMensal": 665.0,
+        "demandaTexto": null,
+        "slug": "05-policiamento-de-transito-protecao-de-vidas-no-transito-das-cidades72",
+        "urlServico": "https://www.ms.gov.br/seguranca/05-policiamento-de-transito-protecao-de-vidas-no-transito-das-cidades72"
+      },
+      {
+        "id": "pmms-4",
+        "titulo": "Realizar boletim on-line de acidente de trânsito – atendimento sem vítimas",
+        "setor": "Policiamento de trânsito - Proteção de vidas no trânsito das cidades",
+        "nivel": 4,
+        "etapaPresencial": "Não há etapa presencial obrigatória. Entretanto, muitos cidadãos comparecem à Seção ROST/BPMTRAN relatando dificuldades para realizar o registro. Para auxiliá-los, são disponibilizados dois computadores, e um policial militar presta orientações sobre como proceder para efetuar o registro.",
+        "demandaMensal": 950.0,
+        "demandaTexto": null,
+        "slug": "051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170",
+        "urlServico": "https://www.ms.gov.br/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170"
+      },
+      {
+        "id": "pmms-5",
+        "titulo": "Participar do projeto florestinha – educação ambiental",
+        "setor": "Polícia Militar Ambiental - Proteção do Meio Ambiente",
+        "nivel": 1,
+        "etapaPresencial": "A matrícula é realizada presencialmente, com o comparecimento do pai, mãe ou responsável legal pela criança ou adolescente, para apresentação e conferência da documentação exigida, formalização da autorização do responsável e preenchimento dos dados necessários ao ingresso no Projeto.",
+        "demandaMensal": 20.0,
+        "demandaTexto": null,
+        "slug": "032-projeto-florestinha-educacao-ambiental65",
+        "urlServico": "https://www.ms.gov.br/seguranca/032-projeto-florestinha-educacao-ambiental65"
+      },
+      {
+        "id": "pmms-6",
+        "titulo": "Solicitar Resgate de Animal Silvestre",
+        "setor": "Polícia Militar Ambiental - Proteção do Meio Ambiente",
+        "nivel": 4,
+        "etapaPresencial": "A etapa presencial se caracteriza pelo contato direto do solicitante da ocorrência de resgate de fauna com o serviço de captura e resgate disponibilizado pela PMA dentro da escala de serviços diários.",
+        "demandaMensal": 100.0,
+        "demandaTexto": null,
+        "slug": "solicitar-resgate-de-animal-silvestre186",
+        "urlServico": "https://www.ms.gov.br/meio-ambiente/solicitar-resgate-de-animal-silvestre186"
+      },
+      {
+        "id": "pmms-7",
+        "titulo": "Participar do projeto social no trânsito. centro educativo de múltiplas atividades de trânsito (CEMATRAN)",
+        "setor": "Polícia Militar Rodoviária - Proteção de vidas nas estradas e rodovias estaduais",
+        "nivel": 3,
+        "etapaPresencial": null,
+        "demandaMensal": 20.0,
+        "demandaTexto": null,
+        "slug": null,
+        "urlServico": null
+      },
+      {
+        "id": "pmms-8",
+        "titulo": "Participar do programa educacional de resistência às drogas e à violência (PROERD)",
+        "setor": "Projetos Sociais criados, dirigidos e executados pela Polícia Militar",
+        "nivel": 1,
+        "etapaPresencial": null,
+        "demandaMensal": 1201.0,
+        "demandaTexto": null,
+        "slug": "171-proerd-programa-educacional-de-resistencia-as-drogas-e-a-violencia72",
+        "urlServico": "https://www.ms.gov.br/seguranca/171-proerd-programa-educacional-de-resistencia-as-drogas-e-a-violencia72"
+      },
+      {
+        "id": "pmms-9",
+        "titulo": "Participar do programa mulher segura (PROMUSE)",
+        "setor": "Projetos Sociais criados, dirigidos e executados pela Polícia Militar",
+        "nivel": 3,
+        "etapaPresencial": "DEVIDO AO ACOLHIMENTO DA VÍTIMA E A ESCUTA ATIVA HÁ A OBRIGAÇÃO DO ATENDIMENTO PRESENCIAL.",
+        "demandaMensal": 300.0,
+        "demandaTexto": null,
+        "slug": "172-promuse-programa-mulher-segura14",
+        "urlServico": "https://www.ms.gov.br/seguranca/172-promuse-programa-mulher-segura14"
+      },
+      {
+        "id": "pmms-10",
+        "titulo": "Participar do projeto bom de bola e bom na escola",
+        "setor": "Projetos Sociais criados, dirigidos e executados pela Polícia Militar",
+        "nivel": 0,
+        "etapaPresencial": "Somente presencialmente é possível desenvolver as atividades e principalmente fazer com que a criança e o adolescente tenha o sentimento de pertencimento que tanto busca e que muitas vezes acaba encontrando em usos destrutivos como o uso de drogas e a violência.",
+        "demandaMensal": 666.0,
+        "demandaTexto": null,
+        "slug": "178-bom-de-bola-e-bom-na-escola77",
+        "urlServico": "https://www.ms.gov.br/seguranca/178-bom-de-bola-e-bom-na-escola77"
+      },
+      {
+        "id": "pmms-11",
+        "titulo": "Participar do projeto Tiro Adaptado",
+        "setor": "Projetos Sociais criados, dirigidos e executados pela Polícia Militar",
+        "nivel": 1,
+        "etapaPresencial": "A etapa presencial é estritamente obrigatória no tiro esportivo adaptado. Visto que treinos são necessários para aprimoramento e segurança.",
+        "demandaMensal": 20.0,
+        "demandaTexto": null,
+        "slug": "176-projeto-tiro-adaptado-da-pmms36",
+        "urlServico": "https://www.ms.gov.br/seguranca/176-projeto-tiro-adaptado-da-pmms36"
+      },
+      {
+        "id": "pmms-12",
+        "titulo": "Solicitar o Atendimento Equoterapêutico.",
+        "setor": "Projetos Sociais criados, dirigidos e executados pela Polícia Militar",
+        "nivel": 1,
+        "etapaPresencial": "Pessoalmente, na AV. Lima Felix 174 Pq. Dos Poderes, via whatsapp: 67 99987-9776 ou via Email: equoterapia_ms@yahoo.com.br, solicita-se um documento chamado “Parecer médico” o qual será levado ao médico que acompanha esse (adulto ou criança com PcD) e após preenchimento retornar com documento todo preenchido e assinado para entrar na fila de espera para avaliação.",
+        "demandaMensal": 180.0,
+        "demandaTexto": null,
+        "slug": "173-centro-de-equoterapia-da-pmms159",
+        "urlServico": "https://www.ms.gov.br/seguranca/173-centro-de-equoterapia-da-pmms159"
+      },
+      {
+        "id": "pmms-13",
+        "titulo": "Solicitar ronda escolar – escola segura e família forte",
+        "setor": "Projetos Sociais criados, dirigidos e executados pela Polícia Militar",
+        "nivel": 3,
+        "etapaPresencial": "a viatura desloca ate a escola em caso de alguma chamada envolvendo alunos/professores/escola",
+        "demandaMensal": 60.0,
+        "demandaTexto": null,
+        "slug": "179-ronda-escolar-escola-segura-familia-forte51",
+        "urlServico": "https://www.ms.gov.br/seguranca/179-ronda-escolar-escola-segura-familia-forte51"
+      },
+      {
+        "id": "pmms-14",
+        "titulo": "Realizar denúncia ou Disque Denúncia 181",
+        "setor": "Serviço de denúncia 181 - Disque denúncia",
+        "nivel": 4,
+        "etapaPresencial": "Não se aplica",
+        "demandaMensal": 436.0,
+        "demandaTexto": null,
+        "slug": "16-servico-de-denuncia-181-disque-denuncia60",
+        "urlServico": "https://www.ms.gov.br/seguranca/16-servico-de-denuncia-181-disque-denuncia60"
+      }
+    ]
+  },
+  {
     "orgaoSigla": "SAD",
     "orgaoNome": "Secretaria de Estado de Administração de Mato Grosso do Sul",
     "cartas": [
@@ -4846,6 +5006,144 @@
         "demandaTexto": null,
         "slug": null,
         "urlServico": null
+      }
+    ]
+  },
+  {
+    "orgaoSigla": "SEC",
+    "orgaoNome": "Secretaria de Estado da Cidadania",
+    "cartas": [
+      {
+        "id": "sec-1",
+        "titulo": "Solicitar atendimento pelo centro especializado de Atendimento à Mulher, à Criança e ao Adolescente em Situação de Violência - CEAMCA",
+        "setor": "Centro Especializado de Atendimento à Mulher, à Criança e ao Adolescente em Situação de Violência",
+        "nivel": 1,
+        "etapaPresencial": "O atendimento no CEAMCA pode ser agendado previamente pela usuária por meio do WhatsApp ou telefone ou realizado presencialmente, com procura direta à unidade, sem necessidade de agendamento prévio.",
+        "demandaMensal": 0.0,
+        "demandaTexto": null,
+        "slug": "solicitar-atendimento-pelo-centro-especializado-de-atendimento-a-mulher-ceam181",
+        "urlServico": "https://www.ms.gov.br/direitos-e-cidadania/solicitar-atendimento-pelo-centro-especializado-de-atendimento-a-mulher-ceam181"
+      },
+      {
+        "id": "sec-2",
+        "titulo": "Solicitar orientação técnica para a criação e fortalecimento de associações comunitárias",
+        "setor": "Subsecretaria de Políticas Públicas para Assuntos Comunitários",
+        "nivel": 1,
+        "etapaPresencial": "Na Carta de Serviços, o cidadão manifesta seu interesse pelo serviço desejado. A partir dessa manifestação, a equipe da Subsecretaria de Assuntos Comunitários entra em contato para orientar o cidadão e dar continuidade ao atendimento.",
+        "demandaMensal": null,
+        "demandaTexto": null,
+        "slug": "orientacao-tecnica-para-a-criacao-e-fortalecimento-de-associacoes-e-cooperativas-comunitarias154",
+        "urlServico": "https://www.ms.gov.br/direitos-e-cidadania/orientacao-tecnica-para-a-criacao-e-fortalecimento-de-associacoes-e-cooperativas-comunitarias154"
+      },
+      {
+        "id": "sec-3",
+        "titulo": "Solicitar serviço de promoção da igualdade racial",
+        "setor": "Subsecretaria de Políticas Públicas para Igualdade Racial",
+        "nivel": 2,
+        "etapaPresencial": "A orientação pode ser presencialmente, conforme a preferência e a necessidade da pessoa atendida.",
+        "demandaMensal": null,
+        "demandaTexto": null,
+        "slug": "servico-de-promocao-da-igualdade-racial58",
+        "urlServico": "https://www.ms.gov.br/direitos-e-cidadania/servico-de-promocao-da-igualdade-racial58"
+      },
+      {
+        "id": "sec-4",
+        "titulo": "Solicitar atendimento no centro estadual de cidadania LGBT+ - CECLGBT+",
+        "setor": "Subsecretaria de Políticas Públicas para População LGBTQIA+",
+        "nivel": 1,
+        "etapaPresencial": "Todo o atendimento",
+        "demandaMensal": null,
+        "demandaTexto": null,
+        "slug": "solicitar-atendimento-pelo-centro-de-referencia-em-direitos-humanos-de-prevencao-e-combate-a-homofobia-centrho132",
+        "urlServico": "https://www.ms.gov.br/direitos-e-cidadania/solicitar-atendimento-pelo-centro-de-referencia-em-direitos-humanos-de-prevencao-e-combate-a-homofobia-centrho132"
+      },
+      {
+        "id": "sec-5",
+        "titulo": "Solicitar carteira de identificação por nome social - CNS",
+        "setor": "Subsecretaria de Políticas Públicas para População LGBTQIA+",
+        "nivel": 2,
+        "etapaPresencial": "Retirada da CNS",
+        "demandaMensal": null,
+        "demandaTexto": null,
+        "slug": "solicitar-carteira-de-identificacao-por-nome-social-cns171",
+        "urlServico": "https://www.ms.gov.br/direitos-e-cidadania/solicitar-carteira-de-identificacao-por-nome-social-cns171"
+      },
+      {
+        "id": "sec-6",
+        "titulo": "Solicitar orientação para retificação do nome no registro civil",
+        "setor": "Subsecretaria de Políticas Públicas para População LGBTQIA+",
+        "nivel": 5,
+        "etapaPresencial": null,
+        "demandaMensal": null,
+        "demandaTexto": null,
+        "slug": "orientacao-para-retificacao-do-nome-no-registro-civil39",
+        "urlServico": "https://www.ms.gov.br/assistencia-social/orientacao-para-retificacao-do-nome-no-registro-civil39"
+      },
+      {
+        "id": "sec-7",
+        "titulo": "Solicitar pedido de vista e cópia",
+        "setor": "Unidade de Protocolo da SEC",
+        "nivel": 2,
+        "etapaPresencial": "Protocolo presencial na SEC",
+        "demandaMensal": null,
+        "demandaTexto": null,
+        "slug": "solicitar-pedido-de-vista-e-copia76",
+        "urlServico": "https://www.ms.gov.br/administracao-publica/solicitar-pedido-de-vista-e-copia76"
+      },
+      {
+        "id": "sec-8",
+        "titulo": "Solicitar peticionamento processual",
+        "setor": "Unidade de Protocolo da SEC",
+        "nivel": 3,
+        "etapaPresencial": "Análise da assessoria de gabinete sec",
+        "demandaMensal": null,
+        "demandaTexto": null,
+        "slug": "solicitar-peticionamento-processual140",
+        "urlServico": "https://www.ms.gov.br/administracao-publica/solicitar-peticionamento-processual140"
+      },
+      {
+        "id": "sec-9",
+        "titulo": "Central de Orientação à Cidadania e Gestão Pública",
+        "setor": "Unidade Setorial/Seccional de Controle Interno",
+        "nivel": 1,
+        "etapaPresencial": "O atendimento presencial é realizado por meio de reuniões com equipes técnicas, principalmente de prefeituras municipais, para prestar orientações sobre a adesão aos programas e projetos da Secretaria de Estado da Cidadania (SEC), bem como sobre os procedimentos necessários para sua implementação e execução nos municípios.",
+        "demandaMensal": null,
+        "demandaTexto": null,
+        "slug": "central-de-orientacao-a-cidadania-e-gestao-publica181",
+        "urlServico": "https://www.ms.gov.br/administracao-publica/central-de-orientacao-a-cidadania-e-gestao-publica181"
+      },
+      {
+        "id": "sec-10",
+        "titulo": "Fazer pedido de acesso à informação",
+        "setor": "Unidade Setorial/Seccional de Controle Interno",
+        "nivel": 4,
+        "etapaPresencial": "Unidade de Controle Interno avalia a solicitação e responde o usuário.",
+        "demandaMensal": null,
+        "demandaTexto": null,
+        "slug": "pedido-de-acesso-a-informacao46",
+        "urlServico": "https://www.ms.gov.br/comunicacao-e-transparencia/pedido-de-acesso-a-informacao46"
+      },
+      {
+        "id": "sec-11",
+        "titulo": "Registrar denúncia",
+        "setor": "Unidade Setorial/Seccional de Controle Interno",
+        "nivel": 4,
+        "etapaPresencial": "Unidade de Controle Interno avalia a denuncia e responde o usuário.",
+        "demandaMensal": null,
+        "demandaTexto": null,
+        "slug": "registrar-denuncia148",
+        "urlServico": "https://www.ms.gov.br/comunicacao-e-transparencia/registrar-denuncia148"
+      },
+      {
+        "id": "sec-12",
+        "titulo": "Registrar reclamação, solicitação, sugestão e elogio",
+        "setor": "Unidade Setorial/Seccional de Controle Interno",
+        "nivel": 4,
+        "etapaPresencial": "Unidade de Controle Interno avalia a solicitação e responde o usuário.",
+        "demandaMensal": null,
+        "demandaTexto": null,
+        "slug": "registrar-reclamacao-solicitacao-sugestao-e-elogio143",
+        "urlServico": "https://www.ms.gov.br/comunicacao-e-transparencia/registrar-reclamacao-solicitacao-sugestao-e-elogio143"
       }
     ]
   },
@@ -5176,7 +5474,7 @@
         "id": "sed-30",
         "titulo": "Solicitar Educação Quilombola",
         "setor": "Coordenadoria de Modalidades Específicas",
-        "nivel": 4,
+        "nivel": 3,
         "etapaPresencial": null,
         "demandaMensal": null,
         "demandaTexto": "Variável e sazonal, com maior demanda nos períodos definidos no calendário anual de matrícula.",
@@ -5198,7 +5496,7 @@
         "id": "sed-32",
         "titulo": "Solicitar a educação do campo",
         "setor": "Coordenadoria de Modalidades Específicas",
-        "nivel": 4,
+        "nivel": 3,
         "etapaPresencial": null,
         "demandaMensal": null,
         "demandaTexto": "Variável e sazonal, com maior demanda nos períodos definidos no calendário anual de matrícula.",
@@ -5209,7 +5507,7 @@
         "id": "sed-33",
         "titulo": "Solicitar Educação de Jovens e Adultos",
         "setor": "Coordenadoria de Modalidades Específicas",
-        "nivel": 4,
+        "nivel": 3,
         "etapaPresencial": null,
         "demandaMensal": null,
         "demandaTexto": "Variável e sazonal, com maior demanda nos períodos definidos no calendário anual de matrícula.",
@@ -5231,7 +5529,7 @@
         "id": "sed-35",
         "titulo": "Solicitar o Avanço do Jovem na Aprendizagem em Mato Grosso do Sul",
         "setor": "Coordenadoria de Modalidades Específicas",
-        "nivel": 4,
+        "nivel": 3,
         "etapaPresencial": null,
         "demandaMensal": null,
         "demandaTexto": "Variável e sazonal, com maior demanda nos períodos definidos no calendário anual de matrícula.",
@@ -7492,7 +7790,7 @@
         "id": "sefaz-195",
         "titulo": "ITCD - pedido de parcelamento de débito (PPD)",
         "setor": "Unidade de Fiscalização do ITCD",
-        "nivel": 4,
+        "nivel": 1,
         "etapaPresencial": null,
         "demandaMensal": 17.2,
         "demandaTexto": null,
@@ -8499,7 +8797,7 @@
         "id": "semadesc-1",
         "titulo": "Solicitar inclusão no programa MS INDUSTRIA",
         "setor": "Assessoria Especial de Incentivos Fiscais e Promoção de Investimentos",
-        "nivel": null,
+        "nivel": 4,
         "etapaPresencial": null,
         "demandaMensal": null,
         "demandaTexto": null,
@@ -8508,20 +8806,9 @@
       },
       {
         "id": "semadesc-2",
-        "titulo": "Participar da consulta publica e instrumentos de participacao social da microrregiao de saneamento basico",
-        "setor": "Secretaria Executiva de Meio Ambiente",
-        "nivel": null,
-        "etapaPresencial": null,
-        "demandaMensal": null,
-        "demandaTexto": "Projeto Finalizado",
-        "slug": null,
-        "urlServico": null
-      },
-      {
-        "id": "semadesc-3",
         "titulo": "Solicitar credenciamento de instituições no SIATER",
         "setor": "Secretaria-Executiva de Agricultura Familiar, de Povos Originários e Comunidades Tradicionais",
-        "nivel": null,
+        "nivel": 4,
         "etapaPresencial": null,
         "demandaMensal": null,
         "demandaTexto": "AGRAER",
@@ -8529,7 +8816,7 @@
         "urlServico": "https://www.ms.gov.br/comunicacao-e-transparencia/solicitar-credenciamento-de-instrucao-de-assistencia-tecnica-e-extesao-ruralater-no-sistema-de-informacao-de-assistencia-tecnicasiater111"
       },
       {
-        "id": "semadesc-4",
+        "id": "semadesc-3",
         "titulo": "Solicitar informações do programa CONECTA-MS",
         "setor": "Secretaria-Executiva de Ciência, Tecnologia e Inovação",
         "nivel": 5,
@@ -8540,7 +8827,7 @@
         "urlServico": "https://www.ms.gov.br/ciencia-e-tecnologia/programa-conecta-ms111"
       },
       {
-        "id": "semadesc-5",
+        "id": "semadesc-4",
         "titulo": "Solicitar cadastro de áreas de Florestas Plantadas.",
         "setor": "Secretaria-Executiva de Desenvolvimento Econômico Sustentável",
         "nivel": 4,
@@ -8551,7 +8838,7 @@
         "urlServico": "https://www.ms.gov.br/empresa-industria-e-comercio/solicitar-cadastro-de-areas-de-florestas-plantadas36"
       },
       {
-        "id": "semadesc-6",
+        "id": "semadesc-5",
         "titulo": "Solicitar inclusão no programa de Ovinos e Caprinos",
         "setor": "Secretaria-Executiva de Desenvolvimento Econômico Sustentável",
         "nivel": 4,
@@ -8562,7 +8849,7 @@
         "urlServico": "https://www.ms.gov.br/agropecuaria-e-vida-rural/programa-de-avancos-na-pecuaria-de-mato-grosso-do-sul-proape-sub-programa-ovinos-e-caprinos39"
       },
       {
-        "id": "semadesc-7",
+        "id": "semadesc-6",
         "titulo": "Solicitar inclusão no programa Leitão Vida",
         "setor": "Secretaria-Executiva de Desenvolvimento Econômico Sustentável",
         "nivel": 4,
@@ -8573,7 +8860,7 @@
         "urlServico": "https://www.ms.gov.br/agropecuaria-e-vida-rural/programa-de-avancos-na-pecuaria-de-mato-grosso-do-sul-proape-sub-programa-leitao-vida58"
       },
       {
-        "id": "semadesc-8",
+        "id": "semadesc-7",
         "titulo": "Solicitar inclusão no programa Peixe Vida",
         "setor": "Secretaria-Executiva de Desenvolvimento Econômico Sustentável",
         "nivel": 4,
@@ -8584,7 +8871,7 @@
         "urlServico": "https://www.ms.gov.br/agropecuaria-e-vida-rural/programa-de-avancos-na-pecuaria-de-mato-grosso-do-sul-proape-sub-programa-peixe-vida121"
       },
       {
-        "id": "semadesc-9",
+        "id": "semadesc-8",
         "titulo": "Solicitar inclusão no programa Precoce MS",
         "setor": "Secretaria-Executiva de Desenvolvimento Econômico Sustentável",
         "nivel": 4,
@@ -8595,7 +8882,7 @@
         "urlServico": "https://www.ms.gov.br/agropecuaria-e-vida-rural/programa-de-avancos-na-pecuaria-de-mato-grosso-do-sul-proape-sub-programa-precoce-ms89"
       },
       {
-        "id": "semadesc-10",
+        "id": "semadesc-9",
         "titulo": "Solicitar informações do programa MS PDAgro",
         "setor": "Secretaria-Executiva de Desenvolvimento Econômico Sustentável",
         "nivel": 4,
@@ -8606,7 +8893,7 @@
         "urlServico": "https://www.ms.gov.br/agropecuaria-e-vida-rural/programa-de-desenvolvimento-da-producao-agropecuaria-ms-pdagro6"
       },
       {
-        "id": "semadesc-11",
+        "id": "semadesc-10",
         "titulo": "Solicitar informações programa Extra Leite",
         "setor": "Secretaria-Executiva de Desenvolvimento Econômico Sustentável",
         "nivel": 4,
@@ -8617,10 +8904,10 @@
         "urlServico": null
       },
       {
-        "id": "semadesc-12",
+        "id": "semadesc-11",
         "titulo": "Solicitar informações sobre o FCO",
         "setor": "Secretaria-Executiva de Desenvolvimento Econômico Sustentável",
-        "nivel": 4,
+        "nivel": 2,
         "etapaPresencial": "Analese pela COCEM e deliberação no Conselho Estadual do FCO",
         "demandaMensal": 100.0,
         "demandaTexto": null,
@@ -8628,7 +8915,7 @@
         "urlServico": "https://www.ms.gov.br/empresa-industria-e-comercio/fundo-constitucional-do-centro-oeste-fco63"
       },
       {
-        "id": "semadesc-13",
+        "id": "semadesc-12",
         "titulo": "Solicitar informações sobre Carne Sustentável Pantanal",
         "setor": "Secretaria-Executiva de Desenvolvimento Econômico Sustentável",
         "nivel": 4,
@@ -8639,7 +8926,7 @@
         "urlServico": null
       },
       {
-        "id": "semadesc-14",
+        "id": "semadesc-13",
         "titulo": "Solicitar informações do centro de monitoramento do tempo e do clima – CEMTEC-MS",
         "setor": "Secretaria Executiva de Meio Ambiente",
         "nivel": 4,
@@ -8650,7 +8937,7 @@
         "urlServico": "https://www.ms.gov.br/ciencia-e-tecnologia/centro-de-monitoramento-do-tempo-e-do-clima-de-ms-cemtecms36"
       },
       {
-        "id": "semadesc-15",
+        "id": "semadesc-14",
         "titulo": "Programa MS Qualifica",
         "setor": "Secretaria Executiva de Qualificação Profissional",
         "nivel": 5,

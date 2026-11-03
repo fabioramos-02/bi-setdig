@@ -60,7 +60,8 @@ export function CartasN4Table({ cartas }: { cartas: CartaN4[] }) {
       key: "evidencia", label: "Por que (trecho da carta)",
       render: (c) => (
         <span className="text-xs line-clamp-3" style={{ color: "var(--ds-color-text-secondary)" }} title={c.evidencia ?? undefined}>
-          {c.evidencia ? `“…${c.evidencia}…”` : "—"}
+          {/* aspas só pra trecho da carta; nota da SGD e botão do portal não são citação */}
+          {!c.evidencia ? "—" : /^(Revisado|Botão)/.test(c.evidencia) ? c.evidencia : `“…${c.evidencia}…”`}
         </span>
       ),
     },

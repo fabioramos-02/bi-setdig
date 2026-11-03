@@ -77,8 +77,12 @@ const NEGACAO = /\b(nao|sem|dispensa\w*)\b[^.;]{0,30}$/;
 // Presença como uma opção entre canais: "por e-mail, telefone ou pessoalmente",
 // "pessoalmente ou via e-mail" — o cidadão não é obrigado a ir. E-mail sozinho
 // antes não basta: "envie por e-mail e depois compareça" é sequência, não opção.
-const OPCIONAL_ANTES = /\b(ou|telefone|whatsapp)\b[^.;]{0,25}$/;
-const OPCIONAL_DEPOIS = /^[^.;]{0,25}\bou\b/;
+// Depois: "ou" logo em seguida, ou um "ou pelo e-mail/correio/site" mais adiante
+// na mesma frase ("presencialmente na central, unidade regional ...; ou pelo e-mail").
+// Lista rotulada também é opção: "formas de entrega: pessoalmente: compareça a…
+// / por e-mail…", "pessoalmente - em alguma unidade".
+const OPCIONAL_ANTES = /\b(ou|telefone|whatsapp)\b[^.;]{0,25}$|formas? de (entrega|envio|atendimento|protocolo)[^.]{0,80}$|(pessoalmente|presencialmente)\s*[:–-]\s*$/;
+const OPCIONAL_DEPOIS = /^\s*[:–-]|^[^.;]{0,25}\bou\b|^[^.]{0,100}\bou\W+(\w+\W+){0,2}(e-mail|email|mailto|correio|online|internet|site|sistema)/;
 
 /** Primeira palavra da lista que aparece, com o trecho em volta. `negavel`:
  * ignora ocorrência negada ou oferecida como opção (só faz sentido pra presença). */
@@ -87,7 +91,7 @@ function achar(texto: string, palavras: string[], negavel = false): string | nul
     let i = texto.indexOf(p);
     while (i >= 0) {
       const antes = texto.slice(Math.max(0, i - 40), i);
-      const depois = texto.slice(i + p.length, i + p.length + 30);
+      const depois = texto.slice(i + p.length, i + p.length + 140);
       if (!negavel || !(NEGACAO.test(antes) || OPCIONAL_ANTES.test(antes) || OPCIONAL_DEPOIS.test(depois))) {
         return texto.slice(Math.max(0, i - 50), i + p.length + 50).trim();
       }
@@ -99,6 +103,17 @@ function achar(texto: string, palavras: string[], negavel = false): string | nul
 
 export type ClassificacaoN4 = { categoria: CategoriaN4; evidencia: string | null };
 
+/** Correção manual da SGD quando o processo real difere do que a carta descreve
+ * (a carta não diz como pedir, ou diz algo desatualizado). Por slug, que é
+ * estável entre rodadas do censo. Vence a leitura automática e aparece como
+ * tal na evidência. Origem: revisão da Bianca (SGD) em 2026-11-03. */
+const REVISAO_SGD: Record<string, { categoria: CategoriaN4; nota: string }> = {
+  "emissao-de-autorizacoes-ambientais-para-a-pesca-profissional86": { categoria: "formulario-email", nota: "formulário enviado por e-mail" },
+  "solicitar-analise-de-sobreposicao-de-imoveis-rurais-com-unidades-de-conservacao-para-anuencia-de-concessao-de-credito-rural-e-certificacao58": { categoria: "formulario-email", nota: "formulário enviado por e-mail" },
+  "solicitar-participacao-no-icms-ecologico-componente-unidades-de-conservacao-e-terras-indigenas70": { categoria: "formulario-email", nota: "formulário enviado por e-mail" },
+  "solicitar-compensacao-de-reserva-legal-em-unidade-de-conservacao-por-meio-de-doacao-de-terras-para-o-estado137": { categoria: "online", nota: "confirmado como 100% online" },
+};
+
 /**
  * Prioridade (primeira que bate): presencial > baixa formulário (+ e-mail, ou
  * sem sistema que receba) > formulário online/sistema > só e-mail > não diz.
@@ -107,6 +122,8 @@ export type ClassificacaoN4 = { categoria: CategoriaN4; evidencia: string | null
  */
 export function classificarN4(etapas: EtapasCarta | undefined): ClassificacaoN4 {
   if (!etapas) return { categoria: "sem-carta", evidencia: null };
+  const revisao = REVISAO_SGD[etapas.slug];
+  if (revisao) return { categoria: revisao.categoria, evidencia: `Revisado pela equipe da SGD: ${revisao.nota}` };
   const texto = normalizar(etapas.etapas.map((e) => `${e.titulo}. ${e.texto}`).join(" | "));
   // e-mail no domínio gov.br não pode virar sinal de "sistema gov.br"
   const semEmail = texto.replace(new RegExp(RE_EMAIL, "g"), " ").replace(/mailto:\S*/g, " ");
@@ -116,11 +133,11 @@ export function classificarN4(etapas: EtapasCarta | undefined): ClassificacaoN4 
   const link = RE_LINK.exec(semArquivo);
   const online = achar(semArquivo, ONLINE) ?? (link ? semArquivo.slice(Math.max(0, link.index - 50), link.index + 60).trim() : null);
 
+  // `canais` (marcação Online/Presencial da etapa) NÃO entra: órgão marca até
+  // passo interno ("Análise técnica", "Vistoria") como presencial — gerou 5 dos
+  // 7 erros apontados pela SGD em 2026-11-03.
   const presencial = achar(texto, PRESENCIAL, true);
   if (presencial) return { categoria: "presencial", evidencia: presencial };
-  // A própria carta marca a etapa como presencial (e não online).
-  const etapaPresencial = etapas.etapas.find((e) => e.canais?.includes("Presencial") && !e.canais.includes("Online"));
-  if (etapaPresencial) return { categoria: "presencial", evidencia: `Etapa "${etapaPresencial.titulo}" marcada como presencial na carta` };
 
   const m = DOWNLOAD.exec(texto);
   if (m && (temEmail || (!online && !linkSistema))) {

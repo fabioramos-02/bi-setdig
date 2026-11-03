@@ -1,6 +1,6 @@
 # ADR-016 — Nível 4 do censo conferido pelas etapas da carta no Portal Único
 
-**Status:** aceito (2026-10-28)
+**Status:** aceito (2026-10-28) · revisado (2026-11-03)
 
 ## Contexto
 
@@ -21,10 +21,14 @@ O jeito que o cidadão faz o pedido está descrito nas **etapas** da carta publi
   - Converte o HTML em texto e mantém o destino dos links (.pdf, e-mail, sistema), porque é ele que classifica a carta.
   - Segue o padrão do censo: `frequency: manual`, fora do `run.py` e do cron. Sem conexão, nada é publicado.
 - **Classificação no front (`src/lib/censo-n4.ts`)**, por palavra-chave no molde de `busca-tema.ts`. Vale a primeira regra que casar:
+  0. **Revisão da SGD** (`REVISAO_SGD`, por slug): vence as regras abaixo quando a equipe sabe que o processo real difere da carta. Aparece na tabela como "Revisado pela equipe da SGD: …".
   1. **Ainda pede ida presencial**:
      - Palavras: comparecer, presencialmente, dirigir-se, protocolar na unidade.
-     - Também conta etapa marcada só como "Presencial" na carta.
-     - A palavra é ignorada quando vem negada ("não precisa comparecer") ou como opção ("por telefone ou pessoalmente", "pessoalmente ou via e-mail").
+     - A palavra é ignorada quando vem negada ("não precisa comparecer") ou como opção. Contam como opção:
+       - presença ao lado de outro canal: "por telefone ou pessoalmente", "pessoalmente ou via e-mail";
+       - "presencialmente na central…; ou pelo e-mail" mais adiante na mesma frase;
+       - um item de lista: "formas de entrega: pessoalmente: compareça…".
+     - A marcação Online/Presencial de cada etapa (`canal_prestacao`) **não** entra. Ver revisão de 2026-11-03.
   2. **Baixa formulário e envia por e-mail**:
      - Baixar ou imprimir perto de "formulário", "requerimento" ou "ficha", ou formulário apontando para .pdf/.doc.
      - Só vale se houver e-mail ou não houver sistema.
@@ -53,6 +57,35 @@ O jeito que o cidadão faz o pedido está descrito nas **etapas** da carta publi
 
 O caso que motivou a análise existe, mas é menor que o esperado. A contradição mais frequente com o nível 4 é a etapa presencial (50 serviços).
 
+### Revisão da SGD (2026-11-03)
+
+A Bianca (SGD) conferiu os serviços da IMASUL classificados como "ainda pede ida presencial". Dos 7 que ela apontou, 5 deveriam ser "baixa formulário e envia por e-mail" e 2 são de fato nível 4.
+
+**Causas dos erros:**
+- **`canal_prestacao` não é confiável:** o órgão marca como "Presencial" até passos internos ("Análise técnica", "Vistoria técnica", "Registro em cartório"). Esse sinal sozinho causou 5 dos 7 erros e saiu da regra.
+- **Opção lida como obrigação:** "entregue presencialmente na Central…; ou pelo e-mail" era lido como exigência de ir ao balcão. A regra de opção passou a olhar a frase inteira e listas rotuladas.
+
+**Correções:**
+- Com as duas correções de regra, 3 dos 7 se resolveram sozinhos:
+  - ressarcimento de taxa e credenciamento de laboratório passaram para "formulário + e-mail";
+  - inscrição no CEUC passou para "online".
+- Os outros 4 entraram em `REVISAO_SGD`, porque a carta não descreve o envio por e-mail ou descreve um processo presencial desatualizado:
+  - pesca profissional;
+  - sobreposição de imóveis com UCs;
+  - ICMS Ecológico (UCs e Terras Indígenas);
+  - compensação de reserva legal (que é online).
+
+Nova carga, com a planilha de 2026-11-03: 842 serviços em 29 órgãos, 496 no nível 4, 435 com carta.
+
+| Forma de pedido | Serviços | % dos 496 |
+|---|--:|--:|
+| Formulário online ou sistema | 377 | 76,0 |
+| Sem carta no portal | 61 | 12,3 |
+| Baixa formulário e envia por e-mail | 21 | 4,2 |
+| Carta não diz como pedir | 19 | 3,8 |
+| Pedido só por e-mail | 12 | 2,4 |
+| Ainda pede ida presencial | 6 | 1,2 |
+
 ### Alternativas descartadas
 
 - **API de serviços do Portal Único** (`admin.ms.gov.br/api/cms/servicos/?slug=`): traz os mesmos campos, mas exige uma chave de API e uma chamada por carta. O banco já é fonte do pipeline e lê tudo numa consulta.
@@ -63,7 +96,8 @@ O caso que motivou a análise existe, mas é menor que o esperado. A contradiç�
 
 - O painel passa a mostrar a diferença entre o que o órgão **declarou** (nível 4) e o que a carta **descreve**. Não muda o nível do censo, nem o "% online" da Visão Geral.
 - A classificação é heurística. Carta mal escrita cai na categoria errada, e a evidência na tabela torna o erro visível. Depois de cada coleta, revisar uma amostra de cada categoria e ajustar as palavras em `censo-n4.ts` (testes em `censo-n4.test.ts`).
-- `canal_prestacao` também é preenchido por quem escreve a carta. Há etapas marcadas "Presencial" que parecem só preparo, como "Reunir os documentos". A evidência mostra o nome da etapa para isso ser conferido.
+- `canal_prestacao` continua no `etapas-n4.json`, mas não classifica nada (ver revisão de 2026-11-03).
+- A correção manual (`REVISAO_SGD`) é por slug. Se a carta mudar de slug, a correção deixa de valer e o serviço volta à leitura automática. Cada nova revisão da SGD entra nessa lista, com a data e o nome de quem revisou no comentário.
 - A extração depende da VPN, igual ao resto do domínio Cartas. Sem dados, a aba diz que as etapas ainda não foram lidas e não inventa números.
 - Nova rodada do censo: rodar `build_censo.py` e depois `build_etapas_n4.py`.
 - Achado colateral: `--ds-color-error` e `--ds-color-neutral-300/400` não existem no DS vendorizado. As telas do censo passaram a usar `--ds-color-danger` e `--ds-color-neutral-500`. Outros domínios ainda usam os tokens inexistentes.

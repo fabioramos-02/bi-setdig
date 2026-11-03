@@ -29,12 +29,27 @@ test("classificarN4: link vazio não é sistema; preencher formulário sozinho n
   assert.equal(classificarN4(carta("Faça login no gov.br e preencha o formulário. Dúvidas: a@x.ms.gov.br")).categoria, "online");
 });
 
-test("classificarN4: etapa marcada só como Presencial na carta = presencial", () => {
+test("classificarN4: marcação Presencial da etapa no banco não conta (órgão marca passo interno)", () => {
   const base = carta("Acesse o sistema e faça o pedido");
-  const marcada = { ...base, etapas: [...base.etapas, { titulo: "Retirada", texto: "Retire o documento", canais: ["Presencial"] }] };
-  assert.equal(classificarN4(marcada).categoria, "presencial");
-  const ambos = { ...base, etapas: [{ ...base.etapas[0], canais: ["Online", "Presencial"] }] };
-  assert.equal(classificarN4(ambos).categoria, "online");
+  const marcada = { ...base, etapas: [...base.etapas, { titulo: "Análise técnica", texto: "O órgão analisa", canais: ["Presencial"] }] };
+  assert.equal(classificarN4(marcada).categoria, "online");
+});
+
+test("classificarN4: presença com alternativa por e-mail mais adiante na frase é opção", () => {
+  const r = classificarN4(carta("Baixe o requerimento https://x.ms.gov.br/req.doc. Entregue presencialmente na Central de Atendimento, Unidade Regional ou Escritório Local; ou pelo e-mail atendimento@x.ms.gov.br."));
+  assert.equal(r.categoria, "formulario-email");
+});
+
+test("classificarN4: canal presencial rotulado numa lista de formas de entrega é opção", () => {
+  assert.equal(classificarN4(carta("Formas de entrega: pessoalmente: compareça a uma unidade local. Por e-mail: cadastro@iagro.ms.gov.br")).categoria, "so-email");
+  // obrigação de verdade continua presencial
+  assert.equal(classificarN4(carta("Solicitação presencial. Dirigir-se pessoalmente a uma agência, portando documentos")).categoria, "presencial");
+});
+
+test("classificarN4: revisão da SGD vence a leitura automática e se identifica", () => {
+  const r = classificarN4(carta("Compareça à unidade", { slug: "solicitar-participacao-no-icms-ecologico-componente-unidades-de-conservacao-e-terras-indigenas70" }));
+  assert.equal(r.categoria, "formulario-email");
+  assert.match(r.evidencia ?? "", /Revisado pela equipe da SGD/);
 });
 
 test("classificarN4: sistema/forms ou botão de acesso = online, mesmo com e-mail de contato", () => {
