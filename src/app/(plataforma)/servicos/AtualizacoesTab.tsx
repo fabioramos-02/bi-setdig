@@ -115,8 +115,14 @@ export function AtualizacoesTab({
             recusados ficam de fora.
           </p>
           <ul className="list-disc pl-5 flex flex-col gap-1">
-            <li><b>Carta alterada:</b> teve pelo menos uma mudança no período. Mesmo mudada várias vezes, conta uma vez.</li>
-            <li><b>Carta revisada:</b> passou pela revisão, em que o órgão confere se a carta ainda está certa.</li>
+            <li>
+              <b>Cartas revisadas:</b> cartas que passaram pela revisão anual obrigatória, com conferência e
+              validação das informações pelo órgão, mas não houve necessidade de alterações.
+            </li>
+            <li>
+              <b>Cartas alteradas:</b> cartas que, além de passarem pela revisão obrigatória, tiveram seu
+              conteúdo atualizado, com alterações nas informações dos serviços prestados, ao longo do ano.
+            </li>
           </ul>
           <p style={{ color: "var(--ds-color-text-muted)" }}>
             O registro começa em abril de 2023.{extraidoEm ? ` Números atualizados em ${extraidoEm}.` : ""}
