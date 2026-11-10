@@ -102,44 +102,40 @@ def relacao(rows: list[dict]) -> list[dict]:
     ]
 
 
-def _tipo(acao: str) -> str:
-    # ações do Portal/Admin: Criação, Edição, Revisão, Criação/Edição da etapa
-    if acao.endswith("etapa"):
-        return "etapas"
-    return {"Edição": "edicoes", "Revisão": "revisoes", "Criação": "criacoes"}.get(acao, "outras")
+def _eh_revisao(acao: str) -> bool:
+    return acao == "Revisão"
 
 
 def atualizacoes_por_ano(hist: list[dict]) -> list[dict]:
-    """Por ano: alterações aprovadas por tipo, cartas alteradas e cartas revisadas."""
+    """Por ano: cartas alteradas (distintas) e cartas revisadas (distintas).
+
+    Volume bruto de alterações saiu do escopo: gerava confusão para o gestor
+    (uma mesma carta mudada várias vezes aparecia como se fosse muito trabalho novo).
+    """
     anos: dict[int, dict] = {}
     for r in hist:
         ano = r["dia"].year
-        a = anos.setdefault(ano, {"ano": ano, "criacoes": 0, "edicoes": 0, "revisoes": 0,
-                                  "etapas": 0, "outras": 0, "_cartas": set(), "_revisadas": set()})
-        tipo = _tipo(r["acao"])
-        a[tipo] += r["n"]
+        a = anos.setdefault(ano, {"ano": ano, "_cartas": set(), "_revisadas": set()})
         a["_cartas"].add(r["servico_id"])
-        if tipo == "revisoes":
+        if _eh_revisao(r["acao"]):
             a["_revisadas"].add(r["servico_id"])
-    saida = []
-    for a in sorted(anos.values(), key=lambda x: x["ano"]):
-        cartas, revisadas = a.pop("_cartas"), a.pop("_revisadas")
-        total = a["criacoes"] + a["edicoes"] + a["revisoes"] + a["etapas"] + a["outras"]
-        saida.append({**a, "total": total, "cartasAlteradas": len(cartas), "cartasRevisadas": len(revisadas)})
-    return saida
+    return [
+        {"ano": a["ano"], "cartasAlteradas": len(a["_cartas"]), "cartasRevisadas": len(a["_revisadas"])}
+        for a in sorted(anos.values(), key=lambda x: x["ano"])
+    ]
 
 
 def atualizacoes_diarias(hist: list[dict]) -> list[dict]:
     """1 linha por carta e dia, compacta, para o front recortar pelo período do filtro.
 
-    d = dia, s = id da carta, o = sigla do órgão, a = alterações no dia, r = revisões no dia.
-    Contar cartas distintas exige o id: por isso não dá para pré-agregar por órgão.
+    d = dia, s = id da carta, o = sigla do órgão, r = 1 se houve revisão nesse dia, 0 caso contrário.
+    Só precisamos de distinct cartas e distinct revisadas no período — o volume de
+    alterações não é mais exposto no BI (ver atualizacoes_por_ano).
     """
     dias: dict[tuple, dict] = {}
     for r in hist:
         k = (r["dia"].isoformat(), r["servico_id"])
-        x = dias.setdefault(k, {"d": k[0], "s": r["servico_id"], "o": r["orgao_sigla"] or r["orgao"], "a": 0, "r": 0})
-        x["a"] += r["n"]
-        if _tipo(r["acao"]) == "revisoes":
-            x["r"] += r["n"]
+        x = dias.setdefault(k, {"d": k[0], "s": r["servico_id"], "o": r["orgao_sigla"] or r["orgao"], "r": 0})
+        if _eh_revisao(r["acao"]):
+            x["r"] = 1
     return sorted(dias.values(), key=lambda x: (x["d"], x["s"]))

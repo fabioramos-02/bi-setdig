@@ -284,12 +284,12 @@ def run_cartas() -> None:
 
     hist = cartas.get_historico()
     anos = t_servicos.atualizacoes_por_ano(hist)
-    validate_rows(anos, required=["ano", "total"], non_negative=["total", "cartasAlteradas", "cartasRevisadas"])
+    validate_rows(anos, required=["ano", "cartasAlteradas", "cartasRevisadas"], non_negative=["cartasAlteradas", "cartasRevisadas"])
     out5 = publish("cartas", "atualizacoes-por-ano", anos)
     print(f"[cartas] atualizacoes-por-ano -> {out5} ({len(anos)} anos)")
 
     diarias = t_servicos.atualizacoes_diarias(hist)
-    validate_rows(diarias, required=["d", "s", "o"], non_negative=["a", "r"])
+    validate_rows(diarias, required=["d", "s", "o", "r"], non_negative=["r"])
     out6 = publish("cartas", "atualizacoes-diarias", diarias)
     print(f"[cartas] atualizacoes-diarias -> {out6} ({len(diarias)} linhas)")
 

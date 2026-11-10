@@ -470,23 +470,19 @@ export function getCartasInventarioRelacao(): CartaRelacao[] {
   return readDataset<CartaRelacao[]>("cartas", "v1", "inventario-relacao") ?? [];
 }
 
-// Histórico de atualizações das cartas ativas (gerenciamento_historicoservico,
-// só alterações aprovadas) — pedido da Ari para o relatório de gestão, 10/11/2026.
+// Histórico aprovado das cartas ativas (gerenciamento_historicoservico) — só
+// cartas alteradas e cartas revisadas distintas. O volume bruto de alterações
+// saiu do escopo em 10/11/2026 por confundir o gestor (uma mesma carta mudada
+// várias vezes parecia muito trabalho novo).
 export type AtualizacaoAno = {
   ano: number;
-  criacoes: number;
-  edicoes: number;
-  revisoes: number;
-  etapas: number;
-  outras: number;
-  total: number;
   cartasAlteradas: number;
   cartasRevisadas: number;
 };
 /** 1 linha por carta e dia: d = dia, s = id da carta, o = sigla do órgão,
- * a = alterações aprovadas, r = revisões. O front recorta pelo período do filtro.
+ * r = 1 se houve revisão nesse dia, 0 caso contrário. O front recorta pelo período do filtro.
  * ponytail: ~1 MB para todo o histórico; se passar de 2 MB, agregar por mês. */
-export type AtualizacaoDia = { d: string; s: number; o: string; a: number; r: number };
+export type AtualizacaoDia = { d: string; s: number; o: string; r: number };
 export function getCartasAtualizacoesPorAno(): AtualizacaoAno[] {
   return readDataset<AtualizacaoAno[]>("cartas", "v1", "atualizacoes-por-ano") ?? [];
 }

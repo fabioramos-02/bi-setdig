@@ -15,7 +15,7 @@ export type DadosAtualizacoes = {
   atualizadoEm: string | null;
 };
 
-type Totais = { cartas: number; revisadas: number; alteracoes: number; revisoes: number };
+type Totais = { cartas: number; revisadas: number };
 type LinhaOrgao = Totais & { orgao: string };
 
 const ORGAOS_VISIVEIS = 8;
@@ -26,17 +26,11 @@ const iso = (t: number) => new Date(t).toISOString().slice(0, 10);
 function somar(linhas: AtualizacaoDia[]): Totais {
   const cartas = new Set<number>();
   const revisadas = new Set<number>();
-  let alteracoes = 0;
-  let revisoes = 0;
   for (const l of linhas) {
     cartas.add(l.s);
-    alteracoes += l.a;
-    if (l.r > 0) {
-      revisadas.add(l.s);
-      revisoes += l.r;
-    }
+    if (l.r > 0) revisadas.add(l.s);
   }
-  return { cartas: cartas.size, revisadas: revisadas.size, alteracoes, revisoes };
+  return { cartas: cartas.size, revisadas: revisadas.size };
 }
 
 /** Período anterior de mesmo tamanho, logo antes do escolhido (base da comparação). */
@@ -83,7 +77,7 @@ export function AtualizacoesTab({
     for (const l of noPeriodo) grupos.set(l.o, [...(grupos.get(l.o) ?? []), l]);
     return [...grupos.entries()]
       .map(([orgao, linhas]): LinhaOrgao => ({ orgao, ...somar(linhas) }))
-      .sort((a, b) => b.alteracoes - a.alteracoes);
+      .sort((a, b) => b.cartas - a.cartas);
   }, [noPeriodo]);
 
   if (dados.porAno.length === 0) {
@@ -100,7 +94,6 @@ export function AtualizacoesTab({
     { key: "orgao", label: "Órgão", sortable: true, sortValue: (r) => r.orgao, render: (r) => r.orgao },
     { key: "cartas", label: "Cartas alteradas", align: "right", sortable: true, sortValue: (r) => r.cartas, render: (r) => fmt(r.cartas) },
     { key: "revisadas", label: "Cartas revisadas", align: "right", sortable: true, sortValue: (r) => r.revisadas, render: (r) => fmt(r.revisadas) },
-    { key: "alteracoes", label: "Alterações", align: "right", sortable: true, sortValue: (r) => r.alteracoes, render: (r) => fmt(r.alteracoes) },
   ];
 
   return (
@@ -124,7 +117,6 @@ export function AtualizacoesTab({
           <ul className="list-disc pl-5 flex flex-col gap-1">
             <li><b>Carta alterada:</b> teve pelo menos uma mudança no período. Mesmo mudada várias vezes, conta uma vez.</li>
             <li><b>Carta revisada:</b> passou pela revisão, em que o órgão confere se a carta ainda está certa.</li>
-            <li><b>Alterações:</b> soma de todas as mudanças aprovadas.</li>
           </ul>
           <p style={{ color: "var(--ds-color-text-muted)" }}>
             O registro começa em abril de 2023.{extraidoEm ? ` Números atualizados em ${extraidoEm}.` : ""}
@@ -136,8 +128,7 @@ export function AtualizacoesTab({
         anchor={
           total.cartas > 0 ? (
             <>
-              Em {rotuloPeriodo}, <b>{fmt(total.cartas)}</b> cartas de serviço foram atualizadas, com <b>{fmt(total.alteracoes)}</b>{" "}
-              alterações aprovadas.
+              Em {rotuloPeriodo}, <b>{fmt(total.cartas)}</b> cartas de serviço foram atualizadas.
             </>
           ) : (
             <>Nenhuma carta foi alterada em {rotuloPeriodo}.</>
@@ -147,10 +138,9 @@ export function AtualizacoesTab({
         comoLer="Os cartões e a tabela por órgão seguem o período escolhido no filtro. A comparação é com o período de mesmo tamanho logo antes."
       />
 
-      <div className="grid gap-4 grid-cols-1 sm:grid-cols-3">
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
         <MetricCard label="Cartas alteradas" value={total.cartas} sub={comparacao(total.cartas, antes.cartas)} />
         <MetricCard label="Cartas revisadas" value={total.revisadas} sub={comparacao(total.revisadas, antes.revisadas)} />
-        <MetricCard label="Alterações aprovadas" value={total.alteracoes} sub={comparacao(total.alteracoes, antes.alteracoes)} />
       </div>
 
       <DashboardSection
@@ -158,7 +148,7 @@ export function AtualizacoesTab({
         action={
           porOrgao.length > 0 ? (
             <ExportCsvButton
-              rows={porOrgao.map((r) => ({ orgao: r.orgao, cartas_alteradas: r.cartas, cartas_revisadas: r.revisadas, alteracoes: r.alteracoes, revisoes: r.revisoes }))}
+              rows={porOrgao.map((r) => ({ orgao: r.orgao, cartas_alteradas: r.cartas, cartas_revisadas: r.revisadas }))}
               filename={`atualizacoes-cartas-por-orgao-${range.inicio}-a-${range.fim}.csv`}
             />
           ) : undefined
@@ -170,7 +160,7 @@ export function AtualizacoesTab({
           <div className="flex flex-col gap-3">
             <p className="text-sm" style={{ color: "var(--ds-color-text-secondary)" }}>
               {porOrgao.length > ORGAOS_VISIVEIS && !verTodos
-                ? `Os ${ORGAOS_VISIVEIS} órgãos com mais alterações, de ${porOrgao.length}. A planilha traz todos.`
+                ? `Os ${ORGAOS_VISIVEIS} órgãos com mais cartas alteradas, de ${porOrgao.length}. A planilha traz todos.`
                 : `${porOrgao.length} órgãos alteraram cartas no período.`}
             </p>
             <div className="overflow-x-auto min-w-0">
@@ -203,7 +193,6 @@ export function AtualizacoesTab({
                 <th className="text-left p-2">Ano</th>
                 <th className="text-right p-2">Cartas alteradas</th>
                 <th className="text-right p-2">Cartas com revisão</th>
-                <th className="text-right p-2">Alterações aprovadas</th>
               </tr>
             </thead>
             <tbody>
@@ -212,7 +201,6 @@ export function AtualizacoesTab({
                   <td className="p-2 font-medium" style={{ color: "var(--ds-color-text-primary)" }}>{rotuloAno(a.ano, i)}</td>
                   <td className="p-2 text-right">{fmt(a.cartasAlteradas)}</td>
                   <td className="p-2 text-right">{fmt(a.cartasRevisadas)}</td>
-                  <td className="p-2 text-right">{fmt(a.total)}</td>
                 </tr>
               ))}
             </tbody>

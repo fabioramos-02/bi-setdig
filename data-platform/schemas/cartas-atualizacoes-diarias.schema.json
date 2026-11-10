@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "cartas/atualizacoes-diarias",
-  "description": "Alterações aprovadas das cartas ativas, 1 linha por carta e dia (d=dia, s=id da carta, o=sigla do órgão, a=alterações, r=revisões).",
+  "description": "Histórico aprovado das cartas ativas, 1 linha por carta e dia (d=dia, s=id da carta, o=sigla do órgão, r=1 se houve revisão nesse dia, 0 caso contrário). Só expõe o que permite contar cartas alteradas e cartas revisadas distintas — o volume bruto de alterações saiu do escopo.",
   "type": "array",
   "items": {
     "type": "object",
@@ -9,7 +9,6 @@
       "d",
       "s",
       "o",
-      "a",
       "r"
     ],
     "properties": {
@@ -23,13 +22,10 @@
       "o": {
         "type": "string"
       },
-      "a": {
-        "type": "integer",
-        "minimum": 0
-      },
       "r": {
         "type": "integer",
-        "minimum": 0
+        "minimum": 0,
+        "maximum": 1
       }
     }
   }

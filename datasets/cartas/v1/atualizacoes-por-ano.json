@@ -1,45 +1,21 @@
 [
   {
     "ano": 2023,
-    "criacoes": 684,
-    "edicoes": 5338,
-    "revisoes": 71,
-    "etapas": 0,
-    "outras": 0,
-    "total": 6093,
     "cartasAlteradas": 687,
     "cartasRevisadas": 45
   },
   {
     "ano": 2024,
-    "criacoes": 315,
-    "edicoes": 2297,
-    "revisoes": 1210,
-    "etapas": 2164,
-    "outras": 0,
-    "total": 5986,
     "cartasAlteradas": 1003,
     "cartasRevisadas": 634
   },
   {
     "ano": 2025,
-    "criacoes": 140,
-    "edicoes": 2163,
-    "revisoes": 1980,
-    "etapas": 4314,
-    "outras": 0,
-    "total": 8597,
     "cartasAlteradas": 1056,
     "cartasRevisadas": 987
   },
   {
     "ano": 2026,
-    "criacoes": 80,
-    "edicoes": 1188,
-    "revisoes": 1399,
-    "etapas": 1323,
-    "outras": 0,
-    "total": 3990,
     "cartasAlteradas": 1003,
     "cartasRevisadas": 932
   }

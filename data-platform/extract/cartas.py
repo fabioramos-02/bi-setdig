@@ -50,9 +50,11 @@ _JORNADA_SQL = """
 # Histórico das cartas ativas: cada criação, edição, revisão ou mudança de etapa
 # aprovada gera 1 registro datado em gerenciamento_historicoservico (pedido da
 # Ari, 10/11/2026). Pendentes e recusados não chegaram ao Portal: ficam de fora.
+# Só precisamos saber dia + carta + se a ação foi revisão — o volume bruto de
+# alterações gerava confusão no BI de gestão, então saiu até da extração.
 _HISTORICO_SQL = """
     SELECT o.nome AS orgao, o.sigla AS orgao_sigla, h.servico_id,
-           h.created_at::date AS dia, h.acao, count(*) AS n
+           h.created_at::date AS dia, h.acao
     FROM gerenciamento_historicoservico h
     JOIN gerenciamento_servicos s ON s.id = h.servico_id
     JOIN gerenciamento_setor st ON s.setor_id = st.id
@@ -91,5 +93,7 @@ def get_jornadas(slugs: list[str]) -> list[dict]:
 
 
 def get_historico() -> list[dict]:
-    """Alterações aprovadas das cartas ativas, por órgão, carta, dia e tipo de ação."""
+    """Histórico de ações aprovadas nas cartas ativas, por órgão, carta, dia e tipo de ação
+    (para contar cartas alteradas e cartas revisadas distintas; o volume de alterações
+    não é mais exposto)."""
     return _query(_HISTORICO_SQL)

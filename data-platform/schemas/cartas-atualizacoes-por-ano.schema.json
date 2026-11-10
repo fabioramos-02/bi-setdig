@@ -1,43 +1,18 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "cartas/atualizacoes-por-ano",
-  "description": "Alterações aprovadas das cartas ativas por ano e tipo (gerenciamento_historicoservico, admin_prd).",
+  "description": "Cartas alteradas e cartas revisadas (distintas) por ano, a partir do histórico aprovado em gerenciamento_historicoservico (admin_prd). O volume bruto de alterações saiu do escopo por gerar confusão no BI de gestão.",
   "type": "array",
   "items": {
     "type": "object",
     "required": [
       "ano",
-      "total",
       "cartasAlteradas",
       "cartasRevisadas"
     ],
     "properties": {
       "ano": {
         "type": "integer"
-      },
-      "criacoes": {
-        "type": "integer",
-        "minimum": 0
-      },
-      "edicoes": {
-        "type": "integer",
-        "minimum": 0
-      },
-      "revisoes": {
-        "type": "integer",
-        "minimum": 0
-      },
-      "etapas": {
-        "type": "integer",
-        "minimum": 0
-      },
-      "outras": {
-        "type": "integer",
-        "minimum": 0
-      },
-      "total": {
-        "type": "integer",
-        "minimum": 0
       },
       "cartasAlteradas": {
         "type": "integer",
