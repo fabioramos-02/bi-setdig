@@ -1,170 +1,170 @@
 {
   "dia": [
     {
-      "dominio": "portalservicos.jucems.ms.gov.br",
-      "saidas": 318
-    },
-    {
-      "dominio": "www.meudetran.ms.gov.br",
-      "saidas": 307
-    },
-    {
-      "dominio": "servicos.efazenda.ms.gov.br",
-      "saidas": 300
-    },
-    {
-      "dominio": "eservicos.sefaz.ms.gov.br",
-      "saidas": 261
-    },
-    {
-      "dominio": "www.sefaz.ms.gov.br",
-      "saidas": 199
-    },
-    {
       "dominio": "e-ms.ms.gov.br",
-      "saidas": 171
+      "saidas": 50
     },
     {
       "dominio": "ms.gov.br",
-      "saidas": 150
+      "saidas": 7
     },
     {
-      "dominio": "servicos.sejusp.ms.gov.br",
-      "saidas": 150
+      "dominio": "eservicos.sefaz.ms.gov.br",
+      "saidas": 4
     },
     {
-      "dominio": "devir.pc.ms.gov.br",
-      "saidas": 102
+      "dominio": "servicos.efazenda.ms.gov.br",
+      "saidas": 3
     },
     {
-      "dominio": "antecedentes.sejusp.ms.gov.br",
-      "saidas": 99
+      "dominio": "www.meudetran.ms.gov.br",
+      "saidas": 3
+    },
+    {
+      "dominio": "aacpdappls.net.ms.gov.br",
+      "saidas": 2
+    },
+    {
+      "dominio": "boat.sigo.ms.gov.br",
+      "saidas": 2
+    },
+    {
+      "dominio": "www.sefaz.ms.gov.br",
+      "saidas": 2
+    },
+    {
+      "dominio": "www.siga.ms.gov.br",
+      "saidas": 2
+    },
+    {
+      "dominio": "agenciadenoticias.ms.gov.br",
+      "saidas": 1
     }
   ],
   "semana": [
     {
-      "dominio": "portalservicos.jucems.ms.gov.br",
-      "saidas": 1773
-    },
-    {
-      "dominio": "servicos.efazenda.ms.gov.br",
-      "saidas": 1634
-    },
-    {
-      "dominio": "www.meudetran.ms.gov.br",
-      "saidas": 1547
-    },
-    {
-      "dominio": "eservicos.sefaz.ms.gov.br",
-      "saidas": 1294
-    },
-    {
-      "dominio": "www.sefaz.ms.gov.br",
-      "saidas": 1129
-    },
-    {
-      "dominio": "servicos.sejusp.ms.gov.br",
-      "saidas": 820
+      "dominio": "e-ms.ms.gov.br",
+      "saidas": 174
     },
     {
       "dominio": "ms.gov.br",
-      "saidas": 796
+      "saidas": 29
     },
     {
-      "dominio": "antecedentes.sejusp.ms.gov.br",
-      "saidas": 773
+      "dominio": "servicos.efazenda.ms.gov.br",
+      "saidas": 23
     },
     {
-      "dominio": "www.cgp.sejusp.ms.gov.br",
-      "saidas": 673
+      "dominio": "www.meudetran.ms.gov.br",
+      "saidas": 14
     },
     {
-      "dominio": "devir.pc.ms.gov.br",
-      "saidas": 668
+      "dominio": "eservicos.sefaz.ms.gov.br",
+      "saidas": 13
+    },
+    {
+      "dominio": "www.sefaz.ms.gov.br",
+      "saidas": 13
+    },
+    {
+      "dominio": "aacpdappls.net.ms.gov.br",
+      "saidas": 6
+    },
+    {
+      "dominio": "boat.sigo.ms.gov.br",
+      "saidas": 6
+    },
+    {
+      "dominio": "www.cursos.ms.gov.br",
+      "saidas": 4
+    },
+    {
+      "dominio": "www.matriculadigital.ms.gov.br",
+      "saidas": 4
     }
   ],
   "mes": [
     {
-      "dominio": "www.meudetran.ms.gov.br",
-      "saidas": 11670
+      "dominio": "e-ms.ms.gov.br",
+      "saidas": 849
     },
     {
       "dominio": "servicos.efazenda.ms.gov.br",
-      "saidas": 10973
-    },
-    {
-      "dominio": "portalservicos.jucems.ms.gov.br",
-      "saidas": 10414
-    },
-    {
-      "dominio": "eservicos.sefaz.ms.gov.br",
-      "saidas": 9735
-    },
-    {
-      "dominio": "www.sefaz.ms.gov.br",
-      "saidas": 9260
+      "saidas": 115
     },
     {
       "dominio": "ms.gov.br",
-      "saidas": 5328
+      "saidas": 90
+    },
+    {
+      "dominio": "www.meudetran.ms.gov.br",
+      "saidas": 69
+    },
+    {
+      "dominio": "www.sefaz.ms.gov.br",
+      "saidas": 62
+    },
+    {
+      "dominio": "eservicos.sefaz.ms.gov.br",
+      "saidas": 46
+    },
+    {
+      "dominio": "aacpdappls.net.ms.gov.br",
+      "saidas": 22
+    },
+    {
+      "dominio": "www.cursos.ms.gov.br",
+      "saidas": 22
+    },
+    {
+      "dominio": "www.escolagov.ms.gov.br",
+      "saidas": 20
     },
     {
       "dominio": "servicos.sejusp.ms.gov.br",
-      "saidas": 5298
-    },
-    {
-      "dominio": "e-ms.ms.gov.br",
-      "saidas": 4014
-    },
-    {
-      "dominio": "devir.pc.ms.gov.br",
-      "saidas": 3714
-    },
-    {
-      "dominio": "antecedentes.sejusp.ms.gov.br",
-      "saidas": 3597
+      "saidas": 18
     }
   ],
   "ano": [
     {
       "dominio": "www.meudetran.ms.gov.br",
-      "saidas": 84617
+      "saidas": 102346
     },
     {
       "dominio": "servicos.efazenda.ms.gov.br",
-      "saidas": 80220
+      "saidas": 100084
     },
     {
       "dominio": "eservicos.sefaz.ms.gov.br",
-      "saidas": 78309
+      "saidas": 93134
     },
     {
       "dominio": "www.sefaz.ms.gov.br",
-      "saidas": 77417
-    },
-    {
-      "dominio": "ms.gov.br",
-      "saidas": 45960
-    },
-    {
-      "dominio": "servicos.sejusp.ms.gov.br",
-      "saidas": 45605
+      "saidas": 88932
     },
     {
       "dominio": "portalservicos.jucems.ms.gov.br",
-      "saidas": 38340
+      "saidas": 57616
+    },
+    {
+      "dominio": "servicos.sejusp.ms.gov.br",
+      "saidas": 56991
+    },
+    {
+      "dominio": "ms.gov.br",
+      "saidas": 54759
     },
     {
       "dominio": "e-ms.ms.gov.br",
-      "saidas": 35548
+      "saidas": 45365
     },
     {
       "dominio": "antecedentes.sejusp.ms.gov.br",
-      "saidas": 26919
+      "saidas": 30873
     },
     {
-      "dominio": "www.cgp.sejusp.ms.gov.br",
-      "saidas": 21091
+      "dominio": "devir.pc.ms.gov.br",
+      "saidas": 24491
     }
   ]
 }

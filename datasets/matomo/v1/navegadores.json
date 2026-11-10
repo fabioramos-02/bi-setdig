@@ -2,89 +2,89 @@
   "dia": [
     {
       "navegador": "Chrome",
-      "visitas": 4750
-    },
-    {
-      "navegador": "Chrome Mobile",
-      "visitas": 2105
+      "visitas": 406
     },
     {
       "navegador": "Microsoft Edge",
-      "visitas": 965
+      "visitas": 83
+    },
+    {
+      "navegador": "Firefox",
+      "visitas": 32
     },
     {
       "navegador": "Mobile Safari",
-      "visitas": 883
+      "visitas": 3
     },
     {
       "navegador": "Outros",
-      "visitas": 1284
+      "visitas": 3
     }
   ],
   "semana": [
     {
       "navegador": "Chrome",
-      "visitas": 24506
-    },
-    {
-      "navegador": "Chrome Mobile",
-      "visitas": 13837
-    },
-    {
-      "navegador": "Mobile Safari",
-      "visitas": 6083
+      "visitas": 1737
     },
     {
       "navegador": "Microsoft Edge",
-      "visitas": 5274
+      "visitas": 328
+    },
+    {
+      "navegador": "Headless Chrome",
+      "visitas": 188
+    },
+    {
+      "navegador": "Firefox",
+      "visitas": 80
     },
     {
       "navegador": "Outros",
-      "visitas": 8293
+      "visitas": 45
     }
   ],
   "mes": [
     {
       "navegador": "Chrome",
-      "visitas": 142058
+      "visitas": 7064
     },
     {
-      "navegador": "Chrome Mobile",
-      "visitas": 89738
-    },
-    {
-      "navegador": "Mobile Safari",
-      "visitas": 37499
+      "navegador": "Headless Chrome",
+      "visitas": 1853
     },
     {
       "navegador": "Microsoft Edge",
-      "visitas": 29604
+      "visitas": 1307
+    },
+    {
+      "navegador": "Firefox",
+      "visitas": 305
     },
     {
       "navegador": "Outros",
-      "visitas": 58416
+      "visitas": 151
     }
   ],
   "ano": [
     {
       "navegador": "Chrome",
-      "visitas": 1582918
+      "visitas": 1840695
     },
     {
       "navegador": "Chrome Mobile",
-      "visitas": 826588
-    },
-    {
-      "navegador": "Microsoft Edge",
-      "visitas": 283384
+      "visitas": 978413
     },
     {
       "navegador": "Mobile Safari",
-      "visitas": 282594
+      "visitas": 346957
+    },
+    {
+      "navegador": "Microsoft Edge",
+      "visitas": 336823
     },
     {
       "navegador": "Outros",
-      "visitas": 385308
+      "visitas": 487390
     }
   ]
 }
