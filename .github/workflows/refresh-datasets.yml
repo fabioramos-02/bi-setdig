@@ -7,11 +7,13 @@ name: Refresh datasets
 #
 # PRÉ-REQUISITO (fazer uma vez, no GitHub → Settings → Secrets and variables →
 # Actions): cadastrar MATOMO_TOKEN, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET,
-# GOOGLE_REFRESH_TOKEN, GOOGLE_PROPERTY_ID, TFS_PAT. Fonte sem secret falha e o
+# GOOGLE_REFRESH_TOKEN, GOOGLE_PROPERTY_ID. Fonte sem secret falha e o
 # job fica VERMELHO (run.py sai 1) — o GitHub avisa por e-mail. As fontes que
 # funcionaram são commitadas mesmo assim (passo de commit com `if: always()`).
-# Postgres/Cartas/MS Digital NÃO entram aqui (exigem VPN da SETDIG): --sem-vpn
-# pula essas, que seguem rodando à mão na rede da SETDIG.
+# Postgres/Cartas/MS Digital e o TFS NÃO entram aqui (só respondem na rede do
+# Governo/VPN da SETDIG): --sem-vpn pula essas, que seguem rodando à mão na rede
+# da SETDIG (`python run.py`, depois commit dos datasets). O TFS on-prem devolve
+# 302 para o login quando chamado do runner do GitHub, mesmo com PAT válido.
 
 on:
   schedule:
@@ -44,7 +46,6 @@ jobs:
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
           GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
           GOOGLE_PROPERTY_ID: ${{ secrets.GOOGLE_PROPERTY_ID }}
-          TFS_PAT: ${{ secrets.TFS_PAT }}
         run: python run.py --sem-vpn
       - name: Commit datasets se mudaram
         if: always()

@@ -47,6 +47,12 @@ sempre em `lib/`, nunca no `.tsx` (convencoes.md). Cor/tipografia só via `var(-
   Categorias do app — essa última deixou de ser 100% estática: o catálogo
   categoria/serviço/URL continua fixo, mas os números de acesso reagem ao
   período).
+- **Fontes manuais (só na rede do Governo/VPN):** `cartas`, `qualidade`, `msdigital_db`,
+  `portal_unico_db` e `tfs` estão em `FONTES_VPN` (`data-platform/run.py`). O CI (`refresh-datasets.yml`,
+  `--sem-vpn`) pula essas; elas rodam à mão na rede da SETDIG (`python run.py --domain <fonte>`) e os JSON
+  são commitados. O TFS on-prem devolve 302 para o login quando chamado de fora (runner do GitHub), mesmo
+  com PAT válido — por isso saiu do CI em 10/11/2026. No CI ficam só Matomo, GA4 e sites, com os secrets
+  `MATOMO_TOKEN` e `GOOGLE_*` cadastrados no repositório.
 - **DS-SIS unlayered vence Tailwind:** regra de tag do DS (ex. `h3`) sobrescreve
   utilities; cravar tipografia com `style` inline quando precisar.
 - **Versão de dataset (ADR-004):** mudança de shape que quebra → nova pasta `vN`.

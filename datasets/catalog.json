@@ -396,50 +396,6 @@
     "bytes": 14877
   },
   {
-    "dataset": "inventario-resumo",
-    "source": "cartas",
-    "owner": "SETDIG",
-    "updatedAt": "2026-08-27T18:49:09.985259+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/cartas-inventario-resumo.schema.json",
-    "rows": 1,
-    "bytes": 164
-  },
-  {
-    "dataset": "inventario-por-orgao",
-    "source": "cartas",
-    "owner": "SETDIG",
-    "updatedAt": "2026-08-27T18:49:09.987986+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/cartas-inventario-por-orgao.schema.json",
-    "rows": 40,
-    "bytes": 7634
-  },
-  {
-    "dataset": "inventario-por-categoria",
-    "source": "cartas",
-    "owner": "SETDIG",
-    "updatedAt": "2026-08-27T18:49:09.990444+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/cartas-inventario-por-categoria.schema.json",
-    "rows": 22,
-    "bytes": 2831
-  },
-  {
-    "dataset": "inventario-relacao",
-    "source": "cartas",
-    "owner": "SETDIG",
-    "updatedAt": "2026-08-27T18:49:09.997740+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/cartas-inventario-relacao.schema.json",
-    "rows": 1524,
-    "bytes": 1642539
-  },
-  {
     "dataset": "erros-resumo",
     "source": "cartas",
     "owner": "SETDIG",
@@ -561,28 +517,6 @@
     "bytes": 30694
   },
   {
-    "dataset": "itens",
-    "source": "tfs",
-    "owner": "SETDIG",
-    "updatedAt": "2026-10-26T20:53:13.915590+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/tfs-itens.schema.json",
-    "rows": 2035,
-    "bytes": 1518411
-  },
-  {
-    "dataset": "sprints",
-    "source": "tfs",
-    "owner": "SETDIG",
-    "updatedAt": "2026-10-26T20:53:14.163651+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/tfs-sprints.schema.json",
-    "rows": 6,
-    "bytes": 874
-  },
-  {
     "dataset": "etp-ust",
     "source": "tfs",
     "owner": "SETDIG",
@@ -625,5 +559,104 @@
     "schema": "data-platform/schemas/censo-etapas-n4.schema.json",
     "rows": 435,
     "bytes": 696959
+  },
+  {
+    "dataset": "itens",
+    "source": "tfs",
+    "owner": "SETDIG",
+    "updatedAt": "2026-11-03T18:18:19.903828+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/tfs-itens.schema.json",
+    "rows": 2063,
+    "bytes": 1607351
+  },
+  {
+    "dataset": "sprints",
+    "source": "tfs",
+    "owner": "SETDIG",
+    "updatedAt": "2026-11-03T18:18:20.145612+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/tfs-sprints.schema.json",
+    "rows": 10,
+    "bytes": 1449
+  },
+  {
+    "dataset": "painel-time",
+    "source": "tfs",
+    "owner": "SETDIG",
+    "updatedAt": "2026-11-03T18:18:24.802294+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/tfs-painel-time.schema.json",
+    "rows": 14,
+    "bytes": 2273
+  },
+  {
+    "dataset": "inventario-resumo",
+    "source": "cartas",
+    "owner": "SETDIG",
+    "updatedAt": "2026-11-10T13:48:53.790931+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/cartas-inventario-resumo.schema.json",
+    "rows": 1,
+    "bytes": 164
+  },
+  {
+    "dataset": "inventario-por-orgao",
+    "source": "cartas",
+    "owner": "SETDIG",
+    "updatedAt": "2026-11-10T13:48:53.794093+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/cartas-inventario-por-orgao.schema.json",
+    "rows": 40,
+    "bytes": 7636
+  },
+  {
+    "dataset": "inventario-por-categoria",
+    "source": "cartas",
+    "owner": "SETDIG",
+    "updatedAt": "2026-11-10T13:48:53.796876+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/cartas-inventario-por-categoria.schema.json",
+    "rows": 22,
+    "bytes": 2833
+  },
+  {
+    "dataset": "inventario-relacao",
+    "source": "cartas",
+    "owner": "SETDIG",
+    "updatedAt": "2026-11-10T13:48:53.806640+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/cartas-inventario-relacao.schema.json",
+    "rows": 1554,
+    "bytes": 1688502
+  },
+  {
+    "dataset": "atualizacoes-por-ano",
+    "source": "cartas",
+    "owner": "SETDIG",
+    "updatedAt": "2026-11-10T13:48:53.973612+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/cartas-atualizacoes-por-ano.schema.json",
+    "rows": 4,
+    "bytes": 802
+  },
+  {
+    "dataset": "atualizacoes-por-orgao",
+    "source": "cartas",
+    "owner": "SETDIG",
+    "updatedAt": "2026-11-10T13:48:53.984857+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/cartas-atualizacoes-por-orgao.schema.json",
+    "rows": 151,
+    "bytes": 44341
   }
 ]

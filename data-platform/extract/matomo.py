@@ -49,8 +49,8 @@ def _call(method: str, period: str, date: str, extra: dict | None = None, site_i
     — falhou permanente, insistir só multiplica erro no log."""
     if not MATOMO_TOKEN:
         raise RuntimeError(
-            "MATOMO_TOKEN vazio — .env não carregou ou token não configurado. "
-            "Verifique arquivo .env na raiz do repo (chave MATOMO_TOKEN)."
+            "MATOMO_TOKEN vazio: configure no .env da raiz do repo (local) "
+            "ou no secret MATOMO_TOKEN do GitHub (CI)."
         )
 
     params = {

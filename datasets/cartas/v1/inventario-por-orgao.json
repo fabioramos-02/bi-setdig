@@ -2,82 +2,82 @@
   {
     "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
     "orgaoSigla": "SEFAZ MS",
-    "total": 306,
-    "ativos": 279,
+    "total": 313,
+    "ativos": 282,
     "digitais": 3,
     "percentDigital": 1.1
   },
   {
     "orgao": "Universidade Estadual de Mato Grosso do Sul",
     "orgaoSigla": "UEMS",
-    "total": 192,
-    "ativos": 125,
-    "digitais": 62,
-    "percentDigital": 49.6
+    "total": 193,
+    "ativos": 126,
+    "digitais": 63,
+    "percentDigital": 50.0
   },
   {
     "orgao": "Agência Estadual de Defesa Sanitária Animal Vegetal  Mato Grosso do Sul",
     "orgaoSigla": "IAGRO",
-    "total": 134,
-    "ativos": 119,
-    "digitais": 11,
-    "percentDigital": 9.2
+    "total": 137,
+    "ativos": 120,
+    "digitais": 13,
+    "percentDigital": 10.8
   },
   {
     "orgao": "Departamento Estadual de Trânsito de Mato Grosso do Sul",
     "orgaoSigla": "DETRAN",
     "total": 93,
-    "ativos": 65,
-    "digitais": 32,
-    "percentDigital": 49.2
+    "ativos": 62,
+    "digitais": 31,
+    "percentDigital": 50.0
+  },
+  {
+    "orgao": "Secretaria de Estado de Educação de Mato Grosso do Sul",
+    "orgaoSigla": "SED MS",
+    "total": 50,
+    "ativos": 50,
+    "digitais": 8,
+    "percentDigital": 16.0
   },
   {
     "orgao": "Empresa de Saneamento de Mato Grosso do Sul",
     "orgaoSigla": "SANESUL",
     "total": 49,
     "ativos": 48,
-    "digitais": 6,
-    "percentDigital": 12.5
-  },
-  {
-    "orgao": "Secretaria de Estado de Educação de Mato Grosso do Sul",
-    "orgaoSigla": "SED MS",
-    "total": 49,
-    "ativos": 47,
-    "digitais": 6,
-    "percentDigital": 12.8
+    "digitais": 7,
+    "percentDigital": 14.6
   },
   {
     "orgao": "Agência de Previdência Social de Mato Grosso do Sul",
     "orgaoSigla": "AGEPREV",
     "total": 46,
-    "ativos": 40,
+    "ativos": 38,
     "digitais": 9,
-    "percentDigital": 22.5
+    "percentDigital": 23.7
   },
   {
     "orgao": "Secretaria de Estado de Assistência Social e Direitos Humanos",
     "orgaoSigla": "SEAD",
-    "total": 42,
-    "ativos": 27,
-    "digitais": 12,
-    "percentDigital": 44.4
+    "total": 44,
+    "ativos": 28,
+    "digitais": 17,
+    "percentDigital": 60.7
+  },
+  {
+    "orgao": "Polícia Militar de Mato Grosso do Sul",
+    "orgaoSigla": "PMMS",
+    "total": 41,
+    "ativos": 18,
+    "digitais": 7,
+    "percentDigital": 38.9
   },
   {
     "orgao": "Secretaria de Estado de Saúde de Mato Grosso do Sul",
     "orgaoSigla": "SES",
     "total": 39,
     "ativos": 37,
-    "digitais": 14,
-    "percentDigital": 37.8
-  },
-  {
-    "orgao": "Polícia Militar de Mato Grosso do Sul",
-    "orgaoSigla": "PMMS",
-    "total": 38,
-    "ativos": 19,
-    "digitais": 6,
-    "percentDigital": 31.6
+    "digitais": 15,
+    "percentDigital": 40.5
   },
   {
     "orgao": "Instituto de Meio Ambiente de Mato Grosso do Sul",
@@ -92,8 +92,8 @@
     "orgaoSigla": "SEGOV MS",
     "total": 36,
     "ativos": 29,
-    "digitais": 22,
-    "percentDigital": 75.9
+    "digitais": 23,
+    "percentDigital": 79.3
   },
   {
     "orgao": "Secretaria de Estado de Meio Ambiente, Desenvolvimento, Ciência, Tecnologia e Inovação de Mato Grosso do Sul",
@@ -106,42 +106,42 @@
   {
     "orgao": "Agência de Desenvolvimento Agrário e Extensão Rural de Mato Grosso do Sul",
     "orgaoSigla": "AGRAER",
-    "total": 31,
-    "ativos": 27,
-    "digitais": 6,
-    "percentDigital": 22.2
+    "total": 33,
+    "ativos": 29,
+    "digitais": 7,
+    "percentDigital": 24.1
   },
   {
     "orgao": "Procuradoria Geral do Estado de Mato Grosso do Sul",
     "orgaoSigla": "PGE MS",
     "total": 28,
-    "ativos": 22,
-    "digitais": 19,
-    "percentDigital": 86.4
+    "ativos": 21,
+    "digitais": 18,
+    "percentDigital": 85.7
   },
   {
     "orgao": "Agência Estadual de Regulação de Serviços Públicos de Mato Grosso do Sul",
     "orgaoSigla": "AGEMS",
     "total": 26,
-    "ativos": 24,
+    "ativos": 23,
     "digitais": 13,
-    "percentDigital": 54.2
+    "percentDigital": 56.5
   },
   {
     "orgao": "Fundação de Desporto e Lazer de Mato Grosso do Sul",
     "orgaoSigla": "FUNDESPORTE",
     "total": 25,
     "ativos": 12,
-    "digitais": 4,
-    "percentDigital": 33.3
+    "digitais": 5,
+    "percentDigital": 41.7
   },
   {
     "orgao": "Junta Comercial do Estado de Mato Grosso do Sul",
     "orgaoSigla": "JUCEMS",
     "total": 22,
     "ativos": 20,
-    "digitais": 14,
-    "percentDigital": 70.0
+    "digitais": 19,
+    "percentDigital": 95.0
   },
   {
     "orgao": "Fundação Escola de Governo",
@@ -150,6 +150,14 @@
     "ativos": 12,
     "digitais": 3,
     "percentDigital": 25.0
+  },
+  {
+    "orgao": "Fundação de Apoio ao Desenvolvimento do Ensino, Ciência e Tecnologia de Mato Grosso do Sul",
+    "orgaoSigla": "FUNDECT",
+    "total": 20,
+    "ativos": 15,
+    "digitais": 14,
+    "percentDigital": 93.3
   },
   {
     "orgao": "Polícia Civil de Mato Grosso do Sul",
@@ -176,6 +184,14 @@
     "percentDigital": 60.0
   },
   {
+    "orgao": "Secretaria de Estado de Turismo, Esporte e Cultura",
+    "orgaoSigla": "SETESC",
+    "total": 17,
+    "ativos": 11,
+    "digitais": 8,
+    "percentDigital": 72.7
+  },
+  {
     "orgao": "Fundação de Trabalho de Mato Grosso do Sul",
     "orgaoSigla": "FUNTRAB",
     "total": 17,
@@ -192,20 +208,20 @@
     "percentDigital": 31.2
   },
   {
-    "orgao": "Secretaria de Estado de Turismo, Esporte e Cultura",
-    "orgaoSigla": "SETESC",
-    "total": 17,
-    "ativos": 11,
-    "digitais": 8,
-    "percentDigital": 72.7
-  },
-  {
     "orgao": "Secretaria de Estado da Cidadania",
     "orgaoSigla": "SEC",
     "total": 16,
     "ativos": 12,
     "digitais": 3,
     "percentDigital": 25.0
+  },
+  {
+    "orgao": "Secretaria de Estado de Administração de Mato Grosso do Sul",
+    "orgaoSigla": "SAD",
+    "total": 14,
+    "ativos": 11,
+    "digitais": 8,
+    "percentDigital": 72.7
   },
   {
     "orgao": "Corpo de Bombeiros Militar",
@@ -248,28 +264,12 @@
     "percentDigital": 41.7
   },
   {
-    "orgao": "Secretaria de Estado de Administração de Mato Grosso do Sul",
-    "orgaoSigla": "SAD",
-    "total": 12,
-    "ativos": 10,
-    "digitais": 7,
-    "percentDigital": 70.0
-  },
-  {
     "orgao": "Fundação Serviços de Saúde de MS",
     "orgaoSigla": "FUNSAU",
     "total": 12,
     "ativos": 12,
     "digitais": 3,
     "percentDigital": 25.0
-  },
-  {
-    "orgao": "Fundação de Apoio ao Desenvolvimento do Ensino, Ciência e Tecnologia de Mato Grosso do Sul",
-    "orgaoSigla": "FUNDECT",
-    "total": 11,
-    "ativos": 11,
-    "digitais": 7,
-    "percentDigital": 63.6
   },
   {
     "orgao": "Controladoria Geral do Estado de Mato Grosso do Sul",

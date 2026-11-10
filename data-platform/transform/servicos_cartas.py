@@ -100,3 +100,57 @@ def relacao(rows: list[dict]) -> list[dict]:
         }
         for r in rows
     ]
+
+
+def _tipo(acao: str) -> str:
+    # ações do Portal/Admin: Criação, Edição, Revisão, Criação/Edição da etapa
+    if acao.endswith("etapa"):
+        return "etapas"
+    return {"Edição": "edicoes", "Revisão": "revisoes", "Criação": "criacoes"}.get(acao, "outras")
+
+
+def atualizacoes_por_ano(hist: list[dict]) -> list[dict]:
+    """Por ano: alterações aprovadas por tipo, cartas alteradas e cartas revisadas."""
+    anos: dict[int, dict] = {}
+    for r in hist:
+        a = anos.setdefault(r["ano"], {"ano": r["ano"], "criacoes": 0, "edicoes": 0, "revisoes": 0,
+                                       "etapas": 0, "outras": 0, "_cartas": set(), "_revisadas": set()})
+        tipo = _tipo(r["acao"])
+        a[tipo] += r["n"]
+        a["_cartas"].add(r["servico_id"])
+        if tipo == "revisoes":
+            a["_revisadas"].add(r["servico_id"])
+    saida = []
+    for a in sorted(anos.values(), key=lambda x: x["ano"]):
+        cartas, revisadas = a.pop("_cartas"), a.pop("_revisadas")
+        total = a["criacoes"] + a["edicoes"] + a["revisoes"] + a["etapas"] + a["outras"]
+        saida.append({**a, "total": total, "cartasAlteradas": len(cartas), "cartasRevisadas": len(revisadas)})
+    return saida
+
+
+def atualizacoes_por_orgao(hist: list[dict], inventario: list[dict]) -> list[dict]:
+    """Órgão × ano: cartas ativas, alteradas e revisadas, e alterações aprovadas."""
+    ativas: dict[str, int] = {}
+    for r in inventario:
+        if r["ativo"] and r.get("titulo"):
+            ativas[r["orgao"]] = ativas.get(r["orgao"], 0) + 1
+    grupos: dict[tuple, dict] = {}
+    for r in hist:
+        g = grupos.setdefault((r["ano"], r["orgao"]), {
+            "ano": r["ano"], "orgao": r["orgao"], "orgaoSigla": r["orgao_sigla"] or "",
+            "alteracoes": 0, "edicoes": 0, "revisoes": 0, "_cartas": set(), "_revisadas": set()})
+        tipo = _tipo(r["acao"])
+        g["alteracoes"] += r["n"]
+        if tipo in ("edicoes", "revisoes"):
+            g[tipo] += r["n"]
+        g["_cartas"].add(r["servico_id"])
+        if tipo == "revisoes":
+            g["_revisadas"].add(r["servico_id"])
+    saida = []
+    for g in grupos.values():
+        cartas, revisadas = g.pop("_cartas"), g.pop("_revisadas")
+        total = ativas.get(g["orgao"], 0)
+        saida.append({**g, "cartasAtivas": total, "cartasAlteradas": len(cartas),
+                      "cartasRevisadas": len(revisadas),
+                      "percentAlteradas": round(100 * len(cartas) / total, 1) if total else 0})
+    return sorted(saida, key=lambda x: (x["ano"], -x["alteracoes"]))

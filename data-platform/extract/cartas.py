@@ -47,6 +47,21 @@ _JORNADA_SQL = """
 """
 
 
+# Histórico das cartas ativas: cada criação, edição, revisão ou mudança de etapa
+# aprovada gera 1 registro datado em gerenciamento_historicoservico (pedido da
+# Ari, 10/11/2026). Pendentes e recusados não chegaram ao Portal: ficam de fora.
+_HISTORICO_SQL = """
+    SELECT o.nome AS orgao, o.sigla AS orgao_sigla, h.servico_id,
+           extract(year FROM h.created_at)::int AS ano, h.acao, count(*) AS n
+    FROM gerenciamento_historicoservico h
+    JOIN gerenciamento_servicos s ON s.id = h.servico_id
+    JOIN gerenciamento_setor st ON s.setor_id = st.id
+    JOIN gerenciamento_orgaos o ON st.orgao_id = o.id
+    WHERE h.aprovado AND s.ativo AND s.titulo IS NOT NULL
+    GROUP BY 1, 2, 3, 4, 5
+"""
+
+
 def _query(sql: str, params: tuple | None = None) -> list[dict]:
     # client_encoding explícito: sem isso, psycopg2 nesta máquina negocia um
     # encoding que corrompe acento (Ag�ncia, Sa�de) mesmo com o banco em
@@ -73,3 +88,8 @@ def get_jornadas(slugs: list[str]) -> list[dict]:
     (carta sem etapa vem com 1 linha de etapa nula), + campos do botão
     "Acessar serviço". `canal_prestacao` = ["Online"] / ["Presencial"] por etapa."""
     return _query(_JORNADA_SQL, (slugs,))
+
+
+def get_historico() -> list[dict]:
+    """Alterações aprovadas das cartas ativas, por órgão, carta, ano e tipo de ação."""
+    return _query(_HISTORICO_SQL)

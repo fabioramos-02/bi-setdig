@@ -11,6 +11,7 @@ import { ExplorarTab } from "./ExplorarTab";
 import { OrgaosSetoresTab } from "./OrgaosSetoresTab";
 import { NovosServicosTab } from "./NovosServicosTab";
 import { AcessarServicoTab } from "./AcessarServicoTab";
+import { AtualizacoesTab, type DadosAtualizacoes } from "./AtualizacoesTab";
 import { usePeriodo } from "@/lib/periodo-context";
 import { intervaloDoBucket, rotuloPeriodoResolvido } from "@/lib/period-filter";
 import type { InventarioResumo, InventarioOrgao, CartaRelacao } from "@/lib/data";
@@ -34,10 +35,12 @@ export function ServicosClient({
   resumo,
   orgaos,
   relacao,
+  atualizacoes,
 }: {
   resumo: InventarioResumo;
   orgaos: InventarioOrgao[];
   relacao: CartaRelacao[];
+  atualizacoes: DadosAtualizacoes;
 }) {
   const { estado, min, max } = usePeriodo();
   const [abaAtiva, setAbaAtiva] = useState("visao-geral");
@@ -146,6 +149,11 @@ export function ServicosClient({
           totalOrgaos={orgaos.length}
         />
       ),
+    },
+    {
+      id: "atualizacoes",
+      label: "6. Atualizações das cartas",
+      content: <AtualizacoesTab dados={atualizacoes} />,
     },
   ];
 

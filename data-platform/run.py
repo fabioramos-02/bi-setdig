@@ -282,6 +282,17 @@ def run_cartas() -> None:
     out4 = publish("cartas", "inventario-relacao", relacao)
     print(f"[cartas] relacao -> {out4} ({len(relacao)} cartas)")
 
+    hist = cartas.get_historico()
+    anos = t_servicos.atualizacoes_por_ano(hist)
+    validate_rows(anos, required=["ano", "total"], non_negative=["total", "cartasAlteradas", "cartasRevisadas"])
+    out5 = publish("cartas", "atualizacoes-por-ano", anos)
+    print(f"[cartas] atualizacoes-por-ano -> {out5} ({len(anos)} anos)")
+
+    por_orgao_ano = t_servicos.atualizacoes_por_orgao(hist, raw)
+    validate_rows(por_orgao_ano, required=["ano", "orgao"], non_negative=["alteracoes", "cartasAlteradas", "cartasAtivas"])
+    out6 = publish("cartas", "atualizacoes-por-orgao", por_orgao_ano)
+    print(f"[cartas] atualizacoes-por-orgao -> {out6} ({len(por_orgao_ano)} linhas)")
+
 
 def run_msdigital_db() -> None:
     """Cadastro do app MS Digital (SQL Server) — exige VPN.
@@ -472,7 +483,11 @@ def run_tfs() -> None:
     print(f"[tfs] painel-time -> {[(p['titulo'], p['total']) for p in painel]}")
 
 
-FONTES_VPN = {"cartas", "qualidade", "msdigital_db", "portal_unico_db"}
+# Fontes que só respondem na rede do Governo/VPN da SETDIG: --sem-vpn (CI) pula,
+# e elas seguem rodando à mão. O TFS on-prem (tfs.sgi.ms.gov.br) não aceita acesso
+# de fora da rede: no runner do GitHub devolve 302 para o login mesmo com PAT válido
+# (visto de 04/11 a 10/11/2026), então também é extração manual.
+FONTES_VPN = {"cartas", "qualidade", "msdigital_db", "portal_unico_db", "tfs"}
 
 
 if __name__ == "__main__":

@@ -1,73 +1,80 @@
 [
   {
     "categoria": "financas-e-impostos",
-    "total": 246,
-    "ativos": 230,
-    "digitais": 9,
-    "percentDigital": 3.9
+    "total": 253,
+    "ativos": 233,
+    "digitais": 8,
+    "percentDigital": 3.4
   },
   {
     "categoria": "educacao-e-pesquisa",
-    "total": 244,
-    "ativos": 166,
-    "digitais": 55,
-    "percentDigital": 33.1
+    "total": 245,
+    "ativos": 168,
+    "digitais": 57,
+    "percentDigital": 33.9
   },
   {
     "categoria": "agropecuaria-e-vida-rural",
-    "total": 176,
-    "ativos": 157,
-    "digitais": 9,
-    "percentDigital": 5.7
+    "total": 181,
+    "ativos": 160,
+    "digitais": 12,
+    "percentDigital": 7.5
   },
   {
     "categoria": "comunicacao-e-transparencia",
-    "total": 142,
+    "total": 141,
     "ativos": 133,
-    "digitais": 122,
-    "percentDigital": 91.7
+    "digitais": 124,
+    "percentDigital": 93.2
   },
   {
     "categoria": "administracao-publica",
-    "total": 132,
-    "ativos": 96,
+    "total": 134,
+    "ativos": 97,
     "digitais": 68,
-    "percentDigital": 70.8
+    "percentDigital": 70.1
   },
   {
     "categoria": "empresa-industria-e-comercio",
     "total": 122,
-    "ativos": 111,
-    "digitais": 14,
-    "percentDigital": 12.6
+    "ativos": 110,
+    "digitais": 19,
+    "percentDigital": 17.3
   },
   {
     "categoria": "transito-e-transportes",
     "total": 98,
-    "ativos": 71,
-    "digitais": 33,
-    "percentDigital": 46.5
+    "ativos": 67,
+    "digitais": 32,
+    "percentDigital": 47.8
   },
   {
     "categoria": "seguranca",
-    "total": 67,
-    "ativos": 36,
-    "digitais": 6,
-    "percentDigital": 16.7
+    "total": 70,
+    "ativos": 35,
+    "digitais": 7,
+    "percentDigital": 20.0
   },
   {
     "categoria": "direitos-e-cidadania",
-    "total": 61,
-    "ativos": 37,
-    "digitais": 11,
-    "percentDigital": 29.7
+    "total": 64,
+    "ativos": 39,
+    "digitais": 16,
+    "percentDigital": 41.0
   },
   {
     "categoria": "trabalho-emprego-e-previdencia",
     "total": 52,
-    "ativos": 44,
+    "ativos": 42,
     "digitais": 8,
-    "percentDigital": 18.2
+    "percentDigital": 19.0
+  },
+  {
+    "categoria": "meio-ambiente",
+    "total": 41,
+    "ativos": 32,
+    "digitais": 5,
+    "percentDigital": 15.6
   },
   {
     "categoria": "saude-e-cuidado",
@@ -77,39 +84,32 @@
     "percentDigital": 23.1
   },
   {
-    "categoria": "meio-ambiente",
-    "total": 40,
-    "ativos": 32,
-    "digitais": 5,
-    "percentDigital": 15.6
-  },
-  {
     "categoria": "ciencia-e-tecnologia",
-    "total": 25,
-    "ativos": 22,
-    "digitais": 15,
-    "percentDigital": 68.2
+    "total": 33,
+    "ativos": 26,
+    "digitais": 23,
+    "percentDigital": 88.5
   },
   {
     "categoria": "esporte-e-lazer",
     "total": 19,
     "ativos": 8,
-    "digitais": 0,
-    "percentDigital": 0.0
+    "digitais": 2,
+    "percentDigital": 25.0
   },
   {
     "categoria": "energia",
-    "total": 15,
-    "ativos": 14,
-    "digitais": 3,
-    "percentDigital": 21.4
+    "total": 16,
+    "ativos": 15,
+    "digitais": 4,
+    "percentDigital": 26.7
   },
   {
     "categoria": "assistencia-social",
     "total": 13,
     "ativos": 10,
-    "digitais": 3,
-    "percentDigital": 30.0
+    "digitais": 4,
+    "percentDigital": 40.0
   },
   {
     "categoria": "turismo",
@@ -119,18 +119,18 @@
     "percentDigital": 42.9
   },
   {
+    "categoria": "arte-e-cultura",
+    "total": 7,
+    "ativos": 5,
+    "digitais": 1,
+    "percentDigital": 20.0
+  },
+  {
     "categoria": "infraestrutura",
     "total": 7,
     "ativos": 4,
     "digitais": 2,
     "percentDigital": 50.0
-  },
-  {
-    "categoria": "arte-e-cultura",
-    "total": 7,
-    "ativos": 5,
-    "digitais": 2,
-    "percentDigital": 40.0
   },
   {
     "categoria": "habitacao",

@@ -470,6 +470,38 @@ export function getCartasInventarioRelacao(): CartaRelacao[] {
   return readDataset<CartaRelacao[]>("cartas", "v1", "inventario-relacao") ?? [];
 }
 
+// Histórico de atualizações das cartas ativas (gerenciamento_historicoservico,
+// só alterações aprovadas) — pedido da Ari para o relatório de gestão, 10/11/2026.
+export type AtualizacaoAno = {
+  ano: number;
+  criacoes: number;
+  edicoes: number;
+  revisoes: number;
+  etapas: number;
+  outras: number;
+  total: number;
+  cartasAlteradas: number;
+  cartasRevisadas: number;
+};
+export type AtualizacaoOrgao = {
+  ano: number;
+  orgao: string;
+  orgaoSigla: string;
+  alteracoes: number;
+  edicoes: number;
+  revisoes: number;
+  cartasAtivas: number;
+  cartasAlteradas: number;
+  cartasRevisadas: number;
+  percentAlteradas: number;
+};
+export function getCartasAtualizacoesPorAno(): AtualizacaoAno[] {
+  return readDataset<AtualizacaoAno[]>("cartas", "v1", "atualizacoes-por-ano") ?? [];
+}
+export function getCartasAtualizacoesPorOrgao(): AtualizacaoOrgao[] {
+  return readDataset<AtualizacaoOrgao[]>("cartas", "v1", "atualizacoes-por-orgao") ?? [];
+}
+
 // --- Avaliação da Carta: erros e percepção do cidadão (ADR-005) ---
 // Estado/série histórica (não analytics de acesso ao vivo) — mesma exceção de
 // "catálogo/estático por natureza" do inventário de cartas, sem PeriodoProvider.
