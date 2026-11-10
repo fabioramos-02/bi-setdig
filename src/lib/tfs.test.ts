@@ -2,6 +2,10 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import {
+  andamentoEntregas,
+  atrasadas,
+  consumoContrato,
+  quemResolve,
   entregasDaSprint,
   entregasDoMes,
   AREA_UST,
@@ -159,4 +163,52 @@ test("stakeholdersDoProjeto: só órgão com item ou papel", () => {
   );
   assert.deepEqual(s.map((x) => x.sigla), ["SES", "SEC"]);
   assert.deepEqual(s[0].modulosNoTfs, ["Serviços"]);
+});
+
+test("prazoProjeto: início a conciliar calcula as duas opções e usa a vigência do TR", () => {
+  const c = contrato({
+    vigenciaMeses: 18,
+    inicio: { conciliado: false, opcoes: [{ data: "2026-05-12", fonte: "DO" }, { data: "2026-07-27", fonte: "sprint 0" }] },
+  });
+  const p = prazoProjeto(c, sprints, "2026-11-10");
+  assert.equal(p.aConciliar, true);
+  assert.equal(p.opcoes.length, 2);
+  assert.equal(p.fim, "2027-11-12");
+  assert.equal(p.fimEstimado, false);
+  assert.equal(p.opcoes[1].fim, "2028-01-27");
+  assert.ok(p.opcoes[0].pctDecorrido > p.opcoes[1].pctDecorrido);
+});
+
+test("consumoContrato: R$ = UST executada × valor da UST; previsto soma o 3.3.3 até o mês", () => {
+  const etp: EtpUst = { totalEtp: 100, totalEstrutural: 0, perfis: [], estruturais: [{ codigo: "DOC.07", servico: "Doc", ust: 3, ocorrencia: 10 }] };
+  const c = contrato({
+    ustTotalTr: 100, valorUst: 10,
+    itens: [{ item: 3, descricao: "UST", regime: "unitário", valor: 1000 }],
+    previsaoMensal: [{ mes: 1, ust: 5 }, { mes: 2, ust: 7 }, { mes: 3, ust: 9 }],
+  });
+  const t = (estado: string) => item({ tipo: "Task", estado, area: AREA_UST, codigoCatalogo: "DOC.07" });
+  const r = consumoContrato([t("Done"), t("Done"), t("To Do")], etp, c, 2);
+  assert.equal(r.ustExecutada, 6);
+  assert.equal(r.valorExecutado, 60);
+  assert.equal(r.saldoUst, 94);
+  assert.equal(r.saldoValor, 940);
+  assert.equal(r.previstoAteMes, 12);
+  assert.equal(r.origem.itens?.length, 2);
+});
+
+test("andamentoEntregas não depende de UST; atrasadas usa sprint encerrada ou prazo vencido", () => {
+  const itens = [
+    item({ coluna: "Em Produção", estado: "Done" }),
+    item({ sprint: "XVIA\\Sprint 4" }),
+    item({ prazo: "2026-10-01" }),
+    item({ tipo: "Task", estado: "Done" }),
+  ];
+  assert.deepEqual([andamentoEntregas(itens).planejadas, andamentoEntregas(itens).emProducao], [3, 1]);
+  assert.equal(atrasadas(itens, sprints, "2026-10-26").length, 2);
+});
+
+test("quemResolve nunca inventa: responsável, ou a frente marcada como não informado", () => {
+  assert.equal(quemResolve(item({ responsavel: "Maycon" })), "Maycon");
+  assert.equal(quemResolve(item({ responsavel: null })), "Não informado (frente X-VIA)");
+  assert.match(quemResolve(item({})), /ainda não extraído/);
 });

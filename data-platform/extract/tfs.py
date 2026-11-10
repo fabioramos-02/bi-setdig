@@ -1,7 +1,8 @@
 """Cliente do TFS on-prem (Azure DevOps Server) — backlog do projeto XVIA.
 
 Lê credenciais do .env na raiz do repo: TFS_URL (coleção) e TFS_PAT. O
-servidor responde pelo IP público, então o runner do GitHub alcança sem VPN.
+servidor só responde dentro da rede do Governo/VPN: no runner do GitHub devolve
+302 para o login (ver FONTES_VPN em run.py); a extração roda na máquina da SGD.
 
 As consultas vivem no TFS, em `Shared Queries/BI SETDIG` (criadas por
 scripts/criar_queries_tfs.py): quem abre o TFS vê o mesmo recorte do BI. Se a
@@ -31,7 +32,8 @@ CAMPOS = [
     "System.Id", "System.WorkItemType", "System.Title", "System.State", "System.Description",
     "System.BoardColumn", "System.AreaPath", "System.IterationPath", "System.Tags",
     "System.CreatedDate", "System.ChangedDate", "Microsoft.VSTS.Common.ClosedDate",
-    "Microsoft.VSTS.Scheduling.TargetDate", "Microsoft.VSTS.Scheduling.Effort",
+    "Microsoft.VSTS.Scheduling.StartDate", "Microsoft.VSTS.Scheduling.TargetDate",
+    "Microsoft.VSTS.Scheduling.Effort", "System.AssignedTo",
     "Custom.SGI.Empresa", "Custom.SGI.AtividadeUST", "Custom.SGI.ComplexidadeUST",
     "Custom.SGI.LancamentoAtividadeID", "Custom.SGI.DataExecucao",
 ]
@@ -147,6 +149,17 @@ def get_itens(ids: list[int], campos: list[str] = CAMPOS) -> list[dict]:
         resp = pedir("GET", "wit/workitems", raiz=TFS_URL, params={
             "ids": ",".join(map(str, fatia)), "fields": ",".join(campos)})
         saida.extend(resp.get("value", []))
+    return saida
+
+
+def get_relacoes(ids: list[int]) -> dict[int, list[dict]]:
+    """{id: relations} em lotes de 200 — a API não junta `$expand` com `fields`.
+    Serve aos links Predecessor/Successor (dependência entre entregas)."""
+    saida: dict[int, list[dict]] = {}
+    for i in range(0, len(ids), 200):
+        resp = pedir("GET", "wit/workitems", raiz=TFS_URL, params={
+            "ids": ",".join(map(str, ids[i:i + 200])), "$expand": "relations"})
+        saida.update({w["id"]: w.get("relations") or [] for w in resp.get("value", [])})
     return saida
 
 

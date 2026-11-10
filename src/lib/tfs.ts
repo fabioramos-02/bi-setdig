@@ -37,6 +37,11 @@ export type TfsItem = {
   ust: number | null;
   dataExecucao: string | null;
   codigoCatalogo: string | null;
+  // Extração de 11/2026 em diante; ausentes em snapshot antigo.
+  responsavel?: string | null;
+  inicioPrevisto?: string | null;
+  dependeDe?: number[];
+  trava?: number[];
 };
 
 export type TfsSprint = {
@@ -58,14 +63,28 @@ export type TfsStakeholder = {
   modulos: string[];
 };
 
+export type OpcaoInicio = { data: string; fonte: string };
+
 export type TfsContrato = {
   contrato: string;
-  inicio: string;
+  fonte?: string;
+  vigenciaMeses?: number;
+  /** Data única, ou opções com fonte enquanto as fontes divergem ("a conciliar"). */
+  inicio: string | { conciliado: boolean; opcoes: OpcaoInicio[] };
   fim: string | null;
+  valorTotal?: number | null;
+  itens?: { item: number; descricao: string; regime: string; valor: number; quantidadeUst?: number; valorUst?: number }[];
   ustTotalTr: number | null;
   valorUst: number | null;
+  previsaoMensal?: { mes: number; ust: number }[];
+  previsaoMensalNota?: string;
+  faturado?: number | null;
+  faturadoNota?: string;
   previsaoPorModulo: { epico: string; ust: number | null }[];
 };
+
+/** Origem de um indicador: o que o compõe, para chegar ao registro que o fundamenta. */
+export type Origem = { rotulo: string; detalhe: string; itens?: TfsItem[]; link?: { href: string; texto: string } };
 
 export const TIPOS_ENTREGA: TipoEntrega[] = ["Negócio", "Órgão", "Desenvolvimento X-VIA"];
 export const COLUNA_PRODUCAO = "Em Produção";
@@ -81,23 +100,45 @@ export function sprintAtual(sprints: TfsSprint[]): TfsSprint | null {
   return sprints.find((s) => s.situacao === "atual") ?? null;
 }
 
-/** Prazo: do início do contrato ao fim informado no TR; sem ele, ao fim da
- * última sprint cadastrada (marcado como estimado). */
+/** Opções de início do contrato. Uma só quando conciliado (ou data simples). */
+export function iniciosContrato(contrato: TfsContrato | null): { opcoes: OpcaoInicio[]; aConciliar: boolean } {
+  const ini = contrato?.inicio;
+  if (!ini) return { opcoes: [], aConciliar: false };
+  if (typeof ini === "string") return { opcoes: [{ data: ini, fonte: "contrato.json" }], aConciliar: false };
+  return { opcoes: ini.opcoes, aConciliar: !ini.conciliado && ini.opcoes.length > 1 };
+}
+
+export const somarMeses = (iso: string, meses: number) => {
+  const d = new Date(`${iso}T12:00:00Z`);
+  d.setUTCMonth(d.getUTCMonth() + meses);
+  return d.toISOString().slice(0, 10);
+};
+
+/** Prazo: do início do contrato ao fim informado; sem fim, início + vigência do
+ * TR; sem os dois, fim da última sprint (marcado como estimado). Com início
+ * "a conciliar", calcula para cada opção — a primeira é a principal. */
 export function prazoProjeto(contrato: TfsContrato | null, sprints: TfsSprint[], hoje: string) {
   const ordenadas = [...sprints].sort((a, b) => a.inicio.localeCompare(b.inicio));
-  const inicio = contrato?.inicio ?? ordenadas[0]?.inicio ?? hoje;
-  const fimContrato = contrato?.fim ?? null;
-  const fim = fimContrato ?? ordenadas.at(-1)?.fim ?? hoje;
-  const total = Math.max(diasEntre(inicio, fim), 1);
-  const decorridos = Math.min(Math.max(diasEntre(inicio, hoje), 0), total);
-  return {
-    inicio,
-    fim,
-    fimEstimado: fimContrato === null,
-    diasRestantes: Math.max(diasEntre(hoje, fim), 0),
-    pctDecorrido: Math.round((decorridos / total) * 100),
-    sprintAtual: sprintAtual(sprints),
+  const { opcoes, aConciliar } = iniciosContrato(contrato);
+  const base = opcoes.length ? opcoes : [{ data: ordenadas[0]?.inicio ?? hoje, fonte: "primeira sprint" }];
+  const calc = (o: OpcaoInicio) => {
+    const fimContrato = contrato?.fim ?? (contrato?.vigenciaMeses ? somarMeses(o.data, contrato.vigenciaMeses) : null);
+    const fim = fimContrato ?? ordenadas.at(-1)?.fim ?? hoje;
+    const total = Math.max(diasEntre(o.data, fim), 1);
+    const decorridos = Math.min(Math.max(diasEntre(o.data, hoje), 0), total);
+    const mesDoContrato = Math.min(Math.max(Math.floor(decorridos / 30.44) + 1, 1), contrato?.vigenciaMeses ?? 99);
+    return {
+      inicio: o.data,
+      fonteInicio: o.fonte,
+      fim,
+      fimEstimado: fimContrato === null,
+      diasRestantes: Math.max(diasEntre(hoje, fim), 0),
+      pctDecorrido: Math.round((decorridos / total) * 100),
+      mesDoContrato,
+    };
   };
+  const todas = base.map(calc);
+  return { ...todas[0], aConciliar, opcoes: todas, sprintAtual: sprintAtual(sprints) };
 }
 
 export function resumoEntregas(itens: TfsItem[]) {
@@ -282,6 +323,111 @@ export function execucaoXvia(itens: TfsItem[], etp: EtpUst | null, contrato: Tfs
     valorDoEtp,
     semContrato,
   };
+}
+
+// --- Painel executivo (Nível 1) ----------------------------------------------
+// Regra do Fabio (11/2026): consumo de UST NÃO é % de conclusão do projeto.
+// `consumoContrato` mede o contrato (Item 3 do TR); `andamentoEntregas`, o
+// backlog. Um nunca é derivado do outro.
+
+/** Consumo do Item 3 (UST) frente ao TR: lançado e executado separados do
+ * faturado (este fica "a informar" enquanto o TFS não registra). */
+export function consumoContrato(itens: TfsItem[], etp: EtpUst | null, contrato: TfsContrato | null, mesDoContrato: number) {
+  const x = execucaoXvia(itens, etp, contrato);
+  const item3 = contrato?.itens?.find((i) => i.item === 3);
+  const previstoAteMes = contrato?.previsaoMensal
+    ? contrato.previsaoMensal.filter((p) => p.mes <= mesDoContrato).reduce((s, p) => s + p.ust, 0)
+    : null;
+  const executadas = x.porCodigo.flatMap((l) => l.itens.filter((t) => t.estado === "Done"));
+  const origem: Origem = {
+    rotulo: "Tarefas da X-VIA concluídas com código do catálogo",
+    detalhe: `UST = soma do valor de cada tarefa da X-VIA concluída (catálogo X-VIA; sem ele, a UST unitária do ETP). R$ = UST × ${contrato?.valorUst ? fmtReais(contrato.valorUst) : "valor a informar"} (TR, 9.3, pág. 53). Total contratado: ${x.ustTotal ? fmtNum(x.ustTotal) : "—"} UST (TR, item 1.1). Previsto até o mês: tabela do TR, 3.3.3.`,
+    itens: executadas,
+  };
+  return {
+    ...x,
+    previstoAteMes,
+    saldoUst: x.ustTotal === null ? null : x.ustTotal - x.ustExecutada,
+    valorItem3: item3?.valor ?? null,
+    saldoValor: item3 && x.valorExecutado !== null ? item3.valor - x.valorExecutado : null,
+    valorTotalContrato: contrato?.valorTotal ?? null,
+    faturado: contrato?.faturado ?? null,
+    origem,
+  };
+}
+
+/** Andamento do backlog: entregas (PBI/Bug) em produção sobre as planejadas. */
+export function andamentoEntregas(itens: TfsItem[]) {
+  const entregas = itens.filter((i) => ehEntrega(i) && i.estado !== "Removed");
+  const emProducao = entregas.filter((i) => i.coluna === COLUNA_PRODUCAO);
+  const emHomologacao = entregas.filter((i) => i.tags.includes("Em Homologação") && i.coluna !== COLUNA_PRODUCAO);
+  const concluidasForaProducao = entregas.filter((i) => i.estado === "Done" && i.coluna !== COLUNA_PRODUCAO);
+  const origem: Origem = {
+    rotulo: "Entregas na coluna Em Produção",
+    detalhe: `${fmtNum(emProducao.length)} de ${fmtNum(entregas.length)} entregas (histórias e bugs, sem as removidas) estão na coluna Em Produção do quadro. Concluído no desenvolvimento, homologado e em produção são contados à parte.`,
+    itens: emProducao,
+  };
+  return {
+    planejadas: entregas.length,
+    emProducao: emProducao.length,
+    pct: entregas.length ? Math.round((emProducao.length / entregas.length) * 100) : 0,
+    emHomologacao: emHomologacao.length,
+    concluidasForaProducao: concluidasForaProducao.length,
+    origem,
+  };
+}
+
+/** Entrega aberta cuja sprint já encerrou ou cujo prazo (Target Date) venceu.
+ * Atraso é informação à parte: não muda o estado (Impedido etc.). */
+export function atrasadas(itens: TfsItem[], sprints: TfsSprint[], hoje: string): TfsItem[] {
+  const encerradas = new Set(sprints.filter((s) => s.situacao === "encerrada").map((s) => s.sprint));
+  return itens.filter(
+    (i) => ehEntrega(i) && aberto(i) && (encerradas.has(i.sprint) || (!!i.prazo && i.prazo < hoje)),
+  );
+}
+
+/** Quem precisa agir: o responsável no TFS; sem ele, a frente — nunca inventado. */
+export const quemResolve = (i: TfsItem) =>
+  i.responsavel ??
+  (i.responsavel === undefined ? `Frente ${i.frente} (responsável ainda não extraído)` : `Não informado (frente ${i.frente})`);
+
+const semSprint = (i: TfsItem) => !i.sprint.includes("\\");
+
+export type Verificacao = { rotulo: string; itens: TfsItem[]; nota?: string };
+
+/** Verificações de qualidade do dado (prompt do painel, item 7). */
+export function qualidadeDados(itens: TfsItem[], etp: EtpUst | null, contrato: TfsContrato | null): Verificacao[] {
+  const entregas = itens.filter((i) => ehEntrega(i) && aberto(i));
+  const temResponsavel = itens.some((i) => i.responsavel !== undefined);
+  const notaResp = temResponsavel ? undefined : "O responsável ainda não foi extraído do TFS (rodar o extrator de novo).";
+  const x = execucaoXvia(itens, etp, contrato);
+  const { aConciliar } = iniciosContrato(contrato);
+  const lista: Verificacao[] = [
+    { rotulo: "Entregas abertas sem sprint", itens: entregas.filter(semSprint) },
+    { rotulo: "Entregas sem épico (módulo)", itens: entregas.filter((i) => !i.epico) },
+    { rotulo: "Entregas abertas sem responsável", itens: temResponsavel ? entregas.filter((i) => !i.responsavel) : [], nota: notaResp },
+    { rotulo: "Pendências sem responsável", itens: temResponsavel ? entregas.filter((i) => i.pendencia && !i.responsavel) : [], nota: notaResp },
+    { rotulo: "Tarefas da X-VIA sem código do catálogo (UST sem origem)", itens: x.aClassificar },
+    { rotulo: "Entregas concluídas fora da coluna Em Produção (sem evidência de produção)", itens: itens.filter((i) => ehEntrega(i) && i.estado === "Done" && i.coluna !== COLUNA_PRODUCAO) },
+  ];
+  if (aConciliar) lista.push({ rotulo: "Início do contrato a conciliar", itens: [], nota: "As fontes divergem; ver contrato.json → inicio.opcoes." });
+  return lista;
+}
+
+/** Síntese executiva gerada dos números — nunca texto fixo. */
+export function sinteseExecutiva(a: {
+  pctPrazo: number; diasRestantes: number; aConciliar: boolean; pctEntregas: number;
+  ustExecutada: number; previstoAteMes: number | null; decisoes: number; atrasadas: number;
+}) {
+  const partes = [
+    `${a.pctPrazo}% do prazo do contrato já passou${a.aConciliar ? " (data de início a conciliar)" : ""}; faltam ${fmtNum(a.diasRestantes)} dias.`,
+    `${a.pctEntregas}% das entregas planejadas estão em produção.`,
+  ];
+  if (a.previstoAteMes !== null)
+    partes.push(`A X-VIA executou ${fmtNum(a.ustExecutada)} UST, frente a ${fmtNum(a.previstoAteMes)} previstas no TR até este mês.`);
+  if (a.decisoes) partes.push(`${fmtNum(a.decisoes)} ${a.decisoes === 1 ? "entrega aguarda" : "entregas aguardam"} decisão ou estão impedidas.`);
+  if (a.atrasadas) partes.push(`${fmtNum(a.atrasadas)} ${a.atrasadas === 1 ? "passou" : "passaram"} da sprint ou do prazo previsto.`);
+  return partes.join(" ");
 }
 
 // --- Filtros do painel (ficam na URL) --------------------------------------

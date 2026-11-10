@@ -3,7 +3,7 @@ import { StoryCard } from "@/components/dashboard/StoryCard";
 import { RankingBarChart } from "@/components/charts/RankingBarChart";
 import { DataTable, type Coluna } from "@/components/dashboard/DataTable";
 import { ExportCsvButton } from "@/components/dashboard/ExportCsvButton";
-import { fmtNum, linkTfs, pendencias, type Filtros, type TfsItem } from "@/lib/tfs";
+import { fmtNum, linkTfs, pendencias, quemResolve, type Filtros, type TfsItem } from "@/lib/tfs";
 import type { Filtrar } from "./ProjetoXviaClient";
 
 const colunas: Coluna<TfsItem>[] = [
@@ -19,6 +19,7 @@ const colunas: Coluna<TfsItem>[] = [
   { key: "feature", label: "Feature", sortable: true, sortValue: (r) => r.feature ?? "", render: (r) => r.feature ?? "—" },
   { key: "epico", label: "Épico", sortable: true, sortValue: (r) => r.epico ?? "", render: (r) => r.epico ?? "—" },
   { key: "orgao", label: "Órgão", sortable: true, sortValue: (r) => r.orgao ?? "", render: (r) => r.orgao ?? "—" },
+  { key: "quem", label: "Quem resolve", sortable: true, sortValue: (r) => quemResolve(r), render: (r) => quemResolve(r) },
   {
     key: "dias", label: "Dias sem atualizar", align: "right", sortable: true,
     sortValue: (r) => r.diasSemAtualizar ?? 0, render: (r) => fmtNum(r.diasSemAtualizar ?? 0),
@@ -57,7 +58,7 @@ export function PendenciasTab({ itens, filtros, filtrar }: { itens: TfsItem[]; f
             filename="projeto-xvia-pendencias.csv"
             rows={lista.map((p) => ({
               id: p.id, entrega: p.titulo, situacao: p.coluna ?? p.estado, feature: p.feature ?? "",
-              epico: p.epico ?? "", orgao: p.orgao ?? "", diasSemAtualizar: p.diasSemAtualizar ?? 0, link: linkTfs(p.id),
+              epico: p.epico ?? "", orgao: p.orgao ?? "", quemResolve: quemResolve(p), diasSemAtualizar: p.diasSemAtualizar ?? 0, link: linkTfs(p.id),
             }))}
           />
         }

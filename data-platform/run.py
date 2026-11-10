@@ -448,8 +448,8 @@ def _ler_dataset(source: str, dataset: str, padrao):
 
 
 def run_tfs() -> None:
-    """Backlog do projeto X-VIA no TFS (API, sem VPN — responde pelo IP
-    público). Snapshot sem filtro de período: o backlog é o estado de hoje.
+    """Backlog do projeto X-VIA no TFS (API; só responde na rede do Governo/VPN,
+    então roda na máquina da SGD). Snapshot sem filtro de período: o backlog é o estado de hoje.
     Catálogo de UST e stakeholders são datasets manuais já publicados."""
     from extract import tfs
     from transform import tfs as t_tfs
@@ -461,7 +461,8 @@ def run_tfs() -> None:
     siglas = {s["sigla"] for s in _ler_dataset("tfs", "stakeholders", [])}
 
     arvore = tfs.get_arvore()
-    itens = t_tfs.montar_itens(arvore, tfs.get_itens(list(arvore)), catalogos, siglas, t_tfs.hoje_utc())
+    itens = t_tfs.montar_itens(arvore, tfs.get_itens(list(arvore)), catalogos, siglas, t_tfs.hoje_utc(),
+                               tfs.get_relacoes(list(arvore)))
     validate_rows(itens, required=["id", "tipo", "titulo", "estado", "frente"],
                   non_negative=["ust", "diasSemAtualizar"])
     publish("tfs", "itens", itens)

@@ -308,39 +308,6 @@
     "bytes": 696959
   },
   {
-    "dataset": "itens",
-    "source": "tfs",
-    "owner": "SETDIG",
-    "updatedAt": "2026-11-03T18:18:19.903828+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/tfs-itens.schema.json",
-    "rows": 2063,
-    "bytes": 1607351
-  },
-  {
-    "dataset": "sprints",
-    "source": "tfs",
-    "owner": "SETDIG",
-    "updatedAt": "2026-11-03T18:18:20.145612+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/tfs-sprints.schema.json",
-    "rows": 10,
-    "bytes": 1449
-  },
-  {
-    "dataset": "painel-time",
-    "source": "tfs",
-    "owner": "SETDIG",
-    "updatedAt": "2026-11-03T18:18:24.802294+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/tfs-painel-time.schema.json",
-    "rows": 14,
-    "bytes": 2273
-  },
-  {
     "dataset": "inventario-resumo",
     "source": "cartas",
     "owner": "SETDIG",
@@ -658,5 +625,38 @@
     "schema": "data-platform/schemas/matomo-sites.schema.json",
     "rows": 142,
     "bytes": 14669
+  },
+  {
+    "dataset": "itens",
+    "source": "tfs",
+    "owner": "SETDIG",
+    "updatedAt": "2026-11-10T18:46:26.603102+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/tfs-itens.schema.json",
+    "rows": 1997,
+    "bytes": 1825285
+  },
+  {
+    "dataset": "sprints",
+    "source": "tfs",
+    "owner": "SETDIG",
+    "updatedAt": "2026-11-10T18:46:26.852254+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/tfs-sprints.schema.json",
+    "rows": 10,
+    "bytes": 1449
+  },
+  {
+    "dataset": "painel-time",
+    "source": "tfs",
+    "owner": "SETDIG",
+    "updatedAt": "2026-11-10T18:46:32.601962+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/tfs-painel-time.schema.json",
+    "rows": 14,
+    "bytes": 2272
   }
 ]

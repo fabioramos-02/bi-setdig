@@ -80,6 +80,27 @@ def ust_por_codigo(catalogo: dict) -> dict[str, float]:
     return saida
 
 
+PRED = "System.LinkTypes.Dependency-Reverse"  # no item B, aponta para o predecessor A
+SUCC = "System.LinkTypes.Dependency-Forward"
+
+
+def dependencias(rels: list[dict] | None) -> tuple[list[int], list[int]]:
+    """(dependeDe, trava) a partir das relations do TFS. Related e hierarquia não contam."""
+    pred, succ = [], []
+    for r in rels or []:
+        if r.get("rel") in (PRED, SUCC):
+            alvo = int(str(r.get("url", "")).rstrip("/").split("/")[-1])
+            (pred if r["rel"] == PRED else succ).append(alvo)
+    return sorted(set(pred)), sorted(set(succ))
+
+
+def pessoa(valor) -> str | None:
+    """Identidade do TFS ("Nome <DOMINIO/login>") -> "Nome"; dict da API 5+ -> displayName."""
+    if isinstance(valor, dict):
+        return valor.get("displayName") or None
+    return str(valor).split(" <")[0].strip() or None if valor else None
+
+
 def _data(valor) -> str | None:
     if not valor:
         return None
@@ -87,7 +108,8 @@ def _data(valor) -> str | None:
 
 
 def montar_itens(arvore: dict[int, int | None], brutos: list[dict],
-                 catalogos: list[dict], siglas: set[str], hoje: date) -> list[dict]:
+                 catalogos: list[dict], siglas: set[str], hoje: date,
+                 relacoes: dict[int, list[dict]] | None = None) -> list[dict]:
     """1 linha por work item, com épico/Feature/PBI resolvidos subindo a árvore.
 
     `catalogos`: um por contrato (`{"contrato": nome, "data": [...]}`). A UST da
@@ -139,6 +161,7 @@ def montar_itens(arvore: dict[int, int | None], brutos: list[dict],
         if valor_ust is None and not empresa and codigo:
             valor_ust = ust_xvia_codigo.get(codigo)
         aberto = f.get("System.State") not in ("Done", "Removed")
+        depende_de, trava = dependencias((relacoes or {}).get(item_id))
         linhas.append({
             "id": item_id,
             "tipo": tipo,
@@ -162,6 +185,10 @@ def montar_itens(arvore: dict[int, int | None], brutos: list[dict],
             "alteradoEm": alterado,
             "fechadoEm": _data(f.get("Microsoft.VSTS.Common.ClosedDate")),
             "prazo": _data(f.get("Microsoft.VSTS.Scheduling.TargetDate")),
+            "inicioPrevisto": _data(f.get("Microsoft.VSTS.Scheduling.StartDate")),
+            "responsavel": pessoa(f.get("System.AssignedTo")),
+            "dependeDe": depende_de,
+            "trava": trava,
             "diasSemAtualizar": (hoje - date.fromisoformat(alterado)).days if alterado else None,
             "empresa": empresa,
             "atividadeUst": atividade,

@@ -146,3 +146,19 @@ if __name__ == "__main__":
         if nome.startswith("test_"):
             fn()
     print("ok")
+
+
+def test_responsavel_datas_e_dependencias():
+    from tfs import PRED, SUCC
+    url = "https://tfs/_apis/wit/workItems/"
+    brutos = [_w(1, "Product Backlog Item", "A", **{
+        "System.AssignedTo": "Maycon Renato <FAZENDA\malisboa>",
+        "Microsoft.VSTS.Scheduling.StartDate": "2026-11-01T00:00:00Z"})]
+    rel = {1: [{"rel": PRED, "url": url + "7"}, {"rel": SUCC, "url": url + "9"},
+               {"rel": "System.LinkTypes.Related", "url": url + "8"}]}
+    item = montar_itens({1: None}, brutos, [CATALOGO], SIGLAS, HOJE, rel)[0]
+    assert item["responsavel"] == "Maycon Renato"
+    assert item["inicioPrevisto"] == "2026-11-01"
+    assert (item["dependeDe"], item["trava"]) == ([7], [9])
+    sem = montar_itens({1: None}, [_w(1, "Task", "T")], [CATALOGO], SIGLAS, HOJE)[0]
+    assert (sem["responsavel"], sem["dependeDe"], sem["trava"]) == (None, [], [])

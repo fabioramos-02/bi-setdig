@@ -1,9 +1,34 @@
 {
-  "comoPreencher": "Preencher à mão. ustTotalTr = total consolidado do ETP (item 7.1.2.4.21, 23.356 UST). valorUst (R$ por UST) e fim (vigência) ainda a informar — null aparece como 'a informar' na página.",
-  "contrato": "Plataforma Digital X-VIA",
-  "inicio": "2026-07-27",
+  "comoPreencher": "Preencher à mão a partir do Termo de Referência (TR pós-parecer, versão final) e do contrato. Campo sem fonte confirmada fica null e aparece como 'a informar' na página; datas divergentes ficam em 'inicio.opcoes' com conciliado=false e aparecem como 'a conciliar'. ustTotalTr = 23.356 UST (TR 1.1 = ETP 7.1.2.4.21).",
+  "contrato": "Plataforma Digital X-VIA — Contrato 004/2026",
+  "fonte": "TR pós-parecer, versão final: 1.1 e 1.3 (objeto e vigência de 18 meses), 9.3 (valores, pág. 52-53), 3.3.3 (consumo mensal estimado de UST, pág. 35-36)",
+  "vigenciaMeses": 18,
+  "inicio": {
+    "conciliado": false,
+    "opcoes": [
+      { "data": "2026-05-12", "fonte": "Publicação no Diário Oficial (aproximada; usada no painel do TFS, src/painel.py)" },
+      { "data": "2026-07-27", "fonte": "Início da Sprint 0 (valor anterior deste arquivo)" }
+    ]
+  },
   "fim": null,
+  "valorTotal": 14329893.2,
+  "itens": [
+    { "item": 1, "descricao": "Licença Plataforma X-VIA 16M-IA perpétua com suporte técnico por 12 meses", "regime": "preço global", "valor": 9726572.04 },
+    { "item": 2, "descricao": "Implantação da Plataforma X-VIA", "regime": "preço global", "valor": 992250.0 },
+    { "item": 3, "descricao": "Serviços especializados para customização e adequação da solução", "regime": "preço unitário (UST)", "quantidadeUst": 23356, "valorUst": 154.61, "valor": 3611071.16 }
+  ],
   "ustTotalTr": 23356,
-  "valorUst": null,
+  "valorUst": 154.61,
+  "previsaoMensal": [
+    { "mes": 1, "ust": 825 }, { "mes": 2, "ust": 991 }, { "mes": 3, "ust": 1002 },
+    { "mes": 4, "ust": 1941 }, { "mes": 5, "ust": 1970 }, { "mes": 6, "ust": 1930 },
+    { "mes": 7, "ust": 2044 }, { "mes": 8, "ust": 1878 }, { "mes": 9, "ust": 1992 },
+    { "mes": 10, "ust": 1891 }, { "mes": 11, "ust": 1881 }, { "mes": 12, "ust": 1710 },
+    { "mes": 13, "ust": 702 }, { "mes": 14, "ust": 693 }, { "mes": 15, "ust": 640 },
+    { "mes": 16, "ust": 609 }, { "mes": 17, "ust": 429 }, { "mes": 18, "ust": 288 }
+  ],
+  "previsaoMensalNota": "Totais por mês da tabela 3.3.3 (desenvolvimento + complementares). O TR imprime 228 como total do mês 18, mas a coluna de complementares fecha em 288 e o total geral em 23.356; vale 288 (a conciliar com o TR).",
+  "faturado": null,
+  "faturadoNota": "Os campos Faturado e DataFaturamento do TFS ainda não são preenchidos; o faturado aparece como 'a informar'.",
   "previsaoPorModulo": []
 }

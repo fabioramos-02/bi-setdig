@@ -2,7 +2,7 @@
   {
     "titulo": "REUNIÃO",
     "tipo": "numero",
-    "total": 184
+    "total": 209
   },
   {
     "titulo": "EPIC",
@@ -12,22 +12,22 @@
   {
     "titulo": "FEATURE",
     "tipo": "numero",
-    "total": 120
+    "total": 114
   },
   {
     "titulo": "PBI",
     "tipo": "numero",
-    "total": 491
+    "total": 328
   },
   {
     "titulo": "TASK",
     "tipo": "numero",
-    "total": 1457
+    "total": 1553
   },
   {
     "titulo": "APLICATIVO",
     "tipo": "numero",
-    "total": 8
+    "total": 10
   },
   {
     "titulo": "DESPRIORIZADO",
@@ -42,97 +42,97 @@
   {
     "titulo": "AGUAR... DECISÃO",
     "tipo": "numero",
-    "total": 10
+    "total": 14
   },
   {
     "titulo": "IMPEDIDO",
     "tipo": "numero",
-    "total": 7
+    "total": 5
   },
   {
     "titulo": "EM DESENVOLVIMENTO",
     "tipo": "numero",
-    "total": 12
+    "total": 14
   },
   {
     "titulo": "DESCONTINUADOS",
     "tipo": "numero",
-    "total": 1
+    "total": 2
   },
   {
     "titulo": "TASK's ' sem UST's",
     "tipo": "grafico",
-    "total": 570,
+    "total": 355,
     "grupos": [
       {
         "rotulo": "Sprint 7",
-        "qtd": 161
+        "qtd": 104
       },
       {
         "rotulo": "Sprint 8",
-        "qtd": 138
+        "qtd": 96
       },
       {
         "rotulo": "Sem sprint",
-        "qtd": 95
+        "qtd": 65
       },
       {
         "rotulo": "Sprint 9",
-        "qtd": 60
-      },
-      {
-        "rotulo": "Sprint 6",
-        "qtd": 55
+        "qtd": 37
       },
       {
         "rotulo": "Sprint 4",
-        "qtd": 33
+        "qtd": 24
       },
       {
-        "rotulo": "Sprint 5",
-        "qtd": 11
-      },
-      {
-        "rotulo": "Sprint 0",
-        "qtd": 7
-      },
-      {
-        "rotulo": "Sprint 3",
-        "qtd": 6
+        "rotulo": "Sprint 6",
+        "qtd": 22
       },
       {
         "rotulo": "Sprint 2",
-        "qtd": 4
+        "qtd": 2
+      },
+      {
+        "rotulo": "Sprint 0",
+        "qtd": 2
+      },
+      {
+        "rotulo": "Sprint 3",
+        "qtd": 2
+      },
+      {
+        "rotulo": "Sprint 5",
+        "qtd": 1
       }
     ]
   },
   {
     "titulo": "PACOTES DE ENTREGA",
     "tipo": "grafico",
-    "total": 323,
+    "total": 328,
     "grupos": [
       {
-        "rotulo": "A fazer",
+        "rotulo": "Em Produção",
         "qtd": 136
       },
       {
-        "rotulo": "Em Produção",
-        "qtd": 118
+        "rotulo": "A fazer",
+        "qtd": 104
       },
       {
         "rotulo": "Área de Negócios",
-        "qtd": 29
+        "qtd": 46
       },
       {
-        "rotulo": "Impedido",
+        "rotulo": "Aguardando decisão",
         "qtd": 14
       },
       {
         "rotulo": "Em Desenvolvimento",
-        "qtd": 12
+        "qtd": 14
       },
       {
-        "rotulo": "Aguardando decisão",
+        "rotulo": "Impedido",
         "qtd": 10
       },
       {
