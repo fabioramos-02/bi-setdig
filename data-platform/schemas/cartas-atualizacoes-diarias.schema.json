@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "cartas/atualizacoes-diarias",
+  "description": "Alterações aprovadas das cartas ativas, 1 linha por carta e dia (d=dia, s=id da carta, o=sigla do órgão, a=alterações, r=revisões).",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "d",
+      "s",
+      "o",
+      "a",
+      "r"
+    ],
+    "properties": {
+      "d": {
+        "type": "string",
+        "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+      },
+      "s": {
+        "type": "integer"
+      },
+      "o": {
+        "type": "string"
+      },
+      "a": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "r": {
+        "type": "integer",
+        "minimum": 0
+      }
+    }
+  }
+}

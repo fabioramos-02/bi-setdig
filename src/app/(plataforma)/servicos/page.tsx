@@ -6,7 +6,7 @@ import {
   getCartasInventarioPorOrgao,
   getCartasInventarioRelacao,
   getCartasAtualizacoesPorAno,
-  getCartasAtualizacoesPorOrgao,
+  getCartasAtualizacoesDiarias,
   getDatasetUpdatedAt,
 } from "@/lib/data";
 import { ServicosClient } from "./ServicosClient";
@@ -38,7 +38,7 @@ export default function ServicosPage() {
       relacao={relacao}
       atualizacoes={{
         porAno: getCartasAtualizacoesPorAno(),
-        porOrgao: getCartasAtualizacoesPorOrgao(),
+        porDia: getCartasAtualizacoesDiarias(),
         atualizadoEm: getDatasetUpdatedAt("cartas", "atualizacoes-por-ano"),
       }}
     />

@@ -113,8 +113,9 @@ def atualizacoes_por_ano(hist: list[dict]) -> list[dict]:
     """Por ano: alterações aprovadas por tipo, cartas alteradas e cartas revisadas."""
     anos: dict[int, dict] = {}
     for r in hist:
-        a = anos.setdefault(r["ano"], {"ano": r["ano"], "criacoes": 0, "edicoes": 0, "revisoes": 0,
-                                       "etapas": 0, "outras": 0, "_cartas": set(), "_revisadas": set()})
+        ano = r["dia"].year
+        a = anos.setdefault(ano, {"ano": ano, "criacoes": 0, "edicoes": 0, "revisoes": 0,
+                                  "etapas": 0, "outras": 0, "_cartas": set(), "_revisadas": set()})
         tipo = _tipo(r["acao"])
         a[tipo] += r["n"]
         a["_cartas"].add(r["servico_id"])
@@ -128,29 +129,17 @@ def atualizacoes_por_ano(hist: list[dict]) -> list[dict]:
     return saida
 
 
-def atualizacoes_por_orgao(hist: list[dict], inventario: list[dict]) -> list[dict]:
-    """Órgão × ano: cartas ativas, alteradas e revisadas, e alterações aprovadas."""
-    ativas: dict[str, int] = {}
-    for r in inventario:
-        if r["ativo"] and r.get("titulo"):
-            ativas[r["orgao"]] = ativas.get(r["orgao"], 0) + 1
-    grupos: dict[tuple, dict] = {}
+def atualizacoes_diarias(hist: list[dict]) -> list[dict]:
+    """1 linha por carta e dia, compacta, para o front recortar pelo período do filtro.
+
+    d = dia, s = id da carta, o = sigla do órgão, a = alterações no dia, r = revisões no dia.
+    Contar cartas distintas exige o id: por isso não dá para pré-agregar por órgão.
+    """
+    dias: dict[tuple, dict] = {}
     for r in hist:
-        g = grupos.setdefault((r["ano"], r["orgao"]), {
-            "ano": r["ano"], "orgao": r["orgao"], "orgaoSigla": r["orgao_sigla"] or "",
-            "alteracoes": 0, "edicoes": 0, "revisoes": 0, "_cartas": set(), "_revisadas": set()})
-        tipo = _tipo(r["acao"])
-        g["alteracoes"] += r["n"]
-        if tipo in ("edicoes", "revisoes"):
-            g[tipo] += r["n"]
-        g["_cartas"].add(r["servico_id"])
-        if tipo == "revisoes":
-            g["_revisadas"].add(r["servico_id"])
-    saida = []
-    for g in grupos.values():
-        cartas, revisadas = g.pop("_cartas"), g.pop("_revisadas")
-        total = ativas.get(g["orgao"], 0)
-        saida.append({**g, "cartasAtivas": total, "cartasAlteradas": len(cartas),
-                      "cartasRevisadas": len(revisadas),
-                      "percentAlteradas": round(100 * len(cartas) / total, 1) if total else 0})
-    return sorted(saida, key=lambda x: (x["ano"], -x["alteracoes"]))
+        k = (r["dia"].isoformat(), r["servico_id"])
+        x = dias.setdefault(k, {"d": k[0], "s": r["servico_id"], "o": r["orgao_sigla"] or r["orgao"], "a": 0, "r": 0})
+        x["a"] += r["n"]
+        if _tipo(r["acao"]) == "revisoes":
+            x["r"] += r["n"]
+    return sorted(dias.values(), key=lambda x: (x["d"], x["s"]))

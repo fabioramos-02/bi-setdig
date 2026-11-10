@@ -6,128 +6,218 @@ import { MetricCard } from "@/components/dashboard/MetricCard";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { DataTable, type Coluna } from "@/components/dashboard/DataTable";
 import { ExportCsvButton } from "@/components/dashboard/ExportCsvButton";
-import { MultiLineChart } from "@/components/charts/MultiLineChart";
 import { EmptyCard } from "@/components/ds/EmptyCard";
-import type { AtualizacaoAno, AtualizacaoOrgao } from "@/lib/data";
+import type { AtualizacaoAno, AtualizacaoDia } from "@/lib/data";
 
 export type DadosAtualizacoes = {
   porAno: AtualizacaoAno[];
-  porOrgao: AtualizacaoOrgao[];
+  porDia: AtualizacaoDia[];
   atualizadoEm: string | null;
 };
 
-const fmt = (n: number) => n.toLocaleString("pt-BR");
+type Totais = { cartas: number; revisadas: number; alteracoes: number; revisoes: number };
+type LinhaOrgao = Totais & { orgao: string };
 
-function variacao(atual: number, anterior: number | undefined): string | undefined {
-  if (!anterior) return undefined;
-  const pct = Math.round((100 * (atual - anterior)) / anterior);
-  return `${pct >= 0 ? "+" : ""}${pct}% em relação ao ano anterior`;
+const ORGAOS_VISIVEIS = 8;
+const fmt = (n: number) => n.toLocaleString("pt-BR");
+const DIA_MS = 86_400_000;
+const iso = (t: number) => new Date(t).toISOString().slice(0, 10);
+
+function somar(linhas: AtualizacaoDia[]): Totais {
+  const cartas = new Set<number>();
+  const revisadas = new Set<number>();
+  let alteracoes = 0;
+  let revisoes = 0;
+  for (const l of linhas) {
+    cartas.add(l.s);
+    alteracoes += l.a;
+    if (l.r > 0) {
+      revisadas.add(l.s);
+      revisoes += l.r;
+    }
+  }
+  return { cartas: cartas.size, revisadas: revisadas.size, alteracoes, revisoes };
 }
 
-/** Histórico de atualizações das cartas ativas, geral e por órgão (pedido da
- * Ari para o relatório de gestão, 10/11/2026). Dado estático: sai do banco das
- * Cartas (VPN) e é publicado pelo pipeline em datasets/cartas/v1/atualizacoes-*. */
-export function AtualizacoesTab({ dados }: { dados: DadosAtualizacoes }) {
-  const anos = dados.porAno.map((a) => a.ano);
-  const [ano, setAno] = useState(() => (anos.includes(2025) ? 2025 : anos[anos.length - 1]));
+/** Período anterior de mesmo tamanho, logo antes do escolhido (base da comparação). */
+function periodoAnterior(inicio: string, fim: string) {
+  const i = Date.parse(`${inicio}T00:00:00Z`);
+  const f = Date.parse(`${fim}T00:00:00Z`);
+  const dias = Math.round((f - i) / DIA_MS) + 1;
+  return { inicio: iso(i - dias * DIA_MS), fim: iso(i - DIA_MS) };
+}
 
-  const atual = dados.porAno.find((a) => a.ano === ano);
-  const anterior = dados.porAno.find((a) => a.ano === ano - 1);
-  const linhasOrgao = useMemo(() => dados.porOrgao.filter((o) => o.ano === ano), [dados.porOrgao, ano]);
+function comparacao(atual: number, antes: number): string | undefined {
+  if (!antes) return undefined;
+  const pct = Math.round((100 * (atual - antes)) / antes);
+  return `${pct >= 0 ? "+" : ""}${pct}% em relação ao período anterior (${fmt(antes)})`;
+}
 
-  if (!atual) {
-    return <EmptyCard message="O histórico de atualizações das cartas ainda não foi extraído do banco. Ele aparece aqui depois da próxima carga." />;
+/** Atualizações das cartas de serviço (pedido da Ari para o relatório de gestão,
+ * 10/11/2026). Tudo sai do histórico do sistema das Cartas, sem estatística de
+ * acesso: os cartões e a tabela por órgão seguem o período escolhido no filtro;
+ * o "ano a ano" mostra o histórico inteiro, que foi o formato que a Ari aprovou. */
+export function AtualizacoesTab({
+  dados,
+  range,
+  rotuloPeriodo,
+}: {
+  dados: DadosAtualizacoes;
+  range: { inicio: string; fim: string };
+  rotuloPeriodo: string;
+}) {
+  const [verTodos, setVerTodos] = useState(false);
+
+  const noPeriodo = useMemo(
+    () => dados.porDia.filter((l) => l.d >= range.inicio && l.d <= range.fim),
+    [dados.porDia, range.inicio, range.fim],
+  );
+  const antes = useMemo(() => {
+    const p = periodoAnterior(range.inicio, range.fim);
+    return somar(dados.porDia.filter((l) => l.d >= p.inicio && l.d <= p.fim));
+  }, [dados.porDia, range.inicio, range.fim]);
+  const total = useMemo(() => somar(noPeriodo), [noPeriodo]);
+
+  const porOrgao = useMemo(() => {
+    const grupos = new Map<string, AtualizacaoDia[]>();
+    for (const l of noPeriodo) grupos.set(l.o, [...(grupos.get(l.o) ?? []), l]);
+    return [...grupos.entries()]
+      .map(([orgao, linhas]): LinhaOrgao => ({ orgao, ...somar(linhas) }))
+      .sort((a, b) => b.alteracoes - a.alteracoes);
+  }, [noPeriodo]);
+
+  if (dados.porAno.length === 0) {
+    return <EmptyCard message="O histórico de atualizações das cartas ainda não foi carregado. Ele aparece aqui depois da próxima carga." />;
   }
 
-  const serie = dados.porAno.map((a) => ({ ano: String(a.ano), edicoes: a.edicoes, revisoes: a.revisoes, etapas: a.etapas }));
+  const extraidoEm = dados.atualizadoEm ? new Date(dados.atualizadoEm).toLocaleDateString("pt-BR") : null;
+  const anoAtual = dados.atualizadoEm ? new Date(dados.atualizadoEm).getFullYear() : null;
+  const rotuloAno = (ano: number, i: number) =>
+    i === 0 ? `${ano} (desde abril)` : ano === anoAtual && extraidoEm ? `${ano} (até ${extraidoEm.slice(0, 5)})` : String(ano);
 
-  const colunas: Coluna<AtualizacaoOrgao>[] = [
-    { key: "orgao", label: "Órgão", sortable: true, sortValue: (r) => r.orgaoSigla || r.orgao, render: (r) => <span title={r.orgao}>{r.orgaoSigla || r.orgao}</span> },
-    { key: "ativas", label: "Cartas ativas", align: "right", sortable: true, sortValue: (r) => r.cartasAtivas, render: (r) => fmt(r.cartasAtivas) },
-    { key: "alteradas", label: "Cartas alteradas", align: "right", sortable: true, sortValue: (r) => r.cartasAlteradas, render: (r) => `${fmt(r.cartasAlteradas)} (${r.percentAlteradas.toLocaleString("pt-BR")}%)` },
-    { key: "revisadas", label: "Cartas revisadas", align: "right", sortable: true, sortValue: (r) => r.cartasRevisadas, render: (r) => fmt(r.cartasRevisadas) },
+  const visiveis = verTodos ? porOrgao : porOrgao.slice(0, ORGAOS_VISIVEIS);
+  const colunasOrgao: Coluna<LinhaOrgao>[] = [
+    { key: "orgao", label: "Órgão", sortable: true, sortValue: (r) => r.orgao, render: (r) => r.orgao },
+    { key: "cartas", label: "Cartas alteradas", align: "right", sortable: true, sortValue: (r) => r.cartas, render: (r) => fmt(r.cartas) },
+    { key: "revisadas", label: "Cartas revisadas", align: "right", sortable: true, sortValue: (r) => r.revisadas, render: (r) => fmt(r.revisadas) },
     { key: "alteracoes", label: "Alterações", align: "right", sortable: true, sortValue: (r) => r.alteracoes, render: (r) => fmt(r.alteracoes) },
   ];
 
-  const csv = linhasOrgao.map((r) => ({
-    ano: r.ano,
-    orgao: r.orgao,
-    sigla: r.orgaoSigla,
-    cartas_ativas: r.cartasAtivas,
-    cartas_alteradas: r.cartasAlteradas,
-    percent_alteradas: r.percentAlteradas,
-    cartas_revisadas: r.cartasRevisadas,
-    alteracoes: r.alteracoes,
-    edicoes: r.edicoes,
-    revisoes: r.revisoes,
-  }));
-
-  const extraidoEm = dados.atualizadoEm ? new Date(dados.atualizadoEm).toLocaleDateString("pt-BR") : "—";
-
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex flex-wrap items-center gap-2" role="group" aria-label="Ano">
-        <span className="text-sm" style={{ color: "var(--ds-color-text-secondary)" }}>Ano:</span>
-        {anos.map((a) => (
-          <button
-            key={a}
-            type="button"
-            onClick={() => setAno(a)}
-            aria-pressed={a === ano}
-            className="px-3 py-1 text-sm font-medium"
-            style={{
-              borderRadius: "var(--ds-radius-md)",
-              border: "1px solid var(--ds-color-border)",
-              background: a === ano ? "var(--ds-color-primary-600)" : "var(--ds-color-background)",
-              color: a === ano ? "#fff" : "var(--ds-color-text-primary)",
-            }}
-          >
-            {a}
-          </button>
-        ))}
-      </div>
+      <details
+        className="text-sm"
+        style={{ border: "1px solid var(--ds-color-border)", borderRadius: "var(--ds-radius-md)", background: "var(--ds-color-background-muted)", padding: "12px 16px" }}
+      >
+        <summary className="cursor-pointer font-semibold" style={{ color: "var(--ds-color-text-primary)" }}>
+          De onde vêm esses números?
+        </summary>
+        <div className="mt-3 flex flex-col gap-2" style={{ color: "var(--ds-color-text-secondary)" }}>
+          <p>
+            Do <b>sistema onde os órgãos escrevem e mantêm as cartas de serviço</b> do Portal ms.gov.br. Toda vez que uma
+            carta é criada, editada, revisada ou tem uma etapa mudada, o sistema guarda um registro com a data.
+          </p>
+          <p>
+            Contamos só o que <b>foi aprovado e chegou ao Portal</b>, e só as cartas que estão no ar hoje. Pedidos pendentes ou
+            recusados ficam de fora.
+          </p>
+          <ul className="list-disc pl-5 flex flex-col gap-1">
+            <li><b>Carta alterada:</b> teve pelo menos uma mudança no período. Mesmo mudada várias vezes, conta uma vez.</li>
+            <li><b>Carta revisada:</b> passou pela revisão, em que o órgão confere se a carta ainda está certa.</li>
+            <li><b>Alterações:</b> soma de todas as mudanças aprovadas.</li>
+          </ul>
+          <p style={{ color: "var(--ds-color-text-muted)" }}>
+            O registro começa em abril de 2023.{extraidoEm ? ` Números atualizados em ${extraidoEm}.` : ""}
+          </p>
+        </div>
+      </details>
 
       <StoryCard
-        anchor={<>Em {ano}, <b>{fmt(atual.cartasAlteradas)}</b> cartas de serviço foram atualizadas, com <b>{fmt(atual.total)}</b> alterações aprovadas.</>}
-        caption={anterior ? `Em ${ano - 1} foram ${fmt(anterior.cartasAlteradas)} cartas e ${fmt(anterior.total)} alterações.` : undefined}
-        comoLer="Cada alteração aprovada no sistema das Cartas (criação, edição, revisão ou mudança de etapa) conta uma vez. Uma carta alterada várias vezes no ano conta uma vez em “cartas alteradas”."
+        anchor={
+          total.cartas > 0 ? (
+            <>
+              Em {rotuloPeriodo}, <b>{fmt(total.cartas)}</b> cartas de serviço foram atualizadas, com <b>{fmt(total.alteracoes)}</b>{" "}
+              alterações aprovadas.
+            </>
+          ) : (
+            <>Nenhuma carta foi alterada em {rotuloPeriodo}.</>
+          )
+        }
+        caption={total.cartas > 0 ? `${fmt(total.revisadas)} delas passaram por revisão.` : undefined}
+        comoLer="Os cartões e a tabela por órgão seguem o período escolhido no filtro. A comparação é com o período de mesmo tamanho logo antes."
       />
 
-      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-        <MetricCard label="Cartas alteradas" value={atual.cartasAlteradas} sub={variacao(atual.cartasAlteradas, anterior?.cartasAlteradas)} />
-        <MetricCard label="Alterações aprovadas" value={atual.total} sub={variacao(atual.total, anterior?.total)} />
-        <MetricCard label="Cartas revisadas" value={atual.cartasRevisadas} sub={variacao(atual.cartasRevisadas, anterior?.cartasRevisadas)} />
-        <MetricCard label="Revisões" value={atual.revisoes} sub={`${fmt(atual.edicoes)} edições e ${fmt(atual.etapas)} mudanças de etapa`} />
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-3">
+        <MetricCard label="Cartas alteradas" value={total.cartas} sub={comparacao(total.cartas, antes.cartas)} />
+        <MetricCard label="Cartas revisadas" value={total.revisadas} sub={comparacao(total.revisadas, antes.revisadas)} />
+        <MetricCard label="Alterações aprovadas" value={total.alteracoes} sub={comparacao(total.alteracoes, antes.alteracoes)} />
       </div>
 
-      <DashboardSection title="Alterações por tipo, ano a ano">
-        <MultiLineChart
-          data={serie}
-          xKey="ano"
-          series={[
-            { key: "edicoes", label: "Edições" },
-            { key: "revisoes", label: "Revisões" },
-            { key: "etapas", label: "Mudanças de etapa" },
-          ]}
-          height={260}
-        />
-      </DashboardSection>
-
-      <DashboardSection title={`Por órgão em ${ano}`} action={<ExportCsvButton rows={csv} filename={`atualizacoes-cartas-por-orgao-${ano}.csv`} />}>
-        <div className="overflow-x-auto min-w-0">
-          <div className="min-w-[560px]">
-            <DataTable columns={colunas} rows={linhasOrgao} rowKey={(r) => r.orgao} />
+      <DashboardSection
+        title={`Por órgão, em ${rotuloPeriodo}`}
+        action={
+          porOrgao.length > 0 ? (
+            <ExportCsvButton
+              rows={porOrgao.map((r) => ({ orgao: r.orgao, cartas_alteradas: r.cartas, cartas_revisadas: r.revisadas, alteracoes: r.alteracoes, revisoes: r.revisoes }))}
+              filename={`atualizacoes-cartas-por-orgao-${range.inicio}-a-${range.fim}.csv`}
+            />
+          ) : undefined
+        }
+      >
+        {porOrgao.length === 0 ? (
+          <p className="text-sm" style={{ color: "var(--ds-color-text-secondary)" }}>Nenhum órgão alterou cartas nesse período.</p>
+        ) : (
+          <div className="flex flex-col gap-3">
+            <p className="text-sm" style={{ color: "var(--ds-color-text-secondary)" }}>
+              {porOrgao.length > ORGAOS_VISIVEIS && !verTodos
+                ? `Os ${ORGAOS_VISIVEIS} órgãos com mais alterações, de ${porOrgao.length}. A planilha traz todos.`
+                : `${porOrgao.length} órgãos alteraram cartas no período.`}
+            </p>
+            <div className="overflow-x-auto min-w-0">
+              <div className="min-w-[480px]">
+                <DataTable columns={colunasOrgao} rows={visiveis} rowKey={(r) => r.orgao} />
+              </div>
+            </div>
+            {porOrgao.length > ORGAOS_VISIVEIS && (
+              <button
+                type="button"
+                onClick={() => setVerTodos((v) => !v)}
+                className="self-start text-sm font-medium hover:underline"
+                style={{ color: "var(--ds-color-primary-600)" }}
+              >
+                {verTodos ? "Mostrar só os principais" : `Ver todos os ${porOrgao.length} órgãos`}
+              </button>
+            )}
           </div>
-        </div>
+        )}
       </DashboardSection>
 
-      <DashboardSection title="De onde vêm os dados">
-        <ul className="list-disc pl-5 text-sm flex flex-col gap-1" style={{ color: "var(--ds-color-text-secondary)" }}>
-          <li>Sistema de Gestão de Cartas de Serviço (Portal/Admin), banco <code>admin_prd</code>.</li>
-          <li>Tabela <code>gerenciamento_historicoservico</code>: cada criação, edição, revisão ou mudança de etapa aprovada gera um registro com data e versão.</li>
-          <li>Entram só as cartas ativas no Portal e só as alterações aprovadas. Pendentes e recusadas não chegaram ao cidadão.</li>
-          <li>Histórico disponível desde abril de 2023; o ano corrente vai até a data da extração. Extração de {extraidoEm}.</li>
-        </ul>
+      <DashboardSection title="Ano a ano">
+        <p className="mb-3 text-sm" style={{ color: "var(--ds-color-text-secondary)" }}>
+          O histórico inteiro, para comparar os anos. Não muda com o filtro.
+        </p>
+        <div className="overflow-x-auto min-w-0">
+          <table className="w-full min-w-[480px] text-sm border-collapse">
+            <thead>
+              <tr style={{ background: "var(--ds-color-background-muted)", color: "var(--ds-color-text-secondary)" }}>
+                <th className="text-left p-2">Ano</th>
+                <th className="text-right p-2">Cartas alteradas</th>
+                <th className="text-right p-2">Cartas com revisão</th>
+                <th className="text-right p-2">Alterações aprovadas</th>
+              </tr>
+            </thead>
+            <tbody>
+              {dados.porAno.map((a, i) => (
+                <tr key={a.ano} className="border-t" style={{ borderColor: "var(--ds-color-border)" }}>
+                  <td className="p-2 font-medium" style={{ color: "var(--ds-color-text-primary)" }}>{rotuloAno(a.ano, i)}</td>
+                  <td className="p-2 text-right">{fmt(a.cartasAlteradas)}</td>
+                  <td className="p-2 text-right">{fmt(a.cartasRevisadas)}</td>
+                  <td className="p-2 text-right">{fmt(a.total)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </DashboardSection>
     </div>
   );

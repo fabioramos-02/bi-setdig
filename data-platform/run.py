@@ -288,10 +288,10 @@ def run_cartas() -> None:
     out5 = publish("cartas", "atualizacoes-por-ano", anos)
     print(f"[cartas] atualizacoes-por-ano -> {out5} ({len(anos)} anos)")
 
-    por_orgao_ano = t_servicos.atualizacoes_por_orgao(hist, raw)
-    validate_rows(por_orgao_ano, required=["ano", "orgao"], non_negative=["alteracoes", "cartasAlteradas", "cartasAtivas"])
-    out6 = publish("cartas", "atualizacoes-por-orgao", por_orgao_ano)
-    print(f"[cartas] atualizacoes-por-orgao -> {out6} ({len(por_orgao_ano)} linhas)")
+    diarias = t_servicos.atualizacoes_diarias(hist)
+    validate_rows(diarias, required=["d", "s", "o"], non_negative=["a", "r"])
+    out6 = publish("cartas", "atualizacoes-diarias", diarias)
+    print(f"[cartas] atualizacoes-diarias -> {out6} ({len(diarias)} linhas)")
 
 
 def run_msdigital_db() -> None:

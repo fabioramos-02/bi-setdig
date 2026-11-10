@@ -55,7 +55,13 @@ export function ServicosClient({
   const [liveRange, setLiveRange] = useState<{ inicio: string; fim: string } | null>(null);
   const [liveStatus, setLiveStatus] = useState<"idle" | "erro">("idle");
 
+  // A aba de atualizações vem só do banco das Cartas: não precisa das visitas
+  // do Portal, então não busca (evita chamada lenta e os erros do servidor de
+  // estatísticas no log).
+  const precisaVisitas = abaAtiva !== "atualizacoes";
+
   useEffect(() => {
+    if (!precisaVisitas) return;
     let cancelado = false;
     fetch(`/api/analytics/servicos?inicio=${range.inicio}&fim=${range.fim}`)
       .then((r) => {
@@ -75,7 +81,7 @@ export function ServicosClient({
     return () => {
       cancelado = true;
     };
-  }, [range.inicio, range.fim]);
+  }, [range.inicio, range.fim, precisaVisitas]);
 
   const valido = live !== null && liveRange?.inicio === range.inicio && liveRange?.fim === range.fim;
   const status: StatusIntervalo = valido ? "ok" : liveStatus === "erro" ? "fallback" : "carregando";
@@ -153,7 +159,7 @@ export function ServicosClient({
     {
       id: "atualizacoes",
       label: "6. Atualizações das cartas",
-      content: <AtualizacoesTab dados={atualizacoes} />,
+      content: <AtualizacoesTab dados={atualizacoes} range={range} rotuloPeriodo={filtroRelatorio} />,
     },
   ];
 

@@ -483,23 +483,15 @@ export type AtualizacaoAno = {
   cartasAlteradas: number;
   cartasRevisadas: number;
 };
-export type AtualizacaoOrgao = {
-  ano: number;
-  orgao: string;
-  orgaoSigla: string;
-  alteracoes: number;
-  edicoes: number;
-  revisoes: number;
-  cartasAtivas: number;
-  cartasAlteradas: number;
-  cartasRevisadas: number;
-  percentAlteradas: number;
-};
+/** 1 linha por carta e dia: d = dia, s = id da carta, o = sigla do órgão,
+ * a = alterações aprovadas, r = revisões. O front recorta pelo período do filtro.
+ * ponytail: ~1 MB para todo o histórico; se passar de 2 MB, agregar por mês. */
+export type AtualizacaoDia = { d: string; s: number; o: string; a: number; r: number };
 export function getCartasAtualizacoesPorAno(): AtualizacaoAno[] {
   return readDataset<AtualizacaoAno[]>("cartas", "v1", "atualizacoes-por-ano") ?? [];
 }
-export function getCartasAtualizacoesPorOrgao(): AtualizacaoOrgao[] {
-  return readDataset<AtualizacaoOrgao[]>("cartas", "v1", "atualizacoes-por-orgao") ?? [];
+export function getCartasAtualizacoesDiarias(): AtualizacaoDia[] {
+  return readDataset<AtualizacaoDia[]>("cartas", "v1", "atualizacoes-diarias") ?? [];
 }
 
 // --- Avaliação da Carta: erros e percepção do cidadão (ADR-005) ---
