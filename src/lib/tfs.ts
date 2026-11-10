@@ -31,6 +31,7 @@ export type TfsItem = {
   fechadoEm: string | null;
   prazo: string | null;
   diasSemAtualizar: number | null;
+  empresa?: string | null; // contrato marcado na Task ("Governo do Estado" ou o da X-VIA); ausente em extração antiga
   atividadeUst: string | null;
   complexidadeUst: string | null;
   ust: number | null;
@@ -171,9 +172,13 @@ export function entregasDoMes(itens: TfsItem[], mes: string) {
 }
 
 // --- UST da X-VIA × ETP -----------------------------------------------------
-// A X-VIA não preenche a atividade UST do TFS: o código do catálogo dela vem da
-// descrição da Task ("Catálogo DOC.07 …"). Só conta o que está na área que a
-// X-VIA fatura (XVIA\Customização UST). Valores pela tabela do ETP (pp. 68–71).
+// Conta só o catálogo do contrato da X-VIA (revisão de 2026-11-03):
+// - Task com o contrato da X-VIA marcado: código e valor da atividade marcada;
+// - Task sem contrato (anterior à marcação) na área que a X-VIA fatura
+//   (XVIA\Customização UST): código escrito na descrição ("Catálogo DOC.07 …");
+// - Task marcada com o contrato do Governo do Estado nunca entra.
+// Valor = `ust` do catálogo X-VIA (pipeline); sem ele, a UST unitária do ETP
+// (pp. 68–71). Previsto = memória de cálculo do ETP.
 
 export const AREA_UST = "XVIA\\Customização UST";
 
@@ -209,8 +214,13 @@ export function ustEtp(etp: EtpUst): Map<string, CodigoEtp> {
 export type SituacaoUst = "sem código" | "faixa a definir" | "fora do ETP";
 export type LinhaCodigo = CodigoEtp & { tarefas: number; lancada: number; executada: number; saldo: number; itens: TfsItem[] };
 
+/** "004/2026 - 30524 - XVIA TECNOLOGIA LTDA" no TFS. */
+export const ehContratoXvia = (empresa: string | null | undefined) => /xvia/i.test((empresa ?? "").replace(/-/g, ""));
+
 export function ehTarefaXvia(i: TfsItem) {
-  return i.tipo === "Task" && i.estado !== "Removed" && (i.area === AREA_UST || i.area.startsWith(`${AREA_UST}\\`));
+  if (i.tipo !== "Task" || i.estado === "Removed") return false;
+  if (i.empresa) return ehContratoXvia(i.empresa);
+  return i.area === AREA_UST || i.area.startsWith(`${AREA_UST}\\`);
 }
 
 /** Lançado = toda Task com código do ETP (UST unitária × 1); executado = as Done.
@@ -221,6 +231,8 @@ export function execucaoXvia(itens: TfsItem[], etp: EtpUst | null, contrato: Tfs
   const tarefas = itens.filter(ehTarefaXvia);
   const porCodigo = new Map<string, LinhaCodigo>();
   const aClassificar: (TfsItem & { situacao: SituacaoUst })[] = [];
+  let valorDoEtp = 0; // tarefas somadas pelo valor do ETP (sem valor no catálogo X-VIA)
+  let semContrato = 0; // tarefas somadas só pelo código da descrição
 
   for (const t of tarefas) {
     const cod = t.codigoCatalogo;
@@ -231,9 +243,12 @@ export function execucaoXvia(itens: TfsItem[], etp: EtpUst | null, contrato: Tfs
       continue;
     }
     const linha = porCodigo.get(ref.codigo) ?? { ...ref, tarefas: 0, lancada: 0, executada: 0, saldo: ref.previsto, itens: [] };
+    const valor = t.ust ?? ref.ustUnitaria; // catálogo X-VIA; sem ele, ETP
+    if (t.ust === null) valorDoEtp += 1;
+    if (!t.empresa) semContrato += 1;
     linha.tarefas += 1;
-    linha.lancada += ref.ustUnitaria;
-    if (t.estado === "Done") linha.executada += ref.ustUnitaria;
+    linha.lancada += valor;
+    if (t.estado === "Done") linha.executada += valor;
     linha.saldo = linha.previsto - linha.lancada;
     linha.itens.push(t);
     porCodigo.set(ref.codigo, linha);
@@ -264,6 +279,8 @@ export function execucaoXvia(itens: TfsItem[], etp: EtpUst | null, contrato: Tfs
     porCodigo: linhas,
     aClassificar,
     contagemAClassificar,
+    valorDoEtp,
+    semContrato,
   };
 }
 

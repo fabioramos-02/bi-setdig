@@ -7,9 +7,16 @@ from tfs import agrupar, codigo_catalogo, frente, ler_widget, montar_itens, mont
 
 HOJE = date(2026, 10, 26)
 SIGLAS = {"SES", "IMASUL", "DETRAN", "SEDMS"}
-CATALOGO = {"data": [{"id": 343, "complexidades": [
+CATALOGO = {"contrato": "Governo do Estado", "data": [{"id": 343, "complexidades": [
     {"complexidade": "Simples", "valorUst": 3, "id": 563},
     {"complexidade": "Complexa", "valorUst": 9, "id": 565}]}]}
+# Mesmo id de complexidade (565) com outro valor no catálogo do contrato X-VIA.
+XVIA = "004/2026 - 30524 - XVIA TECNOLOGIA LTDA"
+CATALOGO_XVIA = {"contrato": XVIA, "data": [
+    {"id": 900, "descricaoAtividade": "DEV.08 - Desenvolvimento de funcionalidade", "complexidades": [
+        {"complexidade": "Complexa", "valorUst": 20, "id": 565}]},
+    {"id": 901, "descricaoAtividade": "NEG.03 - Diagrama", "complexidades": [
+        {"complexidade": "Simples", "valorUst": 4, "id": 601}, {"complexidade": "Complexa", "valorUst": 8, "id": 602}]}]}
 
 
 def _w(i, tipo, titulo, **campos):
@@ -29,7 +36,34 @@ def _itens():
            **{"Custom.SGI.LancamentoAtividadeID": "565", "Custom.SGI.AtividadeUST": "BI"}),
         _w(5, "Bug", "Erro", **{"System.BoardColumn": "Área de Negócios", "System.Tags": "Bug; Dependência"}),
     ]
-    return {i["id"]: i for i in montar_itens(arvore, brutos, CATALOGO, SIGLAS, HOJE)}
+    return {i["id"]: i for i in montar_itens(arvore, brutos, [CATALOGO, CATALOGO_XVIA], SIGLAS, HOJE)}
+
+
+def _task(**campos):
+    return montar_itens({1: None}, [_w(1, "Task", "T", **campos)], [CATALOGO, CATALOGO_XVIA], SIGLAS, HOJE)[0]
+
+
+def test_ust_pelo_catalogo_do_contrato_da_task():
+    def ust(empresa):
+        campos = {"Custom.SGI.LancamentoAtividadeID": "565"}
+        if empresa:
+            campos["Custom.SGI.Empresa"] = empresa
+        item = _task(**campos)
+        return item["empresa"], item["ust"]
+    assert ust(XVIA) == (XVIA, 20)
+    assert ust("Governo do Estado") == ("Governo do Estado", 9)
+    assert ust(None) == (None, 9)  # Task antiga sem contrato: catálogo padrão
+
+
+def test_codigo_da_atividade_x_via_e_fallback_da_descricao():
+    marcada = _task(**{"Custom.SGI.Empresa": XVIA, "Custom.SGI.LancamentoAtividadeID": "565",
+                       "Custom.SGI.AtividadeUST": "DEV.08 - Desenvolvimento de funcionalidade"})
+    assert (marcada["codigoCatalogo"], marcada["ust"]) == ("DEV.08", 20)
+    # sem contrato: código da descrição, valor do catálogo X-VIA se a atividade tem 1 complexidade
+    so_descricao = _task(**{"System.Description": "Catálogo DEV.08 - tela de login"})
+    assert (so_descricao["codigoCatalogo"], so_descricao["ust"]) == ("DEV.08", 20)
+    # atividade com várias complexidades e nenhuma marcada: sem valor (a classificar)
+    assert _task(**{"System.Description": "Catálogo NEG.03 - diagrama"})["ust"] is None
 
 
 def test_frente_pela_area():

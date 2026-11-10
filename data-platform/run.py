@@ -454,11 +454,14 @@ def run_tfs() -> None:
     from extract import tfs
     from transform import tfs as t_tfs
 
-    catalogo = _ler_dataset("tfs", "catalogo-ust", {"data": []})
+    # Um catálogo por contrato: Governo do Estado (padrão, SGD) e X-VIA. Os dois
+    # são colados à mão da tabela de atividades do SCP (ver `fonte` em cada JSON).
+    catalogos = [c for c in (_ler_dataset("tfs", "catalogo-ust", None),
+                             _ler_dataset("tfs", "catalogo-ust-xvia", None)) if c]
     siglas = {s["sigla"] for s in _ler_dataset("tfs", "stakeholders", [])}
 
     arvore = tfs.get_arvore()
-    itens = t_tfs.montar_itens(arvore, tfs.get_itens(list(arvore)), catalogo, siglas, t_tfs.hoje_utc())
+    itens = t_tfs.montar_itens(arvore, tfs.get_itens(list(arvore)), catalogos, siglas, t_tfs.hoje_utc())
     validate_rows(itens, required=["id", "tipo", "titulo", "estado", "frente"],
                   non_negative=["ust", "diasSemAtualizar"])
     publish("tfs", "itens", itens)

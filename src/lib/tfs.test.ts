@@ -128,6 +128,20 @@ test("execucaoXvia: só área Customização UST; sem código/faixa/fora do ETP 
   assert.ok(f.porCodigo.some((l) => l.codigo === "IA.16" && l.tarefas === 0));
 });
 
+test("execucaoXvia: só o contrato da X-VIA; Governo fora mesmo na área; valor do catálogo X-VIA vence o ETP", () => {
+  const XVIA = "004/2026 - 30524 - XVIA TECNOLOGIA LTDA";
+  const f = execucaoXvia([
+    item({ tipo: "Task", area: "XVIA", empresa: XVIA, codigoCatalogo: "DEV.13", ust: 7, estado: "Done" }),
+    item({ tipo: "Task", area: AREA_UST, empresa: "Governo do Estado", codigoCatalogo: "DEV.13", ust: 9 }),
+    item({ tipo: "Task", area: AREA_UST, codigoCatalogo: "DEV.13" }), // sem contrato: código da descrição, valor do ETP (3)
+  ], etp, contrato());
+  assert.equal(f.tarefas, 2);
+  assert.equal(f.ustLancada, 10);
+  assert.equal(f.ustExecutada, 7);
+  assert.equal(f.valorDoEtp, 1);
+  assert.equal(f.semContrato, 1);
+});
+
 test("filtrarItens: combina módulo, frente, órgão e sprint", () => {
   const itens = [item({ id: 1, epico: "CMS", frente: "SGD" }), item({ id: 2, epico: "CMS" }), item({ id: 3, epico: "Portal" })];
   assert.equal(filtrarItens(itens, FILTROS_VAZIOS).length, 3);

@@ -32,7 +32,7 @@ CAMPOS = [
     "System.BoardColumn", "System.AreaPath", "System.IterationPath", "System.Tags",
     "System.CreatedDate", "System.ChangedDate", "Microsoft.VSTS.Common.ClosedDate",
     "Microsoft.VSTS.Scheduling.TargetDate", "Microsoft.VSTS.Scheduling.Effort",
-    "Custom.SGI.AtividadeUST", "Custom.SGI.ComplexidadeUST",
+    "Custom.SGI.Empresa", "Custom.SGI.AtividadeUST", "Custom.SGI.ComplexidadeUST",
     "Custom.SGI.LancamentoAtividadeID", "Custom.SGI.DataExecucao",
 ]
 

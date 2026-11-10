@@ -60,6 +60,26 @@ def valores_ust(catalogo: dict) -> dict[str, float]:
             for a in catalogo.get("data", []) for c in a["complexidades"]}
 
 
+def eh_contrato_xvia(contrato: str | None) -> bool:
+    """No TFS o contrato vem como "004/2026 - 30524 - XVIA TECNOLOGIA LTDA"."""
+    return "xvia" in (contrato or "").lower().replace("-", "")
+
+
+CODIGO_ATIVIDADE = re.compile(r"^([A-Z]+\.\d+)")
+
+
+def ust_por_codigo(catalogo: dict) -> dict[str, float]:
+    """{código: valorUst} das atividades com uma só complexidade. Serve à Task
+    que só traz o código na descrição: sem complexidade marcada, atividade com
+    mais de uma fica sem valor (a classificar)."""
+    saida = {}
+    for a in catalogo.get("data", []):
+        m = CODIGO_ATIVIDADE.match(a.get("descricaoAtividade", ""))
+        if m and len(a["complexidades"]) == 1:
+            saida[m.group(1)] = a["complexidades"][0]["valorUst"]
+    return saida
+
+
 def _data(valor) -> str | None:
     if not valor:
         return None
@@ -67,10 +87,19 @@ def _data(valor) -> str | None:
 
 
 def montar_itens(arvore: dict[int, int | None], brutos: list[dict],
-                 catalogo: dict, siglas: set[str], hoje: date) -> list[dict]:
-    """1 linha por work item, com épico/Feature/PBI resolvidos subindo a árvore."""
+                 catalogos: list[dict], siglas: set[str], hoje: date) -> list[dict]:
+    """1 linha por work item, com épico/Feature/PBI resolvidos subindo a árvore.
+
+    `catalogos`: um por contrato (`{"contrato": nome, "data": [...]}`). A UST da
+    Task sai do catálogo do contrato gravado nela (`Custom.SGI.Empresa`) — o id
+    da complexidade só vale dentro do catálogo daquele contrato. Task sem
+    contrato (anterior a 21/10/2026) usa o primeiro catálogo (Governo do Estado),
+    como era antes."""
     por_id = {w["id"]: w.get("fields", {}) for w in brutos}
-    ust = valores_ust(catalogo)
+    ust_por_contrato = {c.get("contrato", ""): valores_ust(c) for c in catalogos}
+    padrao = catalogos[0].get("contrato", "") if catalogos else ""
+    xvia = next((c for c in catalogos if eh_contrato_xvia(c.get("contrato"))), {})
+    ust_xvia_id, ust_xvia_codigo = valores_ust(xvia), ust_por_codigo(xvia)
 
     def ancestral(item_id: int, tipo: str) -> int | None:
         atual = item_id
@@ -97,6 +126,18 @@ def montar_itens(arvore: dict[int, int | None], brutos: list[dict],
         tags = [t.strip() for t in (f.get("System.Tags") or "").split(";") if t.strip()]
         alterado = _data(f.get("System.ChangedDate"))
         lancamento = f.get("Custom.SGI.LancamentoAtividadeID")
+        empresa = (f.get("Custom.SGI.Empresa") or "").strip() or None
+        tabela = ust_xvia_id if eh_contrato_xvia(empresa) else ust_por_contrato.get(empresa or padrao, {})
+        valor_ust = tabela.get(str(lancamento)) if lancamento else None
+        atividade = f.get("Custom.SGI.AtividadeUST") or None
+        # Código do catálogo X-VIA: da atividade marcada ("DOC.07 - …") quando a
+        # Task tem o contrato X-VIA; senão do que a X-VIA escreveu na descrição.
+        codigo = None
+        if tipo == "Task":
+            m = CODIGO_ATIVIDADE.match(atividade or "") if eh_contrato_xvia(empresa) else None
+            codigo = m.group(1) if m else codigo_catalogo(f.get("System.Description"))
+        if valor_ust is None and not empresa and codigo:
+            valor_ust = ust_xvia_codigo.get(codigo)
         aberto = f.get("System.State") not in ("Done", "Removed")
         linhas.append({
             "id": item_id,
@@ -122,11 +163,12 @@ def montar_itens(arvore: dict[int, int | None], brutos: list[dict],
             "fechadoEm": _data(f.get("Microsoft.VSTS.Common.ClosedDate")),
             "prazo": _data(f.get("Microsoft.VSTS.Scheduling.TargetDate")),
             "diasSemAtualizar": (hoje - date.fromisoformat(alterado)).days if alterado else None,
-            "atividadeUst": f.get("Custom.SGI.AtividadeUST") or None,
+            "empresa": empresa,
+            "atividadeUst": atividade,
             "complexidadeUst": f.get("Custom.SGI.ComplexidadeUST") or None,
-            "ust": ust.get(str(lancamento)) if lancamento else None,
+            "ust": valor_ust,
             "dataExecucao": _data(f.get("Custom.SGI.DataExecucao")),
-            "codigoCatalogo": codigo_catalogo(f.get("System.Description")) if tipo == "Task" else None,
+            "codigoCatalogo": codigo,
         })
     linhas.sort(key=lambda x: x["id"])
     return linhas

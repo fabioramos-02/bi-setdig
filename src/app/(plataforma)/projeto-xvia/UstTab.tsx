@@ -40,10 +40,10 @@ const colunasTarefa: Coluna<TfsItem & { situacao?: string }>[] = [
   { key: "estado", label: "Estado", sortable: true, sortValue: (r) => r.estado, render: (r) => r.estado },
 ];
 
-/** UST da X-VIA × ETP: o que a X-VIA lançou nas tarefas que fatura (área
- * Customização UST), pelo código do catálogo escrito na descrição, comparado
- * ao previsto na memória de cálculo do ETP (pp. 68–71). Clique num código para
- * ver as tarefas dele. */
+/** UST da X-VIA × ETP: o que a X-VIA lançou nas tarefas do contrato dela
+ * (catálogo X-VIA; tarefa do contrato do Governo do Estado não entra),
+ * comparado ao previsto na memória de cálculo do ETP (pp. 68–71). Regra em
+ * lib/tfs.ts (execucaoXvia). Clique num código para ver as tarefas dele. */
 export function UstTab({ itens, etp, contrato }: { itens: TfsItem[]; etp: EtpUst | null; contrato: TfsContrato | null }) {
   const f = execucaoXvia(itens, etp, contrato);
   const [codigo, setCodigo] = useState<string | null>(null);
@@ -53,26 +53,26 @@ export function UstTab({ itens, etp, contrato }: { itens: TfsItem[]; etp: EtpUst
   const reais = (v: number | null) => (v === null ? "valor da UST a informar" : fmtReais(v));
 
   if (f.tarefas === 0) {
-    return <StoryCard anchor="Nenhuma tarefa da X-VIA (área de customização faturada) neste recorte." comoLer="A UST da X-VIA conta só tarefas na área Customização UST do TFS. Mude os filtros acima para ver outro recorte." />;
+    return <StoryCard anchor="Nenhuma tarefa do contrato da X-VIA neste recorte." comoLer="A UST da X-VIA conta só as tarefas do contrato da X-VIA; as do contrato do Governo do Estado não entram. Mude os filtros acima para ver outro recorte." />;
   }
 
   return (
     <div className="flex flex-col gap-6">
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-        <MetricCard label="UST executada" value={fmtNum(f.ustExecutada)} sub={`${f.pctExecutado ?? 0}% do ETP · ${reais(f.valorExecutado)}`} />
-        <MetricCard label="UST lançada nas tarefas" value={fmtNum(f.ustLancada)} sub={`${f.pctLancado ?? 0}% do ETP · ${reais(f.valorLancado)}`} />
+        <MetricCard label="UST executada" value={fmtNum(f.ustExecutada)} sub={`${fmtNum(f.pctExecutado ?? 0)}% do ETP · ${reais(f.valorExecutado)}`} />
+        <MetricCard label="UST lançada nas tarefas" value={fmtNum(f.ustLancada)} sub={`${fmtNum(f.pctLancado ?? 0)}% do ETP · ${reais(f.valorLancado)}`} />
         <MetricCard label="Previsto no ETP" value={f.ustTotal === null ? "—" : `${fmtNum(f.ustTotal)} UST`} sub="memória de cálculo, pp. 68–71" />
         <MetricCard label="Tarefas a classificar" value={fmtNum(f.aClassificar.length)} sub={`de ${fmtNum(f.tarefas)} tarefas da X-VIA`} />
       </div>
 
       <StoryCard
-        anchor={`A X-VIA lançou ${fmtNum(f.ustLancada)} UST em ${fmtNum(f.tarefas - f.aClassificar.length)} tarefas — ${f.pctLancado ?? 0}% das ${fmtNum(f.ustTotal ?? 0)} UST previstas no ETP. Concluídas, ${fmtNum(f.ustExecutada)}.`}
+        anchor={`A X-VIA lançou ${fmtNum(f.ustLancada)} UST em ${fmtNum(f.tarefas - f.aClassificar.length)} tarefas — ${fmtNum(f.pctLancado ?? 0)}% das ${fmtNum(f.ustTotal ?? 0)} UST previstas no ETP. Concluídas, ${fmtNum(f.ustExecutada)}.`}
         caption={
           estourados.length > 0
             ? `${fmtNum(estourados.length)} atividade(s) já passaram do previsto no ETP: ${estourados.map((e) => e.codigo).join(", ")}.`
             : `${fmtNum(f.aClassificar.length)} tarefas ainda não têm um código do ETP e ficam fora da conta.`
         }
-        comoLer="Cada tarefa vale a UST da atividade do ETP cujo código a X-VIA escreveu na descrição (ex.: 'Catálogo DOC.07'). Lançada = todas as tarefas com código; executada = só as concluídas. Previsto = ocorrências da memória de cálculo do ETP. Tarefas reabertas na revisão do backlog contam como não executadas até a X-VIA fechá-las."
+        comoLer={`Conta só o catálogo do contrato da X-VIA: tarefas lançadas no contrato do Governo do Estado não entram. Cada tarefa vale a UST da atividade do catálogo da X-VIA marcada nela; quando a tarefa ainda não tem a atividade marcada, vale o código que a X-VIA escreveu na descrição (ex.: 'Catálogo DOC.07').${f.semContrato ? ` ${fmtNum(f.semContrato)} das tarefas somadas ainda estão nessa situação.` : ""}${f.valorDoEtp ? ` ${fmtNum(f.valorDoEtp)} tarefas usam, por enquanto, o valor da tabela do ETP, porque o valor da atividade no catálogo da X-VIA ainda não foi carregado.` : ""} Lançada = todas as tarefas com atividade; executada = só as concluídas. Previsto = ocorrências da memória de cálculo do ETP.`}
       />
 
       <DashboardSection

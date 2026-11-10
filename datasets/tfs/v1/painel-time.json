@@ -1,0 +1,144 @@
+[
+  {
+    "titulo": "REUNIÃO",
+    "tipo": "numero",
+    "total": 184
+  },
+  {
+    "titulo": "EPIC",
+    "tipo": "numero",
+    "total": 15
+  },
+  {
+    "titulo": "FEATURE",
+    "tipo": "numero",
+    "total": 120
+  },
+  {
+    "titulo": "PBI",
+    "tipo": "numero",
+    "total": 491
+  },
+  {
+    "titulo": "TASK",
+    "tipo": "numero",
+    "total": 1457
+  },
+  {
+    "titulo": "APLICATIVO",
+    "tipo": "numero",
+    "total": 8
+  },
+  {
+    "titulo": "DESPRIORIZADO",
+    "tipo": "numero",
+    "total": 7
+  },
+  {
+    "titulo": "BUG",
+    "tipo": "numero",
+    "total": 29
+  },
+  {
+    "titulo": "AGUAR... DECISÃO",
+    "tipo": "numero",
+    "total": 10
+  },
+  {
+    "titulo": "IMPEDIDO",
+    "tipo": "numero",
+    "total": 7
+  },
+  {
+    "titulo": "EM DESENVOLVIMENTO",
+    "tipo": "numero",
+    "total": 12
+  },
+  {
+    "titulo": "DESCONTINUADOS",
+    "tipo": "numero",
+    "total": 1
+  },
+  {
+    "titulo": "TASK's ' sem UST's",
+    "tipo": "grafico",
+    "total": 570,
+    "grupos": [
+      {
+        "rotulo": "Sprint 7",
+        "qtd": 161
+      },
+      {
+        "rotulo": "Sprint 8",
+        "qtd": 138
+      },
+      {
+        "rotulo": "Sem sprint",
+        "qtd": 95
+      },
+      {
+        "rotulo": "Sprint 9",
+        "qtd": 60
+      },
+      {
+        "rotulo": "Sprint 6",
+        "qtd": 55
+      },
+      {
+        "rotulo": "Sprint 4",
+        "qtd": 33
+      },
+      {
+        "rotulo": "Sprint 5",
+        "qtd": 11
+      },
+      {
+        "rotulo": "Sprint 0",
+        "qtd": 7
+      },
+      {
+        "rotulo": "Sprint 3",
+        "qtd": 6
+      },
+      {
+        "rotulo": "Sprint 2",
+        "qtd": 4
+      }
+    ]
+  },
+  {
+    "titulo": "PACOTES DE ENTREGA",
+    "tipo": "grafico",
+    "total": 323,
+    "grupos": [
+      {
+        "rotulo": "A fazer",
+        "qtd": 136
+      },
+      {
+        "rotulo": "Em Produção",
+        "qtd": 118
+      },
+      {
+        "rotulo": "Área de Negócios",
+        "qtd": 29
+      },
+      {
+        "rotulo": "Impedido",
+        "qtd": 14
+      },
+      {
+        "rotulo": "Em Desenvolvimento",
+        "qtd": 12
+      },
+      {
+        "rotulo": "Aguardando decisão",
+        "qtd": 10
+      },
+      {
+        "rotulo": "Aguardando Validação do Órgão",
+        "qtd": 4
+      }
+    ]
+  }
+]

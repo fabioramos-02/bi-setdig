@@ -39,6 +39,34 @@
     "nome": "Sprint 5",
     "inicio": "2026-10-14",
     "fim": "2026-10-27",
+    "situacao": "encerrada"
+  },
+  {
+    "sprint": "XVIA\\Sprint 6",
+    "nome": "Sprint 6",
+    "inicio": "2026-10-28",
+    "fim": "2026-11-11",
     "situacao": "atual"
+  },
+  {
+    "sprint": "XVIA\\Sprint 7",
+    "nome": "Sprint 7",
+    "inicio": "2026-11-12",
+    "fim": "2026-11-26",
+    "situacao": "futura"
+  },
+  {
+    "sprint": "XVIA\\Sprint 8",
+    "nome": "Sprint 8",
+    "inicio": "2026-11-27",
+    "fim": "2026-12-10",
+    "situacao": "futura"
+  },
+  {
+    "sprint": "XVIA\\Sprint 9",
+    "nome": "Sprint 9",
+    "inicio": "2026-12-11",
+    "fim": "2026-12-24",
+    "situacao": "futura"
   }
 ]
