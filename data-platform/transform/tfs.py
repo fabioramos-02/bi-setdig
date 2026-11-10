@@ -162,6 +162,9 @@ def montar_itens(arvore: dict[int, int | None], brutos: list[dict],
             valor_ust = ust_xvia_codigo.get(codigo)
         aberto = f.get("System.State") not in ("Done", "Removed")
         depende_de, trava = dependencias((relacoes or {}).get(item_id))
+        # Órgão: o campo Órgãos/Secretarias do TFS vale; sem ele, o prefixo da Feature.
+        orgao_campo = (f.get("Custom.SGD.OrgaosSecretarias") or "").strip().upper() or None
+        orgao_feature = orgao_da_feature(titulo(feature_id) or "", siglas)
         linhas.append({
             "id": item_id,
             "tipo": tipo,
@@ -176,7 +179,8 @@ def montar_itens(arvore: dict[int, int | None], brutos: list[dict],
             "featureId": feature_id,
             "feature": titulo(feature_id),
             "pbiId": pbi_id if tipo == "Task" else None,
-            "orgao": orgao_da_feature(titulo(feature_id) or "", siglas),
+            "orgao": ALIAS_ORGAO.get(orgao_campo, orgao_campo) if orgao_campo else orgao_feature,
+            "orgaoOrigem": "campo" if orgao_campo else ("feature" if orgao_feature else None),
             "tags": tags,
             "tipoEntrega": TIPO_ENTREGA.get(coluna_ref or ""),
             "pendencia": aberto and tipo in ("Product Backlog Item", "Bug") and (
@@ -189,6 +193,9 @@ def montar_itens(arvore: dict[int, int | None], brutos: list[dict],
             "responsavel": pessoa(f.get("System.AssignedTo")),
             "dependeDe": depende_de,
             "trava": trava,
+            "faturado": (str(f.get("Custom.SGI.Faturado")).strip() or None) if f.get("Custom.SGI.Faturado") else None,
+            "dataFaturamento": _data(f.get("Custom.SGI.DataFaturamento")),
+            "versaoSdp": f.get("Custom.SGI.VersaoSDP") or None,
             "diasSemAtualizar": (hoje - date.fromisoformat(alterado)).days if alterado else None,
             "empresa": empresa,
             "atividadeUst": atividade,

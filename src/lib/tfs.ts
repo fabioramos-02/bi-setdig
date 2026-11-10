@@ -42,6 +42,9 @@ export type TfsItem = {
   inicioPrevisto?: string | null;
   dependeDe?: number[];
   trava?: number[];
+  orgaoOrigem?: "campo" | "feature" | null;
+  faturado?: string | null; // Custom.SGI.Faturado — vazio no TFS em 11/2026, formato a definir
+  dataFaturamento?: string | null;
 };
 
 export type TfsSprint = {
@@ -410,6 +413,13 @@ export function qualidadeDados(itens: TfsItem[], etp: EtpUst | null, contrato: T
     { rotulo: "Tarefas da X-VIA sem código do catálogo (UST sem origem)", itens: x.aClassificar },
     { rotulo: "Entregas concluídas fora da coluna Em Produção (sem evidência de produção)", itens: itens.filter((i) => ehEntrega(i) && i.estado === "Done" && i.coluna !== COLUNA_PRODUCAO) },
   ];
+  const temCamposFin = itens.some((i) => i.faturado !== undefined);
+  const executadas = itens.filter((i) => ehTarefaXvia(i) && i.estado === "Done");
+  lista.push(
+    { rotulo: "Tarefas da X-VIA concluídas sem o campo Faturado", itens: temCamposFin ? executadas.filter((i) => !i.faturado) : [], nota: temCamposFin ? undefined : "Campo ainda não extraído do TFS." },
+    { rotulo: "Tarefas da X-VIA concluídas sem órgão identificado", itens: executadas.filter((i) => !i.orgao) },
+    { rotulo: "Entregas com órgão só pelo prefixo da Feature (campo Órgãos/Secretarias vazio)", itens: itens.filter((i) => ehEntrega(i) && aberto(i) && i.orgaoOrigem === "feature") },
+  );
   if (aConciliar) lista.push({ rotulo: "Início do contrato a conciliar", itens: [], nota: "As fontes divergem; ver contrato.json → inicio.opcoes." });
   return lista;
 }
@@ -428,6 +438,76 @@ export function sinteseExecutiva(a: {
   if (a.decisoes) partes.push(`${fmtNum(a.decisoes)} ${a.decisoes === 1 ? "entrega aguarda" : "entregas aguardam"} decisão ou estão impedidas.`);
   if (a.atrasadas) partes.push(`${fmtNum(a.atrasadas)} ${a.atrasadas === 1 ? "passou" : "passaram"} da sprint ou do prazo previsto.`);
   return partes.join(" ");
+}
+
+// --- Execução financeira por órgão e serviço --------------------------------
+// Só a EXECUÇÃO tem fonte (Tasks da X-VIA concluídas no TFS). Aceite,
+// faturamento e pagamento não têm fonte ainda: ficam null ("Não informado"),
+// nunca estimados a partir da execução. Task sem órgão vai para a linha
+// "Sem órgão identificado" — nada é repartido por suposição.
+
+export const SEM_ORGAO = "Sem órgão identificado";
+
+export type LinhaServico = { pbiId: number | null; servico: string; ustExecutada: number; valorConsumido: number | null; tarefas: TfsItem[] };
+export type LinhaOrgao = {
+  orgao: string;
+  ustExecutada: number;
+  valorConsumido: number | null;
+  ustAceita: null;
+  valorFaturado: null;
+  valorPago: null;
+  pendente: null;
+  tarefasMarcadasFaturadas: number;
+  servicos: LinhaServico[];
+  tarefas: TfsItem[];
+};
+
+export function consumoPorOrgao(itens: TfsItem[], etp: EtpUst | null, contrato: TfsContrato | null): LinhaOrgao[] {
+  const tabela = etp ? ustEtp(etp) : new Map<string, CodigoEtp>();
+  const valorUst = contrato?.valorUst ?? null;
+  const porId = new Map(itens.map((i) => [i.id, i]));
+  const orgaos = new Map<string, LinhaOrgao>();
+  for (const t of itens.filter(ehTarefaXvia)) {
+    if (t.estado !== "Done") continue;
+    const ref = t.codigoCatalogo ? tabela.get(t.codigoCatalogo) : undefined;
+    if (!ref) continue; // sem código do ETP: fica "a classificar", fora da soma (mesma regra de execucaoXvia)
+    const ust = t.ust ?? ref.ustUnitaria;
+    const nome = t.orgao ?? SEM_ORGAO;
+    const o = orgaos.get(nome) ?? {
+      orgao: nome, ustExecutada: 0, valorConsumido: null, ustAceita: null, valorFaturado: null,
+      valorPago: null, pendente: null, tarefasMarcadasFaturadas: 0, servicos: [], tarefas: [],
+    };
+    o.ustExecutada += ust;
+    o.tarefas.push(t);
+    if (t.faturado) o.tarefasMarcadasFaturadas += 1;
+    let s = o.servicos.find((x) => x.pbiId === t.pbiId);
+    if (!s) {
+      s = { pbiId: t.pbiId, servico: (t.pbiId && porId.get(t.pbiId)?.titulo) || "Sem serviço (tarefa fora de PBI)", ustExecutada: 0, valorConsumido: null, tarefas: [] };
+      o.servicos.push(s);
+    }
+    s.ustExecutada += ust;
+    s.tarefas.push(t);
+    orgaos.set(nome, o);
+  }
+  const linhas = [...orgaos.values()];
+  for (const o of linhas) {
+    o.valorConsumido = valorUst === null ? null : o.ustExecutada * valorUst;
+    for (const s of o.servicos) s.valorConsumido = valorUst === null ? null : s.ustExecutada * valorUst;
+    o.servicos.sort((a, b) => b.ustExecutada - a.ustExecutada);
+  }
+  return linhas.sort((a, b) => (a.orgao === SEM_ORGAO ? 1 : b.orgao === SEM_ORGAO ? -1 : b.ustExecutada - a.ustExecutada));
+}
+
+/** Etapas da medição e se existe fonte para cada uma. */
+export function cadeiaMedicao(itens: TfsItem[]) {
+  const temFaturado = itens.some((i) => i.faturado);
+  return [
+    { etapa: "Ordem de Serviço", fonte: null as string | null, falta: "Controle das Ordens de Serviço (número, órgão, serviço, UST prevista)" },
+    { etapa: "Execução", fonte: "TFS — Tasks da X-VIA concluídas com código do catálogo", falta: null as string | null },
+    { etapa: "Aceite", fonte: null, falta: "Registro da fiscalização com as UST aceitas por OS" },
+    { etapa: "Nota fiscal / medição", fonte: temFaturado ? "TFS — campo Faturado (formato a definir)" : null, falta: temFaturado ? null : "Campo Faturado e Data de Faturamento no TFS, ou as notas fiscais e medições" },
+    { etapa: "Pagamento", fonte: null, falta: "Fonte oficial de pagamentos (sistema financeiro do Estado)" },
+  ];
 }
 
 // --- Filtros do painel (ficam na URL) --------------------------------------

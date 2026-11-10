@@ -22,7 +22,7 @@
   {
     "titulo": "TASK",
     "tipo": "numero",
-    "total": 1553
+    "total": 1552
   },
   {
     "titulo": "APLICATIVO",
@@ -42,7 +42,7 @@
   {
     "titulo": "AGUAR... DECISÃO",
     "tipo": "numero",
-    "total": 14
+    "total": 12
   },
   {
     "titulo": "IMPEDIDO",
@@ -117,19 +117,19 @@
       },
       {
         "rotulo": "A fazer",
-        "qtd": 104
+        "qtd": 105
       },
       {
         "rotulo": "Área de Negócios",
-        "qtd": 46
-      },
-      {
-        "rotulo": "Aguardando decisão",
-        "qtd": 14
+        "qtd": 47
       },
       {
         "rotulo": "Em Desenvolvimento",
         "qtd": 14
+      },
+      {
+        "rotulo": "Aguardando decisão",
+        "qtd": 12
       },
       {
         "rotulo": "Impedido",

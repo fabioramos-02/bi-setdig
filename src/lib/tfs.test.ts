@@ -5,6 +5,8 @@ import {
   andamentoEntregas,
   atrasadas,
   consumoContrato,
+  consumoPorOrgao,
+  SEM_ORGAO,
   quemResolve,
   entregasDaSprint,
   entregasDoMes,
@@ -211,4 +213,21 @@ test("quemResolve nunca inventa: responsável, ou a frente marcada como não inf
   assert.equal(quemResolve(item({ responsavel: "Maycon" })), "Maycon");
   assert.equal(quemResolve(item({ responsavel: null })), "Não informado (frente X-VIA)");
   assert.match(quemResolve(item({})), /ainda não extraído/);
+});
+
+test("consumoPorOrgao: soma por órgão bate com o executado total e não aloca sem órgão", () => {
+  const etp: EtpUst = { totalEtp: 100, totalEstrutural: 0, perfis: [], estruturais: [{ codigo: "DOC.07", servico: "Doc", ust: 3, ocorrencia: 10 }] };
+  const c = contrato({ ustTotalTr: 100, valorUst: 10 });
+  const t = (id: number, orgao: string | null, pbiId: number | null, estado = "Done") =>
+    item({ id, tipo: "Task", estado, area: AREA_UST, codigoCatalogo: "DOC.07", orgao, pbiId });
+  const itens = [
+    item({ id: 100, titulo: "Cartão SUS" }),
+    t(1, "SES", 100), t(2, "SES", 100), t(3, null, null), t(4, "SES", 100, "To Do"),
+    item({ id: 5, tipo: "Task", estado: "Done", area: AREA_UST, codigoCatalogo: null, orgao: "SES" }),
+  ];
+  const linhas = consumoPorOrgao(itens, etp, c);
+  assert.deepEqual(linhas.map((l) => [l.orgao, l.ustExecutada, l.valorConsumido]), [["SES", 6, 60], [SEM_ORGAO, 3, 30]]);
+  assert.equal(linhas[0].servicos[0].servico, "Cartão SUS");
+  assert.equal(linhas[0].valorPago, null);
+  assert.equal(linhas.reduce((s, l) => s + l.ustExecutada, 0), consumoContrato(itens, etp, c, 1).ustExecutada);
 });

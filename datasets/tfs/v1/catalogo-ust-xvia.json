@@ -1,0 +1,2528 @@
+{
+  "data": [
+    {
+      "id": 4935,
+      "descricaoAtividade": "DAD.20 - Modelagem de dados conceitual",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 4,
+          "id": 7013
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DAD.20",
+        "Serviço/Produto": "Modelagem de dados conceitual"
+      }
+    },
+    {
+      "id": 4945,
+      "descricaoAtividade": "DEV.01 - Implantação de padrões de acessibilidade no software",
+      "complexidades": [
+        {
+          "complexidade": "Simples",
+          "valorUst": 4,
+          "id": 7023
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEV.01",
+        "Serviço/Produto": "Implantação de padrões de acessibilidade no software"
+      }
+    },
+    {
+      "id": 4944,
+      "descricaoAtividade": "DEV.02 - Criação de Tela Web",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 18,
+          "id": 7022
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEV.02",
+        "Serviço/Produto": "Criação de Tela Web"
+      }
+    },
+    {
+      "id": 4943,
+      "descricaoAtividade": "DEV.03 - Atualização de Tela Web",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 8,
+          "id": 7021
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEV.03",
+        "Serviço/Produto": "Atualização de Tela Web"
+      }
+    },
+    {
+      "id": 4948,
+      "descricaoAtividade": "DEV.04 - Criação de Relatório",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 10,
+          "id": 7026
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEV.04",
+        "Serviço/Produto": "Criação de Relatório"
+      }
+    },
+    {
+      "id": 4936,
+      "descricaoAtividade": "DEV.05 - Atualização de Relatório",
+      "complexidades": [
+        {
+          "complexidade": "Simples",
+          "valorUst": 8,
+          "id": 7014
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEV.05",
+        "Serviço/Produto": "Atualização de Relatório"
+      }
+    },
+    {
+      "id": 4942,
+      "descricaoAtividade": "DEV.06 - Criação de Protótipo – Alta Fidelidade",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 18,
+          "id": 7020
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEV.06",
+        "Serviço/Produto": "Criação de Protótipo – Alta Fidelidade"
+      }
+    },
+    {
+      "id": 4946,
+      "descricaoAtividade": "DEV.07 - Atualização de Protótipo – Alta Fidelidade",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 8,
+          "id": 7024
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEV.07",
+        "Serviço/Produto": "Atualização de Protótipo – Alta Fidelidade"
+      }
+    },
+    {
+      "id": 4947,
+      "descricaoAtividade": "DEV.08 - Desenvolvimento de funcionalidade",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 18,
+          "id": 7025
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEV.08",
+        "Serviço/Produto": "Desenvolvimento de funcionalidade"
+      }
+    },
+    {
+      "id": 4940,
+      "descricaoAtividade": "DEV.09 - Atualização de funcionalidade",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 8,
+          "id": 7018
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEV.09",
+        "Serviço/Produto": "Atualização de funcionalidade"
+      }
+    },
+    {
+      "id": 4939,
+      "descricaoAtividade": "DEV.10 - Criação de integração com Sistemas Externos",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 10,
+          "id": 7017
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEV.10",
+        "Serviço/Produto": "Criação de integração com Sistemas Externos"
+      }
+    },
+    {
+      "id": 4949,
+      "descricaoAtividade": "DEV.11 - Atualização de integração com Sistemas Externos",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 8,
+          "id": 7027
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEV.11",
+        "Serviço/Produto": "Atualização de integração com Sistemas Externos"
+      }
+    },
+    {
+      "id": 4941,
+      "descricaoAtividade": "DEV.12 - Orientação Técnica de Programação (Pair Programming)",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 2,
+          "id": 7019
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEV.12",
+        "Serviço/Produto": "Orientação Técnica de Programação (Pair Programming)"
+      }
+    },
+    {
+      "id": 4937,
+      "descricaoAtividade": "DEV.13 - Publicação de Branches e Versionamento de Código",
+      "complexidades": [
+        {
+          "complexidade": "Simples",
+          "valorUst": 3,
+          "id": 7015
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEV.13",
+        "Serviço/Produto": "Publicação de Branches e Versionamento de Código"
+      }
+    },
+    {
+      "id": 4950,
+      "descricaoAtividade": "DEV.14 - Atualização de Bibliotecas, Plugins e Frameworks",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 12,
+          "id": 7028
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEV.14",
+        "Serviço/Produto": "Atualização de Bibliotecas, Plugins e Frameworks"
+      }
+    },
+    {
+      "id": 4938,
+      "descricaoAtividade": "DEV.15 - Code Review - Nível Básico",
+      "complexidades": [
+        {
+          "complexidade": "Simples",
+          "valorUst": 2,
+          "id": 7016
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEV.15",
+        "Serviço/Produto": "Code Review - Nível Básico"
+      }
+    },
+    {
+      "id": 4955,
+      "descricaoAtividade": "DEV.16 - Code Review - Nível Intermediário",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 6,
+          "id": 7033
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEV.16",
+        "Serviço/Produto": "Code Review - Nível Intermediário"
+      }
+    },
+    {
+      "id": 4951,
+      "descricaoAtividade": "DEV.17 - Code Review - Nível Avançado",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 12,
+          "id": 7029
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEV.17",
+        "Serviço/Produto": "Code Review - Nível Avançado"
+      }
+    },
+    {
+      "id": 4954,
+      "descricaoAtividade": "DEV.18 - Análise de Problemas a partir de Métricas de Produto",
+      "complexidades": [
+        {
+          "complexidade": "Simples",
+          "valorUst": 1,
+          "id": 7032
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEV.18",
+        "Serviço/Produto": "Análise de Problemas a partir de Métricas de Produto"
+      }
+    },
+    {
+      "id": 4953,
+      "descricaoAtividade": "DEV.19 - Implantação de Pipeline CI/CD",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 3,
+          "id": 7031
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEV.19",
+        "Serviço/Produto": "Implantação de Pipeline CI/CD"
+      }
+    },
+    {
+      "id": 4952,
+      "descricaoAtividade": "DEV.20 - Automação de Build e Deploy",
+      "complexidades": [
+        {
+          "complexidade": "Simples",
+          "valorUst": 2,
+          "id": 7030
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEV.20",
+        "Serviço/Produto": "Automação de Build e Deploy"
+      }
+    },
+    {
+      "id": 4964,
+      "descricaoAtividade": "DEV.21 - Implementação de Logs Estruturados",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 8,
+          "id": 7042
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEV.21",
+        "Serviço/Produto": "Implementação de Logs Estruturados"
+      }
+    },
+    {
+      "id": 4956,
+      "descricaoAtividade": "DEV.22 - Implementação de Mecanismos de Cache",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 12,
+          "id": 7034
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEV.22",
+        "Serviço/Produto": "Implementação de Mecanismos de Cache"
+      }
+    },
+    {
+      "id": 4962,
+      "descricaoAtividade": "DEV.23 - Implantação de Políticas de Segurança de Código",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 12,
+          "id": 7040
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEV.23",
+        "Serviço/Produto": "Implantação de Políticas de Segurança de Código"
+      }
+    },
+    {
+      "id": 4957,
+      "descricaoAtividade": "DEV.24 - Implementação de Autenticação e Autorização Segura",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 8,
+          "id": 7035
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEV.24",
+        "Serviço/Produto": "Implementação de Autenticação e Autorização Segura"
+      }
+    },
+    {
+      "id": 4963,
+      "descricaoAtividade": "DEV.28 - Implementação de Políticas de Qualidade de Código",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 8,
+          "id": 7041
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEV.28",
+        "Serviço/Produto": "Implementação de Políticas de Qualidade de Código"
+      }
+    },
+    {
+      "id": 4961,
+      "descricaoAtividade": "DEV.29 - Revisão de Padrões de Desenvolvimento",
+      "complexidades": [
+        {
+          "complexidade": "Simples",
+          "valorUst": 2,
+          "id": 7039
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEV.29",
+        "Serviço/Produto": "Revisão de Padrões de Desenvolvimento"
+      }
+    },
+    {
+      "id": 4960,
+      "descricaoAtividade": "DEV.30 - Implementação de Autenticação Multifator (MFA)",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 8,
+          "id": 7038
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEV.30",
+        "Serviço/Produto": "Implementação de Autenticação Multifator (MFA)"
+      }
+    },
+    {
+      "id": 4966,
+      "descricaoAtividade": "DEV.31 - Implementação de Criptografia de Dados em Trânsito",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 18,
+          "id": 7044
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEV.31",
+        "Serviço/Produto": "Implementação de Criptografia de Dados em Trânsito"
+      }
+    },
+    {
+      "id": 4958,
+      "descricaoAtividade": "DEV.32 - Implementação de Criptografia de Dados em Repouso",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 18,
+          "id": 7036
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEV.32",
+        "Serviço/Produto": "Implementação de Criptografia de Dados em Repouso"
+      }
+    },
+    {
+      "id": 4965,
+      "descricaoAtividade": "DEV.33 - Integração com Serviços de Mensageria",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 18,
+          "id": 7043
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEV.33",
+        "Serviço/Produto": "Integração com Serviços de Mensageria"
+      }
+    },
+    {
+      "id": 4959,
+      "descricaoAtividade": "DEV.34 - Integração com Serviços em Nuvem",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 18,
+          "id": 7037
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEV.34",
+        "Serviço/Produto": "Integração com Serviços em Nuvem"
+      }
+    },
+    {
+      "id": 4969,
+      "descricaoAtividade": "DEVOPS.01 - Homologação de novas ferramentas",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 4,
+          "id": 7047
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEVOPS.01",
+        "Serviço/Produto": "Homologação de novas ferramentas"
+      }
+    },
+    {
+      "id": 4974,
+      "descricaoAtividade": "DEVOPS.02 - Avaliação de nova tecnologia",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 4,
+          "id": 7052
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEVOPS.02",
+        "Serviço/Produto": "Avaliação de nova tecnologia"
+      }
+    },
+    {
+      "id": 4967,
+      "descricaoAtividade": "DEVOPS.03 - Análise Técnica Especializada de Soluções Digitais",
+      "complexidades": [
+        {
+          "complexidade": "Simples",
+          "valorUst": 1,
+          "id": 7045
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEVOPS.03",
+        "Serviço/Produto": "Análise Técnica Especializada de Soluções Digitais"
+      }
+    },
+    {
+      "id": 4973,
+      "descricaoAtividade": "DEVOPS.04 - Diagnóstico Técnico Especializado (Média)",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 4,
+          "id": 7051
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEVOPS.04",
+        "Serviço/Produto": "Diagnóstico Técnico Especializado (Média)"
+      }
+    },
+    {
+      "id": 4978,
+      "descricaoAtividade": "DEVOPS.05 - Diagnóstico Técnico Especializado (Complexa)",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 9,
+          "id": 7056
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEVOPS.05",
+        "Serviço/Produto": "Diagnóstico Técnico Especializado (Complexa)"
+      }
+    },
+    {
+      "id": 4979,
+      "descricaoAtividade": "DEVOPS.06 - Elaboração de material didático",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 4,
+          "id": 7057
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEVOPS.06",
+        "Serviço/Produto": "Elaboração de material didático"
+      }
+    },
+    {
+      "id": 4968,
+      "descricaoAtividade": "DEVOPS.07 - Ministração de treinamentos e palestras (até 2h)",
+      "complexidades": [
+        {
+          "complexidade": "Simples",
+          "valorUst": 2,
+          "id": 7046
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEVOPS.07",
+        "Serviço/Produto": "Ministração de treinamentos e palestras (até 2h)"
+      }
+    },
+    {
+      "id": 4980,
+      "descricaoAtividade": "DEVOPS.08 - Ministração de treinamentos e palestras (2h-4h)",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 8,
+          "id": 7058
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEVOPS.08",
+        "Serviço/Produto": "Ministração de treinamentos e palestras (2h-4h)"
+      }
+    },
+    {
+      "id": 4977,
+      "descricaoAtividade": "DEVOPS.09 - Ministração de treinamentos e palestras (4h-8h)",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 24,
+          "id": 7055
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEVOPS.09",
+        "Serviço/Produto": "Ministração de treinamentos e palestras (4h-8h)"
+      }
+    },
+    {
+      "id": 4976,
+      "descricaoAtividade": "DEVOPS.10 - Participação em capacitações externas (até 2h)",
+      "complexidades": [
+        {
+          "complexidade": "Simples",
+          "valorUst": 2,
+          "id": 7054
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEVOPS.10",
+        "Serviço/Produto": "Participação em capacitações externas (até 2h)"
+      }
+    },
+    {
+      "id": 4972,
+      "descricaoAtividade": "DEVOPS.11 - Participação em capacitações externas (2h-4h)",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 8,
+          "id": 7050
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEVOPS.11",
+        "Serviço/Produto": "Participação em capacitações externas (2h-4h)"
+      }
+    },
+    {
+      "id": 4971,
+      "descricaoAtividade": "DEVOPS.12 - Participação em capacitações externas (4h-8h)",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 24,
+          "id": 7049
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEVOPS.12",
+        "Serviço/Produto": "Participação em capacitações externas (4h-8h)"
+      }
+    },
+    {
+      "id": 4981,
+      "descricaoAtividade": "DEVOPS.13 - Pesquisa normativa",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 4,
+          "id": 7059
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEVOPS.13",
+        "Serviço/Produto": "Pesquisa normativa"
+      }
+    },
+    {
+      "id": 4970,
+      "descricaoAtividade": "DEVOPS.14 - PoC de novas tecnologias (até 8h)",
+      "complexidades": [
+        {
+          "complexidade": "Simples",
+          "valorUst": 8,
+          "id": 7048
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEVOPS.14",
+        "Serviço/Produto": "PoC de novas tecnologias (até 8h)"
+      }
+    },
+    {
+      "id": 4975,
+      "descricaoAtividade": "DEVOPS.15 - PoC de novas tecnologias (8h-24h)",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 48,
+          "id": 7053
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEVOPS.15",
+        "Serviço/Produto": "PoC de novas tecnologias (8h-24h)"
+      }
+    },
+    {
+      "id": 4982,
+      "descricaoAtividade": "DEVOPS.16 - PoC de novas tecnologias (acima de 24h)",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 72,
+          "id": 7060
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEVOPS.16",
+        "Serviço/Produto": "PoC de novas tecnologias (acima de 24h)"
+      }
+    },
+    {
+      "id": 4984,
+      "descricaoAtividade": "DEVOPS.17 - Monitoramento operacional de sistemas",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 2,
+          "id": 7062
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEVOPS.17",
+        "Serviço/Produto": "Monitoramento operacional de sistemas"
+      }
+    },
+    {
+      "id": 4986,
+      "descricaoAtividade": "DEVOPS.18 - Monitoramento de infraestrutura e aplicações",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 2,
+          "id": 7064
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEVOPS.18",
+        "Serviço/Produto": "Monitoramento de infraestrutura e aplicações"
+      }
+    },
+    {
+      "id": 4983,
+      "descricaoAtividade": "DEVOPS.19 - Monitoramento de performance e métricas técnicas",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 2,
+          "id": 7061
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEVOPS.19",
+        "Serviço/Produto": "Monitoramento de performance e métricas técnicas"
+      }
+    },
+    {
+      "id": 4985,
+      "descricaoAtividade": "DEVOPS.20 - Monitoramento de conformidade e segurança",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 2,
+          "id": 7063
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEVOPS.20",
+        "Serviço/Produto": "Monitoramento de conformidade e segurança"
+      }
+    },
+    {
+      "id": 4987,
+      "descricaoAtividade": "DEVOPS.21 - Monitoramento dos SGBDs",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 2,
+          "id": 7065
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DEVOPS.21",
+        "Serviço/Produto": "Monitoramento dos SGBDs"
+      }
+    },
+    {
+      "id": 4989,
+      "descricaoAtividade": "DOC.01 - Criação de documento de arquitetura",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 8,
+          "id": 7067
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DOC.01",
+        "Serviço/Produto": "Criação de documento de arquitetura"
+      }
+    },
+    {
+      "id": 4988,
+      "descricaoAtividade": "DOC.02 - Atualização de documento de arquitetura",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 4,
+          "id": 7066
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DOC.02",
+        "Serviço/Produto": "Atualização de documento de arquitetura"
+      }
+    },
+    {
+      "id": 4991,
+      "descricaoAtividade": "DOC.03 - Documentação Técnica de API/Web Service",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 5,
+          "id": 7069
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DOC.03",
+        "Serviço/Produto": "Documentação Técnica de API/Web Service"
+      }
+    },
+    {
+      "id": 4994,
+      "descricaoAtividade": "DOC.04 - Catálogo de Métricas e Indicadores",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 12,
+          "id": 7072
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DOC.04",
+        "Serviço/Produto": "Catálogo de Métricas e Indicadores"
+      }
+    },
+    {
+      "id": 4990,
+      "descricaoAtividade": "DOC.05 - Documentação Técnica de outras naturezas",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 5,
+          "id": 7068
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DOC.05",
+        "Serviço/Produto": "Documentação Técnica de outras naturezas"
+      }
+    },
+    {
+      "id": 4993,
+      "descricaoAtividade": "DOC.06 - Documento de revisão da iteração (sprint)",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 10,
+          "id": 7071
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DOC.06",
+        "Serviço/Produto": "Documento de revisão da iteração (sprint)"
+      }
+    },
+    {
+      "id": 4992,
+      "descricaoAtividade": "DOC.07 - Documentação de ação de projeto (atas, relatórios)",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 3,
+          "id": 7070
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DOC.07",
+        "Serviço/Produto": "Documentação de ação de projeto (atas, relatórios)"
+      }
+    },
+    {
+      "id": 4997,
+      "descricaoAtividade": "DOC.08 - Documento de retrospectiva",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 10,
+          "id": 7075
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DOC.08",
+        "Serviço/Produto": "Documento de retrospectiva"
+      }
+    },
+    {
+      "id": 4995,
+      "descricaoAtividade": "DOC.09 - Criação de Manual do usuário",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 5,
+          "id": 7073
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DOC.09",
+        "Serviço/Produto": "Criação de Manual do usuário"
+      }
+    },
+    {
+      "id": 4998,
+      "descricaoAtividade": "DOC.10 - Atualização de Manual do usuário",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 2,
+          "id": 7076
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DOC.10",
+        "Serviço/Produto": "Atualização de Manual do usuário"
+      }
+    },
+    {
+      "id": 4996,
+      "descricaoAtividade": "DOC.11 - Documentação de UX",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 8,
+          "id": 7074
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DOC.11",
+        "Serviço/Produto": "Documentação de UX"
+      }
+    },
+    {
+      "id": 4999,
+      "descricaoAtividade": "DOC.12 - Relatório de não conformidade",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 2,
+          "id": 7077
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "DOC.12",
+        "Serviço/Produto": "Relatório de não conformidade"
+      }
+    },
+    {
+      "id": 5015,
+      "descricaoAtividade": "GOV.01 - Planejamento de Capacidade",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 36,
+          "id": 7093
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "GOV.01",
+        "Serviço/Produto": "Planejamento de Capacidade"
+      }
+    },
+    {
+      "id": 5017,
+      "descricaoAtividade": "GOV.02 - Definição e revisão de SLA",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 8,
+          "id": 7094
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "GOV.02",
+        "Serviço/Produto": "Definição e revisão de SLA"
+      }
+    },
+    {
+      "id": 5020,
+      "descricaoAtividade": "GOV.03 - Monitoramento e Gestão de SLA",
+      "complexidades": [
+        {
+          "complexidade": "Simples",
+          "valorUst": 2,
+          "id": 7095
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "GOV.03",
+        "Serviço/Produto": "Monitoramento e Gestão de SLA"
+      }
+    },
+    {
+      "id": 5022,
+      "descricaoAtividade": "GOV.04 - Comunicação Institucional e Técnica de TI",
+      "complexidades": [
+        {
+          "complexidade": "Simples",
+          "valorUst": 2,
+          "id": 7097
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "GOV.04",
+        "Serviço/Produto": "Comunicação Institucional e Técnica de TI"
+      }
+    },
+    {
+      "id": 5021,
+      "descricaoAtividade": "GOV.05 - Gestão de Conformidade e Auditoria",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 12,
+          "id": 7096
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "GOV.05",
+        "Serviço/Produto": "Gestão de Conformidade e Auditoria"
+      }
+    },
+    {
+      "id": 5023,
+      "descricaoAtividade": "GOV.06 - Gestão de Conhecimento",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 39,
+          "id": 7098
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "GOV.06",
+        "Serviço/Produto": "Gestão de Conhecimento"
+      }
+    },
+    {
+      "id": 5018,
+      "descricaoAtividade": "GOV.07 - Scorecards e Indicadores Compositivos",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 12,
+          "id": 7179
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "GOV.07",
+        "Serviço/Produto": "Scorecards e Indicadores Compositivos"
+      }
+    },
+    {
+      "id": 5019,
+      "descricaoAtividade": "GOV.08 - Gestão de Demandas e Priorização de Serviços Estratégicos",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 4,
+          "id": 7181
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "GOV.08",
+        "Serviço/Produto": "Gestão de Demandas e Priorização de Serviços Estratégicos"
+      }
+    },
+    {
+      "id": 5016,
+      "descricaoAtividade": "GOV.09 - Planejamento de Sustentabilidade em TI",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 4,
+          "id": 7178
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "GOV.09",
+        "Serviço/Produto": "Planejamento de Sustentabilidade em TI"
+      }
+    },
+    {
+      "id": 5008,
+      "descricaoAtividade": "GP.01 - Definição e Revisão de Objetivos e Indicadores",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 8,
+          "id": 7086
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "GP.01",
+        "Serviço/Produto": "Definição e Revisão de Objetivos e Indicadores"
+      }
+    },
+    {
+      "id": 5001,
+      "descricaoAtividade": "GP.02 - Gestão de Portfólio de Projetos",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 36,
+          "id": 7079
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "GP.02",
+        "Serviço/Produto": "Gestão de Portfólio de Projetos"
+      }
+    },
+    {
+      "id": 5005,
+      "descricaoAtividade": "GP.03 - Priorização de Portfólio de Projetos",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 4,
+          "id": 7083
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "GP.03",
+        "Serviço/Produto": "Priorização de Portfólio de Projetos"
+      }
+    },
+    {
+      "id": 5007,
+      "descricaoAtividade": "GP.04 - Planejamento de Projetos",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 36,
+          "id": 7085
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "GP.04",
+        "Serviço/Produto": "Planejamento de Projetos"
+      }
+    },
+    {
+      "id": 5009,
+      "descricaoAtividade": "GP.05 - Gestão de Lições Aprendidas",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 8,
+          "id": 7087
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "GP.05",
+        "Serviço/Produto": "Gestão de Lições Aprendidas"
+      }
+    },
+    {
+      "id": 5003,
+      "descricaoAtividade": "GP.06 - Monitoramento e Controle de Projetos",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 4,
+          "id": 7081
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "GP.06",
+        "Serviço/Produto": "Monitoramento e Controle de Projetos"
+      }
+    },
+    {
+      "id": 5006,
+      "descricaoAtividade": "GP.07 - Gestão de Riscos e Oportunidades",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 36,
+          "id": 7084
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "GP.07",
+        "Serviço/Produto": "Gestão de Riscos e Oportunidades"
+      }
+    },
+    {
+      "id": 5004,
+      "descricaoAtividade": "GP.08 - Planejamento e Revisão de Cronogramas",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 8,
+          "id": 7082
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "GP.08",
+        "Serviço/Produto": "Planejamento e Revisão de Cronogramas"
+      }
+    },
+    {
+      "id": 5000,
+      "descricaoAtividade": "GP.09 - Planejamento Financeiro e Execução Orçamentária",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 36,
+          "id": 7078
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "GP.09",
+        "Serviço/Produto": "Planejamento Financeiro e Execução Orçamentária"
+      }
+    },
+    {
+      "id": 5002,
+      "descricaoAtividade": "GP.10 - Análise de Desempenho e Resultados",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 3,
+          "id": 7080
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "GP.10",
+        "Serviço/Produto": "Análise de Desempenho e Resultados"
+      }
+    },
+    {
+      "id": 5010,
+      "descricaoAtividade": "GP.11 - Revisão de Processos e Cadeia de Valor",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 12,
+          "id": 7088
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "GP.11",
+        "Serviço/Produto": "Revisão de Processos e Cadeia de Valor"
+      }
+    },
+    {
+      "id": 5013,
+      "descricaoAtividade": "GP.12 - Planejamento de Ações Estratégicas",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 12,
+          "id": 7091
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "GP.12",
+        "Serviço/Produto": "Planejamento de Ações Estratégicas"
+      }
+    },
+    {
+      "id": 5011,
+      "descricaoAtividade": "GP.13 - Execução de Ações Estratégicas",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 2,
+          "id": 7089
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "GP.13",
+        "Serviço/Produto": "Execução de Ações Estratégicas"
+      }
+    },
+    {
+      "id": 5014,
+      "descricaoAtividade": "GP.14 - Acompanhamento de Ações Estratégicas",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 2,
+          "id": 7092
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "GP.14",
+        "Serviço/Produto": "Acompanhamento de Ações Estratégicas"
+      }
+    },
+    {
+      "id": 5012,
+      "descricaoAtividade": "GP.15 - Comunicação e Engajamento Estratégico",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 4,
+          "id": 7090
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "GP.15",
+        "Serviço/Produto": "Comunicação e Engajamento Estratégico"
+      }
+    },
+    {
+      "id": 5025,
+      "descricaoAtividade": "NEG.01 - Elaboração e atualização do backlog do produto ou demandas",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 2,
+          "id": 7100
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.01",
+        "Serviço/Produto": "Elaboração e atualização do backlog do produto ou demandas"
+      }
+    },
+    {
+      "id": 5026,
+      "descricaoAtividade": "NEG.02 - Priorização das solicitações de negócio",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 2,
+          "id": 7101
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.02",
+        "Serviço/Produto": "Priorização das solicitações de negócio"
+      }
+    },
+    {
+      "id": 5032,
+      "descricaoAtividade": "NEG.03 - Elaboração de Diagrama de Projeto (até 10 atividades)",
+      "complexidades": [
+        {
+          "complexidade": "Simples",
+          "valorUst": 4,
+          "id": 7107
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.03",
+        "Serviço/Produto": "Elaboração de Diagrama de Projeto (até 10 atividades)"
+      }
+    },
+    {
+      "id": 5037,
+      "descricaoAtividade": "NEG.04 - Elaboração de Diagrama de Projeto (11 a 20 atividades)",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 12,
+          "id": 7112
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.04",
+        "Serviço/Produto": "Elaboração de Diagrama de Projeto (11 a 20 atividades)"
+      }
+    },
+    {
+      "id": 5030,
+      "descricaoAtividade": "NEG.05 - Elaboração de Diagrama de Projeto (acima de 21 atividades)",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 24,
+          "id": 7105
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.05",
+        "Serviço/Produto": "Elaboração de Diagrama de Projeto (acima de 21 atividades)"
+      }
+    },
+    {
+      "id": 5033,
+      "descricaoAtividade": "NEG.06 - Registro de solicitações de negócio",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 1,
+          "id": 7108
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.06",
+        "Serviço/Produto": "Registro de solicitações de negócio"
+      }
+    },
+    {
+      "id": 5028,
+      "descricaoAtividade": "NEG.07 - Criação do DVI (até 15 páginas)",
+      "complexidades": [
+        {
+          "complexidade": "Simples",
+          "valorUst": 8,
+          "id": 7103
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.07",
+        "Serviço/Produto": "Criação do DVI (até 15 páginas)"
+      }
+    },
+    {
+      "id": 5027,
+      "descricaoAtividade": "NEG.08 - Criação do DVI (16 a 30 páginas)",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 20,
+          "id": 7102
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.08",
+        "Serviço/Produto": "Criação do DVI (16 a 30 páginas)"
+      }
+    },
+    {
+      "id": 5036,
+      "descricaoAtividade": "NEG.09 - Criação do DVI (acima de 31 páginas)",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 36,
+          "id": 7111
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.09",
+        "Serviço/Produto": "Criação do DVI (acima de 31 páginas)"
+      }
+    },
+    {
+      "id": 5024,
+      "descricaoAtividade": "NEG.10 - Atualização do DVI (até 4h)",
+      "complexidades": [
+        {
+          "complexidade": "Simples",
+          "valorUst": 4,
+          "id": 7099
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.10",
+        "Serviço/Produto": "Atualização do DVI (até 4h)"
+      }
+    },
+    {
+      "id": 5029,
+      "descricaoAtividade": "NEG.11 - Atualização do DVI (4h a 8h)",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 10,
+          "id": 7104
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.11",
+        "Serviço/Produto": "Atualização do DVI (4h a 8h)"
+      }
+    },
+    {
+      "id": 5035,
+      "descricaoAtividade": "NEG.12 - Atualização do DVI (acima de 8h)",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 18,
+          "id": 7110
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.12",
+        "Serviço/Produto": "Atualização do DVI (acima de 8h)"
+      }
+    },
+    {
+      "id": 5034,
+      "descricaoAtividade": "NEG.13 - Criação do DAI (até 15 páginas)",
+      "complexidades": [
+        {
+          "complexidade": "Simples",
+          "valorUst": 2,
+          "id": 7109
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.13",
+        "Serviço/Produto": "Criação do DAI (até 15 páginas)"
+      }
+    },
+    {
+      "id": 5038,
+      "descricaoAtividade": "NEG.14 - Criação do DAI (16 a 30 páginas)",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 8,
+          "id": 7113
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.14",
+        "Serviço/Produto": "Criação do DAI (16 a 30 páginas)"
+      }
+    },
+    {
+      "id": 5031,
+      "descricaoAtividade": "NEG.15 - Criação do DAI (acima de 31 páginas)",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 18,
+          "id": 7106
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.15",
+        "Serviço/Produto": "Criação do DAI (acima de 31 páginas)"
+      }
+    },
+    {
+      "id": 5039,
+      "descricaoAtividade": "NEG.16 - Atualização do DAI (até 4h)",
+      "complexidades": [
+        {
+          "complexidade": "Simples",
+          "valorUst": 1,
+          "id": 7114
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.16",
+        "Serviço/Produto": "Atualização do DAI (até 4h)"
+      }
+    },
+    {
+      "id": 5041,
+      "descricaoAtividade": "NEG.17 - Atualização do DAI (4h a 8h)",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 4,
+          "id": 7116
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.17",
+        "Serviço/Produto": "Atualização do DAI (4h a 8h)"
+      }
+    },
+    {
+      "id": 5040,
+      "descricaoAtividade": "NEG.18 - Atualização do DAI (acima de 8h)",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 9,
+          "id": 7115
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.18",
+        "Serviço/Produto": "Atualização do DAI (acima de 8h)"
+      }
+    },
+    {
+      "id": 5043,
+      "descricaoAtividade": "NEG.19 - Especificar funcionalidade (Tarefa/Épico)",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 2,
+          "id": 7118
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.19",
+        "Serviço/Produto": "Especificar funcionalidade (Tarefa/Épico)"
+      }
+    },
+    {
+      "id": 5042,
+      "descricaoAtividade": "NEG.20 - Elicitação de Requisitos Detalhado / DRD (até 8h)",
+      "complexidades": [
+        {
+          "complexidade": "Simples",
+          "valorUst": 8,
+          "id": 7117
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.20",
+        "Serviço/Produto": "Elicitação de Requisitos Detalhado / DRD (até 8h)"
+      }
+    },
+    {
+      "id": 5044,
+      "descricaoAtividade": "NEG.21 - Elicitação de Requisitos Detalhado / DRD (8h a 16h)",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 24,
+          "id": 7119
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.21",
+        "Serviço/Produto": "Elicitação de Requisitos Detalhado / DRD (8h a 16h)"
+      }
+    },
+    {
+      "id": 5049,
+      "descricaoAtividade": "NEG.22 - Elicitação de Requisitos Detalhado / DRD (acima de 16h)",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 48,
+          "id": 7124
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.22",
+        "Serviço/Produto": "Elicitação de Requisitos Detalhado / DRD (acima de 16h)"
+      }
+    },
+    {
+      "id": 5051,
+      "descricaoAtividade": "NEG.23 - Protótipo baixa fidelidade (até 5 telas)",
+      "complexidades": [
+        {
+          "complexidade": "Simples",
+          "valorUst": 3,
+          "id": 7126
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.23",
+        "Serviço/Produto": "Protótipo baixa fidelidade (até 5 telas)"
+      }
+    },
+    {
+      "id": 5047,
+      "descricaoAtividade": "NEG.24 - Protótipo baixa fidelidade (6 a 10 telas)",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 12,
+          "id": 7122
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.24",
+        "Serviço/Produto": "Protótipo baixa fidelidade (6 a 10 telas)"
+      }
+    },
+    {
+      "id": 5054,
+      "descricaoAtividade": "NEG.25 - Protótipo baixa fidelidade (acima de 11 telas)",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 27,
+          "id": 7129
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.25",
+        "Serviço/Produto": "Protótipo baixa fidelidade (acima de 11 telas)"
+      }
+    },
+    {
+      "id": 5055,
+      "descricaoAtividade": "NEG.26 - Atualização protótipo baixa fidelidade (até 5 telas)",
+      "complexidades": [
+        {
+          "complexidade": "Simples",
+          "valorUst": 2,
+          "id": 7130
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.26",
+        "Serviço/Produto": "Atualização protótipo baixa fidelidade (até 5 telas)"
+      }
+    },
+    {
+      "id": 5053,
+      "descricaoAtividade": "NEG.27 - Atualização protótipo baixa fidelidade (6 a 10 telas)",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 8,
+          "id": 7128
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.27",
+        "Serviço/Produto": "Atualização protótipo baixa fidelidade (6 a 10 telas)"
+      }
+    },
+    {
+      "id": 5045,
+      "descricaoAtividade": "NEG.28 - Atualização protótipo baixa fidelidade (acima de 11 telas)",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 24,
+          "id": 7120
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.28",
+        "Serviço/Produto": "Atualização protótipo baixa fidelidade (acima de 11 telas)"
+      }
+    },
+    {
+      "id": 5046,
+      "descricaoAtividade": "NEG.29 - Revisão de Documentos Técnicos de Negócio",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 4,
+          "id": 7121
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.29",
+        "Serviço/Produto": "Revisão de Documentos Técnicos de Negócio"
+      }
+    },
+    {
+      "id": 5048,
+      "descricaoAtividade": "NEG.30 - Criação de cronograma de execução de projetos",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 4,
+          "id": 7123
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.30",
+        "Serviço/Produto": "Criação de cronograma de execução de projetos"
+      }
+    },
+    {
+      "id": 5050,
+      "descricaoAtividade": "NEG.31 - Backlog da iteração (planejamento da sprint)",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 2,
+          "id": 7125
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.31",
+        "Serviço/Produto": "Backlog da iteração (planejamento da sprint)"
+      }
+    },
+    {
+      "id": 5056,
+      "descricaoAtividade": "NEG.32 - Monitoramento de indicadores de negócio (KPIs)",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 4,
+          "id": 7131
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.32",
+        "Serviço/Produto": "Monitoramento de indicadores de negócio (KPIs)"
+      }
+    },
+    {
+      "id": 5052,
+      "descricaoAtividade": "NEG.33 - Monitoramento de projetos estratégicos",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 6,
+          "id": 7127
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "NEG.33",
+        "Serviço/Produto": "Monitoramento de projetos estratégicos"
+      }
+    },
+    {
+      "id": 5060,
+      "descricaoAtividade": "TES.01 - Teste de Usabilidade",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 6,
+          "id": 7135
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "TES.01",
+        "Serviço/Produto": "Teste de Usabilidade"
+      }
+    },
+    {
+      "id": 5062,
+      "descricaoAtividade": "TES.02 - Teste de Acessibilidade",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 6,
+          "id": 7137
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "TES.02",
+        "Serviço/Produto": "Teste de Acessibilidade"
+      }
+    },
+    {
+      "id": 5068,
+      "descricaoAtividade": "TES.03 - Implementar processos automatizados de teste",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 24,
+          "id": 7143
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "TES.03",
+        "Serviço/Produto": "Implementar processos automatizados de teste"
+      }
+    },
+    {
+      "id": 5064,
+      "descricaoAtividade": "TES.04 - Atualização de processos automatizados de teste",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 8,
+          "id": 7139
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "TES.04",
+        "Serviço/Produto": "Atualização de processos automatizados de teste"
+      }
+    },
+    {
+      "id": 5069,
+      "descricaoAtividade": "TES.05 - Especificação de teste",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 4,
+          "id": 7144
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "TES.05",
+        "Serviço/Produto": "Especificação de teste"
+      }
+    },
+    {
+      "id": 5067,
+      "descricaoAtividade": "TES.06 - Preparar dados de teste",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 2,
+          "id": 7142
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "TES.06",
+        "Serviço/Produto": "Preparar dados de teste"
+      }
+    },
+    {
+      "id": 5061,
+      "descricaoAtividade": "TES.07 - Teste de aceitação",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 2,
+          "id": 7136
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "TES.07",
+        "Serviço/Produto": "Teste de aceitação"
+      }
+    },
+    {
+      "id": 5058,
+      "descricaoAtividade": "TES.08 - Teste de carga",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 24,
+          "id": 7133
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "TES.08",
+        "Serviço/Produto": "Teste de carga"
+      }
+    },
+    {
+      "id": 5059,
+      "descricaoAtividade": "TES.09 - Teste de desempenho",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 24,
+          "id": 7134
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "TES.09",
+        "Serviço/Produto": "Teste de desempenho"
+      }
+    },
+    {
+      "id": 5065,
+      "descricaoAtividade": "TES.10 - Teste de regressão",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 8,
+          "id": 7140
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "TES.10",
+        "Serviço/Produto": "Teste de regressão"
+      }
+    },
+    {
+      "id": 5070,
+      "descricaoAtividade": "TES.11 - Teste de segurança",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 8,
+          "id": 7145
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "TES.11",
+        "Serviço/Produto": "Teste de segurança"
+      }
+    },
+    {
+      "id": 5057,
+      "descricaoAtividade": "TES.12 - Teste de unidade",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 2,
+          "id": 7132
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "TES.12",
+        "Serviço/Produto": "Teste de unidade"
+      }
+    },
+    {
+      "id": 5063,
+      "descricaoAtividade": "TES.13 - Teste exploratório",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 6,
+          "id": 7138
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "TES.13",
+        "Serviço/Produto": "Teste exploratório"
+      }
+    },
+    {
+      "id": 5066,
+      "descricaoAtividade": "TES.14 - Teste A/B",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 6,
+          "id": 7141
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "TES.14",
+        "Serviço/Produto": "Teste A/B"
+      }
+    },
+    {
+      "id": 5083,
+      "descricaoAtividade": "UX.01 - Criação de Estrutura de Página em CMS - Back-end",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 8,
+          "id": 7158
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.01",
+        "Serviço/Produto": "Criação de Estrutura de Página em CMS - Back-end"
+      }
+    },
+    {
+      "id": 5080,
+      "descricaoAtividade": "UX.02 - Criação de Estrutura de Página em CMS - Front-end",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 8,
+          "id": 7155
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.02",
+        "Serviço/Produto": "Criação de Estrutura de Página em CMS - Front-end"
+      }
+    },
+    {
+      "id": 5081,
+      "descricaoAtividade": "UX.03 - Criação de Página Completa em CMS - Back-end",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 24,
+          "id": 7156
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.03",
+        "Serviço/Produto": "Criação de Página Completa em CMS - Back-end"
+      }
+    },
+    {
+      "id": 5071,
+      "descricaoAtividade": "UX.04 - Criação de Página Completa em CMS - Front-end",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 24,
+          "id": 7146
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.04",
+        "Serviço/Produto": "Criação de Página Completa em CMS - Front-end"
+      }
+    },
+    {
+      "id": 5075,
+      "descricaoAtividade": "UX.05 - Atualização de Página Existente em CMS - Nível básico",
+      "complexidades": [
+        {
+          "complexidade": "Simples",
+          "valorUst": 2,
+          "id": 7150
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.05",
+        "Serviço/Produto": "Atualização de Página Existente em CMS - Nível básico"
+      }
+    },
+    {
+      "id": 5084,
+      "descricaoAtividade": "UX.06 - Atualização de Página Existente em CMS - Nível intermediário",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 8,
+          "id": 7159
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.06",
+        "Serviço/Produto": "Atualização de Página Existente em CMS - Nível intermediário"
+      }
+    },
+    {
+      "id": 5078,
+      "descricaoAtividade": "UX.07 - Atualização de Página Existente em CMS - Nível avançado",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 24,
+          "id": 7153
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.07",
+        "Serviço/Produto": "Atualização de Página Existente em CMS - Nível avançado"
+      }
+    },
+    {
+      "id": 5077,
+      "descricaoAtividade": "UX.08 - Aplicação de Temas em CMS",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 12,
+          "id": 7152
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.08",
+        "Serviço/Produto": "Aplicação de Temas em CMS"
+      }
+    },
+    {
+      "id": 5082,
+      "descricaoAtividade": "UX.09 - Desenvolvimento de Plugin para CMS",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 36,
+          "id": 7157
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.09",
+        "Serviço/Produto": "Desenvolvimento de Plugin para CMS"
+      }
+    },
+    {
+      "id": 5074,
+      "descricaoAtividade": "UX.10 - Estilização de Plugin para CMS",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 16,
+          "id": 7149
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.10",
+        "Serviço/Produto": "Estilização de Plugin para CMS"
+      }
+    },
+    {
+      "id": 5079,
+      "descricaoAtividade": "UX.11 - Análise e Implantação de Plugin em CMS",
+      "complexidades": [
+        {
+          "complexidade": "Simples",
+          "valorUst": 4,
+          "id": 7154
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.11",
+        "Serviço/Produto": "Análise e Implantação de Plugin em CMS"
+      }
+    },
+    {
+      "id": 5072,
+      "descricaoAtividade": "UX.12 - Criação de Estrutura de Navegação",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 4,
+          "id": 7147
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.12",
+        "Serviço/Produto": "Criação de Estrutura de Navegação"
+      }
+    },
+    {
+      "id": 5073,
+      "descricaoAtividade": "UX.13 - Plotagem e Impressão de Materiais",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 2,
+          "id": 7148
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.13",
+        "Serviço/Produto": "Plotagem e Impressão de Materiais"
+      }
+    },
+    {
+      "id": 5076,
+      "descricaoAtividade": "UX.14 - Criação de Layout de Página (até 5 componentes)",
+      "complexidades": [
+        {
+          "complexidade": "Simples",
+          "valorUst": 6,
+          "id": 7151
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.14",
+        "Serviço/Produto": "Criação de Layout de Página (até 5 componentes)"
+      }
+    },
+    {
+      "id": 5085,
+      "descricaoAtividade": "UX.15 - Criação de Layout de Página (acima de 5 componentes)",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 16,
+          "id": 7160
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.15",
+        "Serviço/Produto": "Criação de Layout de Página (acima de 5 componentes)"
+      }
+    },
+    {
+      "id": 5089,
+      "descricaoAtividade": "UX.16 - Criação de Identidade Visual Completa",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 36,
+          "id": 7164
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.16",
+        "Serviço/Produto": "Criação de Identidade Visual Completa"
+      }
+    },
+    {
+      "id": 5090,
+      "descricaoAtividade": "UX.17 - Criação de Logotipos e Selos Oficiais",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 4,
+          "id": 7165
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.17",
+        "Serviço/Produto": "Criação de Logotipos e Selos Oficiais"
+      }
+    },
+    {
+      "id": 5087,
+      "descricaoAtividade": "UX.18 - Campanhas Visuais Digitais",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 4,
+          "id": 7162
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.18",
+        "Serviço/Produto": "Campanhas Visuais Digitais"
+      }
+    },
+    {
+      "id": 5086,
+      "descricaoAtividade": "UX.19 - Criação de Apresentações Institucionais",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 8,
+          "id": 7161
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.19",
+        "Serviço/Produto": "Criação de Apresentações Institucionais"
+      }
+    },
+    {
+      "id": 5088,
+      "descricaoAtividade": "UX.20 - Revisão de Identidade Visual Existente",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 36,
+          "id": 7163
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.20",
+        "Serviço/Produto": "Revisão de Identidade Visual Existente"
+      }
+    },
+    {
+      "id": 5091,
+      "descricaoAtividade": "UX.21 - Criação de Mapa de Navegação",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 8,
+          "id": 7166
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.21",
+        "Serviço/Produto": "Criação de Mapa de Navegação"
+      }
+    },
+    {
+      "id": 5102,
+      "descricaoAtividade": "UX.22 - Design de Interação",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 8,
+          "id": 7177
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.22",
+        "Serviço/Produto": "Design de Interação"
+      }
+    },
+    {
+      "id": 5099,
+      "descricaoAtividade": "UX.23 - Acessibilidade Digital",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 4,
+          "id": 7174
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.23",
+        "Serviço/Produto": "Acessibilidade Digital"
+      }
+    },
+    {
+      "id": 5094,
+      "descricaoAtividade": "UX.24 - Revisão Heurística",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 4,
+          "id": 7169
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.24",
+        "Serviço/Produto": "Revisão Heurística"
+      }
+    },
+    {
+      "id": 5096,
+      "descricaoAtividade": "UX.25 - Pesquisa de Satisfação",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 4,
+          "id": 7171
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.25",
+        "Serviço/Produto": "Pesquisa de Satisfação"
+      }
+    },
+    {
+      "id": 5100,
+      "descricaoAtividade": "UX.26 - Entrevistas com Usuários",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 8,
+          "id": 7175
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.26",
+        "Serviço/Produto": "Entrevistas com Usuários"
+      }
+    },
+    {
+      "id": 5098,
+      "descricaoAtividade": "UX.27 - Análise de Experiência do Usuário",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 8,
+          "id": 7173
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.27",
+        "Serviço/Produto": "Análise de Experiência do Usuário"
+      }
+    },
+    {
+      "id": 5093,
+      "descricaoAtividade": "UX.28 - Planejamento de Comunicação Digital",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 24,
+          "id": 7168
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.28",
+        "Serviço/Produto": "Planejamento de Comunicação Digital"
+      }
+    },
+    {
+      "id": 5095,
+      "descricaoAtividade": "UX.29 - Relatórios de Performance de Conteúdo",
+      "complexidades": [
+        {
+          "complexidade": "Única",
+          "valorUst": 6,
+          "id": 7170
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.29",
+        "Serviço/Produto": "Relatórios de Performance de Conteúdo"
+      }
+    },
+    {
+      "id": 5097,
+      "descricaoAtividade": "UX.30 - Planejamento Editorial Digital",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 18,
+          "id": 7172
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.30",
+        "Serviço/Produto": "Planejamento Editorial Digital"
+      }
+    },
+    {
+      "id": 5092,
+      "descricaoAtividade": "UX.31 - Governança de Comunicação Digital",
+      "complexidades": [
+        {
+          "complexidade": "Complexa",
+          "valorUst": 36,
+          "id": 7167
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.31",
+        "Serviço/Produto": "Governança de Comunicação Digital"
+      }
+    },
+    {
+      "id": 5101,
+      "descricaoAtividade": "UX.32 - Revisão Técnica de Comunicação Digital",
+      "complexidades": [
+        {
+          "complexidade": "Média",
+          "valorUst": 16,
+          "id": 7176
+        }
+      ],
+      "atividadeTabela": {
+        "Código do serviço no catalogo": "UX.32",
+        "Serviço/Produto": "Revisão Técnica de Comunicação Digital"
+      }
+    }
+  ],
+  "succeeded": true,
+  "contrato": "004/2026 - 30524 - XVIA TECNOLOGIA LTDA",
+  "parcial": false,
+  "fonte": "Catálogo enviado pelo usuário em 05/11/2026 para o contrato 004/2026 - 30524 - XVIA TECNOLOGIA LTDA. Vínculos anteriores conferidos com os itens consultados no TFS."
+}

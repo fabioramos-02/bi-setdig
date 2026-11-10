@@ -65,6 +65,8 @@ export function ExecutivoTab({ itens, sprints, contrato, etp, hoje, onIrPara }: 
     pctEntregas: andamento.pct, ustExecutada: consumo.ustExecutada, previstoAteMes: consumo.previstoAteMes,
     decisoes: decisoes.length, atrasadas: atraso.length,
   });
+  // Resumo do Projeto no formato pedido: entregas, consumido, pago e decisões — calculado, sem valor fictício.
+  const resumo = `O projeto possui ${fmtNum(andamento.emProducao)} entregas em produção, ${consumo.valorExecutado === null ? "valor consumido não informado" : `${fmtReais(consumo.valorExecutado)} consumidos em serviços especializados`} e valor pago não informado. ${decisoes.length ? `Existem ${fmtNum(decisoes.length)} pendências que precisam de decisão.` : "Nenhuma pendência aguarda decisão."}`;
 
   const prazoTom: Tom = prazo.aConciliar ? "atencao" : prazo.pctDecorrido - andamento.pct >= 20 ? "critico" : "info";
   const prazoOrigem: Origem = {
@@ -84,6 +86,10 @@ export function ExecutivoTab({ itens, sprints, contrato, etp, hoje, onIrPara }: 
 
   return (
     <div className="flex flex-col gap-6">
+      <DashboardSection title="Resumo do Projeto">
+        <p className="text-base" style={{ color: "var(--ds-color-text-primary)" }}>{resumo}</p>
+      </DashboardSection>
+
       <StoryCard
         anchor={sintese}
         caption={prazo.sprintAtual ? `Sprint atual: ${prazo.sprintAtual.nome} (${fmtData(prazo.sprintAtual.inicio)} a ${fmtData(prazo.sprintAtual.fim)}). Mês ${prazo.mesDoContrato} de ${contrato?.vigenciaMeses ?? "—"} do contrato.` : undefined}
@@ -99,19 +105,26 @@ export function ExecutivoTab({ itens, sprints, contrato, etp, hoje, onIrPara }: 
           origem={prazoOrigem}
         />
         <Indicador
-          pergunta="2. Consumo do contrato (UST)"
+          pergunta="2. Execução financeira"
           valor={consumo.valorExecutado === null ? `${fmtNum(consumo.ustExecutada)} UST` : fmtReais(consumo.valorExecutado)}
-          sub={`${fmtNum(consumo.ustExecutada)} de ${consumo.ustTotal ? fmtNum(consumo.ustTotal) : "—"} UST (${ustPct ?? "—"}%)${consumo.previstoAteMes !== null ? ` · previsto até o mês: ${fmtNum(consumo.previstoAteMes)}` : ""} · faturado: a informar`}
+          sub={`consumido em serviços especializados · ${fmtNum(consumo.ustExecutada)} de ${consumo.ustTotal ? fmtNum(consumo.ustTotal) : "—"} UST (${ustPct ?? "—"}%)`}
           tom={ustTom}
           origem={consumo.origem}
-          extra={consumo.saldoValor !== null && (
-            <span className="text-xs" style={{ color: "var(--ds-color-text-muted)" }}>
-              Saldo do Item 3: {fmtNum(consumo.saldoUst ?? 0)} UST · {fmtReais(consumo.saldoValor)}
-            </span>
-          )}
+          extra={
+            <dl className="text-xs grid grid-cols-2 gap-x-2 mt-1" style={{ color: "var(--ds-color-text-secondary)" }}>
+              <dt>Total do contrato</dt><dd className="text-right">{consumo.valorTotalContrato ? fmtReais(consumo.valorTotalContrato) : "Não informado"}</dd>
+              <dt>Faturado</dt><dd className="text-right" style={{ color: "var(--ds-color-text-muted)" }}>Não informado</dd>
+              <dt>Pago</dt><dd className="text-right" style={{ color: "var(--ds-color-text-muted)" }}>Não informado</dd>
+              <dd className="col-span-2">
+                <button type="button" onClick={() => onIrPara("financeiro")} className="underline font-medium" style={{ color: "var(--ds-color-primary-600)" }}>
+                  Ver por órgão e serviço
+                </button>
+              </dd>
+            </dl>
+          }
         />
         <Indicador
-          pergunta="3. Andamento das entregas"
+          pergunta="3. Entregas concluídas e em produção"
           valor={`${andamento.pct}%`}
           sub={`${fmtNum(andamento.emProducao)} de ${fmtNum(andamento.planejadas)} entregas em produção · ${fmtNum(atraso.length)} atrasadas`}
           tom={atraso.length ? "atencao" : "ok"}

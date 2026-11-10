@@ -264,6 +264,17 @@
     "bytes": 30694
   },
   {
+    "dataset": "catalogo-ust-xvia",
+    "source": "tfs",
+    "owner": "SETDIG",
+    "updatedAt": "2026-11-10T00:00:00+00:00",
+    "frequency": "manual",
+    "version": "v1",
+    "schema": "data-platform/schemas/tfs-catalogo-ust-xvia.schema.json",
+    "rows": 168,
+    "bytes": 68433
+  },
+  {
     "dataset": "etp-ust",
     "source": "tfs",
     "owner": "SETDIG",
@@ -630,18 +641,18 @@
     "dataset": "itens",
     "source": "tfs",
     "owner": "SETDIG",
-    "updatedAt": "2026-11-10T18:46:26.603102+00:00",
+    "updatedAt": "2026-11-10T20:07:16.574462+00:00",
     "frequency": "daily",
     "version": "v1",
     "schema": "data-platform/schemas/tfs-itens.schema.json",
-    "rows": 1997,
-    "bytes": 1825285
+    "rows": 1996,
+    "bytes": 2023844
   },
   {
     "dataset": "sprints",
     "source": "tfs",
     "owner": "SETDIG",
-    "updatedAt": "2026-11-10T18:46:26.852254+00:00",
+    "updatedAt": "2026-11-10T20:07:16.882830+00:00",
     "frequency": "daily",
     "version": "v1",
     "schema": "data-platform/schemas/tfs-sprints.schema.json",
@@ -652,7 +663,7 @@
     "dataset": "painel-time",
     "source": "tfs",
     "owner": "SETDIG",
-    "updatedAt": "2026-11-10T18:46:32.601962+00:00",
+    "updatedAt": "2026-11-10T20:07:21.912616+00:00",
     "frequency": "daily",
     "version": "v1",
     "schema": "data-platform/schemas/tfs-painel-time.schema.json",

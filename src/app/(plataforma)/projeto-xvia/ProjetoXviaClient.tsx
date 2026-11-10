@@ -10,6 +10,7 @@ import { filtrarItens, type EtpUst, type Filtros, type TfsContrato, type TfsItem
 import { FiltrosBar, descreverFiltros } from "./FiltrosBar";
 import { ExecutivoTab } from "./ExecutivoTab";
 import { QualidadeTab } from "./QualidadeTab";
+import { FinanceiroTab } from "./FinanceiroTab";
 import { ModulosTab } from "./ModulosTab";
 import { PendenciasTab } from "./PendenciasTab";
 import { FiscalizacaoTab } from "./FiscalizacaoTab";
@@ -74,9 +75,10 @@ export function ProjetoXviaClient({
       ],
     },
     {
-      id: "gerente", label: "2. Visão do Gerente", descricao: "Módulos e responsáveis, entregas do mês, pendências e aceite.",
+      id: "gerente", label: "2. Visão do Gerente", descricao: "Módulos, gasto por órgão e serviço, pendências, entregas e aceite.",
       abas: [
         { id: "modulos", label: "Módulos e frentes", content: <ModulosTab itens={recorte} sprints={sprints} hoje={hoje} filtros={filtros} filtrar={filtrar} /> },
+        { id: "financeiro", label: "Gasto por órgão e serviço", content: <FinanceiroTab itens={recorte} etp={etp} contrato={contrato} /> },
         { id: "pendencias", label: "Pendências e problemas", content: <PendenciasTab itens={recorte} filtros={filtros} filtrar={filtrar} /> },
         { id: "fiscalizacao", label: "Sprints, entregas e aceite", content: <FiscalizacaoTab itens={recorte} sprints={sprints} hoje={hoje} /> },
       ],

@@ -34,6 +34,9 @@ CAMPOS = [
     "System.CreatedDate", "System.ChangedDate", "Microsoft.VSTS.Common.ClosedDate",
     "Microsoft.VSTS.Scheduling.StartDate", "Microsoft.VSTS.Scheduling.TargetDate",
     "Microsoft.VSTS.Scheduling.Effort", "System.AssignedTo",
+    # Campos financeiros e de órgão que já existem no TFS (vazios em 11/2026):
+    "Custom.SGI.Faturado", "Custom.SGI.DataFaturamento", "Custom.SGI.VersaoSDP",
+    "Custom.SGD.OrgaosSecretarias",
     "Custom.SGI.Empresa", "Custom.SGI.AtividadeUST", "Custom.SGI.ComplexidadeUST",
     "Custom.SGI.LancamentoAtividadeID", "Custom.SGI.DataExecucao",
 ]

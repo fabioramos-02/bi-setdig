@@ -152,7 +152,7 @@ def test_responsavel_datas_e_dependencias():
     from tfs import PRED, SUCC
     url = "https://tfs/_apis/wit/workItems/"
     brutos = [_w(1, "Product Backlog Item", "A", **{
-        "System.AssignedTo": "Maycon Renato <FAZENDA\malisboa>",
+        "System.AssignedTo": "Maycon Renato <FAZENDA/malisboa>",
         "Microsoft.VSTS.Scheduling.StartDate": "2026-11-01T00:00:00Z"})]
     rel = {1: [{"rel": PRED, "url": url + "7"}, {"rel": SUCC, "url": url + "9"},
                {"rel": "System.LinkTypes.Related", "url": url + "8"}]}
@@ -162,3 +162,16 @@ def test_responsavel_datas_e_dependencias():
     assert (item["dependeDe"], item["trava"]) == ([7], [9])
     sem = montar_itens({1: None}, [_w(1, "Task", "T")], [CATALOGO], SIGLAS, HOJE)[0]
     assert (sem["responsavel"], sem["dependeDe"], sem["trava"]) == (None, [], [])
+
+
+def test_orgao_do_campo_vence_o_prefixo_da_feature_e_financeiro_passa_direto():
+    arvore = {1: None, 2: 1, 3: 2}
+    brutos = [_w(1, "Epic", "Serviços"), _w(2, "Feature", "[SES] - Saúde"),
+              _w(3, "Task", "T", **{"Custom.SGD.OrgaosSecretarias": "detran",
+                                     "Custom.SGI.Faturado": "Sim",
+                                     "Custom.SGI.DataFaturamento": "2026-11-05T00:00:00Z"})]
+    por_id = {i["id"]: i for i in montar_itens(arvore, brutos, [CATALOGO], SIGLAS, HOJE)}
+    assert (por_id[3]["orgao"], por_id[3]["orgaoOrigem"]) == ("DETRAN", "campo")
+    assert (por_id[2]["orgao"], por_id[2]["orgaoOrigem"]) == ("SES", "feature")
+    assert (por_id[3]["faturado"], por_id[3]["dataFaturamento"]) == ("Sim", "2026-11-05")
+    assert (por_id[1]["orgao"], por_id[1]["orgaoOrigem"], por_id[1]["faturado"]) == (None, None, None)
