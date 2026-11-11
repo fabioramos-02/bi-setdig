@@ -674,24 +674,93 @@ export function consumoPorOrgao(itens: TfsItem[], etp: EtpUst | null, contrato: 
   return linhas.sort((a, b) => (a.orgao === SEM_ORGAO ? 1 : b.orgao === SEM_ORGAO ? -1 : b.ustExecutada - a.ustExecutada));
 }
 
-/** UST da X-VIA executada por mês (AAAA-MM), pela mesma regra do total. Data = fechamento da
- * Task (a X-VIA quase não preenche a Data da Execução; mesma regra do painel do TFS); sem ela,
- * a Data da Execução. Concluída sem data nenhuma fica fora e é contada em `semData`. */
+/** Mês em que o trabalho da Task foi feito: a Data da Execução (campo do contrato, preenchida em
+ * todas as Tasks concluídas da X-VIA em 11/2026); sem ela, a data de fechamento no TFS. O
+ * fechamento sozinho engana: a X-VIA fecha tarefas em lote (64 concluídas, só 12 fechadas no mês
+ * da execução — "500 UST em novembro" eram trabalho de julho a outubro). */
+export const mesDaExecucao = (t: TfsItem) => (t.dataExecucao ?? t.fechadoEm)?.slice(0, 7) ?? null;
+
+/** UST da X-VIA executada por mês (AAAA-MM), pela mesma regra do total. `porFechamento` guarda a
+ * soma pelo mês de fechamento, só para mostrar a diferença. Sem data nenhuma = `semData`. */
 export function executadoPorMes(itens: TfsItem[], etp: EtpUst | null) {
   const tabela = etp ? ustEtp(etp) : new Map<string, CodigoEtp>();
   const meses = new Map<string, { mes: string; ust: number; itens: TfsItem[] }>();
+  const porFechamento = new Map<string, number>();
   let semData = 0;
   for (const t of itens.filter((i) => ehTarefaXvia(i) && i.estado === "Done")) {
     const u = ustDaTarefa(t, tabela);
     if ("situacao" in u) continue;
-    const mes = (t.fechadoEm ?? t.dataExecucao)?.slice(0, 7);
+    const f = t.fechadoEm?.slice(0, 7);
+    if (f) porFechamento.set(f, (porFechamento.get(f) ?? 0) + u.valor);
+    const mes = mesDaExecucao(t);
     if (!mes) { semData += 1; continue; }
     const m = meses.get(mes) ?? { mes, ust: 0, itens: [] };
     m.ust += u.valor;
     m.itens.push(t);
     meses.set(mes, m);
   }
-  return { meses: [...meses.values()].sort((a, b) => a.mes.localeCompare(b.mes)), semData };
+  return { meses: [...meses.values()].sort((a, b) => a.mes.localeCompare(b.mes)), semData, porFechamento };
+}
+
+const MES_CURTO = (aaaamm: string) => new Date(`${aaaamm}-15T12:00:00Z`).toLocaleDateString("pt-BR", { month: "short", year: "2-digit", timeZone: "UTC" }).replace(". de ", "/").replace(".", "");
+
+/** Execução mês a mês do contrato contra o previsto no TR (seção 3 do relatório). O mês corrente
+ * vem marcado como parcial e não recebe tom: ainda está correndo. `fechadoNoMes` é a soma pela data
+ * de fechamento no TFS, para explicar a diferença quando a X-VIA fecha em lote. */
+export function execucaoMensal(itens: TfsItem[], etp: EtpUst | null, contrato: TfsContrato | null, hoje: string) {
+  const tabela = etp ? ustEtp(etp) : new Map<string, CodigoEtp>();
+  const { meses, porFechamento } = executadoPorMes(itens, etp);
+  const valorUst = contrato?.valorUst ?? null;
+  const linhas = mesesDoContrato(contrato, hoje).map((m) => {
+    const e = meses.find((x) => x.mes === m.mes);
+    const ust = e?.ust ?? 0;
+    const pct = m.previsto ? Math.round((ust / m.previsto) * 100) : null;
+    const parcial = m.mes === hoje.slice(0, 7);
+    return {
+      ...m, ust, pct, parcial, itens: e?.itens ?? [], rotulo: MES_CURTO(m.mes),
+      reais: valorUst === null ? null : ust * valorUst,
+      fechadoNoMes: porFechamento.get(m.mes) ?? 0,
+      tom: (parcial ? "info" : tomExecucao(ust, m.previsto)) as Tom,
+    };
+  });
+  const fechado = [...linhas].reverse().find((l) => !l.parcial) ?? null;
+  const atual = linhas.find((l) => l.parcial) ?? null;
+  const todos = linhas.flatMap((l) => l.itens);
+  const origem: Origem = {
+    rotulo: "UST executadas pela X-VIA, mês a mês",
+    numero: `${fmtNum(todos.reduce((s, t) => { const u = ustDaTarefa(t, tabela); return s + ("situacao" in u ? 0 : u.valor); }, 0))} UST desde o início do contrato`,
+    passos: [
+      "cada tarefa da X-VIA concluída entra no mês da Data da Execução (o dia em que o trabalho foi feito)",
+      "soma o valor das atividades do catálogo da X-VIA naquele mês",
+      "compara com o previsto para o mesmo mês na tabela 3.3.3 do TR",
+    ],
+    fonte: "TFS: Data da Execução das tarefas (sem ela, a data de fechamento) · previsão: TR 3.3.3",
+    detalhe: "A data de fechamento no TFS não serve para o mês: a X-VIA fecha tarefas em lote, às vezes meses depois do trabalho.",
+    itens: todos,
+    valor: { rotulo: "UST", de: (t) => { const u = ustDaTarefa(t, tabela); return "situacao" in u ? null : u.valor; } },
+    grupos: {
+      titulo: "Mês a mês",
+      dica: "Clique num mês para ver as tarefas executadas nele.",
+      lista: [...linhas].reverse().map((l) => ({
+        chave: l.mes, nome: l.rotulo, etiqueta: `mês ${l.n}${l.parcial ? " · em andamento" : ""}`,
+        valor: `${fmtNum(l.ust)} UST`, barra: l.previsto ? Math.min(100, l.pct ?? 0) : 0,
+        legenda: l.previsto ? `${l.pct}% das ${fmtNum(l.previsto)} previstas` : "sem previsão no TR",
+        tom: l.tom, itens: l.itens, vazio: "Nenhuma tarefa executada neste mês.",
+      })),
+    },
+  };
+  return { linhas, fechado, atual, origem };
+}
+
+/** Meses do contrato até o mês de hoje, com o previsto do TR 3.3.3 de cada um (mês 1 = assinatura). */
+export function mesesDoContrato(contrato: TfsContrato | null, hoje: string) {
+  const ini = typeof contrato?.inicio === "string" ? contrato.inicio : contrato?.inicio?.opcoes[0]?.data;
+  const saida: { mes: string; n: number; previsto: number | null }[] = [];
+  if (!ini) return saida;
+  const limite = contrato?.vigenciaMeses ?? 99;
+  for (let n = 1, d = ini.slice(0, 7); d <= hoje.slice(0, 7) && n <= limite; n += 1, d = somarMeses(`${d}-01`, 1).slice(0, 7))
+    saida.push({ mes: d, n, previsto: contrato?.previsaoMensal?.find((p) => p.mes === n)?.ust ?? null });
+  return saida;
 }
 
 // --- Cadeia financeira (financeiro.json, manual) ---------------------------

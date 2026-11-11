@@ -64,3 +64,10 @@ mesmo que o BI.
 - A seção 6 virou "Prazos de atendimento (SLA)" (`SlaSecao.tsx`). Mostra a tabela do TR 4.3.1 (vinda de `contrato.json` → `ans`), explica por que o SLA ainda não é medido e lista o que falta para medir. As falhas do QA aparecem à parte, por módulo (`bugsDoQa`).
 - A lista de fontes ganhou "Relatório de SLA da X-VIA (não recebido)". O glossário ganhou o termo SLA.
 - No lancar-demandas, o `src/painel.py` parou de chamar bug do QA de "fora do SLA": agora conta as falhas abertas por módulo.
+
+## Rodada 4 (11/11/2026): seção 3 e exportação do cronograma
+
+- **Seção 3 ("O que foi executado no mês?"):** mostra o último mês fechado contra o previsto no TR e o mês corrente como "em andamento". Traz também uma régua mês a mês (a barra é o executado, o traço é o previsto) e um "De onde vem?" agrupado por mês (`execucaoMensal`, `ExecucaoMensal.tsx`).
+- **O mês da execução passou a ser a Data da Execução** (`mesDaExecucao`). Antes era a data de fechamento no TFS, que a X-VIA preenche em lote: novembro aparecia com 500 UST, mas o correto é 62. Atinge a seção 3 e a aba UST.
+- **Cronograma:** botões "Baixar PNG" e "Baixar SVG" (`lib/exportar-svg.ts`). O arquivo leva as cores já resolvidas, o fundo da página e o título com a data do retrato.
+- **Testes:** `src/lib/tfs-execucao.test.ts`.

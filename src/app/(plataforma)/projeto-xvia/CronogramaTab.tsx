@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { Select } from "@/components/dashboard/Select";
 import { montarCronograma, ROTULO_SITUACAO, type Situacao } from "@/lib/cronograma";
 import { fmtData, fmtNum, linkTfs, type TfsItem, type TfsSprint } from "@/lib/tfs";
+import { exportarPng, exportarSvg } from "@/lib/exportar-svg";
 import { LinkItem, cinza } from "./comum";
 
 const COR_SIT: Record<Situacao, string> = {
@@ -26,6 +27,16 @@ export function CronogramaTab({ itens, sprints, hoje, modulo }: { itens: TfsItem
   const epicoId = escolha ? Number(escolha) : doFiltro ?? null;
   const c = montarCronograma(itens, sprints, epicoId, hoje);
   const blocos = epicoId === null ? c.blocos.filter((b) => b.cadeia !== null) : c.blocos;
+  const svgRef = useRef<SVGSVGElement>(null);
+  const tituloGrafico = epicoId === null ? "Cadeias de dependência de todos os módulos" : `Cronograma: ${epicos.find(([id]) => id === epicoId)?.[1] ?? ""}`;
+  // Arquivo: "cronograma-cms-2026-11-11.svg" — o título vai dentro da imagem, com a data do retrato.
+  const nomeArquivo = `cronograma-${(epicoId === null ? "geral" : epicos.find(([id]) => id === epicoId)?.[1] ?? "modulo").normalize("NFD").replace(/[^a-z0-9]+/gi, "-").toLowerCase()}-${hoje}`;
+  const exportar = (tipo: "svg" | "png") => {
+    if (!svgRef.current) return;
+    const titulo = `${tituloGrafico} · TFS de ${fmtData(hoje)}`;
+    if (tipo === "svg") exportarSvg(svgRef.current, nomeArquivo, titulo);
+    else void exportarPng(svgRef.current, nomeArquivo, titulo);
+  };
 
   const idx = new Map(c.colunas.map((s, n) => [s.sprint, n]));
   const nCols = c.colunas.length + (c.aPlanejar ? 1 : 0);
@@ -76,12 +87,23 @@ export function CronogramaTab({ itens, sprints, hoje, modulo }: { itens: TfsItem
         <Select label="Módulo" value={escolha || (doFiltro ? String(doFiltro) : "")} onChange={setEscolha} todosLabel="Visão geral (só cadeias)" maxWidth={9999}
           opcoes={epicos.map(([id, nome]) => ({ value: String(id), label: nome }))} />
       </div>
-      <DashboardSection title={epicoId === null ? "Cadeias de dependência de todos os módulos" : `Cronograma: ${epicos.find(([id]) => id === epicoId)?.[1] ?? ""}`}>
+      <DashboardSection
+        title={tituloGrafico}
+        action={blocos.length > 0 ? (
+          <span className="flex gap-3 print:hidden">
+            {(["png", "svg"] as const).map((t) => (
+              <button key={t} type="button" onClick={() => exportar(t)} className="text-sm font-medium inline-flex items-center gap-1" style={{ color: "var(--ds-color-primary-600)" }}>
+                <span aria-hidden className="material-icons" style={{ fontSize: 18 }}>download</span>Baixar {t.toUpperCase()}
+              </button>
+            ))}
+          </span>
+        ) : undefined}
+      >
         {blocos.length === 0 ? (
           <p className="text-sm" style={cinza}>Nenhuma {epicoId === null ? "dependência registrada entre entregas" : "entrega aberta"} neste recorte.</p>
         ) : (
           <div className="overflow-x-auto min-w-0">
-            <svg width={largura} height={altura} role="img" aria-label="Cronograma por sprint com dependências" style={{ fontFamily: "inherit" }}>
+            <svg ref={svgRef} width={largura} height={altura} role="img" aria-label="Cronograma por sprint com dependências" style={{ fontFamily: "inherit" }}>
               <defs><marker id="seta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--ds-color-text-secondary)" /></marker></defs>
               {c.colunas.map((s, n) => (
                 <g key={s.sprint}>

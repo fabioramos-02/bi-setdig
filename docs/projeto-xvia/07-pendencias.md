@@ -26,7 +26,7 @@ Estado em 11/11/2026. Responsáveis são sugestões, a confirmar.
 
 ## Divergências conhecidas
 
-- **UST de novembro alta (500) e de outubro baixa (47):** pela data de fechamento, a X-VIA fechou tarefas em lote em novembro; pela Data da Execução, o mês 10 teria 337. O BI usa o fechamento (mesma regra do painel do TFS). A conferir com a X-VIA.
+- ~~UST de novembro alta (500) e de outubro baixa (47)~~ **Resolvido em 11/11/2026:** as 64 tarefas concluídas da X-VIA têm Data da Execução, e só 12 foram fechadas no mês em que o trabalho foi feito. O mês passou a ser o da Data da Execução: outubro tem 346 UST e novembro, 62 até 11/11. A soma pela data de fechamento aparece só como explicação.
 - **"Ata de reunião" como PBI da X-VIA** (ex.: #1373754) conta como entrega concluída. É a forma como a X-VIA registra: se não for entrega, ajustar no TFS.
 
 - ~~% em produção: BI 30% × painel do TFS 40%~~ **Resolvido em 11/11/2026:** o `src.painel` passou a usar a régua do BI (só entregas da X-VIA, em produção = coluna Em Produção). Os dois mostram 75 de 246 (30%), 10 impedidos e 12 aguardando decisão.

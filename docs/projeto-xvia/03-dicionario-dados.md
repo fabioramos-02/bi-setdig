@@ -12,7 +12,7 @@ de 11/11/2026, para conferência.
 | % executado | Quanto do contratado foi usado? | + contrato.json `ustTotalTr` | executada / 23.356 | não compara com recorte | acumulado | 2,4% | — |
 | Previsto até o mês | Quanto o TR previa até agora? | contrato.json `previsaoMensal` | soma meses 1..N (`consumoContrato`) | só sem filtro | até o mês N | 8.659 | tabela do TR, não OS |
 | Valor consumido | Quanto em R$ foi executado? | + `valorUst` | UST executada × 154,61 | sim | acumulado | R$ 85.499,33 | é cálculo, não faturamento |
-| UST no mês | O que foi feito no mês? | Task `fechadoEm` (senão `dataExecucao`) | `executadoPorMes` | sim | mês | nov: 500; out: 47 | X-VIA fecha em lote; ver 07 |
+| UST no mês | O que foi feito no mês, contra o previsto no TR? | Task `dataExecucao` (senão `fechadoEm`) + `previsaoMensal` | `execucaoMensal` / `mesDaExecucao` | sim | mês do contrato | out: 346 de 1.970 (18%); nov parcial: 62 | pela data de fechamento novembro daria 500 (fechamento em lote) |
 | UST por órgão / serviço | Quanto cada órgão consumiu? | Task `orgao`, `pbiId` | `consumoPorOrgao` (mesma regra; sem órgão = linha própria) | sim | acumulado | soma = total | 22 Tasks Done sem órgão |
 | Entregas em produção | Quanto do planejado está disponível? | PBI/Bug `coluna` | coluna "Em Produção" / entregas não removidas, só X-VIA (`andamentoEntregas(soXvia)`) | sim | hoje | 75 de 246 (30%) | depende do board atualizado |
 | Atrasadas | O que passou do prazo? | `sprint`, `prazo` + sprints | aberta e sprint encerrada ou Target Date vencido (`atrasadas`) | sim | hoje | 72 (X-VIA) | Target Date pouco preenchido |

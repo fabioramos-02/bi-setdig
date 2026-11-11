@@ -1,13 +1,13 @@
 import { montarCronograma } from "@/lib/cronograma";
 import { enriquecerVeredito } from "@/lib/tfs-origem";
 import {
-  andamentoEntregas, atrasadas, bugsDoQa, cadeiaFinanceira, consumoContrato, entregasDoMes, executadoPorMes, fmtData, fmtNum, fmtReais,
+  andamentoEntregas, atrasadas, bugsDoQa, cadeiaFinanceira, consumoContrato, entregasDoMes, execucaoMensal, fmtData, fmtNum, fmtReais,
   pendencias, prazoProjeto, quemResolve, soXvia, vereditoExecutivo,
-  type EtpUst, type Financeiro, type Origem, type TfsContrato, type TfsItem, type TfsSprint,
+  type EtpUst, type Financeiro, type TfsContrato, type TfsItem, type TfsSprint,
 } from "@/lib/tfs";
-import { OrigemBotao } from "./OrigemBotao";
 import { PainelSecretario } from "./PainelSecretario";
 import { SlaSecao } from "./SlaSecao";
+import { ExecucaoMensal } from "./ExecucaoMensal";
 import { TabelaCadeia } from "./CadeiaFinanceira";
 import { BotaoLink, COR, LinkItem, SecaoRelatorio, Sigla, cinza } from "./comum";
 
@@ -36,8 +36,6 @@ export function RelatorioMensal({ itens, sprints, contrato, etp, financeiro, hoj
   const cadeia = cadeiaFinanceira(financeiro, { ust: consumo.ustExecutada, valor: consumo.valorExecutado });
   const mes = hoje.slice(0, 7);
   const ant = mesAnterior(mes);
-  const porMes = executadoPorMes(itens, etp).meses;
-  const ustDo = (m: string) => porMes.find((x) => x.mes === m);
   const entregasMes = entregasDoMes(xv, mes).flatMap((g) => g.itens);
   const entregasAnt = entregasDoMes(xv, ant).flatMap((g) => g.itens);
   const vigencia = contrato?.vigenciaMeses ?? 18;
@@ -48,15 +46,6 @@ export function RelatorioMensal({ itens, sprints, contrato, etp, financeiro, hoj
   );
   const sprintAgora = sprints.find((x) => x.situacao === "atual");
   const cabecalho = [nomeMes(mes), `mês ${prazo.mesDoContrato} de ${vigencia} do contrato`, sprintAgora ? `${sprintAgora.nome} até ${fmtData(sprintAgora.fim).slice(0, 5)}` : null, `dados do TFS de ${fmtData(hoje)}`].filter(Boolean).join(" · ");
-  const ustMesOrigem = (m: string): Origem => ({
-    rotulo: `UST executadas em ${nomeMes(m)}`,
-    numero: `${fmtNum(ustDo(m)?.ust ?? 0)} UST em ${nomeMes(m)}`,
-    passos: [`${fmtNum(ustDo(m)?.itens.length ?? 0)} tarefas da X-VIA concluídas no mês, com atividade do catálogo`, `somam ${fmtNum(ustDo(m)?.ust ?? 0)} UST`],
-    fonte: "TFS: data de fechamento da tarefa (sem ela, a Data da Execução)",
-    detalhe: "A X-VIA quase não preenche a Data da Execução; por isso o mês é o do fechamento da tarefa.",
-    itens: ustDo(m)?.itens ?? [],
-    valor: consumo.origem.valor,
-  });
   const proximos = [...atraso, ...decisoes.filter((d) => !atraso.includes(d))].slice(0, 8);
 
   return (
@@ -73,13 +62,7 @@ export function RelatorioMensal({ itens, sprints, contrato, etp, financeiro, hoj
       </SecaoRelatorio>
 
       <SecaoRelatorio n={3} titulo="O que foi executado no mês?">
-        <p>
-          <b>{fmtNum(ustDo(mes)?.ust ?? 0)} <Sigla s="UST" /></b> em {nomeMes(mes)} até {fmtData(hoje)} ({fmtNum(ustDo(mes)?.itens.length ?? 0)} tarefas)
-          {" "}· <b>{fmtNum(ustDo(ant)?.ust ?? 0)}</b> em {nomeMes(ant)}.
-          {contrato?.valorUst ? ` Em reais: ${fmtReais((ustDo(mes)?.ust ?? 0) * contrato.valorUst)} e ${fmtReais((ustDo(ant)?.ust ?? 0) * contrato.valorUst)}.` : ""}
-        </p>
-        <OrigemBotao origem={ustMesOrigem(mes)} />
-        <p className="text-xs" style={cinza}>Mês = data de fechamento da tarefa no TFS (a X-VIA quase não preenche a Data da Execução).</p>
+        <ExecucaoMensal dados={execucaoMensal(itens, etp, contrato, hoje)} hoje={hoje} />
       </SecaoRelatorio>
 
       <SecaoRelatorio n={4} titulo="Quais entregas foram feitas?" acao={<BotaoLink onClick={() => onIrPara("fiscalizacao")}>Ver por sprint</BotaoLink>}>

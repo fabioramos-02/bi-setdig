@@ -78,7 +78,7 @@ export function UstTab({ itens, etp, contrato }: { itens: TfsItem[]; etp: EtpUst
 
       <DashboardSection title="Quantas UST a X-VIA concluiu em cada mês?">
         <RankingBarChart itens={porMes.meses.map((m) => ({ label: new Date(`${m.mes}-15T12:00:00`).toLocaleDateString("pt-BR", { month: "short", year: "numeric" }), valor: m.ust }))} />
-        <p className="mt-2 text-xs" style={{ color: "var(--ds-color-text-muted)" }}>Mês do fechamento da tarefa (sem ele, a Data da Execução).{porMes.semData ? ` ${fmtNum(porMes.semData)} tarefas concluídas sem data ficam fora deste gráfico.` : ""}</p>
+        <p className="mt-2 text-xs" style={{ color: "var(--ds-color-text-muted)" }}>Mês da Data da Execução da tarefa (sem ela, a data de fechamento no TFS).{porMes.semData ? ` ${fmtNum(porMes.semData)} tarefas concluídas sem data ficam fora deste gráfico.` : ""}</p>
       </DashboardSection>
 
       <DashboardSection
