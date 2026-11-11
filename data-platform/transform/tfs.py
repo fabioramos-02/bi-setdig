@@ -44,8 +44,32 @@ def sigla_do_campo(valor: str | None) -> str | None:
     return {"FERTEL-REDEEDUCATIVAMS": "FERTELEDUCATIVAMS"}.get(sigla, sigla) or None
 
 
-def frente(area: str) -> str:
-    return "SGD" if area == "XVIA\\SGD" or area.startswith("XVIA\\SGD\\") else "X-VIA"
+EPICO_SGD = 1333593  # "[SGD] - Documentação PGD-MS" (congelado)
+AREA_UST = "XVIA\\Customização UST"  # área que a X-VIA fatura (mesma de tfs.ts)
+NAO_IDENTIFICADO = "Não identificado"
+
+
+def _na_area(area: str, raiz: str) -> bool:
+    return area == raiz or area.startswith(raiz + "\\")
+
+
+def frente(area: str, tipo: str = "", titulo: str = "", empresa: str | None = None,
+           epico_id: int | None = None) -> str:
+    """X-VIA, SGD ou Não identificado (ADR-017, Fabio 11/11/2026).
+
+    Task: o contrato gravado nela decide (X-VIA fatura; Governo do Estado = SGD).
+    Sem contrato, só a área que a X-VIA fatura conta como X-VIA; o que é visivelmente
+    da SGD fica SGD; o resto é Não identificado e fica fora de todo total da X-VIA.
+    Demais tipos: área XVIA\\SGD, título "[SGD]" ou épico SGD = SGD. Nunca pelo nome
+    de quem é responsável."""
+    sgd = _na_area(area, "XVIA\\SGD") or (titulo or "").startswith("[SGD]") or epico_id == EPICO_SGD
+    if tipo != "Task":
+        return "SGD" if sgd else "X-VIA"
+    if empresa:
+        return "X-VIA" if eh_contrato_xvia(empresa) else "SGD"
+    if _na_area(area, AREA_UST):
+        return "X-VIA"
+    return "SGD" if sgd else NAO_IDENTIFICADO
 
 
 def orgao_da_feature(titulo: str, siglas: set[str]) -> str | None:
@@ -108,8 +132,8 @@ def pessoa(valor) -> str | None:
     return str(valor).split(" <")[0].strip() or None if valor else None
 
 
-# Time interno da SGD: não fatura UST. Task deles nunca entra na conta da X-VIA, mesmo com o
-# contrato da X-VIA marcado (Fabio, 10/11/2026). Espelha SGD em lancar-demandas-xvia/scripts/dash_queries.py.
+# Time interno da SGD. Só informa: a frente vem do contrato (ADR-017). Task com contrato X-VIA
+# e responsável daqui vira alerta na Qualidade dos dados, para conferir, e não sai da conta.
 TIME_SGD = {"segov\\framos", "segov\\goliveira", "segov\\dichiy", "segov\\bmcoelho", "fazenda\\apecin"}
 
 
@@ -170,8 +194,12 @@ def montar_itens(arvore: dict[int, int | None], brutos: list[dict],
         alterado = _data(f.get("System.ChangedDate"))
         lancamento = f.get("Custom.SGI.LancamentoAtividadeID")
         empresa = (f.get("Custom.SGI.Empresa") or "").strip() or None
-        tabela = ust_xvia_id if eh_contrato_xvia(empresa) else ust_por_contrato.get(empresa or padrao, {})
-        valor_ust = tabela.get(str(lancamento)) if lancamento else None
+        area = f.get("System.AreaPath", "")
+        # Sem contrato na área que a X-VIA fatura, o id só vale no catálogo X-VIA: nunca o do Governo.
+        da_xvia = eh_contrato_xvia(empresa) or (not empresa and _na_area(area, AREA_UST))
+        tabela = ust_xvia_id if da_xvia else ust_por_contrato.get(empresa or padrao, {})
+        # Só Task fatura e leva UST (Fabio, 11/11/2026): PBI/Feature/Epic nunca têm valor.
+        valor_ust = tabela.get(str(lancamento)) if lancamento and tipo == "Task" else None
         atividade = f.get("Custom.SGI.AtividadeUST") or None
         # Código do catálogo X-VIA: da atividade marcada ("DOC.07 - …") quando a
         # Task tem o contrato X-VIA; senão do que a X-VIA escreveu na descrição.
@@ -194,8 +222,8 @@ def montar_itens(arvore: dict[int, int | None], brutos: list[dict],
             "titulo": f.get("System.Title", ""),
             "estado": f.get("System.State", ""),
             "coluna": coluna,
-            "area": f.get("System.AreaPath", ""),
-            "frente": frente(f.get("System.AreaPath", "")),
+            "area": area,
+            "frente": frente(area, tipo, f.get("System.Title", ""), empresa, epico_id),
             "sprint": f.get("System.IterationPath", ""),
             "epicoId": epico_id,
             "epico": titulo(epico_id),

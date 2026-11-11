@@ -1,46 +1,47 @@
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
-import { fmtNum, qualidadeDados, type EtpUst, type TfsContrato, type TfsItem } from "@/lib/tfs";
+import { FONTES_CONTRATO, fmtData, fmtNum, qualidadeDados, type EtpUst, type Financeiro, type TfsContrato, type TfsItem } from "@/lib/tfs";
 import { OrigemBotao } from "./OrigemBotao";
+import { COR, cinza } from "./comum";
 
-/** Nível 3 — qualidade do dado: o que falta no TFS para os números serem
- * confiáveis. Nada é preenchido por suposição; aqui aparece o que falta. */
-export function QualidadeTab({ itens, etp, contrato }: { itens: TfsItem[]; etp: EtpUst | null; contrato: TfsContrato | null }) {
-  const verificacoes = qualidadeDados(itens, etp, contrato);
+/** Nível 3, F — qualidade do dado: fontes, data do retrato e o que falta para os números
+ * serem confiáveis. Nada é preenchido por suposição; aqui aparece o que falta ou diverge. */
+export function QualidadeTab({ itens, etp, contrato, financeiro, hoje, diasRetrato }: {
+  itens: TfsItem[]; etp: EtpUst | null; contrato: TfsContrato | null; financeiro: Financeiro | null; hoje: string; diasRetrato: number | null;
+}) {
+  const verificacoes = qualidadeDados(itens, etp, contrato, financeiro);
   const comProblema = verificacoes.filter((v) => v.itens.length > 0 || v.nota);
+  const velho = diasRetrato !== null && diasRetrato > 7;
   return (
     <div className="flex flex-col gap-6">
       <StoryCard
-        anchor={comProblema.length ? `${comProblema.length} verificações encontraram lacunas no dado.` : "Nenhuma lacuna encontrada no dado."}
-        comoLer="Cada linha é uma regra de qualidade. Item sem sprint, sem módulo ou sem responsável deixa o painel incompleto; tarefa sem código do catálogo fica fora da conta de UST. Corrigir no TFS e esperar a próxima atualização."
+        anchor={comProblema.length ? `${comProblema.length} verificações encontraram lacunas ou divergências no dado.` : "Nenhuma lacuna encontrada no dado."}
+        caption={`Retrato do TFS de ${fmtData(hoje)}${diasRetrato !== null ? ` (${fmtNum(diasRetrato)} dias atrás)` : ""}.${velho ? " Atenção: retrato com mais de uma semana; rodar a extração do TFS de novo." : ""}`}
+        comoLer="Cada linha é uma regra de qualidade. Item sem sprint, sem módulo ou sem responsável deixa o painel incompleto; tarefa sem código do catálogo ou sem frente identificada fica fora da conta da X-VIA. Corrigir no TFS e rodar a próxima atualização."
       />
       <DashboardSection title="Fontes de dados">
         <ul className="flex flex-col gap-2 text-sm">
-          {[
-            { fonte: "TFS (backlog, sprints, responsáveis, execução de UST)", situacao: "Integrado pela API. Só responde na rede do Governo: a atualização roda numa máquina da SGD (data no topo da página).", ok: true },
-            { fonte: "Valores do contrato (itens 1, 2 e 3, valor da UST, previsão mensal)", situacao: "Lidos do TR pós-parecer (contrato.json, preenchido à mão, com a fonte em cada campo).", ok: true },
-            { fonte: "Ordens de Serviço", situacao: "Sem fonte disponível — precisa de planilha ou sistema com número, órgão, serviço e UST prevista.", ok: false },
-            { fonte: "Fiscalização e aceite (UST aceitas)", situacao: "Sem fonte disponível — precisa do registro de aceite por OS.", ok: false },
-            { fonte: "Notas fiscais e medições (faturado)", situacao: "O TFS tem os campos Faturado e Data de Faturamento, mas estão vazios.", ok: false },
-            { fonte: "Pagamentos", situacao: "Sem fonte disponível — precisa do sistema financeiro oficial do Estado.", ok: false },
-          ].map((f) => (
-            <li key={f.fonte} style={{ borderLeft: `4px solid ${f.ok ? "var(--ds-color-success)" : "var(--ds-color-text-muted)"}`, paddingLeft: 8 }}>
-              <b>{f.fonte}</b>
-              <div className="text-xs" style={{ color: "var(--ds-color-text-muted)" }}>{f.situacao}</div>
-            </li>
-          ))}
+          {FONTES_CONTRATO.map((f) => {
+            const vazio = f.fonte === "financeiro.json" && !(financeiro && (financeiro.ordensServico.length || financeiro.notasFiscais.length || financeiro.pagamentos.length));
+            return (
+              <li key={f.fonte} style={{ borderLeft: `4px solid ${vazio ? COR.neutro : COR.ok}`, paddingLeft: 8 }}>
+                <b>{f.fonte}</b> — {f.traz}
+                <div className="text-xs" style={cinza}>{f.como}{vazio ? " · sem registros: as etapas financeiras aparecem como Não informado" : ""}</div>
+              </li>
+            );
+          })}
         </ul>
       </DashboardSection>
-      <DashboardSection title="O que falta no TFS?">
+      <DashboardSection title="O que falta ou diverge?">
         <ul className="flex flex-col gap-3">
-          {verificacoes.map((v) => (
-            <li key={v.rotulo} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-sm">
+          {verificacoes.map((v, n) => (
+            <li key={`${v.rotulo}${n}`} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-sm">
               <span style={{ color: "var(--ds-color-text-primary)" }}>
                 {v.rotulo}
-                {v.nota && <span style={{ color: "var(--ds-color-text-muted)" }}> — {v.nota}</span>}
+                {v.nota && <span style={cinza}> — {v.nota}</span>}
               </span>
               <span className="flex items-center gap-3 shrink-0">
-                <b style={{ color: v.itens.length ? "var(--ds-color-danger)" : "var(--ds-color-success)" }}>{fmtNum(v.itens.length)}</b>
+                <b style={{ color: v.itens.length || v.nota ? COR.critico : COR.ok }}>{fmtNum(v.itens.length)}</b>
                 {v.itens.length > 0 && <OrigemBotao origem={{ rotulo: v.rotulo, detalhe: "Itens que precisam ser corrigidos no TFS.", itens: v.itens }} />}
               </span>
             </li>

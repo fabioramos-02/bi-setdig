@@ -100,3 +100,9 @@ As tarefas da X-VIA (área `XVIA\Customização UST`, 617 em 26/10) **não** tê
 | UST lançada | 2.166 (9,3% do ETP) |
 | UST executada | 66 |
 | Tarefas sem contrato marcado | 286 |
+
+## Adendo 2026-11-11 — refatoração do BI X-VIA
+
+Frente X-VIA × SGD pelo contrato (ADR-017), cadeia financeira manual (`financeiro.json`), mês civil do
+contrato e cronograma de dependências. Documentação completa em [docs/projeto-xvia/](../projeto-xvia/):
+01 diagnóstico, 02 arquitetura da informação, 03 dicionário, 04 regras, 05 fontes, 06 histórico, 07 pendências.

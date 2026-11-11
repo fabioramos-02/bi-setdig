@@ -13,12 +13,10 @@ import {
   AREA_UST,
   execucaoXvia,
   filtrarItens,
-  FILTROS_VAZIOS,
   ustEtp,
   pendencias,
   porModulo,
   prazoProjeto,
-  resumoEntregas,
   stakeholdersDoProjeto,
   type EtpUst,
   type TfsContrato,
@@ -58,16 +56,6 @@ test("prazoProjeto: fim do TR vence a sprint", () => {
   const p = prazoProjeto(contrato({ fim: "2027-07-27" }), sprints, "2026-10-26");
   assert.equal(p.fimEstimado, false);
   assert.ok(p.pctDecorrido > 0 && p.pctDecorrido < 50);
-});
-
-test("resumoEntregas: conta só PBI/Bug e Em Produção pela coluna", () => {
-  const r = resumoEntregas([
-    item({ coluna: "Em Produção", estado: "Done" }),
-    item({ tipo: "Bug", pendencia: true }),
-    item({ tipo: "Task" }),
-    item({ estado: "Removed" }),
-  ]);
-  assert.deepEqual(r, { total: 2, emProducao: 1, pctProducao: 50, pendencias: 1, abertas: 1 });
 });
 
 test("porModulo: separa X-VIA e SGD e conta tipo de entrega", () => {
@@ -122,7 +110,7 @@ test("execucaoXvia: só área Customização UST; sem código/faixa/fora do ETP 
     item({ tipo: "Task", area: ust, codigoCatalogo: "NEG.03/04/05" }),
     item({ tipo: "Task", area: ust, codigoCatalogo: "NEG.19" }),
     item({ tipo: "Task", area: ust }),
-    item({ tipo: "Task", area: "XVIA\\SGD", codigoCatalogo: "DEV.13", estado: "Done" }),
+    item({ tipo: "Task", area: "XVIA\\SGD", frente: "SGD", codigoCatalogo: "DEV.13", estado: "Done" }),
   ], etp, contrato({ ustTotalTr: 23356, valorUst: 10 }));
   assert.equal(f.tarefas, 5);
   assert.equal(f.ustExecutada, 3);
@@ -147,14 +135,14 @@ test("execucaoXvia: código fora do ETP com valor no catálogo X-VIA conta, com 
   assert.deepEqual(f.contagemAClassificar, { "sem código": 0, "faixa a definir": 0, "fora do ETP": 1 });
 });
 
-test("execucaoXvia: task do time SGD não fatura, mesmo com o contrato da X-VIA", () => {
+test("execucaoXvia: o contrato manda, não a pessoa (ADR-017)", () => {
   const XVIA = "004/2026 - 30524 - XVIA TECNOLOGIA LTDA";
   const f = execucaoXvia([
     item({ tipo: "Task", empresa: XVIA, codigoCatalogo: "DEV.13", ust: 3, estado: "Done" }),
     item({ tipo: "Task", empresa: XVIA, codigoCatalogo: "DEV.13", ust: 3, estado: "Done", timeSgd: true }),
   ], etp, contrato({ ustTotalTr: 23356, valorUst: 10 }));
-  assert.equal(f.tarefas, 1);
-  assert.equal(f.ustExecutada, 3);
+  assert.equal(f.tarefas, 2);
+  assert.equal(f.ustExecutada, 6);
 });
 
 test("execucaoXvia: só o contrato da X-VIA; Governo fora mesmo na área; valor do catálogo X-VIA vence o ETP", () => {
@@ -173,8 +161,8 @@ test("execucaoXvia: só o contrato da X-VIA; Governo fora mesmo na área; valor 
 
 test("filtrarItens: combina módulo, frente, órgão e sprint", () => {
   const itens = [item({ id: 1, epico: "CMS", frente: "SGD" }), item({ id: 2, epico: "CMS" }), item({ id: 3, epico: "Portal" })];
-  assert.equal(filtrarItens(itens, FILTROS_VAZIOS).length, 3);
-  assert.deepEqual(filtrarItens(itens, { ...FILTROS_VAZIOS, modulo: "CMS", frente: "X-VIA" }).map((i) => i.id), [2]);
+  assert.equal(filtrarItens(itens, { modulo: "", frente: "", orgao: "", sprint: "" }).length, 3);
+  assert.deepEqual(filtrarItens(itens, { orgao: "", sprint: "", modulo: "CMS", frente: "X-VIA" }).map((i) => i.id), [2]);
 });
 
 test("stakeholdersDoProjeto: só órgão com item ou papel", () => {

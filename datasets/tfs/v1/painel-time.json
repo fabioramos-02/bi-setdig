@@ -22,7 +22,7 @@
   {
     "titulo": "TASK",
     "tipo": "numero",
-    "total": 1556
+    "total": 1559
   },
   {
     "titulo": "APLICATIVO",
@@ -113,7 +113,7 @@
     "grupos": [
       {
         "rotulo": "Em Produção",
-        "qtd": 136
+        "qtd": 137
       },
       {
         "rotulo": "A fazer",
@@ -121,7 +121,7 @@
       },
       {
         "rotulo": "Área de Negócios",
-        "qtd": 47
+        "qtd": 46
       },
       {
         "rotulo": "Em Desenvolvimento",

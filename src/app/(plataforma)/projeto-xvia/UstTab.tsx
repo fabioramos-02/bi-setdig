@@ -6,13 +6,11 @@ import { StoryCard } from "@/components/dashboard/StoryCard";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { DataTable, type Coluna } from "@/components/dashboard/DataTable";
 import { ExportCsvButton } from "@/components/dashboard/ExportCsvButton";
-import { execucaoXvia, fmtNum, fmtReais, linkTfs, type EtpUst, type LinhaCodigo, type TfsContrato, type TfsItem } from "@/lib/tfs";
+import { executadoPorMes, execucaoXvia, fmtNum, fmtReais, linkTfs, type EtpUst, type LinhaCodigo, type TfsContrato, type TfsItem } from "@/lib/tfs";
+import { RankingBarChart } from "@/components/charts/RankingBarChart";
+import { LinkItem } from "./comum";
 
-const linkTarefa = (r: TfsItem) => (
-  <a href={linkTfs(r.id)} target="_blank" rel="noreferrer" className="underline" style={{ color: "var(--ds-color-primary-600)" }}>
-    #{r.id} {r.titulo}
-  </a>
-);
+const linkTarefa = (r: TfsItem) => <LinkItem item={r} />;
 
 const colunasCodigo: Coluna<LinhaCodigo>[] = [
   { key: "codigo", label: "Código", sortable: true, sortValue: (r) => r.codigo, render: (r) => <span title={r.servico} className="font-medium">{r.codigo}</span> },
@@ -53,6 +51,7 @@ export function UstTab({ itens, etp, contrato }: { itens: TfsItem[]; etp: EtpUst
   const usados = f.porCodigo.filter((l) => l.tarefas > 0);
   const estourados = usados.filter((l) => l.previsto > 0 && l.lancada > l.previsto);
   const reais = (v: number | null) => (v === null ? "valor da UST a informar" : fmtReais(v));
+  const porMes = executadoPorMes(itens, etp);
 
   if (f.tarefas === 0) {
     return <StoryCard anchor="Nenhuma tarefa do contrato da X-VIA neste recorte." comoLer="A UST da X-VIA conta só as tarefas do contrato da X-VIA; as do contrato do Governo do Estado não entram. Mude os filtros acima para ver outro recorte." />;
@@ -61,21 +60,26 @@ export function UstTab({ itens, etp, contrato }: { itens: TfsItem[]; etp: EtpUst
   return (
     <div className="flex flex-col gap-6">
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-        <MetricCard label="UST executada" value={fmtNum(f.ustExecutada)} sub={`${fmtNum(f.pctExecutado ?? 0)}% do ETP · ${reais(f.valorExecutado)}`} />
-        <MetricCard label="UST lançada nas tarefas" value={fmtNum(f.ustLancada)} sub={`${fmtNum(f.pctLancado ?? 0)}% do ETP · ${reais(f.valorLancado)}`} />
-        <MetricCard label="Previsto no ETP" value={f.ustTotal === null ? "—" : `${fmtNum(f.ustTotal)} UST`} sub="memória de cálculo, pp. 68–71" />
+        <MetricCard label="UST executada" value={fmtNum(f.ustExecutada)} sub={`${fmtNum(f.pctExecutado ?? 0)}% do contratado · ${reais(f.valorExecutado)}`} />
+        <MetricCard label="UST lançada nas tarefas" value={fmtNum(f.ustLancada)} sub={`${fmtNum(f.pctLancado ?? 0)}% do contratado · ${reais(f.valorLancado)}`} />
+        <MetricCard label="Contratado (TR)" value={f.ustTotal === null ? "—" : `${fmtNum(f.ustTotal)} UST`} sub="Termo de Referência, item 1.1" />
         <MetricCard label="Tarefas a classificar" value={fmtNum(f.aClassificar.length)} sub={`de ${fmtNum(f.tarefas)} tarefas da X-VIA`} />
       </div>
 
       <StoryCard
-        anchor={`A X-VIA lançou ${fmtNum(f.ustLancada)} UST em ${fmtNum(f.tarefas - f.aClassificar.length)} tarefas — ${fmtNum(f.pctLancado ?? 0)}% das ${fmtNum(f.ustTotal ?? 0)} UST previstas no ETP. Concluídas, ${fmtNum(f.ustExecutada)}.`}
+        anchor={`A X-VIA lançou ${fmtNum(f.ustLancada)} UST em ${fmtNum(f.tarefas - f.aClassificar.length)} tarefas — ${fmtNum(f.pctLancado ?? 0)}% das ${fmtNum(f.ustTotal ?? 0)} UST contratadas. Concluídas, ${fmtNum(f.ustExecutada)}.`}
         caption={
           estourados.length > 0
             ? `${fmtNum(estourados.length)} atividade(s) já passaram do previsto no ETP: ${estourados.map((e) => e.codigo).join(", ")}.`
             : `${fmtNum(f.aClassificar.length)} tarefas ainda não têm um código válido do catálogo da X-VIA e ficam fora da conta.`
         }
-        comoLer={`Conta só o que a X-VIA fatura: tarefas do contrato da X-VIA, sem as do time da SGD (que não fatura UST, mesmo quando a tarefa tem o contrato da X-VIA marcado) e sem as do contrato do Governo do Estado. Cada tarefa vale a UST da atividade do catálogo da X-VIA marcada nela; quando a tarefa ainda não tem a atividade marcada, vale o código que a X-VIA escreveu na descrição (ex.: 'Catálogo DOC.07').${f.semContrato ? ` ${fmtNum(f.semContrato)} das tarefas somadas ainda estão nessa situação.` : ""}${f.valorDoEtp ? ` ${fmtNum(f.valorDoEtp)} tarefas usam, por enquanto, o valor da tabela do ETP, porque o valor da atividade no catálogo da X-VIA ainda não foi carregado.` : ""}${f.foraDoEtp ? ` ${fmtNum(f.foraDoEtp)} tarefas usam atividade do catálogo da X-VIA que não está na memória de cálculo do ETP: contam, com previsto zero.` : ""} Lançada = todas as tarefas com atividade; executada = só as concluídas. Previsto = ocorrências da memória de cálculo do ETP.`}
+        comoLer={`Conta só o que a X-VIA fatura: tarefas (só tarefa fatura) com o contrato da X-VIA marcado, ou na área que a X-VIA fatura quando ainda sem contrato. Tarefa com o contrato do Governo do Estado (SGD) ou sem frente identificada nunca entra. Cada tarefa vale a UST da atividade do catálogo da X-VIA marcada nela; quando a tarefa ainda não tem a atividade marcada, vale o código que a X-VIA escreveu na descrição (ex.: 'Catálogo DOC.07').${f.semContrato ? ` ${fmtNum(f.semContrato)} das tarefas somadas ainda estão nessa situação.` : ""}${f.valorDoEtp ? ` ${fmtNum(f.valorDoEtp)} tarefas usam, por enquanto, o valor da tabela do ETP, porque o valor da atividade no catálogo da X-VIA ainda não foi carregado.` : ""}${f.foraDoEtp ? ` ${fmtNum(f.foraDoEtp)} tarefas usam atividade do catálogo da X-VIA que não está na memória de cálculo do ETP: contam, com previsto zero.` : ""} Lançada = todas as tarefas com atividade; executada = só as concluídas. Previsto = ocorrências da memória de cálculo do ETP.`}
       />
+
+      <DashboardSection title="Quantas UST a X-VIA concluiu em cada mês?">
+        <RankingBarChart itens={porMes.meses.map((m) => ({ label: new Date(`${m.mes}-15T12:00:00`).toLocaleDateString("pt-BR", { month: "short", year: "numeric" }), valor: m.ust }))} />
+        <p className="mt-2 text-xs" style={{ color: "var(--ds-color-text-muted)" }}>Mês do fechamento da tarefa (sem ele, a Data da Execução).{porMes.semData ? ` ${fmtNum(porMes.semData)} tarefas concluídas sem data ficam fora deste gráfico.` : ""}</p>
+      </DashboardSection>
 
       <DashboardSection
         title="Quanto de cada atividade do ETP já foi usado?"

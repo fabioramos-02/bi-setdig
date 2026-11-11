@@ -10,7 +10,9 @@ Plataforma de analytics do Governo de Mato Grosso do Sul (Next.js + Design Syste
 | `/analytics/ms-digital` | App MS Digital | GA4 |
 | `/avaliacao-carta` | Avaliação da carta de serviço (erros reportados + satisfação) | Cartas |
 | `/censo-digital` | Maturidade digital dos serviços por órgão (régua 0–4) — ver [docs/censo-maturidade.md](docs/censo-maturidade.md) | Censo (estático) |
-| `/servicos` | — (em construção) | — |
+| `/servicos` | Serviços do portal: acesso, avaliação e migração | Matomo + Cartas |
+| `/sites/[idsite]` | Sites dos órgãos no Matomo | Matomo |
+| `/projeto-xvia` | Acompanhamento do Contrato 004/2026 (X-VIA): relatório do Secretário, visão do Gerente e detalhamento — ver [docs/projeto-xvia/](docs/projeto-xvia/) | TFS + contrato (manual) |
 
 ## Stack
 

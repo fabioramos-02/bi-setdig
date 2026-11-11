@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "tfs/financeiro",
+  "description": "Cadeia financeira do contrato X-VIA (OS → medição → nota fiscal → pagamento, mais glosas), preenchida à mão. Só registros da X-VIA. Lista vazia = 'Não informado' no BI.",
+  "type": "object",
+  "required": ["ordensServico", "medicoes", "notasFiscais", "pagamentos", "glosas"],
+  "definitions": {
+    "data": { "type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "fonte": { "type": "string", "minLength": 1 }
+  },
+  "properties": {
+    "atualizadoEm": { "$ref": "#/definitions/data" },
+    "ordensServico": { "type": "array", "items": { "type": "object",
+      "required": ["numero", "orgao", "ustPrevista", "status", "fonte"],
+      "properties": {
+        "numero": { "type": "string" }, "data": { "$ref": "#/definitions/data" },
+        "orgao": { "type": "string" }, "servico": { "type": ["string", "null"] },
+        "pbiIds": { "type": "array", "items": { "type": "integer" } },
+        "ustPrevista": { "type": "number", "minimum": 0 },
+        "status": { "type": "string", "enum": ["emitida", "em execução", "concluída", "cancelada"] },
+        "fonte": { "$ref": "#/definitions/fonte" } } } },
+    "medicoes": { "type": "array", "items": { "type": "object",
+      "required": ["id", "os", "periodo", "ustExecutada", "status", "fonte"],
+      "properties": {
+        "id": { "type": "string" }, "os": { "type": "string" },
+        "periodo": { "type": "string", "pattern": "^\\d{4}-\\d{2}$" },
+        "ustExecutada": { "type": "number", "minimum": 0 },
+        "ustAceita": { "type": ["number", "null"], "minimum": 0 },
+        "dataAceite": { "$ref": "#/definitions/data" },
+        "status": { "type": "string", "enum": ["em análise", "aceita", "aceita com glosa", "recusada"] },
+        "fonte": { "$ref": "#/definitions/fonte" } } } },
+    "notasFiscais": { "type": "array", "items": { "type": "object",
+      "required": ["numero", "medicoes", "valor", "status", "fonte"],
+      "properties": {
+        "numero": { "type": "string" }, "medicoes": { "type": "array", "items": { "type": "string" } },
+        "data": { "$ref": "#/definitions/data" }, "valor": { "type": "number", "minimum": 0 },
+        "status": { "type": "string", "enum": ["emitida", "atestada", "cancelada"] },
+        "fonte": { "$ref": "#/definitions/fonte" } } } },
+    "pagamentos": { "type": "array", "items": { "type": "object",
+      "required": ["notaFiscal", "data", "valor", "status", "fonte"],
+      "properties": {
+        "notaFiscal": { "type": "string" }, "data": { "$ref": "#/definitions/data" },
+        "valor": { "type": "number", "minimum": 0 },
+        "status": { "type": "string", "enum": ["empenhado", "liquidado", "pago"] },
+        "fonte": { "$ref": "#/definitions/fonte" } } } },
+    "glosas": { "type": "array", "items": { "type": "object",
+      "required": ["valor", "motivo", "fonte"],
+      "properties": {
+        "medicao": { "type": ["string", "null"] }, "notaFiscal": { "type": ["string", "null"] },
+        "ust": { "type": ["number", "null"] }, "valor": { "type": "number", "minimum": 0 },
+        "motivo": { "type": "string" }, "data": { "$ref": "#/definitions/data" },
+        "fonte": { "$ref": "#/definitions/fonte" } } } }
+  }
+}

@@ -73,6 +73,43 @@ def test_frente_pela_area():
     assert frente("XVIA\\SGDX") == "X-VIA"
 
 
+def test_frente_entrega_por_area_prefixo_ou_epico_sgd():
+    pbi = "Product Backlog Item"
+    assert frente("XVIA", pbi, "[SGD] - Cronograma") == "SGD"  # título [SGD] fora da área SGD
+    assert frente("XVIA", pbi, "Tela de login", epico_id=1333593) == "SGD"
+    assert frente("XVIA", pbi, "Tela de login") == "X-VIA"
+
+
+def test_frente_da_task_e_o_contrato():
+    t = "Task"
+    # #1372987: área SGD (herdou do PBI [SGD]), contrato X-VIA -> X-VIA (conta UST)
+    assert frente("XVIA\\SGD", t, "[SGD] - Integrar", XVIA) == "X-VIA"
+    # contrato Governo do Estado em área X-VIA -> SGD (nunca soma na X-VIA)
+    assert frente("XVIA\\Customização UST", t, "Doc", "Governo do Estado") == "SGD"
+    assert frente("XVIA\\Customização UST", t, "Doc") == "X-VIA"  # sem contrato, área faturada
+    assert frente("XVIA\\SGD\\Interno", t, "Reunião") == "SGD"
+    assert frente("XVIA", t, "Protótipo") == "Não identificado"  # sem contrato, sem pista
+
+
+def test_task_sem_contrato_na_area_ust_nao_recebe_ust_do_governo():
+    # id 565 vale 9 no catálogo Governo e 20 no X-VIA: na área faturada, só o X-VIA vale.
+    item = _task(**{"System.AreaPath": "XVIA\\Customização UST", "Custom.SGI.LancamentoAtividadeID": "565"})
+    assert (item["frente"], item["ust"]) == ("X-VIA", 20)
+
+
+def test_so_task_tem_ust():
+    pbi = montar_itens({1: None}, [_w(1, "Product Backlog Item", "P", **{
+        "Custom.SGI.Empresa": XVIA, "Custom.SGI.LancamentoAtividadeID": "565"})], [CATALOGO, CATALOGO_XVIA], SIGLAS, HOJE)[0]
+    assert pbi["ust"] is None
+
+
+def test_frente_ignora_o_responsavel():
+    sgd_com_contrato_xvia = _task(**{"Custom.SGI.Empresa": XVIA, "System.AssignedTo": "Fabio <SEGOV\\framos>"})
+    assert (sgd_com_contrato_xvia["frente"], sgd_com_contrato_xvia["timeSgd"]) == ("X-VIA", True)
+    sem_resp = _task(**{"Custom.SGI.Empresa": "Governo do Estado"})
+    assert sem_resp["frente"] == "SGD"
+
+
 def test_orgao_pelo_prefixo_da_feature():
     assert orgao_da_feature("[SES] - Saúde", SIGLAS) == "SES"
     assert orgao_da_feature("[SS] IMASUL", SIGLAS) == "IMASUL"
@@ -141,13 +178,6 @@ def test_agrupar():
     assert agrupar(["Em Produção", "A fazer", "Em Produção"], "System.BoardColumn")[0] == {"rotulo": "Em Produção", "qtd": 2}
 
 
-if __name__ == "__main__":
-    for nome, fn in list(globals().items()):
-        if nome.startswith("test_"):
-            fn()
-    print("ok")
-
-
 def test_responsavel_datas_e_dependencias():
     from tfs import PRED, SUCC
     url = "https://tfs/_apis/wit/workItems/"
@@ -203,3 +233,10 @@ def test_sigla_do_campo_da_lista_do_tfs():
     assert sigla_do_campo("FERTEL - Rede Educativa MS: Fundação Estadual…") == "FERTELEDUCATIVAMS"
     assert sigla_do_campo("detran") == "DETRAN"
     assert sigla_do_campo(None) is None
+
+
+if __name__ == "__main__":
+    for nome, fn in list(globals().items()):
+        if nome.startswith("test_"):
+            fn()
+    print("ok")

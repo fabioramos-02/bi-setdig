@@ -20,9 +20,9 @@
     { "mes": 7, "ust": 2044 }, { "mes": 8, "ust": 1878 }, { "mes": 9, "ust": 1992 },
     { "mes": 10, "ust": 1891 }, { "mes": 11, "ust": 1881 }, { "mes": 12, "ust": 1710 },
     { "mes": 13, "ust": 702 }, { "mes": 14, "ust": 693 }, { "mes": 15, "ust": 640 },
-    { "mes": 16, "ust": 609 }, { "mes": 17, "ust": 429 }, { "mes": 18, "ust": 288 }
+    { "mes": 16, "ust": 609 }, { "mes": 17, "ust": 429 }, { "mes": 18, "ust": 228 }
   ],
-  "previsaoMensalNota": "Totais por mês da tabela 3.3.3 (desenvolvimento + complementares). O TR imprime 228 como total do mês 18, mas a coluna de complementares fecha em 288 e o total geral em 23.356; vale 288 (a conciliar com o TR).",
+  "previsaoMensalNota": "Totais por mês da tabela 3.3.3 (desenvolvimento + complementares). Mês 18 = 228, como o TR imprime: é o valor que fecha o total geral em 23.356 (com 288 a soma daria 23.416). Decisão do Fabio em 11/11/2026.",
   "faturado": null,
   "faturadoNota": "Os campos Faturado e DataFaturamento do TFS ainda não são preenchidos; o faturado aparece como 'a informar'.",
   "previsaoPorModulo": []

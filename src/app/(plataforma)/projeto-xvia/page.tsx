@@ -6,6 +6,7 @@ import {
   getDatasetUpdatedAt,
   getTfsContrato,
   getTfsEtpUst,
+  getTfsFinanceiro,
   getTfsItens,
   getTfsPainelTime,
   getTfsSprints,
@@ -54,8 +55,10 @@ export default function ProjetoXviaPage() {
         contrato={getTfsContrato()}
         etp={getTfsEtpUst()}
         stakeholders={getTfsStakeholders()}
+        financeiro={getTfsFinanceiro()}
         // "Hoje" é o dia da extração: prazos e dias parados batem com o dado.
         hoje={atualizadoEm.slice(0, 10)}
+        diasRetrato={diasDesde(atualizadoEm, new Date())}
         painel={painel}
       />
     </Suspense>

@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import type { OrgaoCenso } from "./censo";
 import type { EtapasCarta } from "./censo-n4";
-import type { EtpUst, TfsContrato, TfsItem, TfsSprint, TfsStakeholder } from "./tfs";
+import type { EtpUst, Financeiro, TfsContrato, TfsItem, TfsSprint, TfsStakeholder } from "./tfs";
 import type { WidgetPainel } from "./tfs-painel";
 
 /**
@@ -604,6 +604,10 @@ export function getTfsContrato(): TfsContrato | null {
 }
 export function getTfsEtpUst(): EtpUst | null {
   return readDataset<EtpUst>("tfs", "v1", "etp-ust");
+}
+/** OS → medição → NF → pagamento (manual, só X-VIA). Ausente = tudo "Não informado". */
+export function getTfsFinanceiro(): Financeiro | null {
+  return readDataset<Financeiro>("tfs", "v1", "financeiro");
 }
 /** Cards e gráficos do dashboard do time no TFS, recalculados pela consulta de
  * cada um. Vazio = ainda não extraído. Leitura em lib/tfs-painel.ts. */

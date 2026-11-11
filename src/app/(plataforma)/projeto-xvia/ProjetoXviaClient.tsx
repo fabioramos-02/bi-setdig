@@ -6,13 +6,17 @@ import { ContentTopBar } from "@/components/ds/ContentTopBar";
 import { ExportarRelatorioButton } from "@/components/dashboard/ExportarRelatorioButton";
 import { RelatorioCapa } from "@/components/dashboard/RelatorioCapa";
 import { Tabs, type TabItem } from "@/components/dashboard/Tabs";
-import { filtrarItens, type EtpUst, type Filtros, type TfsContrato, type TfsItem, type TfsSprint, type TfsStakeholder } from "@/lib/tfs";
+import { filtrarItens, temRecorte, type EtpUst, type Filtros, type Financeiro, type TfsContrato, type TfsItem, type TfsSprint, type TfsStakeholder } from "@/lib/tfs";
 import { FiltrosBar, descreverFiltros } from "./FiltrosBar";
-import { ExecutivoTab } from "./ExecutivoTab";
+import { RelatorioMensal } from "./RelatorioMensal";
 import { QualidadeTab } from "./QualidadeTab";
 import { FinanceiroTab } from "./FinanceiroTab";
 import { ModulosTab } from "./ModulosTab";
-import { PendenciasTab } from "./PendenciasTab";
+import { PrioridadesTab } from "./PrioridadesTab";
+import { CronogramaTab } from "./CronogramaTab";
+import { EntregasTab } from "./EntregasTab";
+import { EquipesTab } from "./EquipesTab";
+import { RegistrosFinanceirosTab } from "./RegistrosFinanceirosTab";
 import { FiscalizacaoTab } from "./FiscalizacaoTab";
 import { UstTab } from "./UstTab";
 import { StakeholdersTab } from "./StakeholdersTab";
@@ -31,7 +35,9 @@ export function ProjetoXviaClient({
   contrato,
   etp,
   stakeholders,
+  financeiro,
   hoje,
+  diasRetrato,
   painel,
 }: {
   itens: TfsItem[];
@@ -39,13 +45,15 @@ export function ProjetoXviaClient({
   contrato: TfsContrato | null;
   etp: EtpUst | null;
   stakeholders: TfsStakeholder[];
+  financeiro: Financeiro | null;
   hoje: string;
+  diasRetrato: number | null;
   painel: { widgets: WidgetPainel[]; atualizadoEm: string | null; diasSemAtualizar: number | null };
 }) {
   const params = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-  const [abaAtiva, setAbaAtiva] = useState("executivo");
+  const [abaAtiva, setAbaAtiva] = useState("relatorio");
   const [nivel, setNivel] = useState("secretario");
 
   const filtros: Filtros = {
@@ -67,29 +75,34 @@ export function ProjetoXviaClient({
   const filtroRelatorio = `${descreverFiltros(filtros) || "Projeto inteiro"} · retrato do TFS em ${dataRetrato}`;
 
   // Três níveis de leitura (pedido do Fabio, 11/2026): Secretário → Gerente → Detalhamento.
+  // Só a X-VIA entra em execução, entregas e financeiro; a SGD aparece separada (ADR-017).
+  const irPara = (a: string) => { setNivel("gerente"); setAbaAtiva(a); };
   const niveis: { id: string; label: string; descricao: string; abas: TabItem[] }[] = [
     {
-      id: "secretario", label: "1. Visão do Secretário", descricao: "Prazo, consumo do contrato, entregas, decisões e o que está em produção.",
+      id: "secretario", label: "1. Visão do Secretário", descricao: "Relatório do mês: execução, entregas, prazo, pendências, dinheiro e próximos passos.",
       abas: [
-        { id: "executivo", label: "Situação do projeto", content: <ExecutivoTab itens={recorte} sprints={sprints} contrato={contrato} etp={etp} hoje={hoje} onIrPara={(a) => { setNivel("gerente"); setAbaAtiva(a); }} /> },
+        { id: "relatorio", label: "Relatório do mês", content: <RelatorioMensal itens={recorte} sprints={sprints} contrato={contrato} etp={etp} financeiro={financeiro} hoje={hoje} recorte={temRecorte(filtros)} onIrPara={irPara} /> },
       ],
     },
     {
-      id: "gerente", label: "2. Visão do Gerente", descricao: "Módulos, gasto por órgão e serviço, pendências, entregas e aceite.",
+      id: "gerente", label: "2. Visão do Gerente", descricao: "O que está parado, quem resolve, cronograma, módulos, gasto por órgão e aceite.",
       abas: [
+        { id: "prioridades", label: "Prioridades", content: <PrioridadesTab itens={recorte} sprints={sprints} hoje={hoje} /> },
+        { id: "cronograma", label: "Cronograma e dependências", content: <CronogramaTab itens={recorte} sprints={sprints} hoje={hoje} modulo={filtros.modulo} /> },
         { id: "modulos", label: "Módulos e frentes", content: <ModulosTab itens={recorte} sprints={sprints} hoje={hoje} filtros={filtros} filtrar={filtrar} /> },
-        { id: "financeiro", label: "Gasto por órgão e serviço", content: <FinanceiroTab itens={recorte} etp={etp} contrato={contrato} /> },
-        { id: "pendencias", label: "Pendências e problemas", content: <PendenciasTab itens={recorte} filtros={filtros} filtrar={filtrar} /> },
+        { id: "financeiro", label: "Gasto por órgão e serviço", content: <FinanceiroTab itens={recorte} etp={etp} contrato={contrato} financeiro={financeiro} /> },
         { id: "fiscalizacao", label: "Sprints, entregas e aceite", content: <FiscalizacaoTab itens={recorte} sprints={sprints} hoje={hoje} /> },
       ],
     },
     {
-      id: "detalhe", label: "3. Detalhamento", descricao: "Origem dos números: UST por atividade, órgãos, painel do time e qualidade do dado.",
+      id: "detalhe", label: "3. Detalhamento", descricao: "De onde vem cada número: UST, registros financeiros, entregas, órgãos, equipes e qualidade do dado.",
       abas: [
-        { id: "ust", label: "UST da X-VIA × ETP", content: <UstTab itens={recorte} etp={etp} contrato={contrato} /> },
-        { id: "orgaos", label: "Órgãos e pontos focais", content: <StakeholdersTab itens={recorte} stakeholders={stakeholders} filtros={filtros} filtrar={filtrar} /> },
-        { id: "acompanhamento", label: "Acompanhamento do time", content: <AcompanhamentoTab {...painel} /> },
-        { id: "qualidade", label: "Qualidade dos dados", content: <QualidadeTab itens={recorte} etp={etp} contrato={contrato} /> },
+        { id: "ust", label: "A. UST e contrato", content: <UstTab itens={recorte} etp={etp} contrato={contrato} /> },
+        { id: "registros", label: "B. Registros financeiros", content: <RegistrosFinanceirosTab financeiro={financeiro} /> },
+        { id: "entregas", label: "C. Entregas", content: <EntregasTab itens={recorte} /> },
+        { id: "orgaos", label: "D. Órgãos e serviços", content: <StakeholdersTab itens={recorte} stakeholders={stakeholders} filtros={filtros} filtrar={filtrar} /> },
+        { id: "equipes", label: "E. Equipes", content: <EquipesTab itens={recorte} sprints={sprints} hoje={hoje}><AcompanhamentoTab {...painel} /></EquipesTab> },
+        { id: "qualidade", label: "F. Qualidade dos dados", content: <QualidadeTab itens={recorte} etp={etp} contrato={contrato} financeiro={financeiro} hoje={hoje} diasRetrato={diasRetrato} /> },
       ],
     },
   ];
@@ -97,7 +110,7 @@ export function ProjetoXviaClient({
   const abas = nivelAtual.abas;
   const trocarNivel = (id: string) => {
     setNivel(id);
-    setAbaAtiva(niveis.find((n) => n.id === id)?.abas[0].id ?? "executivo");
+    setAbaAtiva(niveis.find((n) => n.id === id)?.abas[0].id ?? "relatorio");
   };
 
   return (

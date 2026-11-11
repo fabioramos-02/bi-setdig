@@ -1,0 +1,16 @@
+{
+  "comoPreencher": "Preencher à mão com os documentos do contrato X-VIA (Ordens de Serviço, medições, notas fiscais e pagamentos). Só registro do contrato 004/2026 da X-VIA: nada da SGD entra aqui. Cada etapa tem status, data e fonte próprios; uma etapa não preenchida aparece como 'Não informado' no BI, e o BI nunca deduz uma etapa da anterior (executado não é aceito, aceito não é faturado, faturado não é pago). Ligações: medicao.os = ordemServico.numero; notaFiscal.medicoes = [medicao.id]; pagamento.notaFiscal = notaFiscal.numero; glosa.medicao ou glosa.notaFiscal. 'fonte' = número do processo SEI, do documento ou do sistema financeiro. Ver docs/projeto-xvia/05-fontes-relacionamentos.md.",
+  "exemplo": {
+    "ordensServico": [{ "numero": "OS-001/2026", "data": "2026-07-01", "orgao": "SES", "servico": "Cartão do SUS", "pbiIds": [1361234], "ustPrevista": 120, "status": "emitida", "fonte": "SEI 00000.000000/2026-00" }],
+    "medicoes": [{ "id": "MED-2026-07", "os": "OS-001/2026", "periodo": "2026-07", "ustExecutada": 100, "ustAceita": 95, "dataAceite": "2026-08-05", "status": "aceita", "fonte": "Termo de recebimento definitivo, SEI ..." }],
+    "notasFiscais": [{ "numero": "NF 123", "medicoes": ["MED-2026-07"], "data": "2026-08-10", "valor": 14687.95, "status": "atestada", "fonte": "SEI ..." }],
+    "pagamentos": [{ "notaFiscal": "NF 123", "data": "2026-09-02", "valor": 14687.95, "status": "pago", "fonte": "Ordem bancária 2026OB000000" }],
+    "glosas": [{ "medicao": "MED-2026-07", "notaFiscal": null, "ust": 5, "valor": 773.05, "motivo": "Item não aceito", "data": "2026-08-05", "fonte": "SEI ..." }]
+  },
+  "atualizadoEm": null,
+  "ordensServico": [],
+  "medicoes": [],
+  "notasFiscais": [],
+  "pagamentos": [],
+  "glosas": []
+}

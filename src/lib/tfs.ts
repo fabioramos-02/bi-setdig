@@ -8,6 +8,15 @@
 
 export type TipoEntrega = "Negócio" | "Órgão" | "Desenvolvimento X-VIA";
 
+/** Quem responde pelo item (ADR-017). Classificado no pipeline (transform/tfs.py:frente):
+ * Task pelo contrato; demais pela área, título "[SGD]" ou épico SGD. Nunca pelo nome da pessoa.
+ * "Não identificado" fica fora de todo total da X-VIA e vai para a validação. */
+export type Frente = "X-VIA" | "SGD" | "Não identificado";
+export const NAO_IDENTIFICADO: Frente = "Não identificado";
+export const FRENTES: Frente[] = ["X-VIA", "SGD", NAO_IDENTIFICADO];
+/** Só o que é da contratada: indicadores de execução, entregas e financeiro da X-VIA. */
+export const soXvia = (itens: TfsItem[]) => itens.filter((i) => i.frente === "X-VIA");
+
 export type TfsItem = {
   id: number;
   tipo: string;
@@ -15,7 +24,7 @@ export type TfsItem = {
   estado: string;
   coluna: string | null;
   area: string;
-  frente: "X-VIA" | "SGD";
+  frente: Frente;
   sprint: string;
   epicoId: number | null;
   epico: string | null;
@@ -45,7 +54,7 @@ export type TfsItem = {
   orgaoOrigem?: "campo" | "feature" | null;
   faturado?: string | null; // Custom.SGI.Faturado — vazio no TFS em 11/2026, formato a definir
   dataFaturamento?: string | null;
-  timeSgd?: boolean; // responsável é do time interno da SGD: não fatura UST
+  timeSgd?: boolean; // responsável é do time interno da SGD — só alerta de qualidade, não classifica
 };
 
 export type TfsSprint = {
@@ -130,7 +139,9 @@ export function prazoProjeto(contrato: TfsContrato | null, sprints: TfsSprint[],
     const fim = fimContrato ?? ordenadas.at(-1)?.fim ?? hoje;
     const total = Math.max(diasEntre(o.data, fim), 1);
     const decorridos = Math.min(Math.max(diasEntre(o.data, hoje), 0), total);
-    const mesDoContrato = Math.min(Math.max(Math.floor(decorridos / 30.44) + 1, 1), contrato?.vigenciaMeses ?? 99);
+    // Mês civil: o mês da assinatura é o 1 (jun/2026 = 1, nov/2026 = 6). Decisão do Fabio, 11/11/2026.
+    const mesCivil = (Number(hoje.slice(0, 4)) - Number(o.data.slice(0, 4))) * 12 + Number(hoje.slice(5, 7)) - Number(o.data.slice(5, 7)) + 1;
+    const mesDoContrato = Math.min(Math.max(mesCivil, 1), contrato?.vigenciaMeses ?? mesCivil);
     return {
       inicio: o.data,
       fonteInicio: o.fonte,
@@ -143,19 +154,6 @@ export function prazoProjeto(contrato: TfsContrato | null, sprints: TfsSprint[],
   };
   const todas = base.map(calc);
   return { ...todas[0], aConciliar, opcoes: todas, sprintAtual: sprintAtual(sprints) };
-}
-
-export function resumoEntregas(itens: TfsItem[]) {
-  const entregas = itens.filter((i) => ehEntrega(i) && i.estado !== "Removed");
-  const emProducao = entregas.filter((i) => i.coluna === COLUNA_PRODUCAO).length;
-  const pendencias = entregas.filter((i) => i.pendencia).length;
-  return {
-    total: entregas.length,
-    emProducao,
-    pctProducao: entregas.length ? Math.round((emProducao / entregas.length) * 100) : 0,
-    pendencias,
-    abertas: entregas.filter(aberto).length,
-  };
 }
 
 export type LinhaModulo = {
@@ -262,11 +260,25 @@ export type LinhaCodigo = CodigoEtp & { tarefas: number; lancada: number; execut
 /** "004/2026 - 30524 - XVIA TECNOLOGIA LTDA" no TFS. */
 export const ehContratoXvia = (empresa: string | null | undefined) => /xvia/i.test((empresa ?? "").replace(/-/g, ""));
 
+/** Task que conta na UST da X-VIA: frente X-VIA (contrato; ADR-017). A segunda condição é
+ * trava de segurança no ponto do dinheiro: contrato que não é da X-VIA nunca soma, mesmo com
+ * snapshot antigo ou frente errada. */
 export function ehTarefaXvia(i: TfsItem) {
-  // Só a X-VIA fatura UST: task do time SGD fica fora mesmo com o contrato da X-VIA marcado.
-  if (i.tipo !== "Task" || i.estado === "Removed" || i.timeSgd) return false;
-  if (i.empresa) return ehContratoXvia(i.empresa);
-  return i.area === AREA_UST || i.area.startsWith(`${AREA_UST}\\`);
+  return i.tipo === "Task" && i.estado !== "Removed" && i.frente === "X-VIA" && (!i.empresa || ehContratoXvia(i.empresa));
+}
+
+export type UstTarefa = { ref: CodigoEtp; valor: number; foraDoEtp: boolean } | { situacao: SituacaoUst };
+
+/** Única regra de valor da Task (usada pelo total e pela soma por órgão, que assim fecham):
+ * código do ETP → valor do catálogo X-VIA, senão a UST unitária do ETP; código fora do ETP com
+ * valor no catálogo X-VIA (oficial, Fabio 10/11/2026) conta, com previsto 0; o resto fica a classificar. */
+export function ustDaTarefa(t: TfsItem, tabela: Map<string, CodigoEtp>): UstTarefa {
+  const cod = t.codigoCatalogo;
+  const ref = cod ? tabela.get(cod) : undefined;
+  if (ref) return { ref, valor: t.ust ?? ref.ustUnitaria, foraDoEtp: false };
+  if (cod && t.ust != null && !cod.includes("/"))
+    return { ref: { codigo: cod, servico: t.atividadeUst ?? cod, ustUnitaria: t.ust, previsto: 0 }, valor: t.ust, foraDoEtp: true };
+  return { situacao: !cod ? "sem código" : cod.includes("/") ? "faixa a definir" : "fora do ETP" };
 }
 
 /** Lançado = toda Task com código do ETP (UST unitária × 1); executado = as Done.
@@ -282,21 +294,14 @@ export function execucaoXvia(itens: TfsItem[], etp: EtpUst | null, contrato: Tfs
 
   let foraDoEtp = 0; // código válido no catálogo X-VIA (oficial), sem previsão no ETP
   for (const t of tarefas) {
-    const cod = t.codigoCatalogo;
-    let ref = cod ? tabela.get(cod) : undefined;
-    // O catálogo da X-VIA é o oficial do contrato (Fabio, 10/11/2026): código fora do ETP com
-    // valor no catálogo conta, com previsto 0. Fica a classificar só o que o catálogo não resolve.
-    if (!ref && cod && t.ust != null && !cod.includes("/")) {
-      ref = porCodigo.get(cod) ?? { codigo: cod, servico: t.atividadeUst ?? cod, ustUnitaria: t.ust, previsto: 0 };
-      foraDoEtp += 1;
-    }
-    if (!ref) {
-      const situacao: SituacaoUst = !cod ? "sem código" : cod.includes("/") ? "faixa a definir" : "fora do ETP";
-      aClassificar.push({ ...t, situacao });
+    const u = ustDaTarefa(t, tabela);
+    if ("situacao" in u) {
+      aClassificar.push({ ...t, situacao: u.situacao });
       continue;
     }
+    const { ref, valor } = u;
+    if (u.foraDoEtp) foraDoEtp += 1;
     const linha = porCodigo.get(ref.codigo) ?? { ...ref, tarefas: 0, lancada: 0, executada: 0, saldo: ref.previsto, itens: [] };
-    const valor = t.ust ?? ref.ustUnitaria; // catálogo X-VIA; sem ele, ETP
     if (t.ust === null) valorDoEtp += 1;
     if (!t.empresa) semContrato += 1;
     linha.tarefas += 1;
@@ -409,7 +414,7 @@ const semSprint = (i: TfsItem) => !i.sprint.includes("\\");
 export type Verificacao = { rotulo: string; itens: TfsItem[]; nota?: string };
 
 /** Verificações de qualidade do dado (prompt do painel, item 7). */
-export function qualidadeDados(itens: TfsItem[], etp: EtpUst | null, contrato: TfsContrato | null): Verificacao[] {
+export function qualidadeDados(itens: TfsItem[], etp: EtpUst | null, contrato: TfsContrato | null, fin: Financeiro | null = null): Verificacao[] {
   const entregas = itens.filter((i) => ehEntrega(i) && aberto(i));
   const temResponsavel = itens.some((i) => i.responsavel !== undefined);
   const notaResp = temResponsavel ? undefined : "O responsável ainda não foi extraído do TFS (rodar o extrator de novo).";
@@ -430,6 +435,16 @@ export function qualidadeDados(itens: TfsItem[], etp: EtpUst | null, contrato: T
     { rotulo: "Tarefas da X-VIA concluídas sem órgão identificado", itens: executadas.filter((i) => !i.orgao) },
     { rotulo: "Entregas com órgão só pelo prefixo da Feature (campo Órgãos/Secretarias vazio)", itens: itens.filter((i) => ehEntrega(i) && aberto(i) && i.orgaoOrigem === "feature") },
   );
+  // Separação das frentes (ADR-017): nada daqui entra nos totais da X-VIA até ser resolvido.
+  lista.push(
+    { rotulo: "Tarefas sem frente identificada (sem contrato e fora da área que a X-VIA fatura): fora dos totais", itens: itens.filter((i) => i.frente === NAO_IDENTIFICADO && i.estado !== "Removed") },
+    { rotulo: "Tarefas com contrato da X-VIA e responsável do time SGD: contam como X-VIA; conferir o contrato marcado", itens: itens.filter((i) => ehTarefaXvia(i) && i.timeSgd) },
+    { rotulo: "Entregas contadas como X-VIA com responsável do time SGD: conferir se falta [SGD] no título ou a área XVIA\\SGD", itens: itens.filter((i) => ehEntrega(i) && aberto(i) && i.frente === "X-VIA" && i.timeSgd) },
+  );
+  const somaOrgaos = consumoPorOrgao(itens, etp, contrato).reduce((s, l) => s + l.ustExecutada, 0);
+  if (somaOrgaos !== x.ustExecutada)
+    lista.push({ rotulo: "UST executada total diferente da soma por órgão", itens: [], nota: `Total ${fmtNum(x.ustExecutada)} × soma por órgão ${fmtNum(somaOrgaos)}.` });
+  for (const d of recorteFinanceiro(fin).divergencias) lista.push({ rotulo: "Divergência na cadeia financeira", itens: [], nota: d });
   if (aConciliar) lista.push({ rotulo: "Início do contrato a conciliar", itens: [], nota: "As fontes divergem; ver contrato.json → inicio.opcoes." });
   return lista;
 }
@@ -437,13 +452,13 @@ export function qualidadeDados(itens: TfsItem[], etp: EtpUst | null, contrato: T
 /** Síntese executiva gerada dos números — nunca texto fixo. */
 export function sinteseExecutiva(a: {
   pctPrazo: number; diasRestantes: number; aConciliar: boolean; pctEntregas: number;
-  ustExecutada: number; previstoAteMes: number | null; decisoes: number; atrasadas: number;
+  ustExecutada: number; previstoAteMes: number | null; decisoes: number; atrasadas: number; recorte?: boolean;
 }) {
   const partes = [
     `${a.pctPrazo}% do prazo do contrato já passou${a.aConciliar ? " (data de início a conciliar)" : ""}; faltam ${fmtNum(a.diasRestantes)} dias.`,
-    `${a.pctEntregas}% das entregas planejadas estão em produção.`,
+    `${a.pctEntregas}% das entregas planejadas da X-VIA estão em produção.`,
   ];
-  if (a.previstoAteMes !== null)
+  if (a.previstoAteMes !== null && !a.recorte)
     partes.push(`A X-VIA executou ${fmtNum(a.ustExecutada)} UST, frente a ${fmtNum(a.previstoAteMes)} previstas no TR até este mês.`);
   if (a.decisoes) partes.push(`${fmtNum(a.decisoes)} ${a.decisoes === 1 ? "entrega aguarda" : "entregas aguardam"} decisão ou estão impedidas.`);
   if (a.atrasadas) partes.push(`${fmtNum(a.atrasadas)} ${a.atrasadas === 1 ? "passou" : "passaram"} da sprint ou do prazo previsto.`);
@@ -479,9 +494,9 @@ export function consumoPorOrgao(itens: TfsItem[], etp: EtpUst | null, contrato: 
   const orgaos = new Map<string, LinhaOrgao>();
   for (const t of itens.filter(ehTarefaXvia)) {
     if (t.estado !== "Done") continue;
-    const ref = t.codigoCatalogo ? tabela.get(t.codigoCatalogo) : undefined;
-    if (!ref) continue; // sem código do ETP: fica "a classificar", fora da soma (mesma regra de execucaoXvia)
-    const ust = t.ust ?? ref.ustUnitaria;
+    const u = ustDaTarefa(t, tabela);
+    if ("situacao" in u) continue; // a classificar: fora da soma, como no total (execucaoXvia)
+    const ust = u.valor;
     const nome = t.orgao ?? SEM_ORGAO;
     const o = orgaos.get(nome) ?? {
       orgao: nome, ustExecutada: 0, valorConsumido: null, ustAceita: null, valorFaturado: null,
@@ -508,22 +523,122 @@ export function consumoPorOrgao(itens: TfsItem[], etp: EtpUst | null, contrato: 
   return linhas.sort((a, b) => (a.orgao === SEM_ORGAO ? 1 : b.orgao === SEM_ORGAO ? -1 : b.ustExecutada - a.ustExecutada));
 }
 
-/** Etapas da medição e se existe fonte para cada uma. */
-export function cadeiaMedicao(itens: TfsItem[]) {
-  const temFaturado = itens.some((i) => i.faturado);
-  return [
-    { etapa: "Ordem de Serviço", fonte: null as string | null, falta: "Controle das Ordens de Serviço (número, órgão, serviço, UST prevista)" },
-    { etapa: "Execução", fonte: "TFS — Tasks da X-VIA concluídas com código do catálogo", falta: null as string | null },
-    { etapa: "Aceite", fonte: null, falta: "Registro da fiscalização com as UST aceitas por OS" },
-    { etapa: "Nota fiscal / medição", fonte: temFaturado ? "TFS — campo Faturado (formato a definir)" : null, falta: temFaturado ? null : "Campo Faturado e Data de Faturamento no TFS, ou as notas fiscais e medições" },
-    { etapa: "Pagamento", fonte: null, falta: "Fonte oficial de pagamentos (sistema financeiro do Estado)" },
-  ];
+/** UST da X-VIA executada por mês (AAAA-MM), pela mesma regra do total. Data = fechamento da
+ * Task (a X-VIA quase não preenche a Data da Execução; mesma regra do painel do TFS); sem ela,
+ * a Data da Execução. Concluída sem data nenhuma fica fora e é contada em `semData`. */
+export function executadoPorMes(itens: TfsItem[], etp: EtpUst | null) {
+  const tabela = etp ? ustEtp(etp) : new Map<string, CodigoEtp>();
+  const meses = new Map<string, { mes: string; ust: number; itens: TfsItem[] }>();
+  let semData = 0;
+  for (const t of itens.filter((i) => ehTarefaXvia(i) && i.estado === "Done")) {
+    const u = ustDaTarefa(t, tabela);
+    if ("situacao" in u) continue;
+    const mes = (t.fechadoEm ?? t.dataExecucao)?.slice(0, 7);
+    if (!mes) { semData += 1; continue; }
+    const m = meses.get(mes) ?? { mes, ust: 0, itens: [] };
+    m.ust += u.valor;
+    m.itens.push(t);
+    meses.set(mes, m);
+  }
+  return { meses: [...meses.values()].sort((a, b) => a.mes.localeCompare(b.mes)), semData };
 }
+
+// --- Cadeia financeira (financeiro.json, manual) ---------------------------
+// OS → medição → nota fiscal → pagamento, mais glosas. Só X-VIA. Cada etapa tem
+// fonte, data e status próprios: nenhuma é deduzida da anterior. Sem registro,
+// o valor é null ("Não informado"). Ver docs/projeto-xvia/04-regras-negocio.md.
+
+export type OrdemServico = { numero: string; data?: string | null; orgao: string; servico?: string | null; pbiIds?: number[]; ustPrevista: number; status: string; fonte: string };
+export type Medicao = { id: string; os: string; periodo: string; ustExecutada: number; ustAceita?: number | null; dataAceite?: string | null; status: string; fonte: string };
+export type NotaFiscal = { numero: string; medicoes: string[]; data?: string | null; valor: number; status: string; fonte: string };
+export type Pagamento = { notaFiscal: string; data: string | null; valor: number; status: string; fonte: string };
+export type Glosa = { medicao?: string | null; notaFiscal?: string | null; ust?: number | null; valor: number; motivo: string; data?: string | null; fonte: string };
+export type Financeiro = {
+  atualizadoEm?: string | null;
+  ordensServico: OrdemServico[];
+  medicoes: Medicao[];
+  notasFiscais: NotaFiscal[];
+  pagamentos: Pagamento[];
+  glosas: Glosa[];
+};
+
+/** Situação do dado (prompt do painel, item 9). */
+export type StatusDado = "confirmado" | "calculado" | "ausente" | "divergente";
+export type ValorFonte = { valor: number | null; status: StatusDado; fonte: string };
+
+const somar = <T>(lista: T[], f: (x: T) => number | null | undefined) => lista.reduce((s, x) => s + (f(x) ?? 0), 0);
+const FIN = "financeiro.json (manual)";
+
+/** Recorte da cadeia de um órgão (ou do projeto todo): segue as chaves OS → medição → NF →
+ * pagamento. O que não liga a nada vira divergência, nunca é encaixado por suposição. */
+export function recorteFinanceiro(fin: Financeiro | null, orgao?: string) {
+  const f = fin ?? { ordensServico: [], medicoes: [], notasFiscais: [], pagamentos: [], glosas: [] };
+  const os = orgao ? f.ordensServico.filter((o) => o.orgao === orgao) : f.ordensServico;
+  const numerosOs = new Set(os.map((o) => o.numero));
+  const medicoes = orgao ? f.medicoes.filter((m) => numerosOs.has(m.os)) : f.medicoes;
+  const idsMed = new Set(medicoes.map((m) => m.id));
+  const notas = (orgao ? f.notasFiscais.filter((n) => n.medicoes.some((m) => idsMed.has(m))) : f.notasFiscais).filter((n) => n.status !== "cancelada");
+  const numerosNf = new Set(notas.map((n) => n.numero));
+  const pagamentos = orgao ? f.pagamentos.filter((p) => numerosNf.has(p.notaFiscal)) : f.pagamentos;
+  const glosas = orgao ? f.glosas.filter((g) => (!!g.medicao && idsMed.has(g.medicao)) || (!!g.notaFiscal && numerosNf.has(g.notaFiscal))) : f.glosas;
+  const divergencias: string[] = [];
+  if (!orgao) {
+    const todasOs = new Set(f.ordensServico.map((o) => o.numero));
+    const todasMed = new Set(f.medicoes.map((m) => m.id));
+    const todasNf = new Set(f.notasFiscais.map((n) => n.numero));
+    for (const m of f.medicoes) if (!todasOs.has(m.os)) divergencias.push(`Medição ${m.id} aponta a OS ${m.os}, que não está cadastrada.`);
+    for (const n of f.notasFiscais) for (const m of n.medicoes) if (!todasMed.has(m)) divergencias.push(`Nota fiscal ${n.numero} aponta a medição ${m}, que não está cadastrada.`);
+    for (const p of f.pagamentos) if (!todasNf.has(p.notaFiscal)) divergencias.push(`Pagamento de ${fmtReais(p.valor)} aponta a nota fiscal ${p.notaFiscal}, que não está cadastrada.`);
+  }
+  for (const m of medicoes) if ((m.ustAceita ?? 0) > m.ustExecutada) divergencias.push(`Medição ${m.id}: UST aceitas (${fmtNum(m.ustAceita ?? 0)}) maiores que as executadas (${fmtNum(m.ustExecutada)}).`);
+  for (const n of notas) {
+    const pago = somar(pagamentos.filter((p) => p.notaFiscal === n.numero && p.status === "pago"), (p) => p.valor);
+    if (pago > n.valor + 0.005) divergencias.push(`Nota fiscal ${n.numero}: pago (${fmtReais(pago)}) maior que o valor da nota (${fmtReais(n.valor)}).`);
+  }
+  return { os, medicoes, notas, pagamentos, glosas, divergencias };
+}
+
+/** Os 8 indicadores da execução financeira (prompt, item 5), cada um com status e fonte.
+ * `executado` vem do TFS (UST e R$ calculados); o resto, do financeiro.json. */
+export function cadeiaFinanceira(fin: Financeiro | null, executado: { ust: number; valor: number | null }, orgao?: string) {
+  const r = recorteFinanceiro(fin, orgao);
+  const v = (temRegistro: boolean, valor: number, fonte: string): ValorFonte =>
+    temRegistro ? { valor, status: r.divergencias.length ? "divergente" : "confirmado", fonte } : { valor: null, status: "ausente", fonte };
+  const aceitas = r.medicoes.filter((m) => m.ustAceita != null);
+  const pagos = r.pagamentos.filter((p) => p.status === "pago");
+  const faturado = v(r.notas.length > 0, somar(r.notas, (n) => n.valor), `${FIN}: notas fiscais não canceladas`);
+  const pago = v(pagos.length > 0, somar(pagos, (p) => p.valor), `${FIN}: pagamentos com status pago`);
+  // Pendente só é calculável com faturado registrado; pago ausente com NF registrada = nada pago ainda.
+  const pendente: ValorFonte = faturado.valor === null
+    ? { valor: null, status: "ausente", fonte: "Depende das notas fiscais" }
+    : { valor: faturado.valor - (pago.valor ?? 0), status: r.divergencias.length ? "divergente" : "calculado", fonte: "Faturado − pago" };
+  return {
+    ustPrevista: v(r.os.length > 0, somar(r.os, (o) => o.ustPrevista), `${FIN}: Ordens de Serviço`),
+    ustExecutada: { valor: executado.ust, status: "calculado", fonte: "TFS: tarefas da X-VIA concluídas com código do catálogo" } as ValorFonte,
+    ustAceita: v(aceitas.length > 0, somar(aceitas, (m) => m.ustAceita), `${FIN}: medições com UST aceitas`),
+    valorConsumido: { valor: executado.valor, status: executado.valor === null ? "ausente" : "calculado", fonte: "UST executadas × valor da UST no contrato" } as ValorFonte,
+    valorFaturado: faturado,
+    valorPago: pago,
+    valorPendente: pendente,
+    valorGlosado: v(r.glosas.length > 0, somar(r.glosas, (g) => g.valor), `${FIN}: glosas`),
+    recorte: r,
+  };
+}
+
+/** Fontes do acompanhamento do contrato — lista única (Qualidade dos dados e documentação). */
+export const FONTES_CONTRATO = [
+  { fonte: "TFS (backlog XVIA)", traz: "Entregas, tarefas, UST lançada e executada, órgão, sprint, dependências", como: "API, extração manual na rede do Governo" },
+  { fonte: "contrato.json", traz: "Vigência, valores, UST contratada e previsão mensal (TR 3.3.3)", como: "Manual, do Termo de Referência" },
+  { fonte: "etp-ust.json", traz: "UST prevista por atividade (memória de cálculo do ETP)", como: "Manual" },
+  { fonte: "catalogo-ust-xvia.json", traz: "Valor de cada atividade no catálogo da X-VIA", como: "Manual, da tabela de atividades do SCP" },
+  { fonte: "financeiro.json", traz: "Ordens de Serviço, medições, aceite, notas fiscais, pagamentos e glosas", como: "Manual; vazio até a fiscalização preencher" },
+];
 
 // --- Filtros do painel (ficam na URL) --------------------------------------
 
 export type Filtros = { modulo: string; frente: string; orgao: string; sprint: string };
-export const FILTROS_VAZIOS: Filtros = { modulo: "", frente: "", orgao: "", sprint: "" };
+/** Recorte ativo: indicadores do recorte não se comparam com o previsto do contrato inteiro. */
+export const temRecorte = (f: Filtros) => Object.values(f).some(Boolean);
 
 export function filtrarItens(itens: TfsItem[], f: Filtros): TfsItem[] {
   return itens.filter(
