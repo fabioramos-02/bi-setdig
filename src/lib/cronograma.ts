@@ -6,11 +6,18 @@
  */
 import type { TfsItem, TfsSprint } from "./tfs.ts";
 
-export type Situacao = "concluido" | "atrasado" | "risco" | "andamento" | "futuro" | "sem_sprint";
+export type Situacao = "concluido" | "atrasado" | "esperando" | "nao_iniciado" | "risco" | "andamento" | "futuro" | "sem_sprint";
 export const ROTULO_SITUACAO: Record<Situacao, string> = {
-  concluido: "Concluído", atrasado: "Atrasado", risco: "Em risco",
-  andamento: "Em andamento", futuro: "Futuro", sem_sprint: "Sem sprint",
+  concluido: "Pronto", atrasado: "Atrasado", esperando: "Esperando órgão/decisão", nao_iniciado: "Não iniciado",
+  risco: "Em risco", andamento: "Em andamento", futuro: "Futuro", sem_sprint: "A planejar",
 };
+/** Da pior para a melhor: a situação de uma Feature é a pior entre os PBIs abertos dela. */
+export const GRAVIDADE: Situacao[] = ["atrasado", "esperando", "nao_iniciado", "risco", "sem_sprint", "andamento", "futuro", "concluido"];
+
+// Colunas do quadro que dizem o motivo de um PBI aberto (Fabio, 11/11/2026): parado esperando
+// alguém não é atraso da X-VIA; parado sem começar é falta de replanejamento.
+const ESPERA = new Set(["Aguardando Validação do Órgão", "Aguardando decisão", "Impedido"]);
+const NAO_COMECOU = new Set(["A fazer", "Área de Negócios"]);
 export type Aresta = [predecessor: number, sucessor: number];
 
 const PBI = "Product Backlog Item";
@@ -55,25 +62,45 @@ export function cadeias(ids: number[], ars: Aresta[]): { grupos: number[][]; sol
   return { grupos, soltos };
 }
 
-/** Situação pela sprint e por hoje. Risco = não está pronto e algum predecessor está atrasado,
- * sem sprint, ou numa sprint igual ou posterior (não dá tempo de terminar antes). */
+/** Situação de cada PBI, com o motivo:
+ * - Done = pronto; parado em Aguardando Validação do Órgão / decisão / Impedido = esperando;
+ * - sprint encerrada: em A fazer ou Área de Negócios = não iniciado (replanejar); senão atrasado;
+ * - risco = não está pronto e algum predecessor não está andando (atrasado, esperando, não
+ *   iniciado, sem sprint) ou está numa sprint igual ou posterior (não dá tempo de terminar antes). */
 export function situacoes(pbis: TfsItem[], sprints: TfsSprint[], ars: Aresta[], hoje: string): Map<number, Situacao> {
   const sp = new Map(sprints.map((s) => [s.sprint, s]));
   const base = new Map<number, Situacao>();
   for (const p of pbis) {
     const s = sp.get(p.sprint);
-    base.set(p.id, p.estado === "Done" ? "concluido" : !s ? "sem_sprint" : s.fim < hoje ? "atrasado" : s.inicio <= hoje ? "andamento" : "futuro");
+    base.set(p.id,
+      p.estado === "Done" ? "concluido"
+        : ESPERA.has(p.coluna ?? "") ? "esperando"
+        : !s ? "sem_sprint"
+        : s.fim < hoje ? (NAO_COMECOU.has(p.coluna ?? "") ? "nao_iniciado" : "atrasado")
+        : s.inicio <= hoje ? "andamento" : "futuro");
   }
   const final = new Map(base);
   const porId = new Map(pbis.map((p) => [p.id, p]));
+  const parado: Situacao[] = ["atrasado", "esperando", "nao_iniciado", "sem_sprint"];
   for (const [a, b] of ars) {
     const sb0 = base.get(b);
     if ((sb0 !== "andamento" && sb0 !== "futuro") || base.get(a) === "concluido") continue;
     const sa = sp.get(porId.get(a)?.sprint ?? "");
     const sb = sp.get(porId.get(b)?.sprint ?? "");
-    if (base.get(a) === "atrasado" || base.get(a) === "sem_sprint" || (sa && sb && sa.inicio >= sb.inicio)) final.set(b, "risco");
+    if (parado.includes(base.get(a)!) || (sa && sb && sa.inicio >= sb.inicio)) final.set(b, "risco");
   }
   return final;
+}
+
+/** Dependências planejadas ao contrário: a predecessora está numa sprint DEPOIS da sucessora.
+ * É erro de planejamento a corrigir no TFS; o desenho mostra em vermelho. */
+export function invertidas(pbis: TfsItem[], sprints: TfsSprint[], ars: Aresta[]): Aresta[] {
+  const sp = new Map(sprints.map((s) => [s.sprint, s]));
+  const porId = new Map(pbis.map((p) => [p.id, p]));
+  return ars.filter(([a, b]) => {
+    const sa = sp.get(porId.get(a)?.sprint ?? ""), sb = sp.get(porId.get(b)?.sprint ?? "");
+    return !!sa && !!sb && sa.inicio > sb.inicio;
+  });
 }
 
 /** PBIs [SGD] antigos: sprint encerrada, abertos e fora de cadeia. Ficam num bloco à parte
@@ -105,9 +132,10 @@ export function niveis(ars: Aresta[]): Map<number, number> {
 
 export type Bloco = { titulo: string; cadeia: number | null; pbis: TfsItem[] };
 
-/** Monta o cronograma de um recorte: blocos (cadeias e soltos abertos), colunas de sprint,
- * situação de cada PBI e a frase-âncora. */
-export function montarCronograma(itens: TfsItem[], sprints: TfsSprint[], epicoId: number | null, hoje: string) {
+/** Monta o cronograma de PBIs de um recorte: blocos (cadeias e soltos abertos), colunas de
+ * sprint, situação de cada PBI e a frase-âncora. Com `featureId`, a situação ainda considera o
+ * épico inteiro (risco por dependência de outra Feature), mas o desenho mostra só a Feature. */
+export function montarCronograma(itens: TfsItem[], sprints: TfsSprint[], epicoId: number | null, hoje: string, featureId: number | null = null) {
   const todos = pbisDoEpico(itens, epicoId);
   const ordenadas = [...sprints].sort((a, b) => a.inicio.localeCompare(b.inicio));
   const todasArestas = arestas(todos);
@@ -115,6 +143,12 @@ export function montarCronograma(itens: TfsItem[], sprints: TfsSprint[], epicoId
   const pbis = todos.filter((p) => !legadoIds.has(p.id));
   const ars = todasArestas.filter(([a, b]) => !legadoIds.has(a) && !legadoIds.has(b));
   const sit = situacoes(pbis, ordenadas, ars, hoje);
+  const inv = invertidas(pbis, ordenadas, ars);
+  if (featureId !== null) {
+    const ids = new Set(pbis.filter((p) => p.featureId === featureId).map((p) => p.id));
+    pbis.splice(0, pbis.length, ...pbis.filter((p) => ids.has(p.id)));
+    ars.splice(0, ars.length, ...ars.filter(([a, b]) => ids.has(a) && ids.has(b)));
+  }
   const porId = new Map(pbis.map((p) => [p.id, p]));
   const sp = new Map(ordenadas.map((s) => [s.sprint, s]));
   const ordem = (p: TfsItem) => sp.get(p.sprint)?.inicio ?? "9999";
@@ -161,6 +195,120 @@ export function montarCronograma(itens: TfsItem[], sprints: TfsSprint[], epicoId
     legado: todos.filter((p) => legadoIds.has(p.id)),
     frase: partes.join(" "),
     proxima,
-    contagem: { total: pbis.length, concluido: contagem("concluido"), atrasado: contagem("atrasado"), risco: contagem("risco"), ligacoes: ars.length },
+    invertidas: inv.filter(([a, b]) => porId.has(a) && porId.has(b)),
+    soltosAbertos: soltos.map((i) => porId.get(i)!).filter((p) => sit.get(p.id) !== "concluido"),
+    contagem: {
+      total: pbis.length, concluido: contagem("concluido"), atrasado: contagem("atrasado"), risco: contagem("risco"),
+      esperando: contagem("esperando"), naoIniciado: contagem("nao_iniciado"), ligacoes: ars.length,
+    },
+  };
+}
+
+// --- Visão macro: uma linha por Feature (ou por épico na visão geral) --------
+// Pedido do Fabio (11/11/2026): o gerente acompanha o épico pelas Features; os PBIs ficam um
+// clique abaixo. A barra vai da primeira à última sprint dos PBIs (Start/Target Date das Features
+// ainda vazios no TFS, task #1375476); a situação é a pior entre os PBIs abertos.
+
+export type LinhaMacro = {
+  id: number | null;
+  titulo: string;
+  frente: string;
+  estado: string | null;
+  pbis: TfsItem[];
+  prontos: number;
+  total: number;
+  ini: number | null; // índice em `colunas`
+  fim: number | null;
+  aPlanejar: number; // PBIs abertos sem sprint
+  situacao: Situacao | "vazio";
+  contagem: Partial<Record<Situacao, number>>;
+};
+export type LigacaoMacro = { de: number | null; para: number | null; invertida: boolean; pares: Aresta[] };
+
+export function montarPorFeature(itens: TfsItem[], sprints: TfsSprint[], epicoId: number | null, hoje: string) {
+  const ordenadas = [...sprints].sort((a, b) => a.inicio.localeCompare(b.inicio));
+  const ordem = new Map(ordenadas.map((s, n) => [s.sprint, n]));
+  const todos = pbisDoEpico(itens, epicoId);
+  const ars = arestas(todos);
+  const sit = situacoes(todos, ordenadas, ars, hoje);
+  const inv = new Set(invertidas(todos, ordenadas, ars).map(([a, b]) => `${a}>${b}`));
+  const geral = epicoId === null;
+  const chaveDe = (p: TfsItem) => (geral ? p.epicoId : p.featureId);
+  const tipo = geral ? "Epic" : "Feature";
+  const fontes = itens
+    .filter((i) => i.tipo === tipo && i.estado !== "Removed" && (geral || i.epicoId === epicoId))
+    .map((i) => ({ id: i.id as number | null, titulo: i.titulo, frente: i.frente as string, estado: i.estado as string | null, prazo: i.prazo, inicio: i.inicioPrevisto }));
+  if (todos.some((p) => chaveDe(p) === null)) fontes.push({ id: null, titulo: geral ? "Sem épico" : "Sem Feature", frente: "—", estado: null, prazo: null, inicio: null });
+
+  const hojeIdx = ordenadas.findIndex((s) => s.inicio <= hoje && hoje <= s.fim);
+  const linhas: LinhaMacro[] = fontes.map((f) => {
+    const ps = todos.filter((p) => chaveDe(p) === f.id);
+    const idxs = ps.map((p) => ordem.get(p.sprint)).filter((n): n is number => n !== undefined);
+    const contagem: Partial<Record<Situacao, number>> = {};
+    for (const p of ps) contagem[sit.get(p.id)!] = (contagem[sit.get(p.id)!] ?? 0) + 1;
+    const prontos = contagem.concluido ?? 0;
+    return {
+      id: f.id, titulo: f.titulo, frente: f.frente, estado: f.estado, pbis: ps, prontos, total: ps.length,
+      ini: idxs.length ? Math.min(...idxs) : null, fim: idxs.length ? Math.max(...idxs) : null,
+      aPlanejar: contagem.sem_sprint ?? 0,
+      contagem,
+      situacao: !ps.length ? "vazio" : prontos === ps.length ? "concluido" : GRAVIDADE.find((g) => g !== "concluido" && contagem[g]) ?? "andamento",
+    } satisfies LinhaMacro;
+  }).sort((a, b) => (a.ini ?? 999) - (b.ini ?? 999) || (a.fim ?? 999) - (b.fim ?? 999) || (a.id ?? 0) - (b.id ?? 0));
+
+  // Ligações entre linhas, a partir dos links entre PBIs de linhas diferentes.
+  const linhaDe = new Map(todos.map((p) => [p.id, chaveDe(p)]));
+  const lig = new Map<string, LigacaoMacro>();
+  for (const [a, b] of ars) {
+    const de = linhaDe.get(a) ?? null, para = linhaDe.get(b) ?? null;
+    if (de === para) continue;
+    const l = lig.get(`${de}>${para}`) ?? { de, para, invertida: false, pares: [] };
+    l.pares.push([a, b]);
+    if (inv.has(`${a}>${b}`)) l.invertida = true;
+    lig.set(`${de}>${para}`, l);
+  }
+
+  // Colunas: da primeira sprint com PBI até duas sprints depois de hoje.
+  const usados = linhas.flatMap((l) => [l.ini, l.fim]).filter((n): n is number => n !== null);
+  const primeira = usados.length ? Math.min(...usados) : Math.max(hojeIdx, 0);
+  const ultima = Math.max(...usados, hojeIdx + 2);
+  const colunas = ordenadas.slice(primeira, Math.min(ultima, ordenadas.length - 1) + 1);
+  for (const l of linhas) {
+    if (l.ini !== null) l.ini -= primeira;
+    if (l.fim !== null) l.fim -= primeira;
+  }
+
+  // O que o gerente faz agora — só PBIs da X-VIA; os da SGD são contados à parte.
+  const xv = todos.filter((p) => p.frente === "X-VIA");
+  const de = (s: Situacao) => xv.filter((p) => sit.get(p.id) === s);
+  const porId = new Map(todos.map((p) => [p.id, p]));
+  const pares = [...inv].map((k) => k.split(">").map(Number) as Aresta);
+  const aFazer = {
+    replanejar: de("nao_iniciado"),
+    cobrar: de("esperando"),
+    atrasos: de("atrasado"),
+    invertidas: pares.map(([a, b]) => ({ antes: porId.get(a)!, depois: porId.get(b)! })),
+  };
+  const sgdParados = todos.filter((p) => p.frente === "SGD" && ["nao_iniciado", "atrasado", "esperando"].includes(sit.get(p.id)!)).length;
+
+  const fontesPorId = new Map(fontes.map((f) => [f.id, f]));
+  const alertas = {
+    fechadaComAberto: linhas.filter((l) => l.estado === "Done" && l.prontos < l.total),
+    vazias: linhas.filter((l) => l.situacao === "vazio" && l.id !== null),
+    semDatas: geral ? [] : linhas.filter((l) => l.id !== null && !fontesPorId.get(l.id)?.prazo && !fontesPorId.get(l.id)?.inicio),
+  };
+
+  const prontos = todos.filter((p) => sit.get(p.id) === "concluido").length;
+  const unidade = geral ? "módulos" : "Features";
+  const partes = [`${prontos} de ${todos.length} entregas prontas em ${linhas.filter((l) => l.id !== null).length} ${unidade}.`];
+  if (aFazer.replanejar.length) partes.push(`${aFazer.replanejar.length} da X-VIA ficaram em sprint vencida sem começar e precisam ser replanejadas.`);
+  if (aFazer.cobrar.length) partes.push(`${aFazer.cobrar.length} esperam o órgão ou uma decisão.`);
+  partes.push(aFazer.atrasos.length ? `${aFazer.atrasos.length} ${aFazer.atrasos.length === 1 ? "é atraso real" : "são atrasos reais"} da X-VIA em desenvolvimento.` : "Nenhum atraso real da X-VIA em desenvolvimento.");
+  if (sgdParados) partes.push(`Itens da SGD parados: ${sgdParados}.`);
+
+  return {
+    linhas, colunas, hojeIdx: hojeIdx < 0 ? null : hojeIdx - primeira, ligacoes: [...lig.values()],
+    situacao: sit, aFazer, sgdParados, alertas, frase: partes.join(" "),
+    prontos, total: todos.length,
   };
 }

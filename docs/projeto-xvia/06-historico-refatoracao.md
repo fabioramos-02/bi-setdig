@@ -71,3 +71,13 @@ mesmo que o BI.
 - **O mês da execução passou a ser a Data da Execução** (`mesDaExecucao`). Antes era a data de fechamento no TFS, que a X-VIA preenche em lote: novembro aparecia com 500 UST, mas o correto é 62. Atinge a seção 3 e a aba UST.
 - **Cronograma:** botões "Baixar PNG" e "Baixar SVG" (`lib/exportar-svg.ts`). O arquivo leva as cores já resolvidas, o fundo da página e o título com a data do retrato.
 - **Testes:** `src/lib/tfs-execucao.test.ts`.
+
+## Rodada 5 (11/11/2026): cronograma por Feature
+
+- O Fabio achou o cronograma de PBIs confuso e parcialmente errado: 19 PBIs apareciam como "atrasado", mas só 1 era atraso real. A situação agora vem com o motivo:
+  - **Não iniciado:** sprint vencida, PBI em A fazer ou Área de Negócios.
+  - **Esperando órgão/decisão:** PBI em Aguardando Validação do Órgão, Aguardando decisão ou Impedido.
+  - **Atrasado:** PBI em desenvolvimento com a sprint vencida.
+- `invertidas()` acusa as dependências planejadas ao contrário (vermelho tracejado).
+- O cronograma abre por **Feature** (`montarPorFeature`): progresso prontos/total, a pior situação, as ligações entre Features, "O que fazer" e os ajustes a fazer no TFS (Feature concluída com PBI aberto, Feature sem PBI, Features sem data). Clicar abre os PBIs (`montarCronograma(..., featureId)`). As setas viraram degrau.
+- O relatório do Secretário, seção 5, ganhou "X de Y Features prontas".

@@ -1,7 +1,7 @@
 import { montarCronograma } from "@/lib/cronograma";
 import { enriquecerVeredito } from "@/lib/tfs-origem";
 import {
-  andamentoEntregas, atrasadas, bugsDoQa, cadeiaFinanceira, consumoContrato, entregasDoMes, execucaoMensal, fmtData, fmtNum, fmtReais,
+  andamentoEntregas, atrasadas, bugsDoQa, ehEntrega, cadeiaFinanceira, consumoContrato, entregasDoMes, execucaoMensal, fmtData, fmtNum, fmtReais,
   pendencias, prazoProjeto, quemResolve, soXvia, vereditoExecutivo,
   type EtpUst, type Financeiro, type TfsContrato, type TfsItem, type TfsSprint,
 } from "@/lib/tfs";
@@ -33,6 +33,10 @@ export function RelatorioMensal({ itens, sprints, contrato, etp, financeiro, hoj
   const decisoes = pendencias(xv);
   const pendSgd = pendencias(itens.filter((i) => i.frente === "SGD"));
   const crono = montarCronograma(xv, sprints, null, hoje);
+  // Marcos = Features da X-VIA: pronta quando todas as entregas dela estão concluídas.
+  const features = xv.filter((i) => i.tipo === "Feature" && i.estado !== "Removed").map((f) => xv.filter((p) => ehEntrega(p) && p.estado !== "Removed" && p.featureId === f.id))
+    .filter((ps) => ps.length);
+  const featuresProntas = features.filter((ps) => ps.every((p) => p.estado === "Done")).length;
   const cadeia = cadeiaFinanceira(financeiro, { ust: consumo.ustExecutada, valor: consumo.valorExecutado });
   const mes = hoje.slice(0, 7);
   const ant = mesAnterior(mes);
@@ -75,6 +79,7 @@ export function RelatorioMensal({ itens, sprints, contrato, etp, financeiro, hoj
           <b>{fmtNum(atraso.length)}</b> entregas da X-VIA passaram da sprint ou do prazo previsto; <b>{fmtNum(crono.contagem.risco)}</b> estão em risco porque dependem de algo atrasado ou planejado para a mesma sprint.
           {crono.proxima && (crono.proxima.previstas ? ` Na ${crono.proxima.nome} estão previstas ${fmtNum(crono.proxima.previstas)}.` : ` Nada planejado ainda para a ${crono.proxima.nome}.`)}
         </p>
+        <p><b>{fmtNum(featuresProntas)} de {fmtNum(features.length)}</b> Features da X-VIA estão com todas as entregas prontas.</p>
         <p style={cinza}>{fmtNum(crono.contagem.ligacoes)} dependências registradas entre entregas da X-VIA. Marco formal do contrato (aceite de etapa) ainda não tem fonte.</p>
       </SecaoRelatorio>
 

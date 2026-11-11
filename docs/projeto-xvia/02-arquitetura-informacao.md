@@ -36,7 +36,7 @@ Exportar relatório (`ExportarRelatorioButton`) imprime a seção com capa.
 | Aba | Pergunta | Componente |
 |---|---|---|
 | Prioridades (abre aqui) | O que está parado ou atrasado, por quê, qual a ação e quem resolve? X-VIA e SGD em blocos separados | `PrioridadesTab` |
-| Cronograma e dependências | Onde cada módulo está, o que atrasou e o que isso trava? (PBI #1348598) | `CronogramaTab` + `lib/cronograma.ts` |
+| Cronograma e dependências | Onde cada módulo está, o que atrasou e o que isso trava? (PBI #1348598). **Uma linha por Feature** (visão geral: uma por módulo): barra da primeira à última sprint das entregas, com a parte pronta pintada e a pior situação. No topo, "O que fazer" (replanejar, esperando, atrasos reais, dependências ao contrário). Clique na Feature para abrir as entregas. PNG/SVG | `CronogramaTab`, `GanttFeatures`, `GanttPbis` + `lib/cronograma.ts` (`montarPorFeature`) |
 | Módulos e frentes | Como está cada módulo, X-VIA × SGD? | `ModulosTab` |
 | Gasto por órgão e serviço | Quanto cada órgão e serviço consumiu, faturou e recebeu? Drill Órgão → Serviço e Órgão → OS → Medição → NF → Pagamento | `FinanceiroTab` |
 | Sprints, entregas e aceite | O que a sprint priorizou e o que fechou no mês? | `FiscalizacaoTab` |

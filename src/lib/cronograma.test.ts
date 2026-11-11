@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { arestas, cadeias, montarCronograma, situacoes } from "./cronograma.ts";
+import { arestas, cadeias, invertidas, montarCronograma, montarPorFeature, situacoes } from "./cronograma.ts";
 import type { TfsItem, TfsSprint } from "./tfs.ts";
 
 const pbi = (id: number, sprint: string, over: Partial<TfsItem> = {}): TfsItem => ({
@@ -28,6 +28,49 @@ test("situacoes: atrasado pela sprint; sucessor de atrasado fica em risco", () =
   const ps = [pbi(1, "XVIA\\Sprint 5"), pbi(2, "XVIA\\Sprint 7", { dependeDe: [1] }), pbi(3, "XVIA\\Sprint 4", { estado: "Done" })];
   const s = situacoes(ps, sprints, arestas(ps), HOJE);
   assert.deepEqual([s.get(1), s.get(2), s.get(3)], ["atrasado", "risco", "concluido"]);
+});
+
+test("situacoes com motivo: esperando pela coluna; sprint vencida sem começar = não iniciado; invertida acusada", () => {
+  const ps = [
+    pbi(1, "XVIA\\Sprint 5", { coluna: "A fazer" }),
+    pbi(2, "XVIA\\Sprint 5", { coluna: "Área de Negócios" }),
+    pbi(3, "XVIA\\Sprint 4", { coluna: "Aguardando Validação do Órgão" }),
+    pbi(4, "XVIA\\Sprint 7", { coluna: "Impedido" }),
+    pbi(5, "XVIA\\Sprint 7", { coluna: "A fazer", dependeDe: [1] }), // depende de não iniciado: risco
+    pbi(6, "XVIA\\Sprint 6", { coluna: "A fazer", dependeDe: [7] }),
+    pbi(7, "XVIA\\Sprint 7", { coluna: "A fazer" }), // predecessora DEPOIS da sucessora
+  ];
+  const ars = arestas(ps);
+  const s = situacoes(ps, sprints, ars, HOJE);
+  assert.deepEqual([1, 2, 3, 4, 5].map((i) => s.get(i)), ["nao_iniciado", "nao_iniciado", "esperando", "esperando", "risco"]);
+  assert.deepEqual(invertidas(ps, sprints, ars), [[7, 6]]);
+});
+
+test("montarPorFeature: uma linha por Feature com prontos/total, intervalo de sprints e a pior situação; alertas do TFS", () => {
+  const feat = (id: number, titulo: string, over: Partial<TfsItem> = {}) => pbi(id, "XVIA", { tipo: "Feature", titulo, featureId: id, ...over });
+  const itens = [
+    feat(10, "CMS Cartas"), feat(20, "Notícias", { estado: "Done" }), feat(30, "Vazia"),
+    pbi(1, "XVIA\\Sprint 4", { featureId: 10, estado: "Done", coluna: "Em Produção", trava: [3] }),
+    pbi(2, "XVIA\\Sprint 5", { featureId: 10, coluna: "Aguardando Validação do Órgão" }),
+    pbi(3, "XVIA\\Sprint 6", { featureId: 20, coluna: "A fazer" }), // Feature Done com PBI aberto
+  ];
+  const r = montarPorFeature(itens, sprints, 1, HOJE);
+  const l = new Map(r.linhas.map((x) => [x.titulo, x]));
+  assert.deepEqual([l.get("CMS Cartas")?.prontos, l.get("CMS Cartas")?.total, l.get("CMS Cartas")?.situacao], [1, 2, "esperando"]);
+  assert.deepEqual([l.get("CMS Cartas")?.ini, l.get("CMS Cartas")?.fim], [0, 1]); // Sprint 4..5, colunas a partir da Sprint 4
+  assert.equal(l.get("Vazia")?.situacao, "vazio");
+  assert.deepEqual(r.ligacoes.map((x) => [x.de, x.para, x.invertida]), [[10, 20, false]]);
+  assert.deepEqual([r.aFazer.cobrar.length, r.aFazer.replanejar.length], [1, 0]);
+  assert.deepEqual(r.alertas.fechadaComAberto.map((x) => x.titulo), ["Notícias"]);
+  assert.deepEqual(r.alertas.vazias.map((x) => x.titulo), ["Vazia"]);
+  assert.match(r.frase, /^1 de 3 entregas prontas em 3 Features\./);
+});
+
+test("montarCronograma por Feature: desenha só a Feature, mas o risco olha o épico todo", () => {
+  const ps = [pbi(1, "XVIA\\Sprint 5", { featureId: 9, coluna: "A fazer" }), pbi(2, "XVIA\\Sprint 7", { featureId: 2, coluna: "A fazer", dependeDe: [1] })];
+  const c = montarCronograma(ps, sprints, 1, HOJE, 2);
+  assert.equal(c.contagem.total, 1);
+  assert.equal(c.situacao.get(2), "risco");
 });
 
 test("montarCronograma: legado SGD sai da contagem de atraso; frase diz o que está pronto", () => {
