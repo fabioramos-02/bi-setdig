@@ -1,7 +1,7 @@
 "use client";
 
 import type { RefObject } from "react";
-import { GRAVIDADE, ROTULO_SITUACAO, type montarCronograma, type Situacao } from "@/lib/cronograma";
+import { GRAVIDADE, ROTULO_SITUACAO, sprintDeInicio, type montarCronograma, type Situacao } from "@/lib/cronograma";
 import { fmtNum, linkTfs, quemResolve } from "@/lib/tfs";
 import { LinkItem, cinza } from "./comum";
 import { COR_INVERTIDA, COR_SIT, GradeSprints, SetaDegrau, TXT_SIT, corta, useEscalaTexto } from "./GanttComum";
@@ -32,6 +32,8 @@ export function GanttPbis({ c, hoje, svgRef }: { c: Crono; hoje: string; svgRef:
     for (const p of b.pbis) {
       const sit = c.situacao.get(p.id) ?? "sem_sprint";
       const col = idx.get(p.sprint) ?? (c.aPlanejar ? c.colunas.length : -1);
+      // Com Start Date, a barra começa na sprint da data (PBI que atravessa várias sprints).
+      const colIni = Math.min(col, idx.get(sprintDeInicio(p, c.colunas)) ?? col);
       desenho.push(<rect key={`f${p.id}`} x={0} y={y} width={4} height={LIN - 4 * k} fill={cor} />);
       desenho.push(
         <a key={`l${p.id}`} href={linkTfs(p.id)} target="_blank" rel="noreferrer">
@@ -39,12 +41,13 @@ export function GanttPbis({ c, hoje, svgRef }: { c: Crono; hoje: string; svgRef:
         </a>,
       );
       if (col >= 0) {
-        const x0 = ROT + col * COL + 4;
-        pos.set(p.id, { x0, x1: x0 + COL - 8, y: y + (LIN - 4 * k) / 2 });
+        const x0 = ROT + colIni * COL + 4;
+        const larg = (col - colIni + 1) * COL - 8;
+        pos.set(p.id, { x0, x1: x0 + larg, y: y + (LIN - 4 * k) / 2 });
         desenho.push(
           <g key={`b${p.id}`}>
-            <rect x={x0} y={y + 2 * k} width={COL - 8} height={LIN - 8 * k} rx={4} fill={COR_SIT[sit]}><title>{`${ROTULO_SITUACAO[sit]} · ${p.coluna ?? p.estado} · ${quemResolve(p)}`}</title></rect>
-            <text x={x0 + (COL - 8) / 2} y={y + 17 * k} fontSize={10} textAnchor="middle" fill={TXT_SIT[sit] ?? "#fff"}>{corta(ROTULO_SITUACAO[sit], 13)}</text>
+            <rect x={x0} y={y + 2 * k} width={larg} height={LIN - 8 * k} rx={4} fill={COR_SIT[sit]}><title>{`${ROTULO_SITUACAO[sit]} · ${p.coluna ?? p.estado} · ${quemResolve(p)}`}</title></rect>
+            <text x={x0 + larg / 2} y={y + 17 * k} fontSize={10} textAnchor="middle" fill={TXT_SIT[sit] ?? "#fff"}>{corta(ROTULO_SITUACAO[sit], 13)}</text>
           </g>,
         );
       }

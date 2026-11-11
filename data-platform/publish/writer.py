@@ -50,6 +50,10 @@ def publish(
     out_path = out_dir / f"{dataset}.json"
 
     payload = json.dumps(rows, ensure_ascii=False, indent=2)
+    if len(payload.encode("utf-8")) > MAX_DATASET_BYTES and isinstance(rows, list):
+        # Lista grande (ex.: tfs/itens, 2.000+ work items): um registro por linha. O arquivo fica
+        # bem menor e o diff no git continua item a item. Os demais datasets não mudam de formato.
+        payload = "[\n" + ",\n".join(json.dumps(r, ensure_ascii=False) for r in rows) + "\n]"
     size = len(payload.encode("utf-8"))
     if size > MAX_DATASET_BYTES:
         raise ValueError(

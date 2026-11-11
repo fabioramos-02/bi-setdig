@@ -18,9 +18,24 @@ export const GRAVIDADE: Situacao[] = ["atrasado", "esperando", "nao_iniciado", "
 // alguém não é atraso da X-VIA; parado sem começar é falta de replanejamento.
 const ESPERA = new Set(["Aguardando Validação do Órgão", "Aguardando decisão", "Impedido"]);
 const NAO_COMECOU = new Set(["A fazer", "Área de Negócios"]);
+// Já em execução numa sprint que ainda vai começar: é andamento, não futuro (ex.: #1337728).
+const EM_EXECUCAO = new Set(["Em Desenvolvimento", "Em Homologação"]);
 export type Aresta = [predecessor: number, sucessor: number];
 
 const PBI = "Product Backlog Item";
+
+/** Sprint em que o PBI começou, quando ele tem Start Date: a sprint que contém a data (ou a
+ * primeira que termina depois dela). Sem Start Date, a própria sprint do PBI. Assim um PBI que
+ * atravessa várias sprints (ex.: #1337728, da Sprint 1 à 7) aparece como barra longa. */
+export function sprintDeInicio(p: TfsItem, sprints: TfsSprint[]): string {
+  const d = p.inicioPrevisto;
+  if (!d) return p.sprint;
+  const ord = [...sprints].sort((a, b) => a.inicio.localeCompare(b.inicio));
+  const s = ord.find((x) => x.inicio <= d && d <= x.fim) ?? ord.find((x) => x.fim >= d);
+  const fim = ord.find((x) => x.sprint === p.sprint);
+  // Start Date depois da sprint do PBI não faz sentido: fica a sprint do PBI.
+  return s && (!fim || s.inicio <= fim.inicio) ? s.sprint : p.sprint;
+}
 
 /** PBIs (não removidos) do épico; sem épico = todos. */
 export const pbisDoEpico = (itens: TfsItem[], epicoId: number | null) =>
@@ -77,7 +92,7 @@ export function situacoes(pbis: TfsItem[], sprints: TfsSprint[], ars: Aresta[], 
         : ESPERA.has(p.coluna ?? "") ? "esperando"
         : !s ? "sem_sprint"
         : s.fim < hoje ? (NAO_COMECOU.has(p.coluna ?? "") ? "nao_iniciado" : "atrasado")
-        : s.inicio <= hoje ? "andamento" : "futuro");
+        : s.inicio <= hoje || EM_EXECUCAO.has(p.coluna ?? "") ? "andamento" : "futuro");
   }
   const final = new Map(base);
   const porId = new Map(pbis.map((p) => [p.id, p]));
@@ -169,7 +184,7 @@ export function montarCronograma(itens: TfsItem[], sprints: TfsSprint[], epicoId
 
   // Colunas: da primeira sprint desenhada até duas depois de hoje.
   const desenhados = blocos.flatMap((b) => b.pbis);
-  const usadas = desenhados.map((p) => sp.get(p.sprint)).filter((s): s is TfsSprint => !!s);
+  const usadas = desenhados.flatMap((p) => [sp.get(p.sprint), sp.get(sprintDeInicio(p, ordenadas))]).filter((s): s is TfsSprint => !!s);
   const adiante = ordenadas.filter((s) => s.fim >= hoje).slice(0, 2);
   const ini = [...usadas.map((s) => s.inicio), hoje].sort()[0];
   const fim = [...usadas, ...adiante].map((s) => s.fim).concat(hoje).sort().at(-1)!;
@@ -243,7 +258,7 @@ export function montarPorFeature(itens: TfsItem[], sprints: TfsSprint[], epicoId
   const hojeIdx = ordenadas.findIndex((s) => s.inicio <= hoje && hoje <= s.fim);
   const linhas: LinhaMacro[] = fontes.map((f) => {
     const ps = todos.filter((p) => chaveDe(p) === f.id);
-    const idxs = ps.map((p) => ordem.get(p.sprint)).filter((n): n is number => n !== undefined);
+    const idxs = ps.flatMap((p) => [ordem.get(p.sprint), ordem.get(sprintDeInicio(p, ordenadas))]).filter((n): n is number => n !== undefined);
     const contagem: Partial<Record<Situacao, number>> = {};
     for (const p of ps) contagem[sit.get(p.id)!] = (contagem[sit.get(p.id)!] ?? 0) + 1;
     const prontos = contagem.concluido ?? 0;

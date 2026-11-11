@@ -12,22 +12,22 @@
   {
     "titulo": "FEATURE",
     "tipo": "numero",
-    "total": 114
+    "total": 116
   },
   {
     "titulo": "PBI",
     "tipo": "numero",
-    "total": 328
+    "total": 333
   },
   {
     "titulo": "TASK",
     "tipo": "numero",
-    "total": 1559
+    "total": 1579
   },
   {
     "titulo": "APLICATIVO",
     "tipo": "numero",
-    "total": 10
+    "total": 19
   },
   {
     "titulo": "DESPRIORIZADO",
@@ -52,7 +52,7 @@
   {
     "titulo": "EM DESENVOLVIMENTO",
     "tipo": "numero",
-    "total": 14
+    "total": 20
   },
   {
     "titulo": "DESCONTINUADOS",
@@ -62,7 +62,7 @@
   {
     "titulo": "TASK's ' sem UST's",
     "tipo": "grafico",
-    "total": 355,
+    "total": 354,
     "grupos": [
       {
         "rotulo": "Sprint 7",
@@ -70,7 +70,7 @@
       },
       {
         "rotulo": "Sprint 8",
-        "qtd": 96
+        "qtd": 95
       },
       {
         "rotulo": "Sem sprint",
@@ -109,23 +109,23 @@
   {
     "titulo": "PACOTES DE ENTREGA",
     "tipo": "grafico",
-    "total": 328,
+    "total": 333,
     "grupos": [
       {
         "rotulo": "Em Produção",
-        "qtd": 137
+        "qtd": 150
       },
       {
         "rotulo": "A fazer",
-        "qtd": 105
+        "qtd": 98
       },
       {
         "rotulo": "Área de Negócios",
-        "qtd": 46
+        "qtd": 39
       },
       {
         "rotulo": "Em Desenvolvimento",
-        "qtd": 14
+        "qtd": 20
       },
       {
         "rotulo": "Aguardando decisão",

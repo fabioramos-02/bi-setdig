@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { arestas, cadeias, invertidas, montarCronograma, montarPorFeature, situacoes } from "./cronograma.ts";
+import { arestas, cadeias, invertidas, montarCronograma, montarPorFeature, situacoes, sprintDeInicio } from "./cronograma.ts";
 import type { TfsItem, TfsSprint } from "./tfs.ts";
 
 const pbi = (id: number, sprint: string, over: Partial<TfsItem> = {}): TfsItem => ({
@@ -84,4 +84,16 @@ test("montarCronograma: legado SGD sai da contagem de atraso; frase diz o que es
   assert.equal(c.contagem.atrasado, 0);
   assert.deepEqual(c.blocos[0].pbis.map((p) => p.id), [1, 2]);
   assert.match(c.frase, /^1 de 3 entregas estão prontas/);
+});
+
+test("Start Date: o PBI começa na sprint da data e a Feature acompanha; em execução numa sprint futura é andamento", () => {
+  const p = pbi(1, "XVIA\\Sprint 7", { inicioPrevisto: "2026-10-03", coluna: "Em Desenvolvimento" });
+  assert.equal(sprintDeInicio(p, sprints), "XVIA\\Sprint 4");
+  assert.equal(sprintDeInicio(pbi(2, "XVIA\\Sprint 5"), sprints), "XVIA\\Sprint 5"); // sem data: a própria sprint
+  assert.equal(sprintDeInicio(pbi(3, "XVIA\\Sprint 4", { inicioPrevisto: "2026-11-20" }), sprints), "XVIA\\Sprint 4"); // data depois: ignora
+  const feat = pbi(10, "XVIA", { tipo: "Feature", featureId: 10, titulo: "DS" });
+  const r = montarPorFeature([feat, { ...p, featureId: 10 }], sprints, 1, HOJE);
+  const l = r.linhas.find((x) => x.id === 10)!;
+  assert.deepEqual([l.ini, l.fim], [0, 3]); // Sprint 4 (coluna 0) até Sprint 7 (coluna 3)
+  assert.equal(situacoes([p], sprints, [], HOJE).get(1), "andamento");
 });
