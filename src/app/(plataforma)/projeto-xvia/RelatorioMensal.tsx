@@ -1,4 +1,5 @@
 import { montarCronograma } from "@/lib/cronograma";
+import { enriquecerVeredito } from "@/lib/tfs-origem";
 import {
   andamentoEntregas, atrasadas, bugsDoQa, cadeiaFinanceira, consumoContrato, entregasDoMes, executadoPorMes, fmtData, fmtNum, fmtReais,
   pendencias, prazoProjeto, quemResolve, soXvia, vereditoExecutivo,
@@ -41,7 +42,10 @@ export function RelatorioMensal({ itens, sprints, contrato, etp, financeiro, hoj
   const entregasAnt = entregasDoMes(xv, ant).flatMap((g) => g.itens);
   const vigencia = contrato?.vigenciaMeses ?? 18;
 
-  const veredito = vereditoExecutivo({ prazo, andamento, consumo, paradas: decisoes, atrasadas: atraso, recorte, semPagamento: financeiro === null || financeiro.pagamentos.length === 0 });
+  const veredito = enriquecerVeredito(
+    vereditoExecutivo({ prazo, andamento, consumo, paradas: decisoes, atrasadas: atraso, recorte, semPagamento: financeiro === null || financeiro.pagamentos.length === 0 }),
+    { itens: xv, prazo, andamento, consumo, paradas: decisoes, atrasadas: atraso, valorUst: contrato?.valorUst ?? null, recorte },
+  );
   const sprintAgora = sprints.find((x) => x.situacao === "atual");
   const cabecalho = [nomeMes(mes), `mês ${prazo.mesDoContrato} de ${vigencia} do contrato`, sprintAgora ? `${sprintAgora.nome} até ${fmtData(sprintAgora.fim).slice(0, 5)}` : null, `dados do TFS de ${fmtData(hoje)}`].filter(Boolean).join(" · ");
   const ustMesOrigem = (m: string): Origem => ({

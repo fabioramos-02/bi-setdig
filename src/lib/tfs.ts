@@ -121,6 +121,23 @@ export type Origem = {
   /** Coluna numérica e subtotal por grupo (ex.: UST da tarefa). */
   valor?: { rotulo: string; de: (i: TfsItem) => number | null };
   agruparPor?: "epico" | "orgao" | "coluna";
+  // Leitura executiva (opcional; ver lib/tfs-origem.ts): o número em destaque com o achado,
+  // a barra contra a referência, grupos prontos (substituem agruparPor) e avisos do dado.
+  destaque?: { rotulo: string; valor: string; icone: string; tom: Tom; achado?: string };
+  barra?: {
+    esquerda: string; direita?: string; total: number; legenda?: boolean;
+    segmentos: { valor: number; tom: Tom; rotulo: string }[];
+    marcador?: { pct: number; rotulo: string; tom: Tom };
+  };
+  grupos?: { titulo: string; dica: string; lista: GrupoOrigem[] };
+  avisos?: { texto: string; tom?: "atencao" | "critico" }[];
+};
+
+/** Grupo pronto do "De onde vem?": uma linha do ranking que abre os itens dela. */
+export type GrupoOrigem = {
+  chave: string; nome: string; etiqueta?: string; valor: string;
+  barra: number; // 0–100
+  legenda: string; tom?: Tom; destaque?: boolean; itens: TfsItem[]; vazio?: string;
 };
 
 export const TIPOS_ENTREGA: TipoEntrega[] = ["Negócio", "Órgão", "Desenvolvimento X-VIA"];
@@ -291,7 +308,15 @@ export function ehTarefaXvia(i: TfsItem) {
   return i.tipo === "Task" && i.estado !== "Removed" && i.frente === "X-VIA" && (!i.empresa || ehContratoXvia(i.empresa));
 }
 
-export type UstTarefa = { ref: CodigoEtp; valor: number; foraDoEtp: boolean } | { situacao: SituacaoUst };
+/** A atividade no TFS vem como "NEG.03 - Elaboração de …"; o código já aparece à parte,
+ * então o nome do serviço fica sem ele. */
+export function nomeServico(atividade: string | null, codigo: string): string {
+  if (!atividade) return codigo;
+  const esc = codigo.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return atividade.replace(new RegExp(`^\\s*${esc}\\s*[-–—:]\\s*`), "").trim() || codigo;
+}
+
+export type UstTarefa ={ ref: CodigoEtp; valor: number; foraDoEtp: boolean } | { situacao: SituacaoUst };
 
 /** Única regra de valor da Task (usada pelo total e pela soma por órgão, que assim fecham):
  * código do ETP → valor do catálogo X-VIA, senão a UST unitária do ETP; código fora do ETP com
@@ -301,7 +326,7 @@ export function ustDaTarefa(t: TfsItem, tabela: Map<string, CodigoEtp>): UstTare
   const ref = cod ? tabela.get(cod) : undefined;
   if (ref) return { ref, valor: t.ust ?? ref.ustUnitaria, foraDoEtp: false };
   if (cod && t.ust != null && !cod.includes("/"))
-    return { ref: { codigo: cod, servico: t.atividadeUst ?? cod, ustUnitaria: t.ust, previsto: 0 }, valor: t.ust, foraDoEtp: true };
+    return { ref: { codigo: cod, servico: nomeServico(t.atividadeUst, cod), ustUnitaria: t.ust, previsto: 0 }, valor: t.ust, foraDoEtp: true };
   return { situacao: !cod ? "sem código" : cod.includes("/") ? "faixa a definir" : "fora do ETP" };
 }
 

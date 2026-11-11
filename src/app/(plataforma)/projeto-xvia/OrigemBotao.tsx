@@ -3,7 +3,8 @@
 import { useMemo, useState } from "react";
 import { Modal } from "@/components/dashboard/Modal";
 import { ExportCsvButton } from "@/components/dashboard/ExportCsvButton";
-import { fmtNum, linkTfs, quemResolve, type Origem, type TfsItem } from "@/lib/tfs";
+import { fmtData, fmtNum, linkTfs, quemResolve, type Origem, type TfsItem } from "@/lib/tfs";
+import { Destaque, ListaItens, Ranking, Rodape } from "./OrigemUi";
 
 const POR_GRUPO = 200;
 const cinza = { color: "var(--ds-color-text-muted)" };
@@ -21,7 +22,14 @@ export function OrigemBotao({ origem }: { origem: Origem }) {
       <button type="button" onClick={() => setAberto(true)} className="text-xs font-medium underline print:hidden" style={{ color: "var(--ds-color-primary-600)" }}>
         De onde vem?
       </button>
-      <Modal open={aberto} onClose={() => setAberto(false)} title={origem.numero ?? origem.rotulo} subtitulo={origem.numero ? origem.rotulo : undefined} largura={origem.itens?.length ? 880 : 560}>
+      <Modal
+        open={aberto}
+        onClose={() => setAberto(false)}
+        // Com destaque, o número já aparece grande no corpo: o título vira a pergunta, sem repetir.
+        title={origem.destaque ? origem.rotulo : origem.numero ?? origem.rotulo}
+        subtitulo={!origem.destaque && origem.numero ? origem.rotulo : undefined}
+        largura={origem.itens?.length ? 880 : 560}
+      >
         {aberto && <Detalhe origem={origem} />}
       </Modal>
     </>
@@ -47,9 +55,18 @@ function Detalhe({ origem }: { origem: Origem }) {
       .sort((a, b) => (b.subtotal ?? b.lista.length) - (a.subtotal ?? a.lista.length));
   }, [filtrados, origem.agruparPor, valor]);
   const passos = origem.passos ?? [];
+  const executivo = !!origem.destaque;
+  // Grupos prontos (leitura executiva): a busca filtra dentro de cada grupo.
+  const gruposProntos = useMemo(() => {
+    if (!origem.grupos) return null;
+    const ids = new Set(filtrados.map((i) => i.id));
+    const lista = origem.grupos.lista.map((g) => ({ ...g, itens: g.itens.filter((i) => ids.has(i.id)) }));
+    return { ...origem.grupos, lista: busca ? lista.filter((g) => g.itens.length) : lista };
+  }, [origem.grupos, filtrados, busca]);
 
   return (
     <div className="flex flex-col gap-4">
+      {origem.destaque && <Destaque destaque={origem.destaque} barra={origem.barra} />}
       <section aria-label="Como chegamos neste número" style={{ background: "var(--ds-color-background-muted)", borderRadius: "var(--ds-radius-md)", padding: "14px 16px" }}>
         <div className="text-xs font-semibold uppercase tracking-wide mb-2" style={cinza}>Como chegamos neste número</div>
         {passos.length ? (
@@ -65,7 +82,7 @@ function Detalhe({ origem }: { origem: Origem }) {
           <div className="text-sm">{origem.detalhe}</div>
         )}
         {passos.length > 0 && origem.detalhe && <div className="text-xs mt-2" style={cinza}>{origem.detalhe}</div>}
-        {origem.fonte && <div className="text-xs mt-2" style={cinza}>Fonte: {origem.fonte}</div>}
+        {origem.fonte && !executivo && <div className="text-xs mt-2" style={cinza}>Fonte: {origem.fonte}</div>}
         {origem.link && (
           <div className="text-sm mt-2">
             <a href={origem.link.href} target="_blank" rel="noreferrer" className="underline" style={{ color: "var(--ds-color-primary-600)" }}>{origem.link.texto}</a>
@@ -93,6 +110,22 @@ function Detalhe({ origem }: { origem: Origem }) {
               rows={filtrados.map((i) => ({ id: i.id, titulo: i.titulo, grupo: chave(i, origem.agruparPor), situacao: i.coluna ?? i.estado, responsavel: quemResolve(i), ...(valor ? { [valor.rotulo]: valor.de(i) ?? "" } : {}), link: linkTfs(i.id) }))}
             />
           </div>
+          {gruposProntos ? (
+            busca && !gruposProntos.lista.length
+              ? <p className="text-sm" style={cinza} aria-live="polite">Nenhum item encontrado.</p>
+              : <Ranking
+                  grupos={gruposProntos}
+                  abertos={!!busca}
+                  conteudo={(g) => (
+                    <ListaItens
+                      itens={g.itens}
+                      valor={valor}
+                      vazio={g.vazio}
+                      meta={(i) => [i.coluna ?? i.estado, i.epico ?? "sem módulo", i.orgao, `quem resolve: ${quemResolve(i)}`, i.fechadoEm && i.estado === "Done" && `concluída em ${fmtData(i.fechadoEm)}`]}
+                    />
+                  )}
+                />
+          ) : (<>
           <div className="text-xs" style={cinza} aria-live="polite">
             {fmtNum(filtrados.length)} {filtrados.length === 1 ? "item" : "itens"} em {fmtNum(grupos.length)} {grupos.length === 1 ? "grupo" : "grupos"}
             {valor ? ` · ${fmtNum(grupos.reduce((s, g) => s + (g.subtotal ?? 0), 0))} ${valor.rotulo}` : ""}
@@ -127,8 +160,10 @@ function Detalhe({ origem }: { origem: Origem }) {
               </details>
             ))}
           </div>
+          </>)}
         </>
       )}
+      {executivo && <Rodape avisos={origem.avisos} fonte={origem.fonte} />}
     </div>
   );
 }
