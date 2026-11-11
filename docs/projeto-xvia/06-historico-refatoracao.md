@@ -58,3 +58,9 @@ mesmo que o BI.
 - O modal "De onde vem?" foi reescrito. Agora mostra a conta em passos, a fonte, a busca, o CSV e os grupos com subtotal. O foco vai para a busca ao abrir.
 - `Modal` ganhou `largura`, `subtitulo` e `data-autofocus`. `Origem` ganhou `numero`, `passos`, `fonte`, `valor` e `agruparPor`.
 - Testes: `src/lib/tfs-veredito.test.ts` (3 testes). Ao todo, 279 testes JS passam.
+
+## Rodada 3 (11/11/2026): seção 6, SLA
+
+- A seção 6 virou "Prazos de atendimento (SLA)" (`SlaSecao.tsx`). Mostra a tabela do TR 4.3.1 (vinda de `contrato.json` → `ans`), explica por que o SLA ainda não é medido e lista o que falta para medir. As falhas do QA aparecem à parte, por módulo (`bugsDoQa`).
+- A lista de fontes ganhou "Relatório de SLA da X-VIA (não recebido)". O glossário ganhou o termo SLA.
+- No lancar-demandas, o `src/painel.py` parou de chamar bug do QA de "fora do SLA": agora conta as falhas abertas por módulo.

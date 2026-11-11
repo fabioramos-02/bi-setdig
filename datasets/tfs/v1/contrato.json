@@ -23,6 +23,18 @@
     { "mes": 16, "ust": 609 }, { "mes": 17, "ust": 429 }, { "mes": 18, "ust": 228 }
   ],
   "previsaoMensalNota": "Totais por mês da tabela 3.3.3 (desenvolvimento + complementares). Mês 18 = 228, como o TR imprime: é o valor que fecha o total geral em 23.356 (com 288 a soma daria 23.416). Decisão do Fabio em 11/11/2026.",
+  "ans": {
+    "fonte": "TR pós-parecer, 4.3.1 e 4.3.2.1 (pág. 38-39)",
+    "aplicaA": "Atendimento de problemas e demandas da plataforma (suporte). Falhas do QA no desenvolvimento não contam.",
+    "prioridades": [
+      { "prioridade": "Crítica", "inicio": "até 2 horas", "solucao": "até 8 horas", "aceitavel": 90, "glosa": "0,5% da nota fiscal por ponto percentual abaixo da meta" },
+      { "prioridade": "Alta", "inicio": "até 4 horas", "solucao": "até 16 horas", "aceitavel": 90, "glosa": "0,3% da nota fiscal por ponto percentual abaixo da meta" },
+      { "prioridade": "Média", "inicio": "até 1 dia útil", "solucao": "até 3 dias úteis", "aceitavel": 70, "glosa": "0,1% da nota fiscal do mês por ponto percentual abaixo da meta" },
+      { "prioridade": "Baixa", "inicio": "até 2 dias úteis", "solucao": "até 5 dias úteis", "aceitavel": 60, "glosa": "0,1% da nota fiscal do mês por ponto percentual abaixo da meta" }
+    ],
+    "medicao": null,
+    "medicaoNota": "Sem fonte: os chamados de suporte não passam pelo TFS e o relatório periódico de SLA da X-VIA (previsto no contrato) ainda não foi recebido."
+  },
   "faturado": null,
   "faturadoNota": "Os campos Faturado e DataFaturamento do TFS ainda não são preenchidos; o faturado aparece como 'a informar'.",
   "previsaoPorModulo": []

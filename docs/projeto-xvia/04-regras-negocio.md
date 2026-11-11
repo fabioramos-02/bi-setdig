@@ -66,3 +66,9 @@ Todas aparecem em Qualidade e no Detalhamento B.
 - Pendência = coluna Aguardando decisão/Impedido ou etiqueta Dependência.
 - Cronograma: risco = não concluído com predecessor atrasado, sem sprint ou na mesma sprint/posterior. PBI da SGD antigo (sprint encerrada, fora de cadeia) fica em "pendências antigas da SGD", fora do atraso.
 - Dependência = só link Predecessor/Sucessor (Related não conta).
+
+## Prazos de atendimento (SLA, TR 4.3.1)
+
+- A tabela do TR fica em `contrato.json` → `ans`: Crítica 2h/8h (meta 90%), Alta 4h/16h (90%), Média 1/3 dias úteis (70%), Baixa 2/5 dias úteis (60%). Abaixo da meta, a glosa é de 0,1% a 0,5% da nota fiscal por ponto percentual.
+- **O SLA vale para o atendimento de problemas da plataforma (suporte).** Os chamados não passam pelo TFS. A medição vem do relatório periódico de SLA da X-VIA, que vai em `ans.medicao`; enquanto ele não chega, o valor é `null` e o BI não mostra percentual.
+- **Bug do TFS não é SLA.** Os bugs são falhas apontadas pelo QA durante o desenvolvimento (CMS, Portal…). Aparecem na seção 6 como "qualidade do desenvolvimento" (`bugsDoQa`) e nunca entram em conta de SLA (Fabio, 11/11/2026).

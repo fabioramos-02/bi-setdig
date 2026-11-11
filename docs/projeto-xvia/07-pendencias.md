@@ -7,7 +7,7 @@ Estado em 11/11/2026. Responsáveis são sugestões, a confirmar.
 | Falta | Efeito no BI | Ação | Quem |
 |---|---|---|---|
 | Ordens de Serviço, medições, aceite, notas fiscais, pagamentos e glosas | Etapas "Não informado" no relatório e no financeiro | Preencher `datasets/tfs/v1/financeiro.json` (modelo no arquivo) | Fiscalização / ATEC (há Task "[SGD] - Levantar com a ATEC a fonte das Ordens de Serviço e do aceite") |
-| SLA (tempos de atendimento) | Seção 6 diz "sem SLA medido" | Definir a fonte (o TR 4.3.1 prevê prazo por prioridade; bugs ficam com prioridade padrão) | SGD |
+| Relatório de SLA da X-VIA (TR 4.3.1) | Seção 6 mostra a tabela do TR e "ainda não medido" | Pedir à X-VIA o relatório mensal de prazos de atendimento, com a gravidade de cada chamado, e lançar em `contrato.json` → `ans.medicao` (ou num campo `sla` do financeiro.json, a decidir) | SGD / X-VIA |
 | Itens 1 e 2 do contrato (licença e implantação, preço global) | Não acompanhados | Registrar marcos e pagamentos desses itens | SGD |
 | Marcos formais (aceite de etapa) | Seção 5 só mostra o cronograma por sprint | Registrar marcos no financeiro ou no TFS | SGD |
 | Campo Faturado do TFS | Vazio em todos os itens | Usar o financeiro.json ou preencher o campo | X-VIA |

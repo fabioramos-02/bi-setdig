@@ -93,7 +93,18 @@ export type TfsContrato = {
   previsaoMensalNota?: string;
   faturado?: number | null;
   faturadoNota?: string;
+  ans?: Ans;
   previsaoPorModulo: { epico: string; ust: number | null }[];
+};
+
+/** Prazos de atendimento do TR 4.3.1 (SLA). `medicao` fica null enquanto não houver fonte:
+ * o SLA vale para o atendimento de problemas (suporte), e os chamados não passam pelo TFS. */
+export type Ans = {
+  fonte: string;
+  aplicaA: string;
+  prioridades: { prioridade: string; inicio: string; solucao: string; aceitavel: number; glosa: string }[];
+  medicao: null | { mes: string; porPrioridade: { prioridade: string; noPrazo: number; total: number }[]; fonte: string };
+  medicaoNota?: string;
 };
 
 /** Origem de um indicador: o que o compõe, para chegar ao registro que o fundamenta. */
@@ -740,6 +751,28 @@ export function cadeiaFinanceira(fin: Financeiro | null, executado: { ust: numbe
   };
 }
 
+/** Falhas apontadas pelo QA no desenvolvimento (Bugs da X-VIA abertos). NÃO são SLA: o TR 4.3.1
+ * vale para o atendimento de problemas da plataforma, e esses bugs fazem parte do ciclo de
+ * desenvolvimento e homologação (Fabio, 11/11/2026). Mostradas à parte, como qualidade. */
+export function bugsDoQa(itens: TfsItem[]) {
+  const abertos = itens.filter((i) => i.tipo === "Bug" && i.frente === "X-VIA" && aberto(i));
+  const porModulo = new Map<string, number>();
+  for (const b of abertos) porModulo.set(b.epico ?? "sem módulo", (porModulo.get(b.epico ?? "sem módulo") ?? 0) + 1);
+  const modulos = [...porModulo].map(([modulo, n]) => ({ modulo, n })).sort((a, b) => b.n - a.n);
+  const origem: Origem = {
+    rotulo: "Falhas apontadas pelo QA ainda abertas",
+    numero: `${fmtNum(abertos.length)} falhas do QA abertas`,
+    passos: [
+      `${fmtNum(abertos.length)} itens do tipo Bug da X-VIA, abertos no TFS`,
+      `por módulo: ${modulos.map((m) => `${m.modulo} ${fmtNum(m.n)}`).join(" · ") || "nenhum"}`,
+    ],
+    fonte: "TFS: itens do tipo Bug (registrados pelo QA durante o desenvolvimento)",
+    detalhe: "Não contam para o SLA do contrato: são falhas encontradas antes de a entrega ir para produção.",
+    itens: abertos,
+  };
+  return { total: abertos.length, modulos, origem };
+}
+
 /** Fontes do acompanhamento do contrato — lista única (Qualidade dos dados e documentação). */
 export const FONTES_CONTRATO = [
   { fonte: "TFS (backlog XVIA)", traz: "Entregas, tarefas, UST lançada e executada, órgão, sprint, dependências", como: "API, extração manual na rede do Governo" },
@@ -747,6 +780,7 @@ export const FONTES_CONTRATO = [
   { fonte: "etp-ust.json", traz: "UST prevista por atividade (memória de cálculo do ETP)", como: "Manual" },
   { fonte: "catalogo-ust-xvia.json", traz: "Valor de cada atividade no catálogo da X-VIA", como: "Manual, da tabela de atividades do SCP" },
   { fonte: "financeiro.json", traz: "Ordens de Serviço, medições, aceite, notas fiscais, pagamentos e glosas", como: "Manual; vazio até a fiscalização preencher" },
+  { fonte: "Relatório de SLA da X-VIA", traz: "Cumprimento dos prazos de atendimento do TR 4.3.1 (contrato.json → ans.medicao)", como: "Não recebido; o contrato prevê relatórios periódicos" },
 ];
 
 // --- Filtros do painel (ficam na URL) --------------------------------------

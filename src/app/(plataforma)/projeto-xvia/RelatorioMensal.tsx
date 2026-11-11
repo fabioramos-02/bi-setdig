@@ -1,11 +1,12 @@
 import { montarCronograma } from "@/lib/cronograma";
 import {
-  andamentoEntregas, atrasadas, cadeiaFinanceira, consumoContrato, entregasDoMes, executadoPorMes, fmtData, fmtNum, fmtReais,
+  andamentoEntregas, atrasadas, bugsDoQa, cadeiaFinanceira, consumoContrato, entregasDoMes, executadoPorMes, fmtData, fmtNum, fmtReais,
   pendencias, prazoProjeto, quemResolve, soXvia, vereditoExecutivo,
   type EtpUst, type Financeiro, type Origem, type TfsContrato, type TfsItem, type TfsSprint,
 } from "@/lib/tfs";
 import { OrigemBotao } from "./OrigemBotao";
 import { PainelSecretario } from "./PainelSecretario";
+import { SlaSecao } from "./SlaSecao";
 import { TabelaCadeia } from "./CadeiaFinanceira";
 import { BotaoLink, COR, LinkItem, SecaoRelatorio, Sigla, cinza } from "./comum";
 
@@ -90,8 +91,8 @@ export function RelatorioMensal({ itens, sprints, contrato, etp, financeiro, hoj
         <p style={cinza}>{fmtNum(crono.contagem.ligacoes)} dependências registradas entre entregas da X-VIA. Marco formal do contrato (aceite de etapa) ainda não tem fonte.</p>
       </SecaoRelatorio>
 
-      <SecaoRelatorio n={6} titulo="Indicadores e SLA">
-        <p style={cinza}>Nenhum indicador de nível de serviço (SLA) é medido hoje: o contrato não tem fonte de tempos de atendimento ligada a este painel. Aparece aqui quando houver.</p>
+      <SecaoRelatorio n={6} titulo="Prazos de atendimento (SLA)">
+        <SlaSecao ans={contrato?.ans ?? null} bugs={bugsDoQa(xv)} onIrPara={onIrPara} />
       </SecaoRelatorio>
 
       <SecaoRelatorio n={7} titulo="Pendências e problemas" acao={<BotaoLink onClick={() => onIrPara("prioridades")}>Ver todas</BotaoLink>}>

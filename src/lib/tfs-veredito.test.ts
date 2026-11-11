@@ -3,9 +3,24 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
-  andamentoEntregas, consumoContrato, tomDecisoes, tomEntregas, tomExecucao, vereditoExecutivo,
+  andamentoEntregas, bugsDoQa, consumoContrato, tomDecisoes, tomEntregas, tomExecucao, vereditoExecutivo,
   type EtpUst, type TfsContrato, type TfsItem,
 } from "./tfs.ts";
+import fs from "node:fs";
+
+test("SLA: tabela do TR 4.3.1 no contrato.json, sem medição inventada; falhas do QA à parte, por módulo", () => {
+  const real = JSON.parse(fs.readFileSync("datasets/tfs/v1/contrato.json", "utf-8")) as TfsContrato;
+  assert.deepEqual(real.ans?.prioridades.map((p) => [p.prioridade, p.aceitavel]), [["Crítica", 90], ["Alta", 90], ["Média", 70], ["Baixa", 60]]);
+  assert.equal(real.ans?.medicao, null); // sem relatório da X-VIA, nada de percentual
+  const b = (id: number, epico: string | null, over: Partial<TfsItem> = {}) => ({ id, tipo: "Bug", epico, ...over });
+  const r = bugsDoQa([
+    b(1, "CMS"), b(2, "CMS"), b(3, "Portal"), b(4, null),
+    b(5, "CMS", { estado: "Done" }), b(6, "CMS", { frente: "SGD" }),
+  ].map((o) => item(o as Partial<TfsItem>)));
+  assert.equal(r.total, 4);
+  assert.deepEqual(r.modulos, [{ modulo: "CMS", n: 2 }, { modulo: "Portal", n: 1 }, { modulo: "sem módulo", n: 1 }]);
+  assert.equal(r.origem.itens?.length, 4);
+});
 
 const item = (over: Partial<TfsItem>): TfsItem => ({
   id: 1, tipo: "Product Backlog Item", titulo: "x", estado: "New", coluna: "A fazer",

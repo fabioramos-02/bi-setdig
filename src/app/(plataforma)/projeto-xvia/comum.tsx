@@ -31,6 +31,7 @@ export const GLOSSARIO = {
   SGD: "Superintendência de Governo Digital: a equipe do Estado que acompanha o contrato.",
   "X-VIA": "A empresa contratada (Contrato 004/2026).",
   homologação: "Etapa em que o órgão testa a entrega antes de ela ir para produção.",
+  SLA: "Prazo de atendimento combinado no contrato: em quanto tempo a X-VIA deve começar a atender e resolver cada problema, conforme a gravidade (TR 4.3.1).",
 } as const;
 
 export function Sigla({ s, children }: { s: keyof typeof GLOSSARIO; children?: React.ReactNode }) {
