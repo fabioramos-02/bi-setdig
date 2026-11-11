@@ -1,39 +1,48 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { useLayoutEffect, useState, type RefObject } from "react";
 import type { Situacao } from "@/lib/cronograma";
 import { ROTULO_SITUACAO } from "@/lib/cronograma";
 import { fmtData, type TfsSprint } from "@/lib/tfs";
 
-/** Quanto o navegador aumentou o texto do SVG (tamanho mínimo de fonte, zoom de texto do Chrome
- * ou do Windows). A grade do Gantt é em px; sem acompanhar, os rótulos se atropelam (print do
- * Fabio, 11/11/2026). Mede o mesmo texto a 11px e a 40px (acima de qualquer mínimo): sem ajuste do
- * navegador, a razão é 1. Devolve k entre 1 e 2,5 para multiplicar a geometria. */
-let escalaMedida: number | null = null;
-function medirEscala(): number {
-  if (escalaMedida !== null) return escalaMedida;
-  const ns = "http://www.w3.org/2000/svg";
-  const svg = document.createElementNS(ns, "svg");
-  svg.setAttribute("style", "position:absolute;left:-9999px;top:0;visibility:hidden");
-  const mede = (tam: number) => {
-    const t = document.createElementNS(ns, "text");
-    t.setAttribute("font-size", String(tam));
-    t.textContent = "Sprint 10 27/07–14/08";
-    svg.appendChild(t);
-    return t;
-  };
-  const pequeno = mede(11), grande = mede(40);
-  document.body.appendChild(svg);
-  const real = pequeno.getComputedTextLength(), esperado = (grande.getComputedTextLength() * 11) / 40;
-  svg.remove();
-  escalaMedida = esperado > 0 ? Math.min(2.5, Math.max(1, Math.round((real / esperado) * 100) / 100)) : 1;
-  return escalaMedida;
-}
-const semAssinatura = () => () => {};
-
-export function useEscalaTexto() {
-  // Servidor = 1; no navegador, mede uma vez (a configuração de fonte não muda com a página aberta).
-  return useSyncExternalStore(semAssinatura, medirEscala, () => 1);
+/** Quanto o navegador aumentou o texto DENTRO do gráfico (tamanho mínimo de fonte, zoom de texto).
+ * Começa em 1 (desenho normal) e, depois de montar, mede no próprio SVG o mesmo texto a 11px e a
+ * 40px (acima de qualquer mínimo). Só aumenta a grade se o texto de 11px estiver de fato maior
+ * (mais de 15%). A 1ª versão media num SVG solto no <body> e, em alguns navegadores, errava para
+ * cima, ampliando a grade com o texto normal (print do Fabio, 11/11/2026).
+ * A medida espera o gráfico ficar visível: a aba do Cronograma monta escondida (display:none), e
+ * texto escondido mede 0. O ResizeObserver avisa quando ele aparece. */
+export function useEscalaTexto(svgRef: RefObject<SVGSVGElement | null>) {
+  const [k, setK] = useState(1);
+  useLayoutEffect(() => {
+    const svg = svgRef.current;
+    if (!svg) return;
+    const ns = "http://www.w3.org/2000/svg";
+    const mede = (tam: number) => {
+      const t = document.createElementNS(ns, "text");
+      t.setAttribute("font-size", String(tam));
+      t.setAttribute("visibility", "hidden");
+      t.textContent = "Sprint 10";
+      svg.appendChild(t);
+      const w = t.getComputedTextLength();
+      t.remove();
+      return w;
+    };
+    const medir = () => {
+      const pequeno = mede(11), grande = mede(40);
+      if (!grande) return false; // ainda escondido: espera aparecer
+      const r = pequeno / ((grande * 11) / 40);
+      setK(r > 1.15 ? Math.min(2.5, Math.round(r * 100) / 100) : 1);
+      return true;
+    };
+    const obs = new ResizeObserver(() => { medir(); });
+    obs.observe(svg);
+    // Reforço: tenta de meio em meio segundo até a 1ª medida valer (o ResizeObserver não dispara
+    // com a aba do navegador em segundo plano).
+    const id = setInterval(() => { if (medir()) clearInterval(id); }, 500);
+    return () => { obs.disconnect(); clearInterval(id); };
+  }, [svgRef]);
+  return k;
 }
 
 /** Cores das situações do cronograma — fixas (não variam com o tema) para a imagem exportada

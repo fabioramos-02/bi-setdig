@@ -14,7 +14,7 @@ type Macro = ReturnType<typeof montarPorFeature>;
 export function GanttFeatures({ m, hoje, selecionada, onSelecionar, svgRef }: {
   m: Macro; hoje: string; selecionada: number | null; onSelecionar: (id: number | null) => void; svgRef: RefObject<SVGSVGElement | null>;
 }) {
-  const k = useEscalaTexto();
+  const k = useEscalaTexto(svgRef);
   const s = (n: number) => n * k;
   const ROT = s(330), COL = s(84), LIN = s(50), CAB = s(44);
   const aPlanejar = m.linhas.some((l) => l.ini === null && l.aPlanejar > 0);

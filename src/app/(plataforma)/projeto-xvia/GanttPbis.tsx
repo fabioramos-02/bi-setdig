@@ -13,7 +13,7 @@ const PALETA = ["#0F4B91", "#7c3aed", "#0f766e", "#be185d", "#4d7c0f", "#b45309"
  * vermelho) e, embaixo, os PBIs sem dependência agrupados por situação — lista, não barras. */
 export function GanttPbis({ c, hoje, svgRef }: { c: Crono; hoje: string; svgRef: RefObject<SVGSVGElement | null> }) {
   // Geometria acompanha o tamanho real do texto (fonte maior no navegador): ver useEscalaTexto.
-  const k = useEscalaTexto();
+  const k = useEscalaTexto(svgRef);
   const ROT = 300 * k, COL = 84 * k, LIN = 30 * k, CAB = 44 * k, TIT = 26 * k;
   const cadeias = c.blocos.filter((b) => b.cadeia !== null);
   const emCadeia = new Set(cadeias.flatMap((b) => b.pbis.map((p) => p.id)));
