@@ -1,14 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { MetricCard } from "@/components/dashboard/MetricCard";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { DataTable, type Coluna } from "@/components/dashboard/DataTable";
 import { ExportCsvButton } from "@/components/dashboard/ExportCsvButton";
-import { executadoPorMes, execucaoXvia, fmtNum, fmtReais, linkTfs, type EtpUst, type LinhaCodigo, type TfsContrato, type TfsItem } from "@/lib/tfs";
+import { executadoPorMes, execucaoXvia, fmtNum, linkTfs, type EtpUst, type LinhaCodigo, type TfsContrato, type TfsItem } from "@/lib/tfs";
 import { RankingBarChart } from "@/components/charts/RankingBarChart";
 import { LinkItem } from "./comum";
+import { UstResumo } from "./UstResumo";
 
 const linkTarefa = (r: TfsItem) => <LinkItem item={r} />;
 
@@ -48,9 +48,6 @@ export function UstTab({ itens, etp, contrato }: { itens: TfsItem[]; etp: EtpUst
   const f = execucaoXvia(itens, etp, contrato);
   const [codigo, setCodigo] = useState<string | null>(null);
   const aberto = f.porCodigo.find((l) => l.codigo === codigo) ?? null;
-  const usados = f.porCodigo.filter((l) => l.tarefas > 0);
-  const estourados = usados.filter((l) => l.previsto > 0 && l.lancada > l.previsto);
-  const reais = (v: number | null) => (v === null ? "valor da UST a informar" : fmtReais(v));
   const porMes = executadoPorMes(itens, etp);
 
   if (f.tarefas === 0) {
@@ -59,22 +56,7 @@ export function UstTab({ itens, etp, contrato }: { itens: TfsItem[]; etp: EtpUst
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-        <MetricCard label="UST executada" value={fmtNum(f.ustExecutada)} sub={`${fmtNum(f.pctExecutado ?? 0)}% do contratado · ${reais(f.valorExecutado)}`} />
-        <MetricCard label="UST lançada nas tarefas" value={fmtNum(f.ustLancada)} sub={`${fmtNum(f.pctLancado ?? 0)}% do contratado · ${reais(f.valorLancado)}`} />
-        <MetricCard label="Contratado (TR)" value={f.ustTotal === null ? "—" : `${fmtNum(f.ustTotal)} UST`} sub="Termo de Referência, item 1.1" />
-        <MetricCard label="Tarefas a classificar" value={fmtNum(f.aClassificar.length)} sub={`de ${fmtNum(f.tarefas)} tarefas da X-VIA`} />
-      </div>
-
-      <StoryCard
-        anchor={`A X-VIA lançou ${fmtNum(f.ustLancada)} UST em ${fmtNum(f.tarefas - f.aClassificar.length)} tarefas — ${fmtNum(f.pctLancado ?? 0)}% das ${fmtNum(f.ustTotal ?? 0)} UST contratadas. Concluídas, ${fmtNum(f.ustExecutada)}.`}
-        caption={
-          estourados.length > 0
-            ? `${fmtNum(estourados.length)} atividade(s) já passaram do previsto no ETP: ${estourados.map((e) => e.codigo).join(", ")}.`
-            : `${fmtNum(f.aClassificar.length)} tarefas ainda não têm um código válido do catálogo da X-VIA e ficam fora da conta.`
-        }
-        comoLer={`Conta só o que a X-VIA fatura: tarefas (só tarefa fatura) com o contrato da X-VIA marcado, ou na área que a X-VIA fatura quando ainda sem contrato. Tarefa com o contrato do Governo do Estado (SGD) ou sem frente identificada nunca entra. Cada tarefa vale a UST da atividade do catálogo da X-VIA marcada nela; quando a tarefa ainda não tem a atividade marcada, vale o código que a X-VIA escreveu na descrição (ex.: 'Catálogo DOC.07').${f.semContrato ? ` ${fmtNum(f.semContrato)} das tarefas somadas ainda estão nessa situação.` : ""}${f.valorDoEtp ? ` ${fmtNum(f.valorDoEtp)} tarefas usam, por enquanto, o valor da tabela do ETP, porque o valor da atividade no catálogo da X-VIA ainda não foi carregado.` : ""}${f.foraDoEtp ? ` ${fmtNum(f.foraDoEtp)} tarefas usam atividade do catálogo da X-VIA que não está na memória de cálculo do ETP: contam, com previsto zero.` : ""} Lançada = todas as tarefas com atividade; executada = só as concluídas. Previsto = ocorrências da memória de cálculo do ETP.`}
-      />
+      <UstResumo f={f} />
 
       <DashboardSection title="Quantas UST a X-VIA concluiu em cada mês?">
         <RankingBarChart itens={porMes.meses.map((m) => ({ label: new Date(`${m.mes}-15T12:00:00`).toLocaleDateString("pt-BR", { month: "short", year: "numeric" }), valor: m.ust }))} />

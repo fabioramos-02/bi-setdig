@@ -81,3 +81,11 @@ mesmo que o BI.
 - `invertidas()` acusa as dependências planejadas ao contrário (vermelho tracejado).
 - O cronograma abre por **Feature** (`montarPorFeature`): progresso prontos/total, a pior situação, as ligações entre Features, "O que fazer" e os ajustes a fazer no TFS (Feature concluída com PBI aberto, Feature sem PBI, Features sem data). Clicar abre os PBIs (`montarCronograma(..., featureId)`). As setas viraram degrau.
 - O relatório do Secretário, seção 5, ganhou "X de Y Features prontas".
+
+## Rodada 6 (11/11/2026): topo do Detalhamento A (UST)
+
+- Os 4 cartões e o parágrafo deram lugar ao `UstResumo.tsx`, que mostra três coisas:
+  - a frase com o concluído primeiro (553 UST, 2,4%), seguida das UST em tarefas abertas;
+  - uma barra do contrato inteiro: concluído, em tarefas abertas e ainda sem tarefa;
+  - os "Pontos de atenção no dado", cada um com a sua lista. São eles: atividades acima do previsto no ETP (DOC.07: 495 para 36 previstas), tarefas sem atividade marcada (198), atividades fora do ETP (72), tarefas fora da soma (162) e valor provisório.
+- O "Como ler" ficou recolhido, em quatro tópicos.
