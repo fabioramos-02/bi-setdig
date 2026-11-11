@@ -29,7 +29,7 @@ Estado em 11/11/2026. Responsáveis são sugestões, a confirmar.
 - **UST de novembro alta (500) e de outubro baixa (47):** pela data de fechamento, a X-VIA fechou tarefas em lote em novembro; pela Data da Execução, o mês 10 teria 337. O BI usa o fechamento (mesma regra do painel do TFS). A conferir com a X-VIA.
 - **"Ata de reunião" como PBI da X-VIA** (ex.: #1373754) conta como entrega concluída. É a forma como a X-VIA registra: se não for entrega, ajustar no TFS.
 
-- **% em produção: BI 30% × painel do TFS 40%.** O BI conta a coluna "Em Produção" sobre as entregas (PBI e Bug) da frente X-VIA. O `src.painel` (lancar-demandas) conta Done sobre os itens dos módulos sem o épico SGD, e esse recorte ainda inclui PBIs `[SGD]` nos épicos X-VIA. Mês, previsto (8.659) e UST (553) já batem. Falta decidir uma régua só para o "em produção" e aplicar nos dois.
+- ~~% em produção: BI 30% × painel do TFS 40%~~ **Resolvido em 11/11/2026:** o `src.painel` passou a usar a régua do BI (só entregas da X-VIA, em produção = coluna Em Produção). Os dois mostram 75 de 246 (30%), 10 impedidos e 12 aguardando decisão.
 
 ## Limitações técnicas
 
