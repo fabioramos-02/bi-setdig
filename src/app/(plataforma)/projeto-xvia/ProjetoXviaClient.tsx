@@ -144,7 +144,12 @@ export function ProjetoXviaClient({
           })}
         </nav>
         <FiltrosBar itens={itens} filtros={filtros} filtrar={filtrar} limpar={limpar} total={recorte.length} dataRetrato={dataRetrato} />
-        <Tabs items={abas} ativa={abas.some((a) => a.id === abaAtiva) ? abaAtiva : abas[0].id} onAtivaChange={setAbaAtiva} />
+        {/* Nível com uma aba só: sem barra de abas — a aba solitária parecia um botão que não fazia nada. */}
+        {abas.length === 1 ? (
+          <div id={`panel-${abas[0].id}`}>{abas[0].content}</div>
+        ) : (
+          <Tabs items={abas} ativa={abas.some((a) => a.id === abaAtiva) ? abaAtiva : abas[0].id} onAtivaChange={setAbaAtiva} />
+        )}
       </main>
     </div>
   );
