@@ -1,14 +1,13 @@
-import { StoryCard } from "@/components/dashboard/StoryCard";
-import { MetricCard } from "@/components/dashboard/MetricCard";
 import { montarCronograma } from "@/lib/cronograma";
 import {
   andamentoEntregas, atrasadas, cadeiaFinanceira, consumoContrato, entregasDoMes, executadoPorMes, fmtData, fmtNum, fmtReais,
-  pendencias, prazoProjeto, quemResolve, sinteseExecutiva, soXvia,
+  pendencias, prazoProjeto, quemResolve, soXvia, vereditoExecutivo,
   type EtpUst, type Financeiro, type Origem, type TfsContrato, type TfsItem, type TfsSprint,
 } from "@/lib/tfs";
 import { OrigemBotao } from "./OrigemBotao";
+import { PainelSecretario } from "./PainelSecretario";
 import { TabelaCadeia } from "./CadeiaFinanceira";
-import { BotaoLink, COR, LinkItem, SecaoRelatorio, Sigla, cinza, type Tom } from "./comum";
+import { BotaoLink, COR, LinkItem, SecaoRelatorio, Sigla, cinza } from "./comum";
 
 const nomeMes = (aaaamm: string) => new Date(`${aaaamm}-15T12:00:00`).toLocaleDateString("pt-BR", { month: "long", year: "numeric" });
 const mesAnterior = (aaaamm: string) => {
@@ -41,44 +40,31 @@ export function RelatorioMensal({ itens, sprints, contrato, etp, financeiro, hoj
   const entregasAnt = entregasDoMes(xv, ant).flatMap((g) => g.itens);
   const vigencia = contrato?.vigenciaMeses ?? 18;
 
-  const sintese = sinteseExecutiva({
-    pctPrazo: prazo.pctDecorrido, diasRestantes: prazo.diasRestantes, aConciliar: prazo.aConciliar, pctEntregas: andamento.pct,
-    ustExecutada: consumo.ustExecutada, previstoAteMes: consumo.previstoAteMes, decisoes: decisoes.length, atrasadas: atraso.length, recorte,
+  const veredito = vereditoExecutivo({ prazo, andamento, consumo, paradas: decisoes, atrasadas: atraso, recorte, semPagamento: financeiro === null || financeiro.pagamentos.length === 0 });
+  const sprintAgora = sprints.find((x) => x.situacao === "atual");
+  const cabecalho = [nomeMes(mes), `mês ${prazo.mesDoContrato} de ${vigencia} do contrato`, sprintAgora ? `${sprintAgora.nome} até ${fmtData(sprintAgora.fim).slice(0, 5)}` : null, `dados do TFS de ${fmtData(hoje)}`].filter(Boolean).join(" · ");
+  const ustMesOrigem = (m: string): Origem => ({
+    rotulo: `UST executadas em ${nomeMes(m)}`,
+    numero: `${fmtNum(ustDo(m)?.ust ?? 0)} UST em ${nomeMes(m)}`,
+    passos: [`${fmtNum(ustDo(m)?.itens.length ?? 0)} tarefas da X-VIA concluídas no mês, com atividade do catálogo`, `somam ${fmtNum(ustDo(m)?.ust ?? 0)} UST`],
+    fonte: "TFS: data de fechamento da tarefa (sem ela, a Data da Execução)",
+    detalhe: "A X-VIA quase não preenche a Data da Execução; por isso o mês é o do fechamento da tarefa.",
+    itens: ustDo(m)?.itens ?? [],
+    valor: consumo.origem.valor,
   });
-  const ritmo = consumo.previstoAteMes ? consumo.ustExecutada / consumo.previstoAteMes : null;
-  const ustTom: Tom = recorte || ritmo === null ? "info" : ritmo < 0.5 ? "critico" : ritmo < 0.8 ? "atencao" : "ok";
-  const prazoTom: Tom = prazo.pctDecorrido - andamento.pct >= 20 ? "critico" : prazo.pctDecorrido > andamento.pct ? "atencao" : "ok";
-  const decisaoOrigem: Origem = { rotulo: "Entregas da X-VIA que aguardam decisão ou estão impedidas", detalhe: "Coluna Aguardando decisão ou Impedido, ou etiqueta Dependência. Só a frente X-VIA.", itens: decisoes };
-  const ustMesOrigem = (m: string): Origem => ({ rotulo: `UST executadas em ${nomeMes(m)}`, detalhe: "Tarefas da X-VIA concluídas no mês (data de fechamento), com código do catálogo.", itens: ustDo(m)?.itens ?? [] });
   const proximos = [...atraso, ...decisoes.filter((d) => !atraso.includes(d))].slice(0, 8);
 
   return (
     <div className="flex flex-col gap-5">
       <SecaoRelatorio n={1} titulo="Contrato e período">
         <p>
-          {contrato?.contrato ?? "Contrato X-VIA"} · relatório de <b>{nomeMes(mes)}</b> · mês <b>{prazo.mesDoContrato} de {vigencia}</b> ·
-          vigência de {fmtData(prazo.inicio)} a {fmtData(prazo.fim)} · dados do TFS de {fmtData(hoje)}.
+          {contrato?.contrato ?? "Contrato X-VIA"} · vigência de {fmtData(prazo.inicio)} a {fmtData(prazo.fim)} ({vigencia} meses).
         </p>
         {recorte && <p style={{ color: COR.atencao }}>Filtro ativo: os números são do recorte e não são comparados com o previsto do contrato inteiro.</p>}
       </SecaoRelatorio>
 
       <SecaoRelatorio n={2} titulo="Resumo executivo">
-      <StoryCard anchor={sintese} comoLer="Uso do contrato (UST e reais) e andamento das entregas são medidas diferentes: uma diz quanto do contrato foi usado; a outra, quanto do planejado já está em produção. Só entram tarefas e entregas da X-VIA; as da SGD aparecem à parte." />
-
-      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-4">
-        <MetricCard label="Estamos no prazo?" value={`${prazo.pctDecorrido}%`} sub={`do prazo já passou (${fmtNum(prazo.diasRestantes)} dias restantes) · ${andamento.pct}% das entregas em produção`} cor={COR[prazoTom]}>
-          <OrigemBotao origem={{ rotulo: "Prazo do contrato", detalhe: `Vigência de ${vigencia} meses contados da assinatura (${fmtData(prazo.inicio)}); fim em ${fmtData(prazo.fim)}.` }} />
-        </MetricCard>
-        <MetricCard label="Quanto do contrato foi usado?" value={`${fmtNum(consumo.ustExecutada)} UST`}
-          sub={recorte ? "neste recorte" : `${consumo.pctExecutado === null ? "—" : fmtNum(consumo.pctExecutado)}% das ${fmtNum(consumo.ustTotal ?? 0)} contratadas · previsto até este mês: ${fmtNum(consumo.previstoAteMes ?? 0)}`} cor={COR[ustTom]}>
-          <OrigemBotao origem={consumo.origem} />
-        </MetricCard>
-        <MetricCard label="Quanto foi pago?" value={cadeia.valorPago.valor === null ? "Não informado" : fmtReais(cadeia.valorPago.valor)}
-          sub={cadeia.valorPago.valor === null ? "Sem registro de pagamento (financeiro.json vazio)" : "pagamentos registrados"} cor={COR[cadeia.valorPago.valor === null ? "neutro" : "info"]} />
-        <MetricCard label="O que pede decisão?" value={fmtNum(decisoes.length)} sub={`entregas da X-VIA paradas · ${fmtNum(atraso.length)} passaram do prazo`} cor={COR[decisoes.length ? "critico" : "ok"]}>
-          <OrigemBotao origem={decisaoOrigem} />
-        </MetricCard>
-      </div>
+        <PainelSecretario cabecalho={cabecalho} frase={veredito.frase} tom={veredito.tom} sinais={veredito.sinais} onIrPara={onIrPara} />
       </SecaoRelatorio>
 
       <SecaoRelatorio n={3} titulo="O que foi executado no mês?">

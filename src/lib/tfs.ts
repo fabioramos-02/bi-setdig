@@ -97,7 +97,20 @@ export type TfsContrato = {
 };
 
 /** Origem de um indicador: o que o compõe, para chegar ao registro que o fundamenta. */
-export type Origem = { rotulo: string; detalhe: string; itens?: TfsItem[]; link?: { href: string; texto: string } };
+export type Origem = {
+  rotulo: string;
+  detalhe: string;
+  itens?: TfsItem[];
+  link?: { href: string; texto: string };
+  /** Título do modal: o número em si ("553 UST executadas"). */
+  numero?: string;
+  /** A conta, um passo por linha; o último é o resultado. */
+  passos?: string[];
+  fonte?: string;
+  /** Coluna numérica e subtotal por grupo (ex.: UST da tarefa). */
+  valor?: { rotulo: string; de: (i: TfsItem) => number | null };
+  agruparPor?: "epico" | "orgao" | "coluna";
+};
 
 export const TIPOS_ENTREGA: TipoEntrega[] = ["Negócio", "Órgão", "Desenvolvimento X-VIA"];
 export const COLUNA_PRODUCAO = "Em Produção";
@@ -357,10 +370,21 @@ export function consumoContrato(itens: TfsItem[], etp: EtpUst | null, contrato: 
     ? contrato.previsaoMensal.filter((p) => p.mes <= mesDoContrato).reduce((s, p) => s + p.ust, 0)
     : null;
   const executadas = x.porCodigo.flatMap((l) => l.itens.filter((t) => t.estado === "Done"));
+  const tabela = etp ? ustEtp(etp) : new Map<string, CodigoEtp>();
+  const passos = [
+    `${fmtNum(executadas.length)} tarefas da X-VIA concluídas, com atividade do catálogo`,
+    `somam ${fmtNum(x.ustExecutada)} UST (valor de cada atividade no catálogo da X-VIA)`,
+  ];
+  if (contrato?.valorUst && x.valorExecutado !== null) passos.push(`× ${fmtReais(contrato.valorUst)} por UST = ${fmtReais(x.valorExecutado)}`);
+  if (previstoAteMes !== null) passos.push(`o TR previa ${fmtNum(previstoAteMes)} UST até o mês ${mesDoContrato}: executado = ${fmtNum(previstoAteMes ? Math.round((x.ustExecutada / previstoAteMes) * 100) : 0)}% do previsto`);
   const origem: Origem = {
     rotulo: "Tarefas da X-VIA concluídas com código do catálogo",
-    detalhe: `UST = soma do valor de cada tarefa da X-VIA concluída (catálogo X-VIA; sem ele, a UST unitária do ETP). R$ = UST × ${contrato?.valorUst ? fmtReais(contrato.valorUst) : "valor a informar"} (TR, 9.3, pág. 53). Total contratado: ${x.ustTotal ? fmtNum(x.ustTotal) : "—"} UST (TR, item 1.1). Previsto até o mês: tabela do TR, 3.3.3.`,
+    numero: `${fmtNum(x.ustExecutada)} UST executadas`,
+    passos,
+    fonte: `TFS (tarefas com o contrato da X-VIA) · valor da UST: TR 9.3 · previsão mensal: TR 3.3.3 · total contratado: ${x.ustTotal ? fmtNum(x.ustTotal) : "—"} UST (TR 1.1)`,
+    detalhe: "Tarefas da X-VIA concluídas que têm atividade do catálogo; tarefas sem atividade ficam fora da soma e aparecem em Qualidade dos dados.",
     itens: executadas,
+    valor: { rotulo: "UST", de: (t) => { const u = ustDaTarefa(t, tabela); return "situacao" in u ? null : u.valor; } },
   };
   return {
     ...x,
@@ -380,15 +404,23 @@ export function andamentoEntregas(itens: TfsItem[]) {
   const emProducao = entregas.filter((i) => i.coluna === COLUNA_PRODUCAO);
   const emHomologacao = entregas.filter((i) => i.tags.includes("Em Homologação") && i.coluna !== COLUNA_PRODUCAO);
   const concluidasForaProducao = entregas.filter((i) => i.estado === "Done" && i.coluna !== COLUNA_PRODUCAO);
+  const pct = entregas.length ? Math.round((emProducao.length / entregas.length) * 100) : 0;
   const origem: Origem = {
     rotulo: "Entregas na coluna Em Produção",
-    detalhe: `${fmtNum(emProducao.length)} de ${fmtNum(entregas.length)} entregas (histórias e bugs, sem as removidas) estão na coluna Em Produção do quadro. Concluído no desenvolvimento, homologado e em produção são contados à parte.`,
+    numero: `${fmtNum(emProducao.length)} entregas em produção`,
+    passos: [
+      `${fmtNum(entregas.length)} entregas planejadas (histórias e bugs, sem as removidas)`,
+      `${fmtNum(emProducao.length)} estão na coluna Em Produção do quadro`,
+      `${fmtNum(emProducao.length)} ÷ ${fmtNum(entregas.length)} = ${pct}% em produção`,
+    ],
+    fonte: "TFS: coluna do quadro de cada entrega",
+    detalhe: "Concluído no desenvolvimento, homologado e em produção são contados à parte.",
     itens: emProducao,
   };
   return {
     planejadas: entregas.length,
     emProducao: emProducao.length,
-    pct: entregas.length ? Math.round((emProducao.length / entregas.length) * 100) : 0,
+    pct,
     emHomologacao: emHomologacao.length,
     concluidasForaProducao: concluidasForaProducao.length,
     origem,
@@ -449,20 +481,103 @@ export function qualidadeDados(itens: TfsItem[], etp: EtpUst | null, contrato: T
   return lista;
 }
 
-/** Síntese executiva gerada dos números — nunca texto fixo. */
-export function sinteseExecutiva(a: {
-  pctPrazo: number; diasRestantes: number; aConciliar: boolean; pctEntregas: number;
-  ustExecutada: number; previstoAteMes: number | null; decisoes: number; atrasadas: number; recorte?: boolean;
-}) {
-  const partes = [
-    `${a.pctPrazo}% do prazo do contrato já passou${a.aConciliar ? " (data de início a conciliar)" : ""}; faltam ${fmtNum(a.diasRestantes)} dias.`,
-    `${a.pctEntregas}% das entregas planejadas da X-VIA estão em produção.`,
+// --- Veredito do Secretário: uma frase + 3 sinais ----------------------------
+// Cada sinal compara com uma base (prazo, previsto no TR) e diz se é bom ou ruim.
+// Régua das entregas = ritmo() de lancar-demandas-xvia/src/painel.py (BI e painel do TFS iguais).
+
+export type Tom = "ok" | "atencao" | "critico" | "info" | "neutro";
+export const PALAVRA_TOM: Record<Tom, string> = { ok: "no ritmo", atencao: "atenção", critico: "abaixo do esperado", info: "recorte", neutro: "sem dado" };
+export type Sinal = {
+  id: "entregas" | "execucao" | "decisoes";
+  rotulo: string;
+  tom: Tom;
+  palavra: string;
+  principal: string;
+  comparacao: string;
+  barras?: { rotulo: string; pct: number }[];
+  acao?: { texto: string; aba: string };
+  origem: Origem;
+};
+
+/** razão entregue/prazo: ≥ 0,9 no ritmo · ≥ 0,7 atenção · senão abaixo (painel.py:ritmo). */
+export const tomEntregas = (pctEntregas: number, pctPrazo: number): Tom =>
+  pctPrazo <= 0 ? "ok" : pctEntregas / pctPrazo >= 0.9 ? "ok" : pctEntregas / pctPrazo >= 0.7 ? "atencao" : "critico";
+/** executado/previsto: ≥ 0,8 ok · ≥ 0,5 atenção · senão crítico. */
+export const tomExecucao = (executado: number, previsto: number | null): Tom =>
+  !previsto ? "info" : executado / previsto >= 0.8 ? "ok" : executado / previsto >= 0.5 ? "atencao" : "critico";
+/** nenhuma parada = ok; alguma há mais de 30 dias = crítico; senão atenção. */
+export const tomDecisoes = (paradas: TfsItem[]): Tom =>
+  !paradas.length ? "ok" : paradas.some((p) => (p.diasSemAtualizar ?? 0) > 30) ? "critico" : "atencao";
+
+const ORDEM_TOM: Tom[] = ["critico", "atencao", "info", "ok", "neutro"];
+
+export function vereditoExecutivo(a: {
+  prazo: { pctDecorrido: number; diasRestantes: number; fim: string; inicio: string };
+  andamento: ReturnType<typeof andamentoEntregas>;
+  consumo: ReturnType<typeof consumoContrato>;
+  paradas: TfsItem[];
+  atrasadas: TfsItem[];
+  recorte: boolean;
+  semPagamento: boolean;
+}): { frase: string; tom: Tom; sinais: Sinal[] } {
+  const { prazo, andamento, consumo, paradas, recorte } = a;
+  const decidir = paradas.filter((p) => p.coluna === "Aguardando decisão");
+  const previsto = recorte ? null : consumo.previstoAteMes;
+  const pctPrevisto = previsto ? Math.round((consumo.ustExecutada / previsto) * 100) : null;
+
+  const tEnt = tomEntregas(andamento.pct, prazo.pctDecorrido);
+  const tExe = tomExecucao(consumo.ustExecutada, previsto);
+  const tDec = tomDecisoes(paradas);
+  const reais = consumo.valorExecutado === null ? "" : ` · ${fmtReais(consumo.valorExecutado)}`;
+
+  const sinais: Sinal[] = [
+    {
+      id: "entregas", rotulo: "Entregas", tom: tEnt, palavra: PALAVRA_TOM[tEnt],
+      principal: `${andamento.pct}% em produção`,
+      comparacao: `${fmtNum(andamento.emProducao)} de ${fmtNum(andamento.planejadas)} entregas · ${prazo.pctDecorrido}% do prazo já passou (faltam ${fmtNum(prazo.diasRestantes)} dias)`,
+      barras: [{ rotulo: "Em produção", pct: andamento.pct }, { rotulo: "Prazo decorrido", pct: prazo.pctDecorrido }],
+      acao: { texto: "Ver cronograma", aba: "cronograma" },
+      origem: andamento.origem,
+    },
+    {
+      id: "execucao", rotulo: "Execução do contrato", tom: tExe, palavra: PALAVRA_TOM[tExe],
+      principal: `${fmtNum(consumo.ustExecutada)} UST${recorte ? " neste recorte" : ""}`,
+      comparacao: previsto
+        ? `${pctPrevisto}% das ${fmtNum(previsto)} previstas no TR até este mês${reais}`
+        : `${recorte ? "recorte filtrado: sem comparação com o contrato inteiro" : "sem previsão do TR"}${reais}`,
+      barras: previsto ? [{ rotulo: "Executado do previsto", pct: Math.min(100, pctPrevisto ?? 0) }] : undefined,
+      acao: { texto: "Ver por órgão", aba: "financeiro" },
+      origem: consumo.origem,
+    },
+    {
+      id: "decisoes", rotulo: "Decisões e bloqueios", tom: tDec, palavra: tDec === "ok" ? "nada parado" : tDec === "critico" ? "parado há mais de 30 dias" : "atenção",
+      principal: `${fmtNum(decidir.length)} esperam decisão`,
+      comparacao: `${fmtNum(paradas.length)} entregas paradas (decisão, impedimento ou dependência) · ${fmtNum(a.atrasadas.length)} passaram da sprint ou do prazo`,
+      acao: { texto: "Ver quem resolve", aba: "prioridades" },
+      origem: {
+        rotulo: "Entregas da X-VIA paradas",
+        numero: `${fmtNum(paradas.length)} entregas paradas`,
+        passos: [
+          `${fmtNum(decidir.length)} na coluna Aguardando decisão`,
+          `${fmtNum(paradas.filter((p) => p.coluna === "Impedido").length)} na coluna Impedido`,
+          `${fmtNum(paradas.filter((p) => p.coluna !== "Aguardando decisão" && p.coluna !== "Impedido").length)} com a etiqueta Dependência`,
+        ],
+        fonte: "TFS: coluna do quadro e etiquetas das entregas da X-VIA",
+        detalhe: "As mais paradas primeiro.",
+        itens: paradas,
+        agruparPor: "coluna",
+      },
+    },
   ];
-  if (a.previstoAteMes !== null && !a.recorte)
-    partes.push(`A X-VIA executou ${fmtNum(a.ustExecutada)} UST, frente a ${fmtNum(a.previstoAteMes)} previstas no TR até este mês.`);
-  if (a.decisoes) partes.push(`${fmtNum(a.decisoes)} ${a.decisoes === 1 ? "entrega aguarda" : "entregas aguardam"} decisão ou estão impedidas.`);
-  if (a.atrasadas) partes.push(`${fmtNum(a.atrasadas)} ${a.atrasadas === 1 ? "passou" : "passaram"} da sprint ou do prazo previsto.`);
-  return partes.join(" ");
+
+  const parteEnt = tEnt === "ok" ? "Entregas no ritmo do prazo" : tEnt === "atencao" ? "Entregas um pouco atrás do prazo" : "Entregas atrasadas em relação ao prazo";
+  const parteExe = recorte ? `execução de ${fmtNum(consumo.ustExecutada)} UST neste recorte`
+    : tExe === "ok" ? "execução do contrato no previsto" : tExe === "atencao" ? "execução do contrato abaixo do previsto"
+    : tExe === "critico" ? `execução do contrato bem abaixo do previsto (${pctPrevisto}%)` : "execução sem previsão para comparar";
+  const parteDec = decidir.length ? `${fmtNum(decidir.length)} ${decidir.length === 1 ? "entrega espera" : "entregas esperam"} decisão` : paradas.length ? `${fmtNum(paradas.length)} entregas paradas` : "nenhuma entrega parada";
+  const frase = `${parteEnt}; ${parteExe}; ${parteDec}.${a.semPagamento ? " Nenhum pagamento registrado ainda." : ""}`;
+  const tom = ORDEM_TOM.find((t) => sinais.some((s) => s.tom === t)) ?? "neutro";
+  return { frase, tom, sinais };
 }
 
 // --- Execução financeira por órgão e serviço --------------------------------

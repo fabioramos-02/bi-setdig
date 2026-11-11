@@ -51,3 +51,10 @@ Filtros na URL, "De onde vem?", exportar relatório com capa, `StoryCard`, Módu
 `src/painel.py`: mês civil (= 6 em nov/2026), mês 18 = 228, UST pelo contrato sem lista de logins.
 `tests/test_painel.py` atualizado (6 verdes). O quadro "Situação do contrato" do TFS passa a dizer o
 mesmo que o BI.
+
+## Rodada 2 (11/11/2026): topo do Secretário e "De onde vem?"
+
+- O parágrafo-síntese e os 4 cartões deram lugar ao `PainelSecretario`: um veredito em uma frase e 3 sinais em semáforo, com o "Como ler" recolhido (e aberto na impressão). Ver `vereditoExecutivo` e os tons `tomEntregas`, `tomExecucao` e `tomDecisoes` em `src/lib/tfs.ts`; `sinteseExecutiva` foi removida.
+- O modal "De onde vem?" foi reescrito. Agora mostra a conta em passos, a fonte, a busca, o CSV e os grupos com subtotal. O foco vai para a busca ao abrir.
+- `Modal` ganhou `largura`, `subtitulo` e `data-autofocus`. `Origem` ganhou `numero`, `passos`, `fonte`, `valor` e `agruparPor`.
+- Testes: `src/lib/tfs-veredito.test.ts` (3 testes). Ao todo, 279 testes JS passam.

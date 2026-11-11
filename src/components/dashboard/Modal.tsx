@@ -10,11 +10,16 @@ export function Modal({
   open,
   onClose,
   title,
+  subtitulo,
+  largura = 560,
   children,
 }: {
   open: boolean;
   onClose: () => void;
   title: string;
+  subtitulo?: string;
+  /** Largura máxima em px (padrão 560); em tela estreita vale 94vw. */
+  largura?: number;
   children: React.ReactNode;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
@@ -22,7 +27,11 @@ export function Modal({
   useEffect(() => {
     const dialog = ref.current;
     if (!dialog) return;
-    if (open && !dialog.open) dialog.showModal();
+    if (open && !dialog.open) {
+      dialog.showModal();
+      // showModal() foca o primeiro botão (o X); quem marcar data-autofocus ganha o foco.
+      dialog.querySelector<HTMLElement>("[data-autofocus]")?.focus();
+    }
     else if (!open && dialog.open) dialog.close();
   }, [open]);
 
@@ -42,7 +51,7 @@ export function Modal({
         borderRadius: "var(--ds-radius-md)",
         background: "var(--ds-color-background)",
         color: "var(--ds-color-text-primary)",
-        width: "min(560px, 92vw)",
+        width: `min(${largura}px, 94vw)`,
         // Centraliza de forma confiável — o padrão de margin auto do <dialog>
         // encosta no topo com conteúdo alto.
         position: "fixed",
@@ -53,9 +62,12 @@ export function Modal({
       }}
     >
       <div className="flex items-start justify-between gap-3 p-5" style={{ borderBottom: "1px solid var(--ds-color-border)" }}>
-        <h2 className="text-lg font-semibold" style={{ color: "var(--ds-color-text-primary)" }}>
-          {title}
-        </h2>
+        <div className="min-w-0">
+          <h2 className="text-lg font-semibold" style={{ color: "var(--ds-color-text-primary)" }}>
+            {title}
+          </h2>
+          {subtitulo && <p className="text-sm mt-0.5" style={{ color: "var(--ds-color-text-secondary)" }}>{subtitulo}</p>}
+        </div>
         <button
           type="button"
           onClick={onClose}

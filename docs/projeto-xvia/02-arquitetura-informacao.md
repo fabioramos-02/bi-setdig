@@ -15,7 +15,7 @@ cada uma é uma pergunta com a resposta em texto, e o detalhe fica um clique adi
 | # | Seção | Pergunta | Indicador | Fonte |
 |---|---|---|---|---|
 | 1 | Contrato e período | De que contrato e mês estamos falando? | Mês N de 18, vigência, data do retrato | contrato.json, TFS |
-| 2 | Resumo executivo | Como está o contrato? | Frase-síntese + 4 cartões (prazo, uso do contrato, pago, decisões) | todos |
+| 2 | Resumo executivo | Como está o contrato? | `PainelSecretario`: veredito em uma frase + 3 sinais (Entregas × prazo, Execução × previsto no TR, Decisões), cada um com tom e palavra, barra, ação e "De onde vem?" (`vereditoExecutivo`) | todos |
 | 3 | Executado no mês | O que a X-VIA fez neste mês? | UST e R$ do mês e do anterior | TFS (Tasks X-VIA Done, data de fechamento) |
 | 4 | Entregas | O que ficou pronto? | Entregas X-VIA concluídas no mês; X de Y em produção | TFS |
 | 5 | Marcos e cronograma | Estamos no prazo das entregas? | Atrasadas, em risco por dependência, previstas na próxima sprint | TFS (sprints, Predecessor/Sucessor) |
@@ -54,7 +54,17 @@ Exportar relatório (`ExportarRelatorioButton`) imprime a seção com capa.
 | E. Equipes e responsabilidades | `EquipesTab` (+ `AcompanhamentoTab`) | Responsáveis por frente; itens sem frente; quadro do time no TFS |
 | F. Qualidade dos dados | `QualidadeTab` | Fontes, data do retrato, lacunas, divergências, Não identificado |
 
-Todo número tem "De onde vem?" (`OrigemBotao`), que lista os itens do TFS com link.
+Todo número tem "De onde vem?" (`OrigemBotao`). O modal mostra:
+
+- o número no título;
+- "Como chegamos neste número", a conta em passos (`Origem.passos`), e a fonte;
+- os itens do TFS agrupados por módulo, coluna ou órgão, com subtotal (`Origem.valor`), busca e CSV.
+
+Régua dos tons dos sinais:
+
+- **Entregas:** entregue ÷ prazo, igual ao `ritmo()` do painel do TFS. Fica *no ritmo* com ≥ 0,9 e em *atenção* com ≥ 0,7.
+- **Execução:** executado ÷ previsto. Fica *ok* com ≥ 0,8 e em *atenção* com ≥ 0,5.
+- **Decisões:** sem nada parado = *ok*. Alguma entrega parada há mais de 30 dias = *crítico*.
 
 ## Navegação
 

@@ -1,8 +1,8 @@
 /** Peças repetidas da página Projeto X-VIA: link do item, sigla explicada, valor com
  * situação do dado e a cor de cada tom. Um lugar só, para as abas falarem igual. */
-import { fmtNum, fmtReais, linkTfs, type StatusDado, type TfsItem, type ValorFonte } from "@/lib/tfs";
+import { fmtNum, fmtReais, linkTfs, type StatusDado, type TfsItem, type Tom, type ValorFonte } from "@/lib/tfs";
 
-export type Tom = "ok" | "atencao" | "critico" | "info" | "neutro";
+export type { Tom };
 export const COR: Record<Tom, string> = {
   ok: "var(--ds-color-success)",
   atencao: "var(--ds-color-warning, #d97706)",
