@@ -45,6 +45,7 @@ export type TfsItem = {
   orgaoOrigem?: "campo" | "feature" | null;
   faturado?: string | null; // Custom.SGI.Faturado — vazio no TFS em 11/2026, formato a definir
   dataFaturamento?: string | null;
+  timeSgd?: boolean; // responsável é do time interno da SGD: não fatura UST
 };
 
 export type TfsSprint = {
@@ -262,7 +263,8 @@ export type LinhaCodigo = CodigoEtp & { tarefas: number; lancada: number; execut
 export const ehContratoXvia = (empresa: string | null | undefined) => /xvia/i.test((empresa ?? "").replace(/-/g, ""));
 
 export function ehTarefaXvia(i: TfsItem) {
-  if (i.tipo !== "Task" || i.estado === "Removed") return false;
+  // Só a X-VIA fatura UST: task do time SGD fica fora mesmo com o contrato da X-VIA marcado.
+  if (i.tipo !== "Task" || i.estado === "Removed" || i.timeSgd) return false;
   if (i.empresa) return ehContratoXvia(i.empresa);
   return i.area === AREA_UST || i.area.startsWith(`${AREA_UST}\\`);
 }
@@ -278,9 +280,16 @@ export function execucaoXvia(itens: TfsItem[], etp: EtpUst | null, contrato: Tfs
   let valorDoEtp = 0; // tarefas somadas pelo valor do ETP (sem valor no catálogo X-VIA)
   let semContrato = 0; // tarefas somadas só pelo código da descrição
 
+  let foraDoEtp = 0; // código válido no catálogo X-VIA (oficial), sem previsão no ETP
   for (const t of tarefas) {
     const cod = t.codigoCatalogo;
-    const ref = cod ? tabela.get(cod) : undefined;
+    let ref = cod ? tabela.get(cod) : undefined;
+    // O catálogo da X-VIA é o oficial do contrato (Fabio, 10/11/2026): código fora do ETP com
+    // valor no catálogo conta, com previsto 0. Fica a classificar só o que o catálogo não resolve.
+    if (!ref && cod && t.ust != null && !cod.includes("/")) {
+      ref = porCodigo.get(cod) ?? { codigo: cod, servico: t.atividadeUst ?? cod, ustUnitaria: t.ust, previsto: 0 };
+      foraDoEtp += 1;
+    }
     if (!ref) {
       const situacao: SituacaoUst = !cod ? "sem código" : cod.includes("/") ? "faixa a definir" : "fora do ETP";
       aClassificar.push({ ...t, situacao });
@@ -325,6 +334,7 @@ export function execucaoXvia(itens: TfsItem[], etp: EtpUst | null, contrato: Tfs
     contagemAClassificar,
     valorDoEtp,
     semContrato,
+    foraDoEtp,
   };
 }
 

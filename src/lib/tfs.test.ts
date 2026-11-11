@@ -134,6 +134,29 @@ test("execucaoXvia: só área Customização UST; sem código/faixa/fora do ETP 
   assert.ok(f.porCodigo.some((l) => l.codigo === "IA.16" && l.tarefas === 0));
 });
 
+test("execucaoXvia: código fora do ETP com valor no catálogo X-VIA conta, com previsto 0", () => {
+  const ust = AREA_UST;
+  const f = execucaoXvia([
+    item({ tipo: "Task", area: ust, codigoCatalogo: "NEG.19", ust: 6, estado: "Done" }),
+    item({ tipo: "Task", area: ust, codigoCatalogo: "NEG.19", ust: 6 }),
+    item({ tipo: "Task", area: ust, codigoCatalogo: "GOV.00" }),
+  ], etp, contrato({ ustTotalTr: 23356, valorUst: 10 }));
+  const neg19 = f.porCodigo.find((l) => l.codigo === "NEG.19");
+  assert.deepEqual([neg19?.tarefas, neg19?.lancada, neg19?.executada, neg19?.previsto], [2, 12, 6, 0]);
+  assert.equal(f.foraDoEtp, 2);
+  assert.deepEqual(f.contagemAClassificar, { "sem código": 0, "faixa a definir": 0, "fora do ETP": 1 });
+});
+
+test("execucaoXvia: task do time SGD não fatura, mesmo com o contrato da X-VIA", () => {
+  const XVIA = "004/2026 - 30524 - XVIA TECNOLOGIA LTDA";
+  const f = execucaoXvia([
+    item({ tipo: "Task", empresa: XVIA, codigoCatalogo: "DEV.13", ust: 3, estado: "Done" }),
+    item({ tipo: "Task", empresa: XVIA, codigoCatalogo: "DEV.13", ust: 3, estado: "Done", timeSgd: true }),
+  ], etp, contrato({ ustTotalTr: 23356, valorUst: 10 }));
+  assert.equal(f.tarefas, 1);
+  assert.equal(f.ustExecutada, 3);
+});
+
 test("execucaoXvia: só o contrato da X-VIA; Governo fora mesmo na área; valor do catálogo X-VIA vence o ETP", () => {
   const XVIA = "004/2026 - 30524 - XVIA TECNOLOGIA LTDA";
   const f = execucaoXvia([

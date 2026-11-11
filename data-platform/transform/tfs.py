@@ -37,6 +37,13 @@ def codigo_catalogo(descricao: str | None) -> str | None:
     return m.group(1) if m else None
 
 
+def sigla_do_campo(valor: str | None) -> str | None:
+    """Órgãos/Secretarias vem da lista do TFS como "SES: Secretaria de Estado de Saúde…" ou
+    "CGE MS: …" -> SES, CGEMS (sigla sem espaço, como no vault)."""
+    sigla = (valor or "").split(":")[0].strip().upper().replace(" ", "")
+    return {"FERTEL-REDEEDUCATIVAMS": "FERTELEDUCATIVAMS"}.get(sigla, sigla) or None
+
+
 def frente(area: str) -> str:
     return "SGD" if area == "XVIA\\SGD" or area.startswith("XVIA\\SGD\\") else "X-VIA"
 
@@ -101,6 +108,20 @@ def pessoa(valor) -> str | None:
     return str(valor).split(" <")[0].strip() or None if valor else None
 
 
+# Time interno da SGD: não fatura UST. Task deles nunca entra na conta da X-VIA, mesmo com o
+# contrato da X-VIA marcado (Fabio, 10/11/2026). Espelha SGD em lancar-demandas-xvia/scripts/dash_queries.py.
+TIME_SGD = {"segov\\framos", "segov\\goliveira", "segov\\dichiy", "segov\\bmcoelho", "fazenda\\apecin"}
+
+
+def login(valor) -> str | None:
+    """Identidade do TFS ("Nome <DOMINIO\\login>" ou dict da API) -> "dominio\\login" minúsculo."""
+    if isinstance(valor, dict):
+        valor = valor.get("uniqueName") or ""
+    m = re.search(r"<([^>]+)>", str(valor or "")) if not isinstance(valor, dict) else None
+    bruto = m.group(1) if m else str(valor or "")
+    return bruto.replace("/", "\\").strip().lower() or None
+
+
 def _data(valor) -> str | None:
     if not valor:
         return None
@@ -162,8 +183,10 @@ def montar_itens(arvore: dict[int, int | None], brutos: list[dict],
             valor_ust = ust_xvia_codigo.get(codigo)
         aberto = f.get("System.State") not in ("Done", "Removed")
         depende_de, trava = dependencias((relacoes or {}).get(item_id))
-        # Órgão: o campo Órgãos/Secretarias do TFS vale; sem ele, o prefixo da Feature.
-        orgao_campo = (f.get("Custom.SGD.OrgaosSecretarias") or "").strip().upper() or None
+        # Órgão: o campo Órgãos/Secretarias do TFS vale, do próprio item ou herdado do PBI
+        # e da Feature (a X-VIA preenche no PBI, não em cada Task); sem ele, o prefixo da Feature.
+        orgao_campo = next((v for v in (sigla_do_campo(por_id.get(i, {}).get("Custom.SGD.OrgaosSecretarias"))
+                                        for i in (item_id, pbi_id, feature_id) if i) if v), None)
         orgao_feature = orgao_da_feature(titulo(feature_id) or "", siglas)
         linhas.append({
             "id": item_id,
@@ -191,6 +214,7 @@ def montar_itens(arvore: dict[int, int | None], brutos: list[dict],
             "prazo": _data(f.get("Microsoft.VSTS.Scheduling.TargetDate")),
             "inicioPrevisto": _data(f.get("Microsoft.VSTS.Scheduling.StartDate")),
             "responsavel": pessoa(f.get("System.AssignedTo")),
+            "timeSgd": login(f.get("System.AssignedTo")) in TIME_SGD,
             "dependeDe": depende_de,
             "trava": trava,
             "faturado": (str(f.get("Custom.SGI.Faturado")).strip() or None) if f.get("Custom.SGI.Faturado") else None,

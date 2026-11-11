@@ -24,9 +24,11 @@ const colunasCodigo: Coluna<LinhaCodigo>[] = [
   { key: "executada", label: "UST executada", align: "right", sortable: true, sortValue: (r) => r.executada, render: (r) => fmtNum(r.executada) },
   {
     key: "uso", label: "Uso do previsto", align: "right", sortable: true,
-    sortValue: (r) => (r.previsto ? r.lancada / r.previsto : 0),
+    sortValue: (r) => (r.previsto ? r.lancada / r.previsto : -1),
     render: (r) => {
-      const pct = r.previsto ? Math.round((r.lancada / r.previsto) * 100) : 0;
+      // Atividade do catálogo da X-VIA sem previsão no ETP: não há base para o percentual.
+      if (!r.previsto) return <span title="Atividade do catálogo da X-VIA sem previsão na memória de cálculo do ETP" style={{ color: "var(--ds-color-text-secondary)" }}>fora do ETP</span>;
+      const pct = Math.round((r.lancada / r.previsto) * 100);
       return <span style={{ color: pct > 100 ? "var(--ds-color-danger)" : "var(--ds-color-text-primary)", fontWeight: pct > 100 ? 600 : 400 }}>{pct}%</span>;
     },
   },
@@ -49,7 +51,7 @@ export function UstTab({ itens, etp, contrato }: { itens: TfsItem[]; etp: EtpUst
   const [codigo, setCodigo] = useState<string | null>(null);
   const aberto = f.porCodigo.find((l) => l.codigo === codigo) ?? null;
   const usados = f.porCodigo.filter((l) => l.tarefas > 0);
-  const estourados = usados.filter((l) => l.lancada > l.previsto);
+  const estourados = usados.filter((l) => l.previsto > 0 && l.lancada > l.previsto);
   const reais = (v: number | null) => (v === null ? "valor da UST a informar" : fmtReais(v));
 
   if (f.tarefas === 0) {
@@ -70,9 +72,9 @@ export function UstTab({ itens, etp, contrato }: { itens: TfsItem[]; etp: EtpUst
         caption={
           estourados.length > 0
             ? `${fmtNum(estourados.length)} atividade(s) já passaram do previsto no ETP: ${estourados.map((e) => e.codigo).join(", ")}.`
-            : `${fmtNum(f.aClassificar.length)} tarefas ainda não têm um código do ETP e ficam fora da conta.`
+            : `${fmtNum(f.aClassificar.length)} tarefas ainda não têm um código válido do catálogo da X-VIA e ficam fora da conta.`
         }
-        comoLer={`Conta só o catálogo do contrato da X-VIA: tarefas lançadas no contrato do Governo do Estado não entram. Cada tarefa vale a UST da atividade do catálogo da X-VIA marcada nela; quando a tarefa ainda não tem a atividade marcada, vale o código que a X-VIA escreveu na descrição (ex.: 'Catálogo DOC.07').${f.semContrato ? ` ${fmtNum(f.semContrato)} das tarefas somadas ainda estão nessa situação.` : ""}${f.valorDoEtp ? ` ${fmtNum(f.valorDoEtp)} tarefas usam, por enquanto, o valor da tabela do ETP, porque o valor da atividade no catálogo da X-VIA ainda não foi carregado.` : ""} Lançada = todas as tarefas com atividade; executada = só as concluídas. Previsto = ocorrências da memória de cálculo do ETP.`}
+        comoLer={`Conta só o que a X-VIA fatura: tarefas do contrato da X-VIA, sem as do time da SGD (que não fatura UST, mesmo quando a tarefa tem o contrato da X-VIA marcado) e sem as do contrato do Governo do Estado. Cada tarefa vale a UST da atividade do catálogo da X-VIA marcada nela; quando a tarefa ainda não tem a atividade marcada, vale o código que a X-VIA escreveu na descrição (ex.: 'Catálogo DOC.07').${f.semContrato ? ` ${fmtNum(f.semContrato)} das tarefas somadas ainda estão nessa situação.` : ""}${f.valorDoEtp ? ` ${fmtNum(f.valorDoEtp)} tarefas usam, por enquanto, o valor da tabela do ETP, porque o valor da atividade no catálogo da X-VIA ainda não foi carregado.` : ""}${f.foraDoEtp ? ` ${fmtNum(f.foraDoEtp)} tarefas usam atividade do catálogo da X-VIA que não está na memória de cálculo do ETP: contam, com previsto zero.` : ""} Lançada = todas as tarefas com atividade; executada = só as concluídas. Previsto = ocorrências da memória de cálculo do ETP.`}
       />
 
       <DashboardSection
@@ -103,11 +105,11 @@ export function UstTab({ itens, etp, contrato }: { itens: TfsItem[]; etp: EtpUst
 
       {f.aClassificar.length > 0 && (
         <DashboardSection
-          title="Quais tarefas da X-VIA precisam de código do ETP?"
+          title="Quais tarefas da X-VIA precisam de código do catálogo?"
           action={<ExportCsvButton filename="projeto-xvia-tarefas-a-classificar.csv" rows={f.aClassificar.map((t) => ({ id: t.id, tarefa: t.titulo, problema: t.situacao, codigoEscrito: t.codigoCatalogo ?? "", modulo: t.epico ?? "", estado: t.estado, link: linkTfs(t.id) }))} />}
         >
           <p className="mb-3 text-sm" style={{ color: "var(--ds-color-text-secondary)" }}>
-            {fmtNum(f.contagemAClassificar["sem código"])} sem código na descrição · {fmtNum(f.contagemAClassificar["faixa a definir"])} com faixa (ex.: NEG.03/04/05) a definir · {fmtNum(f.contagemAClassificar["fora do ETP"])} com código que não está na tabela do ETP. Lista para a X-VIA corrigir.
+            {fmtNum(f.contagemAClassificar["sem código"])} sem código na descrição · {fmtNum(f.contagemAClassificar["faixa a definir"])} com faixa (ex.: NEG.03/04/05) a definir · {fmtNum(f.contagemAClassificar["fora do ETP"])} com código que não existe no catálogo da X-VIA. Lista para a X-VIA corrigir.
           </p>
           <div className="overflow-x-auto min-w-0">
             <DataTable columns={colunasTarefa} rows={f.aClassificar} rowKey={(r) => String(r.id)} />

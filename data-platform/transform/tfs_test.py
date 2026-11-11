@@ -164,6 +164,15 @@ def test_responsavel_datas_e_dependencias():
     assert (sem["responsavel"], sem["dependeDe"], sem["trava"]) == (None, [], [])
 
 
+def test_time_sgd_pelo_login_do_responsavel():
+    from tfs import login
+    assert login("Daniele Lins Ichiy <SEGOV\\dichiy>") == "segov\\dichiy"
+    assert login({"displayName": "Fabio", "uniqueName": "SEGOV\\framos"}) == "segov\\framos"
+    assert login(None) is None
+    assert _task(**{"System.AssignedTo": "Glaucia <SEGOV\\goliveira>"})["timeSgd"] is True
+    assert _task(**{"System.AssignedTo": "Maycon Renato <FAZENDA/malisboa>"})["timeSgd"] is False
+
+
 def test_orgao_do_campo_vence_o_prefixo_da_feature_e_financeiro_passa_direto():
     arvore = {1: None, 2: 1, 3: 2}
     brutos = [_w(1, "Epic", "Serviços"), _w(2, "Feature", "[SES] - Saúde"),
@@ -175,3 +184,22 @@ def test_orgao_do_campo_vence_o_prefixo_da_feature_e_financeiro_passa_direto():
     assert (por_id[2]["orgao"], por_id[2]["orgaoOrigem"]) == ("SES", "feature")
     assert (por_id[3]["faturado"], por_id[3]["dataFaturamento"]) == ("Sim", "2026-11-05")
     assert (por_id[1]["orgao"], por_id[1]["orgaoOrigem"], por_id[1]["faturado"]) == (None, None, None)
+
+
+def test_task_herda_orgao_do_campo_do_pbi():
+    arvore = {1: None, 2: 1, 3: 2, 4: 3}
+    brutos = [_w(1, "Epic", "Minha Área"), _w(2, "Feature", "Painel Saúde"),
+              _w(3, "Product Backlog Item", "Cartão SUS",
+                 **{"Custom.SGD.OrgaosSecretarias": "SES: Secretaria de Estado de Saúde de Mato Grosso do Sul"}),
+              _w(4, "Task", "Protótipo")]
+    por_id = {i["id"]: i for i in montar_itens(arvore, brutos, [CATALOGO], SIGLAS, HOJE)}
+    assert (por_id[4]["orgao"], por_id[4]["orgaoOrigem"]) == ("SES", "campo")
+    assert por_id[2]["orgao"] is None  # a Feature não herda de filho
+
+
+def test_sigla_do_campo_da_lista_do_tfs():
+    from tfs import sigla_do_campo
+    assert sigla_do_campo("CGE MS: Controladoria Geral do Estado de Mato Grosso do Sul") == "CGEMS"
+    assert sigla_do_campo("FERTEL - Rede Educativa MS: Fundação Estadual…") == "FERTELEDUCATIVAMS"
+    assert sigla_do_campo("detran") == "DETRAN"
+    assert sigla_do_campo(None) is None

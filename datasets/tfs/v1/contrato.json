@@ -3,13 +3,8 @@
   "contrato": "Plataforma Digital X-VIA — Contrato 004/2026",
   "fonte": "TR pós-parecer, versão final: 1.1 e 1.3 (objeto e vigência de 18 meses), 9.3 (valores, pág. 52-53), 3.3.3 (consumo mensal estimado de UST, pág. 35-36)",
   "vigenciaMeses": 18,
-  "inicio": {
-    "conciliado": false,
-    "opcoes": [
-      { "data": "2026-05-12", "fonte": "Publicação no Diário Oficial (aproximada; usada no painel do TFS, src/painel.py)" },
-      { "data": "2026-07-27", "fonte": "Início da Sprint 0 (valor anterior deste arquivo)" }
-    ]
-  },
+  "inicio": "2026-06-01",
+  "inicioFonte": "Termo de Contrato 004/2026 assinado: vigência de 18 meses contados da assinatura (cláusula 4.1); assinatura eletrônica do contratante (Robson Roberto Duarte Alencar) em 01/06/2026 09:52. A data da assinatura da X-VIA não aparece no PDF. Conciliado em 10/11/2026 (Task do C1 no PBI #1368710); antes havia 12/05/2026 (publicação no DO, aproximada) e 27/07/2026 (Sprint 0).",
   "fim": null,
   "valorTotal": 14329893.2,
   "itens": [
