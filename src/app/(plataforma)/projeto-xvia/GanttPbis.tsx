@@ -4,15 +4,17 @@ import type { RefObject } from "react";
 import { GRAVIDADE, ROTULO_SITUACAO, type montarCronograma, type Situacao } from "@/lib/cronograma";
 import { fmtNum, linkTfs, quemResolve } from "@/lib/tfs";
 import { LinkItem, cinza } from "./comum";
-import { COR_INVERTIDA, COR_SIT, GradeSprints, SetaDegrau, TXT_SIT, corta } from "./GanttComum";
+import { COR_INVERTIDA, COR_SIT, GradeSprints, SetaDegrau, TXT_SIT, corta, useEscalaTexto } from "./GanttComum";
 
 type Crono = ReturnType<typeof montarCronograma>;
 const PALETA = ["#0F4B91", "#7c3aed", "#0f766e", "#be185d", "#4d7c0f", "#b45309", "#1d4ed8", "#9f1239"];
-const ROT = 300, COL = 84, LIN = 30, CAB = 44, TIT = 26;
 
 /** Detalhe de uma Feature: cadeias de PBIs na linha do tempo (setas em degrau, invertidas em
  * vermelho) e, embaixo, os PBIs sem dependência agrupados por situação — lista, não barras. */
 export function GanttPbis({ c, hoje, svgRef }: { c: Crono; hoje: string; svgRef: RefObject<SVGSVGElement | null> }) {
+  // Geometria acompanha o tamanho real do texto (fonte maior no navegador): ver useEscalaTexto.
+  const k = useEscalaTexto();
+  const ROT = 300 * k, COL = 84 * k, LIN = 30 * k, CAB = 44 * k, TIT = 26 * k;
   const cadeias = c.blocos.filter((b) => b.cadeia !== null);
   const emCadeia = new Set(cadeias.flatMap((b) => b.pbis.map((p) => p.id)));
   const soltos = c.soltosAbertos.filter((p) => !emCadeia.has(p.id));
@@ -25,32 +27,32 @@ export function GanttPbis({ c, hoje, svgRef }: { c: Crono; hoje: string; svgRef:
   const desenho: React.ReactNode[] = [];
   cadeias.forEach((b, nb) => {
     const cor = PALETA[(b.cadeia ?? 0) % PALETA.length];
-    desenho.push(<text key={`t${nb}`} x={4} y={y + 17} fontSize={12} fontWeight={600} fill={cor}>{corta(b.titulo, 64)}</text>);
+    desenho.push(<text key={`t${nb}`} x={4} y={y + 17 * k} fontSize={12} fontWeight={600} fill={cor}>{corta(b.titulo, 64)}</text>);
     y += TIT;
     for (const p of b.pbis) {
       const sit = c.situacao.get(p.id) ?? "sem_sprint";
       const col = idx.get(p.sprint) ?? (c.aPlanejar ? c.colunas.length : -1);
-      desenho.push(<rect key={`f${p.id}`} x={0} y={y} width={4} height={LIN - 4} fill={cor} />);
+      desenho.push(<rect key={`f${p.id}`} x={0} y={y} width={4} height={LIN - 4 * k} fill={cor} />);
       desenho.push(
         <a key={`l${p.id}`} href={linkTfs(p.id)} target="_blank" rel="noreferrer">
-          <text x={10} y={y + 17} fontSize={12} fill="var(--ds-color-text-primary)"><title>{`#${p.id} ${p.titulo} · ${quemResolve(p)}`}</title>#{p.id} {corta(p.titulo, 34)}</text>
+          <text x={10} y={y + 17 * k} fontSize={12} fill="var(--ds-color-text-primary)"><title>{`#${p.id} ${p.titulo} · ${quemResolve(p)}`}</title>#{p.id} {corta(p.titulo, 34)}</text>
         </a>,
       );
       if (col >= 0) {
         const x0 = ROT + col * COL + 4;
-        pos.set(p.id, { x0, x1: x0 + COL - 8, y: y + (LIN - 4) / 2 });
+        pos.set(p.id, { x0, x1: x0 + COL - 8, y: y + (LIN - 4 * k) / 2 });
         desenho.push(
           <g key={`b${p.id}`}>
-            <rect x={x0} y={y + 2} width={COL - 8} height={LIN - 8} rx={4} fill={COR_SIT[sit]}><title>{`${ROTULO_SITUACAO[sit]} · ${p.coluna ?? p.estado} · ${quemResolve(p)}`}</title></rect>
-            <text x={x0 + (COL - 8) / 2} y={y + 17} fontSize={10} textAnchor="middle" fill={TXT_SIT[sit] ?? "#fff"}>{corta(ROTULO_SITUACAO[sit], 13)}</text>
+            <rect x={x0} y={y + 2 * k} width={COL - 8} height={LIN - 8 * k} rx={4} fill={COR_SIT[sit]}><title>{`${ROTULO_SITUACAO[sit]} · ${p.coluna ?? p.estado} · ${quemResolve(p)}`}</title></rect>
+            <text x={x0 + (COL - 8) / 2} y={y + 17 * k} fontSize={10} textAnchor="middle" fill={TXT_SIT[sit] ?? "#fff"}>{corta(ROTULO_SITUACAO[sit], 13)}</text>
           </g>,
         );
       }
       y += LIN;
     }
-    y += 8;
+    y += 8 * k;
   });
-  const altura = y + 10;
+  const altura = y + 10 * k;
   const porSituacao = GRAVIDADE.filter((s) => s !== "concluido").map((s) => ({ s, ps: soltos.filter((p) => c.situacao.get(p.id) === s) })).filter((g) => g.ps.length);
 
   return (
@@ -63,7 +65,7 @@ export function GanttPbis({ c, hoje, svgRef }: { c: Crono; hoje: string; svgRef:
       {cadeias.length > 0 ? (
         <div className="overflow-x-auto min-w-0">
           <svg ref={svgRef} width={largura} height={altura} role="img" aria-label="Cadeias de dependência dos PBIs da Feature" style={{ fontFamily: "inherit" }}>
-            <GradeSprints colunas={c.colunas} aPlanejar={c.aPlanejar} rot={ROT} col={COL} altura={altura} hojeIdx={hojeIdx < 0 ? null : hojeIdx} hoje={hoje} />
+            <GradeSprints colunas={c.colunas} aPlanejar={c.aPlanejar} rot={ROT} col={COL} altura={altura} hojeIdx={hojeIdx < 0 ? null : hojeIdx} hoje={hoje} k={k} />
             {desenho}
             {c.arestas.map(([a, b]) => {
               const pa = pos.get(a), pb = pos.get(b);

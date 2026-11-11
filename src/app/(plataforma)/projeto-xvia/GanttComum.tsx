@@ -1,6 +1,40 @@
+"use client";
+
+import { useSyncExternalStore } from "react";
 import type { Situacao } from "@/lib/cronograma";
 import { ROTULO_SITUACAO } from "@/lib/cronograma";
 import { fmtData, type TfsSprint } from "@/lib/tfs";
+
+/** Quanto o navegador aumentou o texto do SVG (tamanho mínimo de fonte, zoom de texto do Chrome
+ * ou do Windows). A grade do Gantt é em px; sem acompanhar, os rótulos se atropelam (print do
+ * Fabio, 11/11/2026). Mede o mesmo texto a 11px e a 40px (acima de qualquer mínimo): sem ajuste do
+ * navegador, a razão é 1. Devolve k entre 1 e 2,5 para multiplicar a geometria. */
+let escalaMedida: number | null = null;
+function medirEscala(): number {
+  if (escalaMedida !== null) return escalaMedida;
+  const ns = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(ns, "svg");
+  svg.setAttribute("style", "position:absolute;left:-9999px;top:0;visibility:hidden");
+  const mede = (tam: number) => {
+    const t = document.createElementNS(ns, "text");
+    t.setAttribute("font-size", String(tam));
+    t.textContent = "Sprint 10 27/07–14/08";
+    svg.appendChild(t);
+    return t;
+  };
+  const pequeno = mede(11), grande = mede(40);
+  document.body.appendChild(svg);
+  const real = pequeno.getComputedTextLength(), esperado = (grande.getComputedTextLength() * 11) / 40;
+  svg.remove();
+  escalaMedida = esperado > 0 ? Math.min(2.5, Math.max(1, Math.round((real / esperado) * 100) / 100)) : 1;
+  return escalaMedida;
+}
+const semAssinatura = () => () => {};
+
+export function useEscalaTexto() {
+  // Servidor = 1; no navegador, mede uma vez (a configuração de fonte não muda com a página aberta).
+  return useSyncExternalStore(semAssinatura, medirEscala, () => 1);
+}
 
 /** Cores das situações do cronograma — fixas (não variam com o tema) para a imagem exportada
  * sair igual à tela. Texto escuro nas cores claras. */
@@ -13,9 +47,11 @@ export const COR_INVERTIDA = "#dc2626";
 export const corta = (t: string, n: number) => (t.length > n ? `${t.slice(0, n - 1)}…` : t);
 
 /** Cabeçalho de sprints, faixas alternadas e a linha HOJE. */
-export function GradeSprints({ colunas, aPlanejar, rot, col, altura, hojeIdx, hoje }: {
-  colunas: TfsSprint[]; aPlanejar: boolean; rot: number; col: number; altura: number; hojeIdx: number | null; hoje: string;
+export function GradeSprints({ colunas, aPlanejar, rot, col, altura, hojeIdx, hoje, k = 1 }: {
+  colunas: TfsSprint[]; aPlanejar: boolean; rot: number; col: number; altura: number; hojeIdx: number | null; hoje: string; k?: number;
 }) {
+  // Com texto muito aumentado, a data sai do cabeçalho (fica no tooltip) para não atropelar.
+  const comData = k <= 1.2;
   const s = hojeIdx === null ? null : colunas[hojeIdx];
   const xHoje = s ? rot + hojeIdx! * col + col * Math.min(1, (Date.parse(hoje) - Date.parse(s.inicio)) / Math.max(1, Date.parse(s.fim) - Date.parse(s.inicio))) : null;
   return (
@@ -27,14 +63,16 @@ export function GradeSprints({ colunas, aPlanejar, rot, col, altura, hojeIdx, ho
       {colunas.map((c, n) => (
         <g key={c.sprint}>
           <rect x={rot + n * col} y={0} width={col} height={altura} fill={n % 2 ? "var(--ds-color-background-muted)" : "transparent"} />
-          <text x={rot + n * col + col / 2} y={16} fontSize={11} fontWeight={600} textAnchor="middle" fill="var(--ds-color-text-primary)">{c.nome}</text>
-          <text x={rot + n * col + col / 2} y={32} fontSize={10} textAnchor="middle" fill="var(--ds-color-text-muted)">{fmtData(c.inicio).slice(0, 5)}–{fmtData(c.fim).slice(0, 5)}</text>
+          <text x={rot + n * col + col / 2} y={16 * k} fontSize={11} fontWeight={600} textAnchor="middle" fill="var(--ds-color-text-primary)">
+            <title>{`${c.nome}: ${fmtData(c.inicio)} a ${fmtData(c.fim)}`}</title>{c.nome}
+          </text>
+          {comData && <text x={rot + n * col + col / 2} y={32 * k} fontSize={10} textAnchor="middle" fill="var(--ds-color-text-muted)">{fmtData(c.inicio).slice(0, 5)}–{fmtData(c.fim).slice(0, 5)}</text>}
         </g>
       ))}
-      {aPlanejar && <text x={rot + colunas.length * col + col / 2} y={16} fontSize={11} fontWeight={600} textAnchor="middle" fill="var(--ds-color-text-muted)">A planejar</text>}
+      {aPlanejar && <text x={rot + colunas.length * col + col / 2} y={16 * k} fontSize={11} fontWeight={600} textAnchor="middle" fill="var(--ds-color-text-muted)">A planejar</text>}
       {xHoje !== null && (
         <>
-          <line x1={xHoje} x2={xHoje} y1={36} y2={altura} stroke="var(--ds-color-danger)" strokeDasharray="4 3" />
+          <line x1={xHoje} x2={xHoje} y1={(comData ? 36 : 22) * k} y2={altura} stroke="var(--ds-color-danger)" strokeDasharray="4 3" />
           <text x={xHoje + 3} y={altura - 4} fontSize={10} fill="var(--ds-color-danger)">HOJE</text>
         </>
       )}

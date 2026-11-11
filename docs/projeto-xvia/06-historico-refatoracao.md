@@ -89,3 +89,8 @@ mesmo que o BI.
   - uma barra do contrato inteiro: concluído, em tarefas abertas e ainda sem tarefa;
   - os "Pontos de atenção no dado", cada um com a sua lista. São eles: atividades acima do previsto no ETP (DOC.07: 495 para 36 previstas), tarefas sem atividade marcada (198), atividades fora do ETP (72), tarefas fora da soma (162) e valor provisório.
 - O "Como ler" ficou recolhido, em quatro tópicos.
+
+## Rodada 7 (11/11/2026): fonte maior e aba Equipes
+
+- **Cronograma:** com fonte maior no navegador (tamanho mínimo de fonte ou zoom de texto), os rótulos se sobrepunham. O `useEscalaTexto` (`GanttComum.tsx`) mede o aumento real do texto, e a grade dos dois Gantts cresce na mesma proporção; o gráfico rola dentro da caixa. Com aumento acima de 1,2, a data sai do cabeçalho e vai para o tooltip.
+- **Equipes:** uma linha por pessoa, com abertos X-VIA, abertos SGD e abertos sem frente. Antes era uma linha por pessoa e por frente, e a mesma pessoa aparecia até 3 vezes. A tabela mostra os 10 primeiros e tem "Ver todos"; o número é clicável. O quadro do TFS ficou recolhido. O `OrigemBotao` ganhou a prop `rotulo`.

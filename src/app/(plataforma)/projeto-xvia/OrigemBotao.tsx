@@ -15,12 +15,13 @@ const chave = (i: TfsItem, por: Origem["agruparPor"]) =>
 /** "De onde vem?" — o número, a conta que chega nele, a fonte e os itens do TFS por trás,
  * agrupados com subtotal. Se o Secretário questionar um número, o gerente chega ao registro
  * em um clique. O conteúdo só é montado com o modal aberto (há dezenas de botões na página). */
-export function OrigemBotao({ origem }: { origem: Origem }) {
+export function OrigemBotao({ origem, rotulo }: { origem: Origem; /** Texto do botão (ex.: o próprio número); padrão "De onde vem?". */ rotulo?: React.ReactNode }) {
   const [aberto, setAberto] = useState(false);
   return (
     <>
-      <button type="button" onClick={() => setAberto(true)} className="text-xs font-medium underline print:hidden" style={{ color: "var(--ds-color-primary-600)" }}>
-        De onde vem?
+      <button type="button" onClick={() => setAberto(true)} className={`${rotulo === undefined ? "text-xs" : "tabular-nums"} font-medium underline print:hidden`} style={{ color: "var(--ds-color-primary-600)" }}
+        aria-label={rotulo === undefined ? undefined : `${origem.rotulo}: ver itens`}>
+        {rotulo ?? "De onde vem?"}
       </button>
       <Modal
         open={aberto}
