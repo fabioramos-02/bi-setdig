@@ -8,7 +8,7 @@ import type { Filtrar } from "./ProjetoXviaClient";
 const PAPEL = { piloto: "Órgão piloto", parceiro: "Órgão parceiro" } as const;
 
 const colunas: Coluna<LinhaStakeholder>[] = [
-  { key: "sigla", label: "Órgão", sortable: true, sortValue: (r) => r.sigla, render: (r) => <span title={r.nome}>{r.sigla}</span> },
+  { key: "sigla", label: "Órgão", sortable: true, sortValue: (r) => r.sigla, render: (r) => <span><b>{r.sigla}</b><span className="block text-sm" style={{ color: "var(--ds-color-text-secondary)" }}>{r.nome}</span></span> },
   { key: "papel", label: "Papel", sortable: true, sortValue: (r) => r.papel ?? "", render: (r) => (r.papel ? PAPEL[r.papel] : "a definir") },
   { key: "ponto", label: "Ponto focal", sortable: true, sortValue: (r) => r.pontoFocal ?? "", render: (r) => r.pontoFocal ?? "a definir" },
   { key: "contato", label: "Contato", render: (r) => r.contato ?? "—" },
@@ -47,7 +47,7 @@ export function StakeholdersTab({ itens, stakeholders, filtros, filtrar }: { ite
         }
       >
         <div className="overflow-x-auto min-w-0">
-          <DataTable columns={colunas} rows={linhas} rowKey={(r) => r.sigla} onRowClick={(r) => filtrar("orgao", r.sigla)} />
+          <DataTable horizontalScroll columns={colunas} rows={linhas} rowKey={(r) => r.sigla} onRowClick={(r) => filtrar("orgao", r.sigla)} />
         </div>
         <p className="mt-3 text-xs" style={{ color: "var(--ds-color-text-muted)" }}>
           {filtros.orgao ? `Painel filtrado em ${filtros.orgao} — clique de novo na linha para voltar a todos.` : "Clique num órgão para ver o painel só com as entregas dele."}

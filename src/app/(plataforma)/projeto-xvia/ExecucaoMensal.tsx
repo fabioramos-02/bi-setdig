@@ -25,8 +25,8 @@ export function ExecucaoMensal({ dados, hoje }: { dados: Dados; hoje: string }) 
             {fechado.reais !== null && <> ({fmtReais(fechado.reais)})</>}
             {fechado.previsto ? (
               <>
-                : <b style={{ color: COR[fechado.tom] }}>{fechado.pct}%</b> das {fmtNum(fechado.previsto)} previstas no <Sigla s="TR" /> para o mês
-                {" "}<span className="text-sm font-semibold uppercase" style={{ color: COR[fechado.tom], letterSpacing: "0.04em" }}>({PALAVRA_TOM[fechado.tom]})</span>.
+                : <b style={{ color: "var(--ds-color-text-primary)" }}>{fechado.pct}%</b> das {fmtNum(fechado.previsto)} previstas no <Sigla s="TR" /> para o mês
+                {" "}<span className="text-sm font-semibold uppercase" style={{ color: "var(--ds-color-text-primary)", letterSpacing: "0.04em" }}>({PALAVRA_TOM[fechado.tom]})</span>.
               </>
             ) : "."}
           </>

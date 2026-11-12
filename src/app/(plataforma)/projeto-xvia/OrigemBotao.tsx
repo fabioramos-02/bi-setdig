@@ -19,8 +19,8 @@ export function OrigemBotao({ origem, rotulo }: { origem: Origem; /** Texto do b
   const [aberto, setAberto] = useState(false);
   return (
     <>
-      <button type="button" onClick={() => setAberto(true)} className={`${rotulo === undefined ? "text-xs" : "tabular-nums"} font-medium underline print:hidden`} style={{ color: "var(--ds-color-primary-600)" }}
-        aria-label={rotulo === undefined ? undefined : `${origem.rotulo}: ver itens`}>
+      <button type="button" onClick={() => setAberto(true)} className={`${rotulo === undefined ? "text-xs font-normal" : "tabular-nums font-medium"} underline print:hidden`} style={{ color: rotulo === undefined ? "var(--ds-color-text-secondary)" : "var(--ds-color-primary-600)" }}
+        aria-label={`${origem.rotulo}: ${rotulo === undefined ? "de onde vem?" : "ver itens"}`}>
         {rotulo ?? "De onde vem?"}
       </button>
       <Modal
@@ -71,10 +71,9 @@ function Detalhe({ origem }: { origem: Origem }) {
       <section aria-label="Como chegamos neste número" style={{ background: "var(--ds-color-background-muted)", borderRadius: "var(--ds-radius-md)", padding: "14px 16px" }}>
         <div className="text-xs font-semibold uppercase tracking-wide mb-2" style={cinza}>Como chegamos neste número</div>
         {passos.length ? (
-          <ol className="flex flex-col gap-1.5 text-sm">
+          <ol className="list-decimal pl-5 flex flex-col gap-1.5 text-sm">
             {passos.map((p, n) => (
-              <li key={p} className="flex gap-2" style={{ color: "var(--ds-color-text-primary)", fontWeight: n === passos.length - 1 ? 600 : 400 }}>
-                <span aria-hidden className="shrink-0 text-center" style={{ ...cinza, width: 18 }}>{n === 0 ? "•" : "→"}</span>
+              <li key={p} className="pl-1" style={{ color: "var(--ds-color-text-primary)", fontWeight: n === passos.length - 1 ? 600 : 400 }}>
                 <span>{p}</span>
               </li>
             ))}
@@ -122,7 +121,7 @@ function Detalhe({ origem }: { origem: Origem }) {
                       itens={g.itens}
                       valor={valor}
                       vazio={g.vazio}
-                      meta={(i) => [i.coluna ?? i.estado, i.epico ?? "sem módulo", i.orgao, `quem resolve: ${quemResolve(i)}`, i.fechadoEm && i.estado === "Done" && `concluída em ${fmtData(i.fechadoEm)}`]}
+                      meta={(i) => [i.coluna ?? i.estado, i.epico ?? "sem módulo", i.orgao, `responsável no registro: ${i.responsavel ?? "Não informado"}`, i.fechadoEm && i.estado === "Done" && `concluída em ${fmtData(i.fechadoEm)}`]}
                     />
                   )}
                 />

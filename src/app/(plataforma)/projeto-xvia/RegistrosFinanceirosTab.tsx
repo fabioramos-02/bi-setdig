@@ -21,9 +21,12 @@ export function RegistrosFinanceirosTab({ financeiro }: { financeiro: Financeiro
       <StoryCard
         anchor={total ? `${fmtNum(total)} registros financeiros do contrato X-VIA.` : "Nenhum registro financeiro do contrato foi lançado ainda."}
         caption={divergencias.length ? `${fmtNum(divergencias.length)} divergências entre os registros.` : undefined}
-        comoLer="Registros manuais em datasets/tfs/v1/financeiro.json, só do contrato da X-VIA. Cada linha traz a fonte (processo SEI, nota, ordem bancária) para conferir no documento original."
+        comoLer="Registros manuais da equipe financeira, do contrato inteiro da X-VIA. Não seguem os filtros de módulo, frente, órgão ou sprint. Cada linha informa o documento de origem (processo SEI, nota ou ordem bancária)."
       />
-      {grupos.map((g) => (
+      {total === 0 ? <DashboardSection title="O que falta registrar?">
+        <p className="text-sm mb-3">Solicitar os documentos à equipe financeira. Ausência de registro não significa valor zero.</p>
+        <ul className="flex flex-col gap-2 text-sm">{grupos.map((g) => <li key={g.titulo}><b>{g.titulo}:</b> Não informado.</li>)}</ul>
+      </DashboardSection> : grupos.map((g) => (
         <DashboardSection key={g.titulo} title={`${g.titulo} (${fmtNum(g.linhas.length)})`}>
           {g.linhas.length === 0 ? <p className="text-sm" style={cinza}>Não informado: nenhum registro.</p>
             : <ul className="text-sm flex flex-col gap-1">{g.linhas.map((l) => <li key={l}>{l}</li>)}</ul>}

@@ -1,4 +1,4 @@
-export type ItemStackedBar = { label: string; atendidos: number; pendentes: number };
+export type ItemStackedBar = { label: string; atendidos: number; pendentes: number; descricao?: string };
 
 /** Barra horizontal empilhada (atendidos/pendentes) — mesmo estilo de
  * RankingBarChart (label + valor + barra), 2 segmentos em vez de 1. Sem
@@ -30,6 +30,7 @@ export function StackedBarChart({ itens }: { itens: ItemStackedBar[] }) {
               <div style={{ width: `${fracAtendidos}%`, background: "var(--ds-color-success)" }} />
               <div style={{ width: `${fracPendentes}%`, background: "var(--ds-color-danger)" }} />
             </div>
+            {it.descricao && <p className="text-sm mt-1" style={{ color: "var(--ds-color-text-secondary)" }}>{it.descricao}</p>}
           </div>
         );
       })}

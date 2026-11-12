@@ -71,7 +71,7 @@ export function Destaque({ destaque, barra }: { destaque: NonNullable<Origem["de
         </span>
         <div className="min-w-0">
           <span className="text-xs uppercase tracking-wide font-semibold" style={T.sec}>{destaque.rotulo}</span>
-          <p className="font-semibold tabular-nums" style={{ ...T.pri, fontSize: 32, lineHeight: 1.15 }}>{destaque.valor}</p>
+          <p className="font-semibold tabular-nums" style={{ ...T.pri, fontSize: "var(--ds-heading-1-font-size)", lineHeight: 1.15 }}>{destaque.valor}</p>
           {destaque.achado && <p className="text-sm mt-1" style={T.pri}>{destaque.achado}</p>}
         </div>
       </div>
@@ -118,7 +118,7 @@ export function Ranking({ grupos, abertos, conteudo }: {
 }) {
   return (
     <section>
-      <h3 className="flex items-center gap-2 mb-1" style={{ ...T.pri, fontSize: 15, fontWeight: 600, lineHeight: 1.3 }}>
+      <h3 className="flex items-center gap-2 mb-1" style={{ ...T.pri, fontSize: "var(--ds-body-md-font-size)", fontWeight: 600, lineHeight: 1.3 }}>
         <Icone nome="leaderboard" cor={AZUL} />
         {grupos.titulo}
       </h3>
@@ -132,7 +132,7 @@ export function Ranking({ grupos, abertos, conteudo }: {
                 <summary className="list-none cursor-pointer [&::-webkit-details-marker]:hidden">
                   <div className="flex items-start justify-between gap-3">
                     <div className="min-w-0 flex items-start gap-2">
-                      {g.etiqueta && <span className="text-xs font-semibold px-2 py-0.5 shrink-0 tabular-nums" style={{ background: tinta(cor, 12), color: cor, borderRadius: 9999 }}>{g.etiqueta}</span>}
+                      {g.etiqueta && <span className="text-xs font-semibold px-2 py-0.5 shrink-0 tabular-nums" style={{ background: tinta(cor, 12), color: "var(--ds-color-text-primary)", borderRadius: 9999 }}>{g.etiqueta}</span>}
                       <span className="text-sm" style={T.pri}>{g.nome}</span>
                     </div>
                     <div className="flex items-center gap-1 shrink-0">

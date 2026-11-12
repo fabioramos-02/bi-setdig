@@ -49,13 +49,12 @@ export function EquipesTab({ itens, sprints, hoje, children }: { itens: TfsItem[
   }
   // "Sem responsável" sempre no topo: é o que pede ação. Depois, quem tem mais itens abertos.
   const linhas = [...mapa.values()].sort((a, b) => (a.pessoa === SEM ? -1 : b.pessoa === SEM ? 1 : b.total - a.total || a.pessoa.localeCompare(b.pessoa, "pt-BR")));
-  const visiveis = todos ? linhas : linhas.slice(0, LIMITE);
   const abertosDe = (f: Frente) => vivos.filter((i) => i.frente === f && i.estado !== "Done");
   const ni = abertosDe(NAO_IDENTIFICADO);
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="grid gap-3 grid-cols-3">
+      <div className="grid gap-3 grid-cols-1 sm:grid-cols-3">
         {FRENTES.map((f) => {
           const lista = abertosDe(f);
           return (
@@ -73,7 +72,7 @@ export function EquipesTab({ itens, sprints, hoje, children }: { itens: TfsItem[
 
       <DashboardSection title="Quem responde pelos itens abertos">
         <div className="overflow-x-auto min-w-0 [&_td]:!py-1.5 [&_th]:!py-1.5">
-          <DataTable columns={colunas} rows={visiveis} rowKey={(r) => r.pessoa} />
+          <DataTable horizontalScroll pageSize={todos ? undefined : LIMITE} label="Pessoas" searchText={(r) => r.pessoa} columns={colunas} rows={linhas} rowKey={(r) => r.pessoa} />
         </div>
         {linhas.length > LIMITE && (
           <button type="button" onClick={() => setTodos(!todos)} className="mt-2 text-sm underline" style={{ color: "var(--ds-color-primary-600)" }}>

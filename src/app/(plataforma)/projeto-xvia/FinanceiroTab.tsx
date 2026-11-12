@@ -35,7 +35,7 @@ const colServico: Coluna<LinhaServico>[] = [
 /** Nível 2 — "Quanto cada órgão e serviço consumiu, quanto foi faturado e quanto foi pago?"
  * Execução vem do TFS (só X-VIA); OS, aceite, nota fiscal e pagamento, do financeiro.json.
  * Projeto → Órgão → Serviço, e Órgão → OS → Medição → Nota fiscal → Pagamento. */
-export function FinanceiroTab({ itens, etp, contrato, financeiro }: { itens: TfsItem[]; etp: EtpUst | null; contrato: TfsContrato | null; financeiro: Financeiro | null }) {
+export function FinanceiroTab({ itens, etp, contrato, financeiro, filtrado = false }: { itens: TfsItem[]; etp: EtpUst | null; contrato: TfsContrato | null; financeiro: Financeiro | null; filtrado?: boolean }) {
   const total = execucaoXvia(itens, etp, contrato);
   const projeto = cadeiaFinanceira(financeiro, { ust: total.ustExecutada, valor: total.valorExecutado });
   const linhas: LinhaFin[] = consumoPorOrgao(itens, etp, contrato).map((o) => ({
@@ -54,22 +54,23 @@ export function FinanceiroTab({ itens, etp, contrato, financeiro }: { itens: Tfs
         comoLer="Executado, aceito, faturado e pago são etapas diferentes, cada uma com sua fonte: tarefa concluída não é UST aceita, e nota fiscal não é pagamento. Etapa sem registro aparece como 'Não informado'. A soma por órgão é igual ao total executado. Clique num órgão para ver serviços e documentos."
       />
 
-      <DashboardSection title="Do pedido ao pagamento: projeto inteiro">
+      <DashboardSection title="O que foi executado, aceito e pago?">
+        <p className="mb-3 text-sm" style={cinza}>{filtrado ? "A execução considera os filtros aplicados." : "A execução considera a X-VIA no projeto inteiro."} OS, aceites, notas e pagamentos são registros do contrato inteiro; não seguem os quatro filtros do painel.</p>
         <TabelaCadeia cadeia={projeto} />
-        {semRegistro && <p className="mt-2 text-xs" style={cinza}>Para preencher OS, medições, notas e pagamentos: datasets/tfs/v1/financeiro.json (modelo e regras no próprio arquivo).</p>}
+        {semRegistro && <p className="mt-2 text-xs" style={cinza}>Solicitar à equipe financeira o registro das Ordens de Serviço, medições, notas e pagamentos, com os documentos de origem.</p>}
       </DashboardSection>
 
       <DashboardSection title="Quanto cada órgão consumiu?">
         <div className="overflow-x-auto min-w-0">
-          <DataTable columns={colOrgao} rows={linhas} rowKey={(r) => r.orgao} onRowClick={(r) => setOrgao(r.orgao === orgao ? null : r.orgao)} />
+          <DataTable horizontalScroll columns={colOrgao} rows={linhas} rowKey={(r) => r.orgao} onRowClick={(r) => setOrgao(r.orgao === orgao ? null : r.orgao)} />
         </div>
-        <p className="mt-2 text-xs" style={cinza}>Total da coluna UST executadas: {fmtNum(linhas.reduce((s, l) => s + l.ustExecutada, 0))} (igual ao executado do contrato).</p>
+        <p className="mt-2 text-xs" style={cinza}>Total da coluna UST executadas: {fmtNum(linhas.reduce((s, l) => s + l.ustExecutada, 0))} (igual à execução nos filtros aplicados).</p>
       </DashboardSection>
 
       {sel && (
         <DashboardSection title={`${sel.orgao}: serviços e documentos`} action={<OrigemBotao origem={{ rotulo: `Tarefas de ${sel.orgao}`, detalhe: "Tarefas da X-VIA concluídas, com código do catálogo, ligadas ao órgão pela Feature ou pelo campo Órgãos/Secretarias.", itens: sel.tarefas }} />}>
-          <div className="overflow-x-auto min-w-0"><DataTable columns={colServico} rows={sel.servicos} rowKey={(r) => String(r.pbiId ?? r.servico)} /></div>
-          <h3 className="mt-5 mb-2 text-sm font-semibold">Ordens de Serviço → medição → nota fiscal → pagamento</h3>
+          <div className="overflow-x-auto min-w-0"><DataTable horizontalScroll columns={colServico} rows={sel.servicos} rowKey={(r) => String(r.pbiId ?? r.servico)} /></div>
+          <h3 className="mt-5 mb-2 text-sm font-semibold">Documentos do pedido ao pagamento</h3>
           {sel.cadeia.recorte.os.length === 0 ? (
             <p className="text-sm" style={cinza}>Nenhuma Ordem de Serviço registrada para {sel.orgao}.</p>
           ) : (

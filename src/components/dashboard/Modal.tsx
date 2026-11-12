@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useId, useRef } from "react";
 
 /** Wrapper fino sobre <dialog> nativo — showModal()/close() dão backdrop, ESC
  * pra fechar e foco preso de graça, sem precisar de biblioteca. Não existe
@@ -23,6 +23,7 @@ export function Modal({
   children: React.ReactNode;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
+  const tituloId = useId();
 
   useEffect(() => {
     const dialog = ref.current;
@@ -38,6 +39,7 @@ export function Modal({
   return (
     <dialog
       ref={ref}
+      aria-labelledby={tituloId}
       onClose={onClose}
       onClick={(e) => {
         // Clicar no backdrop (fora do card) fecha — o <dialog> em si cobre a
@@ -63,7 +65,7 @@ export function Modal({
     >
       <div className="flex items-start justify-between gap-3 p-5" style={{ borderBottom: "1px solid var(--ds-color-border)" }}>
         <div className="min-w-0">
-          <h2 className="text-lg font-semibold" style={{ color: "var(--ds-color-text-primary)" }}>
+          <h2 id={tituloId} className="text-lg font-semibold" style={{ color: "var(--ds-color-text-primary)" }}>
             {title}
           </h2>
           {subtitulo && <p className="text-sm mt-0.5" style={{ color: "var(--ds-color-text-secondary)" }}>{subtitulo}</p>}

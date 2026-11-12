@@ -99,3 +99,15 @@ mesmo que o BI.
 
 - Quando o PBI tem Start Date, a barra começa na sprint dessa data (`sprintDeInicio`), e a Feature acompanha. Um PBI em Em Desenvolvimento ou Em Homologação numa sprint futura aparece como **Em andamento**. O caso que motivou: #1337728, ajustado no TFS para Sprint 7, Em Desenvolvimento, Start Date 17/08 e Target Date 26/11.
 - `publish/writer.py`: quando um dataset em lista passa de 2 MB no formato indentado, grava um registro por linha. O `tfs/itens` passou de 2.000 itens.
+
+## Rodada 9 (11/11/2026): auditoria de UX e capa executiva
+
+- Diagnóstico produzido antes das alterações: `08-auditoria-ux-storytelling.md`, com evidências por tela, componente e arquivo; matriz entre níveis e prioridades A01–A10.
+- Secretário passa ao formato de capa em quatro blocos: veredito/contexto, três sinais, até três decisões e três próximos passos. Gerente e Detalhamento recebem o conteúdo analítico; relatório mensal de onze capítulos continua exportável.
+- Corrigidos cortes do SVG pelo CSS do DS e das últimas colunas das tabelas; indicadores sem base X-VIA ficam neutros. Alcance dos registros financeiros e dos totais de sprints está explícito.
+- Navegação contextual preserva filtros e conduz o foco à aba/linha. Módulo do cronograma usa o filtro da URL. Filtros recolhidos mantêm chips ativos visíveis.
+- Tabelas extensas ganham pesquisa/paginação opt-in, ordenação por teclado e impressão integral. Modais são nomeados; texto/grade do Gantt crescem juntos, com alternativa em lista e fontes resolvidas no SVG exportado.
+- Preparação isolada em `lib/xvia-resumo.ts`, `lib/xvia-prioridades.ts`, `lib/cronograma-lista.ts` e `lib/table-view.ts`. Sem alteração em `lib/tfs.ts`, `lib/cronograma.ts`, datasets, pipeline ou repositório irmão.
+- Verificação: lint sem avisos, 298 testes e build aprovados; três níveis/11 abas em 375/1366px; 16 combinações de resolução/zoom, fonte ampliada, teclado, tema escuro, filtros e exportações conferidos. Resumo PDF em uma página A4 paisagem no caso CMS testado.
+- Andamento e resultados de cada fase registrados no vault `conhecimento-obsidian`, nota `2026-11-11-ux-storytelling-bi-xvia.md`. `AGENTS.md` passa a preservar essa orientação nas próximas fases.
+- Continuam pendentes de dados: detalhamento da decisão/impacto, registros financeiros, medição de SLA e conciliação documental das regras já apontada na auditoria. Nenhuma informação foi simulada.

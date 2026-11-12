@@ -6,7 +6,7 @@ import { RankingBarChart } from "@/components/charts/RankingBarChart";
 import { lerQuadroTime, type CardPainel, type WidgetPainel } from "@/lib/tfs-painel";
 
 /** Aba "Acompanhamento do time": o mesmo quadro que o time usa no dia a dia,
- * atualizado toda madrugada. Os números vêm prontos das consultas do quadro,
+ * atualizado manualmente na rede do Governo. Os números vêm prontos das consultas do quadro,
  * por isso os filtros do topo (módulo, frente, órgão, sprint) não valem aqui. */
 export function AcompanhamentoTab({ widgets, atualizadoEm, diasSemAtualizar }: {
   widgets: WidgetPainel[];
@@ -14,7 +14,7 @@ export function AcompanhamentoTab({ widgets, atualizadoEm, diasSemAtualizar }: {
   diasSemAtualizar: number | null;
 }) {
   if (widgets.length === 0) {
-    return <EmptyCard message="Os números do quadro do time ainda não foram lidos. Eles aparecem depois da próxima atualização automática." />;
+    return <EmptyCard message="Os números do quadro do time ainda não foram lidos. Eles aparecem depois da próxima atualização." />;
   }
 
   const q = lerQuadroTime(widgets);
@@ -25,13 +25,13 @@ export function AcompanhamentoTab({ widgets, atualizadoEm, diasSemAtualizar }: {
     <div className="flex flex-col gap-6 min-w-0">
       {atrasado && (
         <p role="status" className="text-sm rounded-md px-4 py-3" style={{ background: "color-mix(in srgb, var(--ds-color-warning) 15%, transparent)", color: "var(--ds-color-text-primary)" }}>
-          Estes números são de {data}, há {diasSemAtualizar} dias — a atualização automática não rodou desde então.
+          Estes números são de {data}, há {diasSemAtualizar} dias — é necessário solicitar uma nova atualização.
         </p>
       )}
 
       <StoryCard
         anchor={q.anchor ?? "Nenhum item está impedido, aguardando decisão ou com bug no quadro do time."}
-        comoLer={`Mesmos números do quadro que o time acompanha no dia a dia, contados pelas consultas do próprio quadro${data ? ` em ${data}` : ""}. Atualiza sozinho toda madrugada. Os filtros do topo da página não se aplicam a esta aba.`}
+        comoLer={`Mesmos números do quadro que o time acompanha no dia a dia, contados pelas consultas do próprio quadro${data ? ` em ${data}` : ""}. Atualização manual na rede do Governo. Os filtros do topo da página não se aplicam a esta aba.`}
       />
 
       {q.acao.length > 0 && (

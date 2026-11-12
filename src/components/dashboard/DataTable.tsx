@@ -1,114 +1,65 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { flushSync } from "react-dom";
+import { filtrarOrdenarLinhas, paginarLinhas } from "@/lib/table-view";
 
-export type Coluna<T> = {
-  key: string;
-  label: string;
-  align?: "left" | "center" | "right";
-  sortable?: boolean;
-  sortValue?: (row: T) => string | number;
-  render: (row: T) => React.ReactNode;
-};
+export type Coluna<T> = { key: string; label: string; align?: "left" | "center" | "right"; sortable?: boolean; sortValue?: (row: T) => string | number; render: (row: T) => React.ReactNode };
 
-/** Tabela genérica de apresentação — recebe linhas já filtradas/paginadas do
- * chamador (o Tab é quem tem esse estado), só cuida de renderizar colunas e
- * ordenar por clique no cabeçalho. Não filtra, não pagina. Visual: container
- * com borda/raio (não table crua "solta"), cabeçalho com fundo destacado,
- * linha com hover — tokens DS, sem classe de componente do pacote (`.card`
- * não cabe bem aqui, ver gotcha do design-system-ms sobre migrar layout
- * bespoke: tokens primeiro, classe de componente só quando encaixa sem
- * conflito). */
-export function DataTable<T>({
-  columns,
-  rows,
-  rowKey,
-  onRowClick,
-}: {
-  columns: Coluna<T>[];
-  rows: T[];
-  rowKey: (row: T) => string;
-  /** Linha clicável (abrir detalhe, ex. modal) — opcional, sem isso a linha
-   * fica como sempre foi. */
-  onRowClick?: (row: T) => void;
+/** Consulta opt-in; imprimir conserva a coleção filtrada/ordenada inteira. */
+export function DataTable<T>({ columns, rows, rowKey, rowId, onRowClick, pageSize, searchText, label = "Registros", horizontalScroll = false }: {
+  columns: Coluna<T>[]; rows: T[]; rowKey: (row: T) => string; onRowClick?: (row: T) => void;
+  pageSize?: number; searchText?: (row: T) => string; label?: string; horizontalScroll?: boolean; rowId?: (row: T) => string;
 }) {
   const [ordem, setOrdem] = useState<{ key: string; dir: "asc" | "desc" } | null>(null);
-
-  const colunaOrdenada = ordem ? columns.find((c) => c.key === ordem.key) : undefined;
-  const linhas =
-    colunaOrdenada?.sortValue && ordem
-      ? [...rows].sort((a, b) => {
-          const va = colunaOrdenada.sortValue!(a);
-          const vb = colunaOrdenada.sortValue!(b);
-          const cmp = typeof va === "number" && typeof vb === "number" ? va - vb : String(va).localeCompare(String(vb));
-          return ordem.dir === "asc" ? cmp : -cmp;
-        })
-      : rows;
-
-  const alternarOrdem = (col: Coluna<T>) => {
-    if (!col.sortable) return;
-    setOrdem((atual) =>
-      atual?.key === col.key ? { key: col.key, dir: atual.dir === "asc" ? "desc" : "asc" } : { key: col.key, dir: "desc" },
-    );
-  };
-
-  return (
-    <div className="overflow-hidden print:overflow-visible" style={{ border: "1px solid var(--ds-color-border)", borderRadius: "var(--ds-radius-md)" }}>
-      <table className="w-full text-sm border-collapse">
-        <thead>
-          <tr style={{ background: "var(--ds-color-background-muted)" }}>
-            {columns.map((col) => (
-              <th
-                key={col.key}
-                onClick={() => alternarOrdem(col)}
-                className={`py-3 px-3 text-xs font-semibold uppercase tracking-wide ${col.align === "right" ? "text-right" : col.align === "center" ? "text-center" : "text-left"} ${col.sortable ? "cursor-pointer select-none" : ""}`}
-                style={{ color: "var(--ds-color-text-secondary)" }}
-              >
-                <span className="inline-flex items-center gap-1">
-                  {col.label}
-                  {col.sortable && (
-                    <span
-                      className="material-icons"
-                      style={{ fontSize: 14, opacity: ordem?.key === col.key ? 1 : 0.35 }}
-                      aria-hidden
-                    >
-                      {ordem?.key === col.key && ordem.dir === "asc" ? "arrow_upward" : "arrow_downward"}
-                    </span>
-                  )}
-                </span>
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {linhas.map((row) => (
-            <tr
-              key={rowKey(row)}
-              className={`align-top transition-colors data-table-row ${onRowClick ? "cursor-pointer hover:bg-[var(--ds-color-background-muted)]" : ""}`}
-              style={{ borderTop: "1px solid var(--ds-color-border)" }}
-              {...(onRowClick
-                ? {
-                    onClick: () => onRowClick(row),
-                    tabIndex: 0,
-                    role: "button",
-                    onKeyDown: (e: React.KeyboardEvent) => {
-                      if (e.key === "Enter" || e.key === " ") {
-                        e.preventDefault();
-                        onRowClick(row);
-                      }
-                    },
-                  }
-                : {})}
-            >
-              {columns.map((col) => (
-                <td key={col.key} className={`py-3 px-3 ${col.align === "right" ? "text-right" : col.align === "center" ? "text-center" : ""}`}>
-                  {col.render(row)}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+  const [busca, setBusca] = useState("");
+  const [pagina, setPagina] = useState(1);
+  const [imprimindo, setImprimindo] = useState(false);
+  useEffect(() => {
+    const antes = () => flushSync(() => setImprimindo(true));
+    const depois = () => setImprimindo(false);
+    window.addEventListener("beforeprint", antes); window.addEventListener("afterprint", depois);
+    return () => { window.removeEventListener("beforeprint", antes); window.removeEventListener("afterprint", depois); };
+  }, []);
+  const col = ordem ? columns.find((c) => c.key === ordem.key) : undefined;
+  const comparar = col?.sortValue && ordem ? (a: T, b: T) => {
+    const va = col.sortValue!(a), vb = col.sortValue!(b);
+    const cmp = typeof va === "number" && typeof vb === "number" ? va - vb : String(va).localeCompare(String(vb));
+    return ordem.dir === "asc" ? cmp : -cmp;
+  } : undefined;
+  const filtradas = filtrarOrdenarLinhas(rows, busca, searchText, comparar);
+  const p = paginarLinhas(filtradas, pagina, pageSize);
+  const linhas = imprimindo ? filtradas : p.linhas;
+  const ordenar = (c: Coluna<T>) => { setPagina(1); setOrdem((a) => a?.key === c.key ? { key: c.key, dir: a.dir === "asc" ? "desc" : "asc" } : { key: c.key, dir: "desc" }); };
+  return <div className="min-w-0">
+    {(searchText || pageSize) && <div className="flex flex-wrap items-center gap-3 mb-3 print:hidden">
+      {searchText && <label className="flex-1 min-w-0"><span className="block text-sm mb-1">Buscar em {label.toLocaleLowerCase("pt-BR")}</span>
+        <input type="search" value={busca} onChange={(e) => { setBusca(e.target.value); setPagina(1); }} className="ds-input w-full" placeholder="Nome, número ou responsável" /></label>}
+      <span className="text-sm" aria-live="polite">{p.inicio}–{p.fim} de {p.total} {label.toLocaleLowerCase("pt-BR")}</span>
+    </div>}
+    <div className={`${horizontalScroll ? "overflow-x-auto" : "overflow-hidden"} data-table-container print:overflow-visible`}
+      tabIndex={horizontalScroll ? 0 : undefined} role={horizontalScroll ? "region" : undefined} aria-label={horizontalScroll ? `${label}: tabela com rolagem horizontal` : undefined}
+      style={{ border: "1px solid var(--ds-color-border)", borderRadius: "var(--ds-radius-md)" }}>
+      <table className="w-full text-sm border-collapse"><thead><tr style={{ background: "var(--ds-color-background-muted)" }}>
+        {columns.map((c) => <th key={c.key} scope="col" aria-sort={c.sortable ? ordem?.key === c.key ? ordem.dir === "asc" ? "ascending" : "descending" : "none" : undefined}
+          className={`py-3 px-3 text-xs font-semibold uppercase tracking-wide ${c.align === "right" ? "text-right" : c.align === "center" ? "text-center" : "text-left"}`} style={{ color: "var(--ds-color-text-secondary)" }}>
+          {c.sortable ? <button type="button" onClick={() => ordenar(c)} className="inline-flex items-center gap-1 text-inherit" aria-label={`Ordenar por ${c.label}`}>
+            {c.label}<span aria-hidden className="material-icons" style={{ fontSize: 14, opacity: ordem?.key === c.key ? 1 : 0.35 }}>{ordem?.key === c.key && ordem.dir === "asc" ? "arrow_upward" : "arrow_downward"}</span>
+          </button> : c.label}</th>)}
+        {onRowClick && <th scope="col" className="py-3 px-3 text-sm">Detalhe</th>}
+      </tr></thead><tbody>
+        {linhas.map((row) => <tr key={rowKey(row)} id={rowId?.(row)} tabIndex={rowId ? -1 : undefined} className={`align-top data-table-row ${onRowClick ? "cursor-pointer" : ""}`} style={{ borderTop: "1px solid var(--ds-color-border)" }}
+          onClick={onRowClick ? (e) => { if (!(e.target as Element).closest("a,button,input,select")) onRowClick(row); } : undefined}>
+          {columns.map((c) => <td key={c.key} className={`py-3 px-3 ${c.align === "right" ? "text-right" : c.align === "center" ? "text-center" : ""}`}>{c.render(row)}</td>)}
+          {onRowClick && <td className="py-3 px-3"><button type="button" className="underline text-sm" onClick={() => onRowClick(row)} aria-label={`Ver detalhes de ${rowKey(row)}`} style={{ color: "var(--ds-color-primary-600)" }}>Detalhes</button></td>}
+        </tr>)}
+        {linhas.length === 0 && <tr><td colSpan={columns.length + (onRowClick ? 1 : 0)} className="p-4 text-sm">Nenhum registro corresponde aos filtros aplicados.</td></tr>}
+      </tbody></table>
     </div>
-  );
+    {pageSize && p.paginas > 1 && <nav aria-label={`Páginas de ${label.toLocaleLowerCase("pt-BR")}`} className="flex flex-wrap items-center justify-between gap-3 mt-3 text-sm print:hidden">
+      <button type="button" className="ds-button ds-button--ghost" disabled={p.pagina === 1} onClick={() => setPagina(p.pagina - 1)}>Anterior</button>
+      <span aria-live="polite">Página {p.pagina} de {p.paginas}</span>
+      <button type="button" className="ds-button ds-button--ghost" disabled={p.pagina === p.paginas} onClick={() => setPagina(p.pagina + 1)}>Próxima</button>
+    </nav>}
+  </div>;
 }

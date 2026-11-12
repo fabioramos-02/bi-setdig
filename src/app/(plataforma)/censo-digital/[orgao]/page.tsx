@@ -41,7 +41,7 @@ export default async function CensoOrgaoPage({ params }: { params: Promise<{ org
       <main className="flex-1 p-6 flex flex-col gap-6">
         <RelatorioCapa titulo={`Levantamento de Serviços Digitais — ${dados.orgaoSigla}`} filtro={`Órgão: ${dados.orgaoSigla}`} />
         <Link href="/censo-digital" className="text-sm font-medium hover:underline self-start" style={{ color: "var(--ds-color-primary-600)" }}>
-          ← Todos os órgãos
+          Todos os órgãos
         </Link>
 
         <StoryCard

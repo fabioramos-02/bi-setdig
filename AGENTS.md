@@ -199,3 +199,18 @@ colocado ao lado do arquivo testado (não usar `__tests__/`) — ver
 `lib/period-filter.test.ts`/`lib/servico-app-classifier.test.ts`. Rodar com
 `npm test`. Estratégia completa (teste de componente, E2E, meta de cobertura,
 pipeline CI) em `docs/architecture/ADR-011-estrategia-de-testes.md`.
+
+## Preferência de apresentação
+
+A pedido do Fabio, não usar setas decorativas no texto de links, botões ou chamadas de ação.
+Usar rótulos diretos, como "Ver cronograma", "Detalhes", "Anterior" e "Próxima". Diferenciar a ação
+principal dos links auxiliares por espaçamento e peso visual; "De onde vem?" permanece secundário.
+Esta orientação vale também para as próximas alterações de interface.
+
+## Registro de andamento no Obsidian
+
+A pedido do Fabio, registrar ao concluir cada fase o que foi executado, verificações e pendências
+no vault `C:/Users/framos/Documents/SETDIG/conhecimento-obsidian`, pasta
+`20-projeto/dashboard-analytics-setdig/`. Para esta revisão, usar a nota
+`2026-11-11-ux-storytelling-bi-xvia.md`, ligada às notas do projeto. Não marcar fase concluída
+antes da execução e da verificação; atualizar o registro também quando uma limitação permanecer.

@@ -1,7 +1,8 @@
 "use client";
 
 import { Select } from "@/components/dashboard/Select";
-import { ehEntrega, fmtNum, FRENTES, opcoesFiltro, type Filtros, type TfsItem } from "@/lib/tfs";
+import { fmtNum, FRENTES, opcoesFiltro, type Filtros, type TfsItem } from "@/lib/tfs";
+import styles from "./projeto-xvia.module.css";
 import type { Filtrar } from "./ProjetoXviaClient";
 
 const ROTULO: Record<keyof Filtros, string> = { modulo: "Módulo", frente: "Frente", orgao: "Órgão", sprint: "Sprint" };
@@ -34,57 +35,23 @@ export function FiltrosBar({
 }) {
   const op = opcoesFiltro(itens);
   const ativos = (Object.keys(ROTULO) as (keyof Filtros)[]).filter((k) => filtros[k]);
-  const entregas = itens.filter(ehEntrega).length;
 
-  return (
-    <section
-      aria-label="Filtros do painel"
-      className="mb-6 print:hidden"
-      style={{
-        border: "1px solid var(--ds-color-border)",
-        borderRadius: "var(--ds-radius-md)",
-        background: "var(--ds-color-background)",
-        padding: "var(--ds-spacing-16, 16px)",
-      }}
-    >
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
-        <Select label="Módulo" value={filtros.modulo} onChange={(v) => filtrar("modulo", v)} todosLabel="Todos os módulos" maxWidth={9999}
-          opcoes={op.modulo.map((m) => ({ value: m, label: m }))} />
-        <Select label="Frente" value={filtros.frente} onChange={(v) => filtrar("frente", v)} todosLabel="X-VIA e SGD" maxWidth={9999}
-          opcoes={FRENTES.map((f) => ({ value: f, label: f }))} />
-        <Select label="Órgão" value={filtros.orgao} onChange={(v) => filtrar("orgao", v)} todosLabel="Todos os órgãos" maxWidth={9999}
-          opcoes={op.orgao.map((o) => ({ value: o, label: o }))} />
-        <Select label="Sprint" value={filtros.sprint} onChange={(v) => filtrar("sprint", v)} todosLabel="Todas as sprints" maxWidth={9999}
-          opcoes={op.sprint.map((s) => ({ value: s, label: nomeSprint(s) }))} />
+  return <section aria-label="Filtros do painel" className={`${styles.filtros} print:hidden`}>
+    <details><summary><strong>Filtrar projeto</strong><span>· {ativos.length ? `${ativos.length} ${ativos.length === 1 ? "filtro aplicado" : "filtros aplicados"}` : "Projeto inteiro"} · atualizado em {dataRetrato}</span></summary>
+      <div className={styles.controles}>
+        <Select label="Módulo" value={filtros.modulo} onChange={(v) => filtrar("modulo", v)} todosLabel="Todos os módulos" maxWidth={9999} opcoes={op.modulo.map((m) => ({ value: m, label: m }))} />
+        <Select label="Frente" value={filtros.frente} onChange={(v) => filtrar("frente", v)} todosLabel="X-VIA, SGD e não identificado" maxWidth={9999} opcoes={FRENTES.map((f) => ({ value: f, label: f }))} />
+        <Select label="Órgão" value={filtros.orgao} onChange={(v) => filtrar("orgao", v)} todosLabel="Todos os órgãos" maxWidth={9999} opcoes={op.orgao.map((o) => ({ value: o, label: o }))} />
+        <Select label="Sprint" value={filtros.sprint} onChange={(v) => filtrar("sprint", v)} todosLabel="Todas as sprints" maxWidth={9999} opcoes={op.sprint.map((s) => ({ value: s, label: nomeSprint(s) }))} />
       </div>
-
-      <div className="mt-3 flex flex-wrap items-center gap-2 text-sm" aria-live="polite">
-        {ativos.length === 0 ? (
-          <span style={{ color: "var(--ds-color-text-secondary)" }}>
-            Mostrando o projeto inteiro — {fmtNum(entregas)} entregas, retrato do TFS em {dataRetrato}. Clique numa barra ou linha para filtrar.
-          </span>
-        ) : (
-          <>
-            <span style={{ color: "var(--ds-color-text-secondary)" }}>Mostrando {fmtNum(total)} itens de</span>
-            {ativos.map((k) => (
-              <button
-                key={k}
-                type="button"
-                onClick={() => filtrar(k, "")}
-                aria-label={`Remover filtro ${ROTULO[k]}`}
-                className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-sm font-medium"
-                style={{ background: "var(--ds-color-primary-600)", color: "var(--ds-color-text-inverse)" }}
-              >
-                {ROTULO[k]}: {k === "sprint" ? nomeSprint(filtros[k]) : filtros[k]}
-                <span aria-hidden>×</span>
-              </button>
-            ))}
-            <button type="button" onClick={limpar} className="underline text-sm" style={{ color: "var(--ds-color-primary-600)" }}>
-              Limpar tudo
-            </button>
-          </>
-        )}
-      </div>
-    </section>
-  );
+    </details>
+    {ativos.length > 0 && <div className={styles.aplicados} aria-live="polite">
+      <span>{fmtNum(total)} registros encontrados.</span>
+      {ativos.map((k) => <button key={k} type="button" onClick={() => filtrar(k, "")} aria-label={`Remover filtro ${ROTULO[k]}`} className="rounded-full px-3 py-1" style={{ background: "var(--ds-color-primary-600)", color: "var(--ds-color-text-inverse)" }}>
+        {ROTULO[k]}: {k === "sprint" ? nomeSprint(filtros[k]) : filtros[k]} <span aria-hidden>×</span>
+      </button>)}
+      <button type="button" onClick={limpar} className={styles.link}>Limpar filtros</button>
+      <span>Indicadores contratuais consideram apenas a X-VIA.</span>
+    </div>}
+  </section>;
 }

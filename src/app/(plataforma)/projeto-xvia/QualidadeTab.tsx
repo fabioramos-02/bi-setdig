@@ -16,10 +16,28 @@ export function QualidadeTab({ itens, etp, contrato, financeiro, hoje, diasRetra
     <div className="flex flex-col gap-6">
       <StoryCard
         anchor={comProblema.length ? `${comProblema.length} verificações encontraram lacunas ou divergências no dado.` : "Nenhuma lacuna encontrada no dado."}
-        caption={`Retrato do TFS de ${fmtData(hoje)}${diasRetrato !== null ? ` (${fmtNum(diasRetrato)} dias atrás)` : ""}.${velho ? " Atenção: retrato com mais de uma semana; rodar a extração do TFS de novo." : ""}`}
+        caption={`Retrato do TFS de ${fmtData(hoje)}${diasRetrato !== null ? ` (${fmtNum(diasRetrato)} dias atrás)` : ""}.${velho ? " Atenção: retrato com mais de uma semana; solicitar uma nova atualização dos registros." : ""}`}
         comoLer="Cada linha é uma regra de qualidade. Item sem sprint, sem módulo ou sem responsável deixa o painel incompleto; tarefa sem código do catálogo ou sem frente identificada fica fora da conta da X-VIA. Corrigir no TFS e rodar a próxima atualização."
       />
-      <DashboardSection title="Fontes de dados">
+
+      <DashboardSection title="O que falta ou diverge?">
+        <ul className="flex flex-col gap-3">
+          {verificacoes.map((v, n) => (
+            <li key={`${v.rotulo}${n}`} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-sm">
+              <span style={{ color: "var(--ds-color-text-primary)" }}>
+                {v.rotulo}
+                {v.nota && <span style={cinza}> — {v.nota}</span>}
+              </span>
+              <span className="flex items-center gap-3 shrink-0">
+                <b style={{ color: "var(--ds-color-text-primary)" }}>{fmtNum(v.itens.length)}</b>
+                {v.itens.length > 0 && <OrigemBotao origem={{ rotulo: v.rotulo, detalhe: "Itens que precisam ser corrigidos no TFS.", itens: v.itens }} />}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </DashboardSection>
+      <details><summary className="cursor-pointer text-sm font-semibold">Consultar documentos e atualização dos dados</summary>
+      <DashboardSection title="Como cada informação chega ao painel?">
         <ul className="flex flex-col gap-2 text-sm">
           {FONTES_CONTRATO.map((f) => {
             const vazio = f.fonte === "financeiro.json" && !(financeiro && (financeiro.ordensServico.length || financeiro.notasFiscais.length || financeiro.pagamentos.length));
@@ -32,22 +50,7 @@ export function QualidadeTab({ itens, etp, contrato, financeiro, hoje, diasRetra
           })}
         </ul>
       </DashboardSection>
-      <DashboardSection title="O que falta ou diverge?">
-        <ul className="flex flex-col gap-3">
-          {verificacoes.map((v, n) => (
-            <li key={`${v.rotulo}${n}`} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-sm">
-              <span style={{ color: "var(--ds-color-text-primary)" }}>
-                {v.rotulo}
-                {v.nota && <span style={cinza}> — {v.nota}</span>}
-              </span>
-              <span className="flex items-center gap-3 shrink-0">
-                <b style={{ color: v.itens.length || v.nota ? COR.critico : COR.ok }}>{fmtNum(v.itens.length)}</b>
-                {v.itens.length > 0 && <OrigemBotao origem={{ rotulo: v.rotulo, detalhe: "Itens que precisam ser corrigidos no TFS.", itens: v.itens }} />}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </DashboardSection>
+      </details>
     </div>
   );
 }

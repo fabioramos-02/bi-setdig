@@ -1,64 +1,27 @@
-import { montarCronograma } from "@/lib/cronograma";
-import { enriquecerVeredito } from "@/lib/tfs-origem";
-import {
-  andamentoEntregas, atrasadas, bugsDoQa, ehEntrega, cadeiaFinanceira, consumoContrato, entregasDoMes, execucaoMensal, fmtData, fmtNum, fmtReais,
-  pendencias, prazoProjeto, quemResolve, soXvia, vereditoExecutivo,
-  type EtpUst, type Financeiro, type TfsContrato, type TfsItem, type TfsSprint,
-} from "@/lib/tfs";
+import { bugsDoQa, fmtData, fmtNum, fmtReais, quemResolve } from "@/lib/tfs";
+import { prepararResumoXvia, type EntradaResumoXvia } from "@/lib/xvia-resumo";
 import { PainelSecretario } from "./PainelSecretario";
 import { SlaSecao } from "./SlaSecao";
 import { ExecucaoMensal } from "./ExecucaoMensal";
 import { TabelaCadeia } from "./CadeiaFinanceira";
-import { BotaoLink, COR, LinkItem, SecaoRelatorio, Sigla, cinza } from "./comum";
+import { BotaoLink, LinkItem, SecaoRelatorio, Sigla, cinza } from "./comum";
 
-const nomeMes = (aaaamm: string) => new Date(`${aaaamm}-15T12:00:00`).toLocaleDateString("pt-BR", { month: "long", year: "numeric" });
-const mesAnterior = (aaaamm: string) => {
-  const d = new Date(`${aaaamm}-15T12:00:00Z`);
-  d.setUTCMonth(d.getUTCMonth() - 1);
-  return d.toISOString().slice(0, 7);
-};
-
-/** Nível 1 — relatório mensal do Secretário Executivo (prompt, item 13). Só a X-VIA entra
+/** Relatório completo para impressão. Nível 1 — relatório mensal do Secretário Executivo (prompt, item 13). Só a X-VIA entra
  * em execução, entregas e financeiro; a SGD aparece à parte, como responsabilidade. O que
  * não tem fonte diz isso em uma linha, sem cartão vazio. */
-export function RelatorioMensal({ itens, sprints, contrato, etp, financeiro, hoje, recorte, onIrPara }: {
-  itens: TfsItem[]; sprints: TfsSprint[]; contrato: TfsContrato | null; etp: EtpUst | null; financeiro: Financeiro | null;
-  hoje: string; recorte: boolean; onIrPara: (aba: string) => void;
-}) {
-  const xv = soXvia(itens);
-  const prazo = prazoProjeto(contrato, sprints, hoje);
-  const consumo = consumoContrato(itens, etp, contrato, prazo.mesDoContrato);
-  const andamento = andamentoEntregas(xv);
-  const atraso = atrasadas(xv, sprints, hoje);
-  const decisoes = pendencias(xv);
-  const pendSgd = pendencias(itens.filter((i) => i.frente === "SGD"));
-  const crono = montarCronograma(xv, sprints, null, hoje);
-  // Marcos = Features da X-VIA: pronta quando todas as entregas dela estão concluídas.
-  const features = xv.filter((i) => i.tipo === "Feature" && i.estado !== "Removed").map((f) => xv.filter((p) => ehEntrega(p) && p.estado !== "Removed" && p.featureId === f.id))
-    .filter((ps) => ps.length);
-  const featuresProntas = features.filter((ps) => ps.every((p) => p.estado === "Done")).length;
-  const cadeia = cadeiaFinanceira(financeiro, { ust: consumo.ustExecutada, valor: consumo.valorExecutado });
-  const mes = hoje.slice(0, 7);
-  const ant = mesAnterior(mes);
-  const entregasMes = entregasDoMes(xv, mes).flatMap((g) => g.itens);
-  const entregasAnt = entregasDoMes(xv, ant).flatMap((g) => g.itens);
-  const vigencia = contrato?.vigenciaMeses ?? 18;
-
-  const veredito = enriquecerVeredito(
-    vereditoExecutivo({ prazo, andamento, consumo, paradas: decisoes, atrasadas: atraso, recorte, semPagamento: financeiro === null || financeiro.pagamentos.length === 0 }),
-    { itens: xv, prazo, andamento, consumo, paradas: decisoes, atrasadas: atraso, valorUst: contrato?.valorUst ?? null, recorte },
-  );
-  const sprintAgora = sprints.find((x) => x.situacao === "atual");
-  const cabecalho = [nomeMes(mes), `mês ${prazo.mesDoContrato} de ${vigencia} do contrato`, sprintAgora ? `${sprintAgora.nome} até ${fmtData(sprintAgora.fim).slice(0, 5)}` : null, `dados do TFS de ${fmtData(hoje)}`].filter(Boolean).join(" · ");
-  const proximos = [...atraso, ...decisoes.filter((d) => !atraso.includes(d))].slice(0, 8);
-
+export function RelatorioMensal(props: EntradaResumoXvia & { onIrPara: (aba: string) => void }) {
+  const { contrato, hoje, recorte, onIrPara } = props;
+  const r = prepararResumoXvia(props);
+  const { xv, prazo, consumo, andamento, atraso, crono, features, featuresProntas, cadeia, mes, anterior: ant, entregasMes, entregasAnt, vigencia, veredito, cabecalho, pendSgd, proximosRelatorio: proximos } = r;
+  const decisoes = r.paradas;
+  const nomeMes = (m: string) => m === mes ? r.nomeMes : m === ant ? r.nomeMesAnterior : m;
   return (
     <div className="flex flex-col gap-5">
       <SecaoRelatorio n={1} titulo="Contrato e período">
         <p>
           {contrato?.contrato ?? "Contrato X-VIA"} · vigência de {fmtData(prazo.inicio)} a {fmtData(prazo.fim)} ({vigencia} meses).
         </p>
-        {recorte && <p style={{ color: COR.atencao }}>Filtro ativo: os números são do recorte e não são comparados com o previsto do contrato inteiro.</p>}
+        {recorte && <p style={{ color: "var(--ds-color-text-primary)" }}>Filtro ativo: os números seguem os filtros aplicados e não são comparados com o previsto do contrato inteiro.</p>}
       </SecaoRelatorio>
 
       <SecaoRelatorio n={2} titulo="Resumo executivo">
@@ -66,7 +29,7 @@ export function RelatorioMensal({ itens, sprints, contrato, etp, financeiro, hoj
       </SecaoRelatorio>
 
       <SecaoRelatorio n={3} titulo="O que foi executado no mês?">
-        <ExecucaoMensal dados={execucaoMensal(itens, etp, contrato, hoje)} hoje={hoje} />
+        <ExecucaoMensal dados={r.mensal} hoje={hoje} />
       </SecaoRelatorio>
 
       <SecaoRelatorio n={4} titulo="Quais entregas foram feitas?" acao={<BotaoLink onClick={() => onIrPara("fiscalizacao")}>Ver por sprint</BotaoLink>}>
@@ -88,7 +51,7 @@ export function RelatorioMensal({ itens, sprints, contrato, etp, financeiro, hoj
       </SecaoRelatorio>
 
       <SecaoRelatorio n={7} titulo="Pendências e problemas" acao={<BotaoLink onClick={() => onIrPara("prioridades")}>Ver todas</BotaoLink>}>
-        <p><b>{fmtNum(decisoes.length)}</b> entregas da X-VIA aguardam decisão, estão impedidas ou dependem de outra; <b>{fmtNum(atraso.length)}</b> passaram da sprint ou do prazo. A lista com quem resolve está em Prioridades.</p>
+        <p><b>{fmtNum(decisoes.length)}</b> entregas da X-VIA aguardam decisão, estão impedidas ou dependem de outra; <b>{fmtNum(atraso.length)}</b> passaram da sprint ou do prazo. A ação e o responsável no registro estão em Prioridades.</p>
       </SecaoRelatorio>
 
       <SecaoRelatorio n={8} titulo="Fiscalização e aceite">
@@ -98,6 +61,7 @@ export function RelatorioMensal({ itens, sprints, contrato, etp, financeiro, hoj
       </SecaoRelatorio>
 
       <SecaoRelatorio n={9} titulo="Execução financeira e pagamentos" acao={<BotaoLink onClick={() => onIrPara("financeiro")}>Ver por órgão e serviço</BotaoLink>}>
+        <p className="text-sm" style={cinza}>A execução segue os filtros aplicados. Ordens de Serviço, aceites, notas e pagamentos são registros do contrato inteiro, independentes das tarefas.</p>
         <TabelaCadeia cadeia={cadeia} />
         <p className="text-xs" style={cinza}>
           Contrato: {consumo.valorTotalContrato ? fmtReais(consumo.valorTotalContrato) : "valor a informar"}. Serviços em UST: {consumo.valorItem3 ? fmtReais(consumo.valorItem3) : "—"}.
@@ -108,7 +72,7 @@ export function RelatorioMensal({ itens, sprints, contrato, etp, financeiro, hoj
       <SecaoRelatorio n={10} titulo="Riscos e decisões necessárias">
         <ul className="flex flex-col gap-2">
           {decisoes.slice(0, 5).map((d) => (
-            <li key={d.id}><LinkItem item={d} /> <span style={cinza}>· {d.coluna ?? "Dependência"} · {fmtNum(d.diasSemAtualizar ?? 0)} dias parada · quem resolve: {quemResolve(d)}</span></li>
+            <li key={d.id}><LinkItem item={d} /> <span style={cinza}>· {d.coluna ?? "Dependência"} · {fmtNum(d.diasSemAtualizar ?? 0)} dias sem atualização · responsável no registro: {quemResolve(d)}</span></li>
           ))}
           {decisoes.length === 0 && <li style={cinza}>Nenhuma entrega da X-VIA aguarda decisão.</li>}
         </ul>

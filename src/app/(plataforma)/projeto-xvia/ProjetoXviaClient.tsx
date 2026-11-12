@@ -1,9 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ContentTopBar } from "@/components/ds/ContentTopBar";
-import { ExportarRelatorioButton } from "@/components/dashboard/ExportarRelatorioButton";
+import { ExportarProjeto, type ModoExportacao } from "./ExportarProjeto";
+import { VisaoExecutiva } from "./VisaoExecutiva";
+import { prepararResumoXvia } from "@/lib/xvia-resumo";
+import { destinoDaAba, type DestinoProjeto, type NivelProjeto } from "@/lib/xvia-navegacao";
+import styles from "./projeto-xvia.module.css";
 import { RelatorioCapa } from "@/components/dashboard/RelatorioCapa";
 import { Tabs, type TabItem } from "@/components/dashboard/Tabs";
 import { filtrarItens, temRecorte, type EtpUst, type Filtros, type Financeiro, type TfsContrato, type TfsItem, type TfsSprint, type TfsStakeholder } from "@/lib/tfs";
@@ -54,7 +58,17 @@ export function ProjetoXviaClient({
   const router = useRouter();
   const pathname = usePathname();
   const [abaAtiva, setAbaAtiva] = useState("relatorio");
-  const [nivel, setNivel] = useState("secretario");
+  const [nivel, setNivel] = useState<NivelProjeto>("secretario");
+  const [modoExport, setModoExport] = useState<ModoExportacao>(null);
+  const [pedidoFoco, setPedidoFoco] = useState<DestinoProjeto | null>(null);
+  useEffect(() => {
+    if (!pedidoFoco) return;
+    const id = requestAnimationFrame(() => {
+      const alvo = document.getElementById(pedidoFoco.alvo ?? `panel-${pedidoFoco.aba}`);
+      if (alvo) { alvo.tabIndex = -1; alvo.focus({ preventScroll: true }); alvo.scrollIntoView({ block: "start" }); }
+    });
+    return () => cancelAnimationFrame(id);
+  }, [pedidoFoco]);
 
   const filtros: Filtros = {
     modulo: params.get("modulo") ?? "",
@@ -76,28 +90,31 @@ export function ProjetoXviaClient({
 
   // Três níveis de leitura (pedido do Fabio, 11/2026): Secretário → Gerente → Detalhamento.
   // Só a X-VIA entra em execução, entregas e financeiro; a SGD aparece separada (ADR-017).
-  const irPara = (a: string) => { setNivel("gerente"); setAbaAtiva(a); };
+  const entrada = { itens: recorte, sprints, contrato, etp, financeiro, hoje, recorte: temRecorte(filtros) };
+  const resumo = prepararResumoXvia(entrada);
+  const navegar = (d: DestinoProjeto) => { setNivel(d.nivel); setAbaAtiva(d.aba); setPedidoFoco(d); };
+  const irPara = (aba: string) => navegar(destinoDaAba(aba));
   const niveis: { id: string; label: string; descricao: string; abas: TabItem[] }[] = [
     {
-      id: "secretario", label: "1. Visão do Secretário", descricao: "Relatório do mês: execução, entregas, prazo, pendências, dinheiro e próximos passos.",
+      id: "secretario", label: "1. Visão do Secretário", descricao: "Conclusão, decisões e próximos passos.",
       abas: [
-        { id: "relatorio", label: "Relatório do mês", content: <RelatorioMensal itens={recorte} sprints={sprints} contrato={contrato} etp={etp} financeiro={financeiro} hoje={hoje} recorte={temRecorte(filtros)} onIrPara={irPara} /> },
+        { id: "relatorio", label: "Relatório do mês", content: <VisaoExecutiva resumo={resumo} contrato={contrato} onNavegar={navegar} /> },
       ],
     },
     {
       id: "gerente", label: "2. Visão do Gerente", descricao: "O que está parado, quem resolve, cronograma, módulos, gasto por órgão e aceite.",
       abas: [
         { id: "prioridades", label: "Prioridades", content: <PrioridadesTab itens={recorte} sprints={sprints} hoje={hoje} /> },
-        { id: "cronograma", label: "Cronograma e dependências", content: <CronogramaTab itens={recorte} sprints={sprints} hoje={hoje} modulo={filtros.modulo} /> },
+        { id: "cronograma", label: "Cronograma e dependências", content: <CronogramaTab itens={recorte} sprints={sprints} hoje={hoje} modulo={filtros.modulo} onModuloChange={(v) => filtrar("modulo", v)} /> },
         { id: "modulos", label: "Módulos e frentes", content: <ModulosTab itens={recorte} sprints={sprints} hoje={hoje} filtros={filtros} filtrar={filtrar} /> },
-        { id: "financeiro", label: "Gasto por órgão e serviço", content: <FinanceiroTab itens={recorte} etp={etp} contrato={contrato} financeiro={financeiro} /> },
-        { id: "fiscalizacao", label: "Sprints, entregas e aceite", content: <FiscalizacaoTab itens={recorte} sprints={sprints} hoje={hoje} /> },
+        { id: "financeiro", label: "Gasto por órgão e serviço", content: <FinanceiroTab itens={recorte} etp={etp} contrato={contrato} financeiro={financeiro} filtrado={temRecorte(filtros)} /> },
+        { id: "fiscalizacao", label: "Sprints, entregas e aceite", content: <FiscalizacaoTab itens={recorte} sprints={sprints} hoje={hoje} ans={contrato?.ans ?? null} onIrPara={irPara} /> },
       ],
     },
     {
       id: "detalhe", label: "3. Detalhamento", descricao: "De onde vem cada número: UST, registros financeiros, entregas, órgãos, equipes e qualidade do dado.",
       abas: [
-        { id: "ust", label: "A. UST e contrato", content: <UstTab itens={recorte} etp={etp} contrato={contrato} /> },
+        { id: "ust", label: "A. UST e contrato", content: <UstTab itens={recorte} etp={etp} contrato={contrato} mensal={resumo.mensal} hoje={hoje} prazo={resumo.prazo} /> },
         { id: "registros", label: "B. Registros financeiros", content: <RegistrosFinanceirosTab financeiro={financeiro} /> },
         { id: "entregas", label: "C. Entregas", content: <EntregasTab itens={recorte} /> },
         { id: "orgaos", label: "D. Órgãos e serviços", content: <StakeholdersTab itens={recorte} stakeholders={stakeholders} filtros={filtros} filtrar={filtrar} /> },
@@ -109,47 +126,30 @@ export function ProjetoXviaClient({
   const nivelAtual = niveis.find((n) => n.id === nivel) ?? niveis[0];
   const abas = nivelAtual.abas;
   const trocarNivel = (id: string) => {
-    setNivel(id);
+    setPedidoFoco(null);
+    setNivel(id as NivelProjeto);
     setAbaAtiva(niveis.find((n) => n.id === id)?.abas[0].id ?? "relatorio");
   };
 
   return (
-    <div className="flex flex-col flex-1 min-w-0">
+    <div className={`${styles.root} flex flex-col flex-1 min-w-0`} data-export={modoExport ?? undefined}>
       <ContentTopBar title="Projeto X-VIA">
-        <ExportarRelatorioButton secoes={abas.map((a) => ({ id: a.id, label: a.label }))} ativaId={abaAtiva} filtro={filtroRelatorio} />
+        <ExportarProjeto secoes={abas.map((a) => ({ id: a.id, label: a.label }))} ativaId={abaAtiva} filtro={filtroRelatorio} onModo={setModoExport} />
       </ContentTopBar>
       <main className="flex-1 p-4 md:p-6 min-w-0">
         <RelatorioCapa titulo="Projeto X-VIA" filtro={filtroRelatorio} />
-        <nav aria-label="Nível de leitura" className="grid gap-2 grid-cols-1 sm:grid-cols-3 mb-4 print:hidden">
-          {niveis.map((n) => {
-            const ativo = n.id === nivelAtual.id;
-            return (
-              <button
-                key={n.id}
-                type="button"
-                onClick={() => trocarNivel(n.id)}
-                aria-pressed={ativo}
-                className="text-left"
-                style={{
-                  border: `1px solid ${ativo ? "var(--ds-color-primary-600)" : "var(--ds-color-border)"}`,
-                  borderRadius: "var(--ds-radius-md)",
-                  padding: "10px 14px",
-                  background: ativo ? "var(--ds-color-background-muted)" : "var(--ds-color-background)",
-                }}
-              >
-                <span className="block text-sm font-semibold" style={{ color: ativo ? "var(--ds-color-primary-600)" : "var(--ds-color-text-primary)" }}>{n.label}</span>
-                <span className="block text-xs" style={{ color: "var(--ds-color-text-muted)" }}>{n.descricao}</span>
-              </button>
-            );
-          })}
-        </nav>
-        <FiltrosBar itens={itens} filtros={filtros} filtrar={filtrar} limpar={limpar} total={recorte.length} dataRetrato={dataRetrato} />
-        {/* Nível com uma aba só: sem barra de abas — a aba solitária parecia um botão que não fazia nada. */}
-        {abas.length === 1 ? (
-          <div id={`panel-${abas[0].id}`}>{abas[0].content}</div>
-        ) : (
-          <Tabs items={abas} ativa={abas.some((a) => a.id === abaAtiva) ? abaAtiva : abas[0].id} onAtivaChange={setAbaAtiva} />
-        )}
+        <div className={styles.conteudo}>
+          <nav aria-label="Nível de leitura" className={`${styles.niveis} print:hidden`}>
+            {niveis.map((n, index) => <button key={n.id} type="button" onClick={() => trocarNivel(n.id)} aria-label={n.label} aria-pressed={n.id === nivelAtual.id}>
+              {["1. Secretário", "2. Gerente", "3. Detalhamento"][index]}
+            </button>)}
+          </nav>
+          <FiltrosBar itens={itens} filtros={filtros} filtrar={filtrar} limpar={limpar} total={recorte.length} dataRetrato={dataRetrato} />
+          {abas.length === 1 ? <div id={`panel-${abas[0].id}`}>{abas[0].content}</div> :
+            <Tabs items={abas} ativa={abas.some((a) => a.id === abaAtiva) ? abaAtiva : abas[0].id} onAtivaChange={setAbaAtiva} />}
+        </div>
+        <div className={styles.printOnly}><RelatorioMensal {...entrada} onIrPara={irPara} /></div>
+        <div className={styles.resumoPrint}><VisaoExecutiva resumo={resumo} contrato={contrato} onNavegar={navegar} /></div>
       </main>
     </div>
   );

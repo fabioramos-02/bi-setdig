@@ -16,9 +16,9 @@ export function GanttFeatures({ m, hoje, selecionada, onSelecionar, svgRef }: {
 }) {
   const k = useEscalaTexto(svgRef);
   const s = (n: number) => n * k;
-  const ROT = s(330), COL = s(84), LIN = s(50), CAB = s(44);
+  const ROT = s(420), COL = s(124), LIN = s(60), CAB = s(52);
   const aPlanejar = m.linhas.some((l) => l.ini === null && l.aPlanejar > 0);
-  const largura = ROT + COL * (m.colunas.length + (aPlanejar ? 1 : 0)) + s(110);
+  const largura = ROT + COL * (m.colunas.length + (aPlanejar ? 1 : 0)) + s(180);
   const altura = CAB + m.linhas.length * LIN + s(14);
   const pos = new Map<number | null, { x0: number; x1: number; y: number }>();
 
@@ -38,7 +38,7 @@ export function GanttFeatures({ m, hoje, selecionada, onSelecionar, svgRef }: {
         <g>
           <rect x={x0} y={y + s(12)} width={w} height={s(20)} rx={5} fill={cor} fillOpacity={0.18} stroke={cor} strokeWidth={1.5} />
           {feito > 0 && <rect x={x0} y={y + s(12)} width={feito} height={s(20)} rx={5} fill={COR_SIT.concluido} />}
-          <text x={x0 + w + 6} y={y + s(26)} fontSize={11} fontWeight={600} fill="var(--ds-color-text-primary)">
+          <text x={x0 + w + 6} y={y + s(26)} style={{ fontSize: "var(--ds-body-sm-font-size)" }} fontWeight={600} fill="var(--ds-color-text-primary)">
             {l.prontos}/{l.total}{l.ini !== null && l.aPlanejar ? ` · +${l.aPlanejar} a planejar` : ""}
           </text>
         </g>
@@ -47,15 +47,15 @@ export function GanttFeatures({ m, hoje, selecionada, onSelecionar, svgRef }: {
     const ativar = () => onSelecionar(sel ? null : l.id);
     return (
       <g key={String(l.id)} role="button" tabIndex={0} aria-pressed={sel} aria-label={`${l.titulo}: ${l.prontos} de ${l.total} prontas, ${l.situacao === "vazio" ? "sem PBIs" : ROTULO_SITUACAO[l.situacao]}`}
-        onClick={ativar} onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && (e.preventDefault(), ativar())} style={{ cursor: "pointer", outline: "none" }}>
+        onClick={ativar} onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && (e.preventDefault(), ativar())} style={{ cursor: "pointer" }}>
         <rect x={0} y={y} width={largura} height={LIN} fill={sel ? "color-mix(in srgb, var(--ds-color-primary-600) 10%, transparent)" : "transparent"} />
         <rect x={0} y={y + s(6)} width={4} height={LIN - s(12)} rx={2} fill={cor} />
-        <text x={12} y={y + s(20)} fontSize={13} fontWeight={600} fill="var(--ds-color-text-primary)">
+        <text x={12} y={y + s(20)} style={{ fontSize: "var(--ds-body-sm-font-size)" }} fontWeight={600} fill="var(--ds-color-text-primary)">
           <title>{l.titulo}</title>{corta(l.titulo, 40)}
         </text>
-        <text x={12} y={y + s(38)} fontSize={11}>
+        <text x={12} y={y + s(44)} style={{ fontSize: "var(--ds-body-sm-font-size)" }}>
           <tspan fill="var(--ds-color-text-muted)">{l.frente} · </tspan>
-          <tspan fill={cor} fontWeight={600}>{l.situacao === "vazio" ? "sem PBIs" : ROTULO_SITUACAO[l.situacao]}</tspan>
+          <tspan fill="var(--ds-color-text-primary)" fontWeight={600}>{l.situacao === "vazio" ? "sem PBIs" : ROTULO_SITUACAO[l.situacao]}</tspan>
           {l.id !== null && <tspan fill="var(--ds-color-text-muted)"> · #{l.id}</tspan>}
         </text>
         {barra}
@@ -65,8 +65,8 @@ export function GanttFeatures({ m, hoje, selecionada, onSelecionar, svgRef }: {
   });
 
   return (
-    <div className="overflow-x-auto min-w-0">
-      <svg ref={svgRef} width={largura} height={altura} role="group" aria-label="Cronograma por Feature" style={{ fontFamily: "inherit" }}>
+    <div className="overflow-x-auto min-w-0" tabIndex={0} role="region" aria-label="Cronograma: role para ver todas as sprints">
+      <svg ref={svgRef} width={largura} height={altura} role="group" aria-label="Cronograma por Feature" style={{ fontFamily: "inherit", maxWidth: "none", width: largura, height: altura }}>
         <GradeSprints colunas={m.colunas} aPlanejar={aPlanejar} rot={ROT} col={COL} altura={altura} hojeIdx={m.hojeIdx} hoje={hoje} k={k} />
         {linhas}
         {m.ligacoes.map((g, n) => {

@@ -26,7 +26,12 @@ export function svgAutonomo(svg: SVGSVGElement, titulo?: string): { texto: strin
     for (const prop of ["fill", "stroke"]) {
       if (el.getAttribute(prop)?.includes("var(")) alvo.setAttribute(prop, css.getPropertyValue(prop));
     }
-    if (el.tagName === "text") alvo.setAttribute("font-family", css.fontFamily);
+    if (el.tagName === "text" || el.tagName === "tspan") {
+      alvo.setAttribute("font-family", css.fontFamily);
+      alvo.setAttribute("font-size", css.fontSize);
+      (alvo as SVGElement).style.fontSize = css.fontSize;
+      (alvo as SVGElement).style.fontWeight = css.fontWeight;
+    }
   });
   const largura = Number(svg.getAttribute("width")) || svg.getBoundingClientRect().width;
   const alturaGrafico = Number(svg.getAttribute("height")) || svg.getBoundingClientRect().height;

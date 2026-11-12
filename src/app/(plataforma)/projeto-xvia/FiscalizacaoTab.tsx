@@ -1,12 +1,13 @@
 "use client";
 
+import { SlaSecao } from "./SlaSecao";
 import { useState } from "react";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { RankingBarChart } from "@/components/charts/RankingBarChart";
 import { DataTable, type Coluna } from "@/components/dashboard/DataTable";
 import {
-  COLUNA_PRODUCAO,
+  COLUNA_PRODUCAO, bugsDoQa, soXvia, type Ans,
   ehEntrega,
   entregasDaSprint,
   entregasDoMes,
@@ -35,7 +36,7 @@ const colunas: Coluna<TfsItem>[] = [
 
 /** Fiscalização e aceite: o que foi priorizado na sprint atual (e onde está no
  * quadro), o que foi entregue no mês e o que já está em produção. */
-export function FiscalizacaoTab({ itens, sprints, hoje }: { itens: TfsItem[]; sprints: TfsSprint[]; hoje: string }) {
+export function FiscalizacaoTab({ itens, sprints, hoje, ans, onIrPara }: { itens: TfsItem[]; sprints: TfsSprint[]; hoje: string; ans: Ans | null; onIrPara: (aba: string) => void }) {
   const [coluna, setColuna] = useState<string | null>(null);
   const atual = sprintAtual(sprints);
   const sprint = entregasDaSprint(itens, atual);
@@ -54,7 +55,7 @@ export function FiscalizacaoTab({ itens, sprints, hoje }: { itens: TfsItem[]; sp
             ? `A ${atual.nome} priorizou ${fmtNum(sprint.itens.length)} entregas; ${fmtNum(totalMes)} foram concluídas em ${nomeMes}.`
             : `${fmtNum(totalMes)} entregas foram concluídas em ${nomeMes}.`
         }
-        caption={atual ? `${atual.nome}: de ${fmtData(atual.inicio)} a ${fmtData(atual.fim)}.` : undefined}
+        caption={`${atual ? `${atual.nome}: de ${fmtData(atual.inicio)} a ${fmtData(atual.fim)}. ` : ""}Entregas de todas as frentes nos filtros aplicados; o resumo executivo conta apenas a X-VIA.`}
         comoLer="Priorizada é a entrega colocada na sprint atual. Concluída no mês é a que fechou (estado Done) dentro do mês, agrupada pela sprint em que estava."
       />
 
@@ -71,7 +72,7 @@ export function FiscalizacaoTab({ itens, sprints, hoje }: { itens: TfsItem[]; sp
                 {coluna} — entregas da {atual.nome}
               </h3>
               <div className="overflow-x-auto min-w-0">
-                <DataTable columns={colunas} rows={sprint.itens.filter((i) => (i.coluna ?? "Sem coluna") === coluna)} rowKey={(r) => String(r.id)} />
+                <DataTable horizontalScroll pageSize={25} label="Entregas" searchText={(r) => [r.id, r.titulo, r.responsavel, r.epico, r.frente].join(" ")} columns={colunas} rows={sprint.itens.filter((i) => (i.coluna ?? "Sem coluna") === coluna)} rowKey={(r) => String(r.id)} />
               </div>
             </div>
           ) : (
@@ -79,6 +80,10 @@ export function FiscalizacaoTab({ itens, sprints, hoje }: { itens: TfsItem[]; sp
           )}
         </DashboardSection>
       )}
+
+      <section id="prazos-atendimento" tabIndex={-1}>
+        <DashboardSection title="Os prazos de atendimento estão sendo cumpridos?"><SlaSecao ans={ans} bugs={bugsDoQa(soXvia(itens))} onIrPara={onIrPara} /></DashboardSection>
+      </section>
 
       <DashboardSection title={`O que foi entregue em ${nomeMes}?`}>
         {doMes.length === 0 ? (
@@ -91,7 +96,7 @@ export function FiscalizacaoTab({ itens, sprints, hoje }: { itens: TfsItem[]; sp
                   {nomeSprint(g.sprint)} · {fmtNum(g.itens.length)} entregas
                 </h3>
                 <div className="overflow-x-auto min-w-0">
-                  <DataTable columns={colunas} rows={g.itens} rowKey={(r) => String(r.id)} />
+                  <DataTable horizontalScroll pageSize={25} label="Entregas" searchText={(r) => [r.id, r.titulo, r.responsavel, r.epico, r.frente].join(" ")} columns={colunas} rows={g.itens} rowKey={(r) => String(r.id)} />
                 </div>
               </div>
             ))}
@@ -101,7 +106,7 @@ export function FiscalizacaoTab({ itens, sprints, hoje }: { itens: TfsItem[]; sp
 
       <DashboardSection title={`O que já está em produção? (${fmtNum(emProducao.length)})`}>
         <div className="overflow-x-auto min-w-0">
-          <DataTable columns={colunas} rows={emProducao} rowKey={(r) => String(r.id)} />
+          <DataTable horizontalScroll pageSize={25} label="Entregas" searchText={(r) => [r.id, r.titulo, r.responsavel, r.epico, r.frente].join(" ")} columns={colunas} rows={emProducao} rowKey={(r) => String(r.id)} />
         </div>
       </DashboardSection>
     </div>

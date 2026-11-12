@@ -39,7 +39,7 @@ export function Sigla({ s, children }: { s: keyof typeof GLOSSARIO; children?: R
 }
 
 const ROTULO_STATUS: Record<StatusDado, string> = { confirmado: "confirmado", calculado: "calculado", ausente: "sem registro", divergente: "divergente" };
-const COR_STATUS: Record<StatusDado, string> = { confirmado: COR.ok, calculado: COR.info, ausente: COR.neutro, divergente: COR.critico };
+const COR_STATUS: Record<StatusDado, string> = { confirmado: "var(--ds-color-text-primary)", calculado: COR.info, ausente: COR.neutro, divergente: "var(--ds-color-text-primary)" };
 
 /** Valor da cadeia financeira: número, ou "Não informado"; sempre com a situação e a fonte. */
 export function ValorStatus({ v, ust }: { v: ValorFonte; ust?: boolean }) {
@@ -57,12 +57,12 @@ export function SecaoRelatorio({ n, titulo, children, acao }: { n: number; titul
   return (
     <section className="break-inside-avoid" style={{ borderTop: "1px solid var(--ds-color-border)", paddingTop: 16 }}>
       <div className="flex flex-wrap items-baseline justify-between gap-2 mb-2">
-        <h2 className="font-semibold" style={{ color: "var(--ds-color-text-primary)", fontSize: "1.05rem", lineHeight: 1.4, margin: 0 }}>
+        <h2 className="font-semibold" style={{ color: "var(--ds-color-text-primary)", fontSize: "var(--ds-heading-2-font-size)", lineHeight: 1.4, margin: 0 }}>
           <span style={cinza}>{n}.</span> {titulo}
         </h2>
         {acao}
       </div>
-      <div className="text-sm flex flex-col gap-2" style={{ color: "var(--ds-color-text-primary)" }}>{children}</div>
+      <div className="text-base flex flex-col gap-2" style={{ color: "var(--ds-color-text-primary)" }}>{children}</div>
     </section>
   );
 }

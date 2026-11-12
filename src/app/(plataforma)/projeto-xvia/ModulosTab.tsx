@@ -41,20 +41,20 @@ export function ModulosTab({ itens, sprints, hoje, filtros, filtrar }: {
       {maior && !filtros.modulo && (
         <StoryCard
           anchor={`${maior.epico} é o módulo com mais entregas: ${fmtNum(maior.total)}, sendo ${fmtNum(maior.emProducao)} já em produção e ${fmtNum(maior.atrasadas)} atrasadas.`}
-          comoLer={`A frente SGD reúne o que o time da SGD toca (área SGD no TFS); o resto é da X-VIA. Atrasada = entrega aberta cuja sprint já encerrou ou cujo prazo venceu (não muda o estado do item). Dependências ligadas = entregas com link Predecessor no TFS.${semLinks ? " Os links ainda não foram extraídos neste retrato." : ""}`}
+          comoLer={`A frente de cada item segue o contrato e as classificações cadastradas. X-VIA e SGD são contadas separadamente; itens sem frente identificada não entram nos indicadores executivos. Atrasada = entrega aberta cuja sprint já encerrou ou cujo prazo venceu (não muda o estado do item). Dependências ligadas = entregas com link Predecessor no TFS.${semLinks ? " Os links ainda não foram extraídos neste retrato." : ""}`}
         />
       )}
 
       <DashboardSection title="Quanto de cada módulo já está em produção?">
-        <StackedBarChart itens={modulos.map((m) => ({ label: m.epico, atendidos: m.emProducao, pendentes: m.total - m.emProducao }))} />
+        <StackedBarChart itens={modulos.map((m) => ({ label: m.epico, atendidos: m.emProducao, pendentes: m.total - m.emProducao, descricao: `${fmtNum(m.emProducao)} de ${fmtNum(m.total)} em produção · ${fmtNum(m.total - m.emProducao)} fora de produção` }))} />
         <p className="mt-3 text-xs" style={{ color: "var(--ds-color-text-muted)" }}>
-          Verde: entregas em produção. Vermelho: entregas ainda em andamento. Clique numa linha da tabela abaixo para ver só aquele módulo em todas as abas.
+          Verde: entregas em produção. Vermelho: entregas fora de produção (inclui as que não começaram). Os totais desta aba incluem todas as frentes nos filtros aplicados. Clique numa linha da tabela abaixo para ver só aquele módulo em todas as abas.
         </p>
       </DashboardSection>
 
       <DashboardSection title="Como está cada módulo?">
         <div className="overflow-x-auto min-w-0">
-          <DataTable columns={colunas} rows={modulos} rowKey={(r) => r.epico} onRowClick={(r) => filtrar("modulo", r.epico)} />
+          <DataTable horizontalScroll columns={colunas} rows={modulos} rowKey={(r) => r.epico} onRowClick={(r) => filtrar("modulo", r.epico)} />
         </div>
       </DashboardSection>
     </div>

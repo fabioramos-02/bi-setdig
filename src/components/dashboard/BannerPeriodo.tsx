@@ -24,7 +24,7 @@ export function BannerPeriodo({ rotulo }: { rotulo: string }) {
         Período aplicado: {rotulo}
       </span>
       <span style={{ color: "var(--ds-color-text-secondary)" }} className="text-xs">
-        Altere na barra lateral →
+        Altere na barra lateral
       </span>
     </div>
   );

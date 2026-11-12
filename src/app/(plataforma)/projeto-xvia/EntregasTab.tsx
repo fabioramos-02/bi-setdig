@@ -28,7 +28,7 @@ export function EntregasTab({ itens }: { itens: TfsItem[] }) {
       action={<ExportCsvButton filename="projeto-xvia-entregas.csv" rows={entregas.map((e) => ({ id: e.id, entrega: e.titulo, frente: e.frente, modulo: e.epico ?? "", feature: e.feature ?? "", sprint: nomeSprint(e.sprint), situacao: e.coluna ?? e.estado, responsavel: quemResolve(e), prazo: e.prazo ?? "", dependeDe: (e.dependeDe ?? []).join(" "), alteradoEm: e.alteradoEm ?? "", link: linkTfs(e.id) }))} />}
     >
       <p className="mb-3 text-xs" style={cinza}>Histórico de alterações: o painel guarda só a data da última alteração; o histórico completo fica no próprio item do TFS (link).</p>
-      <div className="overflow-x-auto min-w-0"><DataTable columns={colunas} rows={entregas} rowKey={(r) => String(r.id)} /></div>
+      <div className="overflow-x-auto min-w-0"><DataTable horizontalScroll pageSize={25} label="Entregas" searchText={(r) => [r.id, r.titulo, r.responsavel, r.epico, r.sprint, r.coluna].join(" ")} columns={colunas} rows={entregas} rowKey={(r) => String(r.id)} /></div>
     </DashboardSection>
   );
 }

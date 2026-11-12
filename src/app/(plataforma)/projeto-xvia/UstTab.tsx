@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { DataTable, type Coluna } from "@/components/dashboard/DataTable";
 import { ExportCsvButton } from "@/components/dashboard/ExportCsvButton";
-import { executadoPorMes, execucaoXvia, fmtNum, linkTfs, type EtpUst, type LinhaCodigo, type TfsContrato, type TfsItem } from "@/lib/tfs";
-import { RankingBarChart } from "@/components/charts/RankingBarChart";
+import { execucaoMensal, prazoProjeto, fmtData, fmtReais, execucaoXvia, fmtNum, linkTfs, type EtpUst, type LinhaCodigo, type TfsContrato, type TfsItem } from "@/lib/tfs";
+import { ExecucaoMensal } from "./ExecucaoMensal";
 import { LinkItem } from "./comum";
 import { UstResumo } from "./UstResumo";
 
@@ -44,24 +44,31 @@ const colunasTarefa: Coluna<TfsItem & { situacao?: string }>[] = [
  * (catálogo X-VIA; tarefa do contrato do Governo do Estado não entra),
  * comparado ao previsto na memória de cálculo do ETP (pp. 68–71). Regra em
  * lib/tfs.ts (execucaoXvia). Clique num código para ver as tarefas dele. */
-export function UstTab({ itens, etp, contrato }: { itens: TfsItem[]; etp: EtpUst | null; contrato: TfsContrato | null }) {
+export function UstTab({ itens, etp, contrato, mensal, hoje, prazo }: { itens: TfsItem[]; etp: EtpUst | null; contrato: TfsContrato | null; mensal: ReturnType<typeof execucaoMensal>; hoje: string; prazo: ReturnType<typeof prazoProjeto> }) {
   const f = execucaoXvia(itens, etp, contrato);
   const [codigo, setCodigo] = useState<string | null>(null);
+  const detalheRef = useRef<HTMLHeadingElement>(null);
+  useEffect(() => {
+    if (!codigo) return;
+    const id = requestAnimationFrame(() => { detalheRef.current?.focus({ preventScroll: true }); detalheRef.current?.scrollIntoView({ block: "start" }); });
+    return () => cancelAnimationFrame(id);
+  }, [codigo]);
   const aberto = f.porCodigo.find((l) => l.codigo === codigo) ?? null;
-  const porMes = executadoPorMes(itens, etp);
 
   if (f.tarefas === 0) {
-    return <StoryCard anchor="Nenhuma tarefa do contrato da X-VIA neste recorte." comoLer="A UST da X-VIA conta só as tarefas do contrato da X-VIA; as do contrato do Governo do Estado não entram. Mude os filtros acima para ver outro recorte." />;
+    return <StoryCard anchor="Nenhuma tarefa do contrato da X-VIA nos filtros aplicados." comoLer="A UST da X-VIA conta só as tarefas do contrato da X-VIA; as do contrato do Governo do Estado não entram. Mude os filtros acima para ver outro conjunto de registros." />;
   }
 
   return (
     <div className="flex flex-col gap-6">
       <UstResumo f={f} />
 
-      <DashboardSection title="Quantas UST a X-VIA concluiu em cada mês?">
-        <RankingBarChart itens={porMes.meses.map((m) => ({ label: new Date(`${m.mes}-15T12:00:00`).toLocaleDateString("pt-BR", { month: "short", year: "numeric" }), valor: m.ust }))} />
-        <p className="mt-2 text-xs" style={{ color: "var(--ds-color-text-muted)" }}>Mês da Data da Execução da tarefa (sem ela, a data de fechamento no TFS).{porMes.semData ? ` ${fmtNum(porMes.semData)} tarefas concluídas sem data ficam fora deste gráfico.` : ""}</p>
+      <DashboardSection title="Como a execução mensal se compara ao previsto?">
+        <ExecucaoMensal dados={mensal} hoje={hoje} />
       </DashboardSection>
+      <details className="text-sm"><summary className="cursor-pointer font-semibold">Consultar o contrato e a referência de UST</summary>
+        <p className="mt-2">{contrato ? `${contrato.contrato} · ${fmtData(prazo.inicio)} a ${fmtData(prazo.fim)}.` : "Contrato não informado."} {contrato?.valorTotal != null && `Valor total: ${fmtReais(contrato.valorTotal)}.`} A previsão por atividade vem do Estudo Técnico Preliminar (ETP); UST significa Unidade de Serviço Técnico.</p>
+      </details>
 
       <DashboardSection
         title="Quanto de cada atividade do ETP já foi usado?"
@@ -71,18 +78,18 @@ export function UstTab({ itens, etp, contrato }: { itens: TfsItem[]; etp: EtpUst
           Clique numa linha para ver as tarefas daquela atividade. Atividades do ETP ainda sem nenhuma tarefa aparecem com zero.
         </p>
         <div className="overflow-x-auto min-w-0">
-          <DataTable columns={colunasCodigo} rows={f.porCodigo} rowKey={(r) => r.codigo} onRowClick={(r) => setCodigo(r.codigo === codigo ? null : r.codigo)} />
+          <DataTable horizontalScroll pageSize={25} label="Atividades" searchText={(r) => [r.codigo, r.servico].join(" ")} columns={colunasCodigo} rows={f.porCodigo} rowKey={(r) => r.codigo} onRowClick={(r) => setCodigo(r.codigo === codigo ? null : r.codigo)} />
         </div>
         {aberto && (
           <div className="mt-4 min-w-0">
-            <h3 className="text-sm font-semibold mb-2" style={{ color: "var(--ds-color-text-primary)" }}>
+            <h3 ref={detalheRef} tabIndex={-1} className="text-sm font-semibold mb-2" style={{ color: "var(--ds-color-text-primary)" }}>
               {aberto.codigo} · {aberto.servico} — {fmtNum(aberto.tarefas)} tarefas
             </h3>
             {aberto.itens.length === 0 ? (
               <p className="text-sm" style={{ color: "var(--ds-color-text-secondary)" }}>Nenhuma tarefa usa esta atividade ainda.</p>
             ) : (
               <div className="overflow-x-auto min-w-0">
-                <DataTable columns={colunasTarefa} rows={aberto.itens} rowKey={(r) => String(r.id)} />
+                <DataTable horizontalScroll pageSize={25} label="Tarefas" searchText={(r) => [r.id, r.titulo, r.responsavel, r.epico, r.codigoCatalogo].join(" ")} columns={colunasTarefa} rows={aberto.itens} rowKey={(r) => String(r.id)} />
               </div>
             )}
           </div>
@@ -98,7 +105,7 @@ export function UstTab({ itens, etp, contrato }: { itens: TfsItem[]; etp: EtpUst
             {fmtNum(f.contagemAClassificar["sem código"])} sem código na descrição · {fmtNum(f.contagemAClassificar["faixa a definir"])} com faixa (ex.: NEG.03/04/05) a definir · {fmtNum(f.contagemAClassificar["fora do ETP"])} com código que não existe no catálogo da X-VIA. Lista para a X-VIA corrigir.
           </p>
           <div className="overflow-x-auto min-w-0">
-            <DataTable columns={colunasTarefa} rows={f.aClassificar} rowKey={(r) => String(r.id)} />
+            <DataTable horizontalScroll pageSize={25} label="Tarefas" searchText={(r) => [r.id, r.titulo, r.responsavel, r.epico, r.codigoCatalogo].join(" ")} columns={colunasTarefa} rows={f.aClassificar} rowKey={(r) => String(r.id)} />
           </div>
         </DashboardSection>
       )}
