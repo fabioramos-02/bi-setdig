@@ -12,7 +12,7 @@
   font-size: var(--ds-body-md-font-size);
 }
 .root > header { height: auto; min-height: 4rem; padding-block: var(--ds-spacing-8); }
-.root > header h1 { white-space: normal; line-height: 1.2; }
+.root > header h1 { white-space: normal; line-height: 1.2; overflow-wrap: anywhere; }
 .root :global(.text-xs), .root :global([class~="text-[11px]"]), .root :global([class~="text-[10px]"]) {
   font-size: var(--ds-body-sm-font-size); line-height: 1.5;
 }
@@ -32,7 +32,7 @@
 .root :global(.data-table-container button) { min-height: 2.75rem; }
 .root :global(dialog) { font-size: var(--ds-body-md-font-size); }
 .niveis { display: flex; gap: .25rem; margin-bottom: .75rem; }
-.niveis button { flex: 1; min-width: 0; min-height: 2.75rem; padding: .5rem; font-size: var(--ds-body-sm-font-size); border-bottom: 3px solid var(--ds-color-border); }
+.niveis button { flex: 1; min-width: 0; min-height: 2.75rem; padding: .5rem; font-size: var(--ds-body-sm-font-size); border-bottom: 3px solid var(--ds-color-border); overflow-wrap: anywhere; }
 .niveis button[aria-pressed="true"] { color: var(--ds-color-primary-600); border-color: var(--ds-color-primary-600); font-weight: 600; }
 .sinais { display: grid; grid-template-columns: minmax(0, 1fr); gap: .75rem; list-style: none; padding: 0; margin: .75rem 0; }
 .sinal { min-width: 0; padding: .875rem; border: 1px solid var(--ds-color-border); border-top: 3px solid var(--sinal-cor); border-radius: var(--ds-radius-sm); display: flex; flex-direction: column; gap: .375rem; }
@@ -63,10 +63,11 @@
 .filtros summary { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; cursor: pointer; min-height: 2.75rem; font-size: var(--ds-body-sm-font-size); }
 .controles { display: grid; grid-template-columns: minmax(0, 1fr); gap: .75rem; padding: .75rem 0; }
 .aplicados { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; font-size: var(--ds-body-sm-font-size); }
-.aplicados button { min-height: 2.75rem; }
+.aplicados button { min-height: 2.75rem; overflow-wrap: anywhere; }
 .printOnly { display: none; }
 .resumoPrint { display: none; }
 @media (min-width: 40rem) { .controles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 47.99rem) { .root main [tabindex="-1"] { scroll-margin-top: 4.5rem; } }
 @media (min-width: 80rem) {
   .sinais { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .controles { grid-template-columns: repeat(4, minmax(0, 1fr)); }

@@ -1,0 +1,48 @@
+.pagina { display: flex; flex-direction: column; gap: var(--ds-spacing-24); min-width: 0; overflow-wrap: anywhere; }
+.pagina table { overflow-wrap: normal; }
+.pagina h2 { margin: 0 0 var(--ds-spacing-8); font-size: var(--ds-heading-2-font-size); }
+.pagina h3 { margin: 0; font-size: var(--ds-heading-3-font-size); }
+.contexto, .ajuda { color: var(--ds-color-text-secondary); font-size: var(--ds-body-sm-font-size); line-height: 1.5; }
+.conclusao { font-size: var(--ds-body-md-font-size); line-height: 1.5; margin: var(--ds-spacing-8) 0; }
+.cabecalho { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: var(--ds-spacing-8) var(--ds-spacing-16); }
+.grupos { display: flex; flex-wrap: wrap; gap: var(--ds-spacing-8) var(--ds-spacing-16); padding: 0; margin: var(--ds-spacing-16) 0; list-style: none; }
+.grupos button { padding: var(--ds-spacing-8) 0; min-height: 2.75rem; font-size: var(--ds-body-sm-font-size); border-bottom: 2px solid transparent; text-align: left; color: var(--ds-color-primary-600); text-decoration: underline; }
+.grupos button[aria-pressed="true"] { border-color: var(--ds-color-primary-600); color: var(--ds-color-primary-600); font-weight: 600; }
+.grupos b { font-size: var(--ds-heading-3-font-size); margin-right: var(--ds-spacing-4); }
+.controles { display: flex; align-items: end; flex-wrap: wrap; gap: var(--ds-spacing-16); margin-bottom: var(--ds-spacing-16); }
+.controles label { flex: 1; min-width: 0; font-size: var(--ds-body-sm-font-size); }
+.controles label > span { display: block; margin-bottom: var(--ds-spacing-4); }
+.frentes { display: flex; flex-wrap: wrap; gap: var(--ds-spacing-8); }
+.frentes button { border: 1px solid var(--ds-color-border); border-radius: var(--ds-radius-sm); padding: var(--ds-spacing-8) var(--ds-spacing-16); min-height: 2.75rem; }
+.frentes button[aria-pressed="true"] { border-color: var(--ds-color-primary-600); font-weight: 600; background: var(--ds-color-background-muted); }
+.problemas { list-style: none; padding: 0; margin: 0; }
+.problema { padding: var(--ds-spacing-16) 0; border-top: 1px solid var(--ds-color-border); break-inside: avoid; scroll-margin-top: var(--ds-spacing-16); }
+.problema > div:first-child { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--ds-spacing-8); }
+.problema h3 { margin: var(--ds-spacing-8) 0; }
+.situacao { font-size: var(--ds-body-sm-font-size); font-weight: 600; padding-left: var(--ds-spacing-8); border-left: 3px solid var(--ds-color-primary-600); }
+.situacao[data-tipo="decisao"], .situacao[data-tipo="impedimento"], .situacao[data-tipo="atraso"] { border-color: var(--ds-color-danger); }
+.acao { margin: var(--ds-spacing-8) 0; font-size: var(--ds-body-md-font-size); line-height: 1.5; }
+.metadados { display: grid; gap: var(--ds-spacing-8) var(--ds-spacing-16); grid-template-columns: minmax(0, 1fr); margin: var(--ds-spacing-8) 0; }
+.metadados dt { font-size: var(--ds-body-sm-font-size); color: var(--ds-color-text-secondary); }
+.metadados dd { margin: 0; overflow-wrap: anywhere; font-size: var(--ds-body-sm-font-size); }
+.links { display: flex; flex-wrap: wrap; gap: var(--ds-spacing-8) var(--ds-spacing-16); align-items: center; }
+.links button, .link { color: var(--ds-color-primary-600); text-decoration: underline; min-height: 2.75rem; font-size: var(--ds-body-sm-font-size); }
+.impacto { font-size: var(--ds-body-sm-font-size); margin: var(--ds-spacing-8) 0; }
+.impacto ul { margin: var(--ds-spacing-4) 0; padding-left: var(--ds-spacing-20); }
+.comparacoes { list-style: none; padding: 0; margin: 0; }
+.comparacoes > li { padding: var(--ds-spacing-16) 0; border-bottom: 1px solid var(--ds-color-border); break-inside: avoid; }
+.comparacoes > li:first-child { padding-top: 0; }
+.motivos { display: flex; flex-wrap: wrap; gap: var(--ds-spacing-8) var(--ds-spacing-16); list-style: none; padding: 0; margin: var(--ds-spacing-8) 0; font-size: var(--ds-body-sm-font-size); }
+.secundario { border-top: 1px solid var(--ds-color-border); padding-top: var(--ds-spacing-16); }
+.secundario summary { cursor: pointer; font-size: var(--ds-body-md-font-size); font-weight: 500; min-height: 2.75rem; }
+.duasColunas { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--ds-spacing-24); }
+.gradeModulos { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--ds-spacing-24); }
+.gradeModulos > li:first-child { padding-top: var(--ds-spacing-16); }
+.gradeModulos h3 button { font-size: var(--ds-heading-3-font-size); font-weight: 600; }
+.sprintDados { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--ds-spacing-16); margin: var(--ds-spacing-16) 0; }
+.sprintDados dt { font-size: var(--ds-body-sm-font-size); color: var(--ds-color-text-secondary); }
+.sprintDados dd { margin: 0; font-size: var(--ds-heading-2-font-size); font-weight: 600; }
+.vazio { padding-block: var(--ds-spacing-16); font-size: var(--ds-body-md-font-size); color: var(--ds-color-text-secondary); }
+@media (min-width: 40rem) { .metadados { grid-template-columns: repeat(3, minmax(0, 1fr)); } .sprintDados { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (min-width: 80rem) { .duasColunas, .gradeModulos { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media print { .pagina { gap: var(--ds-spacing-16); } .controles, .grupos, .frentes, .links { display: none; } .metadados { grid-template-columns: repeat(3, minmax(0, 1fr)); } }

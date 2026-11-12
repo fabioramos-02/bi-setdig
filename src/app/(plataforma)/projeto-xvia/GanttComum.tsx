@@ -56,7 +56,7 @@ export const TXT_SIT: Partial<Record<Situacao, string>> = {
 export const COR_INVERTIDA = "#dc2626";
 export const corta = (t: string, n: number) => (t.length > n ? `${t.slice(0, n - 1)}…` : t);
 
-/** Cabeçalho de sprints, faixas alternadas e a linha HOJE. */
+/** Cabeçalho de sprints, faixas alternadas e a linha da data dos dados. */
 export function GradeSprints({ colunas, aPlanejar, rot, col, altura, hojeIdx, hoje, k = 1 }: {
   colunas: TfsSprint[]; aPlanejar: boolean; rot: number; col: number; altura: number; hojeIdx: number | null; hoje: string; k?: number;
 }) {
@@ -83,7 +83,7 @@ export function GradeSprints({ colunas, aPlanejar, rot, col, altura, hojeIdx, ho
       {xHoje !== null && (
         <>
           <line x1={xHoje} x2={xHoje} y1={(comData ? 36 : 22) * k} y2={altura} stroke="var(--ds-color-danger)" strokeDasharray="4 3" />
-          <text x={xHoje + 3} y={altura - 4} style={{ fontSize: "var(--ds-body-sm-font-size)" }} fill="var(--ds-color-danger)">HOJE</text>
+          <text x={xHoje - 4} y={altura - 4} textAnchor="end" style={{ fontSize: "var(--ds-body-sm-font-size)" }} fill="var(--ds-color-text-primary)">Dados de {fmtData(hoje).slice(0, 5)}</text>
         </>
       )}
     </>

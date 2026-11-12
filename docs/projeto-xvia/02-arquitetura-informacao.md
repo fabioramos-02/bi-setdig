@@ -50,16 +50,20 @@ A execução mensal também está em UST; a tabela integral de SLA está em Spri
 
 ## Nível 2 — Visão do Gerente
 
-**Público:** Gerente de Projeto e Superintendência. **Pergunta:** onde agir hoje?
+**Público:** Gerente de Projeto e Superintendência. **Pergunta:** onde agir para o projeto avançar?
 
-| Aba | Pergunta | Componente |
+| Área | Pergunta e comportamento | Componente |
 |---|---|---|
-| Prioridades (abre aqui) | O que está parado ou atrasado, por quê, qual a ação e quem resolve? X-VIA e SGD em blocos separados | `PrioridadesTab` |
-| Cronograma e dependências | Onde cada módulo está, o que atrasou e o que isso trava? (PBI #1348598). **Uma linha por Feature** (visão geral: uma por módulo): barra da primeira à última sprint das entregas, com a parte pronta pintada e a pior situação. No topo, "O que fazer" (replanejar, esperando, atrasos reais, dependências ao contrário). Clique na Feature para abrir as entregas. PNG/SVG | `CronogramaTab`, `GanttFeatures`, `GanttPbis` + `lib/cronograma.ts` (`montarPorFeature`) |
-| Módulos e frentes | Como está cada módulo, X-VIA × SGD? | `ModulosTab` |
-| Gasto por órgão e serviço | Quanto cada órgão e serviço consumiu, faturou e recebeu? Drill Órgão → Serviço e Órgão → OS → Medição → NF → Pagamento | `FinanceiroTab` |
-| Sprints, entregas e aceite | O que a sprint priorizou, o que fechou no mês e o que falta para medir os prazos de atendimento? | `FiscalizacaoTab` |
+| Central de ação (abre aqui; ID `prioridades`) | Decisão, motivo observado, ação, responsável no registro, tempo sem atualização e dependências reais; cinco problemas iniciais, busca, consulta completa e CSV. Sínteses de módulos, sprint e execução abaixo. Fila anterior preservada e recolhida | `PrioridadesTab`, `FilaGestao`, `ProblemaGestaoItem`, `AcompanhamentoGerente`, `FilaAnterior` |
+| Cronograma (`cronograma`) | Ações de replanejamento, espera e atraso real antes do gráfico. Inversões com nomes e frentes; módulo, Feature e histórias no Gantt existente. PNG/SVG preservados | `CronogramaTab`, `AcoesCronograma`, `DependenciasGerente`, Gantts |
+| Módulos (`modulos`) | Situação existente, motivos e próxima ação; distingue PBI/Bug de histórias do cronograma. Nome aplica filtro; ações abrem Central ou cronograma. Distribuição/tabela anteriores consultáveis | `ModulosTab` |
+| Sprint e acompanhamento (`fiscalizacao`) | Produção, fila, execução e espera na sprint do retrato, sem forecast. Lista de entregas, histórico, produção e SLA completos sob demanda | `FiscalizacaoTab` |
+| Execução e financeiro (`financeiro`) | Consumo em UST/valor calculado e concentração por órgão/serviço. Não confunde esforço com faturamento. Sem registros, mensagem única e cadeia completa consultável; documentos por órgão quando cadastrados | `FinanceiroTab`, `DocumentosOrgao` |
 
+Preparação: `lib/xvia-gestao.ts` e `lib/xvia-gestao-acoes.ts`, sobre os motores existentes de TFS e cronograma.
+Não há score de saúde, forecast ou inferência de decisor. Motivo/causa específica ausente continua explícito.
+A fila de gestão inclui riscos e falta de sprint e, portanto, não substitui nem deve ser confundida com os
+totais da fila anterior por prazo/pendência. Ordenamento e abrangências documentados na auditoria 09.
 ## Nível 3 — Detalhamento
 
 **Público:** analistas, fiscalização e quem valida os dados. **Pergunta:** de onde vem cada número?
@@ -87,11 +91,11 @@ Régua dos tons dos sinais:
 
 ## Navegação
 
-`lib/xvia-navegacao.ts` descreve nível, aba e alvo de foco. Secretário → Cronograma/Prioridades/
-Financeiro no Gerente ou UST/Registros no Detalhamento. Os quatro filtros são preservados.
+`lib/xvia-navegacao.ts` descreve nível, aba e alvo de foco. Nível e aba também ficam na URL (`visao`/`aba`). Secretário → Cronograma/Prioridades/
+Financeiro no Gerente ou UST/Registros no Detalhamento. Os quatro filtros são preservados. O parâmetro `grupo` seleciona um critério na Central; `acao` seleciona uma lista no Detalhamento → Entregas. Esses critérios são visíveis e não alteram os indicadores contratuais de outras abas. Limpar os filtros globais preserva a área de trabalho. Os aprofundamentos permitem retorno pelo histórico e aguardam a URL correta antes de transferir o foco.
 Módulo do cronograma é o mesmo da URL; não existe seleção local concorrente. Abrir uma Feature
 ou uma atividade UST leva foco ao detalhe. Gantt possui rolagem interna e alternativa em lista.
 Tabelas extensas têm busca/paginação; ordenar considera a coleção inteira; CSV e impressão
 continuam integrais. "De onde vem?" preserva conta, fonte, composição, busca, subtotais e CSV.
 
-Auditoria e resultados da revisão: [08-auditoria-ux-storytelling.md](08-auditoria-ux-storytelling.md).
+Auditorias e resultados: [08 — página e Secretário](08-auditoria-ux-storytelling.md) e [09 — central de gestão do Gerente](09-auditoria-visao-gerente.md).

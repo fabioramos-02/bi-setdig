@@ -111,3 +111,16 @@ mesmo que o BI.
 - Verificação: lint sem avisos, 298 testes e build aprovados; três níveis/11 abas em 375/1366px; 16 combinações de resolução/zoom, fonte ampliada, teclado, tema escuro, filtros e exportações conferidos. Resumo PDF em uma página A4 paisagem no caso CMS testado.
 - Andamento e resultados de cada fase registrados no vault `conhecimento-obsidian`, nota `2026-11-11-ux-storytelling-bi-xvia.md`. `AGENTS.md` passa a preservar essa orientação nas próximas fases.
 - Continuam pendentes de dados: detalhamento da decisão/impacto, registros financeiros, medição de SLA e conciliação documental das regras já apontada na auditoria. Nenhuma informação foi simulada.
+
+## Rodada 10 (12/11/2026): central de gestão do Gerente
+
+- Auditoria e wireframe produzidos antes do frontend em `09-auditoria-visao-gerente.md`, com jornada real, componentes, matriz pergunta/dado/componente, prioridades e riscos.
+- Cinco áreas: Central de ação, Cronograma, Módulos, Sprint e acompanhamento, Execução e financeiro. A abertura mostra cinco problemas com motivo observado, ação, responsável do registro, tempo sem atualização e vínculos reais. Grupos, busca, paginação, CSV e impressão integral disponíveis.
+- A nova união de problemas abertos soma 146 X-VIA/42 SGD e inclui risco e falta de sprint. A fila anterior 103/33 permanece consultável e exportável. Categoria, última alteração e ID ordenam a apresentação, sem score; contagens dos grupos podem se sobrepor.
+- Cronograma começa pelos encaminhamentos; ligações invertidas mostram nomes/frentes/responsáveis e distinguem concluídos. Gantt macro e Feature/PBI mantidos; “Dados de 11/11” identifica a data efetiva da linha temporal.
+- Módulos explicam situação e próxima ação, separando PBI+Bug dos PBIs do cronograma. Sprint 6 começa pelo observável: 13/26 em produção, 11 na fila, 1 em desenvolvimento e 1 esperando. Histórico e SLA continuam consultáveis.
+- Execução mostra 583 UST/R$ 90.137,63 calculados e participação dos órgãos; ausência financeira é comunicada em uma mensagem, mantendo etapas e documentos disponíveis. Valor calculado não é apresentado como faturado ou pago.
+- Nível, aba, quatro filtros e critérios de ação permanecem na URL. Aprofundamentos abrem o detalhe e conduzem foco; trocar aba por teclado preserva foco no seletor. Critério específico do Detalhamento não altera indicadores contratuais.
+- Preparação em `lib/xvia-gestao.ts` e `lib/xvia-gestao-acoes.ts`; navegação em `lib/xvia-navegacao.ts`. Sem alteração em `lib/tfs.ts`, `lib/cronograma.ts`, datasets, pipeline ou repositório irmão.
+- Validação: lint, 309 testes e build aprovados. Cinco abas × quatro resoluções × quatro níveis equivalentes de zoom (80 passagens), 375px com fonte 200%, tema escuro, filtros, vazio, teclado, origem, retorno, CSV, PNG/SVG e três formatos de PDF conferidos. Comparação antes/depois dos indicadores consta na auditoria.
+- Fases e resultados registrados no vault `conhecimento-obsidian`, nota `2026-11-12-central-gestao-bi-xvia.md`. Mantidas as lacunas de financeiro, SLA, descrição da decisão e histórico, sem forecast ou responsabilização inventada. Concluído localmente, sem commit, push ou deploy.

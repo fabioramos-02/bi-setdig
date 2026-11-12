@@ -214,3 +214,6 @@ no vault `C:/Users/framos/Documents/SETDIG/conhecimento-obsidian`, pasta
 `20-projeto/dashboard-analytics-setdig/`. Para esta revisão, usar a nota
 `2026-11-11-ux-storytelling-bi-xvia.md`, ligada às notas do projeto. Não marcar fase concluída
 antes da execução e da verificação; atualizar o registro também quando uma limitação permanecer.
+
+A revisão da Central de gestão do Gerente (12/11/2026) é acompanhada na nota
+`2026-11-12-central-gestao-bi-xvia.md` da mesma pasta, ligada à nota anterior e ao projeto principal.

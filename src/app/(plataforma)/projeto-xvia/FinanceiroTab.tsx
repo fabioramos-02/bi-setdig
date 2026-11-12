@@ -1,111 +1,61 @@
 "use client";
-
-import { useState } from "react";
-import { StoryCard } from "@/components/dashboard/StoryCard";
-import { DashboardSection } from "@/components/dashboard/DashboardSection";
+import { useEffect, useRef, useState } from "react";
 import { DataTable, type Coluna } from "@/components/dashboard/DataTable";
-import {
-  cadeiaFinanceira, consumoPorOrgao, execucaoXvia, fmtData, fmtNum, fmtReais, SEM_ORGAO,
-  type EtpUst, type Financeiro, type LinhaOrgao, type LinhaServico, type TfsContrato, type TfsItem,
-} from "@/lib/tfs";
+import { prepararOrgaoGestao, type ExecucaoGestao } from "@/lib/xvia-gestao";
+import type { NavegarProjeto } from "@/lib/xvia-navegacao";
+import { fmtNum, fmtReais, type Financeiro, type LinhaServico, type Origem } from "@/lib/tfs";
 import { OrigemBotao } from "./OrigemBotao";
 import { TabelaCadeia } from "./CadeiaFinanceira";
-import { LinkItem, NI, ValorStatus, cinza } from "./comum";
+import { DocumentosOrgao } from "./DocumentosOrgao";
+import { LinkItem } from "./comum";
+import styles from "./gestao.module.css";
 
-type LinhaFin = LinhaOrgao & { cadeia: ReturnType<typeof cadeiaFinanceira> };
-
-const colOrgao: Coluna<LinhaFin>[] = [
+type Orgao = ExecucaoGestao["orgaos"][number];
+const colOrgao: Coluna<Orgao>[] = [
   { key: "orgao", label: "Órgão", sortable: true, sortValue: (r) => r.orgao, render: (r) => r.orgao },
-  { key: "prevista", label: "UST previstas (OS)", align: "right", render: (r) => <ValorStatus v={r.cadeia.ustPrevista} ust /> },
   { key: "ust", label: "UST executadas", align: "right", sortable: true, sortValue: (r) => r.ustExecutada, render: (r) => fmtNum(r.ustExecutada) },
-  { key: "aceitas", label: "UST aceitas", align: "right", render: (r) => <ValorStatus v={r.cadeia.ustAceita} ust /> },
-  { key: "consumido", label: "Valor consumido", align: "right", sortable: true, sortValue: (r) => r.valorConsumido ?? 0, render: (r) => (r.valorConsumido === null ? NI : fmtReais(r.valorConsumido)) },
-  { key: "faturado", label: "Faturado", align: "right", render: (r) => <ValorStatus v={r.cadeia.valorFaturado} /> },
-  { key: "pago", label: "Pago", align: "right", render: (r) => <ValorStatus v={r.cadeia.valorPago} /> },
-  { key: "pendente", label: "Pendente", align: "right", render: (r) => <ValorStatus v={r.cadeia.valorPendente} /> },
+  { key: "parte", label: "Participação na execução", align: "right", sortable: true, sortValue: (r) => r.pct ?? -1, render: (r) => r.pct == null ? "Sem base" : `${fmtNum(r.pct)}%` },
+  { key: "valor", label: "Valor calculado", align: "right", sortable: true, sortValue: (r) => r.valorConsumido ?? -1, render: (r) => r.valorConsumido == null ? "Não informado" : fmtReais(r.valorConsumido) },
 ];
-
 const colServico: Coluna<LinhaServico>[] = [
-  { key: "servico", label: "Serviço", sortable: true, sortValue: (r) => r.servico, render: (r) => (r.pbiId ? <LinkItem item={{ id: r.pbiId, titulo: r.servico }} /> : r.servico) },
+  { key: "servico", label: "Serviço", sortable: true, sortValue: (r) => r.servico, render: (r) => r.pbiId ? <LinkItem item={{ id: r.pbiId, titulo: r.servico }} /> : r.servico },
   { key: "ust", label: "UST executadas", align: "right", sortable: true, sortValue: (r) => r.ustExecutada, render: (r) => fmtNum(r.ustExecutada) },
-  { key: "consumido", label: "Valor consumido", align: "right", sortable: true, sortValue: (r) => r.valorConsumido ?? 0, render: (r) => (r.valorConsumido === null ? NI : fmtReais(r.valorConsumido)) },
-  { key: "tarefas", label: "Tarefas", align: "right", render: (r) => <OrigemBotao origem={{ rotulo: `Tarefas de ${r.servico}`, detalhe: "Tarefas da X-VIA concluídas, com código do catálogo, neste serviço.", itens: r.tarefas }} /> },
+  { key: "valor", label: "Valor calculado", align: "right", render: (r) => r.valorConsumido == null ? "Não informado" : fmtReais(r.valorConsumido) },
+  { key: "origem", label: "Composição", render: (r) => <OrigemBotao origem={{ rotulo: `Tarefas de ${r.servico}`, detalhe: "Tarefas concluídas da X-VIA com atividade válida, ligadas ao serviço.", itens: r.tarefas }} /> },
 ];
 
-/** Nível 2 — "Quanto cada órgão e serviço consumiu, quanto foi faturado e quanto foi pago?"
- * Execução vem do TFS (só X-VIA); OS, aceite, nota fiscal e pagamento, do financeiro.json.
- * Projeto → Órgão → Serviço, e Órgão → OS → Medição → Nota fiscal → Pagamento. */
-export function FinanceiroTab({ itens, etp, contrato, financeiro, filtrado = false }: { itens: TfsItem[]; etp: EtpUst | null; contrato: TfsContrato | null; financeiro: Financeiro | null; filtrado?: boolean }) {
-  const total = execucaoXvia(itens, etp, contrato);
-  const projeto = cadeiaFinanceira(financeiro, { ust: total.ustExecutada, valor: total.valorExecutado });
-  const linhas: LinhaFin[] = consumoPorOrgao(itens, etp, contrato).map((o) => ({
-    ...o, cadeia: cadeiaFinanceira(financeiro, { ust: o.ustExecutada, valor: o.valorConsumido }, o.orgao === SEM_ORGAO ? "__sem__" : o.orgao),
-  }));
-  const [orgao, setOrgao] = useState<string | null>(null);
-  const sel = linhas.find((l) => l.orgao === orgao) ?? null;
-  const semOrgao = linhas.find((l) => l.orgao === SEM_ORGAO);
-  const semRegistro = !financeiro || (financeiro.ordensServico.length + financeiro.notasFiscais.length + financeiro.pagamentos.length === 0);
-
-  return (
-    <div className="flex flex-col gap-6">
-      <StoryCard
-        anchor={`A X-VIA executou ${fmtNum(total.ustExecutada)} UST${total.valorExecutado !== null ? ` (${fmtReais(total.valorExecutado)})` : ""} em ${fmtNum(linhas.filter((l) => l.orgao !== SEM_ORGAO).length)} órgãos.${semRegistro ? " Ordens de Serviço, aceite, notas fiscais e pagamentos ainda não foram registrados." : ""}`}
-        caption={semOrgao ? `${fmtNum(semOrgao.ustExecutada)} UST estão em tarefas sem órgão identificado: aparecem numa linha própria, sem rateio.` : undefined}
-        comoLer="Executado, aceito, faturado e pago são etapas diferentes, cada uma com sua fonte: tarefa concluída não é UST aceita, e nota fiscal não é pagamento. Etapa sem registro aparece como 'Não informado'. A soma por órgão é igual ao total executado. Clique num órgão para ver serviços e documentos."
-      />
-
-      <DashboardSection title="O que foi executado, aceito e pago?">
-        <p className="mb-3 text-sm" style={cinza}>{filtrado ? "A execução considera os filtros aplicados." : "A execução considera a X-VIA no projeto inteiro."} OS, aceites, notas e pagamentos são registros do contrato inteiro; não seguem os quatro filtros do painel.</p>
-        <TabelaCadeia cadeia={projeto} />
-        {semRegistro && <p className="mt-2 text-xs" style={cinza}>Solicitar à equipe financeira o registro das Ordens de Serviço, medições, notas e pagamentos, com os documentos de origem.</p>}
-      </DashboardSection>
-
-      <DashboardSection title="Quanto cada órgão consumiu?">
-        <div className="overflow-x-auto min-w-0">
-          <DataTable horizontalScroll columns={colOrgao} rows={linhas} rowKey={(r) => r.orgao} onRowClick={(r) => setOrgao(r.orgao === orgao ? null : r.orgao)} />
-        </div>
-        <p className="mt-2 text-xs" style={cinza}>Total da coluna UST executadas: {fmtNum(linhas.reduce((s, l) => s + l.ustExecutada, 0))} (igual à execução nos filtros aplicados).</p>
-      </DashboardSection>
-
-      {sel && (
-        <DashboardSection title={`${sel.orgao}: serviços e documentos`} action={<OrigemBotao origem={{ rotulo: `Tarefas de ${sel.orgao}`, detalhe: "Tarefas da X-VIA concluídas, com código do catálogo, ligadas ao órgão pela Feature ou pelo campo Órgãos/Secretarias.", itens: sel.tarefas }} />}>
-          <div className="overflow-x-auto min-w-0"><DataTable horizontalScroll columns={colServico} rows={sel.servicos} rowKey={(r) => String(r.pbiId ?? r.servico)} /></div>
-          <h3 className="mt-5 mb-2 text-sm font-semibold">Documentos do pedido ao pagamento</h3>
-          {sel.cadeia.recorte.os.length === 0 ? (
-            <p className="text-sm" style={cinza}>Nenhuma Ordem de Serviço registrada para {sel.orgao}.</p>
-          ) : (
-            <ul className="flex flex-col gap-3 text-sm">
-              {sel.cadeia.recorte.os.map((os) => {
-                const meds = sel.cadeia.recorte.medicoes.filter((m) => m.os === os.numero);
-                return (
-                  <li key={os.numero} style={{ borderLeft: "3px solid var(--ds-color-primary-600)", paddingLeft: 8 }}>
-                    <b>{os.numero}</b> · {os.servico ?? "serviço não informado"} · {fmtNum(os.ustPrevista)} UST previstas · {os.status} <span style={cinza}>({os.fonte})</span>
-                    {meds.length === 0 && <div style={cinza}>Sem medição registrada.</div>}
-                    {meds.map((m) => {
-                      const nfs = sel.cadeia.recorte.notas.filter((n) => n.medicoes.includes(m.id));
-                      return (
-                        <div key={m.id} className="ml-3 mt-1">
-                          Medição {m.id} ({m.periodo}): {fmtNum(m.ustExecutada)} executadas, {m.ustAceita == null ? "aceite não registrado" : `${fmtNum(m.ustAceita)} aceitas em ${fmtData(m.dataAceite ?? null)}`} <span style={cinza}>({m.fonte})</span>
-                          {nfs.length === 0 && <div className="ml-3" style={cinza}>Sem nota fiscal.</div>}
-                          {nfs.map((n) => {
-                            const pags = sel.cadeia.recorte.pagamentos.filter((p) => p.notaFiscal === n.numero);
-                            return (
-                              <div key={n.numero} className="ml-3">
-                                Nota {n.numero}: {fmtReais(n.valor)} · {n.status} <span style={cinza}>({n.fonte})</span>
-                                <div className="ml-3">{pags.length === 0 ? <span style={cinza}>Pagamento não registrado.</span> : pags.map((p) => <div key={`${p.notaFiscal}${p.data}`}>Pagamento {fmtReais(p.valor)} em {fmtData(p.data)} · {p.status} <span style={cinza}>({p.fonte})</span></div>)}</div>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      );
-                    })}
-                  </li>
-                );
-              })}
-            </ul>
-          )}
-        </DashboardSection>
-      )}
-    </div>
-  );
+export function FinanceiroTab({ dados: d, financeiro, contexto, origemExecucao, onNavegar }: { dados: ExecucaoGestao; financeiro: Financeiro | null; contexto: string; origemExecucao?: Origem; onNavegar: NavegarProjeto }) {
+  const [nomeOrgao, setNomeOrgao] = useState<string | null>(null);
+  const orgao = prepararOrgaoGestao(d, financeiro, nomeOrgao);
+  const detalheRef = useRef<HTMLHeadingElement>(null);
+  useEffect(() => {
+    if (!nomeOrgao) return;
+    const id = requestAnimationFrame(() => { detalheRef.current?.focus({ preventScroll: true }); detalheRef.current?.scrollIntoView({ block: "start" }); });
+    return () => cancelAnimationFrame(id);
+  }, [nomeOrgao]);
+  return <div className={styles.pagina}>
+    <header><h2>Quanto trabalho contratado foi consumido?</h2><p className={styles.contexto}>{contexto}</p><p className={styles.conclusao}>{d.frase}</p>
+      <p className={styles.ajuda}>UST significa unidade de serviço técnico. Quantidade executada é trabalho concluído registrado, sem representar percentual de conclusão do projeto.</p>
+      <div className={styles.links}>{origemExecucao && <OrigemBotao origem={origemExecucao} />}<button type="button" onClick={() => onNavegar({ nivel: "detalhe", aba: "ust" })}>Conferir atividades e tarefas</button></div>
+    </header>
+    <section><h2>Onde está concentrado o esforço?</h2><p className={styles.conclusao}>{d.concentracao}</p>
+      <p className={styles.ajuda}>Participação calculada sobre toda a execução nos filtros aplicados, incluindo tarefas sem órgão identificado. Maior consumo não significa problema.</p>
+      {d.semOrgao && d.semOrgao.ustExecutada > 0 && <p className={styles.acao}><strong>{fmtNum(d.semOrgao.ustExecutada)} UST ({fmtNum(d.semOrgao.pct ?? 0)}%) estão sem órgão identificado.</strong> Atribuição incompleta limita a análise por órgão. <button type="button" className={styles.link} onClick={() => onNavegar({ nivel: "detalhe", aba: "qualidade" })}>Conferir atribuição de órgãos</button></p>}
+      <DataTable horizontalScroll label="Órgãos com execução" columns={colOrgao} rows={d.orgaos} rowKey={(r) => r.orgao} onRowClick={(r) => setNomeOrgao(r.orgao === nomeOrgao ? null : r.orgao)} />
+    </section>
+    {orgao && <section><h3 ref={detalheRef} tabIndex={-1}>{orgao.orgao}: serviços que compõem o consumo</h3>
+      <p className={styles.contexto}>{fmtNum(orgao.ustExecutada)} UST no órgão. Clique no nome do serviço para conferir o registro original; a composição apresenta as tarefas.</p>
+      <DataTable horizontalScroll label={`Serviços de ${orgao.orgao}`} columns={colServico} rows={orgao.servicos} rowKey={(r) => String(r.pbiId ?? r.servico)} />
+      {d.temRegistros && <DocumentosOrgao orgao={orgao} />}
+    </section>}
+    <section><h2>O que foi aceito, faturado e pago?</h2>
+      <p className={styles.ajuda}>Ordens de Serviço, aceites, notas e pagamentos são registros independentes do contrato inteiro. Não acompanham os quatro filtros dos itens. Execução técnica segue os filtros aplicados.</p>
+      {d.temRegistros ? <TabelaCadeia cadeia={d.cadeia} /> : <>
+        <p className={styles.conclusao}>Aceite, faturamento e pagamento não informados. Ainda não há registros financeiros para acompanhar essas etapas.</p>
+        <p className={styles.ajuda}>Solicitar os documentos de origem à equipe financeira e registrar cada etapa. Trabalho concluído não comprova aceite nem pagamento.</p>
+        <details className={styles.secundario}><summary>Consultar todas as etapas e suas referências</summary><TabelaCadeia cadeia={d.cadeia} /></details>
+      </>}
+      <button type="button" className={styles.link} onClick={() => onNavegar({ nivel: "detalhe", aba: "registros" })}>Conferir os registros financeiros do contrato</button>
+    </section>
+  </div>;
 }
