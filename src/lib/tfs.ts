@@ -529,6 +529,8 @@ export type Sinal = {
   tom: Tom;
   palavra: string;
   principal: string;
+  /** Frase curta de um assunto só, para a situação geral do Secretário. */
+  resumo: string;
   comparacao: string;
   barras?: { rotulo: string; pct: number }[];
   acao?: { texto: string; aba: string };
@@ -545,7 +547,7 @@ export const tomExecucao = (executado: number, previsto: number | null): Tom =>
 export const tomDecisoes = (paradas: TfsItem[]): Tom =>
   !paradas.length ? "ok" : paradas.some((p) => (p.diasSemAtualizar ?? 0) > 30) ? "critico" : "atencao";
 
-const ORDEM_TOM: Tom[] = ["critico", "atencao", "info", "ok", "neutro"];
+export const ORDEM_TOM: Tom[] = ["critico", "atencao", "info", "ok", "neutro"];
 
 export function vereditoExecutivo(a: {
   prazo: { pctDecorrido: number; diasRestantes: number; fim: string; inicio: string };
@@ -565,11 +567,14 @@ export function vereditoExecutivo(a: {
   const tExe = tomExecucao(consumo.ustExecutada, previsto);
   const tDec = tomDecisoes(paradas);
   const reais = consumo.valorExecutado === null ? "" : ` · ${fmtReais(consumo.valorExecutado)}`;
+  const parteEnt = tEnt === "ok" ? "Entregas no ritmo do prazo" : tEnt === "atencao" ? "Entregas um pouco atrás do prazo" : "Entregas atrasadas em relação ao prazo";
+  const nivelExe = tExe === "ok" ? "no previsto" : tExe === "atencao" ? "abaixo do previsto" : "bem abaixo do previsto";
 
   const sinais: Sinal[] = [
     {
       id: "entregas", rotulo: "Entregas", tom: tEnt, palavra: PALAVRA_TOM[tEnt],
       principal: `${andamento.pct}% em produção`,
+      resumo: `${parteEnt}: ${andamento.pct}% das entregas em produção com ${prazo.pctDecorrido}% do prazo decorrido.`,
       comparacao: `${fmtNum(andamento.emProducao)} de ${fmtNum(andamento.planejadas)} entregas · ${prazo.pctDecorrido}% do prazo já passou (faltam ${fmtNum(prazo.diasRestantes)} dias)`,
       barras: [{ rotulo: "Em produção", pct: andamento.pct }, { rotulo: "Prazo decorrido", pct: prazo.pctDecorrido }],
       acao: { texto: "Ver cronograma", aba: "cronograma" },
@@ -578,6 +583,9 @@ export function vereditoExecutivo(a: {
     {
       id: "execucao", rotulo: "Execução do contrato", tom: tExe, palavra: PALAVRA_TOM[tExe],
       principal: `${fmtNum(consumo.ustExecutada)} UST${recorte ? " neste recorte" : ""}`,
+      resumo: previsto ? `Execução do contrato ${nivelExe}: ${pctPrevisto}% das UST previstas até este mês.`
+        : recorte ? `Execução de ${fmtNum(consumo.ustExecutada)} UST neste recorte, sem comparação com o contrato inteiro.`
+        : `Execução de ${fmtNum(consumo.ustExecutada)} UST, sem previsão do contrato para comparar.`,
       comparacao: previsto
         ? `${pctPrevisto}% das ${fmtNum(previsto)} previstas no TR até este mês${reais}`
         : `${recorte ? "recorte filtrado: sem comparação com o contrato inteiro" : "sem previsão do TR"}${reais}`,
@@ -588,6 +596,8 @@ export function vereditoExecutivo(a: {
     {
       id: "decisoes", rotulo: "Decisões e bloqueios", tom: tDec, palavra: tDec === "ok" ? "nada parado" : tDec === "critico" ? "parado há mais de 30 dias" : "atenção",
       principal: `${fmtNum(decidir.length)} esperam decisão`,
+      resumo: decidir.length ? `${fmtNum(decidir.length)} ${decidir.length === 1 ? "entrega espera" : "entregas esperam"} decisão; ${fmtNum(paradas.length)} paradas no total.`
+        : paradas.length ? `${fmtNum(paradas.length)} entregas paradas por impedimento ou dependência.` : "Nenhuma entrega parada.",
       comparacao: `${fmtNum(paradas.length)} entregas paradas (decisão, impedimento ou dependência) · ${fmtNum(a.atrasadas.length)} passaram da sprint ou do prazo`,
       acao: { texto: "Ver quem resolve", aba: "prioridades" },
       origem: {
@@ -606,7 +616,6 @@ export function vereditoExecutivo(a: {
     },
   ];
 
-  const parteEnt = tEnt === "ok" ? "Entregas no ritmo do prazo" : tEnt === "atencao" ? "Entregas um pouco atrás do prazo" : "Entregas atrasadas em relação ao prazo";
   const parteExe = recorte ? `execução de ${fmtNum(consumo.ustExecutada)} UST neste recorte`
     : tExe === "ok" ? "execução do contrato no previsto" : tExe === "atencao" ? "execução do contrato abaixo do previsto"
     : tExe === "critico" ? `execução do contrato bem abaixo do previsto (${pctPrevisto}%)` : "execução sem previsão para comparar";

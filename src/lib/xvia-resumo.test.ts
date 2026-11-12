@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
-import { prepararResumoXvia, type EntradaResumoXvia } from "./xvia-resumo.ts";
+import { contextoItem, prepararResumoXvia, quemNoRegistro, type EntradaResumoXvia } from "./xvia-resumo.ts";
 import { andamentoEntregas, consumoContrato, filtrarItens, pendencias, prazoProjeto, soXvia, type Filtros } from "./tfs.ts";
 
 const ler = (nome: string) => JSON.parse(fs.readFileSync(`datasets/tfs/v1/${nome}.json`, "utf8"));
@@ -37,4 +37,17 @@ test("zero com tarefas registradas continua sendo zero; fontes ausentes não vir
   assert.equal(r.consumo.ustExecutada, 0);
   assert.equal(r.cadeia.valorPago.valor, null);
   assert.ok(r.passos.length <= 3);
+});
+
+test("situação do Secretário: um assunto por frase, mais grave primeiro, decisões com contexto", () => {
+  const r = prepararResumoXvia(base);
+  const ordem = ["critico", "atencao", "info", "ok", "neutro"];
+  const tons = r.veredito.sinais.map((s) => ordem.indexOf(s.tom));
+  assert.deepEqual(tons, [...tons].sort((a, b) => a - b));
+  for (const s of r.veredito.sinais) assert.equal(s.resumo.split(";").length <= 2 && s.resumo.endsWith("."), true);
+  assert.ok(r.atencao.every((i) => i.contexto.length > 0));
+  assert.equal(contextoItem({ feature: "[CGE] - Transparência", responsavel: "Maycon Renato de Andrade Lisboa" }), "CGE · Transparência · responsável no registro: Maycon Renato de Andrade Lisboa");
+  assert.equal(contextoItem({ feature: null, responsavel: null }), "sem responsável no registro");
+  assert.equal(quemNoRegistro([{ responsavel: "Ana Maria Souza" }, { responsavel: "Ana Maria Souza" }, { responsavel: "Bia Lima" }]), "Ana Souza (2) e Bia Lima (1)");
+  assert.equal(quemNoRegistro([{ responsavel: null }]), null);
 });

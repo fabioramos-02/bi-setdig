@@ -16,6 +16,18 @@ function ValorSinal({ sinal: s }: { sinal: Sinal }) {
   </div>;
 }
 
+/** Situação geral em palavra: a cor do ponto nunca fala sozinha. */
+const SITUACAO: Record<Tom, string> = { critico: "Crítico", atencao: "Atenção", ok: "No ritmo", info: "Sem comparação", neutro: "Sem base para avaliar" };
+
+function Barras({ barras }: { barras: NonNullable<Sinal["barras"]> }) {
+  return <div className={styles.barras}>
+    {barras.map((b) => <div key={b.rotulo} className={styles.barraLinha}>
+      <span>{b.rotulo}</span><span className={styles.barraPct}>{b.pct}%</span>
+      <span aria-hidden className={styles.trilho}><span style={{ width: `${Math.min(100, Math.max(0, b.pct))}%` }} /></span>
+    </div>)}
+  </div>;
+}
+
 export function PainelSecretario({ cabecalho, frase, tom, sinais, onIrPara, titulo = "Situação do contrato" }: {
   cabecalho: string; frase: string; tom: Tom; sinais: Sinal[]; onIrPara: (aba: string) => void; titulo?: string;
 }) {
@@ -23,17 +35,23 @@ export function PainelSecretario({ cabecalho, frase, tom, sinais, onIrPara, titu
     <section aria-label="Situação do contrato" className={styles.painel}>
       <h2>{titulo}</h2>
       <p className={styles.contexto}>{cabecalho}</p>
-      <div className={styles.veredito}>
-        <span aria-hidden className={styles.ponto} style={{ background: COR[tom] }} />
-        <span>{frase}</span>
+      <div className={styles.situacao}>
+        <span className={styles.selo} style={{ "--sinal-cor": COR[tom] } as CSSProperties}>Situação: {SITUACAO[tom]}</span>
+        {sinais.every((s) => s.tom === "neutro")
+          ? <p className={styles.veredito}>{frase}</p>
+          : <ul className={styles.frases}>{sinais.map((s) => <li key={s.id} className={styles.veredito}>
+              <span aria-hidden className={styles.ponto} style={{ background: COR[s.tom] }} /><span>{s.resumo}</span>
+            </li>)}</ul>}
       </div>
       <ul className={styles.sinais}>
         {sinais.map((s) => (
-          <li key={s.id} className={styles.sinal} style={{ "--sinal-cor": COR[s.tom] } as CSSProperties}>
+          <li key={s.id} className={`${styles.sinal} ${s.tom === "critico" || s.tom === "atencao" ? styles.sinalForte : styles.sinalLeve}`} style={{ "--sinal-cor": COR[s.tom] } as CSSProperties}>
             <h3>{s.rotulo}</h3>
             <span className={styles.palavra}>{s.palavra}</span>
             <ValorSinal sinal={s} />
             <div className={styles.comparacao}>{s.comparacao}</div>
+            {s.barras && <Barras barras={s.barras} />}
+            {s.id === "execucao" && s.tom !== "neutro" && <div className={styles.comparacao}>Mede o uso do contrato; não é pagamento nem percentual de conclusão.</div>}
             <div className={`${styles.acoesSinal} print:hidden`}>
               {s.acao && <button type="button" className={styles.link} onClick={() => onIrPara(s.acao!.aba)}>{s.acao.texto}</button>}
               <OrigemBotao origem={s.origem} />
