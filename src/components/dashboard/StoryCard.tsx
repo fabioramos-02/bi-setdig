@@ -34,18 +34,18 @@ export function StoryCard({
       }}
       className="break-inside-avoid"
     >
-      <p style={{ color: "var(--ds-color-text-primary)" }} className="text-lg font-semibold">
+      <p style={{ color: "var(--ds-color-text-primary)" }} className="bi-headline bi-narrative">
         {anchor}
       </p>
       {caption && (
-        <p style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm mt-1">
+        <p style={{ color: "var(--ds-color-text-secondary)" }} className="bi-body bi-narrative mt-2">
           {caption}
         </p>
       )}
       {children && <div className="mt-4">{children}</div>}
       <div
         style={{ background: "var(--ds-color-background-muted)", borderRadius: "var(--ds-radius-sm)", padding: "var(--ds-spacing-12)" }}
-        className="mt-4 text-sm"
+        className="mt-4 bi-body-small bi-narrative"
       >
         <strong>Como ler:</strong> {comoLer}
       </div>

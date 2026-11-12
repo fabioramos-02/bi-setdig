@@ -13,7 +13,7 @@ export function BaixarImagem({ alvo, nome, titulo }: { alvo: RefObject<SVGSVGEle
   return (
     <span className="flex gap-3 print:hidden">
       {(["png", "svg"] as const).map((t) => (
-        <button key={t} type="button" onClick={() => baixar(t)} className="text-sm font-medium inline-flex items-center gap-1" style={{ color: "var(--ds-color-primary-600)" }}>
+        <button key={t} type="button" onClick={() => baixar(t)} className="bi-body font-medium inline-flex items-center gap-1" style={{ color: "var(--ds-color-primary-600)" }}>
           <span aria-hidden className="material-icons" style={{ fontSize: 18 }}>download</span>Baixar {t.toUpperCase()}
         </button>
       ))}

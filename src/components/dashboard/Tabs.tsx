@@ -47,15 +47,17 @@ export function Tabs({
   const handleKeyDown = (e: KeyboardEvent<HTMLButtonElement>, id: string) => {
     if (e.key === "ArrowRight") focarProxima(id, 1);
     else if (e.key === "ArrowLeft") focarProxima(id, -1);
-    else if (e.key === "Home") setAtiva(habilitadas[0]?.id);
-    else if (e.key === "End") setAtiva(habilitadas[habilitadas.length - 1]?.id);
+    else if (e.key === "Home" || e.key === "End") {
+      const alvo = e.key === "Home" ? habilitadas[0] : habilitadas[habilitadas.length - 1];
+      if (alvo) { setAtiva(alvo.id); document.getElementById(`tab-${alvo.id}`)?.focus(); }
+    }
     else return;
     e.preventDefault();
   };
 
   return (
     <div>
-      <div role="tablist" aria-label="Seções" className="flex gap-2 overflow-x-auto flex-nowrap mb-4 print:hidden">
+      <div role="tablist" aria-label="Seções" className="bi-tabs print:hidden">
         {items.map((item) => {
           const isAtiva = ativa === item.id;
           return (
@@ -71,9 +73,7 @@ export function Tabs({
               title={item.disabled ? item.disabledReason : undefined}
               onClick={() => !item.disabled && setAtiva(item.id)}
               onKeyDown={(e) => handleKeyDown(e, item.id)}
-              className={`ds-button ds-button--sm whitespace-nowrap ${
-                item.disabled ? "" : isAtiva ? "ds-button--primary" : "ds-button--ghost"
-              }`}
+              className="bi-tab"
             >
               {item.label}
               {item.disabled && " (em breve)"}

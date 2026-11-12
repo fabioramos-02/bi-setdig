@@ -70,12 +70,12 @@ totais da fila anterior por prazo/pendência. Ordenamento e abrangências docume
 
 | Dimensão | Aba | O que mostra |
 |---|---|---|
-| A. Execução contratual e UST | `UstTab` | UST lançada/executada × contratado, por atividade do catálogo, por mês; tarefas a classificar |
-| B. Execução financeira | `RegistrosFinanceirosTab` | Cada registro do financeiro.json com a fonte; divergências |
-| C. Entregas | `EntregasTab` | Todas as entregas: frente, módulo, sprint, situação, responsável, prazo, dependência |
-| D. Órgãos e serviços | `StakeholdersTab` | Órgãos, pontos focais e módulos |
-| E. Equipes e responsabilidades | `EquipesTab` (+ `AcompanhamentoTab`) | Responsáveis por frente; itens sem frente; quadro do time no TFS |
-| F. Qualidade dos dados | `QualidadeTab` | Lacunas e divergências primeiro; documentos e atualização recolhidos |
+| UST e contrato | `UstTab` | UST lançada/executada × contratado, por atividade do catálogo, por mês; tarefas a classificar |
+| Registros financeiros | `RegistrosFinanceirosTab` | Cada registro do financeiro.json com a fonte; divergências |
+| Entregas | `EntregasTab` | Todas as entregas: frente, módulo, sprint, situação, responsável, prazo, dependência |
+| Órgãos e serviços | `StakeholdersTab` | Órgãos, pontos focais e módulos |
+| Equipes | `EquipesTab` (+ `AcompanhamentoTab`) | Responsáveis por frente; itens sem frente; quadro do time no TFS |
+| Qualidade dos dados | `QualidadeTab` | Lacunas e divergências primeiro; documentos e atualização recolhidos |
 
 Todo número tem "De onde vem?" (`OrigemBotao`). O modal mostra:
 
@@ -99,3 +99,5 @@ Tabelas extensas têm busca/paginação; ordenar considera a coleção inteira; 
 continuam integrais. "De onde vem?" preserva conta, fonte, composição, busca, subtotais e CSV.
 
 Auditorias e resultados: [08 — página e Secretário](08-auditoria-ux-storytelling.md) e [09 — central de gestão do Gerente](09-auditoria-visao-gerente.md).
+
+Apresentação compartilhada: [10 — hierarquia tipográfica](10-auditoria-tipografica.md) e ADR-018. Abas sem prefixos visuais A–F, com IDs preservados; corpo 16px, tabelas 15px e apoio 14px, todos por tokens. Narrativas têm largura limitada e gráficos/tabelas mantêm largura própria.

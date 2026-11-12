@@ -30,7 +30,7 @@ export function SidebarPeriodFilter() {
 
   return (
     <div style={{ borderTop: "1px solid var(--ds-color-border)" }} className="px-4 py-4">
-      <h2 style={{ color: "var(--ds-color-text-secondary)" }} className="text-xs font-semibold uppercase mb-3">
+      <h2 style={{ color: "var(--ds-color-text-secondary)" }} className="bi-caption font-semibold uppercase mb-3">
         Período
       </h2>
       <PeriodFilter
@@ -43,12 +43,12 @@ export function SidebarPeriodFilter() {
         max={max}
         vertical
       />
-      <p style={{ color: "var(--ds-color-text-muted)" }} className="text-xs mt-2">
+      <p style={{ color: "var(--ds-color-text-muted)" }} className="bi-caption mt-2">
         Todos os gráficos são atualizados conforme o período escolhido. Em datas
         anteriores, a atualização pode levar até 2 segundos.
       </p>
       {estado.tipo === "intervalo" && (
-        <p style={{ color: "var(--ds-color-text-muted)" }} className="text-xs mt-2">
+        <p style={{ color: "var(--ds-color-text-muted)" }} className="bi-caption mt-2">
           {AVISO_INTERVALO}
         </p>
       )}

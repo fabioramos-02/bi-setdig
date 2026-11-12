@@ -65,10 +65,10 @@ export function Modal({
     >
       <div className="flex items-start justify-between gap-3 p-5" style={{ borderBottom: "1px solid var(--ds-color-border)" }}>
         <div className="min-w-0">
-          <h2 id={tituloId} className="text-lg font-semibold" style={{ color: "var(--ds-color-text-primary)" }}>
+          <h2 id={tituloId} className="bi-heading-1" style={{ color: "var(--ds-color-text-primary)" }}>
             {title}
           </h2>
-          {subtitulo && <p className="text-sm mt-0.5" style={{ color: "var(--ds-color-text-secondary)" }}>{subtitulo}</p>}
+          {subtitulo && <p className="bi-body-small mt-2" style={{ color: "var(--ds-color-text-secondary)" }}>{subtitulo}</p>}
         </div>
         <button
           type="button"

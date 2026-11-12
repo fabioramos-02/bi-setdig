@@ -9,8 +9,8 @@ export function DashboardSection({
 }) {
   return (
     <section className="mb-4 break-inside-avoid">
-      <div className="flex items-center justify-between mb-3">
-        <h2 style={{ color: "var(--ds-color-text-primary)" }} className="text-lg font-semibold">
+      <div className="flex flex-wrap items-baseline justify-between gap-3 mb-4">
+        <h2 style={{ color: "var(--ds-color-text-primary)" }} className="bi-heading-1 bi-narrative">
           {title}
         </h2>
         {action}

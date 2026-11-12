@@ -41,7 +41,7 @@ export function PainelSecretario({ cabecalho, frase, tom, sinais, onIrPara, titu
           </li>
         ))}
       </ul>
-      <details className="text-sm print:hidden">
+      <details className="bi-body print:hidden">
         <summary className="cursor-pointer">Como ler · UST = unidade de serviço técnico</summary>
         <p>Unidade de serviço técnico é a medida dos serviços contratados. Entregas em produção são comparadas ao prazo decorrido. A execução em unidades de serviço é comparada ao previsto no Termo de Referência; ela mede uso do contrato, sem representar pagamento ou percentual de conclusão. O indicador de atenção usa a última atualização dos registros, não o tempo exato de bloqueio. Itens da SGD ficam fora dos totais da contratada.</p>
       </details>

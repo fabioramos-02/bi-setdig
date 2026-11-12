@@ -8,8 +8,8 @@ export function ProblemaGestaoItem({ problema: p }: { problema: ProblemaGestao }
   return <li id={`prioridade-${p.item.id}`} tabIndex={-1} className={styles.problema}>
     <div><span className={styles.situacao} data-tipo={p.tipo}>{ACAO_GESTAO[p.tipo].rotulo}</span><span className={styles.ajuda}>{p.situacao} · {p.tempo}</span></div>
     <h3>{p.item.titulo}</h3>
-    <p className={styles.ajuda}>{p.motivo}</p>
-    <p className={styles.acao}><strong>Ação:</strong> {p.acao}</p>
+    <p className="bi-body bi-narrative">{p.motivo}</p>
+    <p className={styles.acao}>Ação: {p.acao}</p>
     <dl className={styles.metadados}>
       <div><dt>Responsável no registro</dt><dd>{p.responsavel}</dd></div>
       <div><dt>Módulo e órgão</dt><dd>{p.item.epico ?? "Módulo não informado"} · {p.item.orgao ?? "Órgão não informado"}</dd></div>

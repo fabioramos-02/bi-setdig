@@ -17,8 +17,8 @@ export function LineChart({
     <ResponsiveContainer width="100%" height={height}>
       <RLineChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 8 }}>
         <CartesianGrid stroke="var(--ds-color-border)" strokeDasharray="3 3" />
-        <XAxis dataKey={xKey} tick={{ fill: "var(--ds-color-text-secondary)", fontSize: 11 }} minTickGap={24} />
-        <YAxis tick={{ fill: "var(--ds-color-text-secondary)", fontSize: 12 }} />
+        <XAxis dataKey={xKey} tick={{ fill: "var(--ds-color-text-secondary)", fontSize: "var(--ds-bi-caption-size)" }} minTickGap={24} />
+        <YAxis tick={{ fill: "var(--ds-color-text-secondary)", fontSize: "var(--ds-bi-caption-size)" }} />
         <Tooltip
           contentStyle={{
             background: "var(--ds-color-background)",

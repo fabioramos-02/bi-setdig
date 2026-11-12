@@ -24,7 +24,7 @@ export function useEscalaTexto(svgRef: RefObject<SVGSVGElement | null>) {
       return w;
     };
     const medir = () => {
-      const pequeno = mede("var(--ds-body-sm-font-size)"), grande = mede("40px");
+      const pequeno = mede("var(--ds-bi-body-small-size)"), grande = mede("40px");
       if (!grande) return false; // ainda escondido: espera aparecer
       const r = pequeno / ((grande * 14) / 40);
       setK(r > 1.15 ? Math.min(4, Math.round(r * 100) / 100) : 1);
@@ -73,17 +73,17 @@ export function GradeSprints({ colunas, aPlanejar, rot, col, altura, hojeIdx, ho
       {colunas.map((c, n) => (
         <g key={c.sprint}>
           <rect x={rot + n * col} y={0} width={col} height={altura} fill={n % 2 ? "var(--ds-color-background-muted)" : "transparent"} />
-          <text x={rot + n * col + col / 2} y={20 * k} style={{ fontSize: "var(--ds-body-sm-font-size)" }} fontWeight={600} textAnchor="middle" fill="var(--ds-color-text-primary)">
+          <text x={rot + n * col + col / 2} y={20 * k} style={{ fontSize: "var(--ds-bi-body-small-size)" }} fontWeight={600} textAnchor="middle" fill="var(--ds-color-text-primary)">
             <title>{`${c.nome}: ${fmtData(c.inicio)} a ${fmtData(c.fim)}`}</title>{c.nome}
           </text>
-          {comData && <text x={rot + n * col + col / 2} y={40 * k} style={{ fontSize: "var(--ds-body-sm-font-size)" }} textAnchor="middle" fill="var(--ds-color-text-muted)">{fmtData(c.inicio).slice(0, 5)}–{fmtData(c.fim).slice(0, 5)}</text>}
+          {comData && <text x={rot + n * col + col / 2} y={40 * k} style={{ fontSize: "var(--ds-bi-body-small-size)" }} textAnchor="middle" fill="var(--ds-color-text-muted)">{fmtData(c.inicio).slice(0, 5)}–{fmtData(c.fim).slice(0, 5)}</text>}
         </g>
       ))}
-      {aPlanejar && <text x={rot + colunas.length * col + col / 2} y={16 * k} style={{ fontSize: "var(--ds-body-sm-font-size)" }} fontWeight={600} textAnchor="middle" fill="var(--ds-color-text-muted)">A planejar</text>}
+      {aPlanejar && <text x={rot + colunas.length * col + col / 2} y={16 * k} style={{ fontSize: "var(--ds-bi-body-small-size)" }} fontWeight={600} textAnchor="middle" fill="var(--ds-color-text-muted)">A planejar</text>}
       {xHoje !== null && (
         <>
           <line x1={xHoje} x2={xHoje} y1={(comData ? 36 : 22) * k} y2={altura} stroke="var(--ds-color-danger)" strokeDasharray="4 3" />
-          <text x={xHoje - 4} y={altura - 4} textAnchor="end" style={{ fontSize: "var(--ds-body-sm-font-size)" }} fill="var(--ds-color-text-primary)">Dados de {fmtData(hoje).slice(0, 5)}</text>
+          <text x={xHoje - 4} y={altura - 4} textAnchor="end" style={{ fontSize: "var(--ds-bi-body-small-size)" }} fill="var(--ds-color-text-primary)">Dados de {fmtData(hoje).slice(0, 5)}</text>
         </>
       )}
     </>
@@ -110,7 +110,7 @@ export function SetaDegrau({ x1, y1, x2, y2, gap, invertida, titulo, deBaixo }: 
 
 export function Legenda({ situacoes }: { situacoes: Situacao[] }) {
   return (
-    <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs" aria-label="Legenda" style={{ color: "var(--ds-color-text-secondary)" }}>
+    <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1 bi-caption" aria-label="Legenda" style={{ color: "var(--ds-color-text-secondary)" }}>
       {situacoes.map((s) => (
         <li key={s} className="flex items-center gap-1.5"><span aria-hidden style={{ width: 12, height: 12, background: COR_SIT[s], borderRadius: 2, display: "inline-block" }} />{ROTULO_SITUACAO[s]}</li>
       ))}

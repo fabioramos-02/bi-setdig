@@ -24,17 +24,17 @@ export function RegistrosFinanceirosTab({ financeiro }: { financeiro: Financeiro
         comoLer="Registros manuais da equipe financeira, do contrato inteiro da X-VIA. Não seguem os filtros de módulo, frente, órgão ou sprint. Cada linha informa o documento de origem (processo SEI, nota ou ordem bancária)."
       />
       {total === 0 ? <DashboardSection title="O que falta registrar?">
-        <p className="text-sm mb-3">Solicitar os documentos à equipe financeira. Ausência de registro não significa valor zero.</p>
-        <ul className="flex flex-col gap-2 text-sm">{grupos.map((g) => <li key={g.titulo}><b>{g.titulo}:</b> Não informado.</li>)}</ul>
+        <p className="bi-body mb-3">Solicitar os documentos à equipe financeira. Ausência de registro não significa valor zero.</p>
+        <ul className="flex flex-col gap-2 bi-body">{grupos.map((g) => <li key={g.titulo}><b>{g.titulo}:</b> Não informado.</li>)}</ul>
       </DashboardSection> : grupos.map((g) => (
         <DashboardSection key={g.titulo} title={`${g.titulo} (${fmtNum(g.linhas.length)})`}>
-          {g.linhas.length === 0 ? <p className="text-sm" style={cinza}>Não informado: nenhum registro.</p>
-            : <ul className="text-sm flex flex-col gap-1">{g.linhas.map((l) => <li key={l}>{l}</li>)}</ul>}
+          {g.linhas.length === 0 ? <p className="bi-body" style={cinza}>Não informado: nenhum registro.</p>
+            : <ul className="bi-body flex flex-col gap-1">{g.linhas.map((l) => <li key={l}>{l}</li>)}</ul>}
         </DashboardSection>
       ))}
       {divergencias.length > 0 && (
         <DashboardSection title="Divergências">
-          <ul className="text-sm flex flex-col gap-1" style={{ color: "var(--ds-color-danger)" }}>{divergencias.map((d) => <li key={d}>{d}</li>)}</ul>
+          <ul className="bi-body flex flex-col gap-1" style={{ color: "var(--ds-color-danger)" }}>{divergencias.map((d) => <li key={d}>{d}</li>)}</ul>
         </DashboardSection>
       )}
     </div>

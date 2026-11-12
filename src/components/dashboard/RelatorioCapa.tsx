@@ -13,10 +13,10 @@ export function RelatorioCapa({ titulo, filtro }: { titulo: string; filtro: stri
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/images/brasao-ms.svg" alt="Brasão do Estado de Mato Grosso do Sul" style={{ height: 56, width: "auto" }} />
         <div>
-          <p className="text-xs font-bold uppercase tracking-wide" style={{ color: "var(--ds-color-text-primary)" }}>
+          <p className="bi-caption font-bold uppercase tracking-wide" style={{ color: "var(--ds-color-text-primary)" }}>
             Governo do Estado de Mato Grosso do Sul
           </p>
-          <p className="text-xs" style={{ color: "var(--ds-color-text-secondary)" }}>
+          <p className="bi-caption" style={{ color: "var(--ds-color-text-secondary)" }}>
             Secretaria-Executiva de Transformação Digital — SETDIG
           </p>
         </div>

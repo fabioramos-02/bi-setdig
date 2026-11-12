@@ -19,7 +19,7 @@ export const ETAPAS: { chave: keyof Omit<Cadeia, "recorte">; rotulo: React.React
 export function TabelaCadeia({ cadeia }: { cadeia: Cadeia }) {
   return (
     <div className="overflow-x-auto min-w-0">
-      <table className="w-full text-sm">
+      <table className="w-full bi-body">
         <thead>
           <tr style={{ color: "var(--ds-color-text-secondary)" }}>
             <th className="text-left font-medium py-1">Etapa</th>
@@ -38,7 +38,7 @@ export function TabelaCadeia({ cadeia }: { cadeia: Cadeia }) {
         </tbody>
       </table>
       {cadeia.recorte.divergencias.length > 0 && (
-        <ul className="mt-3 text-xs flex flex-col gap-1" style={{ color: "var(--ds-color-danger)" }}>
+        <ul className="mt-3 bi-caption flex flex-col gap-1" style={{ color: "var(--ds-color-danger)" }}>
           {cadeia.recorte.divergencias.map((d) => <li key={d}>Divergência: {d}</li>)}
         </ul>
       )}

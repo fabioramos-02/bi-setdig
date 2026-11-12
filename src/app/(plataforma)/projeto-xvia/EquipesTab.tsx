@@ -59,27 +59,27 @@ export function EquipesTab({ itens, sprints, hoje, children }: { itens: TfsItem[
           const lista = abertosDe(f);
           return (
             <div key={f} style={{ border: "1px solid var(--ds-color-border)", borderTop: `3px solid ${f === NAO_IDENTIFICADO && lista.length ? "var(--ds-color-warning, #d97706)" : "var(--ds-color-primary-600)"}`, borderRadius: "var(--ds-radius-md)", padding: "8px 12px", background: "var(--ds-color-background)" }}>
-              <div className="text-xs" style={cinza}>{f === NAO_IDENTIFICADO ? "Sem frente identificada" : `Frente ${f}`}</div>
+              <div className="bi-caption" style={cinza}>{f === NAO_IDENTIFICADO ? "Sem frente identificada" : `Frente ${f}`}</div>
               <div className="text-xl font-semibold tabular-nums">
                 {lista.length ? <OrigemBotao rotulo={fmtNum(lista.length)} origem={{ rotulo: `Itens abertos ${f === NAO_IDENTIFICADO ? "sem frente" : `da frente ${f}`}`, detalhe: f === NAO_IDENTIFICADO ? "Sem contrato marcado e fora das áreas da X-VIA e da SGD: ficam fora de todo total da X-VIA até alguém marcar o contrato no TFS." : "Entregas e tarefas abertas desta frente.", itens: lista, agruparPor: "epico" }} /> : "0"}
               </div>
-              <div className="text-xs" style={cinza}>itens abertos</div>
+              <div className="bi-caption" style={cinza}>itens abertos</div>
             </div>
           );
         })}
       </div>
-      {ni.length > 0 && <p className="text-xs -mt-2" style={cinza}>Os itens sem frente ficam fora de todo total da X-VIA até alguém marcar o contrato na tarefa.</p>}
+      {ni.length > 0 && <p className="bi-caption -mt-2" style={cinza}>Os itens sem frente ficam fora de todo total da X-VIA até alguém marcar o contrato na tarefa.</p>}
 
       <DashboardSection title="Quem responde pelos itens abertos">
         <div className="overflow-x-auto min-w-0 [&_td]:!py-1.5 [&_th]:!py-1.5">
           <DataTable horizontalScroll pageSize={todos ? undefined : LIMITE} label="Pessoas" searchText={(r) => r.pessoa} columns={colunas} rows={linhas} rowKey={(r) => r.pessoa} />
         </div>
         {linhas.length > LIMITE && (
-          <button type="button" onClick={() => setTodos(!todos)} className="mt-2 text-sm underline" style={{ color: "var(--ds-color-primary-600)" }}>
+          <button type="button" onClick={() => setTodos(!todos)} className="mt-2 bi-body underline" style={{ color: "var(--ds-color-primary-600)" }}>
             {todos ? "Mostrar só os 10 primeiros" : `Ver todos (${fmtNum(linhas.length)})`}
           </button>
         )}
-        <details className="mt-3 text-xs" style={cinza}>
+        <details className="mt-3 bi-caption" style={cinza}>
           <summary className="cursor-pointer">Como ler</summary>
           <p className="mt-1">Uma linha por pessoa. A frente é do item, não da pessoa: tarefa com o contrato da X-VIA (ou na área que a X-VIA fatura) é X-VIA; com o contrato do Governo do Estado ou na área da SGD é SGD; entrega com [SGD] no título ou no épico da SGD também é SGD. Por isso alguém da SGD pode ter itens na coluna X-VIA, e vice-versa. Clique no número para ver os itens.</p>
         </details>
@@ -87,7 +87,7 @@ export function EquipesTab({ itens, sprints, hoje, children }: { itens: TfsItem[
 
       {children && (
         <details style={{ border: "1px solid var(--ds-color-border)", borderRadius: "var(--ds-radius-md)", padding: "10px 14px", background: "var(--ds-color-background)" }}>
-          <summary className="cursor-pointer text-sm font-semibold">Quadro do time no TFS</summary>
+          <summary className="cursor-pointer bi-body font-semibold">Quadro do time no TFS</summary>
           <div className="mt-3">{children}</div>
         </details>
       )}

@@ -35,10 +35,10 @@ export function ModulosTab({ modulos, contexto, filtrar, onNavegar }: { modulos:
     <p className={styles.ajuda}>Produção inclui histórias e falhas; o cronograma acompanha apenas histórias. A situação do cronograma é a mais grave entre as histórias abertas. X-VIA e SGD estão identificadas nos números abaixo.</p>
     <ul className={`${styles.comparacoes} ${styles.gradeModulos}`}>{linhas.map((m) => <li key={m.epico}>
       <div className={styles.cabecalho}><h3><button type="button" className={styles.link} aria-label={`Filtrar pelo módulo ${m.epico}`} onClick={() => filtrar("modulo", m.epico)}>{m.epico}</button></h3><span className={styles.situacao}>{m.situacao}</span></div>
-      <p className={styles.conclusao}><strong>{fmtNum(m.emProducao)} de {fmtNum(m.total)}</strong> entregas em produção.</p>
+      <p className={styles.conclusao}>{fmtNum(m.emProducao)} de {fmtNum(m.total)} entregas em produção.</p>
       <p className={styles.contexto}>Frentes: {fmtNum(m.xvia)} X-VIA · {fmtNum(m.sgd)} SGD. No cronograma: {m.cronograma ? `${fmtNum(m.cronograma.prontos)} de ${fmtNum(m.cronograma.total)} histórias concluídas.` : "sem histórias cadastradas."}</p>
       <ul className={styles.motivos}>{m.motivos.map((g) => <li key={g.tipo}>{g.rotulo}: <b>{fmtNum(g.itens.length)}</b></li>)}{m.inversoes > 0 && <li>Ligações invertidas: <b>{m.inversoes}</b></li>}</ul>
-      <p className={styles.acao}><strong>Próxima ação:</strong> {m.acao}</p>
+      <p className={styles.acao}>Próxima ação: {m.acao}</p>
       {m.proximaSprint && <p className={styles.ajuda}>Próximo compromisso cadastrado: {m.proximaSprint.nome}, de {fmtData(m.proximaSprint.inicio)} a {fmtData(m.proximaSprint.fim)}, com {fmtNum(m.proximas)} entregas abertas.</p>}
       <div className={styles.links}><button type="button" onClick={() => onNavegar({ nivel: "gerente", aba: "prioridades", filtros: { modulo: m.epico } })}>Ver ações do módulo</button><button type="button" onClick={() => onNavegar({ nivel: "gerente", aba: "cronograma", filtros: { modulo: m.epico } })}>Ver cronograma do módulo</button></div>
     </li>)}</ul>

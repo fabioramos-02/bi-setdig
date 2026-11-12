@@ -23,7 +23,7 @@ export function QualidadeTab({ itens, etp, contrato, financeiro, hoje, diasRetra
       <DashboardSection title="O que falta ou diverge?">
         <ul className="flex flex-col gap-3">
           {verificacoes.map((v, n) => (
-            <li key={`${v.rotulo}${n}`} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-sm">
+            <li key={`${v.rotulo}${n}`} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 bi-body">
               <span style={{ color: "var(--ds-color-text-primary)" }}>
                 {v.rotulo}
                 {v.nota && <span style={cinza}> — {v.nota}</span>}
@@ -36,15 +36,15 @@ export function QualidadeTab({ itens, etp, contrato, financeiro, hoje, diasRetra
           ))}
         </ul>
       </DashboardSection>
-      <details><summary className="cursor-pointer text-sm font-semibold">Consultar documentos e atualização dos dados</summary>
+      <details><summary className="cursor-pointer bi-body font-semibold">Consultar documentos e atualização dos dados</summary>
       <DashboardSection title="Como cada informação chega ao painel?">
-        <ul className="flex flex-col gap-2 text-sm">
+        <ul className="flex flex-col gap-2 bi-body">
           {FONTES_CONTRATO.map((f) => {
             const vazio = f.fonte === "financeiro.json" && !(financeiro && (financeiro.ordensServico.length || financeiro.notasFiscais.length || financeiro.pagamentos.length));
             return (
               <li key={f.fonte} style={{ borderLeft: `4px solid ${vazio ? COR.neutro : COR.ok}`, paddingLeft: 8 }}>
                 <b>{f.fonte}</b> — {f.traz}
-                <div className="text-xs" style={cinza}>{f.como}{vazio ? " · sem registros: as etapas financeiras aparecem como Não informado" : ""}</div>
+                <div className="bi-caption" style={cinza}>{f.como}{vazio ? " · sem registros: as etapas financeiras aparecem como Não informado" : ""}</div>
               </li>
             );
           })}

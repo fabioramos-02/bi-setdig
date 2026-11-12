@@ -1,6 +1,8 @@
 import { fmtNum, fmtReais, type execucaoXvia, type Origem, type TfsItem, type Tom } from "@/lib/tfs";
 import { OrigemBotao } from "./OrigemBotao";
-import { COR, Sigla, cinza } from "./comum";
+import { COR, Sigla } from "./comum";
+import type { CSSProperties } from "react";
+import styles from "./tipografia.module.css";
 
 type Execucao = ReturnType<typeof execucaoXvia>;
 const pct = (n: number, total: number) => (total ? Math.round((n / total) * 1000) / 10 : 0);
@@ -27,14 +29,17 @@ export function UstResumo({ f }: { f: Execucao }) {
     chips.push({
       tom: "critico",
       titulo: `${fmtNum(estourados.length)} ${estourados.length === 1 ? "atividade passou" : "atividades passaram"} do previsto no ETP`,
-      texto: estourados.map((l) => `${l.codigo} (${l.servico.length > 40 ? `${l.servico.slice(0, 39)}…` : l.servico}): ${fmtNum(l.lancada)} UST lançadas para ${fmtNum(l.previsto)} previstas`).join(" · "),
+      texto: <>
+        <ul className={styles.atividades}>{estourados.map((l) => <li key={l.codigo}>{l.codigo}: {fmtNum(l.lancada)} UST lançadas para {fmtNum(l.previsto)} previstas.</li>)}</ul>
+        <details className={styles.nomes}><summary>Consultar nomes das atividades</summary><ul className={styles.atividades}>{estourados.map((l) => <li key={l.codigo}>{l.codigo} — {l.servico}</li>)}</ul></details>
+      </>,
       origem: origem("Tarefas das atividades acima do previsto", estourados.flatMap((l) => l.itens), "Atividades em que a UST lançada já passou do previsto na memória de cálculo do ETP.", `${fmtNum(estourados.length)} atividades acima do previsto`),
     });
   if (f.semContrato)
     chips.push({
       tom: "atencao",
       titulo: `${fmtNum(f.semContrato)} tarefas sem a atividade marcada no TFS`,
-      texto: "Valem pelo código que a X-VIA escreveu na descrição (ex.: \"Catálogo DOC.07\"). A X-VIA precisa marcar a atividade.",
+      texto: "A soma usa o código escrito na descrição da tarefa. A X-VIA precisa marcar a atividade no registro.",
       origem: origem("Tarefas sem atividade marcada", somadas.filter((t) => !t.empresa), "Tarefas somadas pelo código escrito na descrição, sem o contrato e a atividade marcados no TFS.", `${fmtNum(f.semContrato)} tarefas sem atividade marcada`),
     });
   if (f.foraDoEtp)
@@ -60,31 +65,30 @@ export function UstResumo({ f }: { f: Execucao }) {
     });
 
   const faixas = [
-    { rotulo: "Concluído", n: f.ustExecutada, cor: "#0F4B91" },
-    { rotulo: "Em tarefas abertas", n: aberta, cor: "#7aa7dc" },
+    { rotulo: "Concluído", n: f.ustExecutada, cor: "var(--ds-color-primary-600)" },
+    { rotulo: "Em tarefas abertas", n: aberta, cor: "color-mix(in srgb, var(--ds-color-primary-600) 40%, var(--ds-color-background))" },
     { rotulo: "Ainda sem tarefa", n: livre, cor: "var(--ds-color-background-muted)" },
   ];
 
   return (
-    <section aria-label="Resumo da UST" className="flex flex-col gap-4">
-      <div style={{ border: "1px solid var(--ds-color-border)", borderRadius: "var(--ds-radius-md)", padding: "18px 20px", background: "var(--ds-color-background)" }}>
-        <div className="font-semibold" style={{ fontSize: "1.3rem", lineHeight: 1.35, color: "var(--ds-color-text-primary)" }}>
+    <section aria-labelledby="ust-resumo-titulo" className={styles.resumo}>
+      <h2 id="ust-resumo-titulo" className="bi-heading-1">Quanto do contrato já foi executado?</h2>
+      <div className={styles.destaque}>
+        <p className="bi-headline bi-narrative">
           A X-VIA concluiu <span className="tabular-nums">{fmtNum(f.ustExecutada)}</span> <Sigla s="UST" />
-          {f.valorExecutado !== null && <> ({fmtReais(f.valorExecutado)})</>}, <span className="tabular-nums">{fmtNum(pct(f.ustExecutada, total))}%</span> das {fmtNum(total)} contratadas.
-        </div>
-        <div className="text-sm mt-1" style={{ color: "var(--ds-color-text-secondary)" }}>
-          Outras <b className="tabular-nums">{fmtNum(aberta)} UST</b> estão em tarefas abertas. Somando, {fmtNum(f.ustLancada)} já têm tarefa ({fmtNum(pct(f.ustLancada, total))}% do contrato).
-        </div>
+        </p>
+        <p className={`${styles.referencia} bi-narrative`}><span className="tabular-nums">{fmtNum(pct(f.ustExecutada, total))}% das {fmtNum(total)} UST contratadas</span>{f.valorExecutado !== null && <> · {fmtReais(f.valorExecutado)} em valor calculado</>}</p>
+        <p className="bi-body bi-narrative">Outras {fmtNum(aberta)} UST estão em tarefas abertas. Ainda não há tarefas para {fmtNum(livre)} UST do contrato.</p>
 
         <div className="mt-4" role="img" aria-label={faixas.map((x) => `${x.rotulo}: ${fmtNum(x.n)} UST`).join("; ")}>
           <div className="flex h-4 w-full overflow-hidden" style={{ borderRadius: 9999, background: "var(--ds-color-background-muted)", border: "1px solid var(--ds-color-border)" }}>
             {faixas.map((x) => <div key={x.rotulo} style={{ width: `${pct(x.n, total)}%`, background: x.cor, minWidth: x.n > 0 ? 2 : 0 }} />)}
           </div>
-          <div className="mt-2 flex flex-wrap gap-x-5 gap-y-1 text-xs" style={{ color: "var(--ds-color-text-secondary)" }}>
+          <div className={styles.legenda}>
             {faixas.map((x) => (
               <span key={x.rotulo} className="inline-flex items-center gap-1.5">
                 <span aria-hidden className="inline-block w-3 h-3 rounded-sm" style={{ background: x.cor, border: "1px solid var(--ds-color-border)" }} />
-                {x.rotulo} <b className="tabular-nums" style={{ color: "var(--ds-color-text-primary)" }}>{fmtNum(x.n)}</b> ({fmtNum(pct(x.n, total))}%)
+                {x.rotulo}: <span className="tabular-nums" style={{ color: "var(--ds-color-text-primary)" }}>{fmtNum(x.n)}</span> ({fmtNum(pct(x.n, total))}%)
               </span>
             ))}
           </div>
@@ -93,20 +97,20 @@ export function UstResumo({ f }: { f: Execucao }) {
 
       {chips.length > 0 && (
         <div>
-          <div className="text-xs font-semibold uppercase mb-2" style={{ ...cinza, letterSpacing: "0.06em" }}>Pontos de atenção no dado</div>
-          <ul className="grid gap-3 md:grid-cols-2">
+          <h2 className="bi-heading-1">Pontos de atenção no dado</h2>
+          <ul className={styles.alertas}>
             {chips.map((c) => (
-              <li key={c.titulo} className="flex flex-col gap-1" style={{ borderLeft: `4px solid ${COR[c.tom]}`, background: fundo(c.tom), borderRadius: "var(--ds-radius-sm)", padding: "10px 12px" }}>
-                <span className="text-sm font-semibold" style={{ color: "var(--ds-color-text-primary)" }}>{c.titulo}</span>
-                <span className="text-sm" style={{ color: "var(--ds-color-text-secondary)" }}>{c.texto}</span>
-                <span className="mt-1"><OrigemBotao origem={c.origem} /></span>
+              <li key={c.titulo} className={styles.alerta} style={{ "--alerta-cor": COR[c.tom], "--alerta-fundo": fundo(c.tom) } as CSSProperties}>
+                <h3 className="bi-card-title">{c.titulo}</h3>
+                <div className="bi-body" style={{ color: "var(--ds-color-text-secondary)" }}>{c.texto}</div>
+                <div><OrigemBotao origem={c.origem} /></div>
               </li>
             ))}
           </ul>
         </div>
       )}
 
-      <details className="text-sm" style={{ border: "1px solid var(--ds-color-border)", borderRadius: "var(--ds-radius-md)", padding: "10px 14px" }}>
+      <details className="bi-body bi-narrative" style={{ border: "1px solid var(--ds-color-border)", borderRadius: "var(--ds-radius-md)", padding: "var(--ds-spacing-16)" }}>
         <summary className="cursor-pointer font-medium" style={{ color: "var(--ds-color-text-secondary)" }}>Como ler estes números</summary>
         <ul className="mt-2 flex flex-col gap-1.5" style={{ color: "var(--ds-color-text-secondary)" }}>
           <li><b>Quem entra:</b> só tarefa da X-VIA, com o contrato da X-VIA marcado ou na área que a X-VIA fatura. Tarefa da SGD ou sem frente identificada fica fora.</li>

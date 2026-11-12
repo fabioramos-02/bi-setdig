@@ -6,7 +6,7 @@ export function CategoryLegend({
   return (
     <div className="flex flex-wrap gap-3 mb-2">
       {items.map(({ label, color, icon }) => (
-        <span key={label} className="flex items-center gap-1.5 text-xs" style={{ color }}>
+        <span key={label} className="flex items-center gap-1.5 bi-caption" style={{ color }}>
           {icon}
           {label}
         </span>

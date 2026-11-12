@@ -57,12 +57,12 @@ export function RankingHorizontal({
                   <span className="font-medium truncate">{it.label}</span>
                 )}
                 {it.sub && (
-                  <span className="text-xs shrink-0" style={{ color: "var(--ds-color-text-muted)" }}>
+                  <span className="bi-caption shrink-0" style={{ color: "var(--ds-color-text-muted)" }}>
                     {it.sub}
                   </span>
                 )}
               </span>
-              <span className="tabular-nums text-xs shrink-0" style={{ color: "var(--ds-color-text-secondary)" }}>
+              <span className="tabular-nums bi-caption shrink-0" style={{ color: "var(--ds-color-text-secondary)" }}>
                 {it.valor.toLocaleString("pt-BR")}{" "}
                 <span style={{ color: "var(--ds-color-text-muted)" }}>({it.sharePct.toFixed(1)}%)</span>
               </span>

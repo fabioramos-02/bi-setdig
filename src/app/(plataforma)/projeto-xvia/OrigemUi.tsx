@@ -28,7 +28,7 @@ function Barra({ barra }: { barra: NonNullable<Origem["barra"]> }) {
   const largura = (v: number) => (total ? Math.max((v / total) * 100, v > 0 ? 1 : 0) : 0);
   return (
     <div>
-      <div className="flex justify-between gap-2 text-xs mb-1" style={T.sec}>
+      <div className="flex justify-between gap-2 bi-caption mb-1" style={T.sec}>
         <span>{barra.esquerda}</span>
         {barra.direita && <span className="hidden sm:inline tabular-nums">{barra.direita}</span>}
       </div>
@@ -41,7 +41,7 @@ function Barra({ barra }: { barra: NonNullable<Origem["barra"]> }) {
         )}
       </div>
       {(legenda || marcador) && (
-        <div className="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs" style={T.sec}>
+        <div className="flex flex-wrap gap-x-4 gap-y-1 mt-2 bi-caption" style={T.sec}>
           {legenda && segmentos.map((s) => (
             <span key={s.rotulo} className="inline-flex items-center gap-1.5">
               <span aria-hidden className="w-2 h-2 rounded-full" style={{ background: COR[s.tom] }} />
@@ -70,9 +70,9 @@ export function Destaque({ destaque, barra }: { destaque: NonNullable<Origem["de
           <Icone nome={destaque.icone} cor={cor} tamanho={24} />
         </span>
         <div className="min-w-0">
-          <span className="text-xs uppercase tracking-wide font-semibold" style={T.sec}>{destaque.rotulo}</span>
-          <p className="font-semibold tabular-nums" style={{ ...T.pri, fontSize: "var(--ds-heading-1-font-size)", lineHeight: 1.15 }}>{destaque.valor}</p>
-          {destaque.achado && <p className="text-sm mt-1" style={T.pri}>{destaque.achado}</p>}
+          <span className="bi-caption uppercase tracking-wide font-semibold" style={T.sec}>{destaque.rotulo}</span>
+          <p className="font-semibold tabular-nums" style={{ ...T.pri, fontSize: "var(--ds-bi-metric-size)", lineHeight: 1.15 }}>{destaque.valor}</p>
+          {destaque.achado && <p className="bi-body mt-1" style={T.pri}>{destaque.achado}</p>}
         </div>
       </div>
       {barra && <Barra barra={barra} />}
@@ -84,7 +84,7 @@ export function Destaque({ destaque, barra }: { destaque: NonNullable<Origem["de
 export function ListaItens({ itens, valor, meta, vazio = "Nenhum item." }: {
   itens: TfsItem[]; valor?: Origem["valor"]; meta: (i: TfsItem) => (string | null | undefined | false)[]; vazio?: string;
 }) {
-  if (!itens.length) return <p className="text-sm mt-3 pl-3" style={T.mut}>{vazio}</p>;
+  if (!itens.length) return <p className="bi-body mt-3 pl-3" style={T.mut}>{vazio}</p>;
   return (
     <ul className="mt-3 ml-1 sm:ml-2 max-h-[40vh] overflow-y-auto" style={{ borderLeft: `2px solid ${tinta(AZUL, 25)}` }}>
       {itens.map((i) => {
@@ -92,8 +92,8 @@ export function ListaItens({ itens, valor, meta, vazio = "Nenhum item." }: {
         return (
           <li key={i.id} className="flex items-start justify-between gap-3 pl-3 pr-1 py-2">
             <div className="min-w-0">
-              <p className="text-sm" style={T.pri}>{i.titulo}</p>
-              <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-0.5 text-xs" style={T.mut}>
+              <p className="bi-body" style={T.pri}>{i.titulo}</p>
+              <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-0.5 bi-caption" style={T.mut}>
                 <a href={linkTfs(i.id)} target="_blank" rel="noreferrer" className="inline-flex items-center gap-0.5 font-medium underline" style={{ color: AZUL }}>
                   #{i.id}<Icone nome="open_in_new" tamanho={12} />
                 </a>
@@ -101,7 +101,7 @@ export function ListaItens({ itens, valor, meta, vazio = "Nenhum item." }: {
               </div>
             </div>
             {valor && v != null && (
-              <span className="text-xs font-semibold tabular-nums shrink-0 px-2 py-0.5 whitespace-nowrap" style={{ background: "var(--ds-color-background-muted)", borderRadius: 9999, ...T.sec }}>
+              <span className="bi-caption font-semibold tabular-nums shrink-0 px-2 py-0.5 whitespace-nowrap" style={{ background: "var(--ds-color-background-muted)", borderRadius: 9999, ...T.sec }}>
                 {v.toLocaleString("pt-BR")} {valor.rotulo}
               </span>
             )}
@@ -118,11 +118,11 @@ export function Ranking({ grupos, abertos, conteudo }: {
 }) {
   return (
     <section>
-      <h3 className="flex items-center gap-2 mb-1" style={{ ...T.pri, fontSize: "var(--ds-body-md-font-size)", fontWeight: 600, lineHeight: 1.3 }}>
+      <h3 className="flex items-center gap-2 mb-1" style={{ ...T.pri, fontSize: "var(--ds-bi-body-size)", fontWeight: 600, lineHeight: 1.3 }}>
         <Icone nome="leaderboard" cor={AZUL} />
         {grupos.titulo}
       </h3>
-      <p className="text-xs mb-2" style={T.mut}>{grupos.dica}</p>
+      <p className="bi-caption mb-2" style={T.mut}>{grupos.dica}</p>
       <ol className="flex flex-col gap-1.5">
         {grupos.lista.map((g) => {
           const cor = COR[g.tom ?? "info"];
@@ -132,11 +132,11 @@ export function Ranking({ grupos, abertos, conteudo }: {
                 <summary className="list-none cursor-pointer [&::-webkit-details-marker]:hidden">
                   <div className="flex items-start justify-between gap-3">
                     <div className="min-w-0 flex items-start gap-2">
-                      {g.etiqueta && <span className="text-xs font-semibold px-2 py-0.5 shrink-0 tabular-nums" style={{ background: tinta(cor, 12), color: "var(--ds-color-text-primary)", borderRadius: 9999 }}>{g.etiqueta}</span>}
-                      <span className="text-sm" style={T.pri}>{g.nome}</span>
+                      {g.etiqueta && <span className="bi-caption font-semibold px-2 py-0.5 shrink-0 tabular-nums" style={{ background: tinta(cor, 12), color: "var(--ds-color-text-primary)", borderRadius: 9999 }}>{g.etiqueta}</span>}
+                      <span className="bi-body" style={T.pri}>{g.nome}</span>
                     </div>
                     <div className="flex items-center gap-1 shrink-0">
-                      <span className="text-sm font-semibold tabular-nums" style={T.pri}>{g.valor}</span>
+                      <span className="bi-body font-semibold tabular-nums" style={T.pri}>{g.valor}</span>
                       <span className="transition-transform group-open:rotate-180"><Icone nome="expand_more" cor={AZUL} /></span>
                     </div>
                   </div>
@@ -144,7 +144,7 @@ export function Ranking({ grupos, abertos, conteudo }: {
                     <div className="h-1.5 sm:flex-1 overflow-hidden" style={{ background: "var(--ds-color-background-muted)", borderRadius: 9999 }}>
                       <div className="h-full" style={{ width: `${g.barra > 0 ? Math.max(g.barra, 2) : 0}%`, background: cor, opacity: g.destaque ? 1 : 0.6, borderRadius: 9999 }} />
                     </div>
-                    <span className="text-xs tabular-nums sm:shrink-0 sm:text-right" style={T.mut}>{g.legenda}</span>
+                    <span className="bi-caption tabular-nums sm:shrink-0 sm:text-right" style={T.mut}>{g.legenda}</span>
                   </div>
                 </summary>
                 {conteudo(g)}
@@ -165,7 +165,7 @@ export function Rodape({ avisos, fonte }: { avisos?: Origem["avisos"]; fonte?: s
       {avisos?.map((a) => {
         const cor = a.tom === "critico" ? COR.critico : COR.atencao;
         return (
-          <p key={a.texto} className="flex items-start gap-2 text-xs p-3" style={{ background: tinta(cor, 14), borderRadius: "var(--ds-radius-sm)", ...T.pri }}>
+          <p key={a.texto} className="flex items-start gap-2 bi-caption p-3" style={{ background: tinta(cor, 14), borderRadius: "var(--ds-radius-sm)", ...T.pri }}>
             <Icone nome={a.tom === "critico" ? "error_outline" : "info"} cor={cor} tamanho={16} />
             <span>{a.texto}</span>
           </p>
@@ -173,9 +173,9 @@ export function Rodape({ avisos, fonte }: { avisos?: Origem["avisos"]; fonte?: s
       })}
       {fonte && (
         <div className="flex flex-wrap items-center gap-2">
-          <span className="text-xs font-semibold" style={T.mut}>Fontes</span>
+          <span className="bi-caption font-semibold" style={T.mut}>Fontes</span>
           {fonte.split(" · ").map((e) => (
-            <span key={e} className="text-xs px-2 py-1" style={{ border: borda, borderRadius: 9999, ...T.sec }}>{e}</span>
+            <span key={e} className="bi-caption px-2 py-1" style={{ border: borda, borderRadius: 9999, ...T.sec }}>{e}</span>
           ))}
         </div>
       )}

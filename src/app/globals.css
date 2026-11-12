@@ -9,6 +9,7 @@
    ligature usado pelo cards de "Serviços em destaque" do www.ms.gov.br
    (confirmado via inspeção DOM: <span class="material-icons">nome_icone</span>). */
 @import "material-icons/iconfont/material-icons.css";
+@import "../styles/bi-typography.css";
 
 /* Dark mode — o DS-MS ainda não publica tokens de tema escuro (ver ADR-006 e
    ADR-004 no repo do DS). Override local dos tokens semânticos, derivado dos
@@ -84,11 +85,26 @@
   --color-border: var(--ds-color-border);
   --font-sans: var(--ds-font-family-body);
   --font-heading: var(--ds-font-family-heading);
+  /* Compatibilidade: utilitários antigos também seguem a escala central.
+     Componentes novos usam papéis bi-* para declarar a função do texto. */
+  --text-xs: var(--ds-bi-caption-size);
+  --text-xs--line-height: var(--ds-bi-label-leading);
+  --text-sm: var(--ds-bi-body-small-size);
+  --text-sm--line-height: var(--ds-bi-body-leading);
+  --text-base: var(--ds-bi-body-size);
+  --text-base--line-height: var(--ds-bi-body-leading);
+  --text-lg: var(--ds-bi-headline-size);
+  --text-lg--line-height: var(--ds-bi-headline-leading);
+  --text-xl: var(--ds-bi-heading-2-size);
+  --text-2xl: var(--ds-bi-heading-1-size);
+  --text-3xl: var(--ds-bi-metric-size);
 }
 
 body {
   background: var(--ds-color-background);
   color: var(--ds-color-text-primary);
+  font-size: var(--ds-bi-body-size);
+  line-height: var(--ds-bi-body-leading);
 }
 
 /* DataTable.tsx — hover de linha. Classe própria em vez de arbitrary value

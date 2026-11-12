@@ -23,7 +23,7 @@ export function BannerPeriodo({ rotulo }: { rotulo: string }) {
         <Calendar size={16} aria-hidden style={{ color: "var(--ds-color-primary-600)" }} />
         Período aplicado: {rotulo}
       </span>
-      <span style={{ color: "var(--ds-color-text-secondary)" }} className="text-xs">
+      <span style={{ color: "var(--ds-color-text-secondary)" }} className="bi-caption">
         Altere na barra lateral
       </span>
     </div>

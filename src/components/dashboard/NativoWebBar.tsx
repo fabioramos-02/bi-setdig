@@ -90,7 +90,7 @@ export function NativoWebBar({
 
         {!compacta && (!nativoInline || !webInline) && (
           <span
-            className="hidden sm:inline text-xs tabular-nums whitespace-nowrap"
+            className="hidden sm:inline bi-caption tabular-nums whitespace-nowrap"
             style={{ color: "var(--ds-color-text-secondary)" }}
           >
             {!nativoInline && `${fmtInt(nativo)} ${rotulos.nativo}`}
@@ -103,7 +103,7 @@ export function NativoWebBar({
       {/* Mobile: segmento estreito não cabe o rótulo inline (vazava) — números
           descem pra uma linha só, abaixo da barra. */}
       {!compacta && (
-        <p className="sm:hidden text-xs tabular-nums" style={{ color: "var(--ds-color-text-secondary)" }}>
+        <p className="sm:hidden bi-caption tabular-nums" style={{ color: "var(--ds-color-text-secondary)" }}>
           {fmtInt(nativo)} {rotulos.nativo} ({fmtPct(pctNativo)}) · {fmtInt(web)} {rotulos.web} ({fmtPct(pctWeb)})
         </p>
       )}

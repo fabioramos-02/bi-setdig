@@ -96,14 +96,14 @@ export function PercepcaoTab({
               const total = percepcao.csatDistribuicao[f.nota as keyof typeof percepcao.csatDistribuicao] || 0;
               const pct = percepcao.totalVotos > 0 ? (total / percepcao.totalVotos) * 100 : 0;
               return (
-                <div key={f.nota} className="flex flex-col items-center gap-2 flex-1 min-w-[100px]">
+                <div key={f.nota} className="flex flex-col items-center gap-2 flex-1 min-w-[7rem]">
                   <div
                     className="flex items-center justify-center rounded-full text-white shadow-sm mb-2"
                     style={{ backgroundColor: f.color, width: 64, height: 64 }}
                   >
                     <span className="material-icons" style={{ fontSize: 40 }}>{f.icon}</span>
                   </div>
-                  <span className="text-[10px] font-bold tracking-wider text-center" style={{ color: "var(--ds-color-text-secondary)" }}>
+                  <span className="bi-caption text-center" style={{ color: "var(--ds-color-text-secondary)" }}>
                     {f.label}
                   </span>
                   <span className="text-xl font-bold" style={{ color: "var(--ds-color-text-primary)" }}>
@@ -125,12 +125,12 @@ export function PercepcaoTab({
             <RBarChart data={chartData} layout="vertical" margin={{ top: 20, right: 30, left: 10, bottom: 5 }}>
               <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="var(--ds-color-border)" />
               <XAxis type="number" hide />
-              <YAxis dataKey="orgao" type="category" width={110} axisLine={false} tickLine={false} tick={{ fontSize: 13, fontWeight: 600, fill: "var(--ds-color-text-primary)" }} />
+              <YAxis dataKey="orgao" type="category" width={110} axisLine={false} tickLine={false} tick={{ fontSize: "var(--ds-bi-caption-size)", fontWeight: 600, fill: "var(--ds-color-text-primary)" }} />
               <Tooltip
                 formatter={(value) => `${Number(value || 0).toFixed(1)}%`}
-                contentStyle={{ background: "var(--ds-color-background)", border: "1px solid var(--ds-color-border)", color: "var(--ds-color-text-primary)", fontSize: 12 }}
+                contentStyle={{ background: "var(--ds-color-background)", border: "1px solid var(--ds-color-border)", color: "var(--ds-color-text-primary)", fontSize: "var(--ds-bi-body-small-size)" }}
               />
-              <Legend verticalAlign="top" align="right" iconType="square" wrapperStyle={{ fontSize: 12, paddingBottom: 10 }} />
+              <Legend verticalAlign="top" align="right" iconType="square" wrapperStyle={{ fontSize: "var(--ds-bi-caption-size)", paddingBottom: 10 }} />
               <Bar dataKey="n5" stackId="a" fill="#16a34a" name="(5)" />
               <Bar dataKey="n4" stackId="a" fill="#22c55e" name="(4)" />
               <Bar dataKey="n3" stackId="a" fill="#eab308" name="(3)" />
@@ -138,7 +138,7 @@ export function PercepcaoTab({
               <Bar dataKey="n1" stackId="a" fill="#ef4444" name="(1)" />
             </RBarChart>
           </ResponsiveContainer>
-          <div className="text-[11px] mt-2" style={{ color: "var(--ds-color-text-muted)" }}>
+          <div className="bi-caption mt-2" style={{ color: "var(--ds-color-text-secondary)" }}>
             Ranking ordenado pela taxa de insatisfação. Os órgãos no topo concentram a maior prioridade de intervenção.
           </div>
         </DashboardSection>

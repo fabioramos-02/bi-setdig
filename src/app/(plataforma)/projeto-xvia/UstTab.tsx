@@ -66,7 +66,7 @@ export function UstTab({ itens, etp, contrato, mensal, hoje, prazo }: { itens: T
       <DashboardSection title="Como a execução mensal se compara ao previsto?">
         <ExecucaoMensal dados={mensal} hoje={hoje} />
       </DashboardSection>
-      <details className="text-sm"><summary className="cursor-pointer font-semibold">Consultar o contrato e a referência de UST</summary>
+      <details className="bi-body"><summary className="cursor-pointer font-semibold">Consultar o contrato e a referência de UST</summary>
         <p className="mt-2">{contrato ? `${contrato.contrato} · ${fmtData(prazo.inicio)} a ${fmtData(prazo.fim)}.` : "Contrato não informado."} {contrato?.valorTotal != null && `Valor total: ${fmtReais(contrato.valorTotal)}.`} A previsão por atividade vem do Estudo Técnico Preliminar (ETP); UST significa Unidade de Serviço Técnico.</p>
       </details>
 
@@ -74,7 +74,7 @@ export function UstTab({ itens, etp, contrato, mensal, hoje, prazo }: { itens: T
         title="Quanto de cada atividade do ETP já foi usado?"
         action={<ExportCsvButton filename="projeto-xvia-ust-por-codigo.csv" rows={f.porCodigo.map((l) => ({ codigo: l.codigo, atividade: l.servico, ustPorTarefa: l.ustUnitaria, previstoEtp: l.previsto, tarefas: l.tarefas, ustLancada: l.lancada, ustExecutada: l.executada, saldo: l.saldo }))} />}
       >
-        <p className="mb-3 text-sm" style={{ color: "var(--ds-color-text-secondary)" }}>
+        <p className="mb-3 bi-body" style={{ color: "var(--ds-color-text-secondary)" }}>
           Clique numa linha para ver as tarefas daquela atividade. Atividades do ETP ainda sem nenhuma tarefa aparecem com zero.
         </p>
         <div className="overflow-x-auto min-w-0">
@@ -82,11 +82,11 @@ export function UstTab({ itens, etp, contrato, mensal, hoje, prazo }: { itens: T
         </div>
         {aberto && (
           <div className="mt-4 min-w-0">
-            <h3 ref={detalheRef} tabIndex={-1} className="text-sm font-semibold mb-2" style={{ color: "var(--ds-color-text-primary)" }}>
+            <h3 ref={detalheRef} tabIndex={-1} className="bi-heading-2 mb-3" style={{ color: "var(--ds-color-text-primary)" }}>
               {aberto.codigo} · {aberto.servico} — {fmtNum(aberto.tarefas)} tarefas
             </h3>
             {aberto.itens.length === 0 ? (
-              <p className="text-sm" style={{ color: "var(--ds-color-text-secondary)" }}>Nenhuma tarefa usa esta atividade ainda.</p>
+              <p className="bi-body" style={{ color: "var(--ds-color-text-secondary)" }}>Nenhuma tarefa usa esta atividade ainda.</p>
             ) : (
               <div className="overflow-x-auto min-w-0">
                 <DataTable horizontalScroll pageSize={25} label="Tarefas" searchText={(r) => [r.id, r.titulo, r.responsavel, r.epico, r.codigoCatalogo].join(" ")} columns={colunasTarefa} rows={aberto.itens} rowKey={(r) => String(r.id)} />
@@ -101,7 +101,7 @@ export function UstTab({ itens, etp, contrato, mensal, hoje, prazo }: { itens: T
           title="Quais tarefas da X-VIA precisam de código do catálogo?"
           action={<ExportCsvButton filename="projeto-xvia-tarefas-a-classificar.csv" rows={f.aClassificar.map((t) => ({ id: t.id, tarefa: t.titulo, problema: t.situacao, codigoEscrito: t.codigoCatalogo ?? "", modulo: t.epico ?? "", estado: t.estado, link: linkTfs(t.id) }))} />}
         >
-          <p className="mb-3 text-sm" style={{ color: "var(--ds-color-text-secondary)" }}>
+          <p className="mb-3 bi-body" style={{ color: "var(--ds-color-text-secondary)" }}>
             {fmtNum(f.contagemAClassificar["sem código"])} sem código na descrição · {fmtNum(f.contagemAClassificar["faixa a definir"])} com faixa (ex.: NEG.03/04/05) a definir · {fmtNum(f.contagemAClassificar["fora do ETP"])} com código que não existe no catálogo da X-VIA. Lista para a X-VIA corrigir.
           </p>
           <div className="overflow-x-auto min-w-0">

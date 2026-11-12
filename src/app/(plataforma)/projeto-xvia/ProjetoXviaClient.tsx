@@ -129,12 +129,12 @@ export function ProjetoXviaClient({
     {
       id: "detalhe", label: "3. Detalhamento", descricao: "De onde vem cada número: UST, registros financeiros, entregas, órgãos, equipes e qualidade do dado.",
       abas: [
-        { id: "ust", label: "A. UST e contrato", content: <UstTab itens={recorte} etp={etp} contrato={contrato} mensal={resumo.mensal} hoje={hoje} prazo={resumo.prazo} /> },
-        { id: "registros", label: "B. Registros financeiros", content: <RegistrosFinanceirosTab financeiro={financeiro} /> },
-        { id: "entregas", label: "C. Entregas", content: <div>{ehAcaoGestao(acaoConsulta) && <p className="text-sm mb-4">Critério desta lista: <b>{ACAO_GESTAO[acaoConsulta].rotulo}</b>. <button type="button" className={styles.link} onClick={() => navegar({ nivel: "detalhe", aba: "entregas" })}>Consultar todas as entregas nos filtros aplicados</button></p>}<EntregasTab itens={consultarEntregas(gestao.acoes, recorte, acaoConsulta)} /></div> },
-        { id: "orgaos", label: "D. Órgãos e serviços", content: <StakeholdersTab itens={recorte} stakeholders={stakeholders} filtros={filtros} filtrar={filtrar} /> },
-        { id: "equipes", label: "E. Equipes", content: <EquipesTab itens={recorte} sprints={sprints} hoje={hoje}><AcompanhamentoTab {...painel} /></EquipesTab> },
-        { id: "qualidade", label: "F. Qualidade dos dados", content: <QualidadeTab itens={recorte} etp={etp} contrato={contrato} financeiro={financeiro} hoje={hoje} diasRetrato={diasRetrato} /> },
+        { id: "ust", label: "UST e contrato", content: <UstTab itens={recorte} etp={etp} contrato={contrato} mensal={resumo.mensal} hoje={hoje} prazo={resumo.prazo} /> },
+        { id: "registros", label: "Registros financeiros", content: <RegistrosFinanceirosTab financeiro={financeiro} /> },
+        { id: "entregas", label: "Entregas", content: <div>{ehAcaoGestao(acaoConsulta) && <p className="bi-body mb-4">Critério desta lista: <b>{ACAO_GESTAO[acaoConsulta].rotulo}</b>. <button type="button" className={styles.link} onClick={() => navegar({ nivel: "detalhe", aba: "entregas" })}>Consultar todas as entregas nos filtros aplicados</button></p>}<EntregasTab itens={consultarEntregas(gestao.acoes, recorte, acaoConsulta)} /></div> },
+        { id: "orgaos", label: "Órgãos e serviços", content: <StakeholdersTab itens={recorte} stakeholders={stakeholders} filtros={filtros} filtrar={filtrar} /> },
+        { id: "equipes", label: "Equipes", content: <EquipesTab itens={recorte} sprints={sprints} hoje={hoje}><AcompanhamentoTab {...painel} /></EquipesTab> },
+        { id: "qualidade", label: "Qualidade dos dados", content: <QualidadeTab itens={recorte} etp={etp} contrato={contrato} financeiro={financeiro} hoje={hoje} diasRetrato={diasRetrato} /> },
       ],
     },
   ];

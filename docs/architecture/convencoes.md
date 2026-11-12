@@ -13,6 +13,12 @@
 
 ## Componentes (ver modules.md)
 
+Tipografia: usar os papéis `bi-*` e tokens `--ds-bi-*` de `src/styles/bi-typography.css`
+(ADR-018). Corpo 16px, tabela/label 15px e apoio mínimo 14px na escala-base;
+não resolver densidade diminuindo a fonte. Usar `bi-narrative` para conclusões
+e explicações, preservando largura de gráficos e tabelas. Novos componentes
+declaram o papel do texto; utilitários legados são compatíveis com a escala global.
+
 - `dashboard/`: DashboardCard, MetricCard, KPI, ChartCard, TrendCard, StatGrid,
   LoadingCard, EmptyCard, DashboardSection, FilterBar.
 - `charts/`: BarChart, LineChart, PieChart, DonutChart, HeatMap, Radar — todos

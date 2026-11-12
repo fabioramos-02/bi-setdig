@@ -12,7 +12,7 @@ export function OrgaosChips({
 }) {
   if (orgaos.length === 0) return null;
   const alinhamento = align === "center" ? "justify-center" : "justify-start";
-  const fonte = tamanho === "xs" ? "text-xs" : "text-sm";
+  const fonte = tamanho === "xs" ? "bi-caption" : "text-sm";
   return (
     <span
       className={`inline-flex flex-wrap gap-1.5 items-center ${alinhamento}`}

@@ -17,7 +17,7 @@ export function SlaSecao({ ans, bugs, onIrPara }: { ans: Ans | null; bugs: Retur
 
       {ans && (
         <div className="overflow-x-auto min-w-0">
-          <table className="w-full text-sm">
+          <table className="w-full bi-body">
             <thead>
               <tr style={{ color: "var(--ds-color-text-secondary)" }}>
                 <th className="text-left font-medium py-1 pr-3">Gravidade</th>
@@ -43,7 +43,7 @@ export function SlaSecao({ ans, bugs, onIrPara }: { ans: Ans | null; bugs: Retur
               })}
             </tbody>
           </table>
-          <div className="mt-1 text-xs" style={cinza}>Abaixo da meta, o contrato prevê desconto de 0,1% a 0,5% na nota fiscal por ponto percentual. Fonte: {ans.fonte}.</div>
+          <div className="mt-1 bi-caption" style={cinza}>Abaixo da meta, o contrato prevê desconto de 0,1% a 0,5% na nota fiscal por ponto percentual. Fonte: {ans.fonte}.</div>
         </div>
       )}
 
@@ -59,7 +59,7 @@ export function SlaSecao({ ans, bugs, onIrPara }: { ans: Ans | null; bugs: Retur
       )}
 
       {bugs.total > 0 && (
-        <div className="text-sm" style={{ borderTop: "1px solid var(--ds-color-border)", paddingTop: 10 }}>
+        <div className="bi-body" style={{ borderTop: "1px solid var(--ds-color-border)", paddingTop: 10 }}>
           <b>Qualidade do desenvolvimento:</b> {fmtNum(bugs.total)} falhas apontadas pelo QA estão abertas
           {bugs.modulos.length ? ` (${bugs.modulos.slice(0, 3).map((m) => `${fmtNum(m.n)} ${m.modulo === "sem módulo" ? "sem módulo" : `no ${m.modulo}`}`).join(", ")})` : ""}.{" "}
           <span style={cinza}>Não contam para o SLA: fazem parte do desenvolvimento, antes da entrega ir para produção.</span>

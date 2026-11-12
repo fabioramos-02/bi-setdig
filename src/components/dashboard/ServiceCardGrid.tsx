@@ -5,9 +5,8 @@ import type { PerfilServicoCard } from "@/lib/data";
 
 /**
  * Grid "Serviços em destaque" — réplica fiel do card do portal www.ms.gov.br.
- * Estrutura e estilos (ícone Material Icons 38px azul, órgão em caixa alta
- * 10px, título 16px bold cinza, sombra suave sem borda) confirmados via
- * inspeção DOM ao vivo do portal, temados por var(--ds-*). Abas por perfil +
+ * Estrutura baseada no portal; tipografia adaptada aos papéis do BI para
+ * leitura confortável, com apoio mínimo de 14px. Abas por perfil +
  * cards em 2 colunas; ordem preservada (a do portal), sem reordenar por visita.
  */
 
@@ -88,7 +87,7 @@ function ServiceCard({ card }: { card: PerfilServicoCard }) {
             style={{
               color: "var(--ds-color-primary-600)",
               fontFamily: "var(--ds-font-family-body)",
-              fontSize: "0.625rem",
+              fontSize: "var(--ds-bi-caption-size)",
               fontWeight: 400,
               marginBottom: 5,
             }}
@@ -101,8 +100,8 @@ function ServiceCard({ card }: { card: PerfilServicoCard }) {
           style={{
             color: "var(--ds-color-text-secondary)",
             fontFamily: "var(--ds-font-family-body)",
-            fontSize: "1rem",
-            fontWeight: 700,
+            fontSize: "var(--ds-bi-card-title-size)",
+            fontWeight: "var(--ds-bi-weight-emphasis)",
           }}
         >
           {card.servico}
@@ -111,11 +110,11 @@ function ServiceCard({ card }: { card: PerfilServicoCard }) {
       {/* Visitas do período no canto — reage ao filtro (dado vem do slice por período). */}
       <div className="shrink-0 text-right pl-3">
         <div
-          style={{ color: "var(--ds-color-primary-600)", fontFamily: "var(--ds-font-family-body)", fontSize: "1.125rem", fontWeight: 700, lineHeight: 1 }}
+          style={{ color: "var(--ds-color-primary-600)", fontFamily: "var(--ds-font-family-body)", fontSize: "var(--ds-bi-headline-size)", fontWeight: "var(--ds-bi-weight-emphasis)", lineHeight: 1.25 }}
         >
           {card.visitas.toLocaleString("pt-BR")}
         </div>
-        <div style={{ color: "var(--ds-color-text-muted)", fontSize: "0.625rem", marginTop: 2 }}>visitas</div>
+        <div style={{ color: "var(--ds-color-text-secondary)", fontSize: "var(--ds-bi-caption-size)", marginTop: 2 }}>visitas</div>
       </div>
     </a>
   );

@@ -47,7 +47,7 @@ export function ValorStatus({ v, ust }: { v: ValorFonte; ust?: boolean }) {
   return (
     <span title={`Fonte: ${v.fonte}`} className="inline-flex flex-col items-end">
       <span style={v.valor === null ? cinza : undefined}>{texto}</span>
-      <span className="text-[11px]" style={{ color: COR_STATUS[v.status] }}>{ROTULO_STATUS[v.status]}</span>
+      <span className="bi-caption" style={{ color: COR_STATUS[v.status] }}>{ROTULO_STATUS[v.status]}</span>
     </span>
   );
 }
@@ -57,19 +57,19 @@ export function SecaoRelatorio({ n, titulo, children, acao }: { n: number; titul
   return (
     <section className="break-inside-avoid" style={{ borderTop: "1px solid var(--ds-color-border)", paddingTop: 16 }}>
       <div className="flex flex-wrap items-baseline justify-between gap-2 mb-2">
-        <h2 className="font-semibold" style={{ color: "var(--ds-color-text-primary)", fontSize: "var(--ds-heading-2-font-size)", lineHeight: 1.4, margin: 0 }}>
+        <h2 className="font-semibold" style={{ color: "var(--ds-color-text-primary)", fontSize: "var(--ds-bi-heading-1-size)", lineHeight: 1.4, margin: 0 }}>
           <span style={cinza}>{n}.</span> {titulo}
         </h2>
         {acao}
       </div>
-      <div className="text-base flex flex-col gap-2" style={{ color: "var(--ds-color-text-primary)" }}>{children}</div>
+      <div className="bi-body flex flex-col gap-2" style={{ color: "var(--ds-color-text-primary)" }}>{children}</div>
     </section>
   );
 }
 
 export function BotaoLink({ onClick, children }: { onClick: () => void; children: React.ReactNode }) {
   return (
-    <button type="button" onClick={onClick} className="text-sm font-medium underline print:hidden" style={{ color: "var(--ds-color-primary-600)" }}>
+    <button type="button" onClick={onClick} className="bi-body font-medium underline print:hidden" style={{ color: "var(--ds-color-primary-600)" }}>
       {children}
     </button>
   );

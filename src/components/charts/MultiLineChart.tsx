@@ -23,8 +23,8 @@ export function MultiLineChart({
       <ResponsiveContainer width="100%" height={height}>
         <RLineChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 8 }}>
           <CartesianGrid stroke="var(--ds-color-border)" strokeDasharray="3 3" />
-          <XAxis dataKey={xKey} tick={{ fill: "var(--ds-color-text-secondary)", fontSize: 11 }} minTickGap={24} />
-          <YAxis tick={{ fill: "var(--ds-color-text-secondary)", fontSize: 12 }} />
+          <XAxis dataKey={xKey} tick={{ fill: "var(--ds-color-text-secondary)", fontSize: "var(--ds-bi-caption-size)" }} minTickGap={24} />
+          <YAxis tick={{ fill: "var(--ds-color-text-secondary)", fontSize: "var(--ds-bi-caption-size)" }} />
           <Tooltip
             contentStyle={{
               background: "var(--ds-color-background)",
@@ -37,7 +37,7 @@ export function MultiLineChart({
           ))}
         </RLineChart>
       </ResponsiveContainer>
-      <ul className="flex flex-wrap gap-x-4 gap-y-1.5 text-xs">
+      <ul className="flex flex-wrap gap-x-4 gap-y-1.5 bi-caption">
         {series.map((s, i) => (
           <li key={s.key} className="flex items-center gap-1.5">
             <span className="inline-block w-2.5 h-2.5 rounded-full shrink-0" style={{ background: corCategorica(i) }} />

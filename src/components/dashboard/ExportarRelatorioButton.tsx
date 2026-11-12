@@ -86,7 +86,7 @@ export function ExportarRelatorioButton({
           </p>
 
           {filtro && (
-            <p className="text-xs rounded-md px-3 py-2" style={{ background: "var(--ds-color-background-muted)", color: "var(--ds-color-text-secondary)" }}>
+            <p className="bi-caption rounded-md px-3 py-2" style={{ background: "var(--ds-color-background-muted)", color: "var(--ds-color-text-secondary)" }}>
               Recorte do relatório: <strong style={{ color: "var(--ds-color-text-primary)" }}>{filtro}</strong> · extraído em {formatarExtracao(new Date())}.
             </p>
           )}

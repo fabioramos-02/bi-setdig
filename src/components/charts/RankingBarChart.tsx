@@ -50,13 +50,13 @@ export function RankingBarChart({
           >
             <div className={`flex justify-between items-baseline gap-3 text-sm ${compact ? "mb-0.5" : "mb-1"}`}>
               <span
-                className={`font-medium truncate ${clicavel ? "group-hover:underline" : ""}`}
+                className={`font-medium min-w-0 break-words ${clicavel ? "group-hover:underline" : ""}`}
                 style={{ color: "var(--ds-color-text-primary)" }}
               >
                 {it.label}
               </span>
               {it.sublabel && (
-                <span className="shrink-0 text-xs" style={{ color: "var(--ds-color-text-muted)" }}>
+                <span className="shrink-0 bi-caption" style={{ color: "var(--ds-color-text-muted)" }}>
                   {it.sublabel}
                 </span>
               )}

@@ -1,0 +1,60 @@
+/* Papéis do BI sobre os tokens do DS-MS. O pacote vendorizado permanece intacto.
+   Tamanhos em rem acompanham a preferência de fonte do navegador. */
+:root {
+  font-size: 100%;
+  --ds-bi-display-size: clamp(1.75rem, 1.5rem + 1vw, 2rem);
+  --ds-bi-heading-1-size: 1.5rem;
+  --ds-bi-heading-2-size: 1.25rem;
+  --ds-bi-headline-size: 1.25rem;
+  --ds-bi-metric-size: 2rem;
+  --ds-bi-card-title-size: 1.0625rem;
+  --ds-bi-body-size: 1rem;
+  --ds-bi-table-size: .9375rem;
+  --ds-bi-label-size: .9375rem;
+  --ds-bi-body-small-size: .875rem;
+  --ds-bi-caption-size: .875rem;
+  --ds-bi-title-leading: 1.25;
+  --ds-bi-headline-leading: 1.45;
+  --ds-bi-body-leading: 1.6;
+  --ds-bi-label-leading: 1.5;
+  --ds-bi-weight-regular: var(--ds-font-weight-regular);
+  --ds-bi-weight-emphasis: var(--ds-font-weight-semibold);
+  --ds-bi-reading-width: 60rem;
+
+  /* Compatibilidade com componentes DS existentes durante a migração. */
+  --ds-body-md-font-size: var(--ds-bi-body-size);
+  --ds-body-md-line-height: 1.6;
+  --ds-body-sm-font-size: var(--ds-bi-body-small-size);
+  --ds-body-sm-line-height: 1.5;
+}
+
+.bi-display, .bi-heading-1, .bi-heading-2, .bi-headline, .bi-metric, .bi-card-title {
+  font-weight: var(--ds-bi-weight-emphasis);
+  overflow-wrap: anywhere;
+}
+.bi-display { font-size: var(--ds-bi-display-size); line-height: var(--ds-bi-title-leading); }
+.bi-heading-1 { font-size: var(--ds-bi-heading-1-size); line-height: var(--ds-bi-title-leading); }
+.bi-heading-2 { font-size: var(--ds-bi-heading-2-size); line-height: var(--ds-bi-title-leading); }
+.bi-headline { font-size: var(--ds-bi-headline-size); line-height: var(--ds-bi-headline-leading); }
+.bi-metric { font-size: var(--ds-bi-metric-size); line-height: var(--ds-bi-title-leading); font-variant-numeric: tabular-nums; }
+.bi-card-title { font-size: var(--ds-bi-card-title-size); line-height: var(--ds-bi-headline-leading); }
+.bi-body { font-size: var(--ds-bi-body-size); line-height: var(--ds-bi-body-leading); }
+.bi-body-small { font-size: var(--ds-bi-body-small-size); line-height: var(--ds-bi-body-leading); }
+.bi-label { font-size: var(--ds-bi-label-size); line-height: var(--ds-bi-label-leading); }
+.bi-caption { font-size: var(--ds-bi-caption-size); line-height: var(--ds-bi-label-leading); }
+.bi-narrative { max-inline-size: var(--ds-bi-reading-width); }
+.bi-table { font-size: var(--ds-bi-table-size); line-height: var(--ds-bi-body-leading); }
+.bi-table th { font-size: var(--ds-bi-label-size); font-weight: var(--ds-bi-weight-emphasis); text-transform: none; letter-spacing: normal; }
+.bi-tabs { display: flex; gap: var(--ds-spacing-8); overflow-x: auto; max-width: 100%; margin-bottom: var(--ds-spacing-24); border-bottom: 1px solid var(--ds-color-border); }
+.bi-tab {
+  flex-shrink: 0; min-height: 3rem; padding: var(--ds-spacing-12) var(--ds-spacing-16);
+  border-bottom: 3px solid transparent; background: transparent;
+  color: var(--ds-color-text-secondary); font-family: var(--ds-font-family-body);
+  font-size: var(--ds-bi-label-size); font-weight: var(--ds-bi-weight-regular);
+  line-height: var(--ds-bi-label-leading); white-space: nowrap; cursor: pointer;
+}
+.bi-tab[aria-selected="true"] { color: var(--ds-color-primary-600); border-color: var(--ds-color-primary-600); background: var(--ds-color-background-muted); font-weight: var(--ds-bi-weight-emphasis); }
+.bi-tab:hover:not(:disabled) { background: var(--ds-color-background-muted); }
+.bi-tab:disabled { opacity: .5; cursor: default; }
+.bi-tab:focus-visible { outline: 2px solid var(--ds-color-primary-600); outline-offset: -3px; }
+.bi-tooltip { font-size: var(--ds-bi-body-small-size); line-height: var(--ds-bi-body-leading); max-width: min(24rem, 90vw); overflow-wrap: anywhere; }

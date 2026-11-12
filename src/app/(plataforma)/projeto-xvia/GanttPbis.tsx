@@ -28,7 +28,7 @@ export function GanttPbis({ c, hoje, svgRef }: { c: Crono; hoje: string; svgRef:
   const desenho: React.ReactNode[] = [];
   cadeias.forEach((b, nb) => {
     const cor = PALETA[(b.cadeia ?? 0) % PALETA.length];
-    desenho.push(<text key={`t${nb}`} x={4} y={y + 24 * k} style={{ fontSize: "var(--ds-body-sm-font-size)" }} fontWeight={600} fill="var(--ds-color-text-primary)">{corta(b.titulo, 64)}</text>);
+    desenho.push(<text key={`t${nb}`} x={4} y={y + 24 * k} style={{ fontSize: "var(--ds-bi-body-small-size)" }} fontWeight={600} fill="var(--ds-color-text-primary)">{corta(b.titulo, 64)}</text>);
     y += TIT;
     for (const p of b.pbis) {
       const sit = c.situacao.get(p.id) ?? "sem_sprint";
@@ -38,7 +38,7 @@ export function GanttPbis({ c, hoje, svgRef }: { c: Crono; hoje: string; svgRef:
       desenho.push(<rect key={`f${p.id}`} x={0} y={y} width={4} height={LIN - 4 * k} fill={cor} />);
       desenho.push(
         <a key={`l${p.id}`} href={linkTfs(p.id)} target="_blank" rel="noreferrer">
-          <text x={10} y={y + 24 * k} style={{ fontSize: "var(--ds-body-sm-font-size)" }} fill="var(--ds-color-text-primary)"><title>{`#${p.id} ${p.titulo} · ${quemResolve(p)}`}</title>#{p.id} {corta(p.titulo, 34)}</text>
+          <text x={10} y={y + 24 * k} style={{ fontSize: "var(--ds-bi-body-small-size)" }} fill="var(--ds-color-text-primary)"><title>{`#${p.id} ${p.titulo} · ${quemResolve(p)}`}</title>#{p.id} {corta(p.titulo, 34)}</text>
         </a>,
       );
       if (col >= 0) {
@@ -48,7 +48,7 @@ export function GanttPbis({ c, hoje, svgRef }: { c: Crono; hoje: string; svgRef:
         desenho.push(
           <g key={`b${p.id}`}>
             <rect x={x0} y={y + 2 * k} width={larg} height={LIN - 8 * k} rx={4} fill={COR_SIT[sit]}><title>{`${ROTULO_SITUACAO[sit]} · ${p.coluna ?? p.estado} · ${quemResolve(p)}`}</title></rect>
-            <text x={x0 + larg / 2} y={y + 24 * k} style={{ fontSize: "var(--ds-body-sm-font-size)" }} textAnchor="middle" fill={TXT_SIT[sit] ?? "#fff"}>{corta(ROTULO_SITUACAO[sit], 13)}</text>
+            <text x={x0 + larg / 2} y={y + 24 * k} style={{ fontSize: "var(--ds-bi-body-small-size)" }} textAnchor="middle" fill={TXT_SIT[sit] ?? "#fff"}>{corta(ROTULO_SITUACAO[sit], 13)}</text>
           </g>,
         );
       }
@@ -62,7 +62,7 @@ export function GanttPbis({ c, hoje, svgRef }: { c: Crono; hoje: string; svgRef:
   return (
     <div className="flex flex-col gap-4">
       {c.invertidas.length > 0 && (
-        <div className="text-sm" style={{ color: "var(--ds-color-text-primary)" }}>
+        <div className="bi-body" style={{ color: "var(--ds-color-text-primary)" }}>
           <b>{fmtNum(c.invertidas.length)} {c.invertidas.length === 1 ? "dependência planejada" : "dependências planejadas"} ao contrário</b>: a entrega que precisa vir antes está numa sprint depois. Corrigir a sprint no TFS.
         </div>
       )}
@@ -80,16 +80,16 @@ export function GanttPbis({ c, hoje, svgRef }: { c: Crono; hoje: string; svgRef:
           </svg>
         </div>
       ) : (
-        <p className="text-sm" style={cinza}>Nenhuma dependência registrada entre os PBIs desta Feature.</p>
+        <p className="bi-body" style={cinza}>Nenhuma dependência registrada entre os PBIs desta Feature.</p>
       )}
       {porSituacao.length > 0 && (
         <div>
-          <b className="text-sm">PBIs abertos sem dependência ({fmtNum(soltos.length)})</b>
+          <b className="bi-body">PBIs abertos sem dependência ({fmtNum(soltos.length)})</b>
           <div className="mt-2 grid gap-3 md:grid-cols-2">
             {porSituacao.map(({ s, ps }) => (
               <div key={s} style={{ borderLeft: `4px solid ${COR_SIT[s as Situacao]}`, paddingLeft: 10 }}>
-                <div className="text-sm font-semibold" style={{ color: "var(--ds-color-text-primary)" }}>{ROTULO_SITUACAO[s as Situacao]} ({fmtNum(ps.length)})</div>
-                <ul className="text-sm flex flex-col gap-0.5 mt-1">
+                <div className="bi-body font-semibold" style={{ color: "var(--ds-color-text-primary)" }}>{ROTULO_SITUACAO[s as Situacao]} ({fmtNum(ps.length)})</div>
+                <ul className="bi-body flex flex-col gap-0.5 mt-1">
                   {ps.map((p) => <li key={p.id}><LinkItem item={p} /> <span style={cinza}>· {quemResolve(p)}</span></li>)}
                 </ul>
               </div>
@@ -98,9 +98,9 @@ export function GanttPbis({ c, hoje, svgRef }: { c: Crono; hoje: string; svgRef:
         </div>
       )}
       <details>
-        <summary className="cursor-pointer text-sm font-semibold">Ver entregas e dependências em lista</summary>
-        <p className="mt-2 text-sm" style={cinza}>Nomes completos e ligações cadastradas. O responsável no registro não identifica necessariamente quem deve decidir.</p>
-        <ul className="flex flex-col gap-3 mt-3 text-sm">
+        <summary className="cursor-pointer bi-body font-semibold">Ver entregas e dependências em lista</summary>
+        <p className="mt-2 bi-body" style={cinza}>Nomes completos e ligações cadastradas. O responsável no registro não identifica necessariamente quem deve decidir.</p>
+        <ul className="flex flex-col gap-3 mt-3 bi-body">
           {listaDoCronograma(c).map(({ item, situacao, antes, depois }) => <li key={item.id} style={{ borderBottom: "1px solid var(--ds-color-border)", paddingBottom: 8 }}>
             <LinkItem item={item} /><div>{ROTULO_SITUACAO[situacao]} · Responsável no registro: {item.responsavel ?? "Não informado"}</div>
             <div style={cinza}>Sprint: {c.colunas.find((s) => s.sprint === item.sprint)?.nome ?? "Não informada"}</div>

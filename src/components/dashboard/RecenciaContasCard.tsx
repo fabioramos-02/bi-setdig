@@ -38,7 +38,7 @@ export function RecenciaContasCard({ faixas }: { faixas: FaixaAcesso[] }) {
           <div style={{ color: "var(--ds-color-text-primary)" }} className="text-sm font-medium mt-2">
             Criaram a conta e não voltaram
           </div>
-          <div style={{ color: "var(--ds-color-text-muted)" }} className="text-xs mt-3">
+          <div style={{ color: "var(--ds-color-text-muted)" }} className="bi-caption mt-3">
             <span className="tabular-nums">{usoUnico.quantidade.toLocaleString("pt-BR")}</span>{" "}
             contas de uso único, entre {total.toLocaleString("pt-BR")} cadastradas.
           </div>

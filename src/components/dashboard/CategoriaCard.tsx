@@ -19,7 +19,7 @@ type Props = {
 };
 
 function BadgeInativa({ tamanho }: { tamanho: "xs" | "sm" }) {
-  const px = tamanho === "sm" ? "px-2 py-0.5 text-xs" : "px-1.5 py-0.5 text-[10px]";
+  const px = tamanho === "sm" ? "px-2 py-0.5 bi-caption" : "px-1.5 py-0.5 bi-caption";
   return (
     <span
       className={`rounded font-medium uppercase tracking-wide ${px}`}
@@ -80,7 +80,7 @@ export function CategoriaCard({
         {inativa && <BadgeInativa tamanho="sm" />}
         {soAtalhoWeb ? (
           <span
-            className="text-xs px-2 py-0.5 rounded"
+            className="bi-caption px-2 py-0.5 rounded"
             style={{
               background: "var(--ds-color-background-muted)",
               color: "var(--ds-color-text-secondary)",
@@ -97,7 +97,7 @@ export function CategoriaCard({
               {FMT.format(acessos)}
             </span>
             <span
-              className="text-xs tabular-nums"
+              className="bi-caption tabular-nums"
               style={{ color: "var(--ds-color-text-secondary)" }}
             >
               acessos · {sharePct.toFixed(1)}% · {totalServicos} serviços
@@ -150,7 +150,7 @@ export function CategoriaCard({
           </span>
           {!soAtalhoWeb && (
             <span
-              className="text-xs tabular-nums whitespace-nowrap shrink-0"
+              className="bi-caption tabular-nums whitespace-nowrap shrink-0"
               style={{ color: "var(--ds-color-text-secondary)" }}
             >
               {FMT.format(acessos)} · {sharePct.toFixed(1)}%
@@ -158,7 +158,7 @@ export function CategoriaCard({
           )}
         </div>
         {soAtalhoWeb ? (
-          <span className="text-xs" style={{ color: "var(--ds-color-text-muted)" }}>
+          <span className="bi-caption" style={{ color: "var(--ds-color-text-muted)" }}>
             atalho externo · {totalServicos} serviço{totalServicos === 1 ? "" : "s"}
           </span>
         ) : (
@@ -178,7 +178,7 @@ export function CategoriaCard({
               </div>
             )}
             <div className="flex items-center justify-between gap-2 min-w-0">
-              <span className="text-xs" style={{ color: "var(--ds-color-text-muted)" }}>
+              <span className="bi-caption" style={{ color: "var(--ds-color-text-muted)" }}>
                 {totalServicos} serviço{totalServicos === 1 ? "" : "s"}
               </span>
               <OrgaosChips orgaos={orgaos} tamanho="xs" align="start" />

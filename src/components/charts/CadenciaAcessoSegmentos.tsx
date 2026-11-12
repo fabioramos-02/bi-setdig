@@ -180,7 +180,7 @@ function JanelaCard({
       }}
     >
       <span
-        className="text-xs font-semibold uppercase tracking-wide"
+        className="bi-caption font-semibold uppercase tracking-wide"
         style={{ color: cor }}
       >
         {destaque}
@@ -211,7 +211,7 @@ function JanelaCard({
         />
       </div>
       <span
-        className="text-xs mt-1"
+        className="bi-caption mt-1"
         style={{ color: "var(--ds-color-text-secondary)" }}
       >
         {descricao}

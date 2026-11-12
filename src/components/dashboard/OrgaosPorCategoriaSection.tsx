@@ -23,7 +23,7 @@ export function OrgaosPorCategoriaSection({
     <div className="flex flex-col gap-6">
       <div>
         <h4
-          className="text-xs font-semibold uppercase tracking-wide mb-3"
+          className="bi-caption font-semibold uppercase tracking-wide mb-3"
           style={{ color: "var(--ds-color-text-muted)" }}
         >
           Top 5 com mais acessos
@@ -91,12 +91,12 @@ function LinhaOrgao({
         </div>
         <div className="flex flex-col gap-0.5 min-w-0">
           <span
-            className={`font-semibold tabular-nums leading-tight ${compacto ? "text-xs" : "text-sm"}`}
+            className={`font-semibold tabular-nums leading-tight ${compacto ? "bi-caption" : "text-sm"}`}
             style={{ color: "var(--ds-color-text-primary)" }}
           >
             {o.categorias.length} categoria{o.categorias.length === 1 ? "" : "s"}
           </span>
-          <span className="text-xs tabular-nums" style={{ color: "var(--ds-color-text-secondary)" }}>
+          <span className="bi-caption tabular-nums" style={{ color: "var(--ds-color-text-secondary)" }}>
             {o.totalAtivos} de {o.totalServicos} serviços ativos
           </span>
         </div>
@@ -107,7 +107,7 @@ function LinhaOrgao({
         {o.categorias.map((c) => (
           <span
             key={c}
-            className="text-xs px-2 py-0.5 rounded whitespace-nowrap"
+            className="bi-caption px-2 py-0.5 rounded whitespace-nowrap"
             style={{
               background: "var(--ds-color-background-muted)",
               color: "var(--ds-color-text-secondary)",
@@ -127,7 +127,7 @@ function LinhaOrgao({
         >
           {FMT.format(o.acessos)}
         </span>
-        <span className="text-xs tabular-nums" style={{ color: "var(--ds-color-text-secondary)" }}>
+        <span className="bi-caption tabular-nums" style={{ color: "var(--ds-color-text-secondary)" }}>
           {totalGeral > 0 ? `${o.sharePct.toFixed(1)}% do uso do app` : "sem acessos no período"}
         </span>
       </div>

@@ -42,7 +42,7 @@ export function FaixasDeAcessoPorTipoCard({ faixas }: { faixas: FaixaAcessoPorTi
               <p className="text-base leading-tight" style={{ color: "var(--ds-color-text-primary)" }}>
                 <span className="font-medium">{f.faixa}</span>
                 <span
-                  className="ml-2 text-xs tabular-nums"
+                  className="ml-2 bi-caption tabular-nums"
                   style={{ color: "var(--ds-color-text-muted)" }}
                 >
                   · {f.total.toLocaleString("pt-BR")} contas
@@ -88,7 +88,7 @@ export function FaixasDeAcessoPorTipoCard({ faixas }: { faixas: FaixaAcessoPorTi
 
                 {(!govbrInline || !proprioInline) && (
                   <span
-                    className="text-xs tabular-nums whitespace-nowrap"
+                    className="bi-caption tabular-nums whitespace-nowrap"
                     style={{ color: "var(--ds-color-text-secondary)" }}
                   >
                     {!govbrInline && pctGovbr > 0 && `Gov.BR ${fmtPct(pctGovbr)}`}

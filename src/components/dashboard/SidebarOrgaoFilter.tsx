@@ -25,7 +25,7 @@ export function SidebarOrgaoFilter({ orgaos }: { orgaos: ErroOrgao[] }) {
 
   return (
     <div style={{ borderTop: "1px solid var(--ds-color-border)" }} className="px-4 py-4">
-      <h2 style={{ color: "var(--ds-color-text-secondary)" }} className="text-xs font-semibold uppercase mb-3">
+      <h2 style={{ color: "var(--ds-color-text-secondary)" }} className="bi-caption font-semibold uppercase mb-3">
         Órgão
       </h2>
       <label className="ds-field">

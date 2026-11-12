@@ -22,9 +22,9 @@ function TickQuebrado({ x, y, payload }: { x?: number; y?: number; payload?: { v
   const texto = String(payload?.value ?? "");
   const linhas = quebrarEmDuasLinhas(texto, 14);
   return (
-    <text x={x} y={(y ?? 0) + 12} textAnchor="middle" fill="var(--ds-color-text-secondary)" fontSize={12}>
+    <text x={x} y={(y ?? 0) + 12} textAnchor="middle" fill="var(--ds-color-text-secondary)" fontSize={"var(--ds-bi-caption-size)"}>
       {linhas.map((linha, i) => (
-        <tspan key={i} x={x} dy={i === 0 ? 0 : 14}>
+        <tspan key={i} x={x} dy={i === 0 ? 0 : "1.4em"}>
           {linha}
         </tspan>
       ))}
@@ -63,13 +63,13 @@ export function BarChart({
         <CartesianGrid stroke="var(--ds-color-border)" strokeDasharray="3 3" />
         <XAxis
           dataKey={xKey}
-          tick={quebrarLabelX ? <TickQuebrado /> : { fill: "var(--ds-color-text-secondary)", fontSize: 12 }}
-          height={quebrarLabelX ? 46 : undefined}
+          tick={quebrarLabelX ? <TickQuebrado /> : { fill: "var(--ds-color-text-secondary)", fontSize: "var(--ds-bi-caption-size)" }}
+          height={quebrarLabelX ? 64 : 40}
           interval={intervalX}
           minTickGap={quebrarLabelX ? undefined : 8}
           tickMargin={6}
         />
-        <YAxis tick={{ fill: "var(--ds-color-text-secondary)", fontSize: 12 }} />
+        <YAxis tick={{ fill: "var(--ds-color-text-secondary)", fontSize: "var(--ds-bi-caption-size)" }} />
         <Tooltip
           contentStyle={{
             background: "var(--ds-color-background)",
@@ -85,7 +85,7 @@ export function BarChart({
               position="insideTop"
               offset={10}
               fill="#fff"
-              fontSize={12}
+              fontSize={"var(--ds-bi-caption-size)"}
               fontWeight={600}
               formatter={(v) => (typeof v === "number" ? v.toLocaleString("pt-BR") : String(v))}
             />

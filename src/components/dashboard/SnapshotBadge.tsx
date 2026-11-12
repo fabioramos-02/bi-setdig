@@ -15,7 +15,7 @@ export function SnapshotBadge({
   }).format(new Date(updatedAt));
   return (
     <div
-      className="text-xs inline-flex items-start gap-2 px-3 py-2 rounded mb-4"
+      className="bi-caption inline-flex items-start gap-2 px-3 py-2 rounded mb-4"
       style={{
         background: "var(--ds-color-background-muted)",
         color: "var(--ds-color-text-muted)",

@@ -15,10 +15,10 @@ export function StackedBarChart({ itens }: { itens: ItemStackedBar[] }) {
         return (
           <div key={it.label}>
             <div className="flex justify-between items-baseline gap-3 text-sm mb-1">
-              <span className="font-medium truncate" style={{ color: "var(--ds-color-text-primary)" }}>
+              <span className="font-medium min-w-0 break-words" style={{ color: "var(--ds-color-text-primary)" }}>
                 {it.label}
               </span>
-              <span className="shrink-0 text-xs" style={{ color: "var(--ds-color-text-muted)" }}>
+              <span className="shrink-0 bi-caption" style={{ color: "var(--ds-color-text-muted)" }}>
                 {total.toLocaleString("pt-BR")}
               </span>
             </div>

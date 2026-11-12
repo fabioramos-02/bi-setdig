@@ -19,7 +19,7 @@ export function OrigemBotao({ origem, rotulo }: { origem: Origem; /** Texto do b
   const [aberto, setAberto] = useState(false);
   return (
     <>
-      <button type="button" onClick={() => setAberto(true)} className={`${rotulo === undefined ? "text-xs font-normal" : "tabular-nums font-medium"} underline print:hidden`} style={{ color: rotulo === undefined ? "var(--ds-color-text-secondary)" : "var(--ds-color-primary-600)" }}
+      <button type="button" onClick={() => setAberto(true)} className={`${rotulo === undefined ? "bi-caption font-normal" : "tabular-nums font-medium"} underline print:hidden`} style={{ color: rotulo === undefined ? "var(--ds-color-text-secondary)" : "var(--ds-color-primary-600)" }}
         aria-label={`${origem.rotulo}: ${rotulo === undefined ? "de onde vem?" : "ver itens"}`}>
         {rotulo ?? "De onde vem?"}
       </button>
@@ -69,9 +69,9 @@ function Detalhe({ origem }: { origem: Origem }) {
     <div className="flex flex-col gap-4">
       {origem.destaque && <Destaque destaque={origem.destaque} barra={origem.barra} />}
       <section aria-label="Como chegamos neste número" style={{ background: "var(--ds-color-background-muted)", borderRadius: "var(--ds-radius-md)", padding: "14px 16px" }}>
-        <div className="text-xs font-semibold uppercase tracking-wide mb-2" style={cinza}>Como chegamos neste número</div>
+        <div className="bi-caption font-semibold uppercase tracking-wide mb-2" style={cinza}>Como chegamos neste número</div>
         {passos.length ? (
-          <ol className="list-decimal pl-5 flex flex-col gap-1.5 text-sm">
+          <ol className="list-decimal pl-5 flex flex-col gap-1.5 bi-body">
             {passos.map((p, n) => (
               <li key={p} className="pl-1" style={{ color: "var(--ds-color-text-primary)", fontWeight: n === passos.length - 1 ? 600 : 400 }}>
                 <span>{p}</span>
@@ -79,12 +79,12 @@ function Detalhe({ origem }: { origem: Origem }) {
             ))}
           </ol>
         ) : (
-          <div className="text-sm">{origem.detalhe}</div>
+          <div className="bi-body">{origem.detalhe}</div>
         )}
-        {passos.length > 0 && origem.detalhe && <div className="text-xs mt-2" style={cinza}>{origem.detalhe}</div>}
-        {origem.fonte && !executivo && <div className="text-xs mt-2" style={cinza}>Fonte: {origem.fonte}</div>}
+        {passos.length > 0 && origem.detalhe && <div className="bi-caption mt-2" style={cinza}>{origem.detalhe}</div>}
+        {origem.fonte && !executivo && <div className="bi-caption mt-2" style={cinza}>Fonte: {origem.fonte}</div>}
         {origem.link && (
-          <div className="text-sm mt-2">
+          <div className="bi-body mt-2">
             <a href={origem.link.href} target="_blank" rel="noreferrer" className="underline" style={{ color: "var(--ds-color-primary-600)" }}>{origem.link.texto}</a>
           </div>
         )}
@@ -101,7 +101,7 @@ function Detalhe({ origem }: { origem: Origem }) {
                 value={busca}
                 onChange={(e) => setBusca(e.target.value)}
                 placeholder={`Buscar entre ${fmtNum(itens.length)} itens (número, título ou responsável)`}
-                className="w-full text-sm"
+                className="w-full bi-body"
                 style={{ border: "1px solid var(--ds-color-border)", borderRadius: "var(--ds-radius-sm)", padding: "8px 10px", background: "var(--ds-color-background)", color: "var(--ds-color-text-primary)" }}
               />
             </label>
@@ -112,7 +112,7 @@ function Detalhe({ origem }: { origem: Origem }) {
           </div>
           {gruposProntos ? (
             busca && !gruposProntos.lista.length
-              ? <p className="text-sm" style={cinza} aria-live="polite">Nenhum item encontrado.</p>
+              ? <p className="bi-body" style={cinza} aria-live="polite">Nenhum item encontrado.</p>
               : <Ranking
                   grupos={gruposProntos}
                   abertos={!!busca}
@@ -126,21 +126,21 @@ function Detalhe({ origem }: { origem: Origem }) {
                   )}
                 />
           ) : (<>
-          <div className="text-xs" style={cinza} aria-live="polite">
+          <div className="bi-caption" style={cinza} aria-live="polite">
             {fmtNum(filtrados.length)} {filtrados.length === 1 ? "item" : "itens"} em {fmtNum(grupos.length)} {grupos.length === 1 ? "grupo" : "grupos"}
             {valor ? ` · ${fmtNum(grupos.reduce((s, g) => s + (g.subtotal ?? 0), 0))} ${valor.rotulo}` : ""}
           </div>
           <div className="flex flex-col gap-2">
             {grupos.map((g, n) => (
               <details key={g.nome} open={n === 0 || grupos.length <= 3 || !!busca} style={{ border: "1px solid var(--ds-color-border)", borderRadius: "var(--ds-radius-md)" }}>
-                <summary className="cursor-pointer flex flex-wrap items-baseline justify-between gap-2 px-3 py-2 text-sm">
+                <summary className="cursor-pointer flex flex-wrap items-baseline justify-between gap-2 px-3 py-2 bi-body">
                   <b style={{ color: "var(--ds-color-text-primary)" }}>{g.nome}</b>
                   <span className="tabular-nums" style={cinza}>
                     {fmtNum(g.lista.length)} {g.lista.length === 1 ? "item" : "itens"}
                     {g.subtotal !== null && valor ? ` · ${fmtNum(g.subtotal)} ${valor.rotulo}` : ""}
                   </span>
                 </summary>
-                <ul className="text-sm">
+                <ul className="bi-body">
                   {g.lista.slice(0, POR_GRUPO).map((i) => {
                     const v = valor?.de(i);
                     return (
@@ -149,13 +149,13 @@ function Detalhe({ origem }: { origem: Origem }) {
                           <a href={linkTfs(i.id)} target="_blank" rel="noreferrer" className="underline tabular-nums" style={{ color: "var(--ds-color-primary-600)" }}>#{i.id}</a>{" "}
                           <span style={{ color: "var(--ds-color-text-primary)" }}>{i.titulo}</span>
                         </span>
-                        <span className="text-xs sm:text-sm" style={cinza}>{i.coluna ?? i.estado}</span>
-                        <span className="text-xs sm:text-sm truncate" style={cinza} title={quemResolve(i)}>{i.responsavel ?? "sem responsável"}</span>
-                        <span className="text-xs sm:text-sm sm:text-right tabular-nums font-medium">{valor ? (v == null ? "—" : `${fmtNum(v)} ${valor.rotulo}`) : ""}</span>
+                        <span className="bi-caption sm:bi-body" style={cinza}>{i.coluna ?? i.estado}</span>
+                        <span className="bi-caption sm:bi-body truncate" style={cinza} title={quemResolve(i)}>{i.responsavel ?? "sem responsável"}</span>
+                        <span className="bi-caption sm:bi-body sm:text-right tabular-nums font-medium">{valor ? (v == null ? "—" : `${fmtNum(v)} ${valor.rotulo}`) : ""}</span>
                       </li>
                     );
                   })}
-                  {g.lista.length > POR_GRUPO && <li className="px-3 py-1.5 text-xs" style={cinza}>+{fmtNum(g.lista.length - POR_GRUPO)} itens no CSV.</li>}
+                  {g.lista.length > POR_GRUPO && <li className="px-3 py-1.5 bi-caption" style={cinza}>+{fmtNum(g.lista.length - POR_GRUPO)} itens no CSV.</li>}
                 </ul>
               </details>
             ))}

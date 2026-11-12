@@ -24,7 +24,7 @@ export function AcompanhamentoTab({ widgets, atualizadoEm, diasSemAtualizar }: {
   return (
     <div className="flex flex-col gap-6 min-w-0">
       {atrasado && (
-        <p role="status" className="text-sm rounded-md px-4 py-3" style={{ background: "color-mix(in srgb, var(--ds-color-warning) 15%, transparent)", color: "var(--ds-color-text-primary)" }}>
+        <p role="status" className="bi-body rounded-md px-4 py-3" style={{ background: "color-mix(in srgb, var(--ds-color-warning) 15%, transparent)", color: "var(--ds-color-text-primary)" }}>
           Estes números são de {data}, há {diasSemAtualizar} dias — é necessário solicitar uma nova atualização.
         </p>
       )}
@@ -57,9 +57,9 @@ export function AcompanhamentoTab({ widgets, atualizadoEm, diasSemAtualizar }: {
           {g.grupos.length > 0 ? (
             <RankingBarChart itens={g.grupos.map((x) => ({ label: x.rotulo, valor: x.qtd }))} />
           ) : (
-            <p className="text-sm" style={{ color: "var(--ds-color-text-muted)" }}>Nenhum item nesta consulta hoje.</p>
+            <p className="bi-body" style={{ color: "var(--ds-color-text-muted)" }}>Nenhum item nesta consulta hoje.</p>
           )}
-          <p className="mt-3 text-xs" style={{ color: "var(--ds-color-text-muted)" }}>
+          <p className="mt-3 bi-caption" style={{ color: "var(--ds-color-text-muted)" }}>
             {g.total.toLocaleString("pt-BR")} itens no total.
           </p>
         </DashboardSection>

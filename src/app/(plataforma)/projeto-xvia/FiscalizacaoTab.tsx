@@ -34,7 +34,7 @@ export function FiscalizacaoTab({ dados: d, ans, bugs, contexto, onNavegar }: { 
       </div>
     </section>}
     <details className={styles.secundario}><summary>Consultar as {fmtNum(d.itens.length)} entregas da sprint</summary>
-      <label className="block mb-4 text-sm">Etapa do quadro<select className="ds-select" value={coluna} onChange={(e) => setColuna(e.target.value)}><option value="">Todas as etapas</option>{d.porColuna.map((c) => <option key={c.coluna} value={c.coluna}>{c.coluna} ({c.total})</option>)}</select></label>
+      <label className="block mb-4 bi-body">Etapa do quadro<select className="ds-select" value={coluna} onChange={(e) => setColuna(e.target.value)}><option value="">Todas as etapas</option>{d.porColuna.map((c) => <option key={c.coluna} value={c.coluna}>{c.coluna} ({c.total})</option>)}</select></label>
       {tabela(filtrarSprint(d, coluna), "Entregas da sprint")}
     </details>
     {d.proxima && <section><h2>Qual é o próximo compromisso?</h2><p className={styles.conclusao}>{d.proxima.nome}: {fmtData(d.proxima.inicio)} a {fmtData(d.proxima.fim)}, com {fmtNum(d.proximas.length)} entregas cadastradas nos filtros aplicados.</p><button type="button" className={styles.link} onClick={() => onNavegar({ nivel: "detalhe", aba: "entregas", filtros: { sprint: d.proxima!.sprint } })}>Consultar entregas da próxima sprint</button></section>}

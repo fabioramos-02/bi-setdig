@@ -38,7 +38,7 @@ export function GanttFeatures({ m, hoje, selecionada, onSelecionar, svgRef }: {
         <g>
           <rect x={x0} y={y + s(12)} width={w} height={s(20)} rx={5} fill={cor} fillOpacity={0.18} stroke={cor} strokeWidth={1.5} />
           {feito > 0 && <rect x={x0} y={y + s(12)} width={feito} height={s(20)} rx={5} fill={COR_SIT.concluido} />}
-          <text x={x0 + w + 6} y={y + s(26)} style={{ fontSize: "var(--ds-body-sm-font-size)" }} fontWeight={600} fill="var(--ds-color-text-primary)">
+          <text x={x0 + w + 6} y={y + s(26)} style={{ fontSize: "var(--ds-bi-body-small-size)" }} fontWeight={600} fill="var(--ds-color-text-primary)">
             {l.prontos}/{l.total}{l.ini !== null && l.aPlanejar ? ` · +${l.aPlanejar} a planejar` : ""}
           </text>
         </g>
@@ -50,10 +50,10 @@ export function GanttFeatures({ m, hoje, selecionada, onSelecionar, svgRef }: {
         onClick={ativar} onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && (e.preventDefault(), ativar())} style={{ cursor: "pointer" }}>
         <rect x={0} y={y} width={largura} height={LIN} fill={sel ? "color-mix(in srgb, var(--ds-color-primary-600) 10%, transparent)" : "transparent"} />
         <rect x={0} y={y + s(6)} width={4} height={LIN - s(12)} rx={2} fill={cor} />
-        <text x={12} y={y + s(20)} style={{ fontSize: "var(--ds-body-sm-font-size)" }} fontWeight={600} fill="var(--ds-color-text-primary)">
+        <text x={12} y={y + s(20)} style={{ fontSize: "var(--ds-bi-body-small-size)" }} fontWeight={600} fill="var(--ds-color-text-primary)">
           <title>{l.titulo}</title>{corta(l.titulo, 40)}
         </text>
-        <text x={12} y={y + s(44)} style={{ fontSize: "var(--ds-body-sm-font-size)" }}>
+        <text x={12} y={y + s(44)} style={{ fontSize: "var(--ds-bi-body-small-size)" }}>
           <tspan fill="var(--ds-color-text-muted)">{l.frente} · </tspan>
           <tspan fill="var(--ds-color-text-primary)" fontWeight={600}>{l.situacao === "vazio" ? "sem PBIs" : ROTULO_SITUACAO[l.situacao]}</tspan>
           {l.id !== null && <tspan fill="var(--ds-color-text-muted)"> · #{l.id}</tspan>}

@@ -19,11 +19,11 @@ export function ContasPorAnoChart({ dados, height = 300 }: { dados: ContaPorAno[
         <CartesianGrid stroke="var(--ds-color-border)" strokeDasharray="3 3" />
         <XAxis
           dataKey="ano"
-          tick={{ fill: "var(--ds-color-text-secondary)", fontSize: 12 }}
+          tick={{ fill: "var(--ds-color-text-secondary)", fontSize: "var(--ds-bi-caption-size)" }}
           tickMargin={6}
         />
         <YAxis
-          tick={{ fill: "var(--ds-color-text-secondary)", fontSize: 12 }}
+          tick={{ fill: "var(--ds-color-text-secondary)", fontSize: "var(--ds-bi-caption-size)" }}
           tickFormatter={(v) => v.toLocaleString("pt-BR")}
         />
         <Tooltip
@@ -34,7 +34,7 @@ export function ContasPorAnoChart({ dados, height = 300 }: { dados: ContaPorAno[
           }}
           formatter={(v) => (typeof v === "number" ? v.toLocaleString("pt-BR") : String(v))}
         />
-        <Legend wrapperStyle={{ fontSize: 12, color: "var(--ds-color-text-secondary)" }} />
+        <Legend wrapperStyle={{ fontSize: "var(--ds-bi-caption-size)", color: "var(--ds-color-text-secondary)" }} />
         <Bar dataKey="Total de contas" fill="var(--ds-color-neutral-400)" radius={[4, 4, 0, 0]} />
         <Bar dataKey="Contas ativas" fill="var(--ds-color-primary-600)" radius={[4, 4, 0, 0]} />
       </BarChart>

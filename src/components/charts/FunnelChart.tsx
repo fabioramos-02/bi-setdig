@@ -16,7 +16,7 @@ export function FunnelChart({ steps }: { steps: { label: string; value: number }
               <span>{s.label}</span>
               <span>
                 <strong style={{ color: "var(--ds-color-text-primary)" }}>{s.value.toLocaleString("pt-BR")}</strong>
-                {i > 0 && <span className="ml-2 text-xs">({pct < 1 ? pct.toFixed(2) : pct.toFixed(0)}% do topo)</span>}
+                {i > 0 && <span className="ml-2 bi-caption">({pct < 1 ? pct.toFixed(2) : pct.toFixed(0)}% do topo)</span>}
               </span>
             </div>
             <div

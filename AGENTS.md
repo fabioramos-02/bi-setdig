@@ -217,3 +217,6 @@ antes da execução e da verificação; atualizar o registro também quando uma 
 
 A revisão da Central de gestão do Gerente (12/11/2026) é acompanhada na nota
 `2026-11-12-central-gestao-bi-xvia.md` da mesma pasta, ligada à nota anterior e ao projeto principal.
+
+A revisão tipográfica (12/11/2026) usa `2026-11-12-tipografia-bi-xvia.md`, na mesma pasta.
+Textos novos devem consumir os papéis tipográficos compartilhados do BI, com corpo 16px e apoio mínimo 14px.

@@ -61,9 +61,9 @@ export function RelatorioMensal(props: EntradaResumoXvia & { onIrPara: (aba: str
       </SecaoRelatorio>
 
       <SecaoRelatorio n={9} titulo="Execução financeira e pagamentos" acao={<BotaoLink onClick={() => onIrPara("financeiro")}>Ver por órgão e serviço</BotaoLink>}>
-        <p className="text-sm" style={cinza}>A execução segue os filtros aplicados. Ordens de Serviço, aceites, notas e pagamentos são registros do contrato inteiro, independentes das tarefas.</p>
+        <p className="bi-body" style={cinza}>A execução segue os filtros aplicados. Ordens de Serviço, aceites, notas e pagamentos são registros do contrato inteiro, independentes das tarefas.</p>
         <TabelaCadeia cadeia={cadeia} />
-        <p className="text-xs" style={cinza}>
+        <p className="bi-caption" style={cinza}>
           Contrato: {consumo.valorTotalContrato ? fmtReais(consumo.valorTotalContrato) : "valor a informar"}. Serviços em UST: {consumo.valorItem3 ? fmtReais(consumo.valorItem3) : "—"}.
           Licença e implantação (preço global) ainda não são acompanhadas aqui.
         </p>

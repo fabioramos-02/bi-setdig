@@ -38,7 +38,7 @@ export function CronogramaTab({ itens, sprints, hoje, modulo, onModuloChange, co
 
   return (
     <div className={styles.pagina}>
-      <p className="text-sm"><button type="button" onClick={() => onModuloChange("")} className="underline">Todos os módulos</button>{nomeModulo && <> / <strong>{nomeModulo}</strong></>}</p>
+      <p className="bi-body"><button type="button" onClick={() => onModuloChange("")} className="underline">Todos os módulos</button>{nomeModulo && <> / <strong>{nomeModulo}</strong></>}</p>
 
       <header><h2>Onde o planejamento precisa de ajuste?</h2><p className={styles.contexto}>{contexto}</p><p className={styles.conclusao}>{frase}</p><p className={styles.ajuda}>O cronograma acompanha histórias, sem as falhas de desenvolvimento. A situação é a pior entre as histórias abertas de cada linha, não uma pontuação de saúde.</p></header>
       <AcoesCronograma macro={m} onNavegar={onNavegar} conferirLigacoes={() => { if (ligacoesRef.current) { ligacoesRef.current.open = true; ligacoesRef.current.focus(); ligacoesRef.current.scrollIntoView({ block: "start" }); } }} />
@@ -48,7 +48,7 @@ export function CronogramaTab({ itens, sprints, hoje, modulo, onModuloChange, co
         <p className={styles.ajuda}>Os totais do gráfico incluem as frentes presentes nos filtros. O rótulo de uma linha identifica a frente do módulo ou da Feature; as histórias vinculadas podem ser da X-VIA ou da SGD.</p>
         <GanttFeatures m={m} hoje={hoje} selecionada={feature} onSelecionar={selecionar} svgRef={svgMacro} />
         <Legenda situacoes={LEGENDA} />
-        <p className="mt-2 text-xs" style={cinza}>
+        <p className="mt-2 bi-caption" style={cinza}>
           {epicoId === null ? "Clique num módulo para ver as Features dele." : "Clique numa Feature para ver as entregas dela."} A barra usa as sprints e a data de início das histórias; esse intervalo não representa um marco formal de aceite.
         </p>
       </DashboardSection>
@@ -60,7 +60,7 @@ export function CronogramaTab({ itens, sprints, hoje, modulo, onModuloChange, co
           action={
             <span className="flex gap-4 items-center">
               {detalhe.blocos.some((b) => b.cadeia !== null) && <BaixarImagem alvo={svgPbis} nome={nomeArquivo(`cronograma-${linhaSel.titulo}`, hoje)} titulo={`${linhaSel.titulo} · TFS de ${fmtData(hoje)}`} />}
-              <button type="button" onClick={fecharDetalhe} className="text-sm underline print:hidden" style={{ color: "var(--ds-color-primary-600)" }}>Fechar</button>
+              <button type="button" onClick={fecharDetalhe} className="bi-body underline print:hidden" style={{ color: "var(--ds-color-primary-600)" }}>Fechar</button>
             </span>
           }
         >
@@ -73,8 +73,8 @@ export function CronogramaTab({ itens, sprints, hoje, modulo, onModuloChange, co
 
       {(m.alertas.fechadaComAberto.length > 0 || m.alertas.vazias.length > 0 || m.alertas.semDatas.length > 0) && (
         <details style={{ border: "1px solid var(--ds-color-border)", borderRadius: "var(--ds-radius-md)", padding: "12px 16px", background: "var(--ds-color-background)" }}>
-          <summary className="cursor-pointer text-sm font-semibold">Conferir o planejamento</summary>
-          <ul className="mt-2 flex flex-col gap-1.5 text-sm">
+          <summary className="cursor-pointer bi-body font-semibold">Conferir o planejamento</summary>
+          <ul className="mt-2 flex flex-col gap-1.5 bi-body">
             {m.alertas.fechadaComAberto.map((l) => <li key={`d${l.id}`}><LinkItem item={{ id: l.id!, titulo: l.titulo }} /> está concluída, mas tem {l.total - l.prontos} entrega(s) aberta(s).</li>)}
             {m.alertas.vazias.map((l) => <li key={`v${l.id}`}><LinkItem item={{ id: l.id!, titulo: l.titulo }} /> ainda não tem entregas cadastradas; pode representar trabalho futuro.</li>)}
             {m.alertas.semDatas.length > 0 && <li>{fmtNum(m.alertas.semDatas.length)} Features sem data de início e fim (task #1375476).</li>}

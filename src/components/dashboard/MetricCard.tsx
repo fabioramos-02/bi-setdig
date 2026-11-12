@@ -28,15 +28,15 @@ export function MetricCard({
         background: "var(--ds-color-background)",
       }}
     >
-      <div style={{ color: "var(--ds-color-text-secondary)" }} className="text-sm mb-1 flex items-center gap-1.5">
+      <div style={{ color: "var(--ds-color-text-secondary)" }} className="bi-label mb-2 flex items-center gap-1.5">
         {Icon && <Icon size={16} aria-hidden style={{ color: "var(--ds-color-text-muted)" }} />}
         {label}
       </div>
-      <div style={{ color: cor ?? "var(--ds-color-primary-600)" }} className="text-3xl font-semibold">
+      <div style={{ color: cor ?? "var(--ds-color-primary-600)" }} className="bi-metric">
         {typeof value === "number" ? value.toLocaleString("pt-BR") : value}
       </div>
       {sub && (
-        <div style={{ color: "var(--ds-color-text-muted)" }} className="text-xs mt-1">
+        <div style={{ color: "var(--ds-color-text-secondary)" }} className="bi-body-small mt-2">
           {sub}
         </div>
       )}
