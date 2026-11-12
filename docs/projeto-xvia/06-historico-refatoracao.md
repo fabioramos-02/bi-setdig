@@ -124,3 +124,13 @@ mesmo que o BI.
 - Preparação em `lib/xvia-gestao.ts` e `lib/xvia-gestao-acoes.ts`; navegação em `lib/xvia-navegacao.ts`. Sem alteração em `lib/tfs.ts`, `lib/cronograma.ts`, datasets, pipeline ou repositório irmão.
 - Validação: lint, 309 testes e build aprovados. Cinco abas × quatro resoluções × quatro níveis equivalentes de zoom (80 passagens), 375px com fonte 200%, tema escuro, filtros, vazio, teclado, origem, retorno, CSV, PNG/SVG e três formatos de PDF conferidos. Comparação antes/depois dos indicadores consta na auditoria.
 - Fases e resultados registrados no vault `conhecimento-obsidian`, nota `2026-11-12-central-gestao-bi-xvia.md`. Mantidas as lacunas de financeiro, SLA, descrição da decisão e histórico, sem forecast ou responsabilização inventada. Concluído localmente, sem commit, push ou deploy.
+
+## Rodada 11 (12/11/2026): hierarquia tipográfica e leitura confortável
+
+- Auditoria das doze áreas em `10-auditoria-tipografica.md`, antes do código: o piso local de 14px existia, mas corpo, apoio e tabelas tinham o mesmo tratamento. No painel UST, 453 trechos estavam a 14px.
+- Escala semântica global em `src/styles/bi-typography.css`, documentada no ADR-018: display 28–32px, seção 24px, conclusão 20px, métrica 32px, título de registro 17px, corpo 16px, tabela/label 15px e apoio mínimo 14px; rem e largura narrativa até 60rem. Utilitários antigos mapeados à mesma escala, DS vendorizado intacto.
+- Componentes comuns, legendas e gráficos passam a consumir tokens. Abas com 15px e altura aproximadamente 50px, somente ativa semibold; sem prefixos A–F no Detalhamento. Home/End levam foco à aba selecionada. Tabelas com rolagem própria por padrão e rankings com quebra de rótulos.
+- UST separa conclusão, percentual/base/reais e explicação; alertas têm atividade por linha e nomes completos em expansão. Execução mensal destaca uma conclusão, evidência em linha própria e mês/valores maiores. Peso visual da origem continua secundário, sem setas decorativas.
+- Preservados 583 UST/R$90.137,63 calculados, 2.601 UST em tarefas abertas, 20.172 ainda sem tarefa e execução mensal por Data da Execução. Sem alteração em bibliotecas de regras, datasets, pipeline ou TFS.
+- Validação: lint, 309 testes e build aprovados; 216 estados de tela entre resolução/zoom/fonte, com correção e reteste da legenda UST em fonte 200%; teclado, filtros, origem, vazio, tema escuro, CSV/PDF/PNG/SVG. Resumo CMS continua em uma página e relatório completo com onze capítulos.
+- Conferência dos componentes comuns em sete telas iniciais × desktop/mobile, e da ordem de CSS na versão de produção. Andamento, resultados e limites de cada fase no vault, nota `2026-11-12-tipografia-bi-xvia.md`. Trabalho concluído localmente, sem commit, push ou deploy.
