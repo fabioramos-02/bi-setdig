@@ -11,6 +11,30 @@ import { fmtData, fmtNum, TIPOS_ENTREGA, type LinhaModulo } from "@/lib/tfs";
 import type { Filtrar } from "./ProjetoXviaClient";
 
 type Linha = LinhaModulo & { atrasadas: number; dependencias: number };
+type Severidade = "critico" | "atencao" | "operacional" | "sucesso" | "neutro";
+
+const SEVERIDADE_TIPO: Record<string, Severidade> = {
+  decisao: "critico", impedimento: "critico", atraso: "critico",
+  orgao: "atencao", risco: "atencao",
+  replanejar: "operacional", planejar: "operacional",
+};
+
+const SEVERIDADE_SITUACAO: Record<string, Severidade> = {
+  "Atrasado": "critico",
+  "Esperando órgão/decisão": "critico",
+  "Em risco": "atencao",
+  "Não iniciado": "atencao",
+  "Em andamento": "operacional",
+  "A planejar": "operacional",
+  "Futuro": "operacional",
+  "Pronto": "sucesso",
+};
+
+function severidadeDoModulo(m: ModuloGestao): Severidade {
+  const primeiro = m.motivos[0]?.tipo;
+  if (primeiro && SEVERIDADE_TIPO[primeiro]) return SEVERIDADE_TIPO[primeiro];
+  return SEVERIDADE_SITUACAO[m.situacao] ?? "neutro";
+}
 
 const colunas: Coluna<Linha>[] = [
   { key: "epico", label: "Módulo", sortable: true, sortValue: (r) => r.epico, render: (r) => r.epico },
@@ -30,20 +54,64 @@ export function ModulosTab({ modulos, contexto, filtrar, onNavegar }: { modulos:
   const [busca, setBusca] = useState("");
   const linhas = filtrarOrdenarLinhas(modulos, busca, (m) => m.epico);
   return <div className={styles.pagina}>
-    <header><h2>Quais módulos pedem intervenção?</h2><p className={styles.contexto}>{contexto}</p><p className={styles.conclusao}>Decisões e impedimentos têm precedência nesta comparação. Cada módulo mostra o motivo observado e o próximo encaminhamento, sem pontuação de saúde.</p></header>
-    <label className="print:hidden"><span className={styles.ajuda}>Localizar módulo</span><input type="search" className="ds-input w-full" value={busca} onChange={(e) => setBusca(e.target.value)} /></label>
-    <p className={styles.ajuda}>Produção inclui histórias e falhas; o cronograma acompanha apenas histórias. A situação do cronograma é a mais grave entre as histórias abertas. X-VIA e SGD estão identificadas nos números abaixo.</p>
-    <ul className={`${styles.comparacoes} ${styles.gradeModulos}`}>{linhas.map((m) => <li key={m.epico}>
-      <div className={styles.cabecalho}><h3><button type="button" className={styles.link} aria-label={`Filtrar pelo módulo ${m.epico}`} onClick={() => filtrar("modulo", m.epico)}>{m.epico}</button></h3><span className={styles.situacao}>{m.situacao}</span></div>
-      <p className={styles.conclusao}>{fmtNum(m.emProducao)} de {fmtNum(m.total)} entregas em produção.</p>
-      <p className={styles.contexto}>Frentes: {fmtNum(m.xvia)} X-VIA · {fmtNum(m.sgd)} SGD. No cronograma: {m.cronograma ? `${fmtNum(m.cronograma.prontos)} de ${fmtNum(m.cronograma.total)} histórias concluídas.` : "sem histórias cadastradas."}</p>
-      <ul className={styles.motivos}>{m.motivos.map((g) => <li key={g.tipo}>{g.rotulo}: <b>{fmtNum(g.itens.length)}</b></li>)}{m.inversoes > 0 && <li>Ligações invertidas: <b>{m.inversoes}</b></li>}</ul>
-      <p className={styles.acao}>Próxima ação: {m.acao}</p>
-      {m.proximaSprint && <p className={styles.ajuda}>Próximo compromisso cadastrado: {m.proximaSprint.nome}, de {fmtData(m.proximaSprint.inicio)} a {fmtData(m.proximaSprint.fim)}, com {fmtNum(m.proximas)} entregas abertas.</p>}
-      <div className={styles.links}><button type="button" onClick={() => onNavegar({ nivel: "gerente", aba: "prioridades", filtros: { modulo: m.epico } })}>Ver ações do módulo</button><button type="button" onClick={() => onNavegar({ nivel: "gerente", aba: "cronograma", filtros: { modulo: m.epico } })}>Ver cronograma do módulo</button></div>
-    </li>)}</ul>
+    <header className={styles.topoAba}>
+      <div className={styles.topoTexto}>
+        <h2>Quais módulos pedem intervenção?</h2>
+        <p className={styles.contexto}>{contexto}</p>
+      </div>
+      <label className={`${styles.busca} print:hidden`}>
+        <span className={styles.buscaRotulo}>Localizar módulo</span>
+        <input type="search" className="ds-input" value={busca} onChange={(e) => setBusca(e.target.value)} placeholder="Buscar pelo nome" />
+      </label>
+    </header>
+    <ul className={styles.gradeModulos}>{linhas.map((m) => {
+      const sev = severidadeDoModulo(m);
+      const pct = m.total ? Math.round((m.emProducao / m.total) * 100) : 0;
+      return <li key={m.epico} className={styles.moduloCard} data-severidade={sev}>
+        <div className={styles.cabecalhoCard}>
+          <span className={styles.statusPill} data-severidade={sev}>{m.situacao}</span>
+          <h3 className={styles.nomeModulo}>
+            <button type="button" aria-label={`Filtrar pelo módulo ${m.epico}`} onClick={() => filtrar("modulo", m.epico)}>{m.epico}</button>
+          </h3>
+        </div>
+        <div className={styles.progresso}>
+          {m.total > 0 ? <>
+            <p className={styles.progressoRotulo}>{fmtNum(m.emProducao)} de {fmtNum(m.total)} em produção · {pct}%</p>
+            <div className={styles.barraProgresso} role="img" aria-label={`${pct}% das entregas em produção`}>
+              <span className={styles.segProducao} style={{ width: `${pct}%` }} />
+            </div>
+          </> : <p className={styles.progressoRotulo}>Sem entregas registradas.</p>}
+          <p className={styles.microCaption}>
+            {fmtNum(m.xvia)} X-VIA · {fmtNum(m.sgd)} SGD · cronograma: {m.cronograma ? `${fmtNum(m.cronograma.prontos)} de ${fmtNum(m.cronograma.total)} histórias concluídas` : "sem histórias cadastradas"}
+          </p>
+        </div>
+        {(m.motivos.length > 0 || m.inversoes > 0) && <ul className={styles.listaChips}>
+          {m.motivos.map((g) => <li key={g.tipo}>
+            <span className={styles.chipMotivo} data-severidade={SEVERIDADE_TIPO[g.tipo] ?? "operacional"}>
+              {g.rotulo} · {fmtNum(g.itens.length)}
+            </span>
+          </li>)}
+          {m.inversoes > 0 && <li>
+            <span className={styles.chipMotivo} data-severidade="operacional">Ligações invertidas · {fmtNum(m.inversoes)}</span>
+          </li>}
+        </ul>}
+        <div className={styles.blocoProxAcao} data-severidade={sev}>
+          <p className={styles.rotuloProxAcao}>Próxima ação</p>
+          <p className={styles.textoProxAcao}>{m.acao}</p>
+          {m.proximaSprint && <p className={styles.linhaProxSprint}>
+            Próximo compromisso: {m.proximaSprint.nome} ({fmtData(m.proximaSprint.inicio)} – {fmtData(m.proximaSprint.fim)}), {fmtNum(m.proximas)} entregas abertas.
+          </p>}
+        </div>
+        <div className={styles.linksSecundarios}>
+          <button type="button" onClick={() => onNavegar({ nivel: "gerente", aba: "prioridades", filtros: { modulo: m.epico } })}>Ver ações do módulo</button>
+          <button type="button" onClick={() => onNavegar({ nivel: "gerente", aba: "cronograma", filtros: { modulo: m.epico } })}>Ver cronograma do módulo</button>
+        </div>
+      </li>;
+    })}</ul>
     {!linhas.length && <p className={styles.vazio}>Nenhum módulo corresponde aos filtros e à busca.</p>}
-    <details className={styles.secundario}><summary>Consultar a distribuição e a tabela completa dos módulos</summary>
+    <details className={styles.secundario}>
+      <summary>Como ler estes cards, distribuição completa e tabela</summary>
+      <p className={styles.ajuda}>Produção inclui histórias e falhas; o cronograma acompanha apenas histórias. A situação do cronograma é a mais grave entre as histórias abertas. X-VIA e SGD estão identificadas nos números dos cards.</p>
       <DashboardSection title="Como as entregas se distribuem?"><StackedBarChart itens={modulos.map((m) => ({ label: m.epico, atendidos: m.emProducao, pendentes: m.total - m.emProducao, descricao: `${fmtNum(m.emProducao)} de ${fmtNum(m.total)} em produção` }))} /></DashboardSection>
       <DashboardSection title="Registros agregados por módulo"><DataTable horizontalScroll columns={colunas} rows={modulos} rowKey={(m) => m.epico} onRowClick={(m) => filtrar("modulo", m.epico)} /></DashboardSection>
     </details>

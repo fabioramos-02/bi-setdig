@@ -37,13 +37,62 @@
 .secundario { border-top: 1px solid var(--ds-color-border); padding-top: var(--ds-spacing-16); }
 .secundario summary { cursor: pointer; font-size: var(--ds-bi-body-size); font-weight: 500; min-height: 2.75rem; }
 .duasColunas { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--ds-spacing-24); }
-.gradeModulos { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--ds-spacing-24); }
-.gradeModulos > li:first-child { padding-top: var(--ds-spacing-16); }
-.gradeModulos h3 button { font-size: var(--ds-bi-card-title-size); font-weight: 600; }
+.gradeModulos { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--ds-spacing-20); list-style: none; padding: 0; margin: 0; }
+
+.topoAba { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--ds-spacing-16); }
+.topoTexto { flex: 1 1 24rem; min-width: 0; }
+.topoTexto h2 { margin: 0 0 var(--ds-spacing-4); }
+.busca { display: flex; flex-direction: column; gap: var(--ds-spacing-4); flex: 0 1 20rem; min-width: 0; }
+.buscaRotulo { font-size: var(--ds-bi-body-small-size); color: var(--ds-color-text-secondary); }
+.busca input { width: 100%; }
+
+.moduloCard { display: flex; flex-direction: column; gap: var(--ds-spacing-16); padding: var(--ds-spacing-20); border: 1px solid var(--ds-color-border); border-radius: var(--ds-radius-md); background: var(--ds-color-background); break-inside: avoid; min-width: 0; }
+
+.cabecalhoCard { display: flex; flex-wrap: wrap; align-items: center; gap: var(--ds-spacing-8) var(--ds-spacing-12); min-width: 0; }
+.nomeModulo { margin: 0; min-width: 0; flex: 1 1 auto; }
+.nomeModulo button { color: var(--ds-color-text-primary); font-size: var(--ds-bi-headline-size); line-height: var(--ds-bi-headline-leading); font-weight: 600; text-align: left; overflow-wrap: anywhere; min-width: 0; padding: 0; min-height: 2.25rem; background: transparent; border: none; text-decoration: none; }
+.nomeModulo button:hover, .nomeModulo button:focus-visible { text-decoration: underline; color: var(--ds-color-primary-600); }
+
+.statusPill { display: inline-flex; align-items: center; padding: 0.125rem var(--ds-spacing-8); border-radius: 999px; font-size: var(--ds-bi-caption-size); font-weight: 600; line-height: 1.4; border: 1px solid transparent; flex-shrink: 0; white-space: nowrap; }
+.statusPill[data-severidade="critico"] { background: #fdecec; color: var(--ds-color-danger); border-color: var(--ds-color-danger); }
+.statusPill[data-severidade="atencao"] { background: #fff5d5; color: #7a5a00; border-color: var(--ds-color-warning); }
+.statusPill[data-severidade="operacional"] { background: var(--ds-color-background-muted); color: var(--ds-color-text-secondary); border-color: var(--ds-color-border); }
+.statusPill[data-severidade="sucesso"] { background: #e6f4ea; color: var(--ds-color-success); border-color: var(--ds-color-success); }
+.statusPill[data-severidade="neutro"] { background: var(--ds-color-background-muted); color: var(--ds-color-text-muted); border-color: var(--ds-color-border); }
+
+.progresso { display: flex; flex-direction: column; gap: var(--ds-spacing-4); }
+.progressoRotulo { margin: 0; font-size: var(--ds-bi-headline-size); font-weight: 500; color: var(--ds-color-text-primary); line-height: 1.35; font-variant-numeric: tabular-nums; }
+.barraProgresso { width: 100%; height: 10px; border-radius: var(--ds-radius-sm); background: var(--ds-color-background-muted); overflow: hidden; border: 1px solid var(--ds-color-border); }
+.segProducao { display: block; height: 100%; background: var(--ds-color-success); }
+.microCaption { margin: var(--ds-spacing-4) 0 0; font-size: var(--ds-bi-caption-size); color: var(--ds-color-text-secondary); line-height: 1.5; }
+
+.listaChips { display: flex; flex-wrap: wrap; gap: var(--ds-spacing-8); list-style: none; padding: 0; margin: 0; }
+.chipMotivo { display: inline-flex; align-items: center; padding: var(--ds-spacing-4) var(--ds-spacing-12); border-radius: 999px; font-size: var(--ds-bi-caption-size); font-weight: 500; line-height: 1.4; border: 1px solid transparent; }
+.chipMotivo[data-severidade="critico"] { background: #fdecec; color: var(--ds-color-danger); border-color: color-mix(in srgb, var(--ds-color-danger) 30%, transparent); }
+.chipMotivo[data-severidade="atencao"] { background: #fff5d5; color: #7a5a00; border-color: var(--ds-color-warning); }
+.chipMotivo[data-severidade="operacional"] { background: var(--ds-color-background-muted); color: var(--ds-color-text-secondary); border-color: var(--ds-color-border); }
+
+.blocoProxAcao { background: var(--ds-color-background-muted); border-left: 3px solid var(--ds-color-border); border-radius: var(--ds-radius-sm) var(--ds-radius-md) var(--ds-radius-md) var(--ds-radius-sm); padding: var(--ds-spacing-16); display: flex; flex-direction: column; gap: var(--ds-spacing-4); }
+.blocoProxAcao[data-severidade="critico"] { border-left-color: var(--ds-color-danger); }
+.blocoProxAcao[data-severidade="atencao"] { border-left-color: var(--ds-color-warning); }
+.blocoProxAcao[data-severidade="operacional"] { border-left-color: var(--ds-color-text-secondary); }
+.blocoProxAcao[data-severidade="sucesso"] { border-left-color: var(--ds-color-success); }
+.blocoProxAcao[data-severidade="neutro"] { border-left-color: var(--ds-color-text-muted); }
+.rotuloProxAcao { margin: 0; font-size: var(--ds-bi-body-small-size); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ds-color-text-secondary); }
+.textoProxAcao { margin: 0; font-size: var(--ds-bi-body-size); color: var(--ds-color-text-primary); line-height: 1.5; }
+.linhaProxSprint { margin: var(--ds-spacing-8) 0 0; font-size: var(--ds-bi-caption-size); color: var(--ds-color-text-secondary); line-height: 1.5; }
+
+.linksSecundarios { display: flex; flex-wrap: wrap; gap: var(--ds-spacing-8); padding-top: var(--ds-spacing-12); border-top: 1px solid var(--ds-color-border); margin-top: auto; }
+.linksSecundarios button { color: var(--ds-color-primary-600); background: transparent; padding: var(--ds-spacing-8) var(--ds-spacing-12); border-radius: var(--ds-radius-sm); font-size: var(--ds-bi-body-small-size); font-weight: 500; min-height: 2.5rem; border: 1px solid transparent; text-decoration: none; }
+.linksSecundarios button:hover, .linksSecundarios button:focus-visible { background: var(--ds-color-background-muted); text-decoration: underline; border-color: var(--ds-color-border); }
+
+/* ponytail: dark mode do card quando portal ativar tema escuro — tokens --ds-color-* em
+   dark já estão prontos em variables.css:63+; falta só definir os 3 backgrounds suaves
+   dos chips/pill (crítico #fdecec, atenção #fff5d5, sucesso #e6f4ea). */
 .sprintDados { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--ds-spacing-16); margin: var(--ds-spacing-16) 0; }
 .sprintDados dt { font-size: var(--ds-bi-body-small-size); color: var(--ds-color-text-secondary); }
 .sprintDados dd { margin: 0; font-size: var(--ds-bi-heading-1-size); font-weight: 600; }
 .vazio { padding-block: var(--ds-spacing-16); font-size: var(--ds-bi-body-size); color: var(--ds-color-text-secondary); }
 @media (min-width: 40rem) { .metadados { grid-template-columns: repeat(3, minmax(0, 1fr)); } .sprintDados { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 @media (min-width: 80rem) { .duasColunas, .gradeModulos { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media print { .pagina { gap: var(--ds-spacing-16); } .controles, .grupos, .frentes, .links { display: none; } .metadados { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media print { .pagina { gap: var(--ds-spacing-16); } .controles, .grupos, .frentes, .links, .linksSecundarios, .busca { display: none; } .metadados { grid-template-columns: repeat(3, minmax(0, 1fr)); } .moduloCard { break-inside: avoid; border: 1px solid #000; } }
