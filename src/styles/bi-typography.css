@@ -1,60 +1,219 @@
 /* Papéis do BI sobre os tokens do DS-MS. O pacote vendorizado permanece intacto.
+   Branch visual/directus-tipografia: escala e pesos espelham o Directus
+   (Inter 400–800, body 13px/20px/500, títulos 16px/700, labels 14px/600, caption 11px/600).
    Tamanhos em rem acompanham a preferência de fonte do navegador. */
 :root {
   font-size: 100%;
-  --ds-bi-display-size: clamp(1.75rem, 1.5rem + 1vw, 2rem);
-  --ds-bi-heading-1-size: 1.5rem;
-  --ds-bi-heading-2-size: 1.25rem;
+  /* ---- Escala inspirada no Directus, calibrada para leitura de BI ----
+     Respeita regra do projeto (AGENTS.md): corpo 16px, apoio mínimo 14px.
+     Directus usa 13px porque é interface de CRUD densa; dashboard de gestão
+     lê melhor com corpo 16px / peso 500. Pesos Inter: 500 regular, 600
+     semibold em títulos secundários/labels, 700 em h1/display/métrica. */
+  --ds-bi-display-size: 2.25rem;
+  /* 36px */
+  --ds-bi-heading-1-size: 1.75rem;
+  /* 28px — títulos de página/aba */
+  --ds-bi-heading-2-size: 1.375rem;
+  /* 22px */
   --ds-bi-headline-size: 1.25rem;
-  --ds-bi-metric-size: 2rem;
-  --ds-bi-card-title-size: 1.0625rem;
-  --ds-bi-body-size: 1rem;
-  --ds-bi-table-size: .9375rem;
-  --ds-bi-label-size: .9375rem;
-  --ds-bi-body-small-size: .875rem;
-  --ds-bi-caption-size: .875rem;
+  /* 20px — âncora de card */
+  --ds-bi-metric-size: 2.25rem;
+  /* 36px — KPI numérico, Fira Mono tabular */
+  --ds-bi-card-title-size: 1.125rem;
+  /* 18px */
+  --ds-bi-body-size: 1.0625rem;
+  /* 17px — corpo */
+  --ds-bi-table-size: 1rem;
+  /* 16px */
+  --ds-bi-label-size: 1rem;
+  /* 16px */
+  --ds-bi-body-small-size: 1rem;
+  /* 16px */
+  --ds-bi-caption-size: .9375rem;
+  /* 15px */
   --ds-bi-title-leading: 1.25;
-  --ds-bi-headline-leading: 1.45;
-  --ds-bi-body-leading: 1.6;
-  --ds-bi-label-leading: 1.5;
-  --ds-bi-weight-regular: var(--ds-font-weight-regular);
-  --ds-bi-weight-emphasis: var(--ds-font-weight-semibold);
+  --ds-bi-headline-leading: 1.4;
+  --ds-bi-body-leading: 1.55;
+  /* ≈ 25/16 */
+  --ds-bi-label-leading: 1.45;
+  --ds-bi-weight-regular: 600;
+  --ds-bi-weight-emphasis: 800;
   --ds-bi-reading-width: 60rem;
 
   /* Compatibilidade com componentes DS existentes durante a migração. */
   --ds-body-md-font-size: var(--ds-bi-body-size);
-  --ds-body-md-line-height: 1.6;
+  --ds-body-md-line-height: var(--ds-bi-body-leading);
   --ds-body-sm-font-size: var(--ds-bi-body-small-size);
   --ds-body-sm-line-height: 1.5;
+
+  /* ---- Paleta Directus (tokens opt-in; não substituem --ds-color-*) ----
+     Uso: componentes de teste podem referenciar var(--bi-*) para comparar.
+     Para avaliação a frio sem recolorir o portal inteiro. */
+  --bi-fg: #4F5464;
+  /* texto corpo */
+  --bi-fg-subdued: #5B6F89;
+  /* texto secundário */
+  --bi-fg-accent: #172940;
+  /* títulos, labels */
+  --bi-bg: #ffffff;
+  --bi-bg-subdued: #F7FAFC;
+  --bi-bg-normal: #F0F4F9;
+  --bi-bg-accent: #E4EAF1;
+  --bi-border: #E4EAF1;
+  --bi-nav-dark: #0E1C2F;
+  --bi-success: #1B7962;
+  --bi-warning: #A35800;
+  --bi-danger: #CD213D;
+  --bi-radius: 5px;
+  --bi-font-mono-stack: var(--bi-font-mono, "Fira Mono"), monospace;
 }
 
-.bi-display, .bi-heading-1, .bi-heading-2, .bi-headline, .bi-metric, .bi-card-title {
+.bi-display,
+.bi-heading-1,
+.bi-heading-2,
+.bi-headline,
+.bi-metric,
+.bi-card-title {
+  overflow-wrap: anywhere;
+  color: var(--bi-fg-accent);
+  letter-spacing: -0.015em;
+}
+
+.bi-display {
+  font-size: var(--ds-bi-display-size);
+  line-height: var(--ds-bi-title-leading);
+  font-weight: 600;
+}
+
+.bi-heading-1 {
+  font-size: var(--ds-bi-heading-1-size);
+  line-height: var(--ds-bi-title-leading);
+  font-weight: 400;
+  letter-spacing: -0.012em;
+}
+
+.bi-heading-2 {
+  font-size: var(--ds-bi-heading-2-size);
+  line-height: var(--ds-bi-title-leading);
+  font-weight: 900;
+  letter-spacing: -0.008em;
+}
+
+.bi-headline {
+  font-size: var(--ds-bi-headline-size);
+  line-height: var(--ds-bi-headline-leading);
+  font-weight: 600;
+  letter-spacing: -0.008em;
+}
+
+.bi-metric {
+  font-size: var(--ds-bi-metric-size);
+  line-height: var(--ds-bi-title-leading);
+  font-variant-numeric: tabular-nums;
+  font-family: var(--bi-font-mono-stack);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.bi-card-title {
+  font-size: var(--ds-bi-card-title-size);
+  line-height: var(--ds-bi-headline-leading);
+  font-weight: 700;
+  letter-spacing: -0.005em;
+}
+
+.bi-body {
+  font-size: var(--ds-bi-body-size);
+  line-height: var(--ds-bi-body-leading);
+  font-weight: 600;
+}
+
+.bi-body-small {
+  font-size: var(--ds-bi-body-small-size);
+  line-height: var(--ds-bi-body-leading);
+  font-weight: 400;
+}
+
+.bi-label {
+  font-size: var(--ds-bi-label-size);
+  line-height: var(--ds-bi-label-leading);
+  font-weight: 700;
+  color: var(--bi-fg-accent);
+}
+
+.bi-caption {
+  font-size: var(--ds-bi-caption-size);
+  line-height: var(--ds-bi-label-leading);
+  font-weight: 600;
+  color: var(--bi-fg-subdued);
+}
+
+.bi-narrative {
+  max-inline-size: var(--ds-bi-reading-width);
+}
+
+.bi-table {
+  font-size: var(--ds-bi-table-size);
+  line-height: var(--ds-bi-body-leading);
+  font-weight: 500;
+}
+
+.bi-table th {
+  font-size: var(--ds-bi-label-size);
   font-weight: var(--ds-bi-weight-emphasis);
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--bi-fg-accent);
+}
+
+.bi-tabs {
+  display: flex;
+  gap: var(--ds-spacing-8);
+  overflow-x: auto;
+  max-width: 100%;
+  margin-bottom: var(--ds-spacing-24);
+  border-bottom: 1px solid var(--bi-border);
+}
+
+.bi-tab {
+  flex-shrink: 0;
+  min-height: 2.75rem;
+  padding: var(--ds-spacing-12) var(--ds-spacing-16);
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  color: var(--bi-fg-subdued);
+  font-family: var(--ds-font-family-body);
+  font-size: var(--ds-bi-label-size);
+  font-weight: 600;
+  line-height: var(--ds-bi-label-leading);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.bi-tab[aria-selected="true"] {
+  color: var(--ds-color-primary-600);
+  border-color: var(--ds-color-primary-600);
+  background: var(--bi-bg-subdued);
+  font-weight: 700;
+}
+
+.bi-tab:hover:not(:disabled) {
+  background: var(--bi-bg-subdued);
+}
+
+.bi-tab:disabled {
+  opacity: .5;
+  cursor: default;
+}
+
+.bi-tab:focus-visible {
+  outline: 2px solid var(--ds-color-primary-600);
+  outline-offset: -3px;
+}
+
+.bi-tooltip {
+  font-size: var(--ds-bi-body-small-size);
+  line-height: var(--ds-bi-body-leading);
+  max-width: min(24rem, 90vw);
   overflow-wrap: anywhere;
 }
-.bi-display { font-size: var(--ds-bi-display-size); line-height: var(--ds-bi-title-leading); }
-.bi-heading-1 { font-size: var(--ds-bi-heading-1-size); line-height: var(--ds-bi-title-leading); }
-.bi-heading-2 { font-size: var(--ds-bi-heading-2-size); line-height: var(--ds-bi-title-leading); }
-.bi-headline { font-size: var(--ds-bi-headline-size); line-height: var(--ds-bi-headline-leading); }
-.bi-metric { font-size: var(--ds-bi-metric-size); line-height: var(--ds-bi-title-leading); font-variant-numeric: tabular-nums; }
-.bi-card-title { font-size: var(--ds-bi-card-title-size); line-height: var(--ds-bi-headline-leading); }
-.bi-body { font-size: var(--ds-bi-body-size); line-height: var(--ds-bi-body-leading); }
-.bi-body-small { font-size: var(--ds-bi-body-small-size); line-height: var(--ds-bi-body-leading); }
-.bi-label { font-size: var(--ds-bi-label-size); line-height: var(--ds-bi-label-leading); }
-.bi-caption { font-size: var(--ds-bi-caption-size); line-height: var(--ds-bi-label-leading); }
-.bi-narrative { max-inline-size: var(--ds-bi-reading-width); }
-.bi-table { font-size: var(--ds-bi-table-size); line-height: var(--ds-bi-body-leading); }
-.bi-table th { font-size: var(--ds-bi-label-size); font-weight: var(--ds-bi-weight-emphasis); text-transform: none; letter-spacing: normal; }
-.bi-tabs { display: flex; gap: var(--ds-spacing-8); overflow-x: auto; max-width: 100%; margin-bottom: var(--ds-spacing-24); border-bottom: 1px solid var(--ds-color-border); }
-.bi-tab {
-  flex-shrink: 0; min-height: 3rem; padding: var(--ds-spacing-12) var(--ds-spacing-16);
-  border-bottom: 3px solid transparent; background: transparent;
-  color: var(--ds-color-text-secondary); font-family: var(--ds-font-family-body);
-  font-size: var(--ds-bi-label-size); font-weight: var(--ds-bi-weight-regular);
-  line-height: var(--ds-bi-label-leading); white-space: nowrap; cursor: pointer;
-}
-.bi-tab[aria-selected="true"] { color: var(--ds-color-primary-600); border-color: var(--ds-color-primary-600); background: var(--ds-color-background-muted); font-weight: var(--ds-bi-weight-emphasis); }
-.bi-tab:hover:not(:disabled) { background: var(--ds-color-background-muted); }
-.bi-tab:disabled { opacity: .5; cursor: default; }
-.bi-tab:focus-visible { outline: 2px solid var(--ds-color-primary-600); outline-offset: -3px; }
-.bi-tooltip { font-size: var(--ds-bi-body-small-size); line-height: var(--ds-bi-body-leading); max-width: min(24rem, 90vw); overflow-wrap: anywhere; }
