@@ -17,6 +17,7 @@ const DOMINIOS = [
   { nome: "Avaliação da Carta", rota: "/avaliacao-carta" },
   { nome: "Levantamento de Serviços Digitais", rota: "/censo-digital" },
   { nome: "Projeto X-VIA", rota: "/projeto-xvia" },
+  { nome: "Inventário de Sistemas", rota: "/inventario-sistemas" },
 ];
 
 /**

@@ -1,0 +1,2942 @@
+[
+  {
+    "sistemaId": "sis-001",
+    "orgao": "AGEHAB",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-002",
+    "orgao": "AGEHAB",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-003",
+    "orgao": "AGEMS",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-004",
+    "orgao": "AGEMS",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-005",
+    "orgao": "AGEMS",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-006",
+    "orgao": "AGEMS",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-007",
+    "orgao": "AGEMS",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-008",
+    "orgao": "PGE",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-009",
+    "orgao": "AGEMS",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-010",
+    "orgao": "AGEMS",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-011",
+    "orgao": "AGEMS",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-012",
+    "orgao": "AGEMS",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-013",
+    "orgao": "AGEMS",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-014",
+    "orgao": "AGEMS",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-015",
+    "orgao": "AGEMS",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-016",
+    "orgao": "AGEMS",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-017",
+    "orgao": "AGEMS",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-018",
+    "orgao": "AGEPREV",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-019",
+    "orgao": "AGEPREV",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-020",
+    "orgao": "AGEPREV",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-021",
+    "orgao": "AGEPREV",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-022",
+    "orgao": "AGEPREV",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-022",
+    "orgao": "AGESUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-022",
+    "orgao": "JUCEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-022",
+    "orgao": "PGE",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-022",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-022",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-023",
+    "orgao": "AGEPREV",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-024",
+    "orgao": "AGEPREV",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-025",
+    "orgao": "AGEHAB",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-025",
+    "orgao": "AGEPREV",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-025",
+    "orgao": "AGESUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-025",
+    "orgao": "CGE-MS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-025",
+    "orgao": "FUNSAU",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-025",
+    "orgao": "IAGRO",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-025",
+    "orgao": "JUCEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-025",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-025",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-026",
+    "orgao": "AGESUL",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-027",
+    "orgao": "AGRAER",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-028",
+    "orgao": "AGRAER",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-029",
+    "orgao": "AGRAER",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-030",
+    "orgao": "AGRAER",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-031",
+    "orgao": "AGRAER",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-032",
+    "orgao": "AGRAER",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-033",
+    "orgao": "AGRAER",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-034",
+    "orgao": "CBMMS/SEJUSP",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-035",
+    "orgao": "CBMMS/SEJUSP",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-036",
+    "orgao": "CGE-MS",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-037",
+    "orgao": "CGE-MS",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-038",
+    "orgao": "CGE-MS",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-039",
+    "orgao": "JUCEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-039",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-040",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-041",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-042",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-043",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-044",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-045",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-046",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-047",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-048",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-049",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-050",
+    "orgao": "DETRAN",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-051",
+    "orgao": "DETRAN",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-052",
+    "orgao": "DETRAN",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-053",
+    "orgao": "DETRAN",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-054",
+    "orgao": "DETRAN",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-055",
+    "orgao": "DETRAN",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-056",
+    "orgao": "DETRAN",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-057",
+    "orgao": "DETRAN",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-058",
+    "orgao": "DETRAN",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-059",
+    "orgao": "DETRAN",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-060",
+    "orgao": "DETRAN",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-061",
+    "orgao": "DETRAN",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-062",
+    "orgao": "AGESUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-063",
+    "orgao": "DETRAN",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-064",
+    "orgao": "DETRAN",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-065",
+    "orgao": "DETRAN",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-066",
+    "orgao": "DETRAN",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-067",
+    "orgao": "PGE",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-068",
+    "orgao": "FUNSAU",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-069",
+    "orgao": "FUNDECT",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-070",
+    "orgao": "FUNDTUR",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-071",
+    "orgao": "FUNDTUR",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-072",
+    "orgao": "FUNSAU",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-073",
+    "orgao": "FUNSAU",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-074",
+    "orgao": "FUNSAU",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-075",
+    "orgao": "CGE-MS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-075",
+    "orgao": "SEC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-076",
+    "orgao": "IAGRO",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-077",
+    "orgao": "IMASUL",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-078",
+    "orgao": "IMASUL",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-079",
+    "orgao": "IMASUL",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-080",
+    "orgao": "IMASUL",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-081",
+    "orgao": "IMASUL",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-082",
+    "orgao": "IMASUL",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-083",
+    "orgao": "IMASUL",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-084",
+    "orgao": "IMASUL",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-085",
+    "orgao": "IMASUL",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-086",
+    "orgao": "IMASUL",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-087",
+    "orgao": "IMASUL",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-088",
+    "orgao": "IMASUL",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-089",
+    "orgao": "IMASUL",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-090",
+    "orgao": "IMASUL",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-091",
+    "orgao": "IMASUL",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-092",
+    "orgao": "IMASUL",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-093",
+    "orgao": "IMASUL",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-094",
+    "orgao": "PGE",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-095",
+    "orgao": "AGEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-095",
+    "orgao": "PGE",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-096",
+    "orgao": "AGEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-096",
+    "orgao": "PGE",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-096",
+    "orgao": "PGE",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-097",
+    "orgao": "PGE",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-098",
+    "orgao": "PGE",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-099",
+    "orgao": "PGE",
+    "tipo": "proprio",
+    "vezes": 4
+  },
+  {
+    "sistemaId": "sis-100",
+    "orgao": "PGE",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-101",
+    "orgao": "JUCEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-101",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-102",
+    "orgao": "SEAD",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-103",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-104",
+    "orgao": "AGESUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-104",
+    "orgao": "SEC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-104",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-105",
+    "orgao": "AGEPREV",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-105",
+    "orgao": "FUNDTUR",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-105",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-106",
+    "orgao": "AGEPREV",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-106",
+    "orgao": "AGESUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-106",
+    "orgao": "FUNDECT",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-106",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-107",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-108",
+    "orgao": "AGEHAB",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-108",
+    "orgao": "AGEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-108",
+    "orgao": "AGEPREV",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-108",
+    "orgao": "AGESUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-108",
+    "orgao": "FUNDECT",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-109",
+    "orgao": "AGEHAB",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-109",
+    "orgao": "AGEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-109",
+    "orgao": "AGEPREV",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-109",
+    "orgao": "AGESUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-109",
+    "orgao": "CGE-MS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-109",
+    "orgao": "DETRAN",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-109",
+    "orgao": "FUNDECT",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-109",
+    "orgao": "FUNSAU",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-109",
+    "orgao": "IAGRO",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-109",
+    "orgao": "PGE",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-109",
+    "orgao": "PGE",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-109",
+    "orgao": "SAD",
+    "tipo": "outro",
+    "vezes": 2
+  },
+  {
+    "sistemaId": "sis-109",
+    "orgao": "SEC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-109",
+    "orgao": "SES",
+    "tipo": "outro",
+    "vezes": 3
+  },
+  {
+    "sistemaId": "sis-109",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 4
+  },
+  {
+    "sistemaId": "sis-109",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-110",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-111",
+    "orgao": "AGESUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-112",
+    "orgao": "AGEHAB",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-112",
+    "orgao": "CGE-MS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-112",
+    "orgao": "IAGRO",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-113",
+    "orgao": "AGEHAB",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-113",
+    "orgao": "AGEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-113",
+    "orgao": "AGEPREV",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-113",
+    "orgao": "AGESUL",
+    "tipo": "outro",
+    "vezes": 2
+  },
+  {
+    "sistemaId": "sis-113",
+    "orgao": "AGRAER",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-113",
+    "orgao": "CGE-MS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-113",
+    "orgao": "FUNDECT",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-113",
+    "orgao": "FUNDTUR",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-113",
+    "orgao": "IAGRO",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-113",
+    "orgao": "IMASUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-113",
+    "orgao": "JUCEMS",
+    "tipo": "outro",
+    "vezes": 2
+  },
+  {
+    "sistemaId": "sis-113",
+    "orgao": "SAD",
+    "tipo": "outro",
+    "vezes": 2
+  },
+  {
+    "sistemaId": "sis-113",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 2
+  },
+  {
+    "sistemaId": "sis-113",
+    "orgao": "SEC",
+    "tipo": "outro",
+    "vezes": 2
+  },
+  {
+    "sistemaId": "sis-113",
+    "orgao": "SES",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-113",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 2
+  },
+  {
+    "sistemaId": "sis-113",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-114",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-115",
+    "orgao": "AGEHAB",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-115",
+    "orgao": "AGESUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-115",
+    "orgao": "SAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-115",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-116",
+    "orgao": "AGEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-116",
+    "orgao": "AGEPREV",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-116",
+    "orgao": "FUNDTUR",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-116",
+    "orgao": "JUCEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-116",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-116",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-117",
+    "orgao": "JUCEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-117",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-118",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-119",
+    "orgao": "AGESUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-119",
+    "orgao": "AGRAER",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-120",
+    "orgao": "AGEHAB",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-120",
+    "orgao": "AGEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-120",
+    "orgao": "CGE-MS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-120",
+    "orgao": "FUNDECT",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-120",
+    "orgao": "IMASUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-120",
+    "orgao": "JUCEMS",
+    "tipo": "outro",
+    "vezes": 2
+  },
+  {
+    "sistemaId": "sis-120",
+    "orgao": "SAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-120",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 2
+  },
+  {
+    "sistemaId": "sis-120",
+    "orgao": "SEC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-120",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-121",
+    "orgao": "CGE-MS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-122",
+    "orgao": "AGEHAB",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-122",
+    "orgao": "AGEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-122",
+    "orgao": "AGESUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-122",
+    "orgao": "FUNDECT",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-122",
+    "orgao": "IAGRO",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-122",
+    "orgao": "SAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-122",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-123",
+    "orgao": "AGEPREV",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-123",
+    "orgao": "CGE-MS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-123",
+    "orgao": "JUCEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-123",
+    "orgao": "PGE",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-123",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-124",
+    "orgao": "PGE",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-125",
+    "orgao": "AGEHAB",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-125",
+    "orgao": "AGEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-125",
+    "orgao": "AGEPREV",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-125",
+    "orgao": "AGESUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-125",
+    "orgao": "CGE-MS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-125",
+    "orgao": "FUNDECT",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-125",
+    "orgao": "FUNDTUR",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-125",
+    "orgao": "FUNSAU",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-125",
+    "orgao": "IAGRO",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-125",
+    "orgao": "JUCEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-125",
+    "orgao": "SAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-125",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-125",
+    "orgao": "SEC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-125",
+    "orgao": "SES",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-125",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-125",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-126",
+    "orgao": "AGEHAB",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-126",
+    "orgao": "AGEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-126",
+    "orgao": "AGESUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-126",
+    "orgao": "CGE-MS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-126",
+    "orgao": "FUNDECT",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-126",
+    "orgao": "SEC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-126",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-127",
+    "orgao": "AGEHAB",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-127",
+    "orgao": "AGEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-127",
+    "orgao": "AGESUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-127",
+    "orgao": "CGE-MS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-127",
+    "orgao": "FUNDECT",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-127",
+    "orgao": "FUNSAU",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-127",
+    "orgao": "IAGRO",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-127",
+    "orgao": "JUCEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-127",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-127",
+    "orgao": "SEC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-127",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-128",
+    "orgao": "AGESUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-128",
+    "orgao": "AGRAER",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-128",
+    "orgao": "FUNDECT",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-128",
+    "orgao": "JUCEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-128",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-128",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-129",
+    "orgao": "FUNDECT",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-129",
+    "orgao": "JUCEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-129",
+    "orgao": "SAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-129",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-129",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-130",
+    "orgao": "JUCEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-130",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-130",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-131",
+    "orgao": "AGEPREV",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-131",
+    "orgao": "FUNDECT",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-131",
+    "orgao": "SAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-132",
+    "orgao": "AGEHAB",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-132",
+    "orgao": "AGEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-132",
+    "orgao": "AGEPREV",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-132",
+    "orgao": "FUNDECT",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-132",
+    "orgao": "SAD",
+    "tipo": "outro",
+    "vezes": 2
+  },
+  {
+    "sistemaId": "sis-132",
+    "orgao": "SEC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-132",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-132",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-133",
+    "orgao": "AGEHAB",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-133",
+    "orgao": "AGEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-133",
+    "orgao": "AGEPREV",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-133",
+    "orgao": "AGESUL",
+    "tipo": "outro",
+    "vezes": 2
+  },
+  {
+    "sistemaId": "sis-133",
+    "orgao": "AGRAER",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-133",
+    "orgao": "CGE-MS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-133",
+    "orgao": "FUNDECT",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-133",
+    "orgao": "IAGRO",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-133",
+    "orgao": "IMASUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-133",
+    "orgao": "JUCEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-133",
+    "orgao": "SAD",
+    "tipo": "outro",
+    "vezes": 2
+  },
+  {
+    "sistemaId": "sis-133",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-133",
+    "orgao": "SEC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-133",
+    "orgao": "SES",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-133",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 2
+  },
+  {
+    "sistemaId": "sis-133",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-134",
+    "orgao": "AGEHAB",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-134",
+    "orgao": "AGEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-134",
+    "orgao": "AGEPREV",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-134",
+    "orgao": "AGESUL",
+    "tipo": "outro",
+    "vezes": 2
+  },
+  {
+    "sistemaId": "sis-134",
+    "orgao": "AGRAER",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-134",
+    "orgao": "CGE-MS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-134",
+    "orgao": "FUNDECT",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-134",
+    "orgao": "FUNDTUR",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-134",
+    "orgao": "IAGRO",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-134",
+    "orgao": "IMASUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-134",
+    "orgao": "JUCEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-134",
+    "orgao": "SAD",
+    "tipo": "outro",
+    "vezes": 2
+  },
+  {
+    "sistemaId": "sis-134",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-134",
+    "orgao": "SEC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-134",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-134",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-135",
+    "orgao": "AGEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-135",
+    "orgao": "AGEPREV",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-135",
+    "orgao": "AGESUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-135",
+    "orgao": "CGE-MS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-135",
+    "orgao": "FUNDECT",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-135",
+    "orgao": "FUNSAU",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-135",
+    "orgao": "IAGRO",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-135",
+    "orgao": "JUCEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-135",
+    "orgao": "SAD",
+    "tipo": "outro",
+    "vezes": 2
+  },
+  {
+    "sistemaId": "sis-135",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-135",
+    "orgao": "SEC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-135",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-136",
+    "orgao": "AGEPREV",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-136",
+    "orgao": "CGE-MS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-136",
+    "orgao": "SEC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-136",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-137",
+    "orgao": "AGESUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-137",
+    "orgao": "CGE-MS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-137",
+    "orgao": "FUNSAU",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-137",
+    "orgao": "IAGRO",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-137",
+    "orgao": "JUCEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-137",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-137",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-138",
+    "orgao": "SEAD",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-139",
+    "orgao": "SEAD",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-140",
+    "orgao": "SEAD",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-141",
+    "orgao": "SEAD",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-142",
+    "orgao": "SEAD",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-143",
+    "orgao": "SEAD",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-144",
+    "orgao": "SEAD",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-145",
+    "orgao": "SEAD",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-146",
+    "orgao": "SEAD",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-147",
+    "orgao": "SEAD",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-148",
+    "orgao": "JUCEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-148",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 2
+  },
+  {
+    "sistemaId": "sis-148",
+    "orgao": "SEAD",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-149",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-150",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-151",
+    "orgao": "PGE",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-152",
+    "orgao": "AGRAER",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-153",
+    "orgao": "AGEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-153",
+    "orgao": "AGEPREV",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-153",
+    "orgao": "AGESUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-153",
+    "orgao": "JUCEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-153",
+    "orgao": "PGE",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-153",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-153",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-154",
+    "orgao": "JUCEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-154",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-154",
+    "orgao": "SEC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-154",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-155",
+    "orgao": "AGESUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-155",
+    "orgao": "FUNDTUR",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-155",
+    "orgao": "IAGRO",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-155",
+    "orgao": "PGE",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-155",
+    "orgao": "SAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-155",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-155",
+    "orgao": "SEC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-155",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-156",
+    "orgao": "AGESUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-156",
+    "orgao": "AGRAER",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-156",
+    "orgao": "FUNDECT",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-156",
+    "orgao": "FUNDTUR",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-156",
+    "orgao": "PGE",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-156",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-156",
+    "orgao": "SEC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-157",
+    "orgao": "AGRAER",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-157",
+    "orgao": "FUNDECT",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-157",
+    "orgao": "SAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-157",
+    "orgao": "SES",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-157",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-157",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-158",
+    "orgao": "AGEPREV",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-159",
+    "orgao": "AGEHAB",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-159",
+    "orgao": "AGEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-159",
+    "orgao": "AGEPREV",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-159",
+    "orgao": "AGESUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-159",
+    "orgao": "AGRAER",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-159",
+    "orgao": "CGE-MS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-159",
+    "orgao": "FUNDECT",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-159",
+    "orgao": "FUNDTUR",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-159",
+    "orgao": "IAGRO",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-159",
+    "orgao": "JUCEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-159",
+    "orgao": "SAD",
+    "tipo": "outro",
+    "vezes": 2
+  },
+  {
+    "sistemaId": "sis-159",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-159",
+    "orgao": "SEC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-159",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-159",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-160",
+    "orgao": "AGEHAB",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-160",
+    "orgao": "AGEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-160",
+    "orgao": "CGE-MS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-160",
+    "orgao": "FUNDECT",
+    "tipo": "outro",
+    "vezes": 2
+  },
+  {
+    "sistemaId": "sis-160",
+    "orgao": "SAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-160",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-160",
+    "orgao": "SEC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-161",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-162",
+    "orgao": "SEC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-163",
+    "orgao": "PGE",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-164",
+    "orgao": "CBMMS/SEJUSP",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-165",
+    "orgao": "CBMMS/SEJUSP",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-166",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-167",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-168",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-169",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-170",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-171",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-172",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-173",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-174",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-175",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-176",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-177",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-178",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-179",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-180",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-181",
+    "orgao": "FUNSAU",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-181",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-182",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-183",
+    "orgao": "FUNSAU",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-184",
+    "orgao": "SEC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-184",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-185",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-186",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-187",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-188",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-189",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-190",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-191",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-192",
+    "orgao": "SES",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-193",
+    "orgao": "AGEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-193",
+    "orgao": "AGESUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-193",
+    "orgao": "AGRAER",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-193",
+    "orgao": "CGE-MS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-193",
+    "orgao": "FUNDECT",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-193",
+    "orgao": "FUNDTUR",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-193",
+    "orgao": "FUNSAU",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-193",
+    "orgao": "IAGRO",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-193",
+    "orgao": "IMASUL",
+    "tipo": "outro",
+    "vezes": 2
+  },
+  {
+    "sistemaId": "sis-193",
+    "orgao": "JUCEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-193",
+    "orgao": "PGE",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-193",
+    "orgao": "SAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-193",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-193",
+    "orgao": "SEC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-193",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-194",
+    "orgao": "IMASUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-194",
+    "orgao": "JUCEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-194",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-194",
+    "orgao": "SEC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-195",
+    "orgao": "AGEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-196",
+    "orgao": "IAGRO",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-196",
+    "orgao": "IMASUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-197",
+    "orgao": "AGESUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-197",
+    "orgao": "AGRAER",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-197",
+    "orgao": "IMASUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-197",
+    "orgao": "JUCEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-197",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-198",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-199",
+    "orgao": "CGE-MS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-200",
+    "orgao": "IAGRO",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-201",
+    "orgao": "AGEPREV",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-201",
+    "orgao": "IAGRO",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-201",
+    "orgao": "IMASUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-201",
+    "orgao": "JUCEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-201",
+    "orgao": "PGE",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-201",
+    "orgao": "PGE",
+    "tipo": "proprio",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-201",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-201",
+    "orgao": "SEC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-201",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-202",
+    "orgao": "AGEPREV",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-202",
+    "orgao": "IMASUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-203",
+    "orgao": "SAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-204",
+    "orgao": "CGE-MS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-205",
+    "orgao": "AGEPREV",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-206",
+    "orgao": "AGEPREV",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-206",
+    "orgao": "AGESUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-206",
+    "orgao": "SETESC",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-207",
+    "orgao": "AGEPREV",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-207",
+    "orgao": "AGESUL",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-207",
+    "orgao": "FUNDECT",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-207",
+    "orgao": "JUCEMS",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-207",
+    "orgao": "PGE",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-207",
+    "orgao": "SEAD",
+    "tipo": "outro",
+    "vezes": 1
+  },
+  {
+    "sistemaId": "sis-208",
+    "orgao": "IAGRO",
+    "tipo": "outro",
+    "vezes": 1
+  }
+]

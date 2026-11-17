@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import type { OrgaoCenso } from "./censo";
 import type { EtapasCarta } from "./censo-n4";
+import type { DadosInventario, Indicacao, MetaInventario, OrgaoInventario, Pendencia, Sistema } from "./inventario-sistemas";
 import type { EtpUst, Financeiro, TfsContrato, TfsItem, TfsSprint, TfsStakeholder } from "./tfs";
 import type { WidgetPainel } from "./tfs-painel";
 
@@ -563,6 +564,21 @@ export function getCensoOrgao(sigla: string): OrgaoCenso | null {
  * Vazio = ainda não coletado. Classificação em lib/censo-n4.ts. */
 export function getEtapasN4(): EtapasCarta[] {
   return readDataset<EtapasCarta[]>("censo", "v2", "etapas-n4") ?? [];
+}
+
+// --- Inventário de sistemas do Estado ---
+// Estático por natureza: é a consolidação dos inventários enviados pelos
+// órgãos (planilha unificada, data-platform/build_inventario_sistemas.py), não
+// analytics de acesso — por isso não tem filtro de período. Tipos/cálculo em
+// lib/inventario-sistemas.ts.
+export function getInventarioSistemas(): DadosInventario {
+  return {
+    sistemas: readDataset<Sistema[]>("inventario-sistemas", "v1", "sistemas") ?? [],
+    orgaos: readDataset<OrgaoInventario[]>("inventario-sistemas", "v1", "orgaos") ?? [],
+    indicacoes: readDataset<Indicacao[]>("inventario-sistemas", "v1", "indicacoes") ?? [],
+    pendencias: readDataset<Pendencia[]>("inventario-sistemas", "v1", "pendencias") ?? [],
+    meta: readDataset<MetaInventario[]>("inventario-sistemas", "v1", "meta")?.[0] ?? null,
+  };
 }
 
 export type ErroRelacao = {

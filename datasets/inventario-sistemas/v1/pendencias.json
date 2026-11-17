@@ -1,0 +1,69 @@
+[
+  {
+    "tipo": "Dono divergente",
+    "item": "Sistema de Administração Patrimonial de MS",
+    "oQueFalta": "Ficou SAD. Racional Gartner (na aba Próprio aparecia como SETDIG)",
+    "fontes": [
+      "INVENTARIO SISTEMAS FUNDECT 01.07 (1).xlsx",
+      "Inventário GERAL AGESUL.xlsx",
+      "Inventário de Sistemas  AGEMS (1).xlsx",
+      "Inventário de Sistemas que Tratam Dados Pessoais (10).xlsx",
+      "Inventário de Sistemas que"
+    ],
+    "sistemaId": "sis-122"
+  },
+  {
+    "tipo": "Dono divergente",
+    "item": "Sistema de Gestão de Entrada de Dados",
+    "oQueFalta": "Ficou SAD. Racional Gartner (na aba Próprio aparecia como SES)",
+    "fontes": [
+      "Ageprev - Inventário de Sistemas que Tratam Dados Pessoais - Versão 04.10.24.xlsx",
+      "GERAL Inventário de Sistemas SEAD.xlsx",
+      "INVENTARIO SISTEMAS FUNDECT 01.07 (1).xlsx",
+      "Inventário GERAL AGESUL.xlsx",
+      "Inv"
+    ],
+    "sistemaId": "sis-125"
+  },
+  {
+    "tipo": "Dono divergente",
+    "item": "Se Suite - PGDI",
+    "oQueFalta": "Ficou SEFAZ. Racional Gartner (na aba Próprio aparecia como PGE)",
+    "fontes": [
+      "GERAL Inventário de Sistemas SEAD.xlsx",
+      "Inventário GERAL AGESUL.xlsx",
+      "Inventário de Sistemas - SEC.xlsx",
+      "Inventário de Sistemas - SETESC (2).xlsx",
+      "Inventário de Sistemas que Tratam Dados Pessoais (14)"
+    ],
+    "sistemaId": "sis-155"
+  },
+  {
+    "tipo": "Dono divergente",
+    "item": "GAL",
+    "oQueFalta": "Ficou SES. Racional Gartner (na aba Próprio aparecia como SETDIG)",
+    "fontes": [
+      "Inventário de Sistemas que Tratam Dados Pessoais - FUNSAU.xlsx",
+      "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx"
+    ],
+    "sistemaId": "sis-181"
+  },
+  {
+    "tipo": "Dono divergente",
+    "item": "SINAN",
+    "oQueFalta": "Ficou SES. Racional Gartner (na aba Próprio aparecia como DATASUS-MS)",
+    "fontes": [
+      "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx"
+    ],
+    "sistemaId": "sis-189"
+  },
+  {
+    "tipo": "Dono do sistema",
+    "item": "Rastec Sat",
+    "oQueFalta": "Nenhum inventário nem a Gartner diz de quem é",
+    "fontes": [
+      "Inventário de Sistemas que Tratam Dados Pessoais - IAGRO final.xlsx"
+    ],
+    "sistemaId": "sis-208"
+  }
+]

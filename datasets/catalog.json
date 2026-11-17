@@ -680,5 +680,60 @@
     "schema": "data-platform/schemas/tfs-painel-time.schema.json",
     "rows": 14,
     "bytes": 2271
+  },
+  {
+    "dataset": "sistemas",
+    "source": "inventario-sistemas",
+    "owner": "SETDIG",
+    "updatedAt": "2026-11-17T13:53:36.174163+00:00",
+    "frequency": "manual",
+    "version": "v1",
+    "schema": "data-platform/schemas/inventario-sistemas-sistemas.schema.json",
+    "rows": 208,
+    "bytes": 190139
+  },
+  {
+    "dataset": "orgaos",
+    "source": "inventario-sistemas",
+    "owner": "SETDIG",
+    "updatedAt": "2026-11-17T13:53:36.180051+00:00",
+    "frequency": "manual",
+    "version": "v1",
+    "schema": "data-platform/schemas/inventario-sistemas-orgaos.schema.json",
+    "rows": 35,
+    "bytes": 5362
+  },
+  {
+    "dataset": "indicacoes",
+    "source": "inventario-sistemas",
+    "owner": "SETDIG",
+    "updatedAt": "2026-11-17T13:53:36.182398+00:00",
+    "frequency": "manual",
+    "version": "v1",
+    "schema": "data-platform/schemas/inventario-sistemas-indicacoes.schema.json",
+    "rows": 490,
+    "bytes": 46931
+  },
+  {
+    "dataset": "pendencias",
+    "source": "inventario-sistemas",
+    "owner": "SETDIG",
+    "updatedAt": "2026-11-17T13:53:36.185266+00:00",
+    "frequency": "manual",
+    "version": "v1",
+    "schema": "data-platform/schemas/inventario-sistemas-pendencias.schema.json",
+    "rows": 6,
+    "bytes": 2290
+  },
+  {
+    "dataset": "meta",
+    "source": "inventario-sistemas",
+    "owner": "SETDIG",
+    "updatedAt": "2026-11-17T13:53:36.187682+00:00",
+    "frequency": "manual",
+    "version": "v1",
+    "schema": "data-platform/schemas/inventario-sistemas-meta.schema.json",
+    "rows": 1,
+    "bytes": 1180
   }
 ]

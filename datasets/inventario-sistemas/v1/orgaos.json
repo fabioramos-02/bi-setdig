@@ -1,0 +1,247 @@
+[
+  {
+    "sigla": "A IDENTIFICAR",
+    "enviouInventario": false,
+    "sistemasResponsavel": 1,
+    "sistemasDeOutrosQueUsa": 0,
+    "orgaosQueUsamSeus": 1
+  },
+  {
+    "sigla": "AGEHAB",
+    "enviouInventario": true,
+    "sistemasResponsavel": 2,
+    "sistemasDeOutrosQueUsa": 16,
+    "orgaosQueUsamSeus": 0
+  },
+  {
+    "sigla": "AGEMS",
+    "enviouInventario": true,
+    "sistemasResponsavel": 15,
+    "sistemasDeOutrosQueUsa": 20,
+    "orgaosQueUsamSeus": 1
+  },
+  {
+    "sigla": "AGEPREV",
+    "enviouInventario": true,
+    "sistemasResponsavel": 8,
+    "sistemasDeOutrosQueUsa": 22,
+    "orgaosQueUsamSeus": 9
+  },
+  {
+    "sigla": "AGESUL",
+    "enviouInventario": true,
+    "sistemasResponsavel": 1,
+    "sistemasDeOutrosQueUsa": 28,
+    "orgaosQueUsamSeus": 0
+  },
+  {
+    "sigla": "AGRAER",
+    "enviouInventario": true,
+    "sistemasResponsavel": 7,
+    "sistemasDeOutrosQueUsa": 11,
+    "orgaosQueUsamSeus": 0
+  },
+  {
+    "sigla": "CBMMS",
+    "enviouInventario": false,
+    "sistemasResponsavel": 2,
+    "sistemasDeOutrosQueUsa": 0,
+    "orgaosQueUsamSeus": 0
+  },
+  {
+    "sigla": "CBMMS/SEJUSP",
+    "enviouInventario": true,
+    "sistemasResponsavel": 0,
+    "sistemasDeOutrosQueUsa": 0,
+    "orgaosQueUsamSeus": 0
+  },
+  {
+    "sigla": "CGE-MS",
+    "enviouInventario": true,
+    "sistemasResponsavel": 4,
+    "sistemasDeOutrosQueUsa": 21,
+    "orgaosQueUsamSeus": 2
+  },
+  {
+    "sigla": "DATASUS-MS",
+    "enviouInventario": false,
+    "sistemasResponsavel": 10,
+    "sistemasDeOutrosQueUsa": 0,
+    "orgaosQueUsamSeus": 0
+  },
+  {
+    "sigla": "DETRAN",
+    "enviouInventario": true,
+    "sistemasResponsavel": 17,
+    "sistemasDeOutrosQueUsa": 1,
+    "orgaosQueUsamSeus": 1
+  },
+  {
+    "sigla": "ESCOLAGOV",
+    "enviouInventario": false,
+    "sistemasResponsavel": 2,
+    "sistemasDeOutrosQueUsa": 0,
+    "orgaosQueUsamSeus": 2
+  },
+  {
+    "sigla": "FUNDECT",
+    "enviouInventario": true,
+    "sistemasResponsavel": 1,
+    "sistemasDeOutrosQueUsa": 22,
+    "orgaosQueUsamSeus": 0
+  },
+  {
+    "sigla": "FUNDTUR",
+    "enviouInventario": true,
+    "sistemasResponsavel": 2,
+    "sistemasDeOutrosQueUsa": 9,
+    "orgaosQueUsamSeus": 0
+  },
+  {
+    "sigla": "FUNSAU",
+    "enviouInventario": true,
+    "sistemasResponsavel": 3,
+    "sistemasDeOutrosQueUsa": 10,
+    "orgaosQueUsamSeus": 0
+  },
+  {
+    "sigla": "FUNTRAB",
+    "enviouInventario": true,
+    "sistemasResponsavel": 0,
+    "sistemasDeOutrosQueUsa": 0,
+    "orgaosQueUsamSeus": 0
+  },
+  {
+    "sigla": "GOVMS",
+    "enviouInventario": false,
+    "sistemasResponsavel": 1,
+    "sistemasDeOutrosQueUsa": 0,
+    "orgaosQueUsamSeus": 2
+  },
+  {
+    "sigla": "IAGRO",
+    "enviouInventario": true,
+    "sistemasResponsavel": 1,
+    "sistemasDeOutrosQueUsa": 18,
+    "orgaosQueUsamSeus": 0
+  },
+  {
+    "sigla": "IMASUL",
+    "enviouInventario": true,
+    "sistemasResponsavel": 17,
+    "sistemasDeOutrosQueUsa": 10,
+    "orgaosQueUsamSeus": 0
+  },
+  {
+    "sigla": "JUCEMS",
+    "enviouInventario": true,
+    "sistemasResponsavel": 0,
+    "sistemasDeOutrosQueUsa": 27,
+    "orgaosQueUsamSeus": 0
+  },
+  {
+    "sigla": "PGE",
+    "enviouInventario": true,
+    "sistemasResponsavel": 7,
+    "sistemasDeOutrosQueUsa": 13,
+    "orgaosQueUsamSeus": 1
+  },
+  {
+    "sigla": "PROCON",
+    "enviouInventario": false,
+    "sistemasResponsavel": 2,
+    "sistemasDeOutrosQueUsa": 0,
+    "orgaosQueUsamSeus": 2
+  },
+  {
+    "sigla": "SAD",
+    "enviouInventario": true,
+    "sistemasResponsavel": 35,
+    "sistemasDeOutrosQueUsa": 6,
+    "orgaosQueUsamSeus": 18
+  },
+  {
+    "sigla": "SEAD",
+    "enviouInventario": true,
+    "sistemasResponsavel": 11,
+    "sistemasDeOutrosQueUsa": 31,
+    "orgaosQueUsamSeus": 1
+  },
+  {
+    "sigla": "SEC",
+    "enviouInventario": true,
+    "sistemasResponsavel": 0,
+    "sistemasDeOutrosQueUsa": 23,
+    "orgaosQueUsamSeus": 0
+  },
+  {
+    "sigla": "SED",
+    "enviouInventario": false,
+    "sistemasResponsavel": 2,
+    "sistemasDeOutrosQueUsa": 0,
+    "orgaosQueUsamSeus": 1
+  },
+  {
+    "sigla": "SEFAZ",
+    "enviouInventario": false,
+    "sistemasResponsavel": 11,
+    "sistemasDeOutrosQueUsa": 0,
+    "orgaosQueUsamSeus": 16
+  },
+  {
+    "sigla": "SEGOV",
+    "enviouInventario": false,
+    "sistemasResponsavel": 1,
+    "sistemasDeOutrosQueUsa": 0,
+    "orgaosQueUsamSeus": 1
+  },
+  {
+    "sigla": "SEINFRA",
+    "enviouInventario": false,
+    "sistemasResponsavel": 1,
+    "sistemasDeOutrosQueUsa": 0,
+    "orgaosQueUsamSeus": 1
+  },
+  {
+    "sigla": "SEJUSP",
+    "enviouInventario": false,
+    "sistemasResponsavel": 2,
+    "sistemasDeOutrosQueUsa": 0,
+    "orgaosQueUsamSeus": 0
+  },
+  {
+    "sigla": "SES",
+    "enviouInventario": true,
+    "sistemasResponsavel": 27,
+    "sistemasDeOutrosQueUsa": 5,
+    "orgaosQueUsamSeus": 2
+  },
+  {
+    "sigla": "SETDIG",
+    "enviouInventario": false,
+    "sistemasResponsavel": 10,
+    "sistemasDeOutrosQueUsa": 0,
+    "orgaosQueUsamSeus": 16
+  },
+  {
+    "sigla": "SETESC",
+    "enviouInventario": true,
+    "sistemasResponsavel": 1,
+    "sistemasDeOutrosQueUsa": 34,
+    "orgaosQueUsamSeus": 1
+  },
+  {
+    "sigla": "SGI",
+    "enviouInventario": false,
+    "sistemasResponsavel": 1,
+    "sistemasDeOutrosQueUsa": 0,
+    "orgaosQueUsamSeus": 1
+  },
+  {
+    "sigla": "TCE-MS",
+    "enviouInventario": false,
+    "sistemasResponsavel": 3,
+    "sistemasDeOutrosQueUsa": 0,
+    "orgaosQueUsamSeus": 7
+  }
+]
