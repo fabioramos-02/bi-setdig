@@ -20,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
-  const dominios = ["/avaliacao-carta", "/censo-digital", "/servicos", "/sites"].map((path) => ({
+  const dominios = ["/avaliacao-carta", "/censo-digital", "/inventario-sistemas", "/servicos", "/sites"].map((path) => ({
     url: `${baseUrl}${path}`,
     lastModified: now,
     changeFrequency: "weekly" as const,

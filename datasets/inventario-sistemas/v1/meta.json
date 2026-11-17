@@ -1,0 +1,41 @@
+[
+  {
+    "arquivo": "Inventário de Sistemas MS - unificado 17-11-2026 v4.xlsx",
+    "versao": "v4",
+    "dataReferencia": "2026-11-17",
+    "criterios": [
+      {
+        "id": "C1",
+        "pergunta": "A indisponibilidade do sistema interrompe um serviço público essencial?"
+      },
+      {
+        "id": "C2",
+        "pergunta": "O sistema suporta Saúde, Educação, Segurança ou Finanças Públicas?"
+      },
+      {
+        "id": "C3",
+        "pergunta": "O sistema é exigido por lei para execução de atividade estatal?"
+      },
+      {
+        "id": "C4",
+        "pergunta": "O sistema impacta diretamente direitos do cidadão?"
+      },
+      {
+        "id": "C5",
+        "pergunta": "Outros sistemas estaduais dependem dele para funcionar?"
+      },
+      {
+        "id": "C6",
+        "pergunta": "O sistema é utilizado por múltiplos órgãos do Estado?"
+      },
+      {
+        "id": "C7",
+        "pergunta": "O sistema processa informações críticas ou sensíveis em larga escala?"
+      },
+      {
+        "id": "C8",
+        "pergunta": "Uma falha do sistema geraria impacto institucional relevante para o Governo do Estado?"
+      }
+    ]
+  }
+]

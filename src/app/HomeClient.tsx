@@ -92,6 +92,14 @@ const DOMINIOS: Dominio[] = [
         cor: "var(--ds-color-primary-600)",
         tags: ["tfs", "backlog", "ust", "sprint", "pendências", "x-via", "sgd", "contrato", "fiscalização"],
       },
+      {
+        nome: "Inventário de Sistemas",
+        rota: "/inventario-sistemas",
+        icone: "dns",
+        descricao: "Sistemas do Estado, responsáveis e uso",
+        cor: "var(--ds-color-primary-600)",
+        tags: ["inventário", "sistemas", "criticidade", "governança", "órgãos", "compartilhamento", "catálogo"],
+      },
     ],
   },
 ];
