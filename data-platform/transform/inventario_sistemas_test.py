@@ -53,14 +53,23 @@ def test_sistemas_ids_e_campos():
 
 def test_indicacoes_ligam_por_nome_e_dono():
     s = montar_sistemas(INVENTARIO)
+    def ind_row(nome, resp, indicou, como, arquivo="a.xlsx", linha=1, veio=None):
+        return (nome, None, resp, indicou, como, veio or nome, None, None, None, None, arquivo, linha)
+
     rows = [("Sistema", "Sigla", "Resp", "Indicou", "Como"),
-            ("Intranet", None, "SAD", "SEC", "Usa sistema de outro órgão"),
-            ("Intranet", None, "SAD", "SEC", "Usa sistema de outro órgão"),
-            ("Intranet", None, "AGEMS", "AGEMS", "Sistema do próprio órgão"),
-            ("Fantasma", None, "X", "Y", "Usa sistema de outro órgão")]
+            ind_row("Intranet", "SAD", "SEC", "Usa sistema de outro órgão", "sec.xlsx", 9, "INTRANET SAD"),
+            ind_row("Intranet", "SAD", "SEC", "Usa sistema de outro órgão", "sec.xlsx", 4),
+            ind_row("Intranet", "AGEMS", "AGEMS", "Sistema do próprio órgão"),
+            ind_row("Fantasma", "X", "Y", "Usa sistema de outro órgão")]
     ind, sem_par = montar_indicacoes(rows, s)
-    assert {"sistemaId": "sis-002", "orgao": "SEC", "tipo": "outro", "vezes": 2} in ind
-    assert {"sistemaId": "sis-001", "orgao": "AGEMS", "tipo": "proprio", "vezes": 1} in ind
+    sec = next(i for i in ind if i["sistemaId"] == "sis-002")
+    assert (sec["orgao"], sec["tipo"], sec["vezes"]) == ("SEC", "outro", 2)
+    assert sec["origens"] == [  # ordenado por arquivo e linha
+        {"arquivo": "sec.xlsx", "linha": 4, "nomeComoVeio": "Intranet"},
+        {"arquivo": "sec.xlsx", "linha": 9, "nomeComoVeio": "INTRANET SAD"},
+    ]
+    agems = next(i for i in ind if i["sistemaId"] == "sis-001")
+    assert (agems["orgao"], agems["tipo"], agems["vezes"]) == ("AGEMS", "proprio", 1)
     assert sem_par == ["Fantasma"]
     assert chave(" Intranet ", "sad") == chave("intranet", "SAD")
 

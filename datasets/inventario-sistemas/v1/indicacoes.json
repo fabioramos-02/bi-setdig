@@ -3,2940 +3,6510 @@
     "sistemaId": "sis-001",
     "orgao": "AGEHAB",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (10).xlsx",
+        "linha": 7,
+        "nomeComoVeio": "E-KRONOS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-002",
     "orgao": "AGEHAB",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (10).xlsx",
+        "linha": 6,
+        "nomeComoVeio": "HABIX"
+      }
+    ]
   },
   {
     "sistemaId": "sis-003",
     "orgao": "AGEMS",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 13,
+        "nomeComoVeio": "Autorização de Viagem Eventual"
+      }
+    ]
   },
   {
     "sistemaId": "sis-004",
     "orgao": "AGEMS",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 14,
+        "nomeComoVeio": "Consultas e audiências públicas"
+      }
+    ]
   },
   {
     "sistemaId": "sis-005",
     "orgao": "AGEMS",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 15,
+        "nomeComoVeio": "e-financeiro"
+      }
+    ]
   },
   {
     "sistemaId": "sis-006",
     "orgao": "AGEMS",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 12,
+        "nomeComoVeio": "Gestão de Informações do Sistema de Transporte Intermunicipal"
+      }
+    ]
   },
   {
     "sistemaId": "sis-007",
     "orgao": "AGEMS",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 17,
+        "nomeComoVeio": "Guia de Serviços Públicos"
+      }
+    ]
   },
   {
     "sistemaId": "sis-008",
     "orgao": "PGE",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - Compilação PGE MS.xlsx",
+        "linha": 24,
+        "nomeComoVeio": "Help Desk (Agems)"
+      }
+    ]
   },
   {
     "sistemaId": "sis-009",
     "orgao": "AGEMS",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 11,
+        "nomeComoVeio": "Intranet"
+      }
+    ]
   },
   {
     "sistemaId": "sis-010",
     "orgao": "AGEMS",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 6,
+        "nomeComoVeio": "MONITORA"
+      }
+    ]
   },
   {
     "sistemaId": "sis-011",
     "orgao": "AGEMS",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 10,
+        "nomeComoVeio": "Ouvidoria"
+      }
+    ]
   },
   {
     "sistemaId": "sis-012",
     "orgao": "AGEMS",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 16,
+        "nomeComoVeio": "Regulasun"
+      }
+    ]
   },
   {
     "sistemaId": "sis-013",
     "orgao": "AGEMS",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 19,
+        "nomeComoVeio": "Sistema de Atendimento ao usuário"
+      }
+    ]
   },
   {
     "sistemaId": "sis-014",
     "orgao": "AGEMS",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 18,
+        "nomeComoVeio": "Sistema de capacitação dos servidores Agems"
+      }
+    ]
   },
   {
     "sistemaId": "sis-015",
     "orgao": "AGEMS",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 8,
+        "nomeComoVeio": "Sistema Gestor de Controle de Benefícios"
+      }
+    ]
   },
   {
     "sistemaId": "sis-016",
     "orgao": "AGEMS",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 9,
+        "nomeComoVeio": "Sistema Gestor de Licenças de Viagens de Fretamento"
+      }
+    ]
   },
   {
     "sistemaId": "sis-017",
     "orgao": "AGEMS",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 7,
+        "nomeComoVeio": "Sistema Gestor de Linhas e Tarifas Rodoviárias"
+      }
+    ]
   },
   {
     "sistemaId": "sis-018",
     "orgao": "AGEPREV",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Ageprev - Inventário de Sistemas que Tratam Dados Pessoais - Versão 04.10.24.xlsx",
+        "linha": 6,
+        "nomeComoVeio": "Gestão das Guias de Arrecadação e Informações Previdenciárias"
+      }
+    ]
   },
   {
     "sistemaId": "sis-019",
     "orgao": "AGEPREV",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Ageprev - Inventário de Sistemas que Tratam Dados Pessoais - Versão 04.10.24.xlsx",
+        "linha": 7,
+        "nomeComoVeio": "Sistema de Gestão do Tempo de Contribuição Previdenciária"
+      }
+    ]
   },
   {
     "sistemaId": "sis-020",
     "orgao": "AGEPREV",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Ageprev - Inventário de Sistemas que Tratam Dados Pessoais - Versão 04.10.24.xlsx",
+        "linha": 9,
+        "nomeComoVeio": "Sistema de Gestão dos Afastamentos sem Ônus para a Origem"
+      }
+    ]
   },
   {
     "sistemaId": "sis-021",
     "orgao": "AGEPREV",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Ageprev - Inventário de Sistemas que Tratam Dados Pessoais - Versão 04.10.24.xlsx",
+        "linha": 8,
+        "nomeComoVeio": "Sistema de Gestão dos Agendamentos para atendimento Previdenciário"
+      }
+    ]
   },
   {
     "sistemaId": "sis-022",
     "orgao": "AGEPREV",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Ageprev - Inventário de Sistemas que Tratam Dados Pessoais - Versão 04.10.24.xlsx",
+        "linha": 13,
+        "nomeComoVeio": "Sistema de Gestão Previdenciária"
+      }
+    ]
   },
   {
     "sistemaId": "sis-022",
     "orgao": "AGESUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 27,
+        "nomeComoVeio": "Sistema de Gestão Previdenciária"
+      }
+    ]
   },
   {
     "sistemaId": "sis-022",
     "orgao": "JUCEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - JUCEMS.xlsx",
+        "linha": 21,
+        "nomeComoVeio": "SISTEMA DE GESTÃO DE RPPS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-022",
     "orgao": "PGE",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - Compilação PGE MS.xlsx",
+        "linha": 18,
+        "nomeComoVeio": "Sisprev - Sistema de Gestão de Regime Próprio de Previdencia Social"
+      }
+    ]
   },
   {
     "sistemaId": "sis-022",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 24,
+        "nomeComoVeio": "SISTEMA DE GESTÃO DE RPPS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-022",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 29,
+        "nomeComoVeio": "Sistema de Gestão Previdenciária"
+      }
+    ]
   },
   {
     "sistemaId": "sis-023",
     "orgao": "AGEPREV",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Ageprev - Inventário de Sistemas que Tratam Dados Pessoais - Versão 04.10.24.xlsx",
+        "linha": 12,
+        "nomeComoVeio": "Sistema de Informações dos Registros Civil (Óbitos)"
+      }
+    ]
   },
   {
     "sistemaId": "sis-024",
     "orgao": "AGEPREV",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Ageprev - Inventário de Sistemas que Tratam Dados Pessoais - Versão 04.10.24.xlsx",
+        "linha": 11,
+        "nomeComoVeio": "Sistema de Informações Previdenciárias"
+      }
+    ]
   },
   {
     "sistemaId": "sis-025",
     "orgao": "AGEHAB",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (10).xlsx",
+        "linha": 19,
+        "nomeComoVeio": "Sistema de Perícia Médica"
+      }
+    ]
   },
   {
     "sistemaId": "sis-025",
     "orgao": "AGEPREV",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Ageprev - Inventário de Sistemas que Tratam Dados Pessoais - Versão 04.10.24.xlsx",
+        "linha": 10,
+        "nomeComoVeio": "Sistema de Perícia Médica"
+      }
+    ]
   },
   {
     "sistemaId": "sis-025",
     "orgao": "AGESUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 28,
+        "nomeComoVeio": "Sistema de Perícia Médica"
+      }
+    ]
   },
   {
     "sistemaId": "sis-025",
     "orgao": "CGE-MS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais COMPLETO 15 out 24.xlsx.pdf",
+        "linha": 2,
+        "nomeComoVeio": "Sistema de Perícia Médica"
+      }
+    ]
   },
   {
     "sistemaId": "sis-025",
     "orgao": "FUNSAU",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - FUNSAU.xlsx",
+        "linha": 11,
+        "nomeComoVeio": "Sistema de Perícia Médica"
+      }
+    ]
   },
   {
     "sistemaId": "sis-025",
     "orgao": "IAGRO",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - IAGRO final.xlsx",
+        "linha": 12,
+        "nomeComoVeio": "Sistema de Perícia Médica"
+      }
+    ]
   },
   {
     "sistemaId": "sis-025",
     "orgao": "JUCEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - JUCEMS.xlsx",
+        "linha": 25,
+        "nomeComoVeio": "SISTEMA DE PERICIA MÉDICA"
+      }
+    ]
   },
   {
     "sistemaId": "sis-025",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 28,
+        "nomeComoVeio": "SISTEMA DE PERICIA MÉDICA"
+      }
+    ]
   },
   {
     "sistemaId": "sis-025",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 31,
+        "nomeComoVeio": "Sistema de Perícia Médica"
+      }
+    ]
   },
   {
     "sistemaId": "sis-026",
     "orgao": "AGESUL",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 6,
+        "nomeComoVeio": "E-KRONOS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-027",
     "orgao": "AGRAER",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (11).xlsx",
+        "linha": 6,
+        "nomeComoVeio": "ASSISTÊNCIA TÉCNICA E EXTENSÃO RURAL DA AGRAER"
+      }
+    ]
   },
   {
     "sistemaId": "sis-028",
     "orgao": "AGRAER",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (11).xlsx",
+        "linha": 11,
+        "nomeComoVeio": "FORMULÁRIO DE CADASTRAMENTO AGROINDUSTRIA"
+      }
+    ]
   },
   {
     "sistemaId": "sis-029",
     "orgao": "AGRAER",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (11).xlsx",
+        "linha": 8,
+        "nomeComoVeio": "PLANILHA DE CONTROLE DE FUNC. GUATÓ"
+      }
+    ]
   },
   {
     "sistemaId": "sis-030",
     "orgao": "AGRAER",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (11).xlsx",
+        "linha": 7,
+        "nomeComoVeio": "PLANILHA DE CUSTAS PROCESSUAIS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-031",
     "orgao": "AGRAER",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (11).xlsx",
+        "linha": 9,
+        "nomeComoVeio": "PLANILHA DE LOTAÇÃO"
+      }
+    ]
   },
   {
     "sistemaId": "sis-032",
     "orgao": "AGRAER",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (11).xlsx",
+        "linha": 10,
+        "nomeComoVeio": "REQUERIMENTO PRO-FERTELIZA"
+      }
+    ]
   },
   {
     "sistemaId": "sis-033",
     "orgao": "AGRAER",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (11).xlsx",
+        "linha": 12,
+        "nomeComoVeio": "SISTEMA DE GERENCIAMENTO DE LOTES"
+      }
+    ]
   },
   {
     "sistemaId": "sis-034",
     "orgao": "CBMMS/SEJUSP",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (9).xlsx",
+        "linha": 6,
+        "nomeComoVeio": "Cadastro de Pessoal"
+      }
+    ]
   },
   {
     "sistemaId": "sis-035",
     "orgao": "CBMMS/SEJUSP",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (9).xlsx",
+        "linha": 7,
+        "nomeComoVeio": "Prevenir"
+      }
+    ]
   },
   {
     "sistemaId": "sis-036",
     "orgao": "CGE-MS",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais COMPLETO 15 out 24.xlsx.pdf",
+        "linha": 1,
+        "nomeComoVeio": "Portal da Transparência (atual)"
+      }
+    ]
   },
   {
     "sistemaId": "sis-037",
     "orgao": "CGE-MS",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais COMPLETO 15 out 24.xlsx.pdf",
+        "linha": 1,
+        "nomeComoVeio": "Portal da Transparência (em desenvolvimento)"
+      }
+    ]
   },
   {
     "sistemaId": "sis-038",
     "orgao": "CGE-MS",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais COMPLETO 15 out 24.xlsx.pdf",
+        "linha": 1,
+        "nomeComoVeio": "Portal de Dados Abertos"
+      }
+    ]
   },
   {
     "sistemaId": "sis-039",
     "orgao": "JUCEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - JUCEMS.xlsx",
+        "linha": 15,
+        "nomeComoVeio": "PROCESSO ELETRÔNICO CORRECIONAL"
+      }
+    ]
   },
   {
     "sistemaId": "sis-039",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 18,
+        "nomeComoVeio": "PROCESSO ELETRÔNICO CORRECIONAL"
+      }
+    ]
   },
   {
     "sistemaId": "sis-040",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 8,
+        "nomeComoVeio": "CNES"
+      }
+    ]
   },
   {
     "sistemaId": "sis-041",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 41,
+        "nomeComoVeio": "HORUS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-042",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 42,
+        "nomeComoVeio": "LIM"
+      }
+    ]
   },
   {
     "sistemaId": "sis-043",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 27,
+        "nomeComoVeio": "SIES"
+      }
+    ]
   },
   {
     "sistemaId": "sis-044",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 38,
+        "nomeComoVeio": "SISCOLO"
+      }
+    ]
   },
   {
     "sistemaId": "sis-045",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 39,
+        "nomeComoVeio": "SISMAMA"
+      }
+    ]
   },
   {
     "sistemaId": "sis-046",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 40,
+        "nomeComoVeio": "SISPRENATAL"
+      }
+    ]
   },
   {
     "sistemaId": "sis-047",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 23,
+        "nomeComoVeio": "SIVEP"
+      }
+    ]
   },
   {
     "sistemaId": "sis-048",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 10,
+        "nomeComoVeio": "VigiAR"
+      }
+    ]
   },
   {
     "sistemaId": "sis-049",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 11,
+        "nomeComoVeio": "vigiSOLO"
+      }
+    ]
   },
   {
     "sistemaId": "sis-050",
     "orgao": "DETRAN",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Detran - Inventário de Sistemas que Tratam Dados Pessoais LGPD.xlsx",
+        "linha": 14,
+        "nomeComoVeio": "CAMERAS (FISCALIZAÇÃO)"
+      }
+    ]
   },
   {
     "sistemaId": "sis-051",
     "orgao": "DETRAN",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Detran - Inventário de Sistemas que Tratam Dados Pessoais LGPD.xlsx",
+        "linha": 21,
+        "nomeComoVeio": "Claro - (voz e dados)"
+      }
+    ]
   },
   {
     "sistemaId": "sis-052",
     "orgao": "DETRAN",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Detran - Inventário de Sistemas que Tratam Dados Pessoais LGPD.xlsx",
+        "linha": 7,
+        "nomeComoVeio": "EMAIL - EXCHANGE"
+      }
+    ]
   },
   {
     "sistemaId": "sis-053",
     "orgao": "DETRAN",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Detran - Inventário de Sistemas que Tratam Dados Pessoais LGPD.xlsx",
+        "linha": 17,
+        "nomeComoVeio": "EMBRATEL ( DADOS)"
+      }
+    ]
   },
   {
     "sistemaId": "sis-054",
     "orgao": "DETRAN",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Detran - Inventário de Sistemas que Tratam Dados Pessoais LGPD.xlsx",
+        "linha": 19,
+        "nomeComoVeio": "FAPEC (APLICAÇÃO DE PROVAS)"
+      }
+    ]
   },
   {
     "sistemaId": "sis-055",
     "orgao": "DETRAN",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Detran - Inventário de Sistemas que Tratam Dados Pessoais LGPD.xlsx",
+        "linha": 10,
+        "nomeComoVeio": "Gestão Documental"
+      }
+    ]
   },
   {
     "sistemaId": "sis-056",
     "orgao": "DETRAN",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Detran - Inventário de Sistemas que Tratam Dados Pessoais LGPD.xlsx",
+        "linha": 20,
+        "nomeComoVeio": "GLPI - SERVICE DESK"
+      }
+    ]
   },
   {
     "sistemaId": "sis-057",
     "orgao": "DETRAN",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Detran - Inventário de Sistemas que Tratam Dados Pessoais LGPD.xlsx",
+        "linha": 8,
+        "nomeComoVeio": "INTRANET"
+      }
+    ]
   },
   {
     "sistemaId": "sis-058",
     "orgao": "DETRAN",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Detran - Inventário de Sistemas que Tratam Dados Pessoais LGPD.xlsx",
+        "linha": 18,
+        "nomeComoVeio": "Link de Dados (Freeway)"
+      }
+    ]
   },
   {
     "sistemaId": "sis-059",
     "orgao": "DETRAN",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Detran - Inventário de Sistemas que Tratam Dados Pessoais LGPD.xlsx",
+        "linha": 16,
+        "nomeComoVeio": "OI (VOZ E DADOS)"
+      }
+    ]
   },
   {
     "sistemaId": "sis-060",
     "orgao": "DETRAN",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Detran - Inventário de Sistemas que Tratam Dados Pessoais LGPD.xlsx",
+        "linha": 15,
+        "nomeComoVeio": "OI (WI-FI)"
+      }
+    ]
   },
   {
     "sistemaId": "sis-061",
     "orgao": "DETRAN",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Detran - Inventário de Sistemas que Tratam Dados Pessoais LGPD.xlsx",
+        "linha": 9,
+        "nomeComoVeio": "PAINEIS DE BUSINESS INTELLIGENCE"
+      }
+    ]
   },
   {
     "sistemaId": "sis-062",
     "orgao": "AGESUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 18,
+        "nomeComoVeio": "SGI DETRAN"
+      }
+    ]
   },
   {
     "sistemaId": "sis-063",
     "orgao": "DETRAN",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Detran - Inventário de Sistemas que Tratam Dados Pessoais LGPD.xlsx",
+        "linha": 6,
+        "nomeComoVeio": "SISTEMA DE GESTÃO E TRÂNSITO"
+      }
+    ]
   },
   {
     "sistemaId": "sis-064",
     "orgao": "DETRAN",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Detran - Inventário de Sistemas que Tratam Dados Pessoais LGPD.xlsx",
+        "linha": 12,
+        "nomeComoVeio": "Teleatendimento"
+      }
+    ]
   },
   {
     "sistemaId": "sis-065",
     "orgao": "DETRAN",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Detran - Inventário de Sistemas que Tratam Dados Pessoais LGPD.xlsx",
+        "linha": 11,
+        "nomeComoVeio": "TELEFONIA - STELMAT"
+      }
+    ]
   },
   {
     "sistemaId": "sis-066",
     "orgao": "DETRAN",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Detran - Inventário de Sistemas que Tratam Dados Pessoais LGPD.xlsx",
+        "linha": 13,
+        "nomeComoVeio": "VALID"
+      }
+    ]
   },
   {
     "sistemaId": "sis-067",
     "orgao": "PGE",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - Compilação PGE MS.xlsx",
+        "linha": 26,
+        "nomeComoVeio": "Portal Corporativo da Escola de Governo - Portal Escola do Servidor (ESAP)"
+      }
+    ]
   },
   {
     "sistemaId": "sis-068",
     "orgao": "FUNSAU",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - FUNSAU.xlsx",
+        "linha": 13,
+        "nomeComoVeio": "Portal Corporativo Eventos/Cursos"
+      }
+    ]
   },
   {
     "sistemaId": "sis-069",
     "orgao": "FUNDECT",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "INVENTARIO SISTEMAS FUNDECT 01.07 (1).xlsx",
+        "linha": 6,
+        "nomeComoVeio": "SISTEMA DE INFORMAÇÃO E GESTÃO DE PROJETOS DA FUNDECT"
+      }
+    ]
   },
   {
     "sistemaId": "sis-070",
     "orgao": "FUNDTUR",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais_Fundtur_ (1).xlsx",
+        "linha": 7,
+        "nomeComoVeio": "ALUMIA - PLATAFORMA DE INTELIGÊNCIA TURÍSTICA DE MS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-071",
     "orgao": "FUNDTUR",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais_Fundtur_ (1).xlsx",
+        "linha": 6,
+        "nomeComoVeio": "SISTEMA DE CLASSIFICAÇÃO TURÍSTICA DOS MUNICÍPIOS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-072",
     "orgao": "FUNSAU",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - FUNSAU.xlsx",
+        "linha": 6,
+        "nomeComoVeio": "MV"
+      }
+    ]
   },
   {
     "sistemaId": "sis-073",
     "orgao": "FUNSAU",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - FUNSAU.xlsx",
+        "linha": 7,
+        "nomeComoVeio": "PONTO SECULLUM"
+      }
+    ]
   },
   {
     "sistemaId": "sis-074",
     "orgao": "FUNSAU",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - FUNSAU.xlsx",
+        "linha": 8,
+        "nomeComoVeio": "SECULLUM ACESSO.NET"
+      }
+    ]
   },
   {
     "sistemaId": "sis-075",
     "orgao": "CGE-MS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais COMPLETO 15 out 24.xlsx.pdf",
+        "linha": 2,
+        "nomeComoVeio": "Sistema Pesquisa MS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-075",
     "orgao": "SEC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SEC.xlsx",
+        "linha": 15,
+        "nomeComoVeio": "PESQUISAMS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-076",
     "orgao": "IAGRO",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - IAGRO final.xlsx",
+        "linha": 6,
+        "nomeComoVeio": "Sistema de Gestão Coorporativa de Inspeção e Defesa Sanitária Animal e Vegetal da IAGRO (app do transportador, CIADE e e-Vigiagro)"
+      }
+    ]
   },
   {
     "sistemaId": "sis-077",
     "orgao": "IMASUL",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (5).xlsx",
+        "linha": 19,
+        "nomeComoVeio": "AGENDAMENTOS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-078",
     "orgao": "IMASUL",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (5).xlsx",
+        "linha": 14,
+        "nomeComoVeio": "Análise Dinâmizada CAR MS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-079",
     "orgao": "IMASUL",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (5).xlsx",
+        "linha": 20,
+        "nomeComoVeio": "AVISOS AUTOMATICOS PYTHON"
+      }
+    ]
   },
   {
     "sistemaId": "sis-080",
     "orgao": "IMASUL",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (5).xlsx",
+        "linha": 21,
+        "nomeComoVeio": "BANCO DE DADOS DO PESCADOR PROFISSIONAL(INTRANET)"
+      }
+    ]
   },
   {
     "sistemaId": "sis-081",
     "orgao": "IMASUL",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (5).xlsx",
+        "linha": 16,
+        "nomeComoVeio": "CERBERUS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-082",
     "orgao": "IMASUL",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (5).xlsx",
+        "linha": 15,
+        "nomeComoVeio": "Controle de emissões de GEE (Gases de Efeito Estufa)"
+      }
+    ]
   },
   {
     "sistemaId": "sis-083",
     "orgao": "IMASUL",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (5).xlsx",
+        "linha": 18,
+        "nomeComoVeio": "OFICIOS DO MINISTERIO PUBLICO"
+      }
+    ]
   },
   {
     "sistemaId": "sis-084",
     "orgao": "IMASUL",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (5).xlsx",
+        "linha": 22,
+        "nomeComoVeio": "PORTAL PESCA AMADORA"
+      }
+    ]
   },
   {
     "sistemaId": "sis-085",
     "orgao": "IMASUL",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (5).xlsx",
+        "linha": 13,
+        "nomeComoVeio": "Sistema de Emissão de Carteirinha de Pesca Amadora"
+      }
+    ]
   },
   {
     "sistemaId": "sis-086",
     "orgao": "IMASUL",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (5).xlsx",
+        "linha": 8,
+        "nomeComoVeio": "Sistema de Gestão Administrativa e Financeira (interno)"
+      }
+    ]
   },
   {
     "sistemaId": "sis-087",
     "orgao": "IMASUL",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (5).xlsx",
+        "linha": 7,
+        "nomeComoVeio": "Sistema de Gestão de Monitoramento Ambiental"
+      }
+    ]
   },
   {
     "sistemaId": "sis-088",
     "orgao": "IMASUL",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (5).xlsx",
+        "linha": 11,
+        "nomeComoVeio": "Sistema de Licenciamento Ambiental"
+      }
+    ]
   },
   {
     "sistemaId": "sis-089",
     "orgao": "IMASUL",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (5).xlsx",
+        "linha": 9,
+        "nomeComoVeio": "Sistema de Logística Reversa do Mato Grosso do Sul"
+      }
+    ]
   },
   {
     "sistemaId": "sis-090",
     "orgao": "IMASUL",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (5).xlsx",
+        "linha": 6,
+        "nomeComoVeio": "Sistema do Grupo de Controle Ambiental (interno)"
+      }
+    ]
   },
   {
     "sistemaId": "sis-091",
     "orgao": "IMASUL",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (5).xlsx",
+        "linha": 10,
+        "nomeComoVeio": "Sistema IMASUL de registros e informações estratégicas de Meio Ambiente"
+      }
+    ]
   },
   {
     "sistemaId": "sis-092",
     "orgao": "IMASUL",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (5).xlsx",
+        "linha": 12,
+        "nomeComoVeio": "Sistema Interativo de Suporte ao Licenciamento Ambiental"
+      }
+    ]
   },
   {
     "sistemaId": "sis-093",
     "orgao": "IMASUL",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (5).xlsx",
+        "linha": 17,
+        "nomeComoVeio": "SUPORTE"
+      }
+    ]
   },
   {
     "sistemaId": "sis-094",
     "orgao": "PGE",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - Compilação PGE MS.xlsx",
+        "linha": 18,
+        "nomeComoVeio": "(Trovale)"
+      }
+    ]
   },
   {
     "sistemaId": "sis-095",
     "orgao": "AGEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 21,
+        "nomeComoVeio": "Sistema de consulta de pareceres"
+      }
+    ]
   },
   {
     "sistemaId": "sis-095",
     "orgao": "PGE",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - Compilação PGE MS.xlsx",
+        "linha": 20,
+        "nomeComoVeio": "Alfresco"
+      }
+    ]
   },
   {
     "sistemaId": "sis-096",
     "orgao": "AGEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 20,
+        "nomeComoVeio": "Ações Judiciais"
+      }
+    ]
   },
   {
     "sistemaId": "sis-096",
     "orgao": "PGE",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - Compilação PGE MS.xlsx",
+        "linha": 10,
+        "nomeComoVeio": "Sistema da Procuradoria Geral do Estado (PGENET)"
+      }
+    ]
   },
   {
     "sistemaId": "sis-096",
     "orgao": "PGE",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - Compilação PGE MS.xlsx",
+        "linha": 6,
+        "nomeComoVeio": "Sistema da Procuradoria Geral do Estado"
+      }
+    ]
   },
   {
     "sistemaId": "sis-097",
     "orgao": "PGE",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - Compilação PGE MS.xlsx",
+        "linha": 10,
+        "nomeComoVeio": "Gestão por Competencia"
+      }
+    ]
   },
   {
     "sistemaId": "sis-098",
     "orgao": "PGE",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - Compilação PGE MS.xlsx",
+        "linha": 11,
+        "nomeComoVeio": "Intranet"
+      }
+    ]
   },
   {
     "sistemaId": "sis-099",
     "orgao": "PGE",
     "tipo": "proprio",
-    "vezes": 4
+    "vezes": 4,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - Compilação PGE MS.xlsx",
+        "linha": 14,
+        "nomeComoVeio": "Quati"
+      },
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - Compilação PGE MS.xlsx",
+        "linha": 15,
+        "nomeComoVeio": "Quati"
+      },
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - Compilação PGE MS.xlsx",
+        "linha": 16,
+        "nomeComoVeio": "Quati"
+      },
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - Compilação PGE MS.xlsx",
+        "linha": 17,
+        "nomeComoVeio": "Quati"
+      }
+    ]
   },
   {
     "sistemaId": "sis-100",
     "orgao": "PGE",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - Compilação PGE MS.xlsx",
+        "linha": 9,
+        "nomeComoVeio": "Sistema da Procuradoria Geral do Estado"
+      }
+    ]
   },
   {
     "sistemaId": "sis-101",
     "orgao": "JUCEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - JUCEMS.xlsx",
+        "linha": 6,
+        "nomeComoVeio": "BLOQTEL"
+      }
+    ]
   },
   {
     "sistemaId": "sis-101",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 7,
+        "nomeComoVeio": "BLOQTEL"
+      }
+    ]
   },
   {
     "sistemaId": "sis-102",
     "orgao": "SEAD",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 17,
+        "nomeComoVeio": "E-PROCON"
+      }
+    ]
   },
   {
     "sistemaId": "sis-103",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 6,
+        "nomeComoVeio": "AUDITA RH PAGADORIA-MS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-104",
     "orgao": "AGESUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 6,
+        "nomeComoVeio": "E-CATALOGOS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-104",
     "orgao": "SEC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SEC.xlsx",
+        "linha": 26,
+        "nomeComoVeio": "CATALÓGO DE MATERIAIS E SERVIÇOS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-104",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 6,
+        "nomeComoVeio": "Catálogo"
+      }
+    ]
   },
   {
     "sistemaId": "sis-105",
     "orgao": "AGEPREV",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Ageprev - Inventário de Sistemas que Tratam Dados Pessoais - Versão 04.10.24.xlsx",
+        "linha": 26,
+        "nomeComoVeio": "Compra Direta Eletrônica"
+      }
+    ]
   },
   {
     "sistemaId": "sis-105",
     "orgao": "FUNDTUR",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais_Fundtur_ (1).xlsx",
+        "linha": 8,
+        "nomeComoVeio": "COMPRA DIRETA ELETRÔNICA"
+      }
+    ]
   },
   {
     "sistemaId": "sis-105",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 7,
+        "nomeComoVeio": "Compra Direta"
+      }
+    ]
   },
   {
     "sistemaId": "sis-106",
     "orgao": "AGEPREV",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Ageprev - Inventário de Sistemas que Tratam Dados Pessoais - Versão 04.10.24.xlsx",
+        "linha": 25,
+        "nomeComoVeio": "ConsistHR"
+      }
+    ]
   },
   {
     "sistemaId": "sis-106",
     "orgao": "AGESUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 21,
+        "nomeComoVeio": "Sistema CONSIST"
+      }
+    ]
   },
   {
     "sistemaId": "sis-106",
     "orgao": "FUNDECT",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "INVENTARIO SISTEMAS FUNDECT 01.07 (1).xlsx",
+        "linha": 28,
+        "nomeComoVeio": "MAINFRAME"
+      }
+    ]
   },
   {
     "sistemaId": "sis-106",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 11,
+        "nomeComoVeio": "MS ATIVOS - CONSISTHR"
+      }
+    ]
   },
   {
     "sistemaId": "sis-107",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 9,
+        "nomeComoVeio": "Diário Oficial de Mato Grosso do Sul"
+      }
+    ]
   },
   {
     "sistemaId": "sis-108",
     "orgao": "AGEHAB",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (10).xlsx",
+        "linha": 9,
+        "nomeComoVeio": "Sistema de Controle de Fornecedores"
+      }
+    ]
   },
   {
     "sistemaId": "sis-108",
     "orgao": "AGEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 19,
+        "nomeComoVeio": "Cadastro de Fornecedores"
+      }
+    ]
   },
   {
     "sistemaId": "sis-108",
     "orgao": "AGEPREV",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Ageprev - Inventário de Sistemas que Tratam Dados Pessoais - Versão 04.10.24.xlsx",
+        "linha": 8,
+        "nomeComoVeio": "Sistema- Unidade de Cadastro de Fornecedores"
+      }
+    ]
   },
   {
     "sistemaId": "sis-108",
     "orgao": "AGESUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 7,
+        "nomeComoVeio": "E-FORNECEDOR"
+      }
+    ]
   },
   {
     "sistemaId": "sis-108",
     "orgao": "FUNDECT",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "INVENTARIO SISTEMAS FUNDECT 01.07 (1).xlsx",
+        "linha": 30,
+        "nomeComoVeio": "E-FORNECEDOR"
+      }
+    ]
   },
   {
     "sistemaId": "sis-109",
     "orgao": "AGEHAB",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (10).xlsx",
+        "linha": 13,
+        "nomeComoVeio": "Sistema de Processos Eletrônico"
+      }
+    ]
   },
   {
     "sistemaId": "sis-109",
     "orgao": "AGEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 6,
+        "nomeComoVeio": "Sistema Eletrônico de Processos"
+      }
+    ]
   },
   {
     "sistemaId": "sis-109",
     "orgao": "AGEPREV",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Ageprev - Inventário de Sistemas que Tratam Dados Pessoais - Versão 04.10.24.xlsx",
+        "linha": 17,
+        "nomeComoVeio": "Sistema Eletônico de Processos"
+      }
+    ]
   },
   {
     "sistemaId": "sis-109",
     "orgao": "AGESUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 8,
+        "nomeComoVeio": "E-MS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-109",
     "orgao": "CGE-MS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais COMPLETO 15 out 24.xlsx.pdf",
+        "linha": 2,
+        "nomeComoVeio": "Sistema Processo Administrativo Eletrônico"
+      }
+    ]
   },
   {
     "sistemaId": "sis-109",
     "orgao": "DETRAN",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Detran - Inventário de Sistemas que Tratam Dados Pessoais LGPD.xlsx",
+        "linha": 6,
+        "nomeComoVeio": "e-MS Sistema de Processos Eletrônicos"
+      }
+    ]
   },
   {
     "sistemaId": "sis-109",
     "orgao": "FUNDECT",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "INVENTARIO SISTEMAS FUNDECT 01.07 (1).xlsx",
+        "linha": 26,
+        "nomeComoVeio": "E MS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-109",
     "orgao": "FUNSAU",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - FUNSAU.xlsx",
+        "linha": 9,
+        "nomeComoVeio": "E-MS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-109",
     "orgao": "IAGRO",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - IAGRO final.xlsx",
+        "linha": 17,
+        "nomeComoVeio": "Processo Eletronico de MS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-109",
     "orgao": "PGE",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - Compilação PGE MS.xlsx",
+        "linha": 6,
+        "nomeComoVeio": "Sistema de Processos Eletrônicos/MS (SAD)"
+      }
+    ]
   },
   {
     "sistemaId": "sis-109",
     "orgao": "PGE",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - Compilação PGE MS.xlsx",
+        "linha": 8,
+        "nomeComoVeio": "E MS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-109",
     "orgao": "SAD",
     "tipo": "outro",
-    "vezes": 2
+    "vezes": 2,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (14).xlsx",
+        "linha": 17,
+        "nomeComoVeio": "E-MS"
+      },
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - DAD (1).xlsx",
+        "linha": 14,
+        "nomeComoVeio": "Sistema Eletrônico de Processos Administrativos"
+      }
+    ]
   },
   {
     "sistemaId": "sis-109",
     "orgao": "SEC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SEC.xlsx",
+        "linha": 7,
+        "nomeComoVeio": "E-MS ELLOS ECM"
+      }
+    ]
   },
   {
     "sistemaId": "sis-109",
     "orgao": "SES",
     "tipo": "outro",
-    "vezes": 3
+    "vezes": 3,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 8,
+        "nomeComoVeio": "E-MS"
+      },
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 9,
+        "nomeComoVeio": "E-MS"
+      },
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 10,
+        "nomeComoVeio": "E-MS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-109",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 4
+    "vezes": 4,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 45,
+        "nomeComoVeio": "E-MS"
+      },
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 54,
+        "nomeComoVeio": "E-MS"
+      },
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 55,
+        "nomeComoVeio": "E-MS"
+      },
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 56,
+        "nomeComoVeio": "E-MS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-109",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 12,
+        "nomeComoVeio": "Gestão eletrônica de documentos e processos administrativos"
+      }
+    ]
   },
   {
     "sistemaId": "sis-110",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 29,
+        "nomeComoVeio": "E-VACINE"
+      }
+    ]
   },
   {
     "sistemaId": "sis-111",
     "orgao": "AGESUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 9,
+        "nomeComoVeio": "E-VEÍCULOS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-112",
     "orgao": "AGEHAB",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (10).xlsx",
+        "linha": 16,
+        "nomeComoVeio": "Estàgio Probatório e Desempenho"
+      }
+    ]
   },
   {
     "sistemaId": "sis-112",
     "orgao": "CGE-MS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais COMPLETO 15 out 24.xlsx.pdf",
+        "linha": 2,
+        "nomeComoVeio": "Sistema Avaliação de Estágio Probatório e Desempenho"
+      }
+    ]
   },
   {
     "sistemaId": "sis-112",
     "orgao": "IAGRO",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - IAGRO final.xlsx",
+        "linha": 15,
+        "nomeComoVeio": "Estágio Probatório e Desempenho"
+      }
+    ]
   },
   {
     "sistemaId": "sis-113",
     "orgao": "AGEHAB",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (10).xlsx",
+        "linha": 20,
+        "nomeComoVeio": "Sistema de Gestão de Contratos"
+      }
+    ]
   },
   {
     "sistemaId": "sis-113",
     "orgao": "AGEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 13,
+        "nomeComoVeio": "Sistema de Gestão de Contratos"
+      }
+    ]
   },
   {
     "sistemaId": "sis-113",
     "orgao": "AGEPREV",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Ageprev - Inventário de Sistemas que Tratam Dados Pessoais - Versão 04.10.24.xlsx",
+        "linha": 20,
+        "nomeComoVeio": "Sistema de Contratos- Gestão de Contratos"
+      }
+    ]
   },
   {
     "sistemaId": "sis-113",
     "orgao": "AGESUL",
     "tipo": "outro",
-    "vezes": 2
+    "vezes": 2,
+    "origens": [
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 10,
+        "nomeComoVeio": "GCONT"
+      },
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 11,
+        "nomeComoVeio": "Gestão de Contratos"
+      }
+    ]
   },
   {
     "sistemaId": "sis-113",
     "orgao": "AGRAER",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (11).xlsx",
+        "linha": 8,
+        "nomeComoVeio": "GESTÃO DE CONTRATOS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-113",
     "orgao": "CGE-MS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais COMPLETO 15 out 24.xlsx.pdf",
+        "linha": 2,
+        "nomeComoVeio": "Sistema Gestor de Contratos"
+      }
+    ]
   },
   {
     "sistemaId": "sis-113",
     "orgao": "FUNDECT",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "INVENTARIO SISTEMAS FUNDECT 01.07 (1).xlsx",
+        "linha": 6,
+        "nomeComoVeio": "GESTOR DE CONTRATOS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-113",
     "orgao": "FUNDTUR",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais_Fundtur_ (1).xlsx",
+        "linha": 6,
+        "nomeComoVeio": "SISTEMA DE CONTRATOS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-113",
     "orgao": "IAGRO",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - IAGRO final.xlsx",
+        "linha": 11,
+        "nomeComoVeio": "Sistema Eletrônico de Contratos"
+      }
+    ]
   },
   {
     "sistemaId": "sis-113",
     "orgao": "IMASUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (5).xlsx",
+        "linha": 13,
+        "nomeComoVeio": "Gestão de Contratos"
+      }
+    ]
   },
   {
     "sistemaId": "sis-113",
     "orgao": "JUCEMS",
     "tipo": "outro",
-    "vezes": 2
+    "vezes": 2,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - JUCEMS.xlsx",
+        "linha": 7,
+        "nomeComoVeio": "GESTÃO DE CONTRATOS"
+      },
+      {
+        "arquivo": "Inventário de Sistemas - JUCEMS.xlsx",
+        "linha": 27,
+        "nomeComoVeio": "SISTEMA ELETRÔNICO DE CONTRATOS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-113",
     "orgao": "SAD",
     "tipo": "outro",
-    "vezes": 2
+    "vezes": 2,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (14).xlsx",
+        "linha": 6,
+        "nomeComoVeio": "GESTOR DE CONTRATOS"
+      },
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - DAD (1).xlsx",
+        "linha": 12,
+        "nomeComoVeio": "Sistema Eletrônico de Contratos"
+      }
+    ]
   },
   {
     "sistemaId": "sis-113",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 2
+    "vezes": 2,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 8,
+        "nomeComoVeio": "GESTÃO DE CONTRATOS"
+      },
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 30,
+        "nomeComoVeio": "SISTEMA ELETRÔNICO DE CONTRATOS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-113",
     "orgao": "SEC",
     "tipo": "outro",
-    "vezes": 2
+    "vezes": 2,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SEC.xlsx",
+        "linha": 24,
+        "nomeComoVeio": "SISTEMA ELETRÔNICO DE CONTRATOS - SIGACONTRATOS"
+      },
+      {
+        "arquivo": "Inventário de Sistemas - SEC.xlsx",
+        "linha": 27,
+        "nomeComoVeio": "GESTÃO DE CONTRATOS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-113",
     "orgao": "SES",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 12,
+        "nomeComoVeio": "Sistema de Contratos"
+      }
+    ]
   },
   {
     "sistemaId": "sis-113",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 2
+    "vezes": 2,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 12,
+        "nomeComoVeio": "e-CONTRATOS"
+      },
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 58,
+        "nomeComoVeio": "Sistema de Contratos"
+      }
+    ]
   },
   {
     "sistemaId": "sis-113",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 21,
+        "nomeComoVeio": "Sistema de Compras"
+      }
+    ]
   },
   {
     "sistemaId": "sis-114",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 50,
+        "nomeComoVeio": "PCA"
+      }
+    ]
   },
   {
     "sistemaId": "sis-115",
     "orgao": "AGEHAB",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (10).xlsx",
+        "linha": 11,
+        "nomeComoVeio": "Sistema de Planejamento de Compras"
+      }
+    ]
   },
   {
     "sistemaId": "sis-115",
     "orgao": "AGESUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 14,
+        "nomeComoVeio": "PLANO DE COMPRAS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-115",
     "orgao": "SAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - DAD (1).xlsx",
+        "linha": 15,
+        "nomeComoVeio": "Siga Plano de Compras"
+      }
+    ]
   },
   {
     "sistemaId": "sis-115",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 15,
+        "nomeComoVeio": "PCA2024"
+      }
+    ]
   },
   {
     "sistemaId": "sis-116",
     "orgao": "AGEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 25,
+        "nomeComoVeio": "Portal do Servidor"
+      }
+    ]
   },
   {
     "sistemaId": "sis-116",
     "orgao": "AGEPREV",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Ageprev - Inventário de Sistemas que Tratam Dados Pessoais - Versão 04.10.24.xlsx",
+        "linha": 22,
+        "nomeComoVeio": "Portal do Servidor"
+      }
+    ]
   },
   {
     "sistemaId": "sis-116",
     "orgao": "FUNDTUR",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais_Fundtur_ (1).xlsx",
+        "linha": 13,
+        "nomeComoVeio": "PORTAL DO SERVIDOR"
+      }
+    ]
   },
   {
     "sistemaId": "sis-116",
     "orgao": "JUCEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - JUCEMS.xlsx",
+        "linha": 12,
+        "nomeComoVeio": "PORTAL DO SERVIDOR - ADMINISTRATIVO"
+      }
+    ]
   },
   {
     "sistemaId": "sis-116",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 15,
+        "nomeComoVeio": "PORTAL DO SERVIDOR - ADMINISTRATIVO"
+      }
+    ]
   },
   {
     "sistemaId": "sis-116",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 16,
+        "nomeComoVeio": "Portal do Servidor"
+      }
+    ]
   },
   {
     "sistemaId": "sis-117",
     "orgao": "JUCEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - JUCEMS.xlsx",
+        "linha": 13,
+        "nomeComoVeio": "PORTAL RH/MS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-117",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 16,
+        "nomeComoVeio": "PORTAL RH/MS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-118",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 51,
+        "nomeComoVeio": "Red HAT- Open Shift"
+      }
+    ]
   },
   {
     "sistemaId": "sis-119",
     "orgao": "AGESUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 20,
+        "nomeComoVeio": "SIGA"
+      }
+    ]
   },
   {
     "sistemaId": "sis-119",
     "orgao": "AGRAER",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (11).xlsx",
+        "linha": 15,
+        "nomeComoVeio": "SISTEMA INTEGRADO DE GESTÃO ADMINISTRATIVA"
+      }
+    ]
   },
   {
     "sistemaId": "sis-120",
     "orgao": "AGEHAB",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (10).xlsx",
+        "linha": 7,
+        "nomeComoVeio": "Sistema Gestor de Almoxarifado"
+      }
+    ]
   },
   {
     "sistemaId": "sis-120",
     "orgao": "AGEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 15,
+        "nomeComoVeio": "Gestão de Controle de Almoxarifado"
+      }
+    ]
   },
   {
     "sistemaId": "sis-120",
     "orgao": "CGE-MS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais COMPLETO 15 out 24.xlsx.pdf",
+        "linha": 2,
+        "nomeComoVeio": "Sistema Gestão de Controle de Almoxarifado"
+      }
+    ]
   },
   {
     "sistemaId": "sis-120",
     "orgao": "FUNDECT",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "INVENTARIO SISTEMAS FUNDECT 01.07 (1).xlsx",
+        "linha": 20,
+        "nomeComoVeio": "ALMOXARIFADO"
+      }
+    ]
   },
   {
     "sistemaId": "sis-120",
     "orgao": "IMASUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (5).xlsx",
+        "linha": 16,
+        "nomeComoVeio": "Sistema de Gestão para Almoxarifado"
+      }
+    ]
   },
   {
     "sistemaId": "sis-120",
     "orgao": "JUCEMS",
     "tipo": "outro",
-    "vezes": 2
+    "vezes": 2,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - JUCEMS.xlsx",
+        "linha": 17,
+        "nomeComoVeio": "SISTEMA ALMOXARIFADO"
+      },
+      {
+        "arquivo": "Inventário de Sistemas - JUCEMS.xlsx",
+        "linha": 24,
+        "nomeComoVeio": "SISTEMA DE INTEGRADO DE GESTÃO DE ALMOXARIFADO"
+      }
+    ]
   },
   {
     "sistemaId": "sis-120",
     "orgao": "SAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - DAD (1).xlsx",
+        "linha": 16,
+        "nomeComoVeio": "Siga Almoxarifado"
+      }
+    ]
   },
   {
     "sistemaId": "sis-120",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 2
+    "vezes": 2,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 20,
+        "nomeComoVeio": "SISTEMA ALMOXARIFADO"
+      },
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 27,
+        "nomeComoVeio": "SISTEMA DE INTEGRADO DE GESTÃO DE ALMOXARIFADO"
+      }
+    ]
   },
   {
     "sistemaId": "sis-120",
     "orgao": "SEC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SEC.xlsx",
+        "linha": 17,
+        "nomeComoVeio": "GESTÃO DE CONTROLE DE ALMOXARIFADO"
+      }
+    ]
   },
   {
     "sistemaId": "sis-120",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 10,
+        "nomeComoVeio": "Gestão de Controle de Almoxarifado"
+      }
+    ]
   },
   {
     "sistemaId": "sis-121",
     "orgao": "CGE-MS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais COMPLETO 15 out 24.xlsx.pdf",
+        "linha": 2,
+        "nomeComoVeio": "Sistema Compras Emergenciais Covid-19"
+      }
+    ]
   },
   {
     "sistemaId": "sis-122",
     "orgao": "AGEHAB",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (10).xlsx",
+        "linha": 12,
+        "nomeComoVeio": "Sistema de Administração Patrimonial de MS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-122",
     "orgao": "AGEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 17,
+        "nomeComoVeio": "Sistema de Administração Patrimonial"
+      }
+    ]
   },
   {
     "sistemaId": "sis-122",
     "orgao": "AGESUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 35,
+        "nomeComoVeio": "SISTEMA PATRIMÔNIO IMOBILIÁRIO"
+      }
+    ]
   },
   {
     "sistemaId": "sis-122",
     "orgao": "FUNDECT",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "INVENTARIO SISTEMAS FUNDECT 01.07 (1).xlsx",
+        "linha": 15,
+        "nomeComoVeio": "SISTEMA IMOBILIARIO DO ESTADO"
+      }
+    ]
   },
   {
     "sistemaId": "sis-122",
     "orgao": "IAGRO",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - IAGRO final.xlsx",
+        "linha": 10,
+        "nomeComoVeio": "Sistema de Administração Patrimonial de MS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-122",
     "orgao": "SAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - DAD (1).xlsx",
+        "linha": 11,
+        "nomeComoVeio": "Sistema de Administração Patrimonial de MS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-122",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 46,
+        "nomeComoVeio": "SISPAT"
+      }
+    ]
   },
   {
     "sistemaId": "sis-123",
     "orgao": "AGEPREV",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Ageprev - Inventário de Sistemas que Tratam Dados Pessoais - Versão 04.10.24.xlsx",
+        "linha": 14,
+        "nomeComoVeio": "Sistema de Comunicação Eletrônica e Protocolo"
+      }
+    ]
   },
   {
     "sistemaId": "sis-123",
     "orgao": "CGE-MS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais COMPLETO 15 out 24.xlsx.pdf",
+        "linha": 2,
+        "nomeComoVeio": "Sistema CI e Ofício Comunicação Eletrônica"
+      }
+    ]
   },
   {
     "sistemaId": "sis-123",
     "orgao": "JUCEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - JUCEMS.xlsx",
+        "linha": 16,
+        "nomeComoVeio": "SISTEMA DE COMUNICAÇÃO ELETRÔNICA"
+      }
+    ]
   },
   {
     "sistemaId": "sis-123",
     "orgao": "PGE",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - Compilação PGE MS.xlsx",
+        "linha": 13,
+        "nomeComoVeio": "CDOC Legado"
+      }
+    ]
   },
   {
     "sistemaId": "sis-123",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 19,
+        "nomeComoVeio": "SISTEMA DE COMUNICAÇÃO ELETRÔNICA"
+      }
+    ]
   },
   {
     "sistemaId": "sis-124",
     "orgao": "PGE",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - Compilação PGE MS.xlsx",
+        "linha": 21,
+        "nomeComoVeio": "Sistema de Gerenciamento Eletrônico de Documentos (SIGED)"
+      }
+    ]
   },
   {
     "sistemaId": "sis-125",
     "orgao": "AGEHAB",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (10).xlsx",
+        "linha": 6,
+        "nomeComoVeio": "Sistema de Gestão de Entrada de Dados"
+      }
+    ]
   },
   {
     "sistemaId": "sis-125",
     "orgao": "AGEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 7,
+        "nomeComoVeio": "Sistema de Gestão de Entrada de Dados"
+      }
+    ]
   },
   {
     "sistemaId": "sis-125",
     "orgao": "AGEPREV",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Ageprev - Inventário de Sistemas que Tratam Dados Pessoais - Versão 04.10.24.xlsx",
+        "linha": 18,
+        "nomeComoVeio": "Sistema de Gestão de Entrada de Dados"
+      }
+    ]
   },
   {
     "sistemaId": "sis-125",
     "orgao": "AGESUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 24,
+        "nomeComoVeio": "Sistema de Gestão de Entrada de Dados"
+      }
+    ]
   },
   {
     "sistemaId": "sis-125",
     "orgao": "CGE-MS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais COMPLETO 15 out 24.xlsx.pdf",
+        "linha": 2,
+        "nomeComoVeio": "Sistema Gestão de Entrada de Dados"
+      }
+    ]
   },
   {
     "sistemaId": "sis-125",
     "orgao": "FUNDECT",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "INVENTARIO SISTEMAS FUNDECT 01.07 (1).xlsx",
+        "linha": 25,
+        "nomeComoVeio": "SISTEMA GESTOR DE ENTRADA DE DADOS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-125",
     "orgao": "FUNDTUR",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais_Fundtur_ (1).xlsx",
+        "linha": 10,
+        "nomeComoVeio": "SISTEMA DE GESTÃO DE ENTRADA DE DADOS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-125",
     "orgao": "FUNSAU",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - FUNSAU.xlsx",
+        "linha": 16,
+        "nomeComoVeio": "Sistema de Gestão de Entrada de Dados"
+      }
+    ]
   },
   {
     "sistemaId": "sis-125",
     "orgao": "IAGRO",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - IAGRO final.xlsx",
+        "linha": 7,
+        "nomeComoVeio": "Sistema Gestor de Entrada de Dados"
+      }
+    ]
   },
   {
     "sistemaId": "sis-125",
     "orgao": "JUCEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - JUCEMS.xlsx",
+        "linha": 18,
+        "nomeComoVeio": "SISTEMA DE GESTÃO DE ENTRADA DE DADOS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-125",
     "orgao": "SAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - DAD (1).xlsx",
+        "linha": 10,
+        "nomeComoVeio": "Sistema de Gestão de Entrada de Dados"
+      }
+    ]
   },
   {
     "sistemaId": "sis-125",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 21,
+        "nomeComoVeio": "SISTEMA DE GESTÃO DE ENTRADA DE DADOS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-125",
     "orgao": "SEC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SEC.xlsx",
+        "linha": 10,
+        "nomeComoVeio": "SISTEMA DE GESTÃO DE ENTRADA DE DADOS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-125",
     "orgao": "SES",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 13,
+        "nomeComoVeio": "Sistema de Gerência de Dados"
+      }
+    ]
   },
   {
     "sistemaId": "sis-125",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 59,
+        "nomeComoVeio": "Sistema de Gerência de Dados"
+      }
+    ]
   },
   {
     "sistemaId": "sis-125",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 25,
+        "nomeComoVeio": "Sistema de Gestão de Entrada de Dados"
+      }
+    ]
   },
   {
     "sistemaId": "sis-126",
     "orgao": "AGEHAB",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (10).xlsx",
+        "linha": 15,
+        "nomeComoVeio": "Sistema Gestor de Estrutura Organizacional"
+      }
+    ]
   },
   {
     "sistemaId": "sis-126",
     "orgao": "AGEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 23,
+        "nomeComoVeio": "Sistema de Gestão de Estrutura Organizacional."
+      }
+    ]
   },
   {
     "sistemaId": "sis-126",
     "orgao": "AGESUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 25,
+        "nomeComoVeio": "Sistema de Gestão de Estrutura Organizacional"
+      }
+    ]
   },
   {
     "sistemaId": "sis-126",
     "orgao": "CGE-MS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais COMPLETO 15 out 24.xlsx.pdf",
+        "linha": 2,
+        "nomeComoVeio": "Sistema Gestão de Estrutura Organizacional"
+      }
+    ]
   },
   {
     "sistemaId": "sis-126",
     "orgao": "FUNDECT",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "INVENTARIO SISTEMAS FUNDECT 01.07 (1).xlsx",
+        "linha": 22,
+        "nomeComoVeio": "SISTEMA GESTOR ESTRUTURA ORGANIZACIONAL"
+      }
+    ]
   },
   {
     "sistemaId": "sis-126",
     "orgao": "SEC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SEC.xlsx",
+        "linha": 8,
+        "nomeComoVeio": "SISTEMA DE GESTÃO DE ESTRUTURA ORGANIZACIONAL"
+      }
+    ]
   },
   {
     "sistemaId": "sis-126",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 26,
+        "nomeComoVeio": "Sistema de Gestão de Estrutura Organizacional"
+      }
+    ]
   },
   {
     "sistemaId": "sis-127",
     "orgao": "AGEHAB",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (10).xlsx",
+        "linha": 17,
+        "nomeComoVeio": "Sistema de Gestão de Pagamento de Diferenças do Servidor"
+      }
+    ]
   },
   {
     "sistemaId": "sis-127",
     "orgao": "AGEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 8,
+        "nomeComoVeio": "Sistema de Gestão de Pagamento de Diferença do Servidor"
+      }
+    ]
   },
   {
     "sistemaId": "sis-127",
     "orgao": "AGESUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 26,
+        "nomeComoVeio": "Sistema de Gestão de Pagamento de Diferenças do Servidor"
+      }
+    ]
   },
   {
     "sistemaId": "sis-127",
     "orgao": "CGE-MS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais COMPLETO 15 out 24.xlsx.pdf",
+        "linha": 2,
+        "nomeComoVeio": "Sistema de Gestão de Pagamento de Diferenças do Servidor"
+      }
+    ]
   },
   {
     "sistemaId": "sis-127",
     "orgao": "FUNDECT",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "INVENTARIO SISTEMAS FUNDECT 01.07 (1).xlsx",
+        "linha": 24,
+        "nomeComoVeio": "SISTEMA GESTÃO DE PAGAMENTOS DO SERVIDOR"
+      }
+    ]
   },
   {
     "sistemaId": "sis-127",
     "orgao": "FUNSAU",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - FUNSAU.xlsx",
+        "linha": 15,
+        "nomeComoVeio": "Sistema de Gestão de Pagamento de Diferenças do Servidor"
+      }
+    ]
   },
   {
     "sistemaId": "sis-127",
     "orgao": "IAGRO",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - IAGRO final.xlsx",
+        "linha": 13,
+        "nomeComoVeio": "Sistema de Gestão de Pagamento de Diferenças do Servidor"
+      }
+    ]
   },
   {
     "sistemaId": "sis-127",
     "orgao": "JUCEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - JUCEMS.xlsx",
+        "linha": 19,
+        "nomeComoVeio": "SISTEMA DE GESTÃO DE PAGAMENTO DE DIFERENÇA DE SERVIDOR"
+      }
+    ]
   },
   {
     "sistemaId": "sis-127",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 22,
+        "nomeComoVeio": "SISTEMA DE GESTÃO DE PAGAMENTO DE DIFERENÇA DE SERVIDOR"
+      }
+    ]
   },
   {
     "sistemaId": "sis-127",
     "orgao": "SEC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SEC.xlsx",
+        "linha": 9,
+        "nomeComoVeio": "SISTEMA DE PAGAMENTO DE DIFERENÇAS DO SERVIDOR"
+      }
+    ]
   },
   {
     "sistemaId": "sis-127",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 27,
+        "nomeComoVeio": "Sistema de Gestão de Pagamento de Diferenças do Servidor"
+      }
+    ]
   },
   {
     "sistemaId": "sis-128",
     "orgao": "AGESUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 36,
+        "nomeComoVeio": "SISTEMA PATRIMÔNIO MOBILIÁRIO, INTANGÍVEIS E SEMOVENTES"
+      }
+    ]
   },
   {
     "sistemaId": "sis-128",
     "orgao": "AGRAER",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (11).xlsx",
+        "linha": 16,
+        "nomeComoVeio": "SISTEMA DE BENS MOVEIS DE MS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-128",
     "orgao": "FUNDECT",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "INVENTARIO SISTEMAS FUNDECT 01.07 (1).xlsx",
+        "linha": 19,
+        "nomeComoVeio": "SISTEMA DE PATRIMONIO MOBILIARIO"
+      }
+    ]
   },
   {
     "sistemaId": "sis-128",
     "orgao": "JUCEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - JUCEMS.xlsx",
+        "linha": 20,
+        "nomeComoVeio": "SISTEMA DE GESTÃO DE PATRIMÔNIO MOBILIÁRIO"
+      }
+    ]
   },
   {
     "sistemaId": "sis-128",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 23,
+        "nomeComoVeio": "SISTEMA DE GESTÃO DE PATRIMÔNIO MOBILIÁRIO"
+      }
+    ]
   },
   {
     "sistemaId": "sis-128",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 30,
+        "nomeComoVeio": "Sistema de Patrimônio Imobiliário"
+      }
+    ]
   },
   {
     "sistemaId": "sis-129",
     "orgao": "FUNDECT",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "INVENTARIO SISTEMAS FUNDECT 01.07 (1).xlsx",
+        "linha": 29,
+        "nomeComoVeio": "SISTEMA DE GESTÃO DO DIÁRIO OFICIAIL ELETRONICO"
+      }
+    ]
   },
   {
     "sistemaId": "sis-129",
     "orgao": "JUCEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - JUCEMS.xlsx",
+        "linha": 22,
+        "nomeComoVeio": "SISTEMA DE GESTÃO DO DIÁRIO OFICIAL ELETRÔNICO"
+      }
+    ]
   },
   {
     "sistemaId": "sis-129",
     "orgao": "SAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - DAD (1).xlsx",
+        "linha": 17,
+        "nomeComoVeio": "Sistema de Gestão do Diário Oficial Eletrônico"
+      }
+    ]
   },
   {
     "sistemaId": "sis-129",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 25,
+        "nomeComoVeio": "SISTEMA DE GESTÃO DO DIÁRIO OFICIAL ELETRÔNICO"
+      }
+    ]
   },
   {
     "sistemaId": "sis-129",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 28,
+        "nomeComoVeio": "Sistema de Gestão do Diário Oficial Eletrônico"
+      }
+    ]
   },
   {
     "sistemaId": "sis-130",
     "orgao": "JUCEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - JUCEMS.xlsx",
+        "linha": 23,
+        "nomeComoVeio": "SISTEMA DE GESTÃO INTEGRADA"
+      }
+    ]
   },
   {
     "sistemaId": "sis-130",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 26,
+        "nomeComoVeio": "SISTEMA DE GESTÃO INTEGRADA"
+      }
+    ]
   },
   {
     "sistemaId": "sis-130",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 37,
+        "nomeComoVeio": "Sistemas Corporativos"
+      }
+    ]
   },
   {
     "sistemaId": "sis-131",
     "orgao": "AGEPREV",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Ageprev - Inventário de Sistemas que Tratam Dados Pessoais - Versão 04.10.24.xlsx",
+        "linha": 15,
+        "nomeComoVeio": "Sistema de Protocolo Integrado"
+      }
+    ]
   },
   {
     "sistemaId": "sis-131",
     "orgao": "FUNDECT",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "INVENTARIO SISTEMAS FUNDECT 01.07 (1).xlsx",
+        "linha": 16,
+        "nomeComoVeio": "SISTEMA DE PROTOCOLO INTEGRADO"
+      }
+    ]
   },
   {
     "sistemaId": "sis-131",
     "orgao": "SAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (14).xlsx",
+        "linha": 13,
+        "nomeComoVeio": "SISTEMA DE PROTOCOLO INTEGRADO"
+      }
+    ]
   },
   {
     "sistemaId": "sis-132",
     "orgao": "AGEHAB",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (10).xlsx",
+        "linha": 10,
+        "nomeComoVeio": "Sistema de Solicitação de Compras"
+      }
+    ]
   },
   {
     "sistemaId": "sis-132",
     "orgao": "AGEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 14,
+        "nomeComoVeio": "Solução Integrada de Gestão Adm. Termo de Referência"
+      }
+    ]
   },
   {
     "sistemaId": "sis-132",
     "orgao": "AGEPREV",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Ageprev - Inventário de Sistemas que Tratam Dados Pessoais - Versão 04.10.24.xlsx",
+        "linha": 9,
+        "nomeComoVeio": "Sistema de Solicitação de Compras"
+      }
+    ]
   },
   {
     "sistemaId": "sis-132",
     "orgao": "FUNDECT",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "INVENTARIO SISTEMAS FUNDECT 01.07 (1).xlsx",
+        "linha": 23,
+        "nomeComoVeio": "SISTEMA DE SOLICITAÇÃO DE COMPRAS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-132",
     "orgao": "SAD",
     "tipo": "outro",
-    "vezes": 2
+    "vezes": 2,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (14).xlsx",
+        "linha": 10,
+        "nomeComoVeio": "SOLUÇÕES INTEGRADAS DE GESTÃO ADMINISTRATIVA"
+      },
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - DAD (1).xlsx",
+        "linha": 7,
+        "nomeComoVeio": "Sistema de Solicitação de Compras"
+      }
+    ]
   },
   {
     "sistemaId": "sis-132",
     "orgao": "SEC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SEC.xlsx",
+        "linha": 25,
+        "nomeComoVeio": "SISTEMA DE SOLICITAÇÃO DE COMPRAS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-132",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 52,
+        "nomeComoVeio": "SIGATR"
+      }
+    ]
   },
   {
     "sistemaId": "sis-132",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 20,
+        "nomeComoVeio": "SigaTR"
+      }
+    ]
   },
   {
     "sistemaId": "sis-133",
     "orgao": "AGEHAB",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (10).xlsx",
+        "linha": 8,
+        "nomeComoVeio": "Sistema Gestor de Compras"
+      }
+    ]
   },
   {
     "sistemaId": "sis-133",
     "orgao": "AGEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 12,
+        "nomeComoVeio": "Sistema Gestor de Compras"
+      }
+    ]
   },
   {
     "sistemaId": "sis-133",
     "orgao": "AGEPREV",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Ageprev - Inventário de Sistemas que Tratam Dados Pessoais - Versão 04.10.24.xlsx",
+        "linha": 7,
+        "nomeComoVeio": "Sistema Gestor de Compras"
+      }
+    ]
   },
   {
     "sistemaId": "sis-133",
     "orgao": "AGESUL",
     "tipo": "outro",
-    "vezes": 2
+    "vezes": 2,
+    "origens": [
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 31,
+        "nomeComoVeio": "SISTEMA GESTOR DE COMPRAS"
+      },
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 32,
+        "nomeComoVeio": "Sistema Gestor de Compras"
+      }
+    ]
   },
   {
     "sistemaId": "sis-133",
     "orgao": "AGRAER",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (11).xlsx",
+        "linha": 10,
+        "nomeComoVeio": "SISTEMA GESTOR DE COMPRAS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-133",
     "orgao": "CGE-MS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais COMPLETO 15 out 24.xlsx.pdf",
+        "linha": 2,
+        "nomeComoVeio": "Sistema Gestor de Compras"
+      }
+    ]
   },
   {
     "sistemaId": "sis-133",
     "orgao": "FUNDECT",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "INVENTARIO SISTEMAS FUNDECT 01.07 (1).xlsx",
+        "linha": 7,
+        "nomeComoVeio": "SISTEMA GESTOR DE COMPRAS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-133",
     "orgao": "IAGRO",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - IAGRO final.xlsx",
+        "linha": 21,
+        "nomeComoVeio": "Sistema Gestor de Compras"
+      }
+    ]
   },
   {
     "sistemaId": "sis-133",
     "orgao": "IMASUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (5).xlsx",
+        "linha": 12,
+        "nomeComoVeio": "Sistema Gestor de Compras"
+      }
+    ]
   },
   {
     "sistemaId": "sis-133",
     "orgao": "JUCEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - JUCEMS.xlsx",
+        "linha": 29,
+        "nomeComoVeio": "SISTEMA GESTOR DE COMPRAS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-133",
     "orgao": "SAD",
     "tipo": "outro",
-    "vezes": 2
+    "vezes": 2,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (14).xlsx",
+        "linha": 8,
+        "nomeComoVeio": "SISTEMA GESTOR DE COMPRAS"
+      },
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - DAD (1).xlsx",
+        "linha": 6,
+        "nomeComoVeio": "Sistema Gestor de Compras"
+      }
+    ]
   },
   {
     "sistemaId": "sis-133",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 32,
+        "nomeComoVeio": "SISTEMA GESTOR DE COMPRAS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-133",
     "orgao": "SEC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SEC.xlsx",
+        "linha": 21,
+        "nomeComoVeio": "SISTEMA GESTOR DE COMPRAS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-133",
     "orgao": "SES",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 11,
+        "nomeComoVeio": "Sistema Gestor de Compras"
+      }
+    ]
   },
   {
     "sistemaId": "sis-133",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 2
+    "vezes": 2,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 44,
+        "nomeComoVeio": "SGC"
+      },
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 57,
+        "nomeComoVeio": "Sistema Gestor de Compras"
+      }
+    ]
   },
   {
     "sistemaId": "sis-133",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 33,
+        "nomeComoVeio": "Sistema Gestor de Compras"
+      }
+    ]
   },
   {
     "sistemaId": "sis-134",
     "orgao": "AGEHAB",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (10).xlsx",
+        "linha": 18,
+        "nomeComoVeio": "Sistema Gestor de Diárias Estaduais e Federais"
+      }
+    ]
   },
   {
     "sistemaId": "sis-134",
     "orgao": "AGEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 9,
+        "nomeComoVeio": "Sistema Gestor de Diárias Estaduais e Federais"
+      }
+    ]
   },
   {
     "sistemaId": "sis-134",
     "orgao": "AGEPREV",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Ageprev - Inventário de Sistemas que Tratam Dados Pessoais - Versão 04.10.24.xlsx",
+        "linha": 12,
+        "nomeComoVeio": "Sistema Gestor de Diárias Estaduais e Federais"
+      }
+    ]
   },
   {
     "sistemaId": "sis-134",
     "orgao": "AGESUL",
     "tipo": "outro",
-    "vezes": 2
+    "vezes": 2,
+    "origens": [
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 17,
+        "nomeComoVeio": "SGDEF - SISTEMA GESTOR DE DIÁRIAS ESTADUAIS E FEDERAIS"
+      },
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 23,
+        "nomeComoVeio": "Sistema de Diárias Estaduais e Federais"
+      }
+    ]
   },
   {
     "sistemaId": "sis-134",
     "orgao": "AGRAER",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (11).xlsx",
+        "linha": 11,
+        "nomeComoVeio": "SISTEMA GESTOR DE DIÁRIAS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-134",
     "orgao": "CGE-MS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais COMPLETO 15 out 24.xlsx.pdf",
+        "linha": 2,
+        "nomeComoVeio": "Sistema Gestor de Diárias Estaduais e Federais"
+      }
+    ]
   },
   {
     "sistemaId": "sis-134",
     "orgao": "FUNDECT",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "INVENTARIO SISTEMAS FUNDECT 01.07 (1).xlsx",
+        "linha": 8,
+        "nomeComoVeio": "SISTEMA GESTOR DE DIÁRIAS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-134",
     "orgao": "FUNDTUR",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais_Fundtur_ (1).xlsx",
+        "linha": 11,
+        "nomeComoVeio": "SISTEMA GESTOR DE DIÁRIAS ESTADUAIS E FEDERAIS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-134",
     "orgao": "IAGRO",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - IAGRO final.xlsx",
+        "linha": 6,
+        "nomeComoVeio": "Sistema Gestor de Diárias Estaduais e Federais"
+      }
+    ]
   },
   {
     "sistemaId": "sis-134",
     "orgao": "IMASUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (5).xlsx",
+        "linha": 14,
+        "nomeComoVeio": "Sistema Gestor de Diárias Estaduais e Federais"
+      }
+    ]
   },
   {
     "sistemaId": "sis-134",
     "orgao": "JUCEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - JUCEMS.xlsx",
+        "linha": 30,
+        "nomeComoVeio": "SISTEMA GESTOR DE DIÁRIAS ESTADUAIS E FEDERAIS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-134",
     "orgao": "SAD",
     "tipo": "outro",
-    "vezes": 2
+    "vezes": 2,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (14).xlsx",
+        "linha": 9,
+        "nomeComoVeio": "SISTEMA GESTOR DE DIARIAS ESTADUAIS E FEDERAIS"
+      },
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - DAD (1).xlsx",
+        "linha": 8,
+        "nomeComoVeio": "Sistema Gestor de Diárias Estaduais e Federais"
+      }
+    ]
   },
   {
     "sistemaId": "sis-134",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 33,
+        "nomeComoVeio": "SISTEMA GESTOR DE DIÁRIAS ESTADUAIS E FEDERAIS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-134",
     "orgao": "SEC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SEC.xlsx",
+        "linha": 6,
+        "nomeComoVeio": "SISTEMA GESTOR DE DIRÁRIA ESTADUAIS E FEDERAIS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-134",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 47,
+        "nomeComoVeio": "SGDEF"
+      }
+    ]
   },
   {
     "sistemaId": "sis-134",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 23,
+        "nomeComoVeio": "Sistema de Diárias Estaduais e Federais"
+      }
+    ]
   },
   {
     "sistemaId": "sis-135",
     "orgao": "AGEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 16,
+        "nomeComoVeio": "Sistema Gestor de Passagens Aéreas e Rodoviárias"
+      }
+    ]
   },
   {
     "sistemaId": "sis-135",
     "orgao": "AGEPREV",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Ageprev - Inventário de Sistemas que Tratam Dados Pessoais - Versão 04.10.24.xlsx",
+        "linha": 13,
+        "nomeComoVeio": "Sistema Gestor de Passagens Aéreas e Rodoviárias"
+      }
+    ]
   },
   {
     "sistemaId": "sis-135",
     "orgao": "AGESUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 33,
+        "nomeComoVeio": "SISTEMA GESTOR DE PASSAGENS AÉREAS E RODOVIÁRIAS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-135",
     "orgao": "CGE-MS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais COMPLETO 15 out 24.xlsx.pdf",
+        "linha": 2,
+        "nomeComoVeio": "Sistema Gestor de Passagens Aéreas e Rodoviárias"
+      }
+    ]
   },
   {
     "sistemaId": "sis-135",
     "orgao": "FUNDECT",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "INVENTARIO SISTEMAS FUNDECT 01.07 (1).xlsx",
+        "linha": 9,
+        "nomeComoVeio": "SISTEMA GESTOR DE PASSAGENS AÉREAS E RODOVIARIAS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-135",
     "orgao": "FUNSAU",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - FUNSAU.xlsx",
+        "linha": 14,
+        "nomeComoVeio": "Sistema Gestor de Passagens Aéreas e Rodoviárias"
+      }
+    ]
   },
   {
     "sistemaId": "sis-135",
     "orgao": "IAGRO",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - IAGRO final.xlsx",
+        "linha": 9,
+        "nomeComoVeio": "Sistema Gestor de Passagens Aéreas e Rodoviárias"
+      }
+    ]
   },
   {
     "sistemaId": "sis-135",
     "orgao": "JUCEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - JUCEMS.xlsx",
+        "linha": 31,
+        "nomeComoVeio": "SISTEMA GESTOR DE PASSAGENS AÉREAS E RODOVIÁRIAS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-135",
     "orgao": "SAD",
     "tipo": "outro",
-    "vezes": 2
+    "vezes": 2,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (14).xlsx",
+        "linha": 7,
+        "nomeComoVeio": "SISTEMA GESTOR DE PASSAGENS AEREAS E RODOVIARIAS"
+      },
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - DAD (1).xlsx",
+        "linha": 9,
+        "nomeComoVeio": "Sistema Gestor de Passagens Aéreas e Rodoviárias"
+      }
+    ]
   },
   {
     "sistemaId": "sis-135",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 34,
+        "nomeComoVeio": "SISTEMA GESTOR DE PASSAGENS AÉREAS E RODOVIÁRIAS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-135",
     "orgao": "SEC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SEC.xlsx",
+        "linha": 12,
+        "nomeComoVeio": "SISTEMA GESTOR DE PASSAGENS ÁEREAS E RODOVIÁRIAS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-135",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 34,
+        "nomeComoVeio": "Sistema Gestor de Passagens Aéreas e Rodoviárias"
+      }
+    ]
   },
   {
     "sistemaId": "sis-136",
     "orgao": "AGEPREV",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Ageprev - Inventário de Sistemas que Tratam Dados Pessoais - Versão 04.10.24.xlsx",
+        "linha": 6,
+        "nomeComoVeio": "Gestão de Patrimônio"
+      }
+    ]
   },
   {
     "sistemaId": "sis-136",
     "orgao": "CGE-MS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais COMPLETO 15 out 24.xlsx.pdf",
+        "linha": 2,
+        "nomeComoVeio": "Sistema Gestor de Patrimônio"
+      }
+    ]
   },
   {
     "sistemaId": "sis-136",
     "orgao": "SEC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SEC.xlsx",
+        "linha": 14,
+        "nomeComoVeio": "SISTEMA GESTOR DE PATRIMONIO"
+      }
+    ]
   },
   {
     "sistemaId": "sis-136",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 35,
+        "nomeComoVeio": "Sistema Gestor de Patrimônio"
+      }
+    ]
   },
   {
     "sistemaId": "sis-137",
     "orgao": "AGESUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 34,
+        "nomeComoVeio": "Sistema Gestor de Transporte Servidor Público"
+      }
+    ]
   },
   {
     "sistemaId": "sis-137",
     "orgao": "CGE-MS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais COMPLETO 15 out 24.xlsx.pdf",
+        "linha": 2,
+        "nomeComoVeio": "Sistema Gestor de Transporte Servidor Público"
+      }
+    ]
   },
   {
     "sistemaId": "sis-137",
     "orgao": "FUNSAU",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - FUNSAU.xlsx",
+        "linha": 10,
+        "nomeComoVeio": "Sistema Gestor de Transporte Servidor Público"
+      }
+    ]
   },
   {
     "sistemaId": "sis-137",
     "orgao": "IAGRO",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - IAGRO final.xlsx",
+        "linha": 14,
+        "nomeComoVeio": "Sistema Gestor de Transporte Servidor Público"
+      }
+    ]
   },
   {
     "sistemaId": "sis-137",
     "orgao": "JUCEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - JUCEMS.xlsx",
+        "linha": 32,
+        "nomeComoVeio": "SISTEMA GESTOR DE TRANSPORTE SERVIDOR PÚBLICO"
+      }
+    ]
   },
   {
     "sistemaId": "sis-137",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 35,
+        "nomeComoVeio": "SISTEMA GESTOR DE TRANSPORTE SERVIDOR PÚBLICO"
+      }
+    ]
   },
   {
     "sistemaId": "sis-137",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 36,
+        "nomeComoVeio": "Sistema Gestor de Transporte Servidor Público"
+      }
+    ]
   },
   {
     "sistemaId": "sis-138",
     "orgao": "SEAD",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 14,
+        "nomeComoVeio": "Cadastro para Atendimento dos Migrantes em MS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-139",
     "orgao": "SEAD",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 6,
+        "nomeComoVeio": "CUIDAR DE QUEM CUIDA"
+      }
+    ]
   },
   {
     "sistemaId": "sis-140",
     "orgao": "SEAD",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 13,
+        "nomeComoVeio": "DEMANDAS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-141",
     "orgao": "SEAD",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 7,
+        "nomeComoVeio": "ENERGIA SOCIAL"
+      }
+    ]
   },
   {
     "sistemaId": "sis-142",
     "orgao": "SEAD",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 10,
+        "nomeComoVeio": "IN NATURA"
+      }
+    ]
   },
   {
     "sistemaId": "sis-143",
     "orgao": "SEAD",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 9,
+        "nomeComoVeio": "IN PECÚNIA"
+      }
+    ]
   },
   {
     "sistemaId": "sis-144",
     "orgao": "SEAD",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 11,
+        "nomeComoVeio": "MAIS SOCIAL"
+      }
+    ]
   },
   {
     "sistemaId": "sis-145",
     "orgao": "SEAD",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 8,
+        "nomeComoVeio": "MS SUPERA"
+      }
+    ]
   },
   {
     "sistemaId": "sis-146",
     "orgao": "SEAD",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 12,
+        "nomeComoVeio": "RECEPÇÃO"
+      }
+    ]
   },
   {
     "sistemaId": "sis-147",
     "orgao": "SEAD",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 16,
+        "nomeComoVeio": "Sistema de Monitoramento das Empresas"
+      }
+    ]
   },
   {
     "sistemaId": "sis-148",
     "orgao": "JUCEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - JUCEMS.xlsx",
+        "linha": 28,
+        "nomeComoVeio": "SISTEMA ESTADUAL DE INFORMAÇÃO DO SISTEMA ÚNICO DE ASSISTENCIA SOCIAL"
+      }
+    ]
   },
   {
     "sistemaId": "sis-148",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 2
+    "vezes": 2,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 10,
+        "nomeComoVeio": "MÓDULO CMDCA - REDE SUAS/MS"
+      },
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 31,
+        "nomeComoVeio": "SISTEMA ESTADUAL DE INFORMAÇÃO DO SISTEMA ÚNICO DE ASSISTENCIA SOCIAL"
+      }
+    ]
   },
   {
     "sistemaId": "sis-148",
     "orgao": "SEAD",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 15,
+        "nomeComoVeio": "Módulo CMDCA no rede SUAS/MS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-149",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 14,
+        "nomeComoVeio": "Papel Zero"
+      }
+    ]
   },
   {
     "sistemaId": "sis-150",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 24,
+        "nomeComoVeio": "Sistema de Gestão de Dados Escolares"
+      }
+    ]
   },
   {
     "sistemaId": "sis-151",
     "orgao": "PGE",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - Compilação PGE MS.xlsx",
+        "linha": 19,
+        "nomeComoVeio": "e-FAZENDA (SEFAZ/CONTIN)"
+      }
+    ]
   },
   {
     "sistemaId": "sis-152",
     "orgao": "AGRAER",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (11).xlsx",
+        "linha": 18,
+        "nomeComoVeio": "EMENDAMS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-153",
     "orgao": "AGEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 10,
+        "nomeComoVeio": "Plano de gestão de Desenvolvimento Individual"
+      }
+    ]
   },
   {
     "sistemaId": "sis-153",
     "orgao": "AGEPREV",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Ageprev - Inventário de Sistemas que Tratam Dados Pessoais - Versão 04.10.24.xlsx",
+        "linha": 11,
+        "nomeComoVeio": "Gestão por competência- Plano de Gestão de Desenvolvimento Individual"
+      }
+    ]
   },
   {
     "sistemaId": "sis-153",
     "orgao": "AGESUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 13,
+        "nomeComoVeio": "Gestão por Competência"
+      }
+    ]
   },
   {
     "sistemaId": "sis-153",
     "orgao": "JUCEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - JUCEMS.xlsx",
+        "linha": 11,
+        "nomeComoVeio": "PLANO DE GESTÃO DE DESEMPENHO INDIVIDUAL"
+      }
+    ]
   },
   {
     "sistemaId": "sis-153",
     "orgao": "PGE",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - Compilação PGE MS.xlsx",
+        "linha": 8,
+        "nomeComoVeio": "Plano de Gestão de Desenvolvimento Individual (SAD)"
+      }
+    ]
   },
   {
     "sistemaId": "sis-153",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 14,
+        "nomeComoVeio": "PLANO DE GESTÃO DE DESEMPENHO INDIVIDUAL"
+      }
+    ]
   },
   {
     "sistemaId": "sis-153",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 13,
+        "nomeComoVeio": "Gestão por Competência"
+      }
+    ]
   },
   {
     "sistemaId": "sis-154",
     "orgao": "JUCEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - JUCEMS.xlsx",
+        "linha": 10,
+        "nomeComoVeio": "MSDIGITAL"
+      }
+    ]
   },
   {
     "sistemaId": "sis-154",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 13,
+        "nomeComoVeio": "MSDIGITAL"
+      }
+    ]
   },
   {
     "sistemaId": "sis-154",
     "orgao": "SEC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SEC.xlsx",
+        "linha": 29,
+        "nomeComoVeio": "MSDIGITAL"
+      }
+    ]
   },
   {
     "sistemaId": "sis-154",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 17,
+        "nomeComoVeio": "Portal MS Digital"
+      }
+    ]
   },
   {
     "sistemaId": "sis-155",
     "orgao": "AGESUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 16,
+        "nomeComoVeio": "Se Suite - PGDI"
+      }
+    ]
   },
   {
     "sistemaId": "sis-155",
     "orgao": "FUNDTUR",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais_Fundtur_ (1).xlsx",
+        "linha": 14,
+        "nomeComoVeio": "GESTÃO POR COMPETÊNCIA"
+      }
+    ]
   },
   {
     "sistemaId": "sis-155",
     "orgao": "IAGRO",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - IAGRO final.xlsx",
+        "linha": 23,
+        "nomeComoVeio": "SoftExpert Excellence Suite"
+      }
+    ]
   },
   {
     "sistemaId": "sis-155",
     "orgao": "PGE",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - Compilação PGE MS.xlsx",
+        "linha": 19,
+        "nomeComoVeio": "SE-Suite"
+      }
+    ]
   },
   {
     "sistemaId": "sis-155",
     "orgao": "SAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (14).xlsx",
+        "linha": 15,
+        "nomeComoVeio": "SOFTEXPERTE SUITE"
+      }
+    ]
   },
   {
     "sistemaId": "sis-155",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 39,
+        "nomeComoVeio": "SOFTEXPERT-SUITE"
+      }
+    ]
   },
   {
     "sistemaId": "sis-155",
     "orgao": "SEC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SEC.xlsx",
+        "linha": 20,
+        "nomeComoVeio": "SOFTEXPERT-SUITE"
+      }
+    ]
   },
   {
     "sistemaId": "sis-155",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 18,
+        "nomeComoVeio": "Se Suite - PGDI"
+      }
+    ]
   },
   {
     "sistemaId": "sis-156",
     "orgao": "AGESUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 19,
+        "nomeComoVeio": "SIAFIC"
+      }
+    ]
   },
   {
     "sistemaId": "sis-156",
     "orgao": "AGRAER",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (11).xlsx",
+        "linha": 14,
+        "nomeComoVeio": "MODULO DO SPF, CONVENIO, CONCILIAÇÃO BANCÁRIA, EMENDAS PARLAMENTARES"
+      }
+    ]
   },
   {
     "sistemaId": "sis-156",
     "orgao": "FUNDECT",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "INVENTARIO SISTEMAS FUNDECT 01.07 (1).xlsx",
+        "linha": 17,
+        "nomeComoVeio": "SISTEMA INTEGRADO DE ADMINISTRAÇÃO FINANCEIRA PARA ESTADOS E MUNICÍPIOS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-156",
     "orgao": "FUNDTUR",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais_Fundtur_ (1).xlsx",
+        "linha": 7,
+        "nomeComoVeio": "SISTEMA ÚNICO INTEGRADO DE EXECUÇÃO ORÇAMENTÁRIA, ADMINISTRAÇÃO FINANCEIRA E CONTROLE"
+      }
+    ]
   },
   {
     "sistemaId": "sis-156",
     "orgao": "PGE",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - Compilação PGE MS.xlsx",
+        "linha": 22,
+        "nomeComoVeio": "SIAFIC"
+      }
+    ]
   },
   {
     "sistemaId": "sis-156",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 37,
+        "nomeComoVeio": "SISTEMA INTEGRADO DE EXECUÇÃO ORÇAMENTÁRIA, ADMINISTRAÇÃO FINANCEIRA, CONTABILIDADE E CONTROLE"
+      }
+    ]
   },
   {
     "sistemaId": "sis-156",
     "orgao": "SEC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SEC.xlsx",
+        "linha": 23,
+        "nomeComoVeio": "SISTEMA INTEGRADO DE EXECUÇÃO ORÇAMENTÁRIA, ADMINISTRAÇÃO FINANCEIRA, CONTABILIDADE E CONTROLE"
+      }
+    ]
   },
   {
     "sistemaId": "sis-157",
     "orgao": "AGRAER",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (11).xlsx",
+        "linha": 17,
+        "nomeComoVeio": "TRANSFEREMS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-157",
     "orgao": "FUNDECT",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "INVENTARIO SISTEMAS FUNDECT 01.07 (1).xlsx",
+        "linha": 10,
+        "nomeComoVeio": "TRANSFEREMS CONTROLE CONVENIOS E TERMOS OUTORGA"
+      }
+    ]
   },
   {
     "sistemaId": "sis-157",
     "orgao": "SAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (14).xlsx",
+        "linha": 18,
+        "nomeComoVeio": "TRANSFERE MS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-157",
     "orgao": "SES",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 7,
+        "nomeComoVeio": "siafic/transfere"
+      }
+    ]
   },
   {
     "sistemaId": "sis-157",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 53,
+        "nomeComoVeio": "siafic/transfere"
+      }
+    ]
   },
   {
     "sistemaId": "sis-157",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 39,
+        "nomeComoVeio": "TransfereMS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-158",
     "orgao": "AGEPREV",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Ageprev - Inventário de Sistemas que Tratam Dados Pessoais - Versão 04.10.24.xlsx",
+        "linha": 23,
+        "nomeComoVeio": "Sistema de Gestão de Demandas Integradas"
+      }
+    ]
   },
   {
     "sistemaId": "sis-159",
     "orgao": "AGEHAB",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (10).xlsx",
+        "linha": 14,
+        "nomeComoVeio": "Sistema de Planejamento e Finanças"
+      }
+    ]
   },
   {
     "sistemaId": "sis-159",
     "orgao": "AGEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 22,
+        "nomeComoVeio": "Sistema de Planejamento e Finanças"
+      }
+    ]
   },
   {
     "sistemaId": "sis-159",
     "orgao": "AGEPREV",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Ageprev - Inventário de Sistemas que Tratam Dados Pessoais - Versão 04.10.24.xlsx",
+        "linha": 19,
+        "nomeComoVeio": "Sistema de Planejamento e Finanças"
+      }
+    ]
   },
   {
     "sistemaId": "sis-159",
     "orgao": "AGESUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 29,
+        "nomeComoVeio": "Sistema de Planejamento e Finanças"
+      }
+    ]
   },
   {
     "sistemaId": "sis-159",
     "orgao": "AGRAER",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (11).xlsx",
+        "linha": 13,
+        "nomeComoVeio": "SISTEMA DE PLANEJAMENTO ORÇAMENTÁRIO E FINANÇAS PÚBLICAS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-159",
     "orgao": "CGE-MS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais COMPLETO 15 out 24.xlsx.pdf",
+        "linha": 2,
+        "nomeComoVeio": "Sistema de Planejamento e Finanças"
+      }
+    ]
   },
   {
     "sistemaId": "sis-159",
     "orgao": "FUNDECT",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "INVENTARIO SISTEMAS FUNDECT 01.07 (1).xlsx",
+        "linha": 13,
+        "nomeComoVeio": "SISTEMA DE PLANEJAMENTO E FINANÇAS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-159",
     "orgao": "FUNDTUR",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais_Fundtur_ (1).xlsx",
+        "linha": 12,
+        "nomeComoVeio": "SISTEMA DE PLANEJAMENTO E FINANÇAS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-159",
     "orgao": "IAGRO",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - IAGRO final.xlsx",
+        "linha": 8,
+        "nomeComoVeio": "Sistema de Planejamento e Finanças"
+      }
+    ]
   },
   {
     "sistemaId": "sis-159",
     "orgao": "JUCEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - JUCEMS.xlsx",
+        "linha": 26,
+        "nomeComoVeio": "SISTEMA DE PLANEJAMENTO FINANÇAS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-159",
     "orgao": "SAD",
     "tipo": "outro",
-    "vezes": 2
+    "vezes": 2,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (14).xlsx",
+        "linha": 12,
+        "nomeComoVeio": "SISTEMA DE PLANEJAMENTO E FINANÇAS"
+      },
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - DAD (1).xlsx",
+        "linha": 13,
+        "nomeComoVeio": "Sistema de Planejamento e Finanças"
+      }
+    ]
   },
   {
     "sistemaId": "sis-159",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 29,
+        "nomeComoVeio": "SISTEMA DE PLANEJAMENTO FINANÇAS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-159",
     "orgao": "SEC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SEC.xlsx",
+        "linha": 11,
+        "nomeComoVeio": "SISTEMA DE PLANEJAMENTO E FINANÇAS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-159",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 43,
+        "nomeComoVeio": "SPF"
+      }
+    ]
   },
   {
     "sistemaId": "sis-159",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 32,
+        "nomeComoVeio": "Sistema de Planejamento e Finanças"
+      }
+    ]
   },
   {
     "sistemaId": "sis-160",
     "orgao": "AGEHAB",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (10).xlsx",
+        "linha": 21,
+        "nomeComoVeio": "Sistema Integrado de Administração Financeira para Estados e Municipios"
+      }
+    ]
   },
   {
     "sistemaId": "sis-160",
     "orgao": "AGEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 18,
+        "nomeComoVeio": "Sistema Integrado de Administração Financeira de Estados e Municípios"
+      }
+    ]
   },
   {
     "sistemaId": "sis-160",
     "orgao": "CGE-MS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais COMPLETO 15 out 24.xlsx.pdf",
+        "linha": 2,
+        "nomeComoVeio": "Sistema Integrado de Administração Financeira para Estados e Municípios"
+      }
+    ]
   },
   {
     "sistemaId": "sis-160",
     "orgao": "FUNDECT",
     "tipo": "outro",
-    "vezes": 2
+    "vezes": 2,
+    "origens": [
+      {
+        "arquivo": "INVENTARIO SISTEMAS FUNDECT 01.07 (1).xlsx",
+        "linha": 12,
+        "nomeComoVeio": "SIAFEM CONTRATOS E TERMO OUTORGA ANTIGOS"
+      },
+      {
+        "arquivo": "INVENTARIO SISTEMAS FUNDECT 01.07 (1).xlsx",
+        "linha": 27,
+        "nomeComoVeio": "SISTEMA INTEGRADO DE ADMINISTRAÇÃO"
+      }
+    ]
   },
   {
     "sistemaId": "sis-160",
     "orgao": "SAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (14).xlsx",
+        "linha": 14,
+        "nomeComoVeio": "SISTEMA DE ADMINISTRAÇÃO FINANCEIRA DO ESTADO DE MS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-160",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 36,
+        "nomeComoVeio": "SISTEMA INTEGRADO DE ADMINISTRAÇÃO FINANCEIRA DE ESTADOS E MUNICÍPIOS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-160",
     "orgao": "SEC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SEC.xlsx",
+        "linha": 22,
+        "nomeComoVeio": "SISTEMA INTEGRADO DE ADMINISTRAÇÃO FINANCEIRA DE ESTADOS E MUNICÍPIOS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-161",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 38,
+        "nomeComoVeio": "Superintendência de Contabilidade Geral do Estado"
+      }
+    ]
   },
   {
     "sistemaId": "sis-162",
     "orgao": "SEC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SEC.xlsx",
+        "linha": 16,
+        "nomeComoVeio": "VOCÊ PARTICIPA - PLANO PLURIANUAL MS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-163",
     "orgao": "PGE",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - Compilação PGE MS.xlsx",
+        "linha": 23,
+        "nomeComoVeio": "E-Kronos (Agesul)"
+      }
+    ]
   },
   {
     "sistemaId": "sis-164",
     "orgao": "CBMMS/SEJUSP",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (9).xlsx",
+        "linha": 9,
+        "nomeComoVeio": "Computer Aided Dispatch Georeferenced"
+      }
+    ]
   },
   {
     "sistemaId": "sis-165",
     "orgao": "CBMMS/SEJUSP",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (9).xlsx",
+        "linha": 8,
+        "nomeComoVeio": "Sistema Integrado de Gestão Operacional"
+      }
+    ]
   },
   {
     "sistemaId": "sis-166",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 19,
+        "nomeComoVeio": "Apache Airflow"
+      }
+    ]
   },
   {
     "sistemaId": "sis-167",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 14,
+        "nomeComoVeio": "BOOKSTACK"
+      }
+    ]
   },
   {
     "sistemaId": "sis-168",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 21,
+        "nomeComoVeio": "e-AGENDAS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-169",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 35,
+        "nomeComoVeio": "e-AGENTES"
+      }
+    ]
   },
   {
     "sistemaId": "sis-170",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 49,
+        "nomeComoVeio": "e-CRED ETSUS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-171",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 48,
+        "nomeComoVeio": "e-CREDENCIA"
+      }
+    ]
   },
   {
     "sistemaId": "sis-172",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 28,
+        "nomeComoVeio": "e-CRIE"
+      }
+    ]
   },
   {
     "sistemaId": "sis-173",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 13,
+        "nomeComoVeio": "e-EVENTOS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-174",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 22,
+        "nomeComoVeio": "e-GABINETE"
+      }
+    ]
   },
   {
     "sistemaId": "sis-175",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 24,
+        "nomeComoVeio": "E-RASTREAR"
+      }
+    ]
   },
   {
     "sistemaId": "sis-176",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 32,
+        "nomeComoVeio": "e-SUS APS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-177",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 33,
+        "nomeComoVeio": "e-SUS SERVIDOR"
+      }
+    ]
   },
   {
     "sistemaId": "sis-178",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 34,
+        "nomeComoVeio": "e-SUS Território"
+      }
+    ]
   },
   {
     "sistemaId": "sis-179",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 31,
+        "nomeComoVeio": "e-TFD"
+      }
+    ]
   },
   {
     "sistemaId": "sis-180",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 36,
+        "nomeComoVeio": "e-VISITA - Edemias"
+      }
+    ]
   },
   {
     "sistemaId": "sis-181",
     "orgao": "FUNSAU",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - FUNSAU.xlsx",
+        "linha": 7,
+        "nomeComoVeio": "Gerenciador de Ambiente Laboratorial"
+      }
+    ]
   },
   {
     "sistemaId": "sis-181",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 30,
+        "nomeComoVeio": "GAL"
+      }
+    ]
   },
   {
     "sistemaId": "sis-182",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 18,
+        "nomeComoVeio": "PENTAHO PDI"
+      }
+    ]
   },
   {
     "sistemaId": "sis-183",
     "orgao": "FUNSAU",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - FUNSAU.xlsx",
+        "linha": 8,
+        "nomeComoVeio": "Portal de Regulação de Saúde"
+      }
+    ]
   },
   {
     "sistemaId": "sis-184",
     "orgao": "SEC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SEC.xlsx",
+        "linha": 30,
+        "nomeComoVeio": "QLIK SENSE"
+      }
+    ]
   },
   {
     "sistemaId": "sis-184",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 15,
+        "nomeComoVeio": "Qlik –SENSE"
+      }
+    ]
   },
   {
     "sistemaId": "sis-185",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 16,
+        "nomeComoVeio": "Qlik – CATALOG"
+      }
+    ]
   },
   {
     "sistemaId": "sis-186",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 17,
+        "nomeComoVeio": "Qlik – Nprinting"
+      }
+    ]
   },
   {
     "sistemaId": "sis-187",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 6,
+        "nomeComoVeio": "S.I.A."
+      }
+    ]
   },
   {
     "sistemaId": "sis-188",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 7,
+        "nomeComoVeio": "SIH"
+      }
+    ]
   },
   {
     "sistemaId": "sis-189",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 25,
+        "nomeComoVeio": "SINAN"
+      }
+    ]
   },
   {
     "sistemaId": "sis-190",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 26,
+        "nomeComoVeio": "SIPNI"
+      }
+    ]
   },
   {
     "sistemaId": "sis-191",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 37,
+        "nomeComoVeio": "SISBASEPOP/RHC"
+      }
+    ]
   },
   {
     "sistemaId": "sis-192",
     "orgao": "SES",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário_de_Sistemas_que_Tratam_Dados_Pessoais_Atualizado.xlsx",
+        "linha": 20,
+        "nomeComoVeio": "Ui Path"
+      }
+    ]
   },
   {
     "sistemaId": "sis-193",
     "orgao": "AGEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 11,
+        "nomeComoVeio": "Gestão de Segurança Integrado"
+      }
+    ]
   },
   {
     "sistemaId": "sis-193",
     "orgao": "AGESUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 12,
+        "nomeComoVeio": "Gestão de segurança integrada"
+      }
+    ]
   },
   {
     "sistemaId": "sis-193",
     "orgao": "AGRAER",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (11).xlsx",
+        "linha": 9,
+        "nomeComoVeio": "GESTÃO DE SEGURANÇA INTEGRADA"
+      }
+    ]
   },
   {
     "sistemaId": "sis-193",
     "orgao": "CGE-MS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais COMPLETO 15 out 24.xlsx.pdf",
+        "linha": 2,
+        "nomeComoVeio": "Sistema Gestão de Segurança Integrada"
+      }
+    ]
   },
   {
     "sistemaId": "sis-193",
     "orgao": "FUNDECT",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "INVENTARIO SISTEMAS FUNDECT 01.07 (1).xlsx",
+        "linha": 21,
+        "nomeComoVeio": "GESTÃO DE SEGURANÇA INTEGRADA"
+      }
+    ]
   },
   {
     "sistemaId": "sis-193",
     "orgao": "FUNDTUR",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais_Fundtur_ (1).xlsx",
+        "linha": 15,
+        "nomeComoVeio": "GESTÃO DE SEGURANÇA INTEGRADA"
+      }
+    ]
   },
   {
     "sistemaId": "sis-193",
     "orgao": "FUNSAU",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - FUNSAU.xlsx",
+        "linha": 12,
+        "nomeComoVeio": "Gestão de Segurança Integrada"
+      }
+    ]
   },
   {
     "sistemaId": "sis-193",
     "orgao": "IAGRO",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - IAGRO final.xlsx",
+        "linha": 16,
+        "nomeComoVeio": "Gestão de Segurança Integrada"
+      }
+    ]
   },
   {
     "sistemaId": "sis-193",
     "orgao": "IMASUL",
     "tipo": "outro",
-    "vezes": 2
+    "vezes": 2,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (5).xlsx",
+        "linha": 10,
+        "nomeComoVeio": "GSI - Gestão de Segurança Integrada"
+      },
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (5).xlsx",
+        "linha": 11,
+        "nomeComoVeio": "GSI - Gestão de Segurança Integrada"
+      }
+    ]
   },
   {
     "sistemaId": "sis-193",
     "orgao": "JUCEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - JUCEMS.xlsx",
+        "linha": 8,
+        "nomeComoVeio": "GESTÃO DE SEGURANÇA INTEGRADA"
+      }
+    ]
   },
   {
     "sistemaId": "sis-193",
     "orgao": "PGE",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - Compilação PGE MS.xlsx",
+        "linha": 7,
+        "nomeComoVeio": "Gestão de Segurança Integrada (SAD)"
+      }
+    ]
   },
   {
     "sistemaId": "sis-193",
     "orgao": "SAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (14).xlsx",
+        "linha": 11,
+        "nomeComoVeio": "GESTÃO DE SEGURANÇA INTEGRADA"
+      }
+    ]
   },
   {
     "sistemaId": "sis-193",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 9,
+        "nomeComoVeio": "GESTÃO DE SEGURANÇA INTEGRADA"
+      }
+    ]
   },
   {
     "sistemaId": "sis-193",
     "orgao": "SEC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SEC.xlsx",
+        "linha": 13,
+        "nomeComoVeio": "SISTEMA DE SEGURANÇA INTEGRADA"
+      }
+    ]
   },
   {
     "sistemaId": "sis-193",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 11,
+        "nomeComoVeio": "Gestão de segurança integrada"
+      }
+    ]
   },
   {
     "sistemaId": "sis-194",
     "orgao": "IMASUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (5).xlsx",
+        "linha": 7,
+        "nomeComoVeio": "Painel de BI MS Indicadores"
+      }
+    ]
   },
   {
     "sistemaId": "sis-194",
     "orgao": "JUCEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - JUCEMS.xlsx",
+        "linha": 9,
+        "nomeComoVeio": "MS INDICADORES"
+      }
+    ]
   },
   {
     "sistemaId": "sis-194",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 12,
+        "nomeComoVeio": "MS INDICADORES"
+      }
+    ]
   },
   {
     "sistemaId": "sis-194",
     "orgao": "SEC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SEC.xlsx",
+        "linha": 28,
+        "nomeComoVeio": "MS INDICADORES"
+      }
+    ]
   },
   {
     "sistemaId": "sis-195",
     "orgao": "AGEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas  AGEMS (1).xlsx",
+        "linha": 24,
+        "nomeComoVeio": "Painés Qlick Sense SGI"
+      }
+    ]
   },
   {
     "sistemaId": "sis-196",
     "orgao": "IAGRO",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - IAGRO final.xlsx",
+        "linha": 18,
+        "nomeComoVeio": "Portal de Informações e Geoposicionamento"
+      }
+    ]
   },
   {
     "sistemaId": "sis-196",
     "orgao": "IMASUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (5).xlsx",
+        "linha": 6,
+        "nomeComoVeio": "Portal de informações e Geoposicionamento de Mato Grosso do Sul"
+      }
+    ]
   },
   {
     "sistemaId": "sis-197",
     "orgao": "AGESUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 15,
+        "nomeComoVeio": "PORTAL DO SERVIDOR (portaldoservidor.ms.gov.br)"
+      }
+    ]
   },
   {
     "sistemaId": "sis-197",
     "orgao": "AGRAER",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (11).xlsx",
+        "linha": 7,
+        "nomeComoVeio": "PORTAL ÚNICO MS.GOV.BR"
+      }
+    ]
   },
   {
     "sistemaId": "sis-197",
     "orgao": "IMASUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (5).xlsx",
+        "linha": 9,
+        "nomeComoVeio": "Portal Único ms.gov.br"
+      }
+    ]
   },
   {
     "sistemaId": "sis-197",
     "orgao": "JUCEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - JUCEMS.xlsx",
+        "linha": 14,
+        "nomeComoVeio": "PORTAL UNICO MS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-197",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 17,
+        "nomeComoVeio": "PORTAL UNICO MS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-198",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 19,
+        "nomeComoVeio": "Secretaria-Executiva de Transformação Digital"
+      }
+    ]
   },
   {
     "sistemaId": "sis-199",
     "orgao": "CGE-MS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais COMPLETO 15 out 24.xlsx.pdf",
+        "linha": 2,
+        "nomeComoVeio": "Sistema Pareceres PGE"
+      }
+    ]
   },
   {
     "sistemaId": "sis-200",
     "orgao": "IAGRO",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - IAGRO final.xlsx",
+        "linha": 20,
+        "nomeComoVeio": "Suporte MS (ServiceDesk Plus)"
+      }
+    ]
   },
   {
     "sistemaId": "sis-201",
     "orgao": "AGEPREV",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Ageprev - Inventário de Sistemas que Tratam Dados Pessoais - Versão 04.10.24.xlsx",
+        "linha": 16,
+        "nomeComoVeio": "Webmail Oficial do Governo de Mato Grosso do Sul"
+      }
+    ]
   },
   {
     "sistemaId": "sis-201",
     "orgao": "IAGRO",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - IAGRO final.xlsx",
+        "linha": 19,
+        "nomeComoVeio": "Email MS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-201",
     "orgao": "IMASUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (5).xlsx",
+        "linha": 15,
+        "nomeComoVeio": "Serviço de Correio Eletrônico"
+      }
+    ]
   },
   {
     "sistemaId": "sis-201",
     "orgao": "JUCEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - JUCEMS.xlsx",
+        "linha": 35,
+        "nomeComoVeio": "WEBMAIL OFICIAL"
+      }
+    ]
   },
   {
     "sistemaId": "sis-201",
     "orgao": "PGE",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - Compilação PGE MS.xlsx",
+        "linha": 9,
+        "nomeComoVeio": "WEBMAIL (SETDIG)"
+      }
+    ]
   },
   {
     "sistemaId": "sis-201",
     "orgao": "PGE",
     "tipo": "proprio",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - Compilação PGE MS.xlsx",
+        "linha": 13,
+        "nomeComoVeio": "Email Eletrônico"
+      }
+    ]
   },
   {
     "sistemaId": "sis-201",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 41,
+        "nomeComoVeio": "WEBMAIL OFICIAL"
+      }
+    ]
   },
   {
     "sistemaId": "sis-201",
     "orgao": "SEC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SEC.xlsx",
+        "linha": 18,
+        "nomeComoVeio": "WEBMAIL - MS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-201",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 8,
+        "nomeComoVeio": "Correio eletrônico de MS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-202",
     "orgao": "AGEPREV",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Ageprev - Inventário de Sistemas que Tratam Dados Pessoais - Versão 04.10.24.xlsx",
+        "linha": 24,
+        "nomeComoVeio": "WordPress"
+      }
+    ]
   },
   {
     "sistemaId": "sis-202",
     "orgao": "IMASUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (5).xlsx",
+        "linha": 8,
+        "nomeComoVeio": "Wordpress IMASUL"
+      }
+    ]
   },
   {
     "sistemaId": "sis-203",
     "orgao": "SAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais (14).xlsx",
+        "linha": 16,
+        "nomeComoVeio": "BOLSA FUNDESPORTE (BOLSA ATLETA)"
+      }
+    ]
   },
   {
     "sistemaId": "sis-204",
     "orgao": "CGE-MS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais COMPLETO 15 out 24.xlsx.pdf",
+        "linha": 2,
+        "nomeComoVeio": "Sistema Administração Transparência"
+      }
+    ]
   },
   {
     "sistemaId": "sis-205",
     "orgao": "AGEPREV",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Ageprev - Inventário de Sistemas que Tratam Dados Pessoais - Versão 04.10.24.xlsx",
+        "linha": 27,
+        "nomeComoVeio": "Cadastro do Jurisdicionado"
+      }
+    ]
   },
   {
     "sistemaId": "sis-206",
     "orgao": "AGEPREV",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Ageprev - Inventário de Sistemas que Tratam Dados Pessoais - Versão 04.10.24.xlsx",
+        "linha": 21,
+        "nomeComoVeio": "Sistema Informatizado de Controle de Atos de Pessoal"
+      }
+    ]
   },
   {
     "sistemaId": "sis-206",
     "orgao": "AGESUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 22,
+        "nomeComoVeio": "Sistema de Controle de Atos de Pessoal"
+      }
+    ]
   },
   {
     "sistemaId": "sis-206",
     "orgao": "SETESC",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - SETESC (2).xlsx",
+        "linha": 22,
+        "nomeComoVeio": "Sistema de Controle de Atos de Pessoal"
+      }
+    ]
   },
   {
     "sistemaId": "sis-207",
     "orgao": "AGEPREV",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Ageprev - Inventário de Sistemas que Tratam Dados Pessoais - Versão 04.10.24.xlsx",
+        "linha": 10,
+        "nomeComoVeio": "Tribunal de Contas do Estado de Mato Grosso do Sul"
+      }
+    ]
   },
   {
     "sistemaId": "sis-207",
     "orgao": "AGESUL",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário GERAL AGESUL.xlsx",
+        "linha": 30,
+        "nomeComoVeio": "Sistema de protocolo digital do TCE MS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-207",
     "orgao": "FUNDECT",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "INVENTARIO SISTEMAS FUNDECT 01.07 (1).xlsx",
+        "linha": 14,
+        "nomeComoVeio": "SITE TRIBUNAL CONTAS"
+      }
+    ]
   },
   {
     "sistemaId": "sis-207",
     "orgao": "JUCEMS",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas - JUCEMS.xlsx",
+        "linha": 34,
+        "nomeComoVeio": "TCE- DIGITAL"
+      }
+    ]
   },
   {
     "sistemaId": "sis-207",
     "orgao": "PGE",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - Compilação PGE MS.xlsx",
+        "linha": 25,
+        "nomeComoVeio": "TCE DIGITAL"
+      }
+    ]
   },
   {
     "sistemaId": "sis-207",
     "orgao": "SEAD",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "GERAL Inventário de Sistemas SEAD.xlsx",
+        "linha": 40,
+        "nomeComoVeio": "TCE- DIGITAL"
+      }
+    ]
   },
   {
     "sistemaId": "sis-208",
     "orgao": "IAGRO",
     "tipo": "outro",
-    "vezes": 1
+    "vezes": 1,
+    "origens": [
+      {
+        "arquivo": "Inventário de Sistemas que Tratam Dados Pessoais - IAGRO final.xlsx",
+        "linha": 22,
+        "nomeComoVeio": "Rastec Sat"
+      }
+    ]
   }
 ]

@@ -4,7 +4,10 @@ import { Modal } from "@/components/dashboard/Modal";
 import {
   DONO_DESCONHECIDO,
   dataBR,
+  inventariosDoSistema,
   pendenciasDoSistema,
+  type Indicacao,
+  type InventarioDeOrigem,
   type MetaInventario,
   type Pendencia,
   type Sistema,
@@ -16,11 +19,13 @@ import { Chips, corTexto } from "./Comuns";
 export function FichaSistema({
   sistema,
   pendencias,
+  indicacoes,
   meta,
   onClose,
 }: {
   sistema: Sistema | null;
   pendencias: Pendencia[];
+  indicacoes: Indicacao[];
   meta: MetaInventario | null;
   onClose: () => void;
 }) {
@@ -86,14 +91,7 @@ export function FichaSistema({
             <Campo rotulo="Quem definiu o órgão responsável" valor={s.fonteDono} />
             <Campo rotulo="Responsável citado pelos órgãos" valor={s.responsavelInformado} />
             <Campo rotulo="Abrangência" valor={s.origem} />
-            <div className="mt-2">
-              <span className="bi-label" style={{ color: corTexto.secundario }}>Inventários em que aparece</span>
-              <ul className="mt-1 list-disc pl-5">
-                {s.arquivosOrigem.map((a) => (
-                  <li key={a} className="bi-caption" style={{ color: corTexto.secundario }}>{a}</li>
-                ))}
-              </ul>
-            </div>
+            <InventariosDeOrigem arvore={inventariosDoSistema(s, indicacoes)} dono={s.orgaoResponsavel} />
             {pend.length > 0 && (
               <div className="mt-3">
                 <span className="bi-label" style={{ color: "var(--ds-color-warning)" }}>Pendências de validação</span>
@@ -110,6 +108,62 @@ export function FichaSistema({
         </div>
       )}
     </Modal>
+  );
+}
+
+/** Lista recolhida: ao clicar, abre a árvore órgão que informou → arquivo →
+ * linha (com o nome como o órgão escreveu o sistema). Fechada por padrão para
+ * não alongar a ficha. */
+function InventariosDeOrigem({ arvore, dono }: { arvore: InventarioDeOrigem[]; dono: string }) {
+  if (arvore.length === 0) return null;
+  const nArquivos = new Set(arvore.flatMap((o) => o.arquivos.map((a) => a.arquivo))).size;
+  const guia = { borderLeft: "1px solid var(--ds-color-border)" };
+  return (
+    <details className="mt-3 group">
+      <summary
+        className="bi-label cursor-pointer select-none inline-flex items-center gap-1 rounded px-1 -mx-1 hover:bg-[var(--ds-color-background-muted)]"
+        style={{ color: "var(--ds-color-primary-600)" }}
+      >
+        <span aria-hidden className="material-icons transition-transform group-open:rotate-90" style={{ fontSize: 18 }}>
+          chevron_right
+        </span>
+        Inventários em que aparece
+        <span style={{ color: corTexto.apoio, fontWeight: 400 }}>
+          ({arvore.length} {arvore.length === 1 ? "órgão" : "órgãos"} · {nArquivos} {nArquivos === 1 ? "arquivo" : "arquivos"})
+        </span>
+      </summary>
+      <ul className="mt-2 ml-2 pl-3 flex flex-col gap-3" style={guia}>
+        {arvore.map((o) => (
+          <li key={`${o.orgao}-${o.tipo}`}>
+            <div className="bi-body-small" style={{ color: corTexto.primario }}>
+              <strong>{o.orgao}</strong>{" "}
+              <span className="bi-caption" style={{ color: corTexto.apoio }}>
+                {o.orgao === dono
+                  ? o.tipo === "proprio" ? "órgão responsável" : "órgão responsável · listou como sistema de outro órgão"
+                  : o.tipo === "proprio" ? "declarou como sistema próprio" : "declarou que usa"}
+              </span>
+            </div>
+            <ul className="mt-1 ml-1 pl-3 flex flex-col gap-1" style={guia}>
+              {o.arquivos.map((a) => (
+                <li key={a.arquivo}>
+                  <div className="bi-caption break-words" style={{ color: corTexto.secundario }}>{a.arquivo}</div>
+                  {a.linhas.length > 0 && (
+                    <ul className="ml-1 pl-3" style={guia}>
+                      {a.linhas.map((l, i) => (
+                        <li key={`${l.linha}-${i}`} className="bi-caption" style={{ color: corTexto.apoio }}>
+                          {l.linha ? `Linha ${l.linha}` : "Linha não informada"}
+                          {l.nomeComoVeio ? ` · escrito como "${l.nomeComoVeio}"` : ""}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
+    </details>
   );
 }
 

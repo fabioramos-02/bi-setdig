@@ -2,7 +2,7 @@
 
 import { StoryCard } from "@/components/dashboard/StoryCard";
 import { MetricCard } from "@/components/dashboard/MetricCard";
-import { Select } from "@/components/dashboard/Select";
+import { SelectPesquisavel } from "@/components/dashboard/SelectPesquisavel";
 import { RankingBarChart } from "@/components/charts/RankingBarChart";
 import { DONO_DESCONHECIDO, perfilOrgao, type DadosInventario } from "@/lib/inventario-sistemas";
 import { Bloco, ListaSistemas, corTexto } from "./Comuns";
@@ -29,7 +29,7 @@ export function PorOrgaoTab({
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-wrap items-end gap-4">
-        <Select label="Órgão" value={orgao} onChange={(v) => v && onOrgao(v)} opcoes={opcoes} todosLabel="Escolha um órgão" />
+        <SelectPesquisavel label="Órgão" value={orgao} onChange={onOrgao} opcoes={opcoes} placeholder="Escolha um órgão" />
         {p.orgao && (
           <span
             className="bi-label px-3 py-1 rounded-full"

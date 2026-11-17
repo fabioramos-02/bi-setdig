@@ -44,7 +44,16 @@ export type OrgaoInventario = {
   orgaosQueUsamSeus: number;
 };
 
-export type Indicacao = { sistemaId: string; orgao: string; tipo: "proprio" | "outro"; vezes: number };
+/** Uma linha de um inventário enviado por órgão: de onde veio a citação. */
+export type OrigemIndicacao = { arquivo: string | null; linha: number | null; nomeComoVeio: string | null };
+
+export type Indicacao = {
+  sistemaId: string;
+  orgao: string;
+  tipo: "proprio" | "outro";
+  vezes: number;
+  origens?: OrigemIndicacao[];
+};
 
 export type Pendencia = {
   tipo: string;
@@ -393,6 +402,41 @@ export function filtrarCatalogo(
 
 export function pendenciasDoSistema(s: Sistema, pendencias: Pendencia[]): Pendencia[] {
   return pendencias.filter((p) => p.sistemaId === s.id);
+}
+
+export type InventarioDeOrigem = {
+  orgao: string;
+  tipo: "proprio" | "outro";
+  arquivos: { arquivo: string; linhas: { linha: number | null; nomeComoVeio: string | null }[] }[];
+};
+
+/** Árvore órgão → arquivo → linhas em que o sistema aparece nos inventários
+ * enviados. O órgão responsável vem primeiro; depois os demais em ordem
+ * alfabética. Sem indicações, cai na lista de arquivos da aba Inventário. */
+export function inventariosDoSistema(s: Sistema, indicacoes: Indicacao[]): InventarioDeOrigem[] {
+  const doSistema = indicacoes.filter((i) => i.sistemaId === s.id);
+  if (doSistema.length === 0)
+    return s.arquivosOrigem.length
+      ? [{ orgao: "Inventários de origem", tipo: "outro", arquivos: s.arquivosOrigem.map((arquivo) => ({ arquivo, linhas: [] })) }]
+      : [];
+  return doSistema
+    .map((i) => {
+      const porArquivo = new Map<string, { linha: number | null; nomeComoVeio: string | null }[]>();
+      for (const o of i.origens ?? []) {
+        const chave = o.arquivo ?? "Arquivo não informado";
+        porArquivo.set(chave, [...(porArquivo.get(chave) ?? []), { linha: o.linha, nomeComoVeio: o.nomeComoVeio }]);
+      }
+      return {
+        orgao: i.orgao,
+        tipo: i.tipo,
+        arquivos: [...porArquivo.entries()].map(([arquivo, linhas]) => ({ arquivo, linhas })),
+      };
+    })
+    .sort((a, b) =>
+      Number(b.orgao === s.orgaoResponsavel) - Number(a.orgao === s.orgaoResponsavel) ||
+      a.orgao.localeCompare(b.orgao) ||
+      a.tipo.localeCompare(b.tipo),
+    );
 }
 
 export function dataBR(iso: string | null | undefined): string {

@@ -155,9 +155,13 @@ def montar_orgaos(rows: list[tuple]) -> list[dict]:
 
 def montar_indicacoes(rows: list[tuple], sistemas: list[dict]) -> tuple[list[dict], list[str]]:
     """Aba Indicações (uma linha por linha de inventário). Devolve as indicações
-    agregadas por (sistema, órgão que indicou, tipo) e os nomes que não casaram."""
+    agregadas por (sistema, órgão que indicou, tipo) e os nomes que não casaram.
+
+    `origens` guarda cada linha de origem (arquivo, linha, nome como veio): é a
+    rastreabilidade completa — a coluna "Arquivos de origem" da aba Inventário
+    vem cortada em 300 caracteres na planilha."""
     idx = {chave(s["nome"], s["orgaoResponsavel"]): s["id"] for s in sistemas}
-    agg: dict[tuple[str, str, str], int] = {}
+    agg: dict[tuple[str, str, str], list[dict]] = {}
     sem_par: list[str] = []
     for r in rows[1:]:
         nome, orgao_resp, orgao_ind, como = (_txt(r[0]), _txt(r[2]), _txt(r[3]), _txt(r[4]))
@@ -168,9 +172,17 @@ def montar_indicacoes(rows: list[tuple], sistemas: list[dict]) -> tuple[list[dic
             sem_par.append(nome)
             continue
         tipo = "proprio" if (como or "").lower().startswith("sistema do pr") else "outro"
-        k = (sid, orgao_ind, tipo)
-        agg[k] = agg.get(k, 0) + 1
-    out = [{"sistemaId": s, "orgao": o, "tipo": t, "vezes": n} for (s, o, t), n in agg.items()]
+        linha = r[11] if len(r) > 11 else None
+        agg.setdefault((sid, orgao_ind, tipo), []).append({
+            "arquivo": _txt(r[10]) if len(r) > 10 else None,
+            "linha": _int(linha) or None,
+            "nomeComoVeio": _txt(r[5]) if len(r) > 5 else None,
+        })
+    out = [
+        {"sistemaId": s, "orgao": o, "tipo": t, "vezes": len(orig),
+         "origens": sorted(orig, key=lambda x: (x["arquivo"] or "", x["linha"] or 0))}
+        for (s, o, t), orig in agg.items()
+    ]
     return sorted(out, key=lambda x: (x["sistemaId"], x["orgao"], x["tipo"])), sem_par
 
 

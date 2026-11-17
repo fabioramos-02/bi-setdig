@@ -4,6 +4,7 @@ import {
   alcanceDosDonos,
   completudeCampos,
   filtrarCatalogo,
+  inventariosDoSistema,
   panoramaInventario,
   perfilOrgao,
   pontosDeAtencao,
@@ -131,6 +132,24 @@ test("percentual não arredonda para 100% nem 0% sem ser exato", () => {
   assert.equal(pct(208, 208), 100);
   assert.equal(pct(1, 500), 1);
   assert.equal(pct(0, 10), 0);
+});
+
+test("inventários de origem: árvore órgão → arquivo → linha, dono primeiro", () => {
+  const s = sis("SAD", ["SES", "AGEMS"], { arquivosOrigem: ["cortado..."] });
+  const arvore = inventariosDoSistema(s, [
+    { sistemaId: s.id, orgao: "SES", tipo: "outro", vezes: 2, origens: [
+      { arquivo: "ses.xlsx", linha: 3, nomeComoVeio: "GCONT" },
+      { arquivo: "ses.xlsx", linha: 8, nomeComoVeio: "Contratos" },
+    ] },
+    { sistemaId: s.id, orgao: "AGEMS", tipo: "outro", vezes: 1, origens: [{ arquivo: "agems.xlsx", linha: 1, nomeComoVeio: null }] },
+    { sistemaId: s.id, orgao: "SAD", tipo: "proprio", vezes: 1, origens: [{ arquivo: "sad.xlsx", linha: 2, nomeComoVeio: null }] },
+    { sistemaId: "outro", orgao: "SEC", tipo: "outro", vezes: 1 },
+  ]);
+  assert.deepEqual(arvore.map((a) => a.orgao), ["SAD", "AGEMS", "SES"]);
+  assert.equal(arvore[2].arquivos.length, 1);
+  assert.deepEqual(arvore[2].arquivos[0].linhas.map((l) => l.linha), [3, 8]);
+  // sem indicações: usa a lista de arquivos da aba Inventário
+  assert.equal(inventariosDoSistema(s, [])[0].arquivos[0].arquivo, "cortado...");
 });
 
 test("catálogo: filtros e rótulo", () => {

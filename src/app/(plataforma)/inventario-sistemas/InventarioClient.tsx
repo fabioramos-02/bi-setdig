@@ -39,6 +39,7 @@ export function InventarioClient({ dados }: { dados: DadosInventario }) {
       <FichaSistema
         sistema={dados.sistemas.find((s) => s.id === aberto) ?? null}
         pendencias={dados.pendencias}
+        indicacoes={dados.indicacoes}
         meta={dados.meta}
         onClose={() => setAberto(null)}
       />
