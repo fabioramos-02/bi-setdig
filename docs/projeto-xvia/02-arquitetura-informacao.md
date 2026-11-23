@@ -11,19 +11,22 @@ separada nos indicadores e nas filas de prioridades (ADR-017).
 
 ## Nível 1 — Visão do Secretário (`VisaoExecutiva.tsx`)
 
-**Público:** Secretário Executivo e alta gestão. **Formato:** capa executiva em quatro blocos.
+**Público:** Secretário Executivo (Robson) e alta gestão. **Formato:** as 5 perguntas dele, uma linha cada,
+com palavra, cor, resposta numa frase e "Ver detalhes" (pedido da Duda, 23/11/2026; perguntas da nota do vault
+`2026-11-10-painel-executivo-xvia` e do PBI #1368710).
 
-| Bloco | Pergunta | Conteúdo e destino |
-|---|---|---|
-| Contexto e veredito | Como está o contrato? | Contrato, mês, data dos dados e conclusão antes dos números |
-| Três sinais | Por que essa avaliação? | Entregas × prazo, execução × previsto e decisões/bloqueios, com origem e ação |
-| Precisa da sua atenção | O que exige decisão? | Até três entregas em Aguardando decisão; Ver leva ao item em Gerente → Prioridades |
-| Próximos passos | O que precisa acontecer agora? | Até três ações com acesso ao nível pertinente; pagamento e SLA sem registro são explícitos |
+| # | Pergunta | Resposta | Fonte (já calculada em `prepararResumoXvia`) | Detalhe |
+|---|---|---|---|---|
+| 1 | Estamos no prazo? | % em produção × % do prazo, dias que faltam | `andamentoEntregas`, `prazoProjeto`; tom `tomEntregas` | Gerente → Cronograma |
+| 2 | Quanto do contrato já foi usado? | UST executada, em R$, % do previsto até o mês | `consumoContrato`; tom `tomExecucao` | Detalhamento → UST |
+| 3 | O que foi entregue e o que atrasou? | em produção, atrasadas, a entregar | `andamentoEntregas`, `atrasadas` | Gerente → Cronograma |
+| 4 | O que trava e quem resolve? | aguardando decisão, impedidas, responsáveis no registro | `pendencias`, `quemNoRegistro`; tom `tomDecisoes` | Gerente → Prioridades |
+| 5 | O que está em produção para os órgãos? | em produção por módulo; resultado para os órgãos "não medido" | `andamentoEntregas` por épico | Gerente → Módulos |
 
-`lib/xvia-resumo.ts` prepara a apresentação reutilizando os cálculos existentes. Filtro sem entregas
-ou tarefas X-VIA recebe estado neutro por indicador. Não se deduz impacto, decisão específica ou
-executor a partir do título/AssignedTo. Na largura de desktop, os dois últimos blocos dividem a
-linha; no mobile empilham. Os filtros começam recolhidos e os chips ativos permanecem visíveis.
+`lib/xvia-secretario.ts` só formata; não há conta nova. O mesmo objeto sai em
+`/projeto-xvia/secretario.json` (estático, refeito no build diário), que o `src/painel.py` do
+`lancar-demandas-xvia` copia para o dashboard "Visão do Secretário" do TFS: os dois mostram os mesmos números.
+Filtro sem entregas ou tarefas X-VIA deixa as respostas neutras.
 
 ### Relatório mensal completo (`RelatorioMensal.tsx`)
 

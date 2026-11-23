@@ -40,6 +40,18 @@
 .ponto { width: .625rem; height: .625rem; border-radius: 50%; margin-top: .5rem; flex-shrink: 0; }
 .contexto { font-size: var(--ds-bi-body-small-size); color: var(--ds-color-text-secondary); line-height: 1.5; margin: 0; }
 .painel > h2 { margin: 0; font-size: var(--ds-bi-display-size); }
+.secretario { display: flex; flex-direction: column; gap: .5rem; }
+.secretario > h2 { margin: 0; font-size: var(--ds-bi-display-size); }
+.respostas { list-style: none; margin: .5rem 0; padding: 0; display: flex; flex-direction: column; border-top: 1px solid var(--ds-color-border); }
+.respostas > li { display: grid; grid-template-columns: 2.25rem minmax(12rem, 1fr) minmax(0, 2fr) auto; align-items: center; gap: .25rem 1rem; padding: .875rem .75rem; border-bottom: 1px solid var(--ds-color-border); box-shadow: inset 4px 0 0 var(--sinal-cor); }
+.numero { width: 1.75rem; height: 1.75rem; border-radius: 50%; display: grid; place-items: center; background: var(--ds-color-primary-600); color: #fff; font-weight: 700; font-size: var(--ds-bi-body-small-size); }
+.pergunta h3 { margin: 0; font-size: var(--ds-bi-body-size); font-weight: 700; }
+.palavraResp { display: inline-block; margin-top: .125rem; font-size: var(--ds-bi-body-small-size); font-weight: 600; color: var(--sinal-cor); }
+.resposta { margin: 0; font-size: var(--ds-bi-body-size); line-height: 1.5; }
+@media (max-width: 760px) {
+  .respostas > li { grid-template-columns: 2.25rem minmax(0, 1fr); }
+  .resposta, .respostas .link { grid-column: 2; justify-self: start; }
+}
 .executiva { display: flex; flex-direction: column; gap: 1rem; }
 .executiva h2 { margin: 0 0 .5rem; font-size: var(--ds-bi-heading-1-size); }
 .executiva .painel > h2 { font-size: var(--ds-bi-display-size); }
