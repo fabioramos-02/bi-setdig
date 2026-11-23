@@ -1,7 +1,7 @@
-"""Refresh diário do TFS no BI (tarefa agendada no PC do Fabio: "BI SETDIG - refresh TFS").
+"""Refresh diário das fontes da rede interna no BI (tarefa agendada no PC do Fabio: "BI SETDIG - refresh TFS").
 
-O GitHub Actions não alcança o TFS on-prem (só responde na rede da SETDIG), então esta parte roda aqui:
-  1. extrai o TFS (run.py --domain tfs) e publica em datasets/tfs/v1;
+O GitHub Actions não alcança o TFS on-prem nem o Matomo (só respondem na rede da SETDIG), então esta parte roda aqui:
+  1. extrai o TFS e o Matomo (run.py --domain tfs,matomo,...) e publica em datasets/;
   2. commita e dá push só se os dados mudaram (a Vercel republica sozinha);
   3. espera a Vercel servir os dados do dia e regrava os quadros do TFS (lancar-demandas-xvia: src.painel --apply),
      se BI_AUTH_USER e BI_AUTH_PASSWORD estiverem nas variáveis de usuário do Windows.
@@ -24,6 +24,7 @@ DP = Path(__file__).resolve().parent
 BI = DP.parent
 DEMANDAS = BI.parent / "lancar-demandas-xvia"
 LOG = DP / "logs-refresh-tfs.txt"
+FONTES = "tfs,matomo,matomo_perfil,matomo_perfil_filtro,matomo_eventos_perfil,matomo_jornada,sites"
 JSON_BI = "https://bi-setdig.vercel.app/projeto-xvia/secretario.json"
 ENV = {**os.environ, "PYTHONIOENCODING": "utf-8"}
 
@@ -49,16 +50,17 @@ def json_do_bi(user, senha):
 def main():
     log("início")
     rodar("git", "pull", "--rebase", "-q", "origin", "master")
-    r = rodar(sys.executable, "run.py", "--domain", "tfs", cwd=DP, checar=False)
-    log(r.stdout.strip()[-600:])
-    if r.returncode or "FALHOU" in r.stdout:
+    r = rodar(sys.executable, "run.py", "--domain", FONTES, cwd=DP, checar=False)
+    log(" | ".join(l[:200] for l in r.stdout.splitlines() if l.startswith("[")))
+    if "[tfs] FALHOU" in r.stdout:
         raise RuntimeError("extração do TFS falhou (ver acima)")
+    # Matomo que falhar não impede publicar o TFS: o log registra e o resto segue.
 
     rodar("git", "add", "datasets", ":!datasets/logs")
     if rodar("git", "diff", "--cached", "--quiet", checar=False).returncode == 0:
-        log("sem mudança nos dados do TFS")
+        log("sem mudança nos dados")
         return
-    rodar("git", "commit", "-q", "-m", f"chore(data): refresh do TFS ({date.today():%d/%m/%Y})")
+    rodar("git", "commit", "-q", "-m", f"chore(data): refresh do TFS e do Matomo ({date.today():%d/%m/%Y})")
     rodar("git", "push", "-q", "origin", "master")
     log("dados publicados")
 

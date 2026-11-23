@@ -491,7 +491,11 @@ def run_tfs() -> None:
 # e elas seguem rodando à mão. O TFS on-prem (tfs.sgi.ms.gov.br) não aceita acesso
 # de fora da rede: no runner do GitHub devolve 302 para o login mesmo com PAT válido
 # (visto de 04/11 a 10/11/2026), então também é extração manual.
-FONTES_VPN = {"cartas", "qualidade", "msdigital_db", "portal_unico_db", "tfs"}
+# O Matomo (webanalytics.ms.gov.br) também passou a responder só na rede interna (Fabio, 23/11/2026):
+# o runner dava timeout desde 03/11. As fontes do Matomo (e sites, que lê o Matomo) rodam na tarefa
+# diária do PC da SETDIG (refresh_tfs.py), com o TFS.
+FONTES_MATOMO = {"matomo", "matomo_perfil", "matomo_perfil_filtro", "matomo_eventos_perfil", "matomo_jornada", "sites"}
+FONTES_VPN = {"cartas", "qualidade", "msdigital_db", "portal_unico_db", "tfs", *FONTES_MATOMO}
 
 
 if __name__ == "__main__":
@@ -519,7 +523,7 @@ if __name__ == "__main__":
     ]
     
     if args.domain:
-        alvo = [item for item in todas_as_funcoes if item[0] == args.domain]
+        alvo = [item for item in todas_as_funcoes if item[0] in args.domain.split(",")]  # aceita "tfs,matomo"
         if not alvo:
             print(f"Domínio {args.domain} não encontrado.")
             sys.exit(1)
