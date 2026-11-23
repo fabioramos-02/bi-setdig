@@ -53,7 +53,9 @@ def publish(
     if len(payload.encode("utf-8")) > MAX_DATASET_BYTES and isinstance(rows, list):
         # Lista grande (ex.: tfs/itens, 2.000+ work items): um registro por linha. O arquivo fica
         # bem menor e o diff no git continua item a item. Os demais datasets não mudam de formato.
-        payload = "[\n" + ",\n".join(json.dumps(r, ensure_ascii=False) for r in rows) + "\n]"
+        # ponytail: sem espaços após , e : (−8%). Em 11/2026 o tfs/itens passou de 2 MB e travou a extração;
+        # se crescer de novo, o próximo passo é omitir campos null (−28%), conferindo os `=== null` do src/.
+        payload = "[\n" + ",\n".join(json.dumps(r, ensure_ascii=False, separators=(",", ":")) for r in rows) + "\n]"
     size = len(payload.encode("utf-8"))
     if size > MAX_DATASET_BYTES:
         raise ValueError(
