@@ -39,3 +39,4 @@ __pycache__/
 data-platform/outputs/
 
 .vercel
+data-platform/logs-refresh-tfs.txt
