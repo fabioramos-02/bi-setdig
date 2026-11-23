@@ -14,6 +14,9 @@ name: Refresh datasets
 # Governo/VPN da SETDIG): --sem-vpn pula essas, que seguem rodando à mão na rede
 # da SETDIG (`python run.py`, depois commit dos datasets). O TFS on-prem devolve
 # 302 para o login quando chamado do runner do GitHub, mesmo com PAT válido.
+# O TFS roda todo dia às 08:30 no PC do Fabio: tarefa "BI SETDIG - refresh TFS" →
+# data-platform/refresh_tfs.py (extrai, publica e regrava os quadros do TFS; log em
+# data-platform/logs-refresh-tfs.txt).
 
 on:
   schedule:
