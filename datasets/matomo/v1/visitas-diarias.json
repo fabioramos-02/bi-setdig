@@ -1,83 +1,5 @@
 [
   {
-    "data": "2024-05-05",
-    "visitas": 1911,
-    "visitantesUnicos": 1771,
-    "acoes": 3475
-  },
-  {
-    "data": "2024-05-06",
-    "visitas": 16966,
-    "visitantesUnicos": 10635,
-    "acoes": 40576
-  },
-  {
-    "data": "2024-05-07",
-    "visitas": 18920,
-    "visitantesUnicos": 12529,
-    "acoes": 43305
-  },
-  {
-    "data": "2024-05-08",
-    "visitas": 16268,
-    "visitantesUnicos": 10588,
-    "acoes": 35046
-  },
-  {
-    "data": "2024-05-09",
-    "visitas": 15801,
-    "visitantesUnicos": 10137,
-    "acoes": 34691
-  },
-  {
-    "data": "2024-05-10",
-    "visitas": 14289,
-    "visitantesUnicos": 9053,
-    "acoes": 35271
-  },
-  {
-    "data": "2024-05-11",
-    "visitas": 2007,
-    "visitantesUnicos": 1791,
-    "acoes": 3407
-  },
-  {
-    "data": "2024-05-12",
-    "visitas": 1646,
-    "visitantesUnicos": 1506,
-    "acoes": 2626
-  },
-  {
-    "data": "2024-05-13",
-    "visitas": 15104,
-    "visitantesUnicos": 9660,
-    "acoes": 32083
-  },
-  {
-    "data": "2024-05-14",
-    "visitas": 16284,
-    "visitantesUnicos": 9915,
-    "acoes": 40901
-  },
-  {
-    "data": "2024-05-15",
-    "visitas": 15688,
-    "visitantesUnicos": 9679,
-    "acoes": 35684
-  },
-  {
-    "data": "2024-05-16",
-    "visitas": 14200,
-    "visitantesUnicos": 9116,
-    "acoes": 32674
-  },
-  {
-    "data": "2024-05-17",
-    "visitas": 13989,
-    "visitantesUnicos": 8962,
-    "acoes": 30697
-  },
-  {
     "data": "2024-05-18",
     "visitas": 2156,
     "visitantesUnicos": 1956,
@@ -5515,8 +5437,86 @@
   },
   {
     "data": "2026-11-10",
-    "visitas": 527,
-    "visitantesUnicos": 488,
-    "acoes": 955
+    "visitas": 1680,
+    "visitantesUnicos": 1291,
+    "acoes": 2878
+  },
+  {
+    "data": "2026-11-11",
+    "visitas": 1648,
+    "visitantesUnicos": 1293,
+    "acoes": 2907
+  },
+  {
+    "data": "2026-11-12",
+    "visitas": 2020,
+    "visitantesUnicos": 1582,
+    "acoes": 3812
+  },
+  {
+    "data": "2026-11-13",
+    "visitas": 2324,
+    "visitantesUnicos": 1716,
+    "acoes": 4237
+  },
+  {
+    "data": "2026-11-14",
+    "visitas": 203,
+    "visitantesUnicos": 194,
+    "acoes": 275
+  },
+  {
+    "data": "2026-11-15",
+    "visitas": 280,
+    "visitantesUnicos": 270,
+    "acoes": 324
+  },
+  {
+    "data": "2026-11-16",
+    "visitas": 2234,
+    "visitantesUnicos": 1763,
+    "acoes": 4255
+  },
+  {
+    "data": "2026-11-17",
+    "visitas": 1784,
+    "visitantesUnicos": 1356,
+    "acoes": 3017
+  },
+  {
+    "data": "2026-11-18",
+    "visitas": 1713,
+    "visitantesUnicos": 1341,
+    "acoes": 2971
+  },
+  {
+    "data": "2026-11-19",
+    "visitas": 1600,
+    "visitantesUnicos": 1268,
+    "acoes": 2727
+  },
+  {
+    "data": "2026-11-20",
+    "visitas": 241,
+    "visitantesUnicos": 234,
+    "acoes": 293
+  },
+  {
+    "data": "2026-11-21",
+    "visitas": 229,
+    "visitantesUnicos": 226,
+    "acoes": 274
+  },
+  {
+    "data": "2026-11-22",
+    "visitas": 264,
+    "visitantesUnicos": 259,
+    "acoes": 291
+  },
+  {
+    "data": "2026-11-23",
+    "visitas": 1328,
+    "visitantesUnicos": 1050,
+    "acoes": 2600
   }
 ]

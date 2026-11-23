@@ -2,89 +2,89 @@
   "dia": [
     {
       "navegador": "Chrome",
-      "visitas": 406
+      "visitas": 1082
     },
     {
       "navegador": "Microsoft Edge",
-      "visitas": 83
+      "visitas": 200
     },
     {
       "navegador": "Firefox",
-      "visitas": 32
+      "visitas": 36
     },
     {
-      "navegador": "Mobile Safari",
-      "visitas": 3
+      "navegador": "Chrome Mobile",
+      "visitas": 5
     },
     {
       "navegador": "Outros",
-      "visitas": 3
+      "visitas": 5
     }
   ],
   "semana": [
     {
       "navegador": "Chrome",
-      "visitas": 1737
+      "visitas": 1082
     },
     {
       "navegador": "Microsoft Edge",
-      "visitas": 328
-    },
-    {
-      "navegador": "Headless Chrome",
-      "visitas": 188
+      "visitas": 200
     },
     {
       "navegador": "Firefox",
-      "visitas": 80
+      "visitas": 36
+    },
+    {
+      "navegador": "Chrome Mobile",
+      "visitas": 5
     },
     {
       "navegador": "Outros",
-      "visitas": 45
+      "visitas": 5
     }
   ],
   "mes": [
     {
       "navegador": "Chrome",
-      "visitas": 7064
+      "visitas": 18642
     },
     {
       "navegador": "Headless Chrome",
-      "visitas": 1853
+      "visitas": 4361
     },
     {
       "navegador": "Microsoft Edge",
-      "visitas": 1307
+      "visitas": 3369
     },
     {
       "navegador": "Firefox",
-      "visitas": 305
+      "visitas": 784
     },
     {
       "navegador": "Outros",
-      "visitas": 151
+      "visitas": 545
     }
   ],
   "ano": [
     {
       "navegador": "Chrome",
-      "visitas": 1840695
+      "visitas": 1852273
     },
     {
       "navegador": "Chrome Mobile",
-      "visitas": 978413
+      "visitas": 978501
     },
     {
       "navegador": "Mobile Safari",
-      "visitas": 346957
+      "visitas": 346966
     },
     {
       "navegador": "Microsoft Edge",
-      "visitas": 336823
+      "visitas": 338885
     },
     {
       "navegador": "Outros",
-      "visitas": 487390
+      "visitas": 490672
     }
   ]
 }

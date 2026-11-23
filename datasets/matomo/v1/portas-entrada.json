@@ -2,169 +2,169 @@
   "dia": [
     {
       "pagina": "/",
-      "entradas": 344
+      "entradas": 713
     },
     {
       "pagina": "/workspace",
-      "entradas": 51
+      "entradas": 159
     },
     {
       "pagina": "/workspace/minha-area/meus-sistemas",
-      "entradas": 20
-    },
-    {
-      "pagina": "/orgao/agesulagencia-estadual-de-gestao-de-empreendimentos-de-mato-grosso-do-sul168/servicos",
-      "entradas": 9
-    },
-    {
-      "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
-      "entradas": 7
-    },
-    {
-      "pagina": "/orgao/ageprevagencia-de-previdencia-social-de-mato-grosso-do-sul65/servicos",
-      "entradas": 5
-    },
-    {
-      "pagina": "/orgao/agraeragencia-de-desenvolvimento-agrario-e-extensao-rural-de-mato-grosso-do-sul71/servicos",
-      "entradas": 5
+      "entradas": 37
     },
     {
       "pagina": "/orgao/sadsecretaria-de-estado-de-adminstracao-de-mato-grosso-do-sul105/servicos",
-      "entradas": 5
+      "entradas": 33
     },
     {
-      "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
-      "entradas": 5
+      "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
+      "entradas": 26
+    },
+    {
+      "pagina": "/orgao/pcmspolicia-civil-de-mato-grosso-do-sul60/servicos",
+      "entradas": 19
     },
     {
       "pagina": "/direitos-e-cidadania/patronato138/",
-      "entradas": 4
+      "entradas": 16
+    },
+    {
+      "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
+      "entradas": 15
+    },
+    {
+      "pagina": "/orgao/cbmmscorpo-de-bombeiros-militar109/servicos",
+      "entradas": 14
+    },
+    {
+      "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
+      "entradas": 13
     }
   ],
   "semana": [
     {
       "pagina": "/",
-      "entradas": 1280
+      "entradas": 713
     },
     {
       "pagina": "/workspace",
-      "entradas": 251
+      "entradas": 159
     },
     {
       "pagina": "/workspace/minha-area/meus-sistemas",
-      "entradas": 65
-    },
-    {
-      "pagina": "/orgao/sadsecretaria-de-estado-de-adminstracao-de-mato-grosso-do-sul105/servicos",
-      "entradas": 52
-    },
-    {
-      "pagina": "/orgao/agesulagencia-estadual-de-gestao-de-empreendimentos-de-mato-grosso-do-sul168/servicos",
       "entradas": 37
     },
     {
+      "pagina": "/orgao/sadsecretaria-de-estado-de-adminstracao-de-mato-grosso-do-sul105/servicos",
+      "entradas": 33
+    },
+    {
       "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
-      "entradas": 31
+      "entradas": 26
     },
     {
-      "pagina": "/financas-e-impostos/certidao-tributaria-estadual-emissao152/",
-      "entradas": 20
-    },
-    {
-      "pagina": "/orgao/cbmmscorpo-de-bombeiros-militar109/servicos",
+      "pagina": "/orgao/pcmspolicia-civil-de-mato-grosso-do-sul60/servicos",
       "entradas": 19
     },
     {
-      "pagina": "/financas-e-impostos/ - Others",
-      "entradas": 18
+      "pagina": "/direitos-e-cidadania/patronato138/",
+      "entradas": 16
+    },
+    {
+      "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
+      "entradas": 15
+    },
+    {
+      "pagina": "/orgao/cbmmscorpo-de-bombeiros-militar109/servicos",
+      "entradas": 14
     },
     {
       "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
-      "entradas": 18
+      "entradas": 13
     }
   ],
   "mes": [
     {
       "pagina": "/",
-      "entradas": 4935
+      "entradas": 13299
     },
     {
       "pagina": "/workspace",
-      "entradas": 1030
+      "entradas": 2714
     },
     {
       "pagina": "/workspace/minha-area/meus-sistemas",
-      "entradas": 277
+      "entradas": 665
     },
     {
       "pagina": "/orgao/sadsecretaria-de-estado-de-adminstracao-de-mato-grosso-do-sul105/servicos",
-      "entradas": 220
+      "entradas": 535
     },
     {
       "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
-      "entradas": 164
+      "entradas": 396
     },
     {
       "pagina": "/financas-e-impostos/ - Others",
-      "entradas": 118
+      "entradas": 315
     },
     {
       "pagina": "/financas-e-impostos/certidao-tributaria-estadual-emissao152/",
-      "entradas": 99
+      "entradas": 273
     },
     {
       "pagina": "/orgao/escolagovfundacao-escola-de-governo22/servicos",
-      "entradas": 92
-    },
-    {
-      "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
-      "entradas": 90
+      "entradas": 235
     },
     {
       "pagina": "/orgao/cbmmscorpo-de-bombeiros-militar109/servicos",
-      "entradas": 77
+      "entradas": 210
+    },
+    {
+      "pagina": "/orgao/pcmspolicia-civil-de-mato-grosso-do-sul60/servicos",
+      "entradas": 204
     }
   ],
   "ano": [
     {
       "pagina": "/",
-      "entradas": 1206004
+      "entradas": 1214368
     },
     {
       "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
-      "entradas": 300606
+      "entradas": 300838
     },
     {
       "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
-      "entradas": 193968
+      "entradas": 194058
     },
     {
       "pagina": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
-      "entradas": 150321
+      "entradas": 150359
     },
     {
       "pagina": "/workspace/minha-area/meus-sistemas",
-      "entradas": 136356
+      "entradas": 136744
     },
     {
       "pagina": "/noticias/ - Others",
-      "entradas": 111555
+      "entradas": 111557
     },
     {
       "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
-      "entradas": 110329
+      "entradas": 110439
     },
     {
       "pagina": "/financas-e-impostos/portal-e-fazenda-cadastro135/",
-      "entradas": 82260
-    },
-    {
-      "pagina": "/financas-e-impostos/ipva-consulta-de-debito54/",
-      "entradas": 77225
+      "entradas": 82358
     },
     {
       "pagina": "/workspace",
-      "entradas": 77073
+      "entradas": 78757
+    },
+    {
+      "pagina": "/financas-e-impostos/ipva-consulta-de-debito54/",
+      "entradas": 77305
     }
   ]
 }

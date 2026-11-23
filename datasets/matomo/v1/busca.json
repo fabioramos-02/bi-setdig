@@ -1,37 +1,41 @@
 {
   "dia": [
     {
-      "termo": "itcd",
+      "termo": "ipva",
+      "buscas": 3
+    },
+    {
+      "termo": "procon",
+      "buscas": 2
+    },
+    {
+      "termo": "cidadão",
       "buscas": 1
     },
     {
-      "termo": "noticias",
+      "termo": "inscrição estadual",
       "buscas": 1
     },
     {
       "termo": "servidor",
+      "buscas": 1
+    },
+    {
+      "termo": "webmail pcms",
       "buscas": 1
     }
   ],
   "semana": [
     {
       "termo": "ipva",
-      "buscas": 4
-    },
-    {
-      "termo": "servidor",
       "buscas": 3
-    },
-    {
-      "termo": "itcd",
-      "buscas": 2
     },
     {
       "termo": "procon",
       "buscas": 2
     },
     {
-      "termo": "gestão pública",
+      "termo": "cidadão",
       "buscas": 1
     },
     {
@@ -39,53 +43,57 @@
       "buscas": 1
     },
     {
-      "termo": "mulher",
+      "termo": "servidor",
       "buscas": 1
     },
     {
-      "termo": "noticias",
-      "buscas": 1
-    },
-    {
-      "termo": "plano de governo",
+      "termo": "webmail pcms",
       "buscas": 1
     }
   ],
   "mes": [
     {
       "termo": "ipva",
-      "buscas": 10
+      "buscas": 25
     },
     {
       "termo": "servidor",
-      "buscas": 9
-    },
-    {
-      "termo": "procon",
-      "buscas": 7
-    },
-    {
-      "termo": "inscrição estadual",
-      "buscas": 6
+      "buscas": 17
     },
     {
       "termo": "itcd",
-      "buscas": 6
+      "buscas": 16
+    },
+    {
+      "termo": "inscrição estadual",
+      "buscas": 15
+    },
+    {
+      "termo": "procon",
+      "buscas": 15
     },
     {
       "termo": "substituição tributária",
-      "buscas": 6
+      "buscas": 9
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 2
+      "buscas": 6
     },
     {
       "termo": "cidadão",
-      "buscas": 2
+      "buscas": 6
     },
     {
       "termo": "defesa civil",
+      "buscas": 3
+    },
+    {
+      "termo": "noticias",
+      "buscas": 3
+    },
+    {
+      "termo": "fundação estadual jornalista luiz chagas de rádio e televisão",
       "buscas": 2
     },
     {
@@ -94,6 +102,10 @@
     },
     {
       "termo": "cronotacografo",
+      "buscas": 1
+    },
+    {
+      "termo": "cursos",
       "buscas": 1
     },
     {
@@ -109,62 +121,50 @@
       "buscas": 1
     },
     {
-      "termo": "mulher",
+      "termo": "habilitar ficha",
       "buscas": 1
     },
     {
-      "termo": "noticias",
+      "termo": "informativo de atividade",
       "buscas": 1
     },
     {
-      "termo": "pid",
-      "buscas": 1
-    },
-    {
-      "termo": "plano de governo",
-      "buscas": 1
-    },
-    {
-      "termo": "ramais",
-      "buscas": 1
-    },
-    {
-      "termo": "rh",
+      "termo": "licenciamento",
       "buscas": 1
     }
   ],
   "ano": [
     {
       "termo": "ipva",
-      "buscas": 35094
+      "buscas": 35109
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 16085
+      "buscas": 16094
     },
     {
       "termo": "procon",
-      "buscas": 8045
+      "buscas": 8053
     },
     {
       "termo": "substituição tributária",
-      "buscas": 5622
+      "buscas": 5625
     },
     {
       "termo": "itcd",
-      "buscas": 2268
+      "buscas": 2278
     },
     {
       "termo": "cidadão",
-      "buscas": 1771
+      "buscas": 1775
     },
     {
       "termo": "autoparcelamento",
-      "buscas": 1746
+      "buscas": 1750
     },
     {
       "termo": "servidor",
-      "buscas": 1357
+      "buscas": 1365
     },
     {
       "termo": "empresa",
@@ -172,11 +172,11 @@
     },
     {
       "termo": "licenciamento",
-      "buscas": 499
+      "buscas": 500
     },
     {
       "termo": "defesa civil",
-      "buscas": 385
+      "buscas": 386
     },
     {
       "termo": "mulher",
@@ -200,7 +200,7 @@
     },
     {
       "termo": "fundação estadual jornalista luiz chagas de rádio e televisão",
-      "buscas": 176
+      "buscas": 178
     },
     {
       "termo": "gestão pública",
