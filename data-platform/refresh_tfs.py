@@ -49,7 +49,7 @@ def json_do_bi(user, senha):
 
 def main():
     log("início")
-    rodar("git", "pull", "--rebase", "-q", "origin", "master")
+    rodar("git", "pull", "--rebase", "--autostash", "-q", "origin", "master")
     r = rodar(sys.executable, "run.py", "--domain", FONTES, cwd=DP, checar=False)
     log(" | ".join(l[:200] for l in r.stdout.splitlines() if l.startswith("[")))
     if "[tfs] FALHOU" in r.stdout:
