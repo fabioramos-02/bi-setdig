@@ -17,17 +17,17 @@
   {
     "titulo": "PBI",
     "tipo": "numero",
-    "total": 394
+    "total": 399
   },
   {
     "titulo": "TASK",
     "tipo": "numero",
-    "total": 1808
+    "total": 1779
   },
   {
     "titulo": "APLICATIVO",
     "tipo": "numero",
-    "total": 24
+    "total": 32
   },
   {
     "titulo": "DESPRIORIZADO",
@@ -37,22 +37,22 @@
   {
     "titulo": "BUG",
     "tipo": "numero",
-    "total": 29
+    "total": 30
   },
   {
     "titulo": "AGUAR... DECISÃO",
     "tipo": "numero",
-    "total": 15
+    "total": 16
   },
   {
     "titulo": "IMPEDIDO",
     "tipo": "numero",
-    "total": 5
+    "total": 4
   },
   {
     "titulo": "EM DESENVOLVIMENTO",
     "tipo": "numero",
-    "total": 17
+    "total": 14
   },
   {
     "titulo": "DESCONTINUADOS",
@@ -62,11 +62,11 @@
   {
     "titulo": "TASK's ' sem UST's",
     "tipo": "grafico",
-    "total": 255,
+    "total": 247,
     "grupos": [
       {
         "rotulo": "Sem sprint",
-        "qtd": 90
+        "qtd": 93
       },
       {
         "rotulo": "Sprint 8",
@@ -74,11 +74,11 @@
       },
       {
         "rotulo": "Sprint 7",
-        "qtd": 33
+        "qtd": 30
       },
       {
         "rotulo": "Sprint 9",
-        "qtd": 28
+        "qtd": 23
       },
       {
         "rotulo": "Sprint 4",
@@ -86,7 +86,7 @@
       },
       {
         "rotulo": "Sprint 6",
-        "qtd": 12
+        "qtd": 9
       },
       {
         "rotulo": "Sprint 2",
@@ -105,35 +105,35 @@
   {
     "titulo": "PACOTES DE ENTREGA",
     "tipo": "grafico",
-    "total": 394,
+    "total": 399,
     "grupos": [
       {
         "rotulo": "Em Produção",
-        "qtd": 173
+        "qtd": 193
       },
       {
         "rotulo": "A fazer",
-        "qtd": 91
+        "qtd": 83
       },
       {
         "rotulo": "Área de Negócios",
-        "qtd": 84
-      },
-      {
-        "rotulo": "Em Desenvolvimento",
-        "qtd": 17
+        "qtd": 81
       },
       {
         "rotulo": "Aguardando decisão",
-        "qtd": 15
+        "qtd": 16
+      },
+      {
+        "rotulo": "Em Desenvolvimento",
+        "qtd": 14
       },
       {
         "rotulo": "Impedido",
-        "qtd": 10
+        "qtd": 9
       },
       {
         "rotulo": "Aguardando Validação do Órgão",
-        "qtd": 4
+        "qtd": 3
       }
     ]
   }

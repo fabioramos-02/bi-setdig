@@ -1,14 +1,6 @@
 {
   "dia": [
     {
-      "termo": "ipva",
-      "buscas": 3
-    },
-    {
-      "termo": "procon",
-      "buscas": 2
-    },
-    {
       "termo": "cidadão",
       "buscas": 1
     },
@@ -18,10 +10,6 @@
     },
     {
       "termo": "servidor",
-      "buscas": 1
-    },
-    {
-      "termo": "webmail pcms",
       "buscas": 1
     }
   ],
@@ -31,20 +19,20 @@
       "buscas": 3
     },
     {
-      "termo": "procon",
-      "buscas": 2
+      "termo": "servidor",
+      "buscas": 3
     },
     {
       "termo": "cidadão",
-      "buscas": 1
+      "buscas": 2
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 1
+      "buscas": 2
     },
     {
-      "termo": "servidor",
-      "buscas": 1
+      "termo": "procon",
+      "buscas": 2
     },
     {
       "termo": "webmail pcms",
@@ -58,15 +46,15 @@
     },
     {
       "termo": "servidor",
-      "buscas": 17
+      "buscas": 19
+    },
+    {
+      "termo": "inscrição estadual",
+      "buscas": 16
     },
     {
       "termo": "itcd",
       "buscas": 16
-    },
-    {
-      "termo": "inscrição estadual",
-      "buscas": 15
     },
     {
       "termo": "procon",
@@ -77,11 +65,11 @@
       "buscas": 9
     },
     {
-      "termo": "autoparcelamento",
-      "buscas": 6
+      "termo": "cidadão",
+      "buscas": 7
     },
     {
-      "termo": "cidadão",
+      "termo": "autoparcelamento",
       "buscas": 6
     },
     {
@@ -140,7 +128,7 @@
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 16094
+      "buscas": 16095
     },
     {
       "termo": "procon",
@@ -156,7 +144,7 @@
     },
     {
       "termo": "cidadão",
-      "buscas": 1775
+      "buscas": 1776
     },
     {
       "termo": "autoparcelamento",
@@ -164,7 +152,7 @@
     },
     {
       "termo": "servidor",
-      "buscas": 1365
+      "buscas": 1367
     },
     {
       "termo": "empresa",

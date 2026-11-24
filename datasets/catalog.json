@@ -531,7 +531,7 @@
     "dataset": "visitas-resumo",
     "source": "matomo",
     "owner": "SETDIG",
-    "updatedAt": "2026-11-23T19:23:49.089467+00:00",
+    "updatedAt": "2026-11-24T12:30:04.402719+00:00",
     "frequency": "daily",
     "version": "v1",
     "schema": "data-platform/schemas/matomo-visitas-resumo.schema.json",
@@ -542,18 +542,18 @@
     "dataset": "navegadores",
     "source": "matomo",
     "owner": "SETDIG",
-    "updatedAt": "2026-11-23T19:23:56.751354+00:00",
+    "updatedAt": "2026-11-24T12:30:12.325858+00:00",
     "frequency": "daily",
     "version": "v1",
     "schema": "data-platform/schemas/matomo-navegadores.schema.json",
-    "rows": 20,
-    "bytes": 1409
+    "rows": 19,
+    "bytes": 1351
   },
   {
     "dataset": "dispositivos",
     "source": "matomo",
     "owner": "SETDIG",
-    "updatedAt": "2026-11-23T19:23:56.754070+00:00",
+    "updatedAt": "2026-11-24T12:30:12.329732+00:00",
     "frequency": "daily",
     "version": "v1",
     "schema": "data-platform/schemas/matomo-dispositivos.schema.json",
@@ -564,18 +564,18 @@
     "dataset": "horarios",
     "source": "matomo",
     "owner": "SETDIG",
-    "updatedAt": "2026-11-23T19:23:56.756045+00:00",
+    "updatedAt": "2026-11-24T12:30:12.332793+00:00",
     "frequency": "daily",
     "version": "v1",
     "schema": "data-platform/schemas/matomo-horarios.schema.json",
     "rows": 96,
-    "bytes": 5241
+    "bytes": 5240
   },
   {
     "dataset": "geografia",
     "source": "matomo",
     "owner": "SETDIG",
-    "updatedAt": "2026-11-23T19:23:56.757989+00:00",
+    "updatedAt": "2026-11-24T12:30:12.335321+00:00",
     "frequency": "daily",
     "version": "v1",
     "schema": "data-platform/schemas/matomo-geografia.schema.json",
@@ -586,84 +586,84 @@
     "dataset": "paginas-mais-acessadas",
     "source": "matomo",
     "owner": "SETDIG",
-    "updatedAt": "2026-11-23T19:23:56.760048+00:00",
+    "updatedAt": "2026-11-24T12:30:12.338181+00:00",
     "frequency": "daily",
     "version": "v1",
     "schema": "data-platform/schemas/matomo-paginas-mais-acessadas.schema.json",
     "rows": 80,
-    "bytes": 10438
+    "bytes": 10107
   },
   {
     "dataset": "busca",
     "source": "matomo",
     "owner": "SETDIG",
-    "updatedAt": "2026-11-23T19:23:56.762009+00:00",
+    "updatedAt": "2026-11-24T12:30:12.340391+00:00",
     "frequency": "daily",
     "version": "v1",
     "schema": "data-platform/schemas/matomo-busca.schema.json",
-    "rows": 52,
-    "bytes": 3376
+    "rows": 49,
+    "bytes": 3204
   },
   {
     "dataset": "busca-total",
     "source": "matomo",
     "owner": "SETDIG",
-    "updatedAt": "2026-11-23T19:23:56.763808+00:00",
+    "updatedAt": "2026-11-24T12:30:12.342836+00:00",
     "frequency": "daily",
     "version": "v1",
     "schema": "data-platform/schemas/matomo-busca-total.schema.json",
     "rows": 4,
-    "bytes": 59
+    "bytes": 60
   },
   {
     "dataset": "visitas-diarias",
     "source": "matomo",
     "owner": "SETDIG",
-    "updatedAt": "2026-11-23T19:24:00.782810+00:00",
+    "updatedAt": "2026-11-24T12:30:16.944829+00:00",
     "frequency": "daily",
     "version": "v1",
     "schema": "data-platform/schemas/matomo-visitas-diarias.schema.json",
     "rows": 920,
-    "bytes": 97394
+    "bytes": 97391
   },
   {
     "dataset": "perfil-filtro",
     "source": "matomo",
     "owner": "SETDIG",
-    "updatedAt": "2026-11-23T19:24:03.132848+00:00",
+    "updatedAt": "2026-11-24T12:30:19.605304+00:00",
     "frequency": "daily",
     "version": "v1",
     "schema": "data-platform/schemas/matomo-perfil-filtro.schema.json",
     "rows": 4,
-    "bytes": 44461
+    "bytes": 44415
   },
   {
     "dataset": "servicos-mais-acessados",
     "source": "matomo",
     "owner": "SETDIG",
-    "updatedAt": "2026-11-23T19:24:03.135734+00:00",
+    "updatedAt": "2026-11-24T12:30:19.609731+00:00",
     "frequency": "daily",
     "version": "v1",
     "schema": "data-platform/schemas/matomo-servicos-mais-acessados.schema.json",
     "rows": 60,
-    "bytes": 13423
+    "bytes": 13761
   },
   {
     "dataset": "demanda-por-orgao",
     "source": "matomo",
     "owner": "SETDIG",
-    "updatedAt": "2026-11-23T19:24:03.138243+00:00",
+    "updatedAt": "2026-11-24T12:30:19.612047+00:00",
     "frequency": "daily",
     "version": "v1",
     "schema": "data-platform/schemas/matomo-demanda-por-orgao.schema.json",
-    "rows": 127,
-    "bytes": 20159
+    "rows": 120,
+    "bytes": 19019
   },
   {
     "dataset": "eventos-perfil-navegacao",
     "source": "matomo",
     "owner": "SETDIG",
-    "updatedAt": "2026-11-23T19:24:05.709682+00:00",
+    "updatedAt": "2026-11-24T12:30:22.236033+00:00",
     "frequency": "daily",
     "version": "v1",
     "schema": "data-platform/schemas/matomo-eventos-perfil-navegacao.schema.json",
@@ -674,29 +674,29 @@
     "dataset": "portas-entrada",
     "source": "matomo",
     "owner": "SETDIG",
-    "updatedAt": "2026-11-23T19:24:08.265418+00:00",
+    "updatedAt": "2026-11-24T12:30:24.975032+00:00",
     "frequency": "daily",
     "version": "v1",
     "schema": "data-platform/schemas/matomo-portas-entrada.schema.json",
     "rows": 40,
-    "bytes": 4130
+    "bytes": 4139
   },
   {
     "dataset": "fuga-hub",
     "source": "matomo",
     "owner": "SETDIG",
-    "updatedAt": "2026-11-23T19:24:08.267948+00:00",
+    "updatedAt": "2026-11-24T12:30:24.978902+00:00",
     "frequency": "daily",
     "version": "v1",
     "schema": "data-platform/schemas/matomo-fuga-hub.schema.json",
     "rows": 40,
-    "bytes": 3063
+    "bytes": 3071
   },
   {
     "dataset": "sites",
     "source": "matomo",
     "owner": "SETDIG",
-    "updatedAt": "2026-11-23T19:24:08.512184+00:00",
+    "updatedAt": "2026-11-24T12:30:25.225859+00:00",
     "frequency": "daily",
     "version": "v1",
     "schema": "data-platform/schemas/matomo-sites.schema.json",
@@ -707,18 +707,18 @@
     "dataset": "itens",
     "source": "tfs",
     "owner": "SETDIG",
-    "updatedAt": "2026-11-23T19:24:17.727151+00:00",
+    "updatedAt": "2026-11-24T12:30:36.808148+00:00",
     "frequency": "daily",
     "version": "v1",
     "schema": "data-platform/schemas/tfs-itens.schema.json",
-    "rows": 2348,
-    "bytes": 1933624
+    "rows": 2325,
+    "bytes": 1918141
   },
   {
     "dataset": "sprints",
     "source": "tfs",
     "owner": "SETDIG",
-    "updatedAt": "2026-11-23T19:24:18.057984+00:00",
+    "updatedAt": "2026-11-24T12:30:37.075599+00:00",
     "frequency": "daily",
     "version": "v1",
     "schema": "data-platform/schemas/tfs-sprints.schema.json",
@@ -729,11 +729,11 @@
     "dataset": "painel-time",
     "source": "tfs",
     "owner": "SETDIG",
-    "updatedAt": "2026-11-23T19:24:23.032500+00:00",
+    "updatedAt": "2026-11-24T12:30:42.547925+00:00",
     "frequency": "daily",
     "version": "v1",
     "schema": "data-platform/schemas/tfs-painel-time.schema.json",
     "rows": 14,
-    "bytes": 2206
+    "bytes": 2204
   }
 ]

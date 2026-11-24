@@ -1,18 +1,18 @@
 {
   "dia": {
     "resumo": {
-      "homeVisitors": 713,
-      "atribuiveis": 9,
-      "proxyRatePct": 1.2623,
-      "usoRealPct": 0.0189,
-      "umACada": 5281,
+      "homeVisitors": 204,
+      "atribuiveis": 1,
+      "proxyRatePct": 0.4902,
+      "usoRealPct": 0.0074,
+      "umACada": 13600,
       "limiarPct": 2.0
     },
     "distribuicao": [
       {
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
-        "visitas": 9,
+        "visitas": 1,
         "participacaoPct": 100.0
       },
       {
@@ -24,11 +24,11 @@
     ],
     "topServicos": [
       {
-        "servico": "Delegacia Virtual (DEVIR)",
+        "servico": "Boletim on-line de acidente sem vítimas",
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
-        "path": "/seguranca/delegacia-virtual-devir105",
-        "visitas": 5,
+        "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170",
+        "visitas": 1,
         "exclusivo": true
       },
       {
@@ -36,40 +36,8 @@
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
         "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
-        "visitas": 4,
+        "visitas": 0,
         "exclusivo": false
-      },
-      {
-        "servico": "Boletim on-line de acidente sem vítimas",
-        "perfil": "CIDADAO",
-        "perfilLabel": "Cidadão",
-        "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170",
-        "visitas": 3,
-        "exclusivo": true
-      },
-      {
-        "servico": "Termo de Verificação Fiscal (TVF)/Apreensão (TA)",
-        "perfil": "EMPRESA",
-        "perfilLabel": "Empresa",
-        "path": "/financas-e-impostos/termo-de-verificacao-fiscal-tvf-ou-termo-de-apreensao-ta-baixa-ou-alteracao99",
-        "visitas": 2,
-        "exclusivo": false
-      },
-      {
-        "servico": "Emitir CRLV-e (licenciamento digital)",
-        "perfil": "CIDADAO",
-        "perfilLabel": "Cidadão",
-        "path": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
-        "visitas": 1,
-        "exclusivo": false
-      },
-      {
-        "servico": "Emissão da CNH",
-        "perfil": "CIDADAO",
-        "perfilLabel": "Cidadão",
-        "path": "/transito-e-transportes/emissao-da-carteira-nacional-de-habilitacao174",
-        "visitas": 1,
-        "exclusivo": true
       },
       {
         "servico": "Consultar Fila ambulatorial",
@@ -78,6 +46,30 @@
         "path": "/saude-e-cuidado/consultar-fila-ambulatorial118",
         "visitas": 0,
         "exclusivo": false
+      },
+      {
+        "servico": "Emitir CRLV-e (licenciamento digital)",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
+        "visitas": 0,
+        "exclusivo": false
+      },
+      {
+        "servico": "Emissão da CNH",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/transito-e-transportes/emissao-da-carteira-nacional-de-habilitacao174",
+        "visitas": 0,
+        "exclusivo": true
+      },
+      {
+        "servico": "Delegacia Virtual (DEVIR)",
+        "perfil": "CIDADAO",
+        "perfilLabel": "Cidadão",
+        "path": "/seguranca/delegacia-virtual-devir105",
+        "visitas": 0,
+        "exclusivo": true
       },
       {
         "servico": "2ª via de conta de água/esgoto",
@@ -102,6 +94,14 @@
         "path": "/ciencia-e-tecnologia/conceder-acesso-ao-matomo70",
         "visitas": 0,
         "exclusivo": true
+      },
+      {
+        "servico": "Solicitar acesso ao Grafana",
+        "perfil": "SERVIDOR_PUBLICO",
+        "perfilLabel": "Servidor Público",
+        "path": "/ciencia-e-tecnologia/solicitar-acesso-ao-grafana21",
+        "visitas": 0,
+        "exclusivo": true
       }
     ],
     "servicosPorPerfil": {
@@ -111,7 +111,7 @@
           "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
           "icone": "currency_exchange",
           "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
-          "visitas": 4,
+          "visitas": 0,
           "exclusivo": false
         },
         {
@@ -127,7 +127,7 @@
           "orgao": "Departamento Estadual de Trânsito de Mato Grosso do Sul",
           "icone": "directions_car",
           "path": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
-          "visitas": 1,
+          "visitas": 0,
           "exclusivo": false
         },
         {
@@ -135,7 +135,7 @@
           "orgao": "Departamento Estadual de Trânsito de Mato Grosso do Sul",
           "icone": "directions_car",
           "path": "/transito-e-transportes/emissao-da-carteira-nacional-de-habilitacao174",
-          "visitas": 1,
+          "visitas": 0,
           "exclusivo": true
         },
         {
@@ -143,7 +143,7 @@
           "orgao": "Polícia Militar de Mato Grosso do Sul",
           "icone": "security",
           "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170",
-          "visitas": 3,
+          "visitas": 1,
           "exclusivo": true
         },
         {
@@ -151,7 +151,7 @@
           "orgao": "Polícia Civil de Mato Grosso do Sul",
           "icone": "security",
           "path": "/seguranca/delegacia-virtual-devir105",
-          "visitas": 5,
+          "visitas": 0,
           "exclusivo": true
         },
         {
@@ -243,7 +243,7 @@
           "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
           "icone": "currency_exchange",
           "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
-          "visitas": 4,
+          "visitas": 0,
           "exclusivo": false
         },
         {
@@ -251,7 +251,7 @@
           "orgao": "Departamento Estadual de Trânsito de Mato Grosso do Sul",
           "icone": "directions_car",
           "path": "/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",
-          "visitas": 1,
+          "visitas": 0,
           "exclusivo": false
         },
         {
@@ -267,7 +267,7 @@
           "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
           "icone": "currency_exchange",
           "path": "/financas-e-impostos/termo-de-verificacao-fiscal-tvf-ou-termo-de-apreensao-ta-baixa-ou-alteracao99",
-          "visitas": 2,
+          "visitas": 0,
           "exclusivo": false
         }
       ],
@@ -277,7 +277,7 @@
           "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
           "icone": "currency_exchange",
           "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
-          "visitas": 4,
+          "visitas": 0,
           "exclusivo": false
         },
         {
@@ -285,7 +285,7 @@
           "orgao": "Secretaria de Estado de Fazenda de Mato Grosso do Sul",
           "icone": "currency_exchange",
           "path": "/financas-e-impostos/termo-de-verificacao-fiscal-tvf-ou-termo-de-apreensao-ta-baixa-ou-alteracao99",
-          "visitas": 2,
+          "visitas": 0,
           "exclusivo": false
         }
       ]
@@ -293,18 +293,18 @@
   },
   "semana": {
     "resumo": {
-      "homeVisitors": 713,
-      "atribuiveis": 9,
-      "proxyRatePct": 1.2623,
-      "usoRealPct": 0.0189,
-      "umACada": 5281,
+      "homeVisitors": 1079,
+      "atribuiveis": 11,
+      "proxyRatePct": 1.0195,
+      "usoRealPct": 0.0153,
+      "umACada": 6539,
       "limiarPct": 2.0
     },
     "distribuicao": [
       {
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
-        "visitas": 9,
+        "visitas": 11,
         "participacaoPct": 100.0
       },
       {
@@ -320,7 +320,7 @@
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
         "path": "/seguranca/delegacia-virtual-devir105",
-        "visitas": 5,
+        "visitas": 6,
         "exclusivo": true
       },
       {
@@ -336,7 +336,7 @@
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
         "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170",
-        "visitas": 3,
+        "visitas": 4,
         "exclusivo": true
       },
       {
@@ -435,7 +435,7 @@
           "orgao": "Polícia Militar de Mato Grosso do Sul",
           "icone": "security",
           "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170",
-          "visitas": 3,
+          "visitas": 4,
           "exclusivo": true
         },
         {
@@ -443,7 +443,7 @@
           "orgao": "Polícia Civil de Mato Grosso do Sul",
           "icone": "security",
           "path": "/seguranca/delegacia-virtual-devir105",
-          "visitas": 5,
+          "visitas": 6,
           "exclusivo": true
         },
         {
@@ -585,25 +585,25 @@
   },
   "mes": {
     "resumo": {
-      "homeVisitors": 13299,
-      "atribuiveis": 129,
-      "proxyRatePct": 0.97,
-      "usoRealPct": 0.0145,
-      "umACada": 6873,
+      "homeVisitors": 13665,
+      "atribuiveis": 131,
+      "proxyRatePct": 0.9587,
+      "usoRealPct": 0.0144,
+      "umACada": 6954,
       "limiarPct": 2.0
     },
     "distribuicao": [
       {
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
-        "visitas": 125,
-        "participacaoPct": 96.8992
+        "visitas": 127,
+        "participacaoPct": 96.9466
       },
       {
         "perfil": "SERVIDOR_PUBLICO",
         "perfilLabel": "Servidor Público",
         "visitas": 4,
-        "participacaoPct": 3.1008
+        "participacaoPct": 3.0534
       }
     ],
     "topServicos": [
@@ -620,7 +620,7 @@
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
         "path": "/seguranca/delegacia-virtual-devir105",
-        "visitas": 55,
+        "visitas": 56,
         "exclusivo": true
       },
       {
@@ -636,7 +636,7 @@
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
         "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170",
-        "visitas": 43,
+        "visitas": 44,
         "exclusivo": true
       },
       {
@@ -727,7 +727,7 @@
           "orgao": "Polícia Militar de Mato Grosso do Sul",
           "icone": "security",
           "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170",
-          "visitas": 43,
+          "visitas": 44,
           "exclusivo": true
         },
         {
@@ -735,7 +735,7 @@
           "orgao": "Polícia Civil de Mato Grosso do Sul",
           "icone": "security",
           "path": "/seguranca/delegacia-virtual-devir105",
-          "visitas": 55,
+          "visitas": 56,
           "exclusivo": true
         },
         {
@@ -877,18 +877,18 @@
   },
   "ano": {
     "resumo": {
-      "homeVisitors": 1214368,
-      "atribuiveis": 117769,
-      "proxyRatePct": 9.698,
-      "usoRealPct": 0.1455,
-      "umACada": 687,
+      "homeVisitors": 1214734,
+      "atribuiveis": 117771,
+      "proxyRatePct": 9.6952,
+      "usoRealPct": 0.1454,
+      "umACada": 688,
       "limiarPct": 2.0
     },
     "distribuicao": [
       {
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
-        "visitas": 117268,
+        "visitas": 117270,
         "participacaoPct": 99.5746
       },
       {
@@ -904,7 +904,7 @@
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
         "path": "/seguranca/delegacia-virtual-devir105",
-        "visitas": 53761,
+        "visitas": 53762,
         "exclusivo": true
       },
       {
@@ -952,7 +952,7 @@
         "perfil": "CIDADAO",
         "perfilLabel": "Cidadão",
         "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170",
-        "visitas": 5225,
+        "visitas": 5226,
         "exclusivo": true
       },
       {
@@ -1019,7 +1019,7 @@
           "orgao": "Polícia Militar de Mato Grosso do Sul",
           "icone": "security",
           "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170",
-          "visitas": 5225,
+          "visitas": 5226,
           "exclusivo": true
         },
         {
@@ -1027,7 +1027,7 @@
           "orgao": "Polícia Civil de Mato Grosso do Sul",
           "icone": "security",
           "path": "/seguranca/delegacia-virtual-devir105",
-          "visitas": 53761,
+          "visitas": 53762,
           "exclusivo": true
         },
         {

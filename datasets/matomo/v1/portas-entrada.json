@@ -2,169 +2,169 @@
   "dia": [
     {
       "pagina": "/",
-      "entradas": 713
+      "entradas": 204
     },
     {
       "pagina": "/workspace",
-      "entradas": 159
-    },
-    {
-      "pagina": "/workspace/minha-area/meus-sistemas",
-      "entradas": 37
-    },
-    {
-      "pagina": "/orgao/sadsecretaria-de-estado-de-adminstracao-de-mato-grosso-do-sul105/servicos",
-      "entradas": 33
-    },
-    {
-      "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
-      "entradas": 26
-    },
-    {
-      "pagina": "/orgao/pcmspolicia-civil-de-mato-grosso-do-sul60/servicos",
-      "entradas": 19
-    },
-    {
-      "pagina": "/direitos-e-cidadania/patronato138/",
-      "entradas": 16
-    },
-    {
-      "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
-      "entradas": 15
+      "entradas": 49
     },
     {
       "pagina": "/orgao/cbmmscorpo-de-bombeiros-militar109/servicos",
-      "entradas": 14
+      "entradas": 5
     },
     {
-      "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
-      "entradas": 13
+      "pagina": "/workspace/minha-area/meus-sistemas",
+      "entradas": 5
+    },
+    {
+      "pagina": "/orgao/sadsecretaria-de-estado-de-adminstracao-de-mato-grosso-do-sul105/servicos",
+      "entradas": 4
+    },
+    {
+      "pagina": "/financas-e-impostos/certidao-tributaria-estadual-emissao152/",
+      "entradas": 2
+    },
+    {
+      "pagina": "/financas-e-impostos/ipva-consulta-de-debito54/",
+      "entradas": 2
+    },
+    {
+      "pagina": "/financas-e-impostos/portal-e-fazenda-cadastro135/",
+      "entradas": 2
+    },
+    {
+      "pagina": "/orgao/agesulagencia-estadual-de-gestao-de-empreendimentos-de-mato-grosso-do-sul168/servicos",
+      "entradas": 2
+    },
+    {
+      "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
+      "entradas": 2
     }
   ],
   "semana": [
     {
       "pagina": "/",
-      "entradas": 713
+      "entradas": 1079
     },
     {
       "pagina": "/workspace",
-      "entradas": 159
-    },
-    {
-      "pagina": "/workspace/minha-area/meus-sistemas",
-      "entradas": 37
+      "entradas": 280
     },
     {
       "pagina": "/orgao/sadsecretaria-de-estado-de-adminstracao-de-mato-grosso-do-sul105/servicos",
-      "entradas": 33
+      "entradas": 55
+    },
+    {
+      "pagina": "/workspace/minha-area/meus-sistemas",
+      "entradas": 52
     },
     {
       "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
-      "entradas": 26
+      "entradas": 34
     },
     {
       "pagina": "/orgao/pcmspolicia-civil-de-mato-grosso-do-sul60/servicos",
-      "entradas": 19
-    },
-    {
-      "pagina": "/direitos-e-cidadania/patronato138/",
-      "entradas": 16
-    },
-    {
-      "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
-      "entradas": 15
+      "entradas": 23
     },
     {
       "pagina": "/orgao/cbmmscorpo-de-bombeiros-militar109/servicos",
-      "entradas": 14
+      "entradas": 22
     },
     {
       "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
-      "entradas": 13
+      "entradas": 21
+    },
+    {
+      "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
+      "entradas": 20
+    },
+    {
+      "pagina": "/direitos-e-cidadania/patronato138/",
+      "entradas": 19
     }
   ],
   "mes": [
     {
       "pagina": "/",
-      "entradas": 13299
+      "entradas": 13665
     },
     {
       "pagina": "/workspace",
-      "entradas": 2714
+      "entradas": 2835
     },
     {
       "pagina": "/workspace/minha-area/meus-sistemas",
-      "entradas": 665
+      "entradas": 680
     },
     {
       "pagina": "/orgao/sadsecretaria-de-estado-de-adminstracao-de-mato-grosso-do-sul105/servicos",
-      "entradas": 535
+      "entradas": 557
     },
     {
       "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
-      "entradas": 396
+      "entradas": 404
     },
     {
       "pagina": "/financas-e-impostos/ - Others",
-      "entradas": 315
+      "entradas": 320
     },
     {
       "pagina": "/financas-e-impostos/certidao-tributaria-estadual-emissao152/",
-      "entradas": 273
+      "entradas": 281
     },
     {
       "pagina": "/orgao/escolagovfundacao-escola-de-governo22/servicos",
-      "entradas": 235
+      "entradas": 242
     },
     {
       "pagina": "/orgao/cbmmscorpo-de-bombeiros-militar109/servicos",
-      "entradas": 210
+      "entradas": 218
     },
     {
       "pagina": "/orgao/pcmspolicia-civil-de-mato-grosso-do-sul60/servicos",
-      "entradas": 204
+      "entradas": 208
     }
   ],
   "ano": [
     {
       "pagina": "/",
-      "entradas": 1214368
+      "entradas": 1214734
     },
     {
       "pagina": "/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
-      "entradas": 300838
+      "entradas": 300846
     },
     {
       "pagina": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
-      "entradas": 194058
+      "entradas": 194066
     },
     {
       "pagina": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
-      "entradas": 150359
+      "entradas": 150362
     },
     {
       "pagina": "/workspace/minha-area/meus-sistemas",
-      "entradas": 136744
+      "entradas": 136759
     },
     {
       "pagina": "/noticias/ - Others",
-      "entradas": 111557
+      "entradas": 111558
     },
     {
       "pagina": "/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
-      "entradas": 110439
+      "entradas": 110444
     },
     {
       "pagina": "/financas-e-impostos/portal-e-fazenda-cadastro135/",
-      "entradas": 82358
+      "entradas": 82364
     },
     {
       "pagina": "/workspace",
-      "entradas": 78757
+      "entradas": 78878
     },
     {
       "pagina": "/financas-e-impostos/ipva-consulta-de-debito54/",
-      "entradas": 77305
+      "entradas": 77310
     }
   ]
 }
