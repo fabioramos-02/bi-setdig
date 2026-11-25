@@ -18,6 +18,7 @@ import sys
 import time
 from datetime import date, datetime
 from pathlib import Path
+from urllib.error import HTTPError
 from urllib.request import Request, urlopen
 
 DP = Path(__file__).resolve().parent
@@ -73,6 +74,9 @@ def main():
         try:
             if json_do_bi(user, senha)["atualizadoEm"] == date.today().isoformat():
                 break
+        except HTTPError as e:
+            if e.code == 401:  # senha errada não se resolve esperando
+                raise RuntimeError("a Vercel recusou o login (401): BI_AUTH_USER/BI_AUTH_PASSWORD do Windows diferem dos da Vercel")
         except Exception:
             pass
     else:
