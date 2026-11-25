@@ -1,46 +1,34 @@
 {
   "dia": [
     {
-      "servico": "Certidão tributária estadual - emissão (certidão negativa de débitos estaduais)",
-      "orgaoSigla": "SEFAZ MS",
-      "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao152",
-      "visitas": 3
-    },
-    {
-      "servico": "IPVA - consulta de débito",
-      "orgaoSigla": "SEFAZ MS",
-      "path": "/financas-e-impostos/ipva-consulta-de-debito54",
+      "servico": "Emitir guia de licenciamento anual",
+      "orgaoSigla": "DETRAN",
+      "path": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100",
       "visitas": 2
     },
     {
-      "servico": "e-Fazenda - cadastro",
-      "orgaoSigla": "SEFAZ MS",
-      "path": "/financas-e-impostos/portal-e-fazenda-cadastro135",
+      "servico": "Emitir boleto para pagar IPVA ou licenciamento de veículos em Dívida Ativa",
+      "orgaoSigla": "PGE MS",
+      "path": "/financas-e-impostos/emitir-boleto-para-pagamento-de-ipva-ou-licenciamento-de-veiculos-em-divida-ativa158",
       "visitas": 2
     },
     {
-      "servico": "Obter certidão de ocorrência",
-      "orgaoSigla": "CBMMS",
-      "path": "/seguranca/solicitar-certidao-de-ocorrencia123",
-      "visitas": 2
+      "servico": "Consultar Processos",
+      "orgaoSigla": "SAD",
+      "path": "/administracao-publica/consultar-processos16",
+      "visitas": 1
     },
     {
-      "servico": "Consultar vagas de emprego",
-      "orgaoSigla": "FUNTRAB",
-      "path": "/trabalho-emprego-e-previdencia/anunciar-vagas-de-emprego-no-sine-sistema-nacional-de-emprego71",
-      "visitas": 2
+      "servico": "Solicitar peticionamento processual",
+      "orgaoSigla": "ESCOLAGOV",
+      "path": "/administracao-publica/solicitar-peticionamento-processual146",
+      "visitas": 1
     },
     {
-      "servico": "Registrar Boletim de Ocorrencia de Sinistro de Trânsito –  Sem Vítimas",
-      "orgaoSigla": "PMMS",
-      "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170",
-      "visitas": 2
-    },
-    {
-      "servico": "Recorrer das multas de trânsito em rodovias de MS",
-      "orgaoSigla": "AGESUL",
-      "path": "/transito-e-transportes/divisao-de-multas-dim140",
-      "visitas": 2
+      "servico": "Aderir ao PACPOA-MS",
+      "orgaoSigla": "IAGRO",
+      "path": "/agropecuaria-e-vida-rural/aderir-ao-pacpoa-ms41",
+      "visitas": 1
     },
     {
       "servico": "Declarar saldo de rebanho e atualizar cadastro",
@@ -49,9 +37,15 @@
       "visitas": 1
     },
     {
-      "servico": "Habilitar ficha sanitária",
+      "servico": "Solicitar cadastramento da agricultura rural familiar",
+      "orgaoSigla": "AGRAER",
+      "path": "/agropecuaria-e-vida-rural/cadastramento-da-agricultura-familiar82",
+      "visitas": 1
+    },
+    {
+      "servico": "Consultar núcleos ativos (ave e suíno)",
       "orgaoSigla": "IAGRO",
-      "path": "/agropecuaria-e-vida-rural/habilitacao-de-ficha-sanitaria26",
+      "path": "/agropecuaria-e-vida-rural/consultar-nucleos-ativos-aves-e-suinos47",
       "visitas": 1
     },
     {
@@ -61,33 +55,39 @@
       "visitas": 1
     },
     {
-      "servico": "Solicitar Certidão de Regularidade Fiscal",
-      "orgaoSigla": "PGE MS",
-      "path": "/comunicacao-e-transparencia/inscricao-em-divida-ativa-certidao131",
+      "servico": "Solicitar o benefício do Mais Social",
+      "orgaoSigla": "SEAD",
+      "path": "/assistencia-social/solicitacao-de-inclusao-no-programa-mais-social118",
       "visitas": 1
     },
     {
-      "servico": "Solicitar produção e adaptação de materiais didáticos em Libras",
-      "orgaoSigla": "SED MS",
-      "path": "/educacao-e-pesquisa/solicitar-producao-e-adaptacao-de-materiais-didaticos-em-libras-cas164",
+      "servico": "Registrar denúncia",
+      "orgaoSigla": "AGEPEN",
+      "path": "/comunicacao-e-transparencia/ouvidoria50",
       "visitas": 1
     },
     {
-      "servico": "Solicitar a verificação de vida escolar e autenticidade de documentos escolares de estudantes do Sistema de Ensino de Mato Grosso do Sul",
-      "orgaoSigla": "SED MS",
-      "path": "/educacao-e-pesquisa/verificacao-de-vida-escolar-e-autenticidade-de-documentos-escolares-de-estudantes-do-sistema-de-ensino-de-mato-grosso-do-sul26",
+      "servico": "Solicitar carteira de identidade",
+      "orgaoSigla": "CGP",
+      "path": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
       "visitas": 1
     },
     {
-      "servico": "Validar documentos",
-      "orgaoSigla": "JUCEMS",
-      "path": "/empresa-industria-e-comercio/validar-documentos144",
+      "servico": "Realizar programa ou cursos de capacitação continuada",
+      "orgaoSigla": "ESCOLAGOV",
+      "path": "/educacao-e-pesquisa/realizar-programa-ou-cursos-de-capacitacao-continuada91",
       "visitas": 1
     },
     {
-      "servico": "Fornecimento de dados e documentos fiscais do próprio requerente",
+      "servico": "Auto de lançamento e de imposição de multa (ALIM) - impugnação",
       "orgaoSigla": "SEFAZ MS",
-      "path": "/financas-e-impostos/fornecimento-de-dados-fiscais-gia-sintegra-documentos-fiscais-eletronicos32",
+      "path": "/financas-e-impostos/auto-de-lancamento-e-de-imposicao-de-multa-alim-impugnacao83",
+      "visitas": 1
+    },
+    {
+      "servico": "Certidão tributária estadual - emissão (certidão circunstanciada de débitos estaduais)",
+      "orgaoSigla": "SEFAZ MS",
+      "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao-certidao-circunstanciada-de-debitos-estaduais174",
       "visitas": 1
     }
   ],
@@ -96,91 +96,91 @@
       "servico": "Certidão tributária estadual - emissão (certidão negativa de débitos estaduais)",
       "orgaoSigla": "SEFAZ MS",
       "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao152",
-      "visitas": 24
-    },
-    {
-      "servico": "Emitir guia de licenciamento anual",
-      "orgaoSigla": "DETRAN",
-      "path": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100",
-      "visitas": 21
+      "visitas": 43
     },
     {
       "servico": "Solicitar Carteira de Visitante do Sistema Prisional",
       "orgaoSigla": "AGEPEN",
       "path": "/direitos-e-cidadania/patronato138",
-      "visitas": 19
+      "visitas": 30
+    },
+    {
+      "servico": "Emitir guia de licenciamento anual",
+      "orgaoSigla": "DETRAN",
+      "path": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100",
+      "visitas": 30
     },
     {
       "servico": "e-Fazenda - cadastro",
       "orgaoSigla": "SEFAZ MS",
       "path": "/financas-e-impostos/portal-e-fazenda-cadastro135",
-      "visitas": 14
-    },
-    {
-      "servico": "IPVA - consulta de débito",
-      "orgaoSigla": "SEFAZ MS",
-      "path": "/financas-e-impostos/ipva-consulta-de-debito54",
-      "visitas": 10
-    },
-    {
-      "servico": "IPVA - redução para pessoa com deficiência (PcD)",
-      "orgaoSigla": "SEFAZ MS",
-      "path": "/financas-e-impostos/ipva-reducao-do-ipva-para-proprietario-ou-possuidor-paraplegico-ou-portador-de-deficiencia-fisica104",
-      "visitas": 9
-    },
-    {
-      "servico": "Emitir certidão de antecedentes criminais",
-      "orgaoSigla": "CGP",
-      "path": "/seguranca/expedicao-de-certidao-de-antecedentes-criminais35",
-      "visitas": 9
-    },
-    {
-      "servico": "Validar documentos",
-      "orgaoSigla": "JUCEMS",
-      "path": "/empresa-industria-e-comercio/validar-documentos144",
-      "visitas": 8
-    },
-    {
-      "servico": "Registrar Boletim de Ocorrencia de Sinistro de Trânsito –  Sem Vítimas",
-      "orgaoSigla": "PMMS",
-      "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170/imprimir",
-      "visitas": 8
+      "visitas": 24
     },
     {
       "servico": "Documento de arrecadação do estado de Mato Grosso do Sul (DAEMS) - emissão",
       "orgaoSigla": "SEFAZ MS",
       "path": "/financas-e-impostos/documento-de-arrecadacao-do-estado-de-mato-grosso-do-sul-daems-emissao5",
-      "visitas": 7
+      "visitas": 18
     },
     {
-      "servico": "Cursar a Reciclagem para Condutor Infrator",
-      "orgaoSigla": "DETRAN",
-      "path": "/transito-e-transportes/solicitacao-de-curso-de-reciclagem-para-condutores-infratores28",
-      "visitas": 7
+      "servico": "IPVA - consulta de débito",
+      "orgaoSigla": "SEFAZ MS",
+      "path": "/financas-e-impostos/ipva-consulta-de-debito54",
+      "visitas": 18
+    },
+    {
+      "servico": "IPVA - redução para pessoa com deficiência (PcD)",
+      "orgaoSigla": "SEFAZ MS",
+      "path": "/financas-e-impostos/ipva-reducao-do-ipva-para-proprietario-ou-possuidor-paraplegico-ou-portador-de-deficiencia-fisica104",
+      "visitas": 15
     },
     {
       "servico": "Solicitar carteira de identidade",
       "orgaoSigla": "CGP",
       "path": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
-      "visitas": 6
+      "visitas": 14
     },
     {
       "servico": "Realizar cursos de aperfeiçoamento (carga horária acima de 120 horas)",
       "orgaoSigla": "ESCOLAGOV",
       "path": "/educacao-e-pesquisa/realizar-cursos-de-aperfeicoamento-carga-horaria-acima-de-120-horas150",
-      "visitas": 6
-    },
-    {
-      "servico": "Cadastro do comércio, indústria e serviços (CCIS) - inscrição de contribuinte localizado em outras unidades da federação como responsável pelo recolhimento do ICMS nas operações destinadas a consumidor final - ICMS DIFCON",
-      "orgaoSigla": "SEFAZ MS",
-      "path": "/empresa-industria-e-comercio/cadastro-do-comercio-industria-e-servicos-ccis-inscricao-de-contribuinte-localizado-em-outras-unidades-da-federacao-como-responsavel-pelo-recolhimento-do-icms-nas-operacoes-destinadas-a-consumidor-final-icms-difcon53",
-      "visitas": 6
+      "visitas": 12
     },
     {
       "servico": "Registrar boletim de ocorrências on-line",
       "orgaoSigla": "PCMS",
       "path": "/seguranca/delegacia-virtual-devir105",
-      "visitas": 6
+      "visitas": 12
+    },
+    {
+      "servico": "Emitir certidão de antecedentes criminais",
+      "orgaoSigla": "CGP",
+      "path": "/seguranca/expedicao-de-certidao-de-antecedentes-criminais35",
+      "visitas": 12
+    },
+    {
+      "servico": "Registrar Boletim de Ocorrencia de Sinistro de Trânsito –  Sem Vítimas",
+      "orgaoSigla": "PMMS",
+      "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170/imprimir",
+      "visitas": 12
+    },
+    {
+      "servico": "Realizar programa ou cursos de capacitação continuada",
+      "orgaoSigla": "ESCOLAGOV",
+      "path": "/educacao-e-pesquisa/realizar-programa-ou-cursos-de-capacitacao-continuada91",
+      "visitas": 11
+    },
+    {
+      "servico": "Cursar a Reciclagem para Condutor Infrator",
+      "orgaoSigla": "DETRAN",
+      "path": "/transito-e-transportes/solicitacao-de-curso-de-reciclagem-para-condutores-infratores28",
+      "visitas": 11
+    },
+    {
+      "servico": "Cadastro do comércio, indústria e serviços (CCIS) - inscrição de contribuinte localizado em outras unidades da federação como responsável pelo recolhimento do ICMS nas operações destinadas a consumidor final - ICMS DIFCON",
+      "orgaoSigla": "SEFAZ MS",
+      "path": "/empresa-industria-e-comercio/cadastro-do-comercio-industria-e-servicos-ccis-inscricao-de-contribuinte-localizado-em-outras-unidades-da-federacao-como-responsavel-pelo-recolhimento-do-icms-nas-operacoes-destinadas-a-consumidor-final-icms-difcon53",
+      "visitas": 10
     }
   ],
   "mes": [
@@ -188,91 +188,91 @@
       "servico": "Certidão tributária estadual - emissão (certidão negativa de débitos estaduais)",
       "orgaoSigla": "SEFAZ MS",
       "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao152",
-      "visitas": 305
+      "visitas": 324
     },
     {
       "servico": "Emitir guia de licenciamento anual",
       "orgaoSigla": "DETRAN",
       "path": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100",
-      "visitas": 191
+      "visitas": 200
     },
     {
       "servico": "e-Fazenda - cadastro",
       "orgaoSigla": "SEFAZ MS",
       "path": "/financas-e-impostos/portal-e-fazenda-cadastro135",
-      "visitas": 173
+      "visitas": 183
     },
     {
       "servico": "Solicitar Carteira de Visitante do Sistema Prisional",
       "orgaoSigla": "AGEPEN",
       "path": "/direitos-e-cidadania/patronato138",
-      "visitas": 148
+      "visitas": 159
     },
     {
       "servico": "Documento de arrecadação do estado de Mato Grosso do Sul (DAEMS) - emissão",
       "orgaoSigla": "SEFAZ MS",
       "path": "/financas-e-impostos/documento-de-arrecadacao-do-estado-de-mato-grosso-do-sul-daems-emissao5",
-      "visitas": 141
+      "visitas": 152
     },
     {
       "servico": "IPVA - consulta de débito",
       "orgaoSigla": "SEFAZ MS",
       "path": "/financas-e-impostos/ipva-consulta-de-debito54",
-      "visitas": 139
+      "visitas": 147
     },
     {
       "servico": "Realizar cursos de aperfeiçoamento (carga horária acima de 120 horas)",
       "orgaoSigla": "ESCOLAGOV",
       "path": "/educacao-e-pesquisa/realizar-cursos-de-aperfeicoamento-carga-horaria-acima-de-120-horas150",
-      "visitas": 131
+      "visitas": 137
     },
     {
       "servico": "Cadastro do comércio, indústria e serviços (CCIS) - inscrição de contribuinte localizado em outras unidades da federação como responsável pelo recolhimento do ICMS nas operações destinadas a consumidor final - ICMS DIFCON",
       "orgaoSigla": "SEFAZ MS",
       "path": "/empresa-industria-e-comercio/cadastro-do-comercio-industria-e-servicos-ccis-inscricao-de-contribuinte-localizado-em-outras-unidades-da-federacao-como-responsavel-pelo-recolhimento-do-icms-nas-operacoes-destinadas-a-consumidor-final-icms-difcon53",
-      "visitas": 105
-    },
-    {
-      "servico": "Registrar Boletim de Ocorrencia de Sinistro de Trânsito –  Sem Vítimas",
-      "orgaoSigla": "PMMS",
-      "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170/imprimir",
-      "visitas": 95
+      "visitas": 109
     },
     {
       "servico": "IPVA - redução para pessoa com deficiência (PcD)",
       "orgaoSigla": "SEFAZ MS",
       "path": "/financas-e-impostos/ipva-reducao-do-ipva-para-proprietario-ou-possuidor-paraplegico-ou-portador-de-deficiencia-fisica104",
-      "visitas": 93
+      "visitas": 99
+    },
+    {
+      "servico": "Registrar Boletim de Ocorrencia de Sinistro de Trânsito –  Sem Vítimas",
+      "orgaoSigla": "PMMS",
+      "path": "/seguranca/051-boletim-on-line-de-acidente-de-transito-atendimento-sem-vitimas170/imprimir",
+      "visitas": 99
     },
     {
       "servico": "Consulta tributária",
       "orgaoSigla": "SEFAZ MS",
       "path": "/financas-e-impostos/consulta-tributaria121",
-      "visitas": 87
+      "visitas": 90
     },
     {
       "servico": "Solicitar carteira de identidade",
       "orgaoSigla": "CGP",
       "path": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
-      "visitas": 80
+      "visitas": 88
     },
     {
       "servico": "Termo de Verificação Fiscal (TVF) ou Termo de Apreensão (TA) - baixa ou alteração",
       "orgaoSigla": "SEFAZ MS",
       "path": "/financas-e-impostos/termo-de-verificacao-fiscal-tvf-ou-termo-de-apreensao-ta-baixa-ou-alteracao99",
-      "visitas": 73
+      "visitas": 77
     },
     {
       "servico": "Localizar pessoa privada de liberdade",
       "orgaoSigla": "AGEPEN",
       "path": "/seguranca/localizar-pessoa-privada-de-liberdade21",
-      "visitas": 72
+      "visitas": 73
     },
     {
       "servico": "Licenciamento Ambiental",
       "orgaoSigla": "IMASUL",
       "path": "/meio-ambiente/licenciamento-ambiental36",
-      "visitas": 65
+      "visitas": 68
     }
   ],
   "ano": [
@@ -280,43 +280,43 @@
       "servico": "Emitir guia de licenciamento anual",
       "orgaoSigla": "DETRAN",
       "path": "/transito-e-transportes/emitir-guia-de-licenciamento-anual100",
-      "visitas": 196962
+      "visitas": 196971
     },
     {
       "servico": "Solicitar carteira de identidade",
       "orgaoSigla": "CGP",
       "path": "/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
-      "visitas": 151942
+      "visitas": 151950
     },
     {
       "servico": "IPVA - consulta de débito",
       "orgaoSigla": "SEFAZ MS",
       "path": "/financas-e-impostos/ipva-consulta-de-debito54",
-      "visitas": 92174
+      "visitas": 92182
     },
     {
       "servico": "e-Fazenda - cadastro",
       "orgaoSigla": "SEFAZ MS",
       "path": "/financas-e-impostos/portal-e-fazenda-cadastro135",
-      "visitas": 82428
+      "visitas": 82438
     },
     {
       "servico": "Emitir certidão de antecedentes criminais",
       "orgaoSigla": "CGP",
       "path": "/seguranca/expedicao-de-certidao-de-antecedentes-criminais35",
-      "visitas": 71699
+      "visitas": 71702
     },
     {
       "servico": "Certidão tributária estadual - emissão (certidão negativa de débitos estaduais)",
       "orgaoSigla": "SEFAZ MS",
       "path": "/financas-e-impostos/certidao-tributaria-estadual-emissao152",
-      "visitas": 54100
+      "visitas": 54119
     },
     {
       "servico": "Registrar boletim de ocorrências on-line",
       "orgaoSigla": "PCMS",
       "path": "/seguranca/delegacia-virtual-devir105",
-      "visitas": 54025
+      "visitas": 54031
     },
     {
       "servico": "Emitir certidão simplificada digital",
@@ -334,13 +334,13 @@
       "servico": "Solicitar Carteira de Visitante do Sistema Prisional",
       "orgaoSigla": "AGEPEN",
       "path": "/direitos-e-cidadania/patronato138",
-      "visitas": 39048
+      "visitas": 39059
     },
     {
       "servico": "Pedir Renovação da Carteira Nacional de Habilitação - CNH",
       "orgaoSigla": "DETRAN",
       "path": "/transito-e-transportes/emissao-da-carteira-nacional-de-habilitacao174",
-      "visitas": 37429
+      "visitas": 37432
     },
     {
       "servico": "Emitir documento anual do veículo (CRLV-e)",
@@ -352,7 +352,7 @@
       "servico": "Pesquisar viabilidade",
       "orgaoSigla": "JUCEMS",
       "path": "/empresa-industria-e-comercio/pesquisar-viabilidade198",
-      "visitas": 35575
+      "visitas": 35577
     },
     {
       "servico": "Pagamento de ipva inscrito em divida ativa",
@@ -364,7 +364,7 @@
       "servico": "Documento de arrecadação do estado de Mato Grosso do Sul (DAEMS) - emissão",
       "orgaoSigla": "SEFAZ MS",
       "path": "/financas-e-impostos/documento-de-arrecadacao-do-estado-de-mato-grosso-do-sul-daems-emissao5",
-      "visitas": 30424
+      "visitas": 30435
     }
   ]
 }

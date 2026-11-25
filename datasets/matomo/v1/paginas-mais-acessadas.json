@@ -2,70 +2,66 @@
   "dia": [
     {
       "url": "http://ms.gov.br/",
-      "visitas": 204
+      "visitas": 171
     },
     {
       "url": "https://www.ms.gov.br/workspace",
-      "visitas": 49
+      "visitas": 35
     },
     {
       "url": "https://www.ms.gov.br/orgao/cbmmscorpo-de-bombeiros-militar109/servicos",
       "visitas": 5
     },
     {
-      "url": "https://www.ms.gov.br/workspace/minha-area/meus-sistemas",
+      "url": "https://www.ms.gov.br/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
       "visitas": 5
     },
     {
-      "url": "https://www.ms.gov.br/orgao/sadsecretaria-de-estado-de-adminstracao-de-mato-grosso-do-sul105/servicos",
+      "url": "https://www.ms.gov.br/orgao/pcmspolicia-civil-de-mato-grosso-do-sul60/servicos",
       "visitas": 4
     },
     {
-      "url": "https://www.ms.gov.br/financas-e-impostos/certidao-tributaria-estadual-emissao152/",
-      "visitas": 2
+      "url": "https://www.ms.gov.br/orgao/agepenagencia-estadual-de-administracao-do-sistema-penitenciario167/servicos",
+      "visitas": 3
     },
     {
-      "url": "https://www.ms.gov.br/financas-e-impostos/ipva-consulta-de-debito54/",
-      "visitas": 2
-    },
-    {
-      "url": "https://www.ms.gov.br/financas-e-impostos/portal-e-fazenda-cadastro135/",
-      "visitas": 2
+      "url": "https://www.ms.gov.br/workspace/minha-area/meus-sistemas",
+      "visitas": 3
     },
     {
       "url": "https://www.ms.gov.br/orgao/agesulagencia-estadual-de-gestao-de-empreendimentos-de-mato-grosso-do-sul168/servicos",
       "visitas": 2
     },
     {
-      "url": "https://www.ms.gov.br/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
+      "url": "https://www.ms.gov.br/orgao/pge-msprocuradoria-geral-do-estado-de-mato-grosso-do-sul52/servicos",
       "visitas": 2
     },
     {
-      "url": "https://www.ms.gov.br/orgao/iagroagencia-estadual-de-defesa-sanitaria-animal-de-vegetal-de-mato-grosso-do-sul74/servicos",
+      "url": "https://www.ms.gov.br/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
       "visitas": 2
     },
     {
-      "url": "https://www.ms.gov.br/orgao/pcmspolicia-civil-de-mato-grosso-do-sul60/servicos",
-      "visitas": 2
+      "url": "https://www.ms.gov.br/administracao-publica/consultar-processos16/",
+      "visitas": 1
     },
     {
-      "url": "https://www.ms.gov.br/seguranca/solicitar-certidao-de-ocorrencia123/",
-      "visitas": 2
+      "url": "https://www.ms.gov.br/administracao-publica/solicitar-peticionamento-processual146/",
+      "visitas": 1
     },
     {
-      "url": "https://www.ms.gov.br/trabalho-emprego-e-previdencia/anunciar-vagas-de-emprego-no-sine-sistema-nacional-de-emprego71/",
-      "visitas": 2
-    },
-    {
-      "url": "https://www.ms.gov.br/workspace/",
-      "visitas": 2
+      "url": "https://www.ms.gov.br/agropecuaria-e-vida-rural/aderir-ao-pacpoa-ms41",
+      "visitas": 1
     },
     {
       "url": "https://www.ms.gov.br/agropecuaria-e-vida-rural/atualizar-cadastro-e-declarar-rebanho69",
       "visitas": 1
     },
     {
-      "url": "https://www.ms.gov.br/agropecuaria-e-vida-rural/habilitacao-de-ficha-sanitaria26",
+      "url": "https://www.ms.gov.br/agropecuaria-e-vida-rural/cadastramento-da-agricultura-familiar82/",
+      "visitas": 1
+    },
+    {
+      "url": "https://www.ms.gov.br/agropecuaria-e-vida-rural/consultar-nucleos-ativos-aves-e-suinos47",
       "visitas": 1
     },
     {
@@ -73,198 +69,202 @@
       "visitas": 1
     },
     {
-      "url": "https://www.ms.gov.br/buscar/q=Cidadão",
+      "url": "https://www.ms.gov.br/assistencia-social/solicitacao-de-inclusao-no-programa-mais-social118/",
       "visitas": 1
     },
     {
-      "url": "https://www.ms.gov.br/buscar/q=inscrição estadual",
+      "url": "https://www.ms.gov.br/buscar/q=ipva",
+      "visitas": 1
+    },
+    {
+      "url": "https://www.ms.gov.br/buscar/q=itcd",
       "visitas": 1
     }
   ],
   "semana": [
     {
       "url": "http://ms.gov.br/",
-      "visitas": 1079
+      "visitas": 1819
     },
     {
       "url": "https://www.ms.gov.br/workspace",
-      "visitas": 280
+      "visitas": 498
     },
     {
       "url": "https://www.ms.gov.br/orgao/sadsecretaria-de-estado-de-adminstracao-de-mato-grosso-do-sul105/servicos",
-      "visitas": 55
+      "visitas": 99
     },
     {
       "url": "https://www.ms.gov.br/workspace/minha-area/meus-sistemas",
-      "visitas": 52
+      "visitas": 86
     },
     {
       "url": "https://www.ms.gov.br/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
-      "visitas": 34
-    },
-    {
-      "url": "https://www.ms.gov.br/orgao/pcmspolicia-civil-de-mato-grosso-do-sul60/servicos",
-      "visitas": 23
+      "visitas": 59
     },
     {
       "url": "https://www.ms.gov.br/orgao/cbmmscorpo-de-bombeiros-militar109/servicos",
-      "visitas": 22
-    },
-    {
-      "url": "https://www.ms.gov.br/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
-      "visitas": 21
-    },
-    {
-      "url": "https://www.ms.gov.br/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
-      "visitas": 20
-    },
-    {
-      "url": "https://www.ms.gov.br/direitos-e-cidadania/patronato138/",
-      "visitas": 19
+      "visitas": 38
     },
     {
       "url": "https://www.ms.gov.br/financas-e-impostos/certidao-tributaria-estadual-emissao152/",
-      "visitas": 19
+      "visitas": 36
+    },
+    {
+      "url": "https://www.ms.gov.br/orgao/pcmspolicia-civil-de-mato-grosso-do-sul60/servicos",
+      "visitas": 32
+    },
+    {
+      "url": "https://www.ms.gov.br/direitos-e-cidadania/patronato138/",
+      "visitas": 30
+    },
+    {
+      "url": "https://www.ms.gov.br/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
+      "visitas": 30
     },
     {
       "url": "https://www.ms.gov.br/orgao/agepenagencia-estadual-de-administracao-do-sistema-penitenciario167/servicos",
-      "visitas": 17
+      "visitas": 29
     },
     {
-      "url": "https://www.ms.gov.br/financas-e-impostos/portal-e-fazenda-cadastro135/",
-      "visitas": 14
+      "url": "https://www.ms.gov.br/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
+      "visitas": 29
     },
     {
-      "url": "https://www.ms.gov.br/orgao/agesulagencia-estadual-de-gestao-de-empreendimentos-de-mato-grosso-do-sul168/servicos",
-      "visitas": 14
+      "url": "/financas-e-impostos/ - Others",
+      "visitas": 27
     },
     {
       "url": "https://www.ms.gov.br/orgao/iagroagencia-estadual-de-defesa-sanitaria-animal-de-vegetal-de-mato-grosso-do-sul74/servicos",
-      "visitas": 13
+      "visitas": 27
     },
     {
-      "url": "https://www.ms.gov.br/orgao/pmmspolicia-militar-de-mato-grosso-do-sul3/servicos",
-      "visitas": 13
+      "url": "https://www.ms.gov.br/financas-e-impostos/portal-e-fazenda-cadastro135/",
+      "visitas": 24
     },
     {
-      "url": "https://www.ms.gov.br/orgao/ageprevagencia-de-previdencia-social-de-mato-grosso-do-sul65/servicos",
-      "visitas": 12
+      "url": "https://www.ms.gov.br/orgao/agesulagencia-estadual-de-gestao-de-empreendimentos-de-mato-grosso-do-sul168/servicos",
+      "visitas": 21
     },
     {
       "url": "https://www.ms.gov.br/orgao/escolagovfundacao-escola-de-governo22/servicos",
-      "visitas": 12
+      "visitas": 19
     },
     {
-      "url": "https://www.ms.gov.br/orgao/agraeragencia-de-desenvolvimento-agrario-e-extensao-rural-de-mato-grosso-do-sul71/servicos",
-      "visitas": 11
+      "url": "https://www.ms.gov.br/orgao/pmmspolicia-militar-de-mato-grosso-do-sul3/servicos",
+      "visitas": 19
+    },
+    {
+      "url": "https://www.ms.gov.br/financas-e-impostos/documento-de-arrecadacao-do-estado-de-mato-grosso-do-sul-daems-emissao5/",
+      "visitas": 18
     },
     {
       "url": "https://www.ms.gov.br/financas-e-impostos/ipva-consulta-de-debito54/",
-      "visitas": 10
+      "visitas": 18
     }
   ],
   "mes": [
     {
       "url": "http://ms.gov.br/",
-      "visitas": 13665
+      "visitas": 14405
     },
     {
       "url": "https://www.ms.gov.br/workspace",
-      "visitas": 2835
+      "visitas": 3053
     },
     {
       "url": "https://www.ms.gov.br/workspace/minha-area/meus-sistemas",
-      "visitas": 680
+      "visitas": 714
     },
     {
       "url": "https://www.ms.gov.br/orgao/sadsecretaria-de-estado-de-adminstracao-de-mato-grosso-do-sul105/servicos",
-      "visitas": 557
+      "visitas": 601
     },
     {
       "url": "https://www.ms.gov.br/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
-      "visitas": 404
+      "visitas": 429
     },
     {
       "url": "/financas-e-impostos/ - Others",
-      "visitas": 320
+      "visitas": 346
     },
     {
       "url": "https://www.ms.gov.br/financas-e-impostos/certidao-tributaria-estadual-emissao152/",
-      "visitas": 281
+      "visitas": 298
     },
     {
       "url": "https://www.ms.gov.br/orgao/escolagovfundacao-escola-de-governo22/servicos",
-      "visitas": 242
+      "visitas": 249
     },
     {
       "url": "https://www.ms.gov.br/orgao/cbmmscorpo-de-bombeiros-militar109/servicos",
-      "visitas": 218
+      "visitas": 234
     },
     {
       "url": "https://www.ms.gov.br/orgao/pcmspolicia-civil-de-mato-grosso-do-sul60/servicos",
-      "visitas": 208
+      "visitas": 217
     },
     {
       "url": "https://www.ms.gov.br/orgao/agepenagencia-estadual-de-administracao-do-sistema-penitenciario167/servicos",
-      "visitas": 191
+      "visitas": 203
     },
     {
       "url": "https://www.ms.gov.br/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
-      "visitas": 188
+      "visitas": 197
     },
     {
       "url": "https://www.ms.gov.br/financas-e-impostos/portal-e-fazenda-cadastro135/",
-      "visitas": 173
-    },
-    {
-      "url": "https://www.ms.gov.br/orgao/ageprevagencia-de-previdencia-social-de-mato-grosso-do-sul65/servicos",
-      "visitas": 173
+      "visitas": 183
     },
     {
       "url": "https://www.ms.gov.br/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
-      "visitas": 172
+      "visitas": 181
+    },
+    {
+      "url": "https://www.ms.gov.br/orgao/ageprevagencia-de-previdencia-social-de-mato-grosso-do-sul65/servicos",
+      "visitas": 178
     },
     {
       "url": "https://www.ms.gov.br/orgao/iagroagencia-estadual-de-defesa-sanitaria-animal-de-vegetal-de-mato-grosso-do-sul74/servicos",
-      "visitas": 144
+      "visitas": 158
     },
     {
       "url": "https://www.ms.gov.br/direitos-e-cidadania/patronato138/",
-      "visitas": 142
+      "visitas": 153
     },
     {
       "url": "https://www.ms.gov.br/financas-e-impostos/documento-de-arrecadacao-do-estado-de-mato-grosso-do-sul-daems-emissao5/",
-      "visitas": 141
+      "visitas": 152
     },
     {
       "url": "https://www.ms.gov.br/financas-e-impostos/ipva-consulta-de-debito54/",
-      "visitas": 139
+      "visitas": 147
     },
     {
       "url": "https://www.ms.gov.br/educacao-e-pesquisa/realizar-cursos-de-aperfeicoamento-carga-horaria-acima-de-120-horas150/",
-      "visitas": 131
+      "visitas": 137
     }
   ],
   "ano": [
     {
       "url": "http://ms.gov.br/",
-      "visitas": 1214734
+      "visitas": 1215474
     },
     {
       "url": "https://www.ms.gov.br/orgao/detrandepartamento-estadual-de-transito-de-mato-grosso-do-sul151/8",
-      "visitas": 300846
+      "visitas": 300871
     },
     {
       "url": "https://www.ms.gov.br/transito-e-transportes/emitir-guia-de-licenciamento-anual100/",
-      "visitas": 194066
+      "visitas": 194075
     },
     {
       "url": "https://www.ms.gov.br/direitos-e-cidadania/expedicao-de-carteira-de-identidade127",
-      "visitas": 150362
+      "visitas": 150370
     },
     {
       "url": "https://www.ms.gov.br/workspace/minha-area/meus-sistemas",
-      "visitas": 136759
+      "visitas": 136793
     },
     {
       "url": "/noticias/ - Others",
@@ -272,39 +272,39 @@
     },
     {
       "url": "https://www.ms.gov.br/orgao/sefaz-mssecretaria-de-estado-de-fazenda-de-mato-grosso-do-sul87/servicos",
-      "visitas": 110444
+      "visitas": 110453
     },
     {
       "url": "https://www.ms.gov.br/financas-e-impostos/portal-e-fazenda-cadastro135/",
-      "visitas": 82364
+      "visitas": 82374
     },
     {
       "url": "https://www.ms.gov.br/workspace",
-      "visitas": 78878
+      "visitas": 79096
     },
     {
       "url": "https://www.ms.gov.br/financas-e-impostos/ipva-consulta-de-debito54/",
-      "visitas": 77310
+      "visitas": 77318
     },
     {
       "url": "/financas-e-impostos/ - Others",
-      "visitas": 64827
+      "visitas": 64914
     },
     {
       "url": "https://www.ms.gov.br/orgao/sed-mssecretaria-de-estado-de-educacao-de-mato-grosso-do-sul83/servicos",
-      "visitas": 58782
+      "visitas": 58783
     },
     {
       "url": "https://www.ms.gov.br/orgao/jucemsjunta-comercial-do-estado-de-mato-grosso-do-sul118/servicos",
-      "visitas": 53708
+      "visitas": 53715
     },
     {
       "url": "https://www.ms.gov.br/financas-e-impostos/certidao-tributaria-estadual-emissao152/",
-      "visitas": 53460
+      "visitas": 53477
     },
     {
       "url": "https://www.ms.gov.br/seguranca/expedicao-de-certidao-de-antecedentes-criminais35/",
-      "visitas": 42617
+      "visitas": 42620
     },
     {
       "url": "https://www.ms.gov.br/habitacao/inscricaocadastro67/",
@@ -312,15 +312,15 @@
     },
     {
       "url": "https://www.ms.gov.br/buscar/q=ipva",
-      "visitas": 34483
+      "visitas": 34486
     },
     {
       "url": "https://www.ms.gov.br/transito-e-transportes/emissao-da-carteira-nacional-de-habilitacao174/",
-      "visitas": 34026
+      "visitas": 34029
     },
     {
       "url": "https://www.ms.gov.br/seguranca/delegacia-virtual-devir105/",
-      "visitas": 32981
+      "visitas": 32987
     },
     {
       "url": "https://www.ms.gov.br/transito-e-transportes/emissao-de-crlv-e-licenciamento-digital13",

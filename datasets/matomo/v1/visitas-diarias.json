@@ -1,11 +1,5 @@
 [
   {
-    "data": "2024-05-19",
-    "visitas": 1858,
-    "visitantesUnicos": 1704,
-    "acoes": 3202
-  },
-  {
     "data": "2024-05-20",
     "visitas": 15856,
     "visitantesUnicos": 10227,
@@ -5515,8 +5509,14 @@
   },
   {
     "data": "2026-11-24",
-    "visitas": 310,
-    "visitantesUnicos": 303,
-    "acoes": 564
+    "visitas": 1635,
+    "visitantesUnicos": 1246,
+    "acoes": 2744
+  },
+  {
+    "data": "2026-11-25",
+    "visitas": 259,
+    "visitantesUnicos": 254,
+    "acoes": 478
   }
 ]

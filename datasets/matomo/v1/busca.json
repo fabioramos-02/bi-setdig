@@ -1,11 +1,11 @@
 {
   "dia": [
     {
-      "termo": "cidadão",
+      "termo": "ipva",
       "buscas": 1
     },
     {
-      "termo": "inscrição estadual",
+      "termo": "itcd",
       "buscas": 1
     },
     {
@@ -16,10 +16,18 @@
   "semana": [
     {
       "termo": "ipva",
-      "buscas": 3
+      "buscas": 6
     },
     {
       "termo": "servidor",
+      "buscas": 5
+    },
+    {
+      "termo": "inscrição estadual",
+      "buscas": 3
+    },
+    {
+      "termo": "procon",
       "buscas": 3
     },
     {
@@ -27,12 +35,8 @@
       "buscas": 2
     },
     {
-      "termo": "inscrição estadual",
-      "buscas": 2
-    },
-    {
-      "termo": "procon",
-      "buscas": 2
+      "termo": "itcd",
+      "buscas": 1
     },
     {
       "termo": "webmail pcms",
@@ -42,23 +46,23 @@
   "mes": [
     {
       "termo": "ipva",
-      "buscas": 25
+      "buscas": 28
     },
     {
       "termo": "servidor",
-      "buscas": 19
+      "buscas": 21
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 16
+      "buscas": 17
     },
     {
       "termo": "itcd",
-      "buscas": 16
+      "buscas": 17
     },
     {
       "termo": "procon",
-      "buscas": 15
+      "buscas": 16
     },
     {
       "termo": "substituição tributária",
@@ -124,15 +128,15 @@
   "ano": [
     {
       "termo": "ipva",
-      "buscas": 35109
+      "buscas": 35112
     },
     {
       "termo": "inscrição estadual",
-      "buscas": 16095
+      "buscas": 16096
     },
     {
       "termo": "procon",
-      "buscas": 8053
+      "buscas": 8054
     },
     {
       "termo": "substituição tributária",
@@ -140,7 +144,7 @@
     },
     {
       "termo": "itcd",
-      "buscas": 2278
+      "buscas": 2279
     },
     {
       "termo": "cidadão",
@@ -152,7 +156,7 @@
     },
     {
       "termo": "servidor",
-      "buscas": 1367
+      "buscas": 1369
     },
     {
       "termo": "empresa",

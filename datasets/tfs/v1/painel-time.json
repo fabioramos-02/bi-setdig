@@ -2,7 +2,7 @@
   {
     "titulo": "REUNIÃO",
     "tipo": "numero",
-    "total": 219
+    "total": 221
   },
   {
     "titulo": "EPIC",
@@ -22,12 +22,12 @@
   {
     "titulo": "TASK",
     "tipo": "numero",
-    "total": 1779
+    "total": 1794
   },
   {
     "titulo": "APLICATIVO",
     "tipo": "numero",
-    "total": 32
+    "total": 36
   },
   {
     "titulo": "DESPRIORIZADO",
@@ -42,7 +42,7 @@
   {
     "titulo": "AGUAR... DECISÃO",
     "tipo": "numero",
-    "total": 16
+    "total": 17
   },
   {
     "titulo": "IMPEDIDO",
@@ -52,7 +52,7 @@
   {
     "titulo": "EM DESENVOLVIMENTO",
     "tipo": "numero",
-    "total": 14
+    "total": 16
   },
   {
     "titulo": "DESCONTINUADOS",
@@ -109,23 +109,23 @@
     "grupos": [
       {
         "rotulo": "Em Produção",
-        "qtd": 193
+        "qtd": 203
       },
       {
         "rotulo": "A fazer",
-        "qtd": 83
+        "qtd": 80
       },
       {
         "rotulo": "Área de Negócios",
-        "qtd": 81
+        "qtd": 69
       },
       {
         "rotulo": "Aguardando decisão",
-        "qtd": 16
+        "qtd": 17
       },
       {
         "rotulo": "Em Desenvolvimento",
-        "qtd": 14
+        "qtd": 16
       },
       {
         "rotulo": "Impedido",
@@ -134,6 +134,10 @@
       {
         "rotulo": "Aguardando Validação do Órgão",
         "qtd": 3
+      },
+      {
+        "rotulo": "Em Homologação",
+        "qtd": 2
       }
     ]
   }
