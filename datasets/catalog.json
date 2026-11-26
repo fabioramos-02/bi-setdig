@@ -660,17 +660,6 @@
     "bytes": 2276
   },
   {
-    "dataset": "visao-geral",
-    "source": "ga4",
-    "owner": "SETDIG",
-    "updatedAt": "2026-11-25T15:20:36.681498+00:00",
-    "frequency": "daily",
-    "version": "v2",
-    "schema": "data-platform/schemas/ga4-visao-geral.schema.json",
-    "rows": 15,
-    "bytes": 1946
-  },
-  {
     "dataset": "plataforma",
     "source": "ga4",
     "owner": "SETDIG",
@@ -735,5 +724,16 @@
     "schema": "data-platform/schemas/ga4-frequencia-acesso.schema.json",
     "rows": 1,
     "bytes": 418
+  },
+  {
+    "dataset": "visao-geral",
+    "source": "ga4",
+    "owner": "SETDIG",
+    "updatedAt": "2026-11-26T06:06:54.481494+00:00",
+    "frequency": "daily",
+    "version": "v2",
+    "schema": "data-platform/schemas/ga4-visao-geral.schema.json",
+    "rows": 15,
+    "bytes": 1941
   }
 ]
