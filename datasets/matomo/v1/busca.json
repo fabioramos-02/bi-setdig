@@ -1,26 +1,18 @@
 {
   "dia": [
     {
-      "termo": "ipva",
-      "buscas": 1
-    },
-    {
-      "termo": "itcd",
-      "buscas": 1
-    },
-    {
-      "termo": "servidor",
+      "termo": "substituição tributária",
       "buscas": 1
     }
   ],
   "semana": [
     {
       "termo": "ipva",
-      "buscas": 6
+      "buscas": 8
     },
     {
       "termo": "servidor",
-      "buscas": 5
+      "buscas": 6
     },
     {
       "termo": "inscrição estadual",
@@ -35,7 +27,19 @@
       "buscas": 2
     },
     {
+      "termo": "defesa civil",
+      "buscas": 1
+    },
+    {
+      "termo": "detran",
+      "buscas": 1
+    },
+    {
       "termo": "itcd",
+      "buscas": 1
+    },
+    {
+      "termo": "substituição tributária",
       "buscas": 1
     },
     {
@@ -46,11 +50,11 @@
   "mes": [
     {
       "termo": "ipva",
-      "buscas": 28
+      "buscas": 30
     },
     {
       "termo": "servidor",
-      "buscas": 21
+      "buscas": 22
     },
     {
       "termo": "inscrição estadual",
@@ -66,7 +70,7 @@
     },
     {
       "termo": "substituição tributária",
-      "buscas": 9
+      "buscas": 10
     },
     {
       "termo": "cidadão",
@@ -78,7 +82,7 @@
     },
     {
       "termo": "defesa civil",
-      "buscas": 3
+      "buscas": 4
     },
     {
       "termo": "noticias",
@@ -101,6 +105,10 @@
       "buscas": 1
     },
     {
+      "termo": "detran",
+      "buscas": 1
+    },
+    {
       "termo": "fundo",
       "buscas": 1
     },
@@ -119,16 +127,12 @@
     {
       "termo": "informativo de atividade",
       "buscas": 1
-    },
-    {
-      "termo": "licenciamento",
-      "buscas": 1
     }
   ],
   "ano": [
     {
       "termo": "ipva",
-      "buscas": 35112
+      "buscas": 35114
     },
     {
       "termo": "inscrição estadual",
@@ -140,7 +144,7 @@
     },
     {
       "termo": "substituição tributária",
-      "buscas": 5625
+      "buscas": 5626
     },
     {
       "termo": "itcd",
@@ -156,7 +160,7 @@
     },
     {
       "termo": "servidor",
-      "buscas": 1369
+      "buscas": 1370
     },
     {
       "termo": "empresa",
@@ -168,7 +172,7 @@
     },
     {
       "termo": "defesa civil",
-      "buscas": 386
+      "buscas": 387
     },
     {
       "termo": "mulher",

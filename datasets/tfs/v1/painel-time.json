@@ -17,12 +17,12 @@
   {
     "titulo": "PBI",
     "tipo": "numero",
-    "total": 399
+    "total": 401
   },
   {
     "titulo": "TASK",
     "tipo": "numero",
-    "total": 1794
+    "total": 1799
   },
   {
     "titulo": "APLICATIVO",
@@ -62,7 +62,7 @@
   {
     "titulo": "TASK's ' sem UST's",
     "tipo": "grafico",
-    "total": 247,
+    "total": 245,
     "grupos": [
       {
         "rotulo": "Sem sprint",
@@ -70,7 +70,7 @@
       },
       {
         "rotulo": "Sprint 8",
-        "qtd": 70
+        "qtd": 68
       },
       {
         "rotulo": "Sprint 7",
@@ -105,11 +105,11 @@
   {
     "titulo": "PACOTES DE ENTREGA",
     "tipo": "grafico",
-    "total": 399,
+    "total": 401,
     "grupos": [
       {
         "rotulo": "Em Produção",
-        "qtd": 203
+        "qtd": 204
       },
       {
         "rotulo": "A fazer",
@@ -117,7 +117,7 @@
       },
       {
         "rotulo": "Área de Negócios",
-        "qtd": 69
+        "qtd": 70
       },
       {
         "rotulo": "Aguardando decisão",

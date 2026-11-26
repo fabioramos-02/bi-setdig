@@ -6,7 +6,7 @@
     },
     {
       "hora": "01",
-      "visitas": 0
+      "visitas": 1
     },
     {
       "hora": "02",
@@ -18,11 +18,11 @@
     },
     {
       "hora": "04",
-      "visitas": 0
+      "visitas": 3
     },
     {
       "hora": "05",
-      "visitas": 2
+      "visitas": 0
     },
     {
       "hora": "06",
@@ -34,7 +34,7 @@
     },
     {
       "hora": "08",
-      "visitas": 102
+      "visitas": 121
     },
     {
       "hora": "09",
@@ -104,7 +104,7 @@
     },
     {
       "hora": "01",
-      "visitas": 0
+      "visitas": 1
     },
     {
       "hora": "02",
@@ -116,7 +116,7 @@
     },
     {
       "hora": "04",
-      "visitas": 2
+      "visitas": 5
     },
     {
       "hora": "05",
@@ -124,75 +124,75 @@
     },
     {
       "hora": "06",
-      "visitas": 34
+      "visitas": 45
     },
     {
       "hora": "07",
-      "visitas": 522
+      "visitas": 666
     },
     {
       "hora": "08",
-      "visitas": 651
+      "visitas": 898
     },
     {
       "hora": "09",
-      "visitas": 379
+      "visitas": 557
     },
     {
       "hora": "10",
-      "visitas": 357
+      "visitas": 513
     },
     {
       "hora": "11",
-      "visitas": 217
+      "visitas": 307
     },
     {
       "hora": "12",
-      "visitas": 150
+      "visitas": 222
     },
     {
       "hora": "13",
-      "visitas": 230
+      "visitas": 376
     },
     {
       "hora": "14",
-      "visitas": 318
+      "visitas": 454
     },
     {
       "hora": "15",
-      "visitas": 264
+      "visitas": 393
     },
     {
       "hora": "16",
-      "visitas": 188
+      "visitas": 263
     },
     {
       "hora": "17",
-      "visitas": 72
+      "visitas": 108
     },
     {
       "hora": "18",
-      "visitas": 10
+      "visitas": 17
     },
     {
       "hora": "19",
-      "visitas": 10
+      "visitas": 14
     },
     {
       "hora": "20",
-      "visitas": 7
+      "visitas": 13
     },
     {
       "hora": "21",
-      "visitas": 4
+      "visitas": 9
     },
     {
       "hora": "22",
-      "visitas": 3
+      "visitas": 5
     },
     {
       "hora": "23",
-      "visitas": 356
+      "visitas": 516
     }
   ],
   "mes": [
@@ -202,7 +202,7 @@
     },
     {
       "hora": "01",
-      "visitas": 6
+      "visitas": 7
     },
     {
       "hora": "02",
@@ -214,7 +214,7 @@
     },
     {
       "hora": "04",
-      "visitas": 23
+      "visitas": 26
     },
     {
       "hora": "05",
@@ -222,75 +222,75 @@
     },
     {
       "hora": "06",
-      "visitas": 273
+      "visitas": 284
     },
     {
       "hora": "07",
-      "visitas": 2831
+      "visitas": 2975
     },
     {
       "hora": "08",
-      "visitas": 4332
+      "visitas": 4579
     },
     {
       "hora": "09",
-      "visitas": 3185
+      "visitas": 3363
     },
     {
       "hora": "10",
-      "visitas": 2721
+      "visitas": 2877
     },
     {
       "hora": "11",
-      "visitas": 1636
+      "visitas": 1726
     },
     {
       "hora": "12",
-      "visitas": 1167
+      "visitas": 1239
     },
     {
       "hora": "13",
-      "visitas": 1937
+      "visitas": 2083
     },
     {
       "hora": "14",
-      "visitas": 2514
+      "visitas": 2650
     },
     {
       "hora": "15",
-      "visitas": 2219
+      "visitas": 2348
     },
     {
       "hora": "16",
-      "visitas": 1482
+      "visitas": 1557
     },
     {
       "hora": "17",
-      "visitas": 571
+      "visitas": 607
     },
     {
       "hora": "18",
-      "visitas": 135
+      "visitas": 142
     },
     {
       "hora": "19",
-      "visitas": 105
+      "visitas": 109
     },
     {
       "hora": "20",
-      "visitas": 94
+      "visitas": 100
     },
     {
       "hora": "21",
-      "visitas": 46
+      "visitas": 51
     },
     {
       "hora": "22",
-      "visitas": 45
+      "visitas": 47
     },
     {
       "hora": "23",
-      "visitas": 4735
+      "visitas": 4895
     }
   ],
   "ano": [
@@ -300,7 +300,7 @@
     },
     {
       "hora": "01",
-      "visitas": 11061
+      "visitas": 11062
     },
     {
       "hora": "02",
@@ -312,7 +312,7 @@
     },
     {
       "hora": "04",
-      "visitas": 14880
+      "visitas": 14883
     },
     {
       "hora": "05",
@@ -320,75 +320,75 @@
     },
     {
       "hora": "06",
-      "visitas": 62042
+      "visitas": 62053
     },
     {
       "hora": "07",
-      "visitas": 249706
+      "visitas": 249850
     },
     {
       "hora": "08",
-      "visitas": 376226
+      "visitas": 376473
     },
     {
       "hora": "09",
-      "visitas": 364838
+      "visitas": 365016
     },
     {
       "hora": "10",
-      "visitas": 353171
+      "visitas": 353327
     },
     {
       "hora": "11",
-      "visitas": 268800
+      "visitas": 268890
     },
     {
       "hora": "12",
-      "visitas": 229769
+      "visitas": 229841
     },
     {
       "hora": "13",
-      "visitas": 307648
+      "visitas": 307794
     },
     {
       "hora": "14",
-      "visitas": 334017
+      "visitas": 334153
     },
     {
       "hora": "15",
-      "visitas": 310486
+      "visitas": 310615
     },
     {
       "hora": "16",
-      "visitas": 271833
+      "visitas": 271908
     },
     {
       "hora": "17",
-      "visitas": 180394
+      "visitas": 180430
     },
     {
       "hora": "18",
-      "visitas": 138502
+      "visitas": 138509
     },
     {
       "hora": "19",
-      "visitas": 124941
+      "visitas": 124945
     },
     {
       "hora": "20",
-      "visitas": 130745
+      "visitas": 130751
     },
     {
       "hora": "21",
-      "visitas": 94732
+      "visitas": 94737
     },
     {
       "hora": "22",
-      "visitas": 67335
+      "visitas": 67337
     },
     {
       "hora": "23",
-      "visitas": 51704
+      "visitas": 51864
     }
   ]
 }

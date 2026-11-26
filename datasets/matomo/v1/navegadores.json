@@ -2,69 +2,73 @@
   "dia": [
     {
       "navegador": "Chrome",
-      "visitas": 211
+      "visitas": 231
     },
     {
       "navegador": "Microsoft Edge",
-      "visitas": 39
+      "visitas": 42
     },
     {
       "navegador": "Firefox",
-      "visitas": 9
+      "visitas": 6
+    },
+    {
+      "navegador": "Chrome Mobile iOS",
+      "visitas": 1
     }
   ],
   "semana": [
     {
       "navegador": "Chrome",
-      "visitas": 2767
+      "visitas": 3951
     },
     {
       "navegador": "Microsoft Edge",
-      "visitas": 506
+      "visitas": 705
     },
     {
       "navegador": "Headless Chrome",
-      "visitas": 355
+      "visitas": 514
     },
     {
       "navegador": "Firefox",
-      "visitas": 112
+      "visitas": 167
     },
     {
       "navegador": "Outros",
-      "visitas": 40
+      "visitas": 51
     }
   ],
   "mes": [
     {
       "navegador": "Chrome",
-      "visitas": 20327
+      "visitas": 21511
     },
     {
       "navegador": "Headless Chrome",
-      "visitas": 4716
+      "visitas": 4875
     },
     {
       "navegador": "Microsoft Edge",
-      "visitas": 3675
+      "visitas": 3874
     },
     {
       "navegador": "Firefox",
-      "visitas": 860
+      "visitas": 915
     },
     {
       "navegador": "Outros",
-      "visitas": 575
+      "visitas": 586
     }
   ],
   "ano": [
     {
       "navegador": "Chrome",
-      "visitas": 1853958
+      "visitas": 1855142
     },
     {
       "navegador": "Chrome Mobile",
-      "visitas": 978515
+      "visitas": 978522
     },
     {
       "navegador": "Mobile Safari",
@@ -72,11 +76,11 @@
     },
     {
       "navegador": "Microsoft Edge",
-      "visitas": 339191
+      "visitas": 339390
     },
     {
       "navegador": "Outros",
-      "visitas": 491117
+      "visitas": 491335
     }
   ]
 }
