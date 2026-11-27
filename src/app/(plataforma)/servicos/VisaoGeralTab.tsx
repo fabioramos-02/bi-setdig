@@ -11,6 +11,7 @@ import {
 } from "@/lib/insights-visao-geral-servicos";
 import type { InventarioResumo, CartaRelacao, InventarioOrgao } from "@/lib/data";
 import type { LiveServicos } from "./ServicosClient";
+import { CartasMaisAcessadas } from "./CartasMaisAcessadas";
 
 /** Visão macro executiva de /servicos: resumo das outras 4 abas em 4 blocos
  *  textuais (Situação → Achados → Impacto → Pontos de atenção). Sem gráficos —
@@ -83,7 +84,7 @@ export function VisaoGeralTab({
     <div className="flex flex-col gap-6">
       <AvisoSnapshotAproximado
         status={status}
-        mensagemFallback="Não foi possível buscar os acessos desse período agora — tenta um período menor ou tenta de novo em instantes."
+        mensagemFallback="Não foi possível buscar os acessos do período escolhido agora. Mostrando os acessos do período atual, da última atualização diária."
       />
 
       <DashboardSection title="Situação geral">
@@ -106,6 +107,12 @@ export function VisaoGeralTab({
           />
         </div>
       </DashboardSection>
+
+      {live && live.porCarta.length > 0 && (
+        <DashboardSection title={`Cartas mais acessadas ${rotuloPeriodo}`}>
+          <CartasMaisAcessadas porCarta={live.porCarta} rotuloPeriodo={rotuloPeriodo} />
+        </DashboardSection>
+      )}
 
       <DashboardSection title="Achados">
         <ul className="flex flex-col gap-3">

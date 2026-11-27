@@ -13,15 +13,16 @@ import { NovosServicosTab } from "./NovosServicosTab";
 import { AcessarServicoTab } from "./AcessarServicoTab";
 import { AtualizacoesTab, type DadosAtualizacoes } from "./AtualizacoesTab";
 import { usePeriodo } from "@/lib/periodo-context";
-import { intervaloDoBucket, rotuloPeriodoResolvido } from "@/lib/period-filter";
-import type { InventarioResumo, InventarioOrgao, CartaRelacao } from "@/lib/data";
+import { chavePeriodoFixo, ehPeriodoCorrente, intervaloDoBucket, rotuloPeriodoResolvido } from "@/lib/period-filter";
+import type { InventarioResumo, InventarioOrgao, CartaRelacao, PeriodoFixo } from "@/lib/data";
+import { agregarPorCarta, cartasDosAcessos, type AcessoSlug, type CartaVisita, type RankVisita } from "@/lib/acessos-cartas";
 
 const ROTULO_PERIODO = { dia: "no dia", semana: "na semana", mes: "no mês", ano: "no ano", intervalo: "no intervalo" };
 
-export type RankVisita = { rotulo: string; visitas: number };
-export type CartaVisita = { titulo: string; orgaoSigla: string; setor: string | null; categoria: string; slug: string; visitas: number; url: string };
-// Shape devolvido por /api/analytics/servicos — visitas SEMPRE ao vivo (não há
-// snapshot estático de demanda; só o inventário é estático).
+export type { CartaVisita, RankVisita };
+// Shape devolvido por /api/analytics/servicos (período passado ou intervalo) e
+// montado da base gravada pela tarefa diária (período corrente, ou quando a
+// busca ao vivo falha — o site publicado não alcança o servidor de estatísticas).
 export type LiveServicos = {
   porCarta: CartaVisita[];
   porOrgao: RankVisita[];
@@ -35,11 +36,13 @@ export function ServicosClient({
   resumo,
   orgaos,
   relacao,
+  acessosGravados,
   atualizacoes,
 }: {
   resumo: InventarioResumo;
   orgaos: InventarioOrgao[];
   relacao: CartaRelacao[];
+  acessosGravados: Record<PeriodoFixo, AcessoSlug[]>;
   atualizacoes: DadosAtualizacoes;
 }) {
   const { estado, min, max } = usePeriodo();
@@ -59,9 +62,19 @@ export function ServicosClient({
   // do Portal, então não busca (evita chamada lenta e os erros do servidor de
   // estatísticas no log).
   const precisaVisitas = abaAtiva !== "atualizacoes";
+  // Período corrente (dia/semana/mês/ano de hoje) já vem da base gravada; só
+  // período passado ou intervalo busca ao vivo (mesmo critério do Portal MS).
+  const periodoAtual = chavePeriodoFixo(estado);
+  const precisaLive =
+    estado.tipo === "intervalo" ? Boolean(estado.inicio && estado.fim) : !ehPeriodoCorrente(estado, min, max);
+
+  const gravado = useMemo<LiveServicos>(() => {
+    const porCarta = cartasDosAcessos(acessosGravados[periodoAtual] ?? [], relacao);
+    return { porCarta, ...agregarPorCarta(porCarta), top5: porCarta.slice(0, 5).map((c) => c.titulo), evolucao: [] };
+  }, [acessosGravados, periodoAtual, relacao]);
 
   useEffect(() => {
-    if (!precisaVisitas) return;
+    if (!precisaVisitas || !precisaLive) return;
     let cancelado = false;
     fetch(`/api/analytics/servicos?inicio=${range.inicio}&fim=${range.fim}`)
       .then((r) => {
@@ -81,17 +94,19 @@ export function ServicosClient({
     return () => {
       cancelado = true;
     };
-  }, [range.inicio, range.fim, precisaVisitas]);
+  }, [range.inicio, range.fim, precisaVisitas, precisaLive]);
 
   const valido = live !== null && liveRange?.inicio === range.inicio && liveRange?.fim === range.fim;
-  const status: StatusIntervalo = valido ? "ok" : liveStatus === "erro" ? "fallback" : "carregando";
+  const status: StatusIntervalo = !precisaLive || valido ? "ok" : liveStatus === "erro" ? "fallback" : "carregando";
+  // Falhou a busca ao vivo: mostra a base gravada do período atual, com aviso.
+  const dados: LiveServicos | null = !precisaLive ? gravado : valido ? live : liveStatus === "erro" ? gravado : null;
   const rotuloPeriodo = ROTULO_PERIODO[estado.tipo];
 
   const visitasPorSlug = useMemo(() => {
     const m = new Map<string, number>();
-    for (const c of live?.porCarta ?? []) m.set(c.slug, c.visitas);
+    for (const c of dados?.porCarta ?? []) m.set(c.slug, c.visitas);
     return m;
-  }, [live]);
+  }, [dados]);
 
   const cartasAtivas = useMemo(() => relacao.filter((c) => c.ativo), [relacao]);
   const filtroRelatorio = rotuloPeriodoResolvido(estado) || "período atual";
@@ -105,7 +120,7 @@ export function ServicosClient({
           resumo={resumo}
           cartas={cartasAtivas}
           orgaos={orgaos}
-          live={valido ? live : null}
+          live={dados}
           status={status}
           rotuloPeriodo={rotuloPeriodo}
         />
@@ -129,7 +144,7 @@ export function ServicosClient({
       label: "3. Órgãos e Setores",
       content: (
         <OrgaosSetoresTab
-          live={valido ? live : null}
+          live={dados}
           orgaos={orgaos}
           cartas={cartasAtivas}
           status={status}

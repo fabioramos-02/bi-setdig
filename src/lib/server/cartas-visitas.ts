@@ -18,25 +18,11 @@
  */
 import type { CartaRelacao, DemandaOrgao } from "../data.ts";
 import { construirContexto, classificarPagina } from "../pagina-tipo.ts";
+import { agregarPorCarta, urlDaCarta, type CartaVisita, type RankVisita } from "../acessos-cartas.ts";
 
 type MatomoRow = { label?: string; url?: string; nb_visits?: number };
 
-const PORTAL_BASE = "https://www.ms.gov.br";
-
-export function urlDaCarta(carta: Pick<CartaRelacao, "categoria" | "slug">): string {
-  return `${PORTAL_BASE}/${carta.categoria}/${carta.slug}`;
-}
-
-export type CartaVisita = {
-  titulo: string;
-  orgaoSigla: string;
-  setor: string | null;
-  categoria: string;
-  slug: string;
-  visitas: number;
-  url: string;
-};
-export type RankVisita = { rotulo: string; visitas: number };
+export { urlDaCarta, type CartaVisita, type RankVisita };
 /** Acessos a páginas que parecem serviço (2+ segmentos, fora de
  * órgão/workspace/notícias/busca) e não casaram com nenhuma carta do
  * inventário. `pct` é sobre o total de páginas que "parecem serviço"
@@ -50,9 +36,6 @@ export type ResultadoVisitas = {
   porSetor: RankVisita[];
   naoIdentificado: NaoIdentificado;
 };
-
-const ranquear = (m: Map<string, number>): RankVisita[] =>
-  [...m.entries()].map(([rotulo, visitas]) => ({ rotulo, visitas })).sort((a, b) => b.visitas - a.visitas);
 
 const pct = (parte: number, total: number) => (total > 0 ? Math.round((parte / total) * 10000) / 100 : 0);
 
@@ -78,9 +61,6 @@ export function joinVisitas(pageUrlsRaw: MatomoRow[], inventario: CartaRelacao[]
   }
 
   const porCarta: CartaVisita[] = [];
-  const orgao = new Map<string, number>();
-  const categoria = new Map<string, number>();
-  const setor = new Map<string, number>();
   for (const [slug, visitas] of visitasPorSlug) {
     const c = ctx.cartasPorSlug.get(slug)!;
     porCarta.push({
@@ -92,23 +72,12 @@ export function joinVisitas(pageUrlsRaw: MatomoRow[], inventario: CartaRelacao[]
       visitas,
       url: urlDaCarta(c),
     });
-    orgao.set(c.orgaoSigla, (orgao.get(c.orgaoSigla) ?? 0) + visitas);
-    categoria.set(c.categoria!, (categoria.get(c.categoria!) ?? 0) + visitas);
-    // Chave composta (setor + sigla do órgão) — 2 setores homônimos em órgãos
-    // diferentes não devem ser somados juntos, e o rótulo já sai pronto pro
-    // ranking (ex. "Financeiro — SEFAZ").
-    if (c.setor) {
-      const chaveSetor = `${c.setor} — ${c.orgaoSigla}`;
-      setor.set(chaveSetor, (setor.get(chaveSetor) ?? 0) + visitas);
-    }
   }
 
   porCarta.sort((a, b) => b.visitas - a.visitas);
   return {
     porCarta,
-    porOrgao: ranquear(orgao),
-    porCategoria: ranquear(categoria),
-    porSetor: ranquear(setor),
+    ...agregarPorCarta(porCarta),
     naoIdentificado: { visitas: naoIdentificadoVisitas, pct: pct(naoIdentificadoVisitas, pareceServicoTotal) },
   };
 }

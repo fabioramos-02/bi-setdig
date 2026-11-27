@@ -10,6 +10,7 @@ import { agruparOrgaosSetores, type OrgaoGrupo } from "@/lib/servicos";
 import { calcularInsightConcentracaoOrgaos } from "@/lib/insights";
 import type { InventarioOrgao, CartaRelacao } from "@/lib/data";
 import type { LiveServicos } from "./ServicosClient";
+import { CartasMaisAcessadas } from "./CartasMaisAcessadas";
 
 /** Demanda (acessos no período) × oferta (nº de cartas cadastradas) por órgão
  * e por setor. Setor só aparece depois de rodar o pipeline com a SQL
@@ -44,7 +45,7 @@ export function OrgaosSetoresTab({
     <div className="flex flex-col gap-6">
       <AvisoSnapshotAproximado
         status={status}
-        mensagemFallback="Não foi possível buscar os acessos desse período agora — tenta um período menor ou tenta de novo em instantes."
+        mensagemFallback="Não foi possível buscar os acessos do período escolhido agora. Mostrando os acessos do período atual, da última atualização diária."
       />
 
       <div className="grid gap-6 grid-cols-1 lg:grid-cols-2">
@@ -65,6 +66,12 @@ export function OrgaosSetoresTab({
           </p>
         </DashboardSection>
       </div>
+
+      {live && live.porOrgao.length > 0 && (
+        <DashboardSection title={`Cartas mais acessadas de cada órgão ${rotuloPeriodo}`}>
+          <CartasMaisAcessadas porCarta={live.porCarta} orgaos={live.porOrgao} rotuloPeriodo={rotuloPeriodo} />
+        </DashboardSection>
+      )}
 
       {insightConcentracao && (
         <StoryCard

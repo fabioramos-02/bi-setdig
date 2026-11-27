@@ -151,3 +151,40 @@ def demanda_por_orgao(page_urls_raw: list, inventario: list[dict]) -> list[dict]
     ]
     linhas.sort(key=lambda r: -r["visitas"])
     return linhas
+
+
+def acessos_por_carta(page_urls_raw: list, inventario: list[dict]) -> list[dict]:
+    """Acessos de TODAS as cartas com visita no período —
+    [{slug, titulo, orgaoSigla, setor, categoria, visitas}], ordenado por visitas.
+
+    Mesma regra de casamento de `demanda_por_orgao` (slug do 2º segmento,
+    só cartas ativas), então a soma por órgão bate com aquele dataset. Serve
+    de base estática do /servicos quando a busca ao vivo não alcança o
+    servidor de estatísticas (só responde na rede interna desde 23/11/2026).
+    """
+    index = perfil._build_index(page_urls_raw)
+    cartas = _carta_por_slug(inventario)
+
+    visitas_por_slug: dict[str, int] = {}
+    for path, visitas in index.items():
+        partes = [p for p in path.split("/") if p]
+        if len(partes) < 2:
+            continue
+        carta = cartas.get(partes[1].lower())
+        if carta:
+            visitas_por_slug[carta["slug"]] = visitas_por_slug.get(carta["slug"], 0) + int(visitas)
+
+    por_slug = {c["slug"]: c for c in cartas.values()}
+    linhas = [
+        {
+            "slug": slug,
+            "titulo": por_slug[slug]["titulo"],
+            "orgaoSigla": por_slug[slug]["orgaoSigla"],
+            "setor": por_slug[slug].get("setor"),
+            "categoria": por_slug[slug]["categoria"],
+            "visitas": v,
+        }
+        for slug, v in visitas_por_slug.items()
+    ]
+    linhas.sort(key=lambda r: -r["visitas"])
+    return linhas

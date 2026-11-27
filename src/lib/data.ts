@@ -220,6 +220,15 @@ export function getMatomoDemandaPorOrgao(): BreakdownPorPeriodo<DemandaOrgao> {
   return readDataset<BreakdownPorPeriodo<DemandaOrgao>>("matomo", "v1", "demanda-por-orgao") ?? BREAKDOWN_VAZIO;
 }
 
+// Acessos de TODAS as cartas com visita, por período (ADR-007) — base do
+// /servicos no período corrente e quando a busca ao vivo falha (o site
+// publicado não alcança o servidor de estatísticas, que só responde na rede interna).
+export type AcessoCarta = { slug: string; titulo: string; orgaoSigla: string; setor: string | null; categoria: string; visitas: number };
+
+export function getMatomoAcessosCartas(): BreakdownPorPeriodo<AcessoCarta> {
+  return readDataset<BreakdownPorPeriodo<AcessoCarta>>("matomo", "v1", "acessos-cartas") ?? BREAKDOWN_VAZIO;
+}
+
 // --- Fluxo de navegação — 2 relatórios leves (não N+1), porta de
 // matomo-analytics-dashboard/views/portal/tab4_jornada.py. Breakdown real por
 // período (ADR-007). ("Padrão Comportamental" via Transitions foi removido do

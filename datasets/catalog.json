@@ -550,39 +550,6 @@
     "bytes": 97388
   },
   {
-    "dataset": "perfil-filtro",
-    "source": "matomo",
-    "owner": "SETDIG",
-    "updatedAt": "2026-11-26T12:30:18.600035+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/matomo-perfil-filtro.schema.json",
-    "rows": 4,
-    "bytes": 44523
-  },
-  {
-    "dataset": "servicos-mais-acessados",
-    "source": "matomo",
-    "owner": "SETDIG",
-    "updatedAt": "2026-11-26T12:30:18.604483+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/matomo-servicos-mais-acessados.schema.json",
-    "rows": 60,
-    "bytes": 13867
-  },
-  {
-    "dataset": "demanda-por-orgao",
-    "source": "matomo",
-    "owner": "SETDIG",
-    "updatedAt": "2026-11-26T12:30:18.607625+00:00",
-    "frequency": "daily",
-    "version": "v1",
-    "schema": "data-platform/schemas/matomo-demanda-por-orgao.schema.json",
-    "rows": 124,
-    "bytes": 19697
-  },
-  {
     "dataset": "eventos-perfil-navegacao",
     "source": "matomo",
     "owner": "SETDIG",
@@ -735,5 +702,49 @@
     "schema": "data-platform/schemas/ga4-frequencia-acesso.schema.json",
     "rows": 1,
     "bytes": 419
+  },
+  {
+    "dataset": "perfil-filtro",
+    "source": "matomo",
+    "owner": "SETDIG",
+    "updatedAt": "2026-11-27T12:42:11.024141+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/matomo-perfil-filtro.schema.json",
+    "rows": 4,
+    "bytes": 44480
+  },
+  {
+    "dataset": "servicos-mais-acessados",
+    "source": "matomo",
+    "owner": "SETDIG",
+    "updatedAt": "2026-11-27T12:42:11.026356+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/matomo-servicos-mais-acessados.schema.json",
+    "rows": 60,
+    "bytes": 13905
+  },
+  {
+    "dataset": "demanda-por-orgao",
+    "source": "matomo",
+    "owner": "SETDIG",
+    "updatedAt": "2026-11-27T12:42:11.028741+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/matomo-demanda-por-orgao.schema.json",
+    "rows": 122,
+    "bytes": 19422
+  },
+  {
+    "dataset": "acessos-cartas",
+    "source": "matomo",
+    "owner": "SETDIG",
+    "updatedAt": "2026-11-27T12:42:11.031461+00:00",
+    "frequency": "daily",
+    "version": "v1",
+    "schema": "data-platform/schemas/matomo-acessos-cartas.schema.json",
+    "rows": 1583,
+    "bytes": 534126
   }
 ]

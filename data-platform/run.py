@@ -142,6 +142,7 @@ def run_matomo_perfil_filtro() -> None:
     saida = {}
     mais_acessados = {}
     demanda_orgao = {}
+    acessos_cartas = {}
     for chave, (p, d) in PERIODOS_FIXOS.items():
         raw = matomo.get_page_urls(p, d, limit=-1)
         saida[chave] = t_perfil.build_periodo(raw)
@@ -149,6 +150,7 @@ def run_matomo_perfil_filtro() -> None:
         # do portal (não só os do filtro de Perfil) e pra medir demanda por órgão.
         mais_acessados[chave] = t_servicos.top_servicos_acessados(raw, inventario, n=15)
         demanda_orgao[chave] = t_servicos.demanda_por_orgao(raw, inventario)
+        acessos_cartas[chave] = t_servicos.acessos_por_carta(raw, inventario)
 
     t_perfil.validar(saida)
     publish("matomo", "perfil-filtro", saida)
@@ -161,6 +163,12 @@ def run_matomo_perfil_filtro() -> None:
     validate_period_breakdown(demanda_orgao, ["orgaoSigla", "orgao", "visitas"], ["visitas"])
     publish("matomo", "demanda-por-orgao", demanda_orgao)
     print(f"[matomo] demanda-por-orgao -> {[(k, len(v)) for k, v in demanda_orgao.items()]}")
+
+    # Base estática do /servicos (acessos por carta, por órgão e as 10 mais
+    # acessadas) — o site publicado não alcança o Matomo, que só responde na rede interna.
+    validate_period_breakdown(acessos_cartas, ["slug", "titulo", "orgaoSigla", "visitas"], ["visitas"])
+    publish("matomo", "acessos-cartas", acessos_cartas)
+    print(f"[matomo] acessos-cartas -> {[(k, len(v)) for k, v in acessos_cartas.items()]}")
 
 
 def run_matomo_jornada() -> None:
