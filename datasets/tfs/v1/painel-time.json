@@ -2,7 +2,7 @@
   {
     "titulo": "REUNIÃO",
     "tipo": "numero",
-    "total": 221
+    "total": 223
   },
   {
     "titulo": "EPIC",
@@ -12,17 +12,17 @@
   {
     "titulo": "FEATURE",
     "tipo": "numero",
-    "total": 115
+    "total": 116
   },
   {
     "titulo": "PBI",
     "tipo": "numero",
-    "total": 401
+    "total": 404
   },
   {
     "titulo": "TASK",
     "tipo": "numero",
-    "total": 1799
+    "total": 1813
   },
   {
     "titulo": "APLICATIVO",
@@ -42,7 +42,7 @@
   {
     "titulo": "AGUAR... DECISÃO",
     "tipo": "numero",
-    "total": 17
+    "total": 18
   },
   {
     "titulo": "IMPEDIDO",
@@ -62,7 +62,7 @@
   {
     "titulo": "TASK's ' sem UST's",
     "tipo": "grafico",
-    "total": 245,
+    "total": 240,
     "grupos": [
       {
         "rotulo": "Sem sprint",
@@ -70,15 +70,15 @@
       },
       {
         "rotulo": "Sprint 8",
-        "qtd": 68
+        "qtd": 64
       },
       {
         "rotulo": "Sprint 7",
-        "qtd": 30
+        "qtd": 31
       },
       {
         "rotulo": "Sprint 9",
-        "qtd": 23
+        "qtd": 25
       },
       {
         "rotulo": "Sprint 4",
@@ -86,7 +86,7 @@
       },
       {
         "rotulo": "Sprint 6",
-        "qtd": 9
+        "qtd": 5
       },
       {
         "rotulo": "Sprint 2",
@@ -105,23 +105,23 @@
   {
     "titulo": "PACOTES DE ENTREGA",
     "tipo": "grafico",
-    "total": 401,
+    "total": 404,
     "grupos": [
       {
         "rotulo": "Em Produção",
-        "qtd": 204
+        "qtd": 205
       },
       {
         "rotulo": "A fazer",
-        "qtd": 80
+        "qtd": 83
       },
       {
         "rotulo": "Área de Negócios",
-        "qtd": 70
+        "qtd": 68
       },
       {
         "rotulo": "Aguardando decisão",
-        "qtd": 17
+        "qtd": 18
       },
       {
         "rotulo": "Em Desenvolvimento",

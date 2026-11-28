@@ -1,29 +1,32 @@
 {
-  "dia": [
-    {
-      "termo": "substituição tributária",
-      "buscas": 1
-    }
-  ],
+  "dia": [],
   "semana": [
     {
       "termo": "ipva",
-      "buscas": 8
+      "buscas": 37
     },
     {
       "termo": "servidor",
       "buscas": 6
     },
     {
+      "termo": "procon",
+      "buscas": 5
+    },
+    {
+      "termo": "itcd",
+      "buscas": 4
+    },
+    {
       "termo": "inscrição estadual",
       "buscas": 3
     },
     {
-      "termo": "procon",
-      "buscas": 3
+      "termo": "cidadão",
+      "buscas": 2
     },
     {
-      "termo": "cidadão",
+      "termo": "substituição tributária",
       "buscas": 2
     },
     {
@@ -35,11 +38,11 @@
       "buscas": 1
     },
     {
-      "termo": "itcd",
+      "termo": "e-ms",
       "buscas": 1
     },
     {
-      "termo": "substituição tributária",
+      "termo": "gostaria de registra um bolitim de ocorrencia de perda de documento",
       "buscas": 1
     },
     {
@@ -50,27 +53,27 @@
   "mes": [
     {
       "termo": "ipva",
-      "buscas": 30
+      "buscas": 59
     },
     {
       "termo": "servidor",
       "buscas": 22
     },
     {
+      "termo": "itcd",
+      "buscas": 20
+    },
+    {
+      "termo": "procon",
+      "buscas": 18
+    },
+    {
       "termo": "inscrição estadual",
       "buscas": 17
     },
     {
-      "termo": "itcd",
-      "buscas": 17
-    },
-    {
-      "termo": "procon",
-      "buscas": 16
-    },
-    {
       "termo": "substituição tributária",
-      "buscas": 10
+      "buscas": 11
     },
     {
       "termo": "cidadão",
@@ -109,6 +112,10 @@
       "buscas": 1
     },
     {
+      "termo": "e-ms",
+      "buscas": 1
+    },
+    {
       "termo": "fundo",
       "buscas": 1
     },
@@ -121,18 +128,14 @@
       "buscas": 1
     },
     {
-      "termo": "habilitar ficha",
-      "buscas": 1
-    },
-    {
-      "termo": "informativo de atividade",
+      "termo": "gostaria de registra um bolitim de ocorrencia de perda de documento",
       "buscas": 1
     }
   ],
   "ano": [
     {
       "termo": "ipva",
-      "buscas": 35114
+      "buscas": 35143
     },
     {
       "termo": "inscrição estadual",
@@ -140,15 +143,15 @@
     },
     {
       "termo": "procon",
-      "buscas": 8054
+      "buscas": 8056
     },
     {
       "termo": "substituição tributária",
-      "buscas": 5626
+      "buscas": 5627
     },
     {
       "termo": "itcd",
-      "buscas": 2279
+      "buscas": 2282
     },
     {
       "termo": "cidadão",

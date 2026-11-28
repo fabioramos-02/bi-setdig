@@ -1,17 +1,5 @@
 [
   {
-    "data": "2024-05-21",
-    "visitas": 15767,
-    "visitantesUnicos": 10314,
-    "acoes": 33870
-  },
-  {
-    "data": "2024-05-22",
-    "visitas": 16206,
-    "visitantesUnicos": 10143,
-    "acoes": 38791
-  },
-  {
     "data": "2024-05-23",
     "visitas": 14886,
     "visitantesUnicos": 9676,
@@ -5515,8 +5503,20 @@
   },
   {
     "data": "2026-11-26",
-    "visitas": 280,
-    "visitantesUnicos": 272,
-    "acoes": 516
+    "visitas": 1664,
+    "visitantesUnicos": 1292,
+    "acoes": 2901
+  },
+  {
+    "data": "2026-11-27",
+    "visitas": 1485,
+    "visitantesUnicos": 1192,
+    "acoes": 2670
+  },
+  {
+    "data": "2026-11-28",
+    "visitas": 24,
+    "visitantesUnicos": 22,
+    "acoes": 47
   }
 ]
